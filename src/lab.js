@@ -1,3 +1,4 @@
+import {pickupFallback} from './pickup.js';
 import {createProgressCoordinator,ProgressConflict,PROGRESS_KEY} from './progress-coordination.js';
 import {readProgressBackup} from './progress-choice.js';
 import {createWindingInput,windingMeter} from './winding-input.js';
@@ -69,8 +70,10 @@ $('pause').onclick=()=>{manualPaused=!manualPaused;freezeInputs();if(!manualPaus
 document.addEventListener('visibilitychange',()=>{freezeInputs();setText('pauseStatus',document.hidden?'Paused while this tab is hidden.':manualPaused?'Paused. Resume when ready.':'');});
 window.addEventListener('resize',()=>{resizeNoticeUntil=grip.active?clock+2:0;grip.reset();winding.cancel();if(scene)scene.control=0;clearPreview();});
 $('launch').onclick=()=>{sound.unlock();try{if(!scene.loadingStatus().contacting)throw new Error('Let the volunteer contact the cradle before unlatching');const saved=scene.snapshot();scene=new (SceneType())(scene.p,scene.rig.id,saved);scene.unlatch();launchStarted=clock;scene.enableEncounters(seed+shotCount);shotId=`${seed}:${shotCount++}`;banked=false;clearPreview();error='';sound.play('unlatch');}catch(e){error=e.message;}};
+$('launchNear').onclick=()=>$('launch').click();
+let pickupOffset={x:0,y:0};
 const grip=createGripController({toPoint:e=>renderer.point(e),tapHold:()=>$('sticky').checked,
- onStart:p=>{if(isPaused())return false;sound.unlock();const grabbed=scene?.grab(p)??false;held=grabbed;if(grabbed)clearPreview();return grabbed;},onMove:p=>scene?.move(p),onEnd:()=>{held=false;scene?.drop();},
+ onStart:p=>{if(isPaused())return false;sound.unlock();let grabbed=scene?.grab(p)??false;if(!grabbed){const target=pickupFallback(scene,p,renderer.cssPixelsPerMetre);if(target)grabbed=scene.grab(target);}held=grabbed;if(grabbed){pickupOffset={x:scene.hand.target.x-p.x,y:scene.hand.target.y-p.y};clearPreview();}return grabbed;},onMove:p=>scene?.move({x:p.x+pickupOffset.x,y:p.y+pickupOffset.y}),onEnd:()=>{held=false;pickupOffset={x:0,y:0};scene?.drop();},
  capture:id=>canvas.setPointerCapture(id),releaseCapture:id=>{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}});
 canvas.onpointerdown=grip.pointerDown;canvas.onpointermove=grip.pointerMove;canvas.onpointerup=grip.pointerUp;canvas.onpointercancel=grip.pointerCancel;canvas.onlostpointercapture=grip.lostPointerCapture;
 window.addEventListener('keydown',e=>{if(isFlightControlKey(e)&&scene?.phase==='flight'&&!isPaused()){e.preventDefault();scene.control=e.key==='ArrowRight'?1:-1;}});
@@ -117,7 +120,7 @@ function render(now){const frameBegan=performance.now(),samplePhase=scene?.phase
    }
   }
  }
- $('launch').disabled=paused||scene.phase!=='loading'||held||!scene.isLoaded()||!inContact;$('time').disabled=paused||held||!['uncocked','loading','wind-stalled'].includes(scene.phase);$('power').disabled=$('time').disabled;$('time').textContent=scene.phase==='winding'?'Winding…':sliderRunning?'Release to wind':'Hold to aim; release to wind';
+ $('launch').disabled=paused||scene.phase!=='loading'||held||!scene.isLoaded()||!inContact;$('launchNear').hidden=!['loading','launching'].includes(scene.phase);$('launchNear').disabled=$('launch').disabled;for(const id of ['left','right'])$(id).hidden=scene.phase!=='flight';$('time').disabled=paused||held||!['uncocked','loading','wind-stalled'].includes(scene.phase);$('power').disabled=$('time').disabled;$('time').textContent=scene.phase==='winding'?'Winding…':sliderRunning?'Release to wind':'Hold to aim; release to wind';
  const c=scene.center(),release=scene.release?.center;
  const hints=[];if(startupWarning)hints.push(startupWarning);if(saveWarning)hints.push(saveWarning);if(clock<resizeNoticeUntil)hints.push('View resized; grip released. Re-grip the volunteer to continue.');const travel=journey.update(scene.phase,c.y);if(travel.changed){zoneNotice=`Entering ${travel.biome.label}`;zoneNoticeUntil=clock+2.5;if(travel.firstVisit)sound.play('zone',{biome:travel.biome.id});}if(clock<zoneNoticeUntil)hints.push(zoneNotice+'.');
  if(scene.phase==='uncocked')hints.push('Hold the winding button (or Space/Enter), release near the middle, then lift beside the green cradle before moving across above it.');

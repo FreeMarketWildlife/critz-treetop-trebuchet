@@ -1,3 +1,5 @@
+import {drawSurfaceTrim} from './surface-art.js';
+import {PICKUP_RADIUS_CSS} from './pickup.js';
 import {approachCues,payloadWarningRadius} from './approach-cues.js';
 import {drawSpeciesMarkings} from './species-art.js';
 import {biomeAt} from './journey.js';
@@ -9,7 +11,7 @@ export function pointerWorld(point,bounds,viewport){
  if(![point.clientX,point.clientY,bounds.left,bounds.top,bounds.width,bounds.height].every(Number.isFinite)||bounds.width<=0||bounds.height<=0)return null;
  const x=(point.clientX-bounds.left)*viewport.width/bounds.width,y=(point.clientY-bounds.top)*viewport.height/bounds.height;
  return {x:(x-viewport.originX)/45,y:294+(viewport.originY-y)/45};}
-export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000),camera=createFlightCamera(),cameraScene=null,lastTime=0,wasFlying=false,approachNotice='',lastCssWidth=0,lastCssHeight=0,cueScale=1;
+export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000),camera=createFlightCamera(),cameraScene=null,lastTime=0,wasFlying=false,approachNotice='',lastCssWidth=0,lastCssHeight=0,cueScale=1,cssPixelsPerMetre=45;
  const line=(a,b,color,width=3)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();};
  const dot=(p,r,color)=>{ctx.beginPath();ctx.fillStyle=color;ctx.arc(...p,r,0,Math.PI*2);ctx.fill();};
  function body(scene,b,transform,scale,motion=0){const role=b.getUserData()?.role;if(role==='static')return;
@@ -31,17 +33,17 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    dot([x+3,level(c.y)],5,'#fff7d7');ctx.globalAlpha=1;ctx.font='11px system-ui';for(const [y,label]of [[300,'Tree'],[185,'Sky'],[65,'Canopy'],[0,'Floor']])ctx.fillText(label,x-48,level(y)+4);
   }ctx.restore();
  }
- return {get approachNotice(){return approachNotice;},get viewport(){return viewport;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
+ return {get approachNotice(){return approachNotice;},get viewport(){return viewport;},get cssPixelsPerMetre(){return cssPixelsPerMetre;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
  draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity){
   approachNotice='';viewport=viewportFor(width,height);if(canvas.width!==viewport.width||canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
-  if(width!==lastCssWidth||height!==lastCssHeight){lastCssWidth=width;lastCssHeight=height;const displayed=canvas.getBoundingClientRect?.().width??Math.max(240,width-16);cueScale=Math.max(1,Math.min(1.75,viewport.width/Math.max(1,displayed)));}
+  if(width!==lastCssWidth||height!==lastCssHeight){lastCssWidth=width;lastCssHeight=height;const displayed=canvas.getBoundingClientRect?.().width??Math.max(240,width-16);cueScale=Math.max(1,Math.min(1.75,viewport.width/Math.max(1,displayed)));cssPixelsPerMetre=45*Math.max(1,displayed)/viewport.width;}
   const {portrait,originX,originY}=viewport,c=scene.center(),flying=scene.phase==='flight',local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
   if(!flying){cameraScene=null;
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
    line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',7);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',4);
    for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);for(const rope of scene.ropes)line(local(rope.getAnchorA()),local(rope.getAnchorB()),'#444',2);
    dot(local(scene.arm.getWorldPoint({x:0,y:0})),5,'#e6c475');
-   if(scene.phase==='loading'&&!scene.hand&&scene.parts?.length){const root=scene.parts.find(b=>b.getUserData().id==='torso')??scene.parts[Math.floor(scene.parts.length/2)],p=local(root.getWorldCenter());ctx.setLineDash([3,3]);ctx.beginPath();ctx.strokeStyle='#f8eab8';ctx.lineWidth=2;ctx.arc(...p,14,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#273f35';ctx.font='12px system-ui';ctx.fillText('Grab here',p[0]-27,p[1]-20);}
+   if(scene.phase==='loading'&&!scene.hand&&scene.parts?.length){const root=scene.parts.find(b=>b.getUserData().id==='torso')??scene.parts[Math.floor(scene.parts.length/2)],p=local(root.getWorldCenter());ctx.setLineDash([3,3]);ctx.beginPath();ctx.strokeStyle='#f8eab8';ctx.lineWidth=2;ctx.arc(...p,PICKUP_RADIUS_CSS*45/cssPixelsPerMetre,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#273f35';ctx.font='12px system-ui';ctx.fillText('Grab here',Math.max(10,p[0]-27),p[1]-PICKUP_RADIUS_CSS*45/cssPixelsPerMetre-6);}
    if(portrait&&preview)preview.points.forEach((p,i)=>dot(local(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
    ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':scene.phase==='launching'?'Arm moving under gravity':'Lift beside cradle → across above → release',12,24);ctx.restore();
   }
@@ -52,7 +54,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    const view=p=>[panel.x+panel.w/2+(p.x-cam.x)*scale,panel.y+panel.h/2-(p.y-cam.y)*scale];
    ctx.save();ctx.translate(panel.x,panel.y);drawScenery(ctx,{width:panel.w,height:panel.h,region:biome.id,camera:cam,scale,reducedMotion:reduced,time});ctx.restore();
    ctx.save();ctx.beginPath();ctx.rect(panel.x,panel.y,panel.w,panel.h);ctx.clip();
-   if(flying){for(const s of layout.surfaces)line(view({x:s.minX,y:s.y}),view({x:s.maxX,y:s.y}),'#675337',5);
+   if(flying){for(const s of layout.surfaces){const a=view({x:s.minX,y:s.y}),b=view({x:s.maxX,y:s.y});ctx.save();ctx.translate(panel.x,panel.y);drawSurfaceTrim(ctx,{x1:a[0]-panel.x,x2:b[0]-panel.x,y:a[1]-panel.y,width:panel.w,height:panel.h,ground:s.id==='ground'});ctx.restore();line(a,b,'#675337',5);}
     for(const pin of layout.bumpers){const p=view(pin);dot(p,pin.radius*scale,'#ab7041');dot(p,pin.radius*scale*.83,'#f3cf76');dot(p,pin.radius*scale*.44,'#d9914c');}
    }else dot([panel.x+panel.w/2,panel.y+panel.h/2],110,'rgba(255,248,222,.45)');
    if(preview)preview.points.forEach((p,i)=>dot(view(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
