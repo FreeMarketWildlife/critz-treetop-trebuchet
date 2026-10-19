@@ -12,17 +12,17 @@ const $=id=>document.getElementById(id),canvas=$('view'),renderer=createRenderer
 installReviewExports(canvas,$('frameExport'),$('clipExport'));
 const SceneType=()=>$('hook').checked?PhysicalHookScene:CritterScene;
 $('reduced').checked=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const sound=createAudio();sound.setVolume(.35);let economy=createEconomyState(),shotId=null,banked=false,shotCount=0,effects=[],launchStarted=null;
+const sound=createAudio();sound.setVolume(.35);let economy=createEconomyState(),shotId=null,banked=false,shotCount=0,effects=[],launchStarted=null,runObstacle=null;
 let storageBackend=null;try{storageBackend=window.localStorage;}catch{}
 let persistence=createEconomyPersistence(storageBackend);
 function saveProgress(){try{return persistence.save(economy);}catch{error='Saving is unavailable; progress remains in this session.';return false;}}
 const setText=(id,value)=>{if($(id).textContent!==value)$(id).textContent=value;};
 const equipmentNotes={'counterweight-heavy':'140 kg counterweight; changes energy and balance.','beam-long':'3.6 / 0.9 m beam; changes leverage and mass.','beam-light':'Lighter beam material; changes inertia.','sling-long':'Longer sling; changes timing and clearance.','frame-heavy':'50 kg frame; changes recoil and can reduce range.','frame-grip':'Grippier feet; changes sliding behavior.'};
 const seed=Date.now()>>>0,queue=createVolunteerQueue(seed);let fraction=.6,scene,preview=null,previewJob=null,previewSource=null,previewCapture=null,previewBasis=null,lastPredictionMs=0,nextStatus=0,statusPhase='',error='',last=performance.now(),accumulator=0,nextPreview=0,clock=0,sliderRunning=true,sliderStart=performance.now(),held=false;
-const settings=()=>derivePhysicalConfig(economy,{counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),pivotHeight:300,armDamping:Number($('friction').value),flightDrag:Number($('drag').value),initialArm:-3,mechanicalWinding:true,releaseHardware:'channel',stoppedSplitPouch:$('split').checked,...($('split').checked&&$('hook').checked?{pouchPanelMass:Number($('panelMass').value)}:{}),sling:Number($('sling').value),hookAngle:Number($('railAngle').value),channelLength:Number($('railLength').value)});
+const settings=()=>derivePhysicalConfig(economy,{counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),pivotHeight:300,armDamping:Number($('friction').value),flightDrag:Number($('drag').value),initialArm:-3,mechanicalWinding:true,collisionSubsteps:true,releaseHardware:'channel',stoppedSplitPouch:$('split').checked,...($('split').checked&&$('hook').checked?{pouchPanelMass:Number($('panelMass').value)}:{}),sling:Number($('sling').value),hookAngle:Number($('railAngle').value),channelLength:Number($('railLength').value)});
 $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</option>`).join('');$('species').value=queue.current;
 function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
-function reset(){try{grip.reset();sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;}catch(e){error=e.message;}}
+function reset(){try{bank();grip.reset();runObstacle=null;sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;}catch(e){error=e.message;}}
 $('hook').onchange=reset;$('split').onchange=reset;
 for(const id of ['species','mass','long','short','friction','drag','sling','railAngle','railLength','panelMass'])$(id).onchange=reset;
 $('reset').onclick=reset;
@@ -66,12 +66,16 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  $('launch').disabled=scene.phase!=='loading'||held||!scene.isLoaded()||!inContact;$('time').disabled=!['uncocked','loading','wind-stalled'].includes(scene.phase);$('time').textContent=scene.phase==='winding'?'Winding…':sliderRunning?'Set winding height':'Restart height meter';
  const c=scene.center(),release=scene.release?.center;
  const hints=[];
+ $('reset').textContent=scene.release?'Bank & retry setup':'Reset setup';
+ if(runObstacle==='launch branch')hints.push('The volunteer hit the launch branch. Bank & retry keeps this run’s rewards; adjust the load or hardware before another shot.');
  if(scene.phase==='launching'&&launchStarted!==null&&clock-launchStarted>5)hints.push('Payload is still supported. Reset and try different rail mounting, sling length or counterweight.');
  if(scene.phase==='loading'){
+  if(fraction<.3&&loading.withinEnvelope&&inContact&&!held)hints.push('Low winding can give a short seating window. Unlatch while contact is ready; waiting may lose the load.');
   if(previewJob&&!preview)hints.push('Calculating a short physical snapshot hint…');
   if(scene.hardwareHasEscaped?.())hints.push('The release bead slipped out while loading. Reset the setup or test this loose pouch.');
   if(preview&&!preview.release)hints.push('No separation in the five-second preview. Try different loading or mechanical settings.');
   if(preview?.release?.center.vx<0)hints.push('Preview heads backward. Adjust hardware or launch to test this setup.');
+  if(fraction<.3&&!held&&!inContact&&c.y<scene.pouch.getPosition().y-.5)hints.push('The load slipped from this low winding setup. Reset and try a higher winding target or a different placement.');
   if(held)hints.push('Release your grip before launching.');
   else if(!loading.withinEnvelope)hints.push('Lift the volunteer over the cradle and let gravity seat it.');
   else if(!loading.contacting)hints.push('Volunteer is near the cradle but not in contact. Let it land before launching.');
@@ -81,7 +85,7 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  }
  if(held&&scene.forceCapped)hints.push('Grip force limit reached. Move more gently.');
  setText('guidance',hints.join(' '));
- for(const event of scene.events.splice(0)){if(event.type==='impact'){sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4});}else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
+ for(const event of scene.events.splice(0)){if(event.type==='impact'){runObstacle??=event.surface??null;sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4});}else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
  effects=effects.map(e=>({...e,life:e.life-dt})).filter(e=>e.life>0).slice(-20);
  if(clock>=nextStatus||statusPhase!==scene.phase){nextStatus=clock+.25;statusPhase=scene.phase;
  setText('readout',error||`${scene.rig.label} • ${scene.phase} • ${release?Math.max(0,c.x-release.x).toFixed(0)+' m • '+scene.impactCount+' bounces • '+(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(1)+' m/s':'Counterweight '+(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)+' m above axle'}`);

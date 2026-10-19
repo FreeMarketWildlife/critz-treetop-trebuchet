@@ -146,3 +146,9 @@ Browser controls were accessible briefly: desktop/portrait rendering and actual 
 ## Iteration 8: displayed-hint freshness and isolated impacts
 
 Displayed hints now expire against their own captured part poses every frame, including while a replacement calculation runs. **125 tests pass.** The [controlled impact study](reviews/iteration-8/findings.md) replays identical incoming snapshots for three rigs at three timesteps and two solver settings. Higher solver iterations do not consistently help; 1200 Hz reduces the observed anchor/angular deformation substantially but still leaves material errors. Production remains 600 Hz pending collision-region substep and CPU measurements. No pose corrections, velocity injection or hidden automatic equipment tuning were added.
+
+## Iteration 9: bounded collision refinement and recoverable failures
+
+The UI now enables deterministic collision-region substeps: fast flight near authored material/encounters uses 1200 Hz inside the usual 600 Hz outer ticks; open air, loading and winding retain their prior rate. [Measured findings](reviews/iteration-9/findings.md) include the CPU budget, all-species regression and controlled impact comparisons. **126 tests pass.** Anchor errors shrink and exact canonical prediction parity remains; deformation and branch-return throws persist. Mobile frame time is not established by the Node budget.
+
+Low winding can support valid but short seating windows. Alternate force-driven placements launch all three previously failing mass classes when unlatching during observed quiet contact; waiting longer loses those loads. Guidance explains this without snapping or automatic release. A branch return now names the obstacle, and **Bank & retry setup** preserves rewards before rebuilding. Portrait and landscape stage/control fit were visually checked; a new full manual game loop and audible QA remain unverified.

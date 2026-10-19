@@ -130,3 +130,15 @@ test('encounter births and removals use matching energy reference and survive ca
 test('encounters cannot materialize inside authored terrain or existing bodies',()=>{
  const s=new CritterScene();assert.equal(s.canSpawnEncounter({x:100,y:.3,radius:.8}),false);assert.equal(s.canSpawnEncounter({x:-4.3,y:295.6,radius:.5}),false);assert.equal(s.canSpawnEncounter({x:100,y:10,radius:.8}),true);
 });
+
+
+test('collision-region substeps refine fast flight only, preserve time and canonical continuation',()=>{
+ const s=new CritterScene({collisionSubsteps:true});s.phase='flight';
+ let calls=0;const original=s.integrate.bind(s);s.integrate=dt=>{calls++;original(dt);};
+ assert.equal(s.collisionRegion(1/600),false);s.step();assert.equal(calls,1);
+ // A public body pose setter is used only to construct an incoming-contact test fixture.
+ const center=s.center();for(const b of s.parts){const q=b.getPosition();b.setPosition({x:q.x+20-center.x,y:q.y+.3-center.y});b.setLinearVelocity({x:0,y:-40});}
+ const before=s.elapsed;assert.equal(s.collisionRegion(1/600),true);calls=0;s.step();assert.equal(calls,2);assert.ok(Math.abs(s.elapsed-before-1/600)<1e-12);
+ const clone=s.clone();s.step();clone.step();assert.deepEqual(s.center(),clone.center());
+ assert.throws(()=>new CritterScene({collisionSubsteps:2}));
+});

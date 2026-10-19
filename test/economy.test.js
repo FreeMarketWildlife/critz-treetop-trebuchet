@@ -27,7 +27,7 @@ test('physical winding/loading/launch bank and purchase cycle remains reproducib
  let state=createEconomyState(),purchasedAt=null;const observations=[];
  const map=new Map(),storage={setItem:(k,v)=>map.set(k,v),getItem:k=>map.get(k)??null,removeItem:k=>map.delete(k)},save=createEconomyPersistence(storage,{enabled:true});
  for(let shot=0;shot<6;shot++){
-  const p=derivePhysicalConfig(state,{mechanicalWinding:true,initialArm:-3,releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5});
+  const p=derivePhysicalConfig(state,{mechanicalWinding:true,initialArm:-3,releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,collisionSubsteps:true});
   const scene=new PhysicalHookScene(p,'lizard');scene.startWinding(.6);
   for(let i=0;i<7200&&scene.phase==='winding';i++)scene.step();
   assert.equal(scene.phase,'loading');assert.ok(load(scene));assert.ok(waitForContact(scene).quiet>=.1);
@@ -49,7 +49,7 @@ test('long beam plus long sling uses reachable winding and retains physical cont
  const {PhysicalHookScene}=await import('../src/hook-experiment.js');const {load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
  let state=createEconomyState();for(let n=0;n<12;n++)state=reduce(state,{type:'record-shot',shotId:`fund-${n}`,distance:0,impacts:1});
  for(const id of['beam-long','sling-long']){state=reduce(state,{type:'purchase',id});state=reduce(state,{type:'equip',id});}
- const p=derivePhysicalConfig(state,{mechanicalWinding:true,initialArm:-3,releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5});const scene=new PhysicalHookScene(p);
+ const p=derivePhysicalConfig(state,{mechanicalWinding:true,initialArm:-3,releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,collisionSubsteps:true});const scene=new PhysicalHookScene(p);
  scene.startWinding(.6);for(let i=0;i<7200&&scene.phase==='winding';i++)scene.step();assert.equal(scene.phase,'loading');assert.ok(load(scene));assert.ok(waitForContact(scene).quiet>=.1);
  const result=measureSnapshot(scene.snapshot(),scene.p,'lizard',1/600);assert.ok(result.released);assert.equal(result.firstWorldImpact.surface,'ground');assert.ok(result.center.vx>0);assert.ok(result.center.vy>0);
 });

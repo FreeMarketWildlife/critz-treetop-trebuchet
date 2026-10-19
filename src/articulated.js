@@ -63,7 +63,7 @@ export class CritterScene {
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight' || this.elapsed-this.lastImpact<.08)return;
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
-   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';this.events.push({type:'impact',strength,position:this.center(),material,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
+   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>Math.abs(point.y-s.y)<.15&&point.x>=s.minX-.25&&point.x<=s.maxX+.25)?.id:null;this.events.push({type:'impact',strength,position:this.center(),material,surface:surface??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
  }
  startWinding(fraction){
   if(this.hand || !['uncocked','loading','wind-stalled'].includes(this.phase))throw new Error('Winding requires an unloaded grip and idle mechanism');
@@ -116,7 +116,22 @@ export class CritterScene {
  unlatch(){if(this.phase!=='loading')throw new Error('Finish physical winding before unlatching');if(this.hand)throw new Error('Release your grip first');if(!this.isLoaded())throw new Error('Place critter in cradle first');this.pivot.enableLimit(false);this.phase='launching';}
  bodyEnergy(b){const m=b.getMass(),c=b.getWorldCenter(),v=b.getLinearVelocity(),local=b.getLocalCenter(),I=b.getInertia()-m*(local.x**2+local.y**2);return .5*m*(v.x**2+v.y**2)+.5*I*b.getAngularVelocity()**2+m*this.p.gravity*(c.y-this.p.pivotHeight);}
  energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic())e+=this.bodyEnergy(b);return e;}
+ collisionRegion(dt){
+  if(this.phase!=='flight')return false;
+  const obstacles=[...layout.bumpers,...[...this.enemies.values()].map(e=>({x:e.getPosition().x,y:e.getPosition().y,radius:e.getFixtureList().getShape().getRadius(),speed:e.getLinearVelocity().length()}))],enemySpeed=Math.max(0,...obstacles.map(o=>o.speed??0));
+  for(const b of this.parts){const v=b.getLinearVelocity(),speed=Math.hypot(v.x,v.y),spin=Math.abs(b.getAngularVelocity());if(speed<3&&spin<10&&enemySpeed<3)continue;
+   const pad=.15+(speed+enemySpeed)*dt;
+   for(let f=b.getFixtureList();f;f=f.getNext()){const a=f.getAABB(0),lo=a.lowerBound,hi=a.upperBound;
+    if(layout.surfaces.some(s=>hi.x+pad>=s.minX&&lo.x-pad<=s.maxX&&hi.y+pad>=s.y-.08&&lo.y-pad<=s.y))return true;
+    for(const obstacle of obstacles)if(hi.x+pad>=obstacle.x-obstacle.radius&&lo.x-pad<=obstacle.x+obstacle.radius&&hi.y+pad>=obstacle.y-obstacle.radius&&lo.y-pad<=obstacle.y+obstacle.radius)return true;
+   }
+  }return false;
+ }
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
+  const count=this.p.collisionSubsteps&&this.collisionRegion(dt)?Math.min(4,Math.ceil(dt*1200)):1;
+  for(let i=0;i<count;i++)this.integrate(dt/count);
+ }
+ integrate(dt){
   const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
   if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q),grip=gripParameters(this.rig.totalMass);let fx=grip.stiffness*(this.hand.target.x-q.x)-grip.damping*v.x,fy=grip.stiffness*(this.hand.target.y-q.y)-grip.damping*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,grip.maxForce/(mag||1));this.forceCapped=mag>grip.maxForce;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
   const dampingTorque=-this.p.armDamping*this.pivot.getJointSpeed(),dampingAngle=this.pivot.getJointAngle(),drag=[];

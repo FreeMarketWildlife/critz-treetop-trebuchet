@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {PhysicalHookScene} from '../src/hook-experiment.js';import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent} from '../src/prediction.js';
 import {load,waitForContact} from '../scripts/measure-hook.js';
-function ready(){const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5});assert.ok(load(s));waitForContact(s);return s;}
+function ready(){const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,collisionSubsteps:true});assert.ok(load(s));waitForContact(s);return s;}
 test('budgeted prediction preserves source and matches canonical physical release',()=>{
  const s=ready(),before=s.snapshot(),expected=s.predict(),job=createPredictionJob(s);let slices=0;
  while(!job.done){job.advance({maxSteps:37,budgetMs:1000});slices++;assert.ok(slices<200);}

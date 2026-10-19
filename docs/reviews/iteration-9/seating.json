@@ -1,0 +1,635 @@
+{
+  "protocol": "Actual motor low winding0.2; identical canonical post-wind snapshot per species; finite offset torso grip; shared1s lift plus2s cup-relative hold; free3.5s observation. A transient valid contact is distinct from sustained seating.",
+  "rows": [
+    {
+      "earlyLaunch": null,
+      "species": "lizard",
+      "offset": -0.2,
+      "above": 0.45,
+      "firstReady": 0,
+      "maxReadyDuration": 0.005,
+      "maxQuietDuration": 0.0033333333333333335,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 1.3696707492355658,
+        "cradleSpin": 2.5874969059346484,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 11.66568688497265,
+        "maxPartRelativeSpeed": 12.628446940259145,
+        "maxRelativeSpin": 2.587497185734884
+      },
+      "center": {
+        "x": -6.786545603244613,
+        "y": 294.0911112335994,
+        "vx": 3.2319145079849648e-9,
+        "vy": -5.559433083539315e-10,
+        "mass": 0.65
+      },
+      "cup": {
+        "x": -2.4987066306806547,
+        "y": 296.26156643312385
+      },
+      "hardwareEscaped": false,
+      "handWork": 44.11582212606937
+    },
+    {
+      "earlyLaunch": null,
+      "species": "lizard",
+      "offset": -0.2,
+      "above": 0.85,
+      "firstReady": 0.0033333333333333335,
+      "maxReadyDuration": 0.08166666666666658,
+      "maxQuietDuration": 0.03833333333333332,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.9020502716734514,
+        "cradleSpin": -3.1773609888507375,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 7.285305483319365,
+        "maxPartRelativeSpeed": 7.4857993720398035,
+        "maxRelativeSpin": 3.1773611346929136
+      },
+      "center": {
+        "x": -2.8546157283140863,
+        "y": 294.1089141761675,
+        "vx": 2.084434965391992e-7,
+        "vy": -1.0018200544828478e-8,
+        "mass": 0.65
+      },
+      "cup": {
+        "x": -2.6431181344085526,
+        "y": 296.22243475590653
+      },
+      "hardwareEscaped": false,
+      "handWork": 26.148898617081425
+    },
+    {
+      "earlyLaunch": null,
+      "species": "lizard",
+      "offset": 0,
+      "above": 0.45,
+      "firstReady": 0.0033333333333333335,
+      "maxReadyDuration": 0.0016666666666666668,
+      "maxQuietDuration": 0,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 1.4483705113243588,
+        "cradleSpin": -2.067142859952483,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 7.341058202145191,
+        "maxPartRelativeSpeed": 7.601181861258374,
+        "maxRelativeSpin": 2.067142859952483
+      },
+      "center": {
+        "x": -3.0571840520455633,
+        "y": 294.0910925690444,
+        "vx": 3.1647447411215415e-9,
+        "vy": -5.525505247180058e-10,
+        "mass": 0.65
+      },
+      "cup": {
+        "x": -1.8542214166221782,
+        "y": 296.3698000651273
+      },
+      "hardwareEscaped": true,
+      "handWork": 41.47745272641974
+    },
+    {
+      "earlyLaunch": null,
+      "species": "lizard",
+      "offset": 0,
+      "above": 0.85,
+      "firstReady": 0,
+      "maxReadyDuration": 0.04166666666666665,
+      "maxQuietDuration": 0.0016666666666666668,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 2.0415615617828236,
+        "cradleSpin": 3.222221509210922,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 8.46465076973446,
+        "maxPartRelativeSpeed": 9.510340698344352,
+        "maxRelativeSpin": 3.222229446946852
+      },
+      "center": {
+        "x": -4.793204778971309,
+        "y": 295.64812898811874,
+        "vx": 3.071379504800476e-7,
+        "vy": 1.582404289653936e-8,
+        "mass": 0.65
+      },
+      "cup": {
+        "x": -2.1344363484473363,
+        "y": 296.2884527233781
+      },
+      "hardwareEscaped": true,
+      "handWork": 33.52406663484139
+    },
+    {
+      "earlyLaunch": {
+        "released": true,
+        "center": {
+          "x": -1.9319683808395152,
+          "y": 296.33385264716685,
+          "vx": -2.060230186895494,
+          "vy": -3.589444830755017,
+          "mass": 0.65
+        }
+      },
+      "species": "lizard",
+      "offset": 0.2,
+      "above": 0.45,
+      "firstReady": 0,
+      "maxReadyDuration": 0.7833333333333379,
+      "maxQuietDuration": 0.19166666666666693,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.1117195616076506,
+        "cradleSpin": -2.074622199077573,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 6.90204447360404,
+        "maxPartRelativeSpeed": 7.411527773586897,
+        "maxRelativeSpin": 2.074622199077573
+      },
+      "center": {
+        "x": -3.703960512231584,
+        "y": 294.091146550818,
+        "vx": 3.1861616850720036e-9,
+        "vy": -5.508772258172229e-10,
+        "mass": 0.65
+      },
+      "cup": {
+        "x": -1.4381948830472242,
+        "y": 296.6287581885196
+      },
+      "hardwareEscaped": false,
+      "handWork": 65.20506108416376
+    },
+    {
+      "earlyLaunch": null,
+      "species": "lizard",
+      "offset": 0.2,
+      "above": 0.85,
+      "firstReady": 0.14333333333333334,
+      "maxReadyDuration": 0.08333333333333325,
+      "maxQuietDuration": 0,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 1.8064188666332537,
+        "cradleSpin": 4.317488170443244,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 15.143026156392734,
+        "maxPartRelativeSpeed": 16.546952479319234,
+        "maxRelativeSpin": 5.208177529048332
+      },
+      "center": {
+        "x": -4.7075283857790575,
+        "y": 294.0923607944611,
+        "vx": 0.04491654937096012,
+        "vy": -0.022225691136480128,
+        "mass": 0.65
+      },
+      "cup": {
+        "x": -2.07910688997267,
+        "y": 296.2959696051391
+      },
+      "hardwareEscaped": true,
+      "handWork": 39.26226842542466
+    },
+    {
+      "earlyLaunch": null,
+      "species": "turtle",
+      "offset": -0.2,
+      "above": 0.45,
+      "firstReady": null,
+      "maxReadyDuration": 0,
+      "maxQuietDuration": 0,
+      "contacted": false,
+      "end": {
+        "cradleSpeed": 3.929173499901156,
+        "cradleSpin": -6.101549256390326,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 18.666350621019504,
+        "maxPartRelativeSpeed": 19.69533485238555,
+        "maxRelativeSpin": 6.101915429695188
+      },
+      "center": {
+        "x": -2.6731710875203682,
+        "y": 294.25779854160476,
+        "vx": -0.00005814372571668868,
+        "vy": -0.0000010828035835561009,
+        "mass": 2.4
+      },
+      "cup": {
+        "x": -2.149233988662793,
+        "y": 296.3816747783819
+      },
+      "hardwareEscaped": true,
+      "handWork": 145.0764789592809
+    },
+    {
+      "earlyLaunch": null,
+      "species": "turtle",
+      "offset": -0.2,
+      "above": 0.85,
+      "firstReady": 0.19166666666666668,
+      "maxReadyDuration": 0.013333333333333334,
+      "maxQuietDuration": 0,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.6094971470751268,
+        "cradleSpin": -2.3530682494812285,
+        "withinEnvelope": false,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 1.6707464726450825,
+        "maxPartRelativeSpeed": 2.1538157794230415,
+        "maxRelativeSpin": 3.385313997825559
+      },
+      "center": {
+        "x": -3.837719421691679,
+        "y": 295.8132228318819,
+        "vx": -0.2717656426520076,
+        "vy": -0.011505890950446154,
+        "mass": 2.4
+      },
+      "cup": {
+        "x": -3.328008563009044,
+        "y": 296.2125563727829
+      },
+      "hardwareEscaped": false,
+      "handWork": 63.028462604428114
+    },
+    {
+      "earlyLaunch": null,
+      "species": "turtle",
+      "offset": 0,
+      "above": 0.45,
+      "firstReady": null,
+      "maxReadyDuration": 0,
+      "maxQuietDuration": 0,
+      "contacted": false,
+      "end": {
+        "cradleSpeed": 3.9072999168584035,
+        "cradleSpin": 0.06009709342901504,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 3.768757353397591,
+        "maxPartRelativeSpeed": 3.7727798938559998,
+        "maxRelativeSpin": 0.08708714611779766
+      },
+      "center": {
+        "x": -5.673403779798556,
+        "y": 294.23829694991406,
+        "vx": 0.004613386712421786,
+        "vy": -0.00035476709677042455,
+        "mass": 2.4
+      },
+      "cup": {
+        "x": -2.857122777165934,
+        "y": 296.2630013876383
+      },
+      "hardwareEscaped": false,
+      "handWork": 192.31756859676386
+    },
+    {
+      "earlyLaunch": null,
+      "species": "turtle",
+      "offset": 0,
+      "above": 0.85,
+      "firstReady": null,
+      "maxReadyDuration": 0,
+      "maxQuietDuration": 0,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 1.6428311328383232,
+        "cradleSpin": -0.9984049768773751,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 43.955485078262704,
+        "maxPartRelativeSpeed": 45.98308358693655,
+        "maxRelativeSpin": 7.440981498990825
+      },
+      "center": {
+        "x": -15.42207023186084,
+        "y": 268.2140910212092,
+        "vx": -3.38310389279855,
+        "vy": -22.647569944841962,
+        "mass": 2.4
+      },
+      "cup": {
+        "x": -3.140999299106423,
+        "y": 296.2484187806995
+      },
+      "hardwareEscaped": false,
+      "handWork": 100.4269990934579
+    },
+    {
+      "earlyLaunch": {
+        "released": true,
+        "center": {
+          "x": -1.9292363433429216,
+          "y": 298.92882743920063,
+          "vx": -3.1806666161090726,
+          "vy": 0.1978390304786762,
+          "mass": 2.4
+        }
+      },
+      "species": "turtle",
+      "offset": 0.2,
+      "above": 0.45,
+      "firstReady": 0,
+      "maxReadyDuration": 1.0216666666666767,
+      "maxQuietDuration": 0.33833333333333304,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.6889893309160608,
+        "cradleSpin": -1.2202024172253498,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 4.930200383616195,
+        "maxPartRelativeSpeed": 5.234776291611755,
+        "maxRelativeSpin": 1.2233570084802154
+      },
+      "center": {
+        "x": -4.1360406660040345,
+        "y": 294.2555409130178,
+        "vx": -0.000495786253508918,
+        "vy": -0.00003382906795663965,
+        "mass": 2.4
+      },
+      "cup": {
+        "x": -0.9384694316163771,
+        "y": 297.11854529477733
+      },
+      "hardwareEscaped": true,
+      "handWork": 296.68602778845013
+    },
+    {
+      "earlyLaunch": null,
+      "species": "turtle",
+      "offset": 0.2,
+      "above": 0.85,
+      "firstReady": 0.17666666666666667,
+      "maxReadyDuration": 0.18500000000000022,
+      "maxQuietDuration": 0.03666666666666666,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 2.240575887288734,
+        "cradleSpin": -3.3307023844758366,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 11.327667196084297,
+        "maxPartRelativeSpeed": 12.188051081412027,
+        "maxRelativeSpin": 3.333876180802742
+      },
+      "center": {
+        "x": -5.832431046577047,
+        "y": 294.2556930834359,
+        "vx": -0.0004979931201149334,
+        "vy": -0.00003388880749666413,
+        "mass": 2.4
+      },
+      "cup": {
+        "x": -2.6350820559803374,
+        "y": 296.24319948135843
+      },
+      "hardwareEscaped": false,
+      "handWork": 212.7423285382813
+    },
+    {
+      "earlyLaunch": null,
+      "species": "armadillo",
+      "offset": -0.2,
+      "above": 0.45,
+      "firstReady": 0.22666666666666666,
+      "maxReadyDuration": 0.0033333333333333335,
+      "maxQuietDuration": 0,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.28157247666594293,
+        "cradleSpin": -1.4525358052587074,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 5.394006383974646,
+        "maxPartRelativeSpeed": 6.05054318742827,
+        "maxRelativeSpin": 1.4533886666783573
+      },
+      "center": {
+        "x": -4.733956843859614,
+        "y": 294.295783531391,
+        "vx": 0.0020987030955613856,
+        "vy": -0.0034052702982803064,
+        "mass": 5
+      },
+      "cup": {
+        "x": -1.5835280350006244,
+        "y": 296.63627779076086
+      },
+      "hardwareEscaped": false,
+      "handWork": 259.2514501570608
+    },
+    {
+      "earlyLaunch": null,
+      "species": "armadillo",
+      "offset": -0.2,
+      "above": 0.85,
+      "firstReady": 0.20166666666666666,
+      "maxReadyDuration": 0.013333333333333334,
+      "maxQuietDuration": 0.0033333333333333335,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.1117712777355498,
+        "cradleSpin": 2.121592562459567,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 8.306865109713831,
+        "maxPartRelativeSpeed": 9.036197275017264,
+        "maxRelativeSpin": 2.187579418519864
+      },
+      "center": {
+        "x": -5.454356254942783,
+        "y": 294.2478909512154,
+        "vx": 0.015699168185361306,
+        "vy": -0.0035500607814547168,
+        "mass": 5
+      },
+      "cup": {
+        "x": -1.8248757738906267,
+        "y": 296.69057979431886
+      },
+      "hardwareEscaped": true,
+      "handWork": 133.9976221672177
+    },
+    {
+      "earlyLaunch": {
+        "released": true,
+        "center": {
+          "x": -1.897120021018035,
+          "y": 298.752027964209,
+          "vx": -3.482252309958646,
+          "vy": -1.1217817456538834,
+          "mass": 5
+        }
+      },
+      "species": "armadillo",
+      "offset": 0,
+      "above": 0.45,
+      "firstReady": 0,
+      "maxReadyDuration": 1.0000000000000095,
+      "maxQuietDuration": 0.21166666666666706,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 0.1782468253000829,
+        "cradleSpin": -0.3199430778006567,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 0.6686067656672819,
+        "maxPartRelativeSpeed": 0.7892771837589183,
+        "maxRelativeSpin": 0.4331457018080322
+      },
+      "center": {
+        "x": -4.166192997509849,
+        "y": 294.2483863872609,
+        "vx": -0.026988746802213047,
+        "vy": 0.005891035135918139,
+        "mass": 5
+      },
+      "cup": {
+        "x": -2.433035844044475,
+        "y": 296.5816825746947
+      },
+      "hardwareEscaped": false,
+      "handWork": 423.8598883867227
+    },
+    {
+      "earlyLaunch": {
+        "released": true,
+        "center": {
+          "x": -1.984960192385953,
+          "y": 299.33316316364187,
+          "vx": -3.3002742018658724,
+          "vy": 0.43447317820864517,
+          "mass": 5
+        }
+      },
+      "species": "armadillo",
+      "offset": 0,
+      "above": 0.85,
+      "firstReady": 0,
+      "maxReadyDuration": 1.0900000000000116,
+      "maxQuietDuration": 0.3133333333333333,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 1.3129203697835972,
+        "cradleSpin": 2.9125770713082417,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 5.690992465210776,
+        "maxPartRelativeSpeed": 6.351873729359861,
+        "maxRelativeSpin": 2.921485507568063
+      },
+      "center": {
+        "x": -2.582277652025124,
+        "y": 294.2980982096955,
+        "vx": 0.0021324754394845347,
+        "vy": -0.003406483101581088,
+        "mass": 5
+      },
+      "cup": {
+        "x": -2.453114450266087,
+        "y": 296.4655858364913
+      },
+      "hardwareEscaped": false,
+      "handWork": 299.0912359631209
+    },
+    {
+      "earlyLaunch": null,
+      "species": "armadillo",
+      "offset": 0.2,
+      "above": 0.45,
+      "firstReady": null,
+      "maxReadyDuration": 0,
+      "maxQuietDuration": 0,
+      "contacted": false,
+      "end": {
+        "cradleSpeed": 1.249516576674668,
+        "cradleSpin": 2.353823103979571,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 6.640514751433082,
+        "maxPartRelativeSpeed": 7.417046034780029,
+        "maxRelativeSpin": 2.3721830218466162
+      },
+      "center": {
+        "x": -2.048668603865459,
+        "y": 294.4612270124823,
+        "vx": 0.0026715963572003696,
+        "vy": -0.003146577785905263,
+        "mass": 5
+      },
+      "cup": {
+        "x": -1.939751393848722,
+        "y": 296.3627874981644
+      },
+      "hardwareEscaped": false,
+      "handWork": 1097.9772379140916
+    },
+    {
+      "earlyLaunch": null,
+      "species": "armadillo",
+      "offset": 0.2,
+      "above": 0.85,
+      "firstReady": null,
+      "maxReadyDuration": 0,
+      "maxQuietDuration": 0,
+      "contacted": true,
+      "end": {
+        "cradleSpeed": 1.4276631676151523,
+        "cradleSpin": 0.8844858787362727,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 2.0858484529252306,
+        "maxPartRelativeSpeed": 2.489577700002904,
+        "maxRelativeSpin": 0.8845651522991429
+      },
+      "center": {
+        "x": -5.731888550900658,
+        "y": 294.2050232294525,
+        "vx": 0.000006344524142908884,
+        "vy": 2.1321030687152312e-7,
+        "mass": 5
+      },
+      "cup": {
+        "x": -2.9077027473943255,
+        "y": 296.33264705593353
+      },
+      "hardwareEscaped": false,
+      "handWork": 284.9359011372049
+    }
+  ]
+}

@@ -1,0 +1,746 @@
+{
+  "protocol": "Three naturally launched rigs; canonical identical snapshot per species at descending COM below3m; one second through ground contact; no encounters or controls. Only timestep and solver iterations vary. All world bodies contribute energy; joint maxima restrict to articulated part joints. Diagnostic rather than calibrated tolerance.",
+  "sourceSHA256": {
+    "src/articulated.js": "01a9636aff5be0d743ebff1c0fff1b5ae61623cb804b1be9aa26186c1b8fad16",
+    "src/hook-experiment.js": "a5289b746b0bb61eaa513b61d9089ebd50dddf17e70abdff3ab39b8fc95e05b1",
+    "src/species.js": "156aaafe21f2b8203a9c1fce7dbda275c84266c73c4ed116d77a684934bbd35d",
+    "src/physics.js": "1d3db230cad1529590b2196ebfdc08955a41a33e2adb6038bdbafe6c12a76ca0"
+  },
+  "rows": [
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.9407080000000292,
+      "frameMaxMs": 1.2047910000000002,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": false,
+      "integrationSteps": 301,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.16089663487355202,
+      "maxAngular": 0.7041186433057505,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 20.731416999999965
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.6089170000000195,
+      "frameMaxMs": 1.1222080000000005,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": false,
+      "integrationSteps": 301,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.16141592711207214,
+      "maxAngular": 0.4404081538839677,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 19.171375000000012
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.6170000000000186,
+      "frameMaxMs": 0.65300000000002,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": false,
+      "integrationSteps": 600,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03166666666667162,
+      "maxAnchor": 0.1171176380214819,
+      "maxAngular": 0.7830847348805208,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 21.53325000000001
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.6212920000000395,
+      "frameMaxMs": 0.8470839999999953,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": false,
+      "integrationSteps": 600,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03166666666667162,
+      "maxAnchor": 0.11711763802147904,
+      "maxAngular": 0.7830847348805634,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 30.4040829999999
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.9597499999999854,
+      "frameMaxMs": 1.7845829999999978,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": false,
+      "integrationSteps": 1200,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03249999999997044,
+      "maxAnchor": 0.07011135257178555,
+      "maxAngular": 0.28913531192728503,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 39.473208
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 1.2237499999999955,
+      "frameMaxMs": 1.3424589999999625,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": false,
+      "integrationSteps": 1200,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03249999999997044,
+      "maxAnchor": 0.06963428120909601,
+      "maxAngular": 0.2596962874605311,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 55.36291700000004
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.7845829999999978,
+      "frameMaxMs": 0.9345000000000709,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "mouse",
+      "adaptive": true,
+      "integrationSteps": 652,
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.032500000000002416,
+      "maxAnchor": 0.06054348316784606,
+      "maxAngular": 0.2623903173622353,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 23.186333000000104
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.3065000000001419,
+      "frameMaxMs": 0.44174999999995634,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": false,
+      "integrationSteps": 301,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.033333333333338544,
+      "maxAnchor": 0.1718837341476559,
+      "maxAngular": 0.39128462464333325,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "tail"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 10.275624999999991
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.3363329999999678,
+      "frameMaxMs": 0.484749999999849,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": false,
+      "integrationSteps": 301,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.033333333333338544,
+      "maxAnchor": 0.17234138875387178,
+      "maxAngular": 0.3922584985544546,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "tail"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 13.139333999999963
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.41929099999993014,
+      "frameMaxMs": 0.5664999999999054,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": false,
+      "integrationSteps": 600,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.1541021626867939,
+      "maxAngular": 0.5547912847043392,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 17.55058299999996
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.5972090000000208,
+      "frameMaxMs": 0.6610000000000582,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": false,
+      "integrationSteps": 600,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.15363569619002312,
+      "maxAngular": 0.26153292939601447,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 23.77887499999997
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.6625000000001364,
+      "frameMaxMs": 0.6832090000000335,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": false,
+      "integrationSteps": 1200,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.06848811738219605,
+      "maxAngular": 0.09068377698078511,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 30.504916999999978
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.9975840000001881,
+      "frameMaxMs": 1.0330830000000333,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": false,
+      "integrationSteps": 1200,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.06802447891714486,
+      "maxAngular": 0.08744715551194138,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 43.84933299999989
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.5007499999999254,
+      "frameMaxMs": 0.7649169999999685,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "salamander",
+      "adaptive": true,
+      "integrationSteps": 621,
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.06759230740677738,
+      "maxAngular": 0.06193086854605667,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "tail"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 17.69416699999988
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.33041700000012497,
+      "frameMaxMs": 0.537166999999954,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": false,
+      "integrationSteps": 301,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.0829560334570222,
+      "maxAngular": 1.044035086629286,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 12.30333399999995
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.33358300000008967,
+      "frameMaxMs": 0.39220799999998235,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": false,
+      "integrationSteps": 301,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.09811467473847593,
+      "maxAngular": 1.0306668737005822,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 13.054540999999972
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.37479099999995924,
+      "frameMaxMs": 0.46916700000019773,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": false,
+      "integrationSteps": 600,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.023890301800140453,
+      "maxAngular": 0.5161664464078228,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 17.815166999999974
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.5409589999999298,
+      "frameMaxMs": 0.5653339999998934,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": false,
+      "integrationSteps": 600,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.030684110886316708,
+      "maxAngular": 0.5513804548585384,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 24.765958000000182
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.7563340000001517,
+      "frameMaxMs": 0.799583999999868,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": false,
+      "integrationSteps": 1200,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.008241581093739132,
+      "maxAngular": 0.11233233891434513,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 36.04833400000007
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 1.0578749999999673,
+      "frameMaxMs": 1.2741249999999127,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": false,
+      "integrationSteps": 1200,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.006894779591741922,
+      "maxAngular": 0.12413906708376743,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 50.0462500000001
+    },
+    {
+      "frameBudgetMs": 4,
+      "frameP95Ms": 0.6809590000000298,
+      "frameMaxMs": 0.8117500000000746,
+      "frameBudgetOverruns": 0,
+      "frameSamples": 60,
+      "species": "tiny-primate",
+      "adaptive": true,
+      "integrationSteps": 742,
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.0007507268878954121,
+      "maxAngular": 0.10836016513627844,
+      "worstAnchor": [
+        "torso",
+        "rear-leg"
+      ],
+      "worstAngular": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 22.552167000000054
+    }
+  ]
+}

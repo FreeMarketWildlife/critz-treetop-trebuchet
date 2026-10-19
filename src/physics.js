@@ -5,6 +5,7 @@ export const defaults = Object.freeze({ longArm: 3, shortArm: 0.8, sling: 2.5,
   frameMass:30, frameFriction:.65, armDamping: 0, flightDrag: 0, pivotHeight: 300, initialArm: -2.5, initialSling: -Math.PI / 2, initialSlingSpeed: 0 });
 export function config(overrides = {}) {
   const p = { ...defaults, ...overrides };
+  if(p.collisionSubsteps!==undefined&&typeof p.collisionSubsteps!=='boolean')throw new Error('Invalid collisionSubsteps');
   for(const key of ['solverVelocityIterations','solverPositionIterations'])if(p[key]!==undefined&&(!Number.isInteger(p[key])||p[key]<1||p[key]>100))throw new Error(`Invalid ${key}`);
   if (p.mechanicalWinding !== undefined && typeof p.mechanicalWinding !== "boolean") throw new Error("Invalid mechanicalWinding");
   if (p.windingTorque !== undefined && (!Number.isFinite(p.windingTorque) || p.windingTorque < 0 || p.windingTorque > 10000)) throw new Error("Winding torque outside tested 0–10000 N m domain");
