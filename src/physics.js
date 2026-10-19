@@ -5,6 +5,8 @@ export const defaults = Object.freeze({ longArm: 3, shortArm: 0.8, sling: 2.5,
   frameMass:30, frameFriction:.65, armDamping: 0, flightDrag: 0, pivotHeight: 300, initialArm: -2.5, initialSling: -Math.PI / 2, initialSlingSpeed: 0 });
 export function config(overrides = {}) {
   const p = { ...defaults, ...overrides };
+  if(p.counterKind!==undefined&&!['rock','basket','iron'].includes(p.counterKind))throw Error('Invalid counterweight material');
+  if(p.foundationBraces!==undefined&&(!Number.isInteger(p.foundationBraces)||p.foundationBraces<0||p.foundationBraces>3))throw Error('Invalid foundation braces');
   if(p.fastCollisionStepHz!==undefined&&![2400,4800].includes(p.fastCollisionStepHz))throw new Error('Invalid fastCollisionStepHz');
   if(p.collisionStepHz!==undefined&&![1200,2400].includes(p.collisionStepHz))throw new Error('Invalid collisionStepHz');
   if(p.collisionSubsteps!==undefined&&typeof p.collisionSubsteps!=='boolean')throw new Error('Invalid collisionSubsteps');

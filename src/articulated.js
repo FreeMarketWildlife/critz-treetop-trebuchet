@@ -1,3 +1,4 @@
+import {counterOutline} from './workshop.js';
 import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js';
 import {fixedObstacleVertices} from './fixed-obstacles.js';
 import {createEncounterBody} from './encounter-body.js';
@@ -42,10 +43,14 @@ export class CritterScene {
    this.frame.createFixture(P.Polygon([V(sign*1.3,.02),V(sign*1.6,.15),V(.16,6),V(-.16,6)]),{density:1,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
    this.frame.createFixture(P.Box(.4,.1,V(sign*1.5,.12)),{density:3,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
   }
+  for(let i=0;i<(p.foundationBraces??0);i++)this.frame.createFixture(P.Box(1.25-i*.18,.07,V(0,.5+i*1.15)),{density:3,friction:p.frameFriction,filterCategoryBits:16,filterMaskBits:15});
   const frameMass={center:V()};this.frame.getMassData(frameMass);this.frame.setMassData({mass:p.frameMass,center:frameMass.center,I:frameMass.I*p.frameMass/frameMass.mass});
   this.arm=this.world.createDynamicBody({position:V(0,p.pivotHeight),angle:p.initialArm});tag(this.arm,'arm','beam');
   this.arm.createFixture(P.Box((p.longArm+p.shortArm)/2,.055,V((p.longArm-p.shortArm)/2,0)),{density:p.beamLinearDensity/.11,filterCategoryBits:8,filterMaskBits:1});
-  this.arm.createFixture(P.Circle(V(-p.shortArm,0),.1),{density:p.counterMass/(Math.PI*.01),filterCategoryBits:8,filterMaskBits:1});
+  if(p.counterKind){
+   const vertices=counterOutline(p),area=Math.abs(vertices.reduce((sum,v,i)=>{const q=vertices[(i+1)%vertices.length];return sum+v.x*q.y-q.x*v.y;},0))/2;
+   const weight=this.arm.createFixture(P.Polygon(vertices.map(v=>V(v.x,v.y))),{density:p.counterMass/area,filterCategoryBits:8,filterMaskBits:1});weight.setUserData({role:'counterweight',kind:p.counterKind});
+  }else this.arm.createFixture(P.Circle(V(-p.shortArm,0),.1),{density:p.counterMass/(Math.PI*.01),filterCategoryBits:8,filterMaskBits:1});
   this.pivot=this.world.createJoint(new P.RevoluteJoint({enableLimit:true,lowerAngle:0,upperAngle:0},this.frame,this.arm,V(0,p.pivotHeight)));this.pivot.setUserData({role:'pivot'});
   const tip=this.arm.getWorldPoint(V(p.longArm,0));
   this.pouch=this.world.createDynamicBody({position:V(tip.x,tip.y-p.sling),bullet:true});tag(this.pouch,'pouch','cradle');
