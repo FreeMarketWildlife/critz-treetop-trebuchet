@@ -1,6 +1,10 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 31 checkpoint
+## CURRENT implementation: iteration 32 checkpoint
+
+Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Baseline6b9b3e3 normally synced after explicit new authorization. Reviewed local code/tests/evidence may be normally pushed to existing public origin; never force/deploy/install. Read docs/reviews/iteration-32/findings.md and summary.json. Collision-local refinement now covers whole saved encounter radius rather than polygon skin; passive collider/launch unchanged. Fungus rebound cue.230tests pass;33outcomes/24releases +11holdout releases EXACT31. Backwards original4/24,medium1/11,holdout2/11 unchanged; targets NOTMET. Tree10m rejected:medianbetter but originalmediumbacks3/11. Groundtraces show real friction/contactpoint spin; no clamp/boost/torque added. Rawcohort sourcesChanged true ONLY due presentation-only approach-cues interaction string while already-loaded processes ran; physics source hashes match. One save-free QA natural replay, finalmodule reload, normalviewport/paused; earned saves untouched. Next physically justified spin/convergence diagnostics and tree-band activity without worsening reversals. Preserve cohorts and failure definitions.
+
+## Historical implementation: iteration 31 checkpoint
 
 Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Baseline db22939; recovery untouched. Read docs/reviews/iteration-31/findings.md and summary.json. Passive 1.2kg leaf, real 2.5kg fungus cap/stem within old radius, moving-impact scoring qualification, simultaneous contact states. 228 tests pass; all33 outcomes/24 releases and11 holdout releases exact baseline. Observer extension exact physical fingerprints. Ordinary backwards2/11→1/11; holdout4/11→2/11; full6/24→4/24. Targets <5% backwards and <=1sec activity gaps NOTMET. Both legacy/moving metrics preserved. No camera/map/density/launch changes. Next diagnose passive spin/ground contacts and sparse tree-band activity. One save-free paused QA tab, normal viewport; no saves, export retry, unlock, deployment or install. Local checkpoint authorized; do not push without current explicit authorization.
 

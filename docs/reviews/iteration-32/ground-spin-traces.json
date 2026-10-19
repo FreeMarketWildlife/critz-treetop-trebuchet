@@ -1,0 +1,233 @@
+{
+  "seedBase": 39000,
+  "protocol": "Natural 6b9b3e3 remaining-case replays with payload part/fixture shape. Post-solve normal/tangent external impulses observed without changing forces. Normal A\u2192B and tangent=(ny,-nx), sign reversed when payload is fixtureA. Recent50ms trace includes small contacts below reward threshold. Threshold crossing alone is not necessarily a >=.5s,>=1m episode; compare iteration29 complete60s episodes.",
+  "rows": [
+    {
+      "n": 18,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "group": "ordinary medium starter",
+      "release": {
+        "x": -1.9047574176586948,
+        "y": 300.3296867196462,
+        "vx": 1.3332686805145741,
+        "vy": 6.290199795108383,
+        "mass": 5
+      },
+      "onset": [
+        {
+          "time": 9.981666666666667,
+          "before": {
+            "x": 33.58745387693226,
+            "y": 0.34874496116883,
+            "vx": 1.0941122073519924,
+            "vy": -58.59238062595982,
+            "mass": 5
+          },
+          "after": {
+            "x": 33.57620415473481,
+            "y": 0.3431779306468094,
+            "vx": -9.36448182706745,
+            "vy": 15.073081624370019,
+            "mass": 5
+          },
+          "momentumChangeX": -52.29297017209721,
+          "stepImpulseX": -52.29297017209725,
+          "recent": [
+            {
+              "time": 9.976666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 1.9359312767227588,
+                    "pointVy": -77.73874428704849,
+                    "centerVx": 2.4068621346115995,
+                    "centerVy": -77.57015456648226,
+                    "omega": -3.2775897766474644,
+                    "inertia": 0.002570426937753854,
+                    "mass": 0.3,
+                    "angle": -54.51415053504763
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.32,
+                    "radius": 0.045
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 33.888173447971944,
+                    "y": 0.009207478550674175
+                  },
+                  "normalX": 0,
+                  "tangentX": -15.339954701706022,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 90.47862395452427,
+                  "T": -15.339954701706022
+                }
+              ]
+            },
+            {
+              "time": 9.981666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 20.518113720884717,
+                    "pointVy": -56.05531434477837,
+                    "centerVx": 0.09233060020119317,
+                    "centerVy": -59.73346364174892,
+                    "omega": 72.27767452738941,
+                    "inertia": 0.10170999948352569,
+                    "mass": 3.4000000000000004,
+                    "angle": -54.232122742610514
+                  },
+                  "partId": "torso",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.61,
+                    "radius": 0.23
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 33.61345120021318,
+                    "y": 0.00936659905090148
+                  },
+                  "normalX": 0,
+                  "tangentX": -53.49162362667766,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 361.3459280200505,
+                  "T": -53.49162362667766
+                },
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 20.57949336190739,
+                    "pointVy": -24.310042159740128,
+                    "centerVx": 15.11291436085971,
+                    "centerVy": -31.492211986784927,
+                    "omega": 70.12534340218275,
+                    "inertia": 0.002570426937753854,
+                    "mass": 0.3,
+                    "angle": -53.626913396139
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.32,
+                    "radius": 0.045
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 34.065293534280805,
+                    "y": 0.009779517865902677
+                  },
+                  "normalX": 0,
+                  "tangentX": 1.1986534545804113,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 7.063133231598619,
+                  "T": 1.1986534545804113
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "group": "ordinary medium starter",
+      "release": {
+        "x": -0.6535804111623175,
+        "y": 304.8126298872475,
+        "vx": 10.774738994163766,
+        "vy": 14.101996068726772,
+        "mass": 0.7
+      },
+      "onset": [
+        {
+          "time": 9.203333333333333,
+          "before": {
+            "x": 64.101381967055,
+            "y": 0.451454206587114,
+            "vx": 4.037871218395562,
+            "vy": -79.82676737858827,
+            "mass": 0.7
+          },
+          "after": {
+            "x": 64.10418908478471,
+            "y": 0.35254540503469417,
+            "vx": -5.376531103933305,
+            "vy": 2.119615909957252,
+            "mass": 0.7
+          },
+          "momentumChangeX": -6.590081625630206,
+          "stepImpulseX": -6.590081625630209,
+          "recent": [
+            {
+              "time": 9.203333333333333,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 4.35379224976955,
+                    "pointVy": -79.82696303578379,
+                    "centerVx": 4.23915384740758,
+                    "centerVy": -79.82696303578379,
+                    "omega": 0.9026804331459323,
+                    "inertia": 0.0013604500000000002,
+                    "mass": 0.161,
+                    "angle": -39.29157937043622
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "circle",
+                    "radius": 0.13
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 64.11602835245598,
+                    "y": 0.009703454988867197
+                  },
+                  "normalX": 0,
+                  "tangentX": -6.590081625630209,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 57.37391330198186,
+                  "T": -6.590081625630209
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "baseline": "6b9b3e3"
+}

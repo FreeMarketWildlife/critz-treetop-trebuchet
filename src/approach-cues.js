@@ -17,7 +17,7 @@ export function approachCues(player,encounters,{camera,width,height,scale,horizo
   const limits=[ex>0?(width-24-origin.x)/ex:ex<0?(24-origin.x)/ex:Infinity,ey>0?(height-24-origin.y)/ey:ey<0?(80-origin.y)/ey:Infinity];
   const t=Math.max(0,Math.min(1,...limits)),x=origin.x+ex*t,y=origin.y+ey*t;
   if(Math.hypot(x-origin.x,y-origin.y)<44)continue;
-  cues.push({id:e.id,kind:e.kind,x,y,angle:Math.atan2(ey,ex),time,...(e.shape==='skid'?{interaction:'slide'}:{})});
+  cues.push({id:e.id,kind:e.kind,x,y,angle:Math.atan2(ey,ex),time,...(e.shape==='skid'?{interaction:'slide'}:e.shape==='cap'?{interaction:'bounce'}:{})});
  }
  const groups=[];
  for(const cue of cues.sort((a,b)=>a.time-b.time||String(a.id).localeCompare(String(b.id)))){const group=groups.find(g=>Math.hypot(g.x-cue.x,g.y-cue.y)<32);if(group){group.count++;group.members.push(cue.id);}else groups.push({...cue,count:1,members:[cue.id]});}

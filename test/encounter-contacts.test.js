@@ -50,3 +50,13 @@ test('lighter waxleaf yields under a heavy tilted contact while conserving momen
 test('a supported heavy payload does not score resting gravity load as repeated impacts',()=>{
  const s=new CritterScene();s.phase='flight';for(const b of s.parts)b.setType('static');const target=createEncounterBody(s.world,{id:'support',kind:'test',shape:'circle',radius:.2,mass:100,x:500,y:.2,vx:0,vy:0,expiresAt:99,material:{friction:.2,restitution:0}});s.enemies.set('support',target);const payload=s.world.createDynamicBody({position:P.Vec2(500,.6)});payload.setUserData({role:'part',id:'test-weight'});payload.createFixture(P.Circle(.2),{density:5/(Math.PI*.2**2),friction:.2,restitution:0,filterCategoryBits:4,filterMaskBits:33});for(let i=0;i<1200;i++)s.step();assert.equal(s.impactCount,0);assert.equal(target.getUserData().lastContact,undefined);let supported=false;for(let e=payload.getContactList();e;e=e.next)if(e.other===target&&e.contact.isTouching())supported=true;assert.ok(supported);assert.ok(payload.getLinearVelocity().length()<.01);
 });
+
+test('collision refinement covers rotated multi-fixture encounters beyond the first fixture skin',()=>{
+ for(const r of [encounterPools.forestFloor.find(e=>e.geometry==='dome'),encounterPools.jungleCanopy.find(e=>e.shape==='skid')]){
+  const s=new CritterScene({collisionSubsteps:true}),c=s.center();s.phase='flight';
+  for(const b of s.parts){const p=b.getPosition();b.setPosition(P.Vec2(500+p.x-c.x,65+p.y-c.y));b.setLinearVelocity(P.Vec2(8,0));}
+  const b=createEncounterBody(s.world,descriptor(r,{x:500,y:66.1}));b.setAngle(Math.PI/2);s.enemies.set('contact',b);
+  assert.ok(b.getFixtureList().getShape().getRadius()<r.radius);assert.equal(s.collisionRegion(1/600),true);
+  b.setPosition(P.Vec2(500,70));assert.equal(s.collisionRegion(1/600),false);
+ }
+});

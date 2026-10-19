@@ -23,3 +23,8 @@ test('skid warning uses the whole capsule radius and carries a slide telegraph',
  const p={x:0,y:200,vx:8,vy:0},o={...options,camera:{x:0,y:200}},e={id:'skid',kind:'waxleaf skid',shape:'skid',x:4.8,y:200,vx:0,vy:0,radius:1.1};
  const cues=approachCues(p,[e],o);assert.equal(cues.length,1);assert.equal(cues[0].interaction,'slide');assert.ok(cues[0].time>.5);assert.deepEqual(approachCues(p,[{...e,radius:.242}],o),[]);
 });
+
+test('actual cap encounter carries a rebound cue while other round actors stay neutral',()=>{
+ const e={...enemy,shape:'cap'};assert.equal(approachCues(player,[e],options)[0].interaction,'bounce');
+ assert.equal(approachCues(player,[{...e,shape:'oval'}],options)[0].interaction,undefined);
+});

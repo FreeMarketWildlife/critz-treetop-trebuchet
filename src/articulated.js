@@ -127,7 +127,7 @@ export class CritterScene {
  energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic())e+=this.bodyEnergy(b);return e;}
  collisionRegion(dt){
   if(this.phase!=='flight')return false;
-  const obstacles=[...layout.bumpers,...[...this.enemies.values()].map(e=>({x:e.getPosition().x,y:e.getPosition().y,radius:e.getFixtureList().getShape().getRadius(),speed:e.getLinearVelocity().length()}))],enemySpeed=Math.max(0,...obstacles.map(o=>o.speed??0));
+  const obstacles=[...layout.bumpers,...[...this.enemies.values()].map(e=>({x:e.getPosition().x,y:e.getPosition().y,radius:e.getUserData()?.radius??e.getFixtureList().getShape().getRadius(),speed:e.getLinearVelocity().length()}))],enemySpeed=Math.max(0,...obstacles.map(o=>o.speed??0));
   for(const b of this.parts){const v=b.getLinearVelocity(),speed=Math.hypot(v.x,v.y),spin=Math.abs(b.getAngularVelocity());if(speed<3&&spin<10&&enemySpeed<3)continue;
    const pad=.15+(speed+enemySpeed)*dt;
    for(let f=b.getFixtureList();f;f=f.getNext()){const a=f.getAABB(0),lo=a.lowerBound,hi=a.upperBound;

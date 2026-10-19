@@ -1,0 +1,79 @@
+{
+  "natural-final": {
+    "attempts": 33,
+    "releases": 24,
+    "releaseAndOutcomeParity": true,
+    "backwardCases": [
+      1,
+      18,
+      29,
+      31
+    ],
+    "ordinaryBackwardCases": [
+      18
+    ],
+    "changedSourcesAtEnd": [
+      "src/approach-cues.js"
+    ],
+    "activity": {
+      "activity": {
+        "480": {
+          "medianMaxActiveGap": 1.1750000000000005,
+          "worstMaxActiveGap": 6.466666666666651
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8916666666666666,
+          "worstMaxActiveGap": 3.79999999999999
+        }
+      },
+      "movingActivity": {
+        "480": {
+          "medianMaxActiveGap": 1.1750000000000005,
+          "worstMaxActiveGap": 6.466666666666651
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8916666666666666,
+          "worstMaxActiveGap": 3.79999999999999
+        }
+      }
+    }
+  },
+  "holdout-final": {
+    "attempts": 11,
+    "releases": 11,
+    "releaseAndOutcomeParity": true,
+    "backwardCases": [
+      18,
+      19
+    ],
+    "ordinaryBackwardCases": [
+      18,
+      19
+    ],
+    "changedSourcesAtEnd": [
+      "src/approach-cues.js"
+    ],
+    "activity": {
+      "activity": {
+        "480": {
+          "medianMaxActiveGap": 1.0333333333333345,
+          "worstMaxActiveGap": 3.21666666666666
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8000000000000008,
+          "worstMaxActiveGap": 1.4333333333333331
+        }
+      },
+      "movingActivity": {
+        "480": {
+          "medianMaxActiveGap": 1.0666666666666678,
+          "worstMaxActiveGap": 3.2499999999999933
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8666666666666677,
+          "worstMaxActiveGap": 1.4333333333333331
+        }
+      }
+    }
+  }
+}
