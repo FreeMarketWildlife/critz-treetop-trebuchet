@@ -16,7 +16,7 @@ The player's academy project is to develop a trebuchet that launches objects as 
 2. See how many **bells** were earned and spend money in the **shop**.
 3. **Customize the trebuchet using owned equipment** and decide whether to use **special items** for the next launch.
 
-Points and bells are distinct. Their conversion or relationship is not specified. Equipment, special items, upgrade details, player species, scoring rules and other mechanics remain undecided.
+Points and bells are distinct. Their conversion or relationship is not specified. The later approved volunteer roster and developing physical equipment model are recorded below. Special items remain unspecified; scoring and shop prices are prototype balance.
 
 ## The Grandfather Tree and its archive
 
@@ -36,6 +36,10 @@ The shared lore is maintained in [Critz–Dragex](https://github.com/FreeMarketW
 
 The school's formal name, the spelling feysian / feyjian, Naboo's relationship to Lady Wisdom, and the cause/date of the archive's near destruction remain open. Do not infer a cause or place that damage relative to the departure, tower or battle without further author direction. The earlier proposed acorn helmet and woodland crew are not approved canon.
 
-## Mechanism prototype
+## Local playable prototype
 
-Run `npm start` and open `http://localhost:8080` for the schematic lab; `npm test` runs numerical checks. See [prototype requirements, physical assumptions and open input decisions](docs/prototype.md). The authored-world direction, three travel regions and timed-slider input are recorded there. The slider-to-mechanism mapping is intentionally pending discussion. Drag a critter into the sling before unlatching; the lab preserves varied loading states with explicit seating/input safeguards. Optional losses and deterministic placeholder collisions exercise post-launch flight. See the prototype notes for physical limitations.
+Run `npm ci`, `npm start`, then open `http://localhost:8080`. Run `npm test` for numerical, articulated-body and game-system checks. See [requirements, physical assumptions and current limits](docs/prototype.md).
+
+The prototype now has a physical finite-mass frame, beam/counterweight, tension-only sling straps, contact cradle and eleven articulated volunteer rigs. Drag a critter over the cradle and let gravity seat it; no radial snap or fixed settling timer. Cocking-height input changes actual starting potential energy. A short dotted prediction observes the same model. The geometric opening switch and initial cocking setup remain explicit approximations.
+
+The fixed test map has passive bumpers and biome-specific variable harmless encounters. Volunteers have infinite health. Arrows/touch controls provide separate post-release arcade nudges; flying squirrels use lift/drag for dive/climb controls. The queue shows the next three. Separate points/bells, owned physical equipment, original synthesized sounds, mute/volume, reduced decorative motion and opt-in local saves are scaffolded into the loop. All tuneable values and test shapes remain development choices, not new story canon. No public deployment.
