@@ -1,0 +1,53 @@
+// Original placeholder encounter recipes. Values are gameplay tuning, not biology.
+// Descriptors are observations of a seeded world schedule; no terrain is changed.
+export const encounterPools = Object.freeze({
+  grandfatherTree: [
+    {kind:'round beetle',shape:'oval',color:'#b77a42',radius:.5,mass:1.2,friction:.22,restitution:.65,motion:'bob'},
+    {kind:'leaf hopper',shape:'leaf',color:'#80ae56',radius:.4,mass:.65,friction:.3,restitution:.72,motion:'hop'}],
+  openSky: [
+    {kind:'puffy moth',shape:'wings',color:'#dfc6ef',radius:.65,mass:.45,friction:.08,restitution:.7,motion:'wave'},
+    {kind:'round bird',shape:'oval',color:'#7faed0',radius:.55,mass:.8,friction:.12,restitution:.6,motion:'wave'}],
+  jungleCanopy: [
+    {kind:'springy pod',shape:'pod',color:'#d69e5f',radius:.65,mass:1.5,friction:.18,restitution:.8,motion:'bob'},
+    {kind:'vine bug',shape:'oval',color:'#97b95d',radius:.45,mass:.7,friction:.28,restitution:.65,motion:'hop'}],
+  forestFloor: [
+    {kind:'round fungus',shape:'cap',color:'#d28ba8',radius:.8,mass:2.5,friction:.2,restitution:.75,motion:'bob'},
+    {kind:'rolling beetle',shape:'circle',color:'#ad8059',radius:.6,mass:1.8,friction:.15,restitution:.7,motion:'roll'}]
+});
+for(const pool of Object.values(encounterPools)){pool.forEach(Object.freeze);Object.freeze(pool);}
+const regions={grandfatherTree:[245,320],openSky:[120,245],jungleCanopy:[5,120],forestFloor:[.8,5]};
+const aliases={'Grandfather Tree':'grandfatherTree','Grandfather Tree branches/leaves':'grandfatherTree','open sky':'openSky','open air':'openSky','Jungle canopy':'jungleCanopy','forest floor':'forestFloor','Ground':'forestFloor'};
+function hash(value){let h=2166136261;for(const c of String(value)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
+function random(key){let a=hash(key);return ()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
+function resolveRegion(region,y){if(regions[region])return region;if(aliases[region])return aliases[region];return y>245?'grandfatherTree':y>120?'openSky':y>5?'jungleCanopy':'forestFloor';}
+/** update(timeSeconds, {x,y}, optionalRegion) -> {active,events}.
+ * Active bodies use SI-like world coordinates (y up). Motion is authored kinematic
+ * scheduling, NOT a dynamic collision solver. An integrator must replace descriptor
+ * motion with dynamic bodies on activation and account for moving-obstacle work.
+ * Same seed/time/position yields identical active descriptors, including after rewind.
+ * Events describe visibility transitions only; collision sounds belong to the solver.
+ */
+export function createEncounterDirector(seed=0){
+  if(!['number','string'].includes(typeof seed)||typeof seed==='number'&&!Number.isFinite(seed))throw new Error('Seed must be finite number or string');
+  let previous=new Set();
+  return {update(time,player,region){
+    if(!Number.isFinite(time)||time<0||!player||!Number.isFinite(player.x)||!Number.isFinite(player.y))throw new Error('Finite nonnegative time and player position required');
+    const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/80),slot=Math.floor(time/4),candidates=[];
+    // Three nearby authored spatial cells, three still-living temporal slots: O(9).
+    for(let c=cell-1;c<=cell+1;c++)for(let s=Math.max(0,slot-2);s<=slot;s++){
+      const id=`${biome}:${c}:${s}`,rng=random(`${seed}:${id}`),start=s*4+rng()*1.5,age=time-start;
+      if(age<0||age>=10)continue;
+      const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*80+10+rng()*60,[low,high]=regions[biome],baseY=low+rng()*(high-low),phase=rng()*Math.PI*2;
+      const amplitude=biome==='forestFloor'?.2:1.5,omega=1.2;
+      const horizontal=recipe.motion==='roll'||recipe.motion==='wave',offset=amplitude*Math.sin(age*omega+phase),velocity=amplitude*omega*Math.cos(age*omega+phase);
+      candidates.push({id,biome,kind:recipe.kind,shape:recipe.shape,color:recipe.color,motion:recipe.motion,
+        x:baseX+(horizontal?offset:0),y:baseY+(horizontal?0:offset),vx:horizontal?velocity:0,vy:horizontal?0:velocity,
+        radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+10,harmless:true});
+    }
+    candidates.sort((a,b)=>Math.abs(a.x-player.x)-Math.abs(b.x-player.x)||a.id.localeCompare(b.id));
+    const active=candidates.slice(0,8),current=new Set(active.map(e=>e.id)),events=[];
+    for(const enemy of active)if(!previous.has(enemy.id))events.push({type:'encounter-enter',id:enemy.id,biome,time,sound:'encounter-arrive'});
+    for(const id of previous)if(!current.has(id))events.push({type:'encounter-exit',id,time});
+    previous=current;return {active,events};
+  },reset(){previous=new Set();}};
+}

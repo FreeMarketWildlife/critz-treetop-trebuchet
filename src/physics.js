@@ -2,13 +2,13 @@
 // First bounded model: fixed axle and rigidly attached counterweight; massless taut sling.
 export const defaults = Object.freeze({ longArm: 3, shortArm: 0.8, sling: 2.5,
   counterMass: 100, projectileMass: 1, beamLinearDensity: 8 / 3.8, releasePinAngle: 1.45, gravity: 9.81,
-  armDamping: 0, flightDrag: 0, pivotHeight: 300, initialArm: -2.5, initialSling: -Math.PI / 2, initialSlingSpeed: 0 });
+  frameMass:30, frameFriction:.65, armDamping: 0, flightDrag: 0, pivotHeight: 300, initialArm: -2.5, initialSling: -Math.PI / 2, initialSlingSpeed: 0 });
 export function config(overrides = {}) {
   const p = { ...defaults, ...overrides };
   for (const key of Object.keys(defaults)) if (!Number.isFinite(p[key])) throw new Error(`Invalid ${key}`);
   for (const key of ['longArm','shortArm','sling','counterMass','projectileMass','beamLinearDensity','gravity'])
     if (p[key] <= 0) throw new Error(`Positive ${key} required`);
-  for (const key of ['armDamping','flightDrag'])
+  for (const key of ['armDamping','flightDrag','frameFriction'])
     if(p[key]<0) throw new Error(`Nonnegative ${key} required`);
   for (const key of ['longArm','shortArm','sling'])
     if(p[key]<0.1 || p[key]>20) throw new Error(`${key} outside tested 0.1–20 m domain`);
@@ -18,6 +18,7 @@ export function config(overrides = {}) {
   if(p.pivotHeight<=p.longArm+p.sling) throw new Error('Pivot must clear full suspended mechanism above ground');
   if(p.releasePinAngle<=0 || p.releasePinAngle>=Math.PI) throw new Error('Pin angle must lie between 0 and pi');
   if(Math.abs(p.initialSlingSpeed)>4) throw new Error('Initial sling speed outside tested domain');
+  if(p.frameMass<=0 || p.frameMass>200 || p.frameFriction>1)throw new Error('Invalid frame mass/friction');
   return p;
 }
 export const initialState = p => [p.initialArm, p.initialSling, 0, p.initialSlingSpeed];

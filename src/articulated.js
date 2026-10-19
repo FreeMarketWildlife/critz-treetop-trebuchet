@@ -1,0 +1,112 @@
+import * as P from '../node_modules/planck/dist/planck.mjs';
+import {config} from './physics.js';
+import {createRig} from './species.js';
+import {createEncounterDirector} from './encounters.js';
+import {world as layout} from './world.js';
+const serializer=new P.Serializer({rootClass:P.World,
+ postSerialize:(data,obj)=>{if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;}return data;},
+ postDeserialize:(obj,data)=>{if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);return obj;}});
+const V=(x,y)=>P.Vec2(x,y);
+const tag=(body,role,id)=>body.setUserData({role,id});
+export class CritterScene {
+ constructor(overrides={},species='lizard',saved=null){
+  this.p=config(overrides);this.rig=createRig(species);this.phase='loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;
+  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0});this.index();return;}
+  const p=this.p;this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
+  const ground=this.world.createBody();tag(ground,'static','world');
+  for(const s of layout.surfaces)ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
+  for(const pin of layout.bumpers)ground.createFixture(P.Circle(V(pin.x,pin.y),pin.radius),{friction:.08,restitution:.85,filterCategoryBits:1});
+  // The loading shelf ends before the hanging cradle; no kinematic seating force.
+  ground.createFixture(P.Box(.8,.04,V(-4.3,p.pivotHeight-4.5)),{friction:.08,restitution:.1,filterCategoryBits:1});
+  this.frame=this.world.createDynamicBody({position:V(0,p.pivotHeight-6)});tag(this.frame,'frame','support');
+  // A rigid A-frame with finite fixtures; feet meet the authored branch at y=294.
+  for(const sign of [-1,1]){
+   this.frame.createFixture(P.Polygon([V(sign*1.3,0),V(sign*1.6,.15),V(.16,6),V(-.16,6)]),{density:1,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
+   this.frame.createFixture(P.Box(.4,.1,V(sign*1.5,.1)),{density:3,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
+  }
+  const frameMass={center:V()};this.frame.getMassData(frameMass);this.frame.setMassData({mass:p.frameMass,center:frameMass.center,I:frameMass.I*p.frameMass/frameMass.mass});
+  this.arm=this.world.createDynamicBody({position:V(0,p.pivotHeight),angle:p.initialArm});tag(this.arm,'arm','beam');
+  this.arm.createFixture(P.Box((p.longArm+p.shortArm)/2,.055,V((p.longArm-p.shortArm)/2,0)),{density:p.beamLinearDensity/.11,filterCategoryBits:8,filterMaskBits:1});
+  this.arm.createFixture(P.Circle(V(-p.shortArm,0),.1),{density:p.counterMass/(Math.PI*.01),filterCategoryBits:8,filterMaskBits:1});
+  this.pivot=this.world.createJoint(new P.RevoluteJoint({enableLimit:true,lowerAngle:0,upperAngle:0},this.frame,this.arm,V(0,p.pivotHeight)));this.pivot.setUserData({role:'pivot'});
+  const tip=this.arm.getWorldPoint(V(p.longArm,0));
+  this.pouch=this.world.createDynamicBody({position:V(tip.x,tip.y-p.sling),bullet:true});tag(this.pouch,'pouch','cradle');
+  for(const shape of [P.Box(.8,.035,V(0,-.19)),P.Box(.035,.19,V(-.8,0)),P.Box(.035,.19,V(.8,0))])this.pouch.createFixture(shape,{density:1,friction:.15,restitution:.05,filterCategoryBits:2,filterMaskBits:21});
+  this.ropes=[-.65,.65].map((x,i)=>{const joint=this.world.createJoint(new P.RopeJoint({bodyA:this.arm,bodyB:this.pouch,localAnchorA:V(p.longArm,0),localAnchorB:V(x,0),maxLength:Math.hypot(p.sling,.65),collideConnected:false}));joint.setUserData({role:'rope',id:i});return joint;});this.rope=this.ropes[0];
+  const origin=V(-4.3,p.pivotHeight-3.8),map=new Map();
+  for(const part of this.rig.bodies){const body=this.world.createDynamicBody({position:V(origin.x+part.x,origin.y+part.y),angle:part.angle,bullet:true});tag(body,'part',part.id);map.set(part.id,body);
+   const fixture={density:1,friction:this.rig.friction,restitution:this.rig.restitution,filterCategoryBits:4,filterMaskBits:59,filterGroupIndex:-1};
+   const s=part.shape;if(s.type==='circle')body.createFixture(P.Circle(s.radius),fixture);
+   else if(s.type==='box')body.createFixture(P.Box(s.width/2,s.height/2),fixture);
+   else {const h=Math.max(0,s.length/2-s.radius);if(h>0)body.createFixture(P.Box(h,s.radius),fixture);for(const x of [-h,h])body.createFixture(P.Circle(V(x,0),s.radius),fixture);}
+   const data={center:V(0,0)};body.getMassData(data);const factor=part.mass/data.mass;body.setMassData({mass:part.mass,center:data.center,I:data.I*factor});
+  }
+  for(const j of this.rig.joints){const a=map.get(j.a),b=map.get(j.b);this.world.createJoint(new P.RevoluteJoint({bodyA:a,bodyB:b,localAnchorA:V(j.anchorA.x,j.anchorA.y),localAnchorB:V(j.anchorB.x,j.anchorB.y),referenceAngle:j.referenceAngle,enableLimit:true,lowerAngle:j.minAngle,upperAngle:j.maxAngle,collideConnected:false}));}
+  this.index();
+ }
+ index(){this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);}
+  this.parts.sort((a,b)=>a.getUserData().id.localeCompare(b.getUserData().id));this.rope=null;this.ropes=[];
+  for(let j=this.world.getJointList();j;j=j.getNext()){if(j.getUserData()?.role==='pivot')this.pivot=j;if(j.getUserData()?.role==='rope')this.ropes.push(j);}
+  this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
+  this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight' || this.elapsed-this.lastImpact<.08)return;
+   const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
+   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;this.events.push({type:'impact',strength,position:this.center()});if(this.events.length>16)this.events.shift();}});
+ }
+ enableEncounters(seed){this.encounters=createEncounterDirector(seed);}
+ updateEncounters(){if(!this.encounters || this.phase!=='flight' || this.elapsed-this.release.time<.8)return;
+  const active=this.encounters.update(this.elapsed,this.center()).active;
+  for(const e of active)if(!this.enemies.has(e.id) && this.enemies.size<12){
+   const c=this.center();if(Math.hypot(e.x-c.x,e.y-c.y)<3)continue;
+   const b=this.world.createDynamicBody({position:V(e.x,e.y),linearVelocity:V(e.vx,e.vy),bullet:true});tag(b,'enemy',e.id);b.setUserData({role:'enemy',id:e.id,color:e.color,expiresAt:e.expiresAt});
+   b.createFixture(P.Circle(e.radius),{density:e.mass/(Math.PI*e.radius**2),friction:e.material.friction,restitution:e.material.restitution,filterCategoryBits:32,filterMaskBits:5});
+   this.enemies.set(e.id,b);this.spawnEnergy+=.5*e.mass*(e.vx**2+e.vy**2)+e.mass*this.p.gravity*e.y;this.events.push({type:'enemy'});
+  }
+  for(const [id,b]of this.enemies)if(b && this.elapsed>b.getUserData().expiresAt && Math.hypot(b.getPosition().x-this.center().x,b.getPosition().y-this.center().y)>4){this.world.destroyBody(b);this.enemies.delete(id);}
+ }
+ snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
+ clone(){return new CritterScene(this.p,this.rig.id,this.snapshot());}
+ center(){let x=0,y=0,vx=0,vy=0,m=0;for(const b of this.parts){const w=b.getMass(),q=b.getWorldCenter(),v=b.getLinearVelocity();m+=w;x+=q.x*w;y+=q.y*w;vx+=v.x*w;vy+=v.y*w;}return {x:x/m,y:y/m,vx:vx/m,vy:vy/m,mass:m};}
+ isLoaded(){const c=this.center(),p=this.pouch.getPosition();return Math.abs(c.x-p.x)<.8 && c.y>p.y-.2 && c.y<p.y+.8;}
+ grab(point){if(this.phase!=='loading')return false;let selected=null,anchor=null;
+  for(const b of this.parts)for(let f=b.getFixtureList();f;f=f.getNext())if(f.testPoint(point)){selected=b;anchor=point;}
+  if(!selected){const b=this.parts.reduce((best,b)=>Math.hypot(b.getWorldCenter().x-point.x,b.getWorldCenter().y-point.y)<Math.hypot(best.getWorldCenter().x-point.x,best.getWorldCenter().y-point.y)?b:best,this.parts[0]);const q=b.getWorldCenter();if(Math.hypot(q.x-point.x,q.y-point.y)<.3){selected=b;anchor=q;}}
+  if(!selected)return false;this.hand={body:selected,local:selected.getLocalPoint(anchor),target:V(anchor.x,anchor.y)};return true;}
+
+ move(point){if(this.hand && Number.isFinite(point.x)&&Number.isFinite(point.y))this.hand.target=V(point.x,point.y);}
+ drop(){this.hand=null;}
+ unlatch(){if(this.hand)throw new Error('Release your grip first');if(!this.isLoaded())throw new Error('Place critter in cradle first');this.pivot.enableLimit(false);this.phase='launching';}
+ energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic()){const m=b.getMass(),c=b.getWorldCenter(),v=b.getLinearVelocity(),local=b.getLocalCenter(),I=b.getInertia()-m*(local.x**2+local.y**2);e+=.5*m*(v.x**2+v.y**2)+.5*I*b.getAngularVelocity()**2+m*this.p.gravity*(c.y-this.p.pivotHeight);}return e;}
+ step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
+  const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
+  if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q);let fx=80*(this.hand.target.x-q.x)-12*v.x,fy=80*(this.hand.target.y-q.y)-12*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,80/(mag||1));this.forceCapped=mag>80;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
+  if(this.p.armDamping)this.arm.applyTorque(-this.p.armDamping*this.arm.getAngularVelocity(),true);
+  if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y);b.applyForceToCenter(V(-k*v.x,-k*v.y),true);}
+  this.updateEncounters();const old=this.relative();const assist=[];
+  if(this.phase==='flight' && (this.control || this.rig.id==='flying-squirrel')){
+   const c=this.center(),speed=Math.hypot(c.vx,c.vy),root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
+   if(this.rig.id==='flying-squirrel' && speed>0.1){const q=.012*speed*speed,cl=.45-this.control*.7;
+    const fx=q*(-cl*c.vy/speed-.18*c.vx/speed),fy=q*(cl*c.vx/speed-.18*c.vy/speed);
+    for(const b of this.parts){const share=b.getMass()/c.mass;const F=V(fx*share,fy*share);assist.push({body:b,force:F,before:{...b.getWorldCenter()},angle:b.getAngle(),torque:0});b.applyForceToCenter(F,true);}assist.push({body:root,force:V(0,0),before:{...root.getWorldCenter()},angle:root.getAngle(),torque:-this.control*.02});root.applyTorque(-this.control*.02,true);
+   } else if(this.rig.id!=='flying-squirrel'){const F=V(this.control*.25,0);assist.push({body:root,force:F,before:{...root.getWorldCenter()},angle:root.getAngle(),torque:0});root.applyForceToCenter(F,true);}
+  }
+  this.world.step(dt,20,12);this.elapsed+=dt;for(const a of assist){const q=a.body.getWorldCenter();this.assistWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y)+a.torque*(a.body.getAngle()-a.angle);}
+  if(this.hand){const q=this.hand.body.getWorldPoint(this.hand.local);this.handWork+=force.x*(q.x-before.x)+force.y*(q.y-before.y);}
+  if(this.phase==='launching' && this.rope){const rel=this.relative(),a=this.rope.getAnchorA(),b=this.rope.getAnchorB(),r=Math.hypot(a.x-b.x,a.y-b.y);
+    const pulling=this.ropes.some(rope=>{const a=rope.getAnchorA(),b=rope.getAnchorB(),F=rope.getReactionForce(1/dt),d=Math.hypot(b.x-a.x,b.y-a.y);return d>0 && -(F.x*(b.x-a.x)+F.y*(b.y-a.y))/d>.001;});
+    if(old>this.p.releasePinAngle && rel<=this.p.releasePinAngle && old-rel<Math.PI && pulling && r>Math.hypot(this.p.sling,.65)-.03){
+     for(const rope of this.ropes)this.world.destroyJoint(rope);this.ropes=[];this.rope=null;for(let f=this.pouch.getFixtureList();f;f=f.getNext())f.setFilterData({categoryBits:2,maskBits:0,groupIndex:0});
+     this.phase='flight';this.events.push({type:'launch'});this.release={time:this.elapsed,center:this.center(),parts:this.parts.map(b=>({id:b.getUserData().id,p:{...b.getPosition()},v:{...b.getLinearVelocity()},w:b.getAngularVelocity()}))};
+    }
+  }
+  for(const b of this.parts){const q=b.getPosition(),v=b.getLinearVelocity();if(![q.x,q.y,v.x,v.y,b.getAngle()].every(Number.isFinite))throw new Error('Nonfinite articulated state');}
+ }
+ relative(){const a=this.arm.getWorldPoint(V(this.p.longArm,0)),b=this.pouch.getPosition();return ((Math.atan2(b.y-a.y,b.x-a.x)-this.arm.getAngle())%(2*Math.PI)+2*Math.PI)%(2*Math.PI);}
+ predict(){if(this.hand || this.control || !this.isLoaded())return null;const saved=this.snapshot(),clone=new CritterScene(this.p,this.rig.id,saved),points=[];clone.unlatch();
+  for(let i=0;i<3000 && !clone.release;i++)clone.step();if(!clone.release)return {points,reason:'no pin release'};
+  points.push(clone.center());for(let i=0;i<480;i++){const before=clone.center();clone.step();const after=clone.center();if(clone.events.some(e=>e.type==='impact'))break;
+   // Stop before any authored surface, without exposing bounce outcomes.
+   if(layout.surfaces.some(s=>Math.min(before.y,after.y)<=s.y+.5 && Math.max(before.y,after.y)>=s.y+.5 && after.x>=s.minX-.5 && after.x<=s.maxX+.5))break;
+   if(i%30===0)points.push(after);}
+  return {points,release:clone.release,reason:'same articulated solver'};
+ }
+}

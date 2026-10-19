@@ -1,1 +1,1 @@
-{"name":"critz-treetop-trebuchet","private":true,"type":"module","scripts":{"test":"node --test","start":"python3 -m http.server 8080"}}
+{"name":"critz-treetop-trebuchet","private":true,"type":"module","scripts":{"test":"node --test","start":"python3 -m http.server 8080"},"dependencies":{"planck":"1.5.1"}}
