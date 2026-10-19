@@ -1,0 +1,792 @@
+{
+  "catalog": {
+    "default": {
+      "cases": 264,
+      "counts": {
+        "launched": 262,
+        "seating_failed": 2
+      },
+      "allFullReleasesAndWindWorkExact": true,
+      "sourcesChangedDuringRun": [],
+      "maxActualIntegrations": 16,
+      "innerAngularFlagCases": 18,
+      "previousInnerAngularFlagCases": 20,
+      "postLoadAngularCases": [],
+      "maxInnerAngular": 0.1666861182877375,
+      "maxInnerAnchor": 0.011821236043677127,
+      "maxInnerRope": 0.011749443778315438,
+      "nonfiniteCases": 0,
+      "maxOuterCumulativeEnergyResidual": 0,
+      "maxSpin": 1097.2072248802688,
+      "fallbackCases": [
+        {
+          "id": "stock-lizard-0.6",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "stock-mouse-0.6",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "stock-turtle-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "stock-small-marsupial-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "counterweight-heavy-mouse-0.45",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-long-lizard-0.6",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-long-frog-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "beam-light-turtle-0.6",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "beam-light-snake-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "beam-light-chipmunk-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-light-tiny-primate-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "sling-long-chipmunk-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "frame-grip-mouse-0.6",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "frame-grip-chipmunk-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "frame-grip-frog-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "combined-lizard-0.45",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "combined-turtle-0.6",
+          "count": 1,
+          "reservation": 0
+        }
+      ],
+      "contactBudgetMissCases": [],
+      "changedFlags": [
+        {
+          "id": "stock-mouse-0.6",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "stock-turtle-0.6",
+          "before": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ],
+          "after": [
+            "launch_branch_impact"
+          ]
+        },
+        {
+          "id": "stock-turtle-0.75",
+          "before": [
+            "launch_branch_impact"
+          ],
+          "after": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "stock-snake-0.6",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "counterweight-heavy-mouse-0.45",
+          "before": [
+            "boundary_budget_fallback",
+            "inner_angular_limit_error",
+            "angular_limit_error"
+          ],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "counterweight-heavy-tiny-primate-0.45",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "counterweight-heavy-frog-0.6",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "beam-long-lizard-0.6",
+          "before": [
+            "launch_branch_impact"
+          ],
+          "after": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "before": [
+            "inner_angular_limit_error",
+            "angular_limit_error"
+          ],
+          "after": [
+            "boundary_budget_fallback",
+            "inner_angular_limit_error",
+            "angular_limit_error"
+          ]
+        },
+        {
+          "id": "beam-long-frog-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-light-turtle-0.6",
+          "before": [
+            "launch_branch_impact"
+          ],
+          "after": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-light-snake-0.6",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "beam-light-snake-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-light-chipmunk-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-light-tiny-primate-0.75",
+          "before": [
+            "launch_branch_impact"
+          ],
+          "after": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "sling-long-salamander-0.45",
+          "before": [
+            "launch_branch_impact",
+            "inner_angular_limit_error"
+          ],
+          "after": [
+            "launch_branch_impact"
+          ]
+        },
+        {
+          "id": "sling-long-turtle-0.45",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "frame-grip-turtle-0.6",
+          "before": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ],
+          "after": [
+            "launch_branch_impact"
+          ]
+        },
+        {
+          "id": "frame-grip-chipmunk-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "combined-lizard-0.45",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "combined-snake-0.45",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        }
+      ],
+      "predictionReleaseDivergenceCases": [],
+      "highSpinCases": [
+        {
+          "id": "stock-mouse-0.45",
+          "spin": 1005.9413426626722,
+          "speed": 81.33070573490458
+        },
+        {
+          "id": "counterweight-heavy-small-marsupial-0.75",
+          "spin": 1097.2072248802688,
+          "speed": 113.84063123138397
+        },
+        {
+          "id": "frame-heavy-small-marsupial-0.45",
+          "spin": 1018.4018970759341,
+          "speed": 80.17374786635258
+        }
+      ]
+    },
+    "candidate": {
+      "cases": 264,
+      "counts": {
+        "launched": 263,
+        "seating_failed": 1
+      },
+      "allFullReleasesAndWindWorkExact": true,
+      "sourcesChangedDuringRun": [],
+      "maxActualIntegrations": 16,
+      "innerAngularFlagCases": 1,
+      "previousInnerAngularFlagCases": 3,
+      "postLoadAngularCases": [
+        {
+          "id": "beam-light-lizard-0.6",
+          "max": 0.16406234753380322,
+          "flags": [
+            "boundary_budget_fallback",
+            "inner_angular_limit_error"
+          ]
+        }
+      ],
+      "maxInnerAngular": 0.16406234753380322,
+      "maxInnerAnchor": 0.012524735116943138,
+      "maxInnerRope": 0.02230861037786358,
+      "nonfiniteCases": 0,
+      "maxOuterCumulativeEnergyResidual": 0,
+      "maxSpin": 1032.3081317517835,
+      "fallbackCases": [
+        {
+          "id": "counterweight-heavy-mouse-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "counterweight-heavy-turtle-0.45",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "count": 2,
+          "reservation": 2
+        },
+        {
+          "id": "counterweight-heavy-tiny-primate-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "beam-long-mouse-0.45",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-long-turtle-0.6",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "beam-light-lizard-0.6",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "beam-light-turtle-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "sling-long-turtle-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "frame-heavy-lizard-0.45",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "frame-heavy-mouse-0.75",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "frame-heavy-turtle-0.75",
+          "count": 1,
+          "reservation": 0
+        },
+        {
+          "id": "frame-heavy-tiny-primate-0.6",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "combined-salamander-0.45",
+          "count": 1,
+          "reservation": 1
+        },
+        {
+          "id": "combined-mouse-0.45",
+          "count": 2,
+          "reservation": 0
+        },
+        {
+          "id": "combined-tiny-primate-0.45",
+          "count": 1,
+          "reservation": 0
+        }
+      ],
+      "contactBudgetMissCases": [],
+      "changedFlags": [
+        {
+          "id": "stock-mouse-0.6",
+          "before": [
+            "inner_angular_limit_error"
+          ],
+          "after": []
+        },
+        {
+          "id": "counterweight-heavy-mouse-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "counterweight-heavy-turtle-0.45",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "before": [
+            "backward_or_vertical_launch"
+          ],
+          "after": [
+            "backward_or_vertical_launch",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-long-turtle-0.6",
+          "before": [
+            "launch_branch_impact"
+          ],
+          "after": [
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "beam-long-small-marsupial-0.45",
+          "before": [
+            "backward_or_vertical_launch",
+            "downward_launch",
+            "launch_branch_impact"
+          ],
+          "after": [
+            "backward_or_vertical_launch",
+            "downward_launch",
+            "launch_branch_impact",
+            "explosive_speed"
+          ]
+        },
+        {
+          "id": "beam-light-lizard-0.6",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": [
+            "boundary_budget_fallback",
+            "inner_angular_limit_error"
+          ]
+        },
+        {
+          "id": "beam-light-snake-0.75",
+          "before": [
+            "backward_or_vertical_launch",
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ],
+          "after": [
+            "backward_or_vertical_launch",
+            "launch_branch_impact"
+          ]
+        },
+        {
+          "id": "sling-long-mouse-0.45",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "sling-long-turtle-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "sling-long-chipmunk-0.6",
+          "before": [
+            "boundary_budget_fallback"
+          ],
+          "after": []
+        },
+        {
+          "id": "frame-heavy-lizard-0.45",
+          "before": [
+            "backward_or_vertical_launch",
+            "downward_launch",
+            "launch_branch_impact"
+          ],
+          "after": [
+            "backward_or_vertical_launch",
+            "downward_launch",
+            "launch_branch_impact",
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "frame-heavy-mouse-0.75",
+          "before": [
+            "boundary_budget_fallback",
+            "inner_angular_limit_error"
+          ],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "frame-heavy-turtle-0.75",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "frame-heavy-small-marsupial-0.6",
+          "before": [
+            "inner_angular_limit_error"
+          ],
+          "after": []
+        },
+        {
+          "id": "frame-heavy-tiny-primate-0.6",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        },
+        {
+          "id": "combined-small-marsupial-0.75",
+          "before": [],
+          "after": [
+            "explosive_speed"
+          ]
+        },
+        {
+          "id": "combined-tiny-primate-0.45",
+          "before": [],
+          "after": [
+            "boundary_budget_fallback"
+          ]
+        }
+      ],
+      "predictionReleaseDivergenceCases": [],
+      "highSpinCases": [
+        {
+          "id": "stock-small-marsupial-0.6",
+          "spin": 1032.3081317517835,
+          "speed": 90.59807661786785
+        },
+        {
+          "id": "beam-long-small-marsupial-0.45",
+          "spin": 1011.6049187974286,
+          "speed": 76.88323346369063
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "spin": 1023.47151719765,
+          "speed": 92.06955742940694
+        },
+        {
+          "id": "combined-small-marsupial-0.75",
+          "spin": 1024.932442720095,
+          "speed": 119.50416021810582
+        }
+      ]
+    }
+  },
+  "prediction": {
+    "cases": 528,
+    "exact": 525,
+    "rejections": [
+      {
+        "id": "frame-heavy-snake-0.75",
+        "candidate": false,
+        "outcome": "preparation_rejected",
+        "reason": "Not loaded"
+      },
+      {
+        "id": "combined-frog-0.75",
+        "candidate": false,
+        "outcome": "preparation_rejected",
+        "reason": "Not loaded"
+      },
+      {
+        "id": "combined-frog-0.75",
+        "candidate": true,
+        "outcome": "preparation_rejected",
+        "reason": "Not loaded"
+      }
+    ],
+    "maxActualIntegrations": 12
+  },
+  "targeted": {
+    "cases": 8,
+    "exactEveryInnerSnapshot": true,
+    "motionGate": [
+      {
+        "file": "docs/reviews/iteration-41/earlier-incoming.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 61089,
+        "queriesWithGate": 0,
+        "skipped": 61089
+      },
+      {
+        "file": "docs/reviews/iteration-35/rig-incoming.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 26219,
+        "queriesWithGate": 23552,
+        "skipped": 2667
+      },
+      {
+        "file": "docs/reviews/iteration-35/canopy-incoming.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 1221,
+        "queriesWithGate": 1221,
+        "skipped": 0
+      },
+      {
+        "file": "docs/reviews/iteration-44/default-counterweight-heavy-mouse-0.45-before-live.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 5167,
+        "queriesWithGate": 5167,
+        "skipped": 0
+      },
+      {
+        "file": "docs/reviews/iteration-44/default-sling-long-salamander-0.45-before-live.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 2778,
+        "queriesWithGate": 2771,
+        "skipped": 7
+      },
+      {
+        "file": "docs/reviews/iteration-44/candidate-stock-mouse-0.6-before-live.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 16457,
+        "queriesWithGate": 16457,
+        "skipped": 0
+      },
+      {
+        "file": "docs/reviews/iteration-44/candidate-frame-heavy-mouse-0.75-before-live.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 1091,
+        "queriesWithGate": 1091,
+        "skipped": 0
+      },
+      {
+        "file": "docs/reviews/iteration-44/candidate-frame-heavy-small-marsupial-0.6-before-live.json",
+        "exactEveryInnerSnapshot": true,
+        "queriesWithoutGate": 988,
+        "queriesWithGate": 988,
+        "skipped": 0
+      }
+    ]
+  },
+  "runtime": {
+    "falling rig": {
+      "original": {
+        "medianMilliseconds": 40.1401249999999,
+        "integrations": 600
+      },
+      "boundaryLead": {
+        "medianMilliseconds": 192.8139170000004,
+        "integrations": 2925
+      },
+      "contact1": {
+        "medianMilliseconds": 238.96904200000063,
+        "integrations": 2925
+      },
+      "targeted": {
+        "medianMilliseconds": 239.69366700000046,
+        "integrations": 2925,
+        "geometryQueries": 61089
+      },
+      "motionGated": {
+        "medianMilliseconds": 204.9940829999996,
+        "integrations": 2925,
+        "geometryQueries": 0
+      }
+    },
+    "ordinary rig impact": {
+      "original": {
+        "medianMilliseconds": 63.33608400000048,
+        "integrations": 777
+      },
+      "boundaryLead": {
+        "medianMilliseconds": 151.46199999999953,
+        "integrations": 1920
+      },
+      "contact1": {
+        "medianMilliseconds": 167.70970800000032,
+        "integrations": 1924
+      },
+      "targeted": {
+        "medianMilliseconds": 167.51000000000022,
+        "integrations": 1924,
+        "geometryQueries": 26219
+      },
+      "motionGated": {
+        "medianMilliseconds": 167.0989580000005,
+        "integrations": 1924,
+        "geometryQueries": 23552
+      }
+    },
+    "ordinary canopy impact": {
+      "original": {
+        "medianMilliseconds": 55.93304200000057,
+        "integrations": 733
+      },
+      "boundaryLead": {
+        "medianMilliseconds": 64.95445899999959,
+        "integrations": 789
+      },
+      "contact1": {
+        "medianMilliseconds": 66.12312500000007,
+        "integrations": 793
+      },
+      "targeted": {
+        "medianMilliseconds": 66.17274999999972,
+        "integrations": 793,
+        "geometryQueries": 1221
+      },
+      "motionGated": {
+        "medianMilliseconds": 66.42575000000033,
+        "integrations": 793,
+        "geometryQueries": 1221
+      }
+    }
+  },
+  "validation": {
+    "tests": 278,
+    "passed": 278,
+    "failed": 0,
+    "optimizedFullCatalogRun": false,
+    "ordinarySourceChanged": false,
+    "publicSync": "paused pending parent authorization; no push retry"
+  }
+}

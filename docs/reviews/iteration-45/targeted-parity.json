@@ -1,0 +1,373 @@
+{
+  "protocol": "Eight retained actual impact states, canonical reconstruction identical for both variants,1s continuation, every actual integration dt and full snapshot SHA equal. Targeted variant skips only handled fixture/child pairs within the same outer tick. No coarse-only comparison.",
+  "rows": [
+    {
+      "file": "docs/reviews/iteration-41/earlier-incoming.json",
+      "actualIntegrations": 2925,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "contactSplits": 0,
+        "contactQueries": 2910,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "contactSplits": 0,
+        "contactQueries": 2910,
+        "geometryQueries": 61089,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-35/rig-incoming.json",
+      "actualIntegrations": 1924,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 1924,
+        "extraIntegrations": 8,
+        "contactSplits": 4,
+        "contactQueries": 1916,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53417,
+          "distanceQueries": 3910
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 1924,
+        "extraIntegrations": 8,
+        "contactSplits": 4,
+        "contactQueries": 1916,
+        "geometryQueries": 26219,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53417,
+          "distanceQueries": 3910
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-35/canopy-incoming.json",
+      "actualIntegrations": 793,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 793,
+        "extraIntegrations": 16,
+        "contactSplits": 4,
+        "contactQueries": 777,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 12,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 793,
+        "extraIntegrations": 16,
+        "contactSplits": 4,
+        "contactQueries": 777,
+        "geometryQueries": 1221,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 12,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-44/default-counterweight-heavy-mouse-0.45-before-live.json",
+      "actualIntegrations": 1174,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 1174,
+        "extraIntegrations": 22,
+        "contactSplits": 2,
+        "contactQueries": 1152,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 60,
+          "distanceSteps": 52,
+          "stopSteps": 11,
+          "compatiblePairs": 82704,
+          "distanceQueries": 364
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 1174,
+        "extraIntegrations": 22,
+        "contactSplits": 2,
+        "contactQueries": 1152,
+        "geometryQueries": 5167,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 60,
+          "distanceSteps": 52,
+          "stopSteps": 11,
+          "compatiblePairs": 82704,
+          "distanceQueries": 364
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-44/default-sling-long-salamander-0.45-before-live.json",
+      "actualIntegrations": 1182,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 1182,
+        "extraIntegrations": 21,
+        "contactSplits": 2,
+        "contactQueries": 1161,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 16,
+          "distanceSteps": 0,
+          "stopSteps": 16,
+          "compatiblePairs": 72748,
+          "distanceQueries": 326
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 1182,
+        "extraIntegrations": 21,
+        "contactSplits": 2,
+        "contactQueries": 1161,
+        "geometryQueries": 2778,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 16,
+          "distanceSteps": 0,
+          "stopSteps": 16,
+          "compatiblePairs": 72748,
+          "distanceQueries": 326
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-44/candidate-stock-mouse-0.6-before-live.json",
+      "actualIntegrations": 1628,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 1628,
+        "extraIntegrations": 11,
+        "contactSplits": 2,
+        "contactQueries": 1617,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 12,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 16,
+          "distanceSteps": 0,
+          "stopSteps": 16,
+          "compatiblePairs": 77884,
+          "distanceQueries": 318
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 1628,
+        "extraIntegrations": 11,
+        "contactSplits": 2,
+        "contactQueries": 1617,
+        "geometryQueries": 16457,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 12,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 16,
+          "distanceSteps": 0,
+          "stopSteps": 16,
+          "compatiblePairs": 77884,
+          "distanceQueries": 318
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-44/candidate-frame-heavy-mouse-0.75-before-live.json",
+      "actualIntegrations": 1239,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 1239,
+        "extraIntegrations": 14,
+        "contactSplits": 2,
+        "contactQueries": 1225,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 13,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 78,
+          "distanceSteps": 61,
+          "stopSteps": 17,
+          "compatiblePairs": 91730,
+          "distanceQueries": 853
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 1239,
+        "extraIntegrations": 14,
+        "contactSplits": 2,
+        "contactQueries": 1225,
+        "geometryQueries": 1091,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 13,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 78,
+          "distanceSteps": 61,
+          "stopSteps": 17,
+          "compatiblePairs": 91730,
+          "distanceQueries": 853
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    },
+    {
+      "file": "docs/reviews/iteration-44/candidate-frame-heavy-small-marsupial-0.6-before-live.json",
+      "actualIntegrations": 1454,
+      "original": {
+        "outerSteps": 600,
+        "actualIntegrations": 1454,
+        "extraIntegrations": 18,
+        "contactSplits": 1,
+        "contactQueries": 1436,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 109,
+          "distanceSteps": 91,
+          "stopSteps": 18,
+          "compatiblePairs": 70418,
+          "distanceQueries": 460
+        }
+      },
+      "targeted": {
+        "outerSteps": 600,
+        "actualIntegrations": 1454,
+        "extraIntegrations": 18,
+        "contactSplits": 1,
+        "contactQueries": 1436,
+        "geometryQueries": 988,
+        "contactBudgetMisses": 0,
+        "angularFallbacks": 0,
+        "reservationFallbacks": 0,
+        "maxOuterActual": 11,
+        "maxOuterBase": 8,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 109,
+          "distanceSteps": 91,
+          "stopSteps": 18,
+          "compatiblePairs": 70418,
+          "distanceQueries": 460
+        }
+      },
+      "exactEveryInnerSnapshot": true
+    }
+  ]
+}
