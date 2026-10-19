@@ -1,0 +1,6 @@
+{
+  "case": "stock-lizard-0.6",
+  "releaseAndAllDiagnosticsExactlyEqual": true,
+  "sourcesChangedDuringRun": [],
+  "scope": "Selected-case reproduction after output-directory/overwrite-guard-only change."
+}

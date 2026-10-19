@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Earlier actual incoming rig \u2014 identical initial state",
+    "file": "earlier-incoming.json",
+    "seconds": 1
+  },
+  {
+    "label": "Already damaged incoming rig \u2014 separate diagnostic",
+    "file": "../iteration-40/incoming-combined-snake.json",
+    "seconds": 1
+  }
+]

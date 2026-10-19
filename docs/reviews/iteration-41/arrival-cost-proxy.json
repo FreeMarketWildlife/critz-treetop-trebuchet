@@ -1,0 +1,6934 @@
+{
+  "protocol": "Read-only first broadphase-risk pair per outer tick of the corrected earlier-incoming1s replay. Relative speed evaluated at the midpoint of fixture AABB centres, not a measured manifold or proof of collision; exact broadphase first-pair rule copied from pinned research policy. Used to diagnose cost, not change integration.",
+  "stats": {
+    "outerSteps": 600,
+    "refinedSteps": 402
+  },
+  "arrivals": [
+    {
+      "time": 21.10166666666362,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.51459275564775,
+      "relativeSpeedAtProxyPoint": 3.6172421187076313,
+      "proxyPoint": {
+        "x": -28.12838949335643,
+        "y": 9.617693500859097
+      }
+    },
+    {
+      "time": 21.103333333330283,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.60446203695702,
+      "relativeSpeedAtProxyPoint": 3.3948140390677524,
+      "proxyPoint": {
+        "x": -28.126250673513123,
+        "y": 9.494349886014664
+      }
+    },
+    {
+      "time": 21.10499999999695,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.62161358232557,
+      "relativeSpeedAtProxyPoint": 3.351623556437557,
+      "proxyPoint": {
+        "x": -28.124034265285367,
+        "y": 9.36275515637928
+      }
+    },
+    {
+      "time": 21.106666666663614,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.63882155447644,
+      "relativeSpeedAtProxyPoint": 3.308190910713861,
+      "proxyPoint": {
+        "x": -28.121833891979957,
+        "y": 9.231142249114512
+      }
+    },
+    {
+      "time": 21.10833333333028,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.65608519398715,
+      "relativeSpeedAtProxyPoint": 3.264536070421561,
+      "proxyPoint": {
+        "x": -28.119649539845796,
+        "y": 9.099510880208062
+      }
+    },
+    {
+      "time": 21.109999999996944,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.67340367099207,
+      "relativeSpeedAtProxyPoint": 3.2206795211863826,
+      "proxyPoint": {
+        "x": -28.117481180162976,
+        "y": 8.967860768089643
+      }
+    },
+    {
+      "time": 21.11166666666361,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.6907760896395,
+      "relativeSpeedAtProxyPoint": 3.1766421940779446,
+      "proxyPoint": {
+        "x": -28.115328769552093,
+        "y": 8.836191634122295
+      }
+    },
+    {
+      "time": 21.113333333330274,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.70820149282805,
+      "relativeSpeedAtProxyPoint": 3.1324453939054933,
+      "proxyPoint": {
+        "x": -28.11319225032985,
+        "y": 8.704503203071559
+      }
+    },
+    {
+      "time": 21.11499999999694,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.72567886717238,
+      "relativeSpeedAtProxyPoint": 3.0881107282045805,
+      "proxyPoint": {
+        "x": -28.111071550907887,
+        "y": 8.572795203550346
+      }
+    },
+    {
+      "time": 21.116666666663605,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.74320714814718,
+      "relativeSpeedAtProxyPoint": 3.043660037627936,
+      "proxyPoint": {
+        "x": -28.10896658623103,
+        "y": 8.44106736843737
+      }
+    },
+    {
+      "time": 21.11833333333027,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.7607852253573,
+      "relativeSpeedAtProxyPoint": 2.9991153284206002,
+      "proxyPoint": {
+        "x": -28.106877258251295,
+        "y": 8.309319435267774
+      }
+    },
+    {
+      "time": 21.119999999996935,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.77841194788482,
+      "relativeSpeedAtProxyPoint": 2.9544987076130367,
+      "proxyPoint": {
+        "x": -28.104803456433668,
+        "y": 8.177551146594308
+      }
+    },
+    {
+      "time": 21.1216666666636,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.79608612966359,
+      "relativeSpeedAtProxyPoint": 2.90983232152094,
+      "proxyPoint": {
+        "x": -28.102745058289642,
+        "y": 8.045762250318264
+      }
+    },
+    {
+      "time": 21.123333333330265,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.81380655483446,
+      "relativeSpeedAtProxyPoint": 2.865138298083158,
+      "proxyPoint": {
+        "x": -28.10070192993431,
+        "y": 7.913952499989328
+      }
+    },
+    {
+      "time": 21.12499999999693,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.83157198303824,
+      "relativeSpeedAtProxyPoint": 2.820438693509803,
+      "proxyPoint": {
+        "x": -28.09867392666309,
+        "y": 7.782121655073953
+      }
+    },
+    {
+      "time": 21.126666666663596,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.84938115460506,
+      "relativeSpeedAtProxyPoint": 2.775755443654573,
+      "proxyPoint": {
+        "x": -28.09666089354381,
+        "y": 7.650269481192118
+      }
+    },
+    {
+      "time": 21.12833333333026,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.86723279560373,
+      "relativeSpeedAtProxyPoint": 2.731110320460583,
+      "proxyPoint": {
+        "x": -28.09466266602041,
+        "y": 7.518395750322631
+      }
+    },
+    {
+      "time": 21.129999999996926,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.88512562271772,
+      "relativeSpeedAtProxyPoint": 2.686524893770235,
+      "proxyPoint": {
+        "x": -28.092679070524277,
+        "y": 7.386500240977313
+      }
+    },
+    {
+      "time": 21.13166666666359,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.90305834792018,
+      "relativeSpeedAtProxyPoint": 2.642020498726471,
+      "proxyPoint": {
+        "x": -28.090709925089456,
+        "y": 7.254582738344736
+      }
+    },
+    {
+      "time": 21.133333333330256,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.92102968292174,
+      "relativeSpeedAtProxyPoint": 2.5976182089415887,
+      "proxyPoint": {
+        "x": -28.088755039968543,
+        "y": 7.12264303440428
+      }
+    },
+    {
+      "time": 21.13499999999692,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.93903834337246,
+      "relativeSpeedAtProxyPoint": 2.5533388155500907,
+      "proxyPoint": {
+        "x": -28.086814218245664,
+        "y": 6.990680928011613
+      }
+    },
+    {
+      "time": 21.136666666663587,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.95708305280078,
+      "relativeSpeedAtProxyPoint": 2.5092028122193213,
+      "proxyPoint": {
+        "x": -28.084887256443686,
+        "y": 6.858696224956622
+      }
+    },
+    {
+      "time": 21.13833333333025,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.97516254627789,
+      "relativeSpeedAtProxyPoint": 2.4652303861441998,
+      "proxyPoint": {
+        "x": -28.08297394512283,
+        "y": 6.726688737995261
+      }
+    },
+    {
+      "time": 21.139999999996917,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.99327557379888,
+      "relativeSpeedAtProxyPoint": 2.421441415016465,
+      "proxyPoint": {
+        "x": -28.081074069468077,
+        "y": 6.5946582868565695
+      }
+    },
+    {
+      "time": 21.141666666663582,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.01142090337667,
+      "relativeSpeedAtProxyPoint": 2.3778554699243917,
+      "proxyPoint": {
+        "x": -28.079187409863238,
+        "y": 6.4626046982265235
+      }
+    },
+    {
+      "time": 21.143333333330247,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.02959732384645,
+      "relativeSpeedAtProxyPoint": 2.334491824115223,
+      "proxyPoint": {
+        "x": -28.07731374244952,
+        "y": 6.330527805710138
+      }
+    },
+    {
+      "time": 21.144999999996912,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.04780364738343,
+      "relativeSpeedAtProxyPoint": 2.2913694675269616,
+      "proxyPoint": {
+        "x": -28.075452839666944,
+        "y": 6.198427449773499
+      }
+    },
+    {
+      "time": 21.146666666663577,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.06603871173738,
+      "relativeSpeedAtProxyPoint": 2.248507126984139,
+      "proxyPoint": {
+        "x": -28.07360447077709,
+        "y": 6.0663034776673594
+      }
+    },
+    {
+      "time": 21.148333333330243,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.08430138219131,
+      "relativeSpeedAtProxyPoint": 2.2059232919382654,
+      "proxyPoint": {
+        "x": -28.071768402365926,
+        "y": 5.934155743333877
+      }
+    },
+    {
+      "time": 21.149999999996908,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.10259055325253,
+      "relativeSpeedAtProxyPoint": 2.1636362456276337,
+      "proxyPoint": {
+        "x": -28.069944398825708,
+        "y": 5.801984107298202
+      }
+    },
+    {
+      "time": 21.151666666663573,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.120905150087,
+      "relativeSpeedAtProxyPoint": 2.121664101528247,
+      "proxyPoint": {
+        "x": -28.068132222815176,
+        "y": 5.669788436546375
+      }
+    },
+    {
+      "time": 21.153333333330238,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.13924412970887,
+      "relativeSpeedAtProxyPoint": 2.0800248449638685,
+      "proxyPoint": {
+        "x": -28.066331635697473,
+        "y": 5.5375686043912316
+      }
+    },
+    {
+      "time": 21.154999999996903,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.15760648193768,
+      "relativeSpeedAtProxyPoint": 2.0387363797491056,
+      "proxyPoint": {
+        "x": -28.064542397955382,
+        "y": 5.405324490327692
+      }
+    },
+    {
+      "time": 21.15666666666357,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.17599123013756,
+      "relativeSpeedAtProxyPoint": 1.9978165797345908,
+      "proxyPoint": {
+        "x": -28.062764269583752,
+        "y": 5.2730559798789916
+      }
+    },
+    {
+      "time": 21.158333333330233,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.1943974317524,
+      "relativeSpeedAtProxyPoint": 1.9572833451286629,
+      "proxyPoint": {
+        "x": -28.060997010459005,
+        "y": 5.140762964435117
+      }
+    },
+    {
+      "time": 21.1599999999969,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.21282417865203,
+      "relativeSpeedAtProxyPoint": 1.917154663465581,
+      "proxyPoint": {
+        "x": -28.059240380685868,
+        "y": 5.00844534108484
+      }
+    },
+    {
+      "time": 21.161666666663564,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.23127059730365,
+      "relativeSpeedAtProxyPoint": 1.8774486750852,
+      "proxyPoint": {
+        "x": -28.05749414092159,
+        "y": 4.876103012442561
+      }
+    },
+    {
+      "time": 21.16333333333023,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.24973584878389,
+      "relativeSpeedAtProxyPoint": 1.8381829738293056,
+      "proxyPoint": {
+        "x": -28.055758281593008,
+        "y": 4.743735886471033
+      }
+    },
+    {
+      "time": 21.164999999996894,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.26821912864547,
+      "relativeSpeedAtProxyPoint": 1.7993750079413489,
+      "proxyPoint": {
+        "x": -28.05403292052532,
+        "y": 4.611343876301166
+      }
+    },
+    {
+      "time": 21.16666666666356,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 81.28671966665306,
+      "relativeSpeedAtProxyPoint": 1.7610458187611215,
+      "proxyPoint": {
+        "x": -28.052317221495144,
+        "y": 4.478926900049815
+      }
+    },
+    {
+      "time": 21.168333333330224,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.7466557668882,
+      "relativeSpeedAtProxyPoint": 2.7733619235630167,
+      "proxyPoint": {
+        "x": -28.050433428159874,
+        "y": 4.346624560873616
+      }
+    },
+    {
+      "time": 21.16999999999689,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.73889537502956,
+      "relativeSpeedAtProxyPoint": 2.781765606657595,
+      "proxyPoint": {
+        "x": -28.048070578573302,
+        "y": 4.214690151883978
+      }
+    },
+    {
+      "time": 21.171666666663555,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.73141098255962,
+      "relativeSpeedAtProxyPoint": 2.7890217488879347,
+      "proxyPoint": {
+        "x": -28.045686397102223,
+        "y": 4.082754538831674
+      }
+    },
+    {
+      "time": 21.17333333333022,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.72420903201598,
+      "relativeSpeedAtProxyPoint": 2.795151601421034,
+      "proxyPoint": {
+        "x": -28.043280586270576,
+        "y": 3.950817007100319
+      }
+    },
+    {
+      "time": 21.174999999996885,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.71729632172428,
+      "relativeSpeedAtProxyPoint": 2.800176286502595,
+      "proxyPoint": {
+        "x": -28.040852838543582,
+        "y": 3.818876851322447
+      }
+    },
+    {
+      "time": 21.17666666666355,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.71067877166553,
+      "relativeSpeedAtProxyPoint": 2.804118399612794,
+      "proxyPoint": {
+        "x": -28.038402843711268,
+        "y": 3.6869333744692105
+      }
+    },
+    {
+      "time": 21.178333333330215,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.7043614494029,
+      "relativeSpeedAtProxyPoint": 2.807001831936074,
+      "proxyPoint": {
+        "x": -28.035930289623145,
+        "y": 3.554985888786236
+      }
+    },
+    {
+      "time": 21.17999999999688,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.69834860399578,
+      "relativeSpeedAtProxyPoint": 2.808851598093777,
+      "proxyPoint": {
+        "x": -28.033434862850505,
+        "y": 3.4230337166326925
+      }
+    },
+    {
+      "time": 21.181666666663546,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.69264370296999,
+      "relativeSpeedAtProxyPoint": 2.8096936754966353,
+      "proxyPoint": {
+        "x": -28.03091624930493,
+        "y": 3.2910761912243074
+      }
+    },
+    {
+      "time": 21.18333333333021,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.6872494708964,
+      "relativeSpeedAtProxyPoint": 2.8095548571483033,
+      "proxyPoint": {
+        "x": -28.028374134813085,
+        "y": 3.1591126572842825
+      }
+    },
+    {
+      "time": 21.184999999996876,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.68216792957948,
+      "relativeSpeedAtProxyPoint": 2.8084626170410316,
+      "proxyPoint": {
+        "x": -28.02580820564842,
+        "y": 3.0271424716070583
+      }
+    },
+    {
+      "time": 21.18666666666354,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.67740043899056,
+      "relativeSpeedAtProxyPoint": 2.8064449886794254,
+      "proxyPoint": {
+        "x": -28.023218149020643,
+        "y": 2.8951650035398604
+      }
+    },
+    {
+      "time": 21.188333333330206,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.67294773870954,
+      "relativeSpeedAtProxyPoint": 2.803530456114793,
+      "proxyPoint": {
+        "x": -28.0206036535242,
+        "y": 2.763179635387236
+      }
+    },
+    {
+      "time": 21.18999999999687,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.66880998911067,
+      "relativeSpeedAtProxyPoint": 2.799747857683245,
+      "proxyPoint": {
+        "x": -28.017964409547275,
+        "y": 2.6311857627440927
+      }
+    },
+    {
+      "time": 21.191666666663536,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.66498681232494,
+      "relativeSpeedAtProxyPoint": 2.795126301309779,
+      "proxyPoint": {
+        "x": -28.015300109642958,
+        "y": 2.499182794762455
+      }
+    },
+    {
+      "time": 21.1933333333302,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 80.66704808486271,
+      "relativeSpeedAtProxyPoint": 92.06948526230329,
+      "proxyPoint": {
+        "x": -28.0148226098297,
+        "y": 2.3860116384300225
+      }
+    },
+    {
+      "time": 21.194999999996867,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 69.3297142243925,
+      "relativeSpeedAtProxyPoint": 82.79934867149085,
+      "proxyPoint": {
+        "x": -28.018205086499858,
+        "y": 2.334759523193391
+      }
+    },
+    {
+      "time": 21.196666666663532,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 83.5772272103528,
+      "relativeSpeedAtProxyPoint": 92.33779968710249,
+      "proxyPoint": {
+        "x": -27.97365526098073,
+        "y": 2.3629803384541526
+      }
+    },
+    {
+      "time": 21.198333333330197,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 131.92870404881637,
+      "relativeSpeedAtProxyPoint": 149.35684790532122,
+      "proxyPoint": {
+        "x": -27.909963363381454,
+        "y": 2.4613908631365984
+      }
+    },
+    {
+      "time": 21.199999999996862,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 229.96315823419897,
+      "relativeSpeedAtProxyPoint": 212.78168749438413,
+      "proxyPoint": {
+        "x": -28.29105801272223,
+        "y": 2.188864988436055
+      }
+    },
+    {
+      "time": 21.201666666663527,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 291.8938398674951,
+      "relativeSpeedAtProxyPoint": 304.3404961398301,
+      "proxyPoint": {
+        "x": -28.112721246595868,
+        "y": 2.035972269622004
+      }
+    },
+    {
+      "time": 21.203333333330193,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 292.00957820849595,
+      "relativeSpeedAtProxyPoint": 377.2290953323792,
+      "proxyPoint": {
+        "x": -27.818223693563276,
+        "y": 2.1825926113205503
+      }
+    },
+    {
+      "time": 21.204999999996858,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 226.9338462503775,
+      "relativeSpeedAtProxyPoint": 187.27785124226045,
+      "proxyPoint": {
+        "x": -27.823142219128833,
+        "y": 2.420924697719184
+      }
+    },
+    {
+      "time": 21.206666666663523,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 245.86359058484234,
+      "relativeSpeedAtProxyPoint": 231.3504951670817,
+      "proxyPoint": {
+        "x": -27.949460014586023,
+        "y": 2.62146501180732
+      }
+    },
+    {
+      "time": 21.208333333330188,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 277.058796640879,
+      "relativeSpeedAtProxyPoint": 278.67812327605907,
+      "proxyPoint": {
+        "x": -28.07167187803169,
+        "y": 2.8771307126279293
+      }
+    },
+    {
+      "time": 21.209999999996853,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 306.7759148964518,
+      "relativeSpeedAtProxyPoint": 295.0245006914122,
+      "proxyPoint": {
+        "x": -28.14254293496044,
+        "y": 3.1984306526127755
+      }
+    },
+    {
+      "time": 21.21166666666352,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 316.7148782347661,
+      "relativeSpeedAtProxyPoint": 96.62953781573427,
+      "proxyPoint": {
+        "x": -26.716830926556174,
+        "y": 4.488547520098519
+      }
+    },
+    {
+      "time": 21.213333333330183,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 295.85282269184665,
+      "relativeSpeedAtProxyPoint": 37.80581729581671,
+      "proxyPoint": {
+        "x": -26.68224535862593,
+        "y": 4.743527035685943
+      }
+    },
+    {
+      "time": 21.21499999999685,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 294.32140045894647,
+      "relativeSpeedAtProxyPoint": 58.602437659971145,
+      "proxyPoint": {
+        "x": -26.642835259233134,
+        "y": 4.990265923877315
+      }
+    },
+    {
+      "time": 21.216666666663514,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 292.5506436569459,
+      "relativeSpeedAtProxyPoint": 83.40604148827617,
+      "proxyPoint": {
+        "x": -26.779414083423784,
+        "y": 5.36466912597463
+      }
+    },
+    {
+      "time": 21.21833333333018,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 290.8575938250845,
+      "relativeSpeedAtProxyPoint": 106.82101691269858,
+      "proxyPoint": {
+        "x": -26.703750603119783,
+        "y": 5.650387266145108
+      }
+    },
+    {
+      "time": 21.219999999996844,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 289.39672491062925,
+      "relativeSpeedAtProxyPoint": 127.94168965538225,
+      "proxyPoint": {
+        "x": -26.622771039732324,
+        "y": 5.926771388894423
+      }
+    },
+    {
+      "time": 21.22166666666351,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 288.1941461402387,
+      "relativeSpeedAtProxyPoint": 150.81147816387713,
+      "proxyPoint": {
+        "x": -26.45124225712332,
+        "y": 5.9919226568145145
+      }
+    },
+    {
+      "time": 21.223333333330174,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 287.2498049264483,
+      "relativeSpeedAtProxyPoint": 168.0530690280745,
+      "proxyPoint": {
+        "x": -26.39248163045151,
+        "y": 6.244362411235221
+      }
+    },
+    {
+      "time": 21.226666666663505,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 499.3663002517296,
+      "relativeSpeedAtProxyPoint": 390.2701706781986,
+      "proxyPoint": {
+        "x": -24.64323500056196,
+        "y": 8.620176232485068
+      }
+    },
+    {
+      "time": 21.22833333333017,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 496.83210363907756,
+      "relativeSpeedAtProxyPoint": 417.81638170428,
+      "proxyPoint": {
+        "x": -24.325109581771848,
+        "y": 9.28789472937622
+      }
+    },
+    {
+      "time": 21.229999999996835,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 493.5711930252202,
+      "relativeSpeedAtProxyPoint": 433.4546755722603,
+      "proxyPoint": {
+        "x": -24.125654229029717,
+        "y": 9.74311243407434
+      }
+    },
+    {
+      "time": 21.2316666666635,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 488.41069881952143,
+      "relativeSpeedAtProxyPoint": 447.38780863939934,
+      "proxyPoint": {
+        "x": -23.946001885752796,
+        "y": 10.188627030547465
+      }
+    },
+    {
+      "time": 21.304999999996767,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 209.7184447415828,
+      "relativeSpeedAtProxyPoint": 362.82539105822235,
+      "proxyPoint": {
+        "x": -6.8834213796130825,
+        "y": 0.2941899217875889
+      }
+    },
+    {
+      "time": 21.306666666663432,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 198.14107124621586,
+      "relativeSpeedAtProxyPoint": 291.4316775383325,
+      "proxyPoint": {
+        "x": -6.934845910805507,
+        "y": 0.05152747124599449
+      }
+    },
+    {
+      "time": 21.308333333330097,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 13.400668071681704,
+      "relativeSpeedAtProxyPoint": 376.3126434163174,
+      "proxyPoint": {
+        "x": -6.925908376354528,
+        "y": 0.03422056963545158
+      }
+    },
+    {
+      "time": 21.309999999996762,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 12.03285386123877,
+      "relativeSpeedAtProxyPoint": 684.4745961084739,
+      "proxyPoint": {
+        "x": -6.9083442162154824,
+        "y": 0.05728911890064619
+      }
+    },
+    {
+      "time": 21.311666666663427,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 12.836519219114455,
+      "relativeSpeedAtProxyPoint": 913.3216022532227,
+      "proxyPoint": {
+        "x": -6.895190674471905,
+        "y": 0.08991283697724528
+      }
+    },
+    {
+      "time": 21.313333333330093,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 17.52540446943547,
+      "relativeSpeedAtProxyPoint": 1062.466568928332,
+      "proxyPoint": {
+        "x": -6.890903753876955,
+        "y": 0.12874479297833932
+      }
+    },
+    {
+      "time": 21.314999999996758,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 25.094277015419568,
+      "relativeSpeedAtProxyPoint": 1157.733760237043,
+      "proxyPoint": {
+        "x": -6.9010661579159205,
+        "y": 0.1704113444041788
+      }
+    },
+    {
+      "time": 21.316666666663423,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 42.450907886932804,
+      "relativeSpeedAtProxyPoint": 753.9928543428109,
+      "proxyPoint": {
+        "x": -7.701225825934671,
+        "y": 0.11182923871517794
+      }
+    },
+    {
+      "time": 21.318333333330088,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 39.34910349505612,
+      "relativeSpeedAtProxyPoint": 809.1636030205673,
+      "proxyPoint": {
+        "x": -7.727062897720316,
+        "y": 0.1617185894561345
+      }
+    },
+    {
+      "time": 21.326666666663414,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 41.93105426057188,
+      "relativeSpeedAtProxyPoint": 258.66795399788793,
+      "proxyPoint": {
+        "x": -7.221429290060769,
+        "y": 0.11842451742100904
+      }
+    },
+    {
+      "time": 21.32833333333008,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 45.21531206173172,
+      "relativeSpeedAtProxyPoint": 877.1553079663638,
+      "proxyPoint": {
+        "x": -7.2702001362827104,
+        "y": 0.1164980976152272
+      }
+    },
+    {
+      "time": 21.329999999996744,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 65.70619047489697,
+      "relativeSpeedAtProxyPoint": 1183.7187724854186,
+      "proxyPoint": {
+        "x": -7.109441075316681,
+        "y": 0.19155974308037382
+      }
+    },
+    {
+      "time": 21.33166666666341,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 122.39949307758494,
+      "relativeSpeedAtProxyPoint": 1296.804841417072,
+      "proxyPoint": {
+        "x": -7.181631348333667,
+        "y": 0.16116355213356034
+      }
+    },
+    {
+      "time": 21.333333333330074,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 173.006141298312,
+      "relativeSpeedAtProxyPoint": 649.6175076246603,
+      "proxyPoint": {
+        "x": -7.3119232660346825,
+        "y": 0.15390490538866486
+      }
+    },
+    {
+      "time": 21.33499999999674,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 190.1057512168856,
+      "relativeSpeedAtProxyPoint": 217.272230679749,
+      "proxyPoint": {
+        "x": -7.465727481444901,
+        "y": 0.17168097314225253
+      }
+    },
+    {
+      "time": 21.336666666663405,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 196.3506412032441,
+      "relativeSpeedAtProxyPoint": 348.10793755926846,
+      "proxyPoint": {
+        "x": -7.623904248821873,
+        "y": 0.20152284767659775
+      }
+    },
+    {
+      "time": 21.33833333333007,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 204.4896081663183,
+      "relativeSpeedAtProxyPoint": 483.89656320427054,
+      "proxyPoint": {
+        "x": -7.783406131288757,
+        "y": 0.24149917461870715
+      }
+    },
+    {
+      "time": 21.339999999996735,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 163.3155163346539,
+      "relativeSpeedAtProxyPoint": 476.52671039020737,
+      "proxyPoint": {
+        "x": -7.935652759504592,
+        "y": 0.2736407803780764
+      }
+    },
+    {
+      "time": 21.3416666666634,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 145.86146848466254,
+      "relativeSpeedAtProxyPoint": 462.5526165255191,
+      "proxyPoint": {
+        "x": -8.426441926741973,
+        "y": 0.07862546002463316
+      }
+    },
+    {
+      "time": 21.343333333330065,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 145.80974757923542,
+      "relativeSpeedAtProxyPoint": 462.3090291704707,
+      "proxyPoint": {
+        "x": -8.530266805281371,
+        "y": 0.11429677685614845
+      }
+    },
+    {
+      "time": 21.34499999999673,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 145.31926651425314,
+      "relativeSpeedAtProxyPoint": 442.5563829781801,
+      "proxyPoint": {
+        "x": -8.63424698344943,
+        "y": 0.15091713266532145
+      }
+    },
+    {
+      "time": 21.346666666663396,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 144.36790644575103,
+      "relativeSpeedAtProxyPoint": 400.81083558896324,
+      "proxyPoint": {
+        "x": -8.738707681825872,
+        "y": 0.1882543789748102
+      }
+    },
+    {
+      "time": 21.34833333333006,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 143.03137068269166,
+      "relativeSpeedAtProxyPoint": 337.5017139391198,
+      "proxyPoint": {
+        "x": -8.84396088647054,
+        "y": 0.22601862710946286
+      }
+    },
+    {
+      "time": 21.364999999996712,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 306.4853039701759,
+      "relativeSpeedAtProxyPoint": 352.6785894060734,
+      "proxyPoint": {
+        "x": -17.572735713919382,
+        "y": 0.9351034732960251
+      }
+    },
+    {
+      "time": 21.366666666663377,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 166.02279190395572,
+      "relativeSpeedAtProxyPoint": 118.77078585790895,
+      "proxyPoint": {
+        "x": -17.835262913791013,
+        "y": 0.8509454159410628
+      }
+    },
+    {
+      "time": 21.368333333330042,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 173.12674433976213,
+      "relativeSpeedAtProxyPoint": 205.0306842272303,
+      "proxyPoint": {
+        "x": -17.833915520555063,
+        "y": 1.0087968187852596
+      }
+    },
+    {
+      "time": 21.369999999996708,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 174.8759739311458,
+      "relativeSpeedAtProxyPoint": 275.26914565939245,
+      "proxyPoint": {
+        "x": -17.872513954517707,
+        "y": 1.2162080573946892
+      }
+    },
+    {
+      "time": 21.371666666663373,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 120.55899809187423,
+      "relativeSpeedAtProxyPoint": 242.18208972168645,
+      "proxyPoint": {
+        "x": -21.405964767456368,
+        "y": 4.355278093299887
+      }
+    },
+    {
+      "time": 21.373333333330038,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 113.59437366575999,
+      "relativeSpeedAtProxyPoint": 285.5392878502326,
+      "proxyPoint": {
+        "x": -21.506448293171697,
+        "y": 4.379401909667312
+      }
+    },
+    {
+      "time": 21.50333333332992,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 56.031904024590936,
+      "relativeSpeedAtProxyPoint": 93.79659706984206,
+      "proxyPoint": {
+        "x": -7.012473228290219,
+        "y": 0.22764279252555236
+      }
+    },
+    {
+      "time": 21.504999999996585,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 54.926147543774285,
+      "relativeSpeedAtProxyPoint": 190.22711052368663,
+      "proxyPoint": {
+        "x": -6.950049264203244,
+        "y": 0.2095139814572323
+      }
+    },
+    {
+      "time": 21.50666666666325,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 54.4266748234838,
+      "relativeSpeedAtProxyPoint": 233.49897958796168,
+      "proxyPoint": {
+        "x": -7.12864516886566,
+        "y": 0.19018831877651554
+      }
+    },
+    {
+      "time": 21.508333333329915,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 54.06498368707011,
+      "relativeSpeedAtProxyPoint": 280.62146395182884,
+      "proxyPoint": {
+        "x": -7.0853115231602715,
+        "y": 0.16554469194458285
+      }
+    },
+    {
+      "time": 21.50999999999658,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 53.89439575301869,
+      "relativeSpeedAtProxyPoint": 324.7749308191829,
+      "proxyPoint": {
+        "x": -7.041421327100579,
+        "y": 0.13868441446712296
+      }
+    },
+    {
+      "time": 21.511666666663245,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 53.96229187917547,
+      "relativeSpeedAtProxyPoint": 365.2421217195184,
+      "proxyPoint": {
+        "x": -6.996451876709671,
+        "y": 0.10973989365423145
+      }
+    },
+    {
+      "time": 21.51333333332991,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 46.65767455468924,
+      "relativeSpeedAtProxyPoint": 49.37016644611238,
+      "proxyPoint": {
+        "x": -6.951033047232158,
+        "y": 0.08646750143821041
+      }
+    },
+    {
+      "time": 21.514999999996576,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 45.93134663597523,
+      "relativeSpeedAtProxyPoint": 48.81935772341242,
+      "proxyPoint": {
+        "x": -6.91333484597817,
+        "y": 0.09391604254589545
+      }
+    },
+    {
+      "time": 21.51666666666324,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 45.32908484256965,
+      "relativeSpeedAtProxyPoint": 73.46673609006348,
+      "proxyPoint": {
+        "x": -6.875479708925013,
+        "y": 0.09885264154677001
+      }
+    },
+    {
+      "time": 21.518333333329906,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 44.865166770167605,
+      "relativeSpeedAtProxyPoint": 107.76491857498573,
+      "proxyPoint": {
+        "x": -6.8373332370483695,
+        "y": 0.10124239162921778
+      }
+    },
+    {
+      "time": 21.51999999999657,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 44.55374944651942,
+      "relativeSpeedAtProxyPoint": 145.26006064650053,
+      "proxyPoint": {
+        "x": -6.7987092317716815,
+        "y": 0.10115071381897675
+      }
+    },
+    {
+      "time": 21.521666666663236,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 41.0759623522794,
+      "relativeSpeedAtProxyPoint": 319.60280529865946,
+      "proxyPoint": {
+        "x": -6.758713065244592,
+        "y": 0.09667437703198212
+      }
+    },
+    {
+      "time": 21.5233333333299,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 34.08624679423093,
+      "relativeSpeedAtProxyPoint": 188.99024298447412,
+      "proxyPoint": {
+        "x": -6.720452367802409,
+        "y": 0.08598903664129925
+      }
+    },
+    {
+      "time": 21.524999999996567,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 34.35890908814919,
+      "relativeSpeedAtProxyPoint": 215.90818375788257,
+      "proxyPoint": {
+        "x": -6.689850871895942,
+        "y": 0.08976066016944481
+      }
+    },
+    {
+      "time": 21.526666666663232,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 34.948910016813635,
+      "relativeSpeedAtProxyPoint": 242.4193597708116,
+      "proxyPoint": {
+        "x": -6.6574873836971165,
+        "y": 0.09164178143117377
+      }
+    },
+    {
+      "time": 21.528333333329897,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 35.8459252157861,
+      "relativeSpeedAtProxyPoint": 268.224720122584,
+      "proxyPoint": {
+        "x": -6.62306792177651,
+        "y": 0.09195195018086053
+      }
+    },
+    {
+      "time": 21.529999999996562,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 37.02849442022051,
+      "relativeSpeedAtProxyPoint": 293.0759663125495,
+      "proxyPoint": {
+        "x": -6.5863141287031794,
+        "y": 0.0909696927362704
+      }
+    },
+    {
+      "time": 21.531666666663227,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 38.46535846680468,
+      "relativeSpeedAtProxyPoint": 316.78783784428487,
+      "proxyPoint": {
+        "x": -6.546977381673514,
+        "y": 0.08906893155788914
+      }
+    },
+    {
+      "time": 21.533333333329892,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 40.11753091610542,
+      "relativeSpeedAtProxyPoint": 339.2537129564544,
+      "proxyPoint": {
+        "x": -6.5048530078715885,
+        "y": 0.08667819902437557
+      }
+    },
+    {
+      "time": 21.534999999996558,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 41.94060883941016,
+      "relativeSpeedAtProxyPoint": 360.46065224774827,
+      "proxyPoint": {
+        "x": -6.459793287935099,
+        "y": 0.08419285105158689
+      }
+    },
+    {
+      "time": 21.536666666663223,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 43.88700449578468,
+      "relativeSpeedAtProxyPoint": 380.5003489576914,
+      "proxyPoint": {
+        "x": -6.411717971495364,
+        "y": 0.08214112292040363
+      }
+    },
+    {
+      "time": 21.538333333329888,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 45.90783842622922,
+      "relativeSpeedAtProxyPoint": 399.5815214814627,
+      "proxyPoint": {
+        "x": -6.360621419834388,
+        "y": 0.08103937258920368
+      }
+    },
+    {
+      "time": 21.539999999996553,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 47.95425992975809,
+      "relativeSpeedAtProxyPoint": 418.0431542042946,
+      "proxyPoint": {
+        "x": -6.306576124277399,
+        "y": 0.08141257375828173
+      }
+    },
+    {
+      "time": 21.541666666663218,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 49.977941973338666,
+      "relativeSpeedAtProxyPoint": 436.37613845092875,
+      "proxyPoint": {
+        "x": -6.249733155307695,
+        "y": 0.08378715758948832
+      }
+    },
+    {
+      "time": 21.543333333329883,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 51.9303872821207,
+      "relativeSpeedAtProxyPoint": 455.2626154599568,
+      "proxyPoint": {
+        "x": -6.190321052316449,
+        "y": 0.08868854292152631
+      }
+    },
+    {
+      "time": 21.54499999999655,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 53.76038812049257,
+      "relativeSpeedAtProxyPoint": 475.64884590451663,
+      "proxyPoint": {
+        "x": -6.128645917181984,
+        "y": 0.09664715089917861
+      }
+    },
+    {
+      "time": 21.546666666663214,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 55.40826312781994,
+      "relativeSpeedAtProxyPoint": 498.87762693212466,
+      "proxyPoint": {
+        "x": -6.065097591223093,
+        "y": 0.10835325772223847
+      }
+    },
+    {
+      "time": 21.54833333332988,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "static",
+        "id": "world"
+      },
+      "absoluteSpeed": 56.79376299522945,
+      "relativeSpeedAtProxyPoint": 526.9386870727872,
+      "proxyPoint": {
+        "x": -6.000171415508248,
+        "y": 0.12436558455780486
+      }
+    },
+    {
+      "time": 21.60666666666316,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 53.226327561041536,
+      "relativeSpeedAtProxyPoint": 107.70703526783628,
+      "proxyPoint": {
+        "x": -14.301693110474616,
+        "y": 4.814685005979157
+      }
+    },
+    {
+      "time": 21.608333333329824,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 49.37919101178377,
+      "relativeSpeedAtProxyPoint": 96.22584079729407,
+      "proxyPoint": {
+        "x": -14.338620682148242,
+        "y": 4.824541982474825
+      }
+    },
+    {
+      "time": 21.60999999999649,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 47.454345230539246,
+      "relativeSpeedAtProxyPoint": 89.07103362952024,
+      "proxyPoint": {
+        "x": -14.411218138004633,
+        "y": 4.8005433975824925
+      }
+    },
+    {
+      "time": 21.611666666663155,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 45.5835748502374,
+      "relativeSpeedAtProxyPoint": 112.79768017663106,
+      "proxyPoint": {
+        "x": -14.431668485741046,
+        "y": 4.805640906380781
+      }
+    },
+    {
+      "time": 21.663333333329774,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 64.95337456189567,
+      "relativeSpeedAtProxyPoint": 55.53661949373529,
+      "proxyPoint": {
+        "x": -12.768146311261424,
+        "y": 6.7525827943135415
+      }
+    },
+    {
+      "time": 21.66499999999644,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 64.72398429955553,
+      "relativeSpeedAtProxyPoint": 56.69921842392202,
+      "proxyPoint": {
+        "x": -12.560014244329851,
+        "y": 6.725310969422431
+      }
+    },
+    {
+      "time": 21.666666666663104,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 28.90253314892582,
+      "relativeSpeedAtProxyPoint": 77.81963447378011,
+      "proxyPoint": {
+        "x": -13.507092357485726,
+        "y": 7.367451408685204
+      }
+    },
+    {
+      "time": 21.66833333332977,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 29.196830982417872,
+      "relativeSpeedAtProxyPoint": 73.16407795902334,
+      "proxyPoint": {
+        "x": -13.488122220266346,
+        "y": 7.394366467831716
+      }
+    },
+    {
+      "time": 21.669999999996435,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 29.542212282775644,
+      "relativeSpeedAtProxyPoint": 68.52180014441373,
+      "proxyPoint": {
+        "x": -13.468699538430739,
+        "y": 7.420920728832436
+      }
+    },
+    {
+      "time": 21.6716666666631,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 29.934730644756588,
+      "relativeSpeedAtProxyPoint": 63.9099653024785,
+      "proxyPoint": {
+        "x": -13.448801141777837,
+        "y": 7.447164006661918
+      }
+    },
+    {
+      "time": 21.673333333329765,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 30.372339880592378,
+      "relativeSpeedAtProxyPoint": 59.35317057162741,
+      "proxyPoint": {
+        "x": -13.42840344962775,
+        "y": 7.473149908318192
+      }
+    },
+    {
+      "time": 21.67499999999643,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 30.85468897634875,
+      "relativeSpeedAtProxyPoint": 54.88659384217995,
+      "proxyPoint": {
+        "x": -13.407483327376317,
+        "y": 7.498936165550987
+      }
+    },
+    {
+      "time": 21.676666666663095,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 31.382928890427085,
+      "relativeSpeedAtProxyPoint": 50.55942154498603,
+      "proxyPoint": {
+        "x": -13.386018951970359,
+        "y": 7.524584915066441
+      }
+    },
+    {
+      "time": 21.67833333332976,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 31.959532489807955,
+      "relativeSpeedAtProxyPoint": 46.43869822447548,
+      "proxyPoint": {
+        "x": -13.36399067262476,
+        "y": 7.55016292756658
+      }
+    },
+    {
+      "time": 21.679999999996426,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 32.58812049831325,
+      "relativeSpeedAtProxyPoint": 42.61328731268607,
+      "proxyPoint": {
+        "x": -13.341381872049842,
+        "y": 7.5757417941224166
+      }
+    },
+    {
+      "time": 21.68166666666309,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 33.273276564838994,
+      "relativeSpeedAtProxyPoint": 39.19655639888389,
+      "proxyPoint": {
+        "x": -13.318179856204619,
+        "y": 7.601398075423625
+      }
+    },
+    {
+      "time": 21.683333333329756,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 34.02032064388398,
+      "relativeSpeedAtProxyPoint": 36.32436752081359,
+      "proxyPoint": {
+        "x": -13.294376826761557,
+        "y": 7.627213402915151
+      }
+    },
+    {
+      "time": 21.68499999999642,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 34.8349905138346,
+      "relativeSpeedAtProxyPoint": 34.14313924376295,
+      "proxyPoint": {
+        "x": -13.269920002734596,
+        "y": 7.653274485999686
+      }
+    },
+    {
+      "time": 21.686666666663086,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.72295802291959,
+      "relativeSpeedAtProxyPoint": 32.77929005141356,
+      "proxyPoint": {
+        "x": -13.2448433343833,
+        "y": 7.679672921432437
+      }
+    },
+    {
+      "time": 21.68833333332975,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 36.68908716587832,
+      "relativeSpeedAtProxyPoint": 32.29698244040103,
+      "proxyPoint": {
+        "x": -13.219183971171741,
+        "y": 7.706504617843649
+      }
+    },
+    {
+      "time": 21.689999999996417,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 19.11882089418517,
+      "relativeSpeedAtProxyPoint": 73.99927025247747,
+      "proxyPoint": {
+        "x": -13.20558975449952,
+        "y": 7.722039183882174
+      }
+    },
+    {
+      "time": 21.69166666666308,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 21.495359738721135,
+      "relativeSpeedAtProxyPoint": 59.844713184350496,
+      "proxyPoint": {
+        "x": -13.192072126985204,
+        "y": 7.7373460436333925
+      }
+    },
+    {
+      "time": 21.693333333329747,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 11.36937870298953,
+      "relativeSpeedAtProxyPoint": 43.99196300022039,
+      "proxyPoint": {
+        "x": -13.176788091784013,
+        "y": 7.749791142032384
+      }
+    },
+    {
+      "time": 21.694999999996412,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.320230177863332,
+      "relativeSpeedAtProxyPoint": 51.69716935315475,
+      "proxyPoint": {
+        "x": -13.163620834244886,
+        "y": 7.754552796666662
+      }
+    },
+    {
+      "time": 21.696666666663077,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.272224616111826,
+      "relativeSpeedAtProxyPoint": 52.9783020895745,
+      "proxyPoint": {
+        "x": -13.150560034296142,
+        "y": 7.758593551291645
+      }
+    },
+    {
+      "time": 21.698333333329742,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.228220579772083,
+      "relativeSpeedAtProxyPoint": 54.15664269724476,
+      "proxyPoint": {
+        "x": -13.13723051353137,
+        "y": 7.76258503507812
+      }
+    },
+    {
+      "time": 21.699999999996407,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.18786342131642,
+      "relativeSpeedAtProxyPoint": 55.23839390717246,
+      "proxyPoint": {
+        "x": -13.123639279760658,
+        "y": 7.766496657458987
+      }
+    },
+    {
+      "time": 21.701666666663073,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.150722969633277,
+      "relativeSpeedAtProxyPoint": 56.23187966070044,
+      "proxyPoint": {
+        "x": -13.109793670594492,
+        "y": 7.77033484385632
+      }
+    },
+    {
+      "time": 21.703333333329738,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.116342025565705,
+      "relativeSpeedAtProxyPoint": 57.14639704581863,
+      "proxyPoint": {
+        "x": -13.09570087345892,
+        "y": 7.77406080063349
+      }
+    },
+    {
+      "time": 21.704999999996403,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.084304336070273,
+      "relativeSpeedAtProxyPoint": 57.99212715485357,
+      "proxyPoint": {
+        "x": -13.081367427760966,
+        "y": 7.777629822363525
+      }
+    },
+    {
+      "time": 21.706666666663068,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.054327087224426,
+      "relativeSpeedAtProxyPoint": 58.78004231946305,
+      "proxyPoint": {
+        "x": -13.066798719797466,
+        "y": 7.781018134549294
+      }
+    },
+    {
+      "time": 21.708333333329733,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.026385324516733,
+      "relativeSpeedAtProxyPoint": 59.52118287151153,
+      "proxyPoint": {
+        "x": -13.051998483243938,
+        "y": 7.784203499302844
+      }
+    },
+    {
+      "time": 21.7099999999964,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.00087812866999,
+      "relativeSpeedAtProxyPoint": 60.22599633618521,
+      "proxyPoint": {
+        "x": -13.03696832237576,
+        "y": 7.787165055578601
+      }
+    },
+    {
+      "time": 21.711666666663064,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.978847630017434,
+      "relativeSpeedAtProxyPoint": 60.90349767145207,
+      "proxyPoint": {
+        "x": -13.021707283080532,
+        "y": 7.789883166486016
+      }
+    },
+    {
+      "time": 21.71333333332973,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.962259282418469,
+      "relativeSpeedAtProxyPoint": 61.56020117341082,
+      "proxyPoint": {
+        "x": -13.006211510008434,
+        "y": 7.792339303148091
+      }
+    },
+    {
+      "time": 21.714999999996394,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.954339895833966,
+      "relativeSpeedAtProxyPoint": 62.19879070837378,
+      "proxyPoint": {
+        "x": -12.990474048484227,
+        "y": 7.79451600480377
+      }
+    },
+    {
+      "time": 21.71666666666306,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.959940033333082,
+      "relativeSpeedAtProxyPoint": 62.81655033754669,
+      "proxyPoint": {
+        "x": -12.974484877260021,
+        "y": 7.796396965767993
+      }
+    },
+    {
+      "time": 21.718333333329724,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.985829080921452,
+      "relativeSpeedAtProxyPoint": 66.84734851213078,
+      "proxyPoint": {
+        "x": -13.123567118943072,
+        "y": 7.651310566389107
+      }
+    },
+    {
+      "time": 21.71999999999639,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 10.040741387637121,
+      "relativeSpeedAtProxyPoint": 68.00756022032255,
+      "proxyPoint": {
+        "x": -13.11827381341942,
+        "y": 7.666238199414062
+      }
+    },
+    {
+      "time": 21.721666666663054,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 26.143191097643502,
+      "relativeSpeedAtProxyPoint": 55.188180815143625,
+      "proxyPoint": {
+        "x": -13.113892464232414,
+        "y": 7.680254241026864
+      }
+    },
+    {
+      "time": 21.72333333332972,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.32767150195822,
+      "relativeSpeedAtProxyPoint": 44.42898966177667,
+      "proxyPoint": {
+        "x": -13.126596919129039,
+        "y": 7.687012461463485
+      }
+    },
+    {
+      "time": 21.724999999996385,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.303431759186154,
+      "relativeSpeedAtProxyPoint": 42.71442055554297,
+      "proxyPoint": {
+        "x": -13.146874295390901,
+        "y": 7.694321100336566
+      }
+    },
+    {
+      "time": 21.72666666666305,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.3222865576208,
+      "relativeSpeedAtProxyPoint": 41.15789305770956,
+      "proxyPoint": {
+        "x": -13.166736437509934,
+        "y": 7.701696679443909
+      }
+    },
+    {
+      "time": 21.728333333329715,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 34.11770197696435,
+      "relativeSpeedAtProxyPoint": 42.61378015832653,
+      "proxyPoint": {
+        "x": -13.18604469929982,
+        "y": 7.708039971340163
+      }
+    },
+    {
+      "time": 21.72999999999638,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 34.59488945590256,
+      "relativeSpeedAtProxyPoint": 44.038596898199266,
+      "proxyPoint": {
+        "x": -13.20078219321776,
+        "y": 7.698304636972443
+      }
+    },
+    {
+      "time": 21.731666666663045,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.064137720460906,
+      "relativeSpeedAtProxyPoint": 45.99947369520551,
+      "proxyPoint": {
+        "x": -13.215888432349601,
+        "y": 7.68830836893688
+      }
+    },
+    {
+      "time": 21.73333333332971,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.501827936874925,
+      "relativeSpeedAtProxyPoint": 47.93948938703648,
+      "proxyPoint": {
+        "x": -13.23133064216346,
+        "y": 7.678024762785796
+      }
+    },
+    {
+      "time": 21.734999999996376,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.903226799662576,
+      "relativeSpeedAtProxyPoint": 43.359900426737084,
+      "proxyPoint": {
+        "x": -13.130567559438022,
+        "y": 6.958728154006382
+      }
+    },
+    {
+      "time": 21.73666666666304,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 37.26674470625728,
+      "relativeSpeedAtProxyPoint": 44.327644189356874,
+      "proxyPoint": {
+        "x": -13.152429369894069,
+        "y": 6.947205893583166
+      }
+    },
+    {
+      "time": 21.738333333329706,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 37.79798534567104,
+      "relativeSpeedAtProxyPoint": 44.9982360083917,
+      "proxyPoint": {
+        "x": -13.174842903887509,
+        "y": 6.935575116522829
+      }
+    },
+    {
+      "time": 21.73999999999637,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 38.301502970262476,
+      "relativeSpeedAtProxyPoint": 45.641735698504526,
+      "proxyPoint": {
+        "x": -13.197647979870009,
+        "y": 6.923768310905298
+      }
+    },
+    {
+      "time": 21.741666666663036,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 38.77594591113496,
+      "relativeSpeedAtProxyPoint": 46.25382932118791,
+      "proxyPoint": {
+        "x": -13.220809646611244,
+        "y": 6.911785199216959
+      }
+    },
+    {
+      "time": 21.7433333333297,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.21927607233489,
+      "relativeSpeedAtProxyPoint": 46.829994209063535,
+      "proxyPoint": {
+        "x": -13.244291295871108,
+        "y": 6.899626301660529
+      }
+    },
+    {
+      "time": 21.744999999996367,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.172802466856766,
+      "relativeSpeedAtProxyPoint": 47.49655498670826,
+      "proxyPoint": {
+        "x": -13.267563469450442,
+        "y": 6.885629920024266
+      }
+    },
+    {
+      "time": 21.74666666666303,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.40719388774733,
+      "relativeSpeedAtProxyPoint": 47.850594225495094,
+      "proxyPoint": {
+        "x": -13.289772039108174,
+        "y": 6.869158456344077
+      }
+    },
+    {
+      "time": 21.748333333329697,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.57815526172719,
+      "relativeSpeedAtProxyPoint": 48.120689915144446,
+      "proxyPoint": {
+        "x": -13.311903588900169,
+        "y": 6.852321726758808
+      }
+    },
+    {
+      "time": 21.749999999996362,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.68174048511273,
+      "relativeSpeedAtProxyPoint": 48.303948705073914,
+      "proxyPoint": {
+        "x": -13.33387225121612,
+        "y": 6.835146610006234
+      }
+    },
+    {
+      "time": 21.751666666663027,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.713589093237324,
+      "relativeSpeedAtProxyPoint": 48.39871685225697,
+      "proxyPoint": {
+        "x": -13.35558675449964,
+        "y": 6.81766707416046
+      }
+    },
+    {
+      "time": 21.753333333329692,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.668724905295036,
+      "relativeSpeedAtProxyPoint": 48.40476454808969,
+      "proxyPoint": {
+        "x": -13.376950192965387,
+        "y": 6.799925562842912
+      }
+    },
+    {
+      "time": 21.754999999996357,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.54132323323903,
+      "relativeSpeedAtProxyPoint": 48.32356896923186,
+      "proxyPoint": {
+        "x": -13.397859800824516,
+        "y": 6.7819746865558415
+      }
+    },
+    {
+      "time": 21.756666666663023,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.324514664432904,
+      "relativeSpeedAtProxyPoint": 48.1588155706934,
+      "proxyPoint": {
+        "x": -13.418206605604976,
+        "y": 6.763879289943568
+      }
+    },
+    {
+      "time": 21.758333333329688,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.01007232583615,
+      "relativeSpeedAtProxyPoint": 47.91708742515291,
+      "proxyPoint": {
+        "x": -13.437875064180353,
+        "y": 6.745719026404503
+      }
+    },
+    {
+      "time": 21.759999999996353,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 38.58808404387419,
+      "relativeSpeedAtProxyPoint": 47.60884320470835,
+      "proxyPoint": {
+        "x": -13.456742774456645,
+        "y": 6.727591572384711
+      }
+    },
+    {
+      "time": 21.761666666663018,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 38.046673779705195,
+      "relativeSpeedAtProxyPoint": 47.24973419451311,
+      "proxyPoint": {
+        "x": -13.474680438439947,
+        "y": 6.70961661482109
+      }
+    },
+    {
+      "time": 21.763333333329683,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 37.37189758964849,
+      "relativeSpeedAtProxyPoint": 46.86221774418611,
+      "proxyPoint": {
+        "x": -13.491552448920915,
+        "y": 6.691940669704449
+      }
+    },
+    {
+      "time": 21.76499999999635,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 36.54803040194346,
+      "relativeSpeedAtProxyPoint": 46.477048302889784,
+      "proxyPoint": {
+        "x": -13.507218678240491,
+        "y": 6.674742662833606
+      }
+    },
+    {
+      "time": 21.766666666663014,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.857885397221,
+      "relativeSpeedAtProxyPoint": 47.74231689727942,
+      "proxyPoint": {
+        "x": -13.526886415788367,
+        "y": 6.662402435702627
+      }
+    },
+    {
+      "time": 21.76833333332968,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.57744573558157,
+      "relativeSpeedAtProxyPoint": 47.602169103334994,
+      "proxyPoint": {
+        "x": -13.550808203506374,
+        "y": 6.654585473422729
+      }
+    },
+    {
+      "time": 21.769999999996344,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 39.223860254193326,
+      "relativeSpeedAtProxyPoint": 47.39053719322751,
+      "proxyPoint": {
+        "x": -13.57455663133298,
+        "y": 6.64766885782239
+      }
+    },
+    {
+      "time": 21.77166666666301,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 38.78982221218419,
+      "relativeSpeedAtProxyPoint": 47.09538602356644,
+      "proxyPoint": {
+        "x": -13.598063144873086,
+        "y": 6.641732132504812
+      }
+    },
+    {
+      "time": 21.773333333329674,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 38.268940957037856,
+      "relativeSpeedAtProxyPoint": 46.70351007150185,
+      "proxyPoint": {
+        "x": -13.621250737933638,
+        "y": 6.636852843134446
+      }
+    },
+    {
+      "time": 21.77499999999634,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 37.6565587189253,
+      "relativeSpeedAtProxyPoint": 46.2013940803782,
+      "proxyPoint": {
+        "x": -13.644033199005216,
+        "y": 6.6330956459006405
+      }
+    },
+    {
+      "time": 21.776666666663004,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 36.951041595090906,
+      "relativeSpeedAtProxyPoint": 45.57718969919939,
+      "proxyPoint": {
+        "x": -13.666315398650053,
+        "y": 6.63058309809252
+      }
+    },
+    {
+      "time": 21.77833333332967,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 36.155122467935016,
+      "relativeSpeedAtProxyPoint": 44.82163857080326,
+      "proxyPoint": {
+        "x": -13.687994779978403,
+        "y": 6.62935328245619
+      }
+    },
+    {
+      "time": 21.779999999996335,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 35.276973296269695,
+      "relativeSpeedAtProxyPoint": 43.930519274258266,
+      "proxyPoint": {
+        "x": -13.709414620097483,
+        "y": 6.629457354299559
+      }
+    },
+    {
+      "time": 21.781666666663,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 34.33061205754563,
+      "relativeSpeedAtProxyPoint": 42.907377782316196,
+      "proxyPoint": {
+        "x": -13.730010442368743,
+        "y": 6.630927609357343
+      }
+    },
+    {
+      "time": 21.783333333329665,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 33.33532538283028,
+      "relativeSpeedAtProxyPoint": 41.76305138106953,
+      "proxyPoint": {
+        "x": -13.749676840371633,
+        "y": 6.633774065476704
+      }
+    },
+    {
+      "time": 21.78499999999633,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 32.31385146819877,
+      "relativeSpeedAtProxyPoint": 40.51547509771877,
+      "proxyPoint": {
+        "x": -13.768320361242788,
+        "y": 6.637982875625298
+      }
+    },
+    {
+      "time": 21.786666666662995,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 31.286389818003972,
+      "relativeSpeedAtProxyPoint": 39.18395704166896,
+      "proxyPoint": {
+        "x": -13.785863708484234,
+        "y": 6.64351750305376
+      }
+    },
+    {
+      "time": 21.78833333332966,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 30.276073119856882,
+      "relativeSpeedAtProxyPoint": 37.794891367080076,
+      "proxyPoint": {
+        "x": -13.802239041095469,
+        "y": 6.650319824455806
+      }
+    },
+    {
+      "time": 21.789999999996326,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 29.305073993417107,
+      "relativeSpeedAtProxyPoint": 36.377467915009,
+      "proxyPoint": {
+        "x": -13.817396550426615,
+        "y": 6.6583154079933315
+      }
+    },
+    {
+      "time": 21.79166666666299,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 28.393886936496454,
+      "relativeSpeedAtProxyPoint": 34.95448159367264,
+      "proxyPoint": {
+        "x": -13.831309739793856,
+        "y": 6.667420386672085
+      }
+    },
+    {
+      "time": 21.793333333329656,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 27.575827372542868,
+      "relativeSpeedAtProxyPoint": 33.52742041601359,
+      "proxyPoint": {
+        "x": -13.844005261233432,
+        "y": 6.677563887256555
+      }
+    },
+    {
+      "time": 21.79499999999632,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 26.85494672147495,
+      "relativeSpeedAtProxyPoint": 32.120650601929306,
+      "proxyPoint": {
+        "x": -13.855556361453305,
+        "y": 6.688689900045858
+      }
+    },
+    {
+      "time": 21.796666666662986,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 26.22601639298876,
+      "relativeSpeedAtProxyPoint": 30.764464055385556,
+      "proxyPoint": {
+        "x": -13.866036669714179,
+        "y": 6.700737992265788
+      }
+    },
+    {
+      "time": 21.79833333332965,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 25.679740160604798,
+      "relativeSpeedAtProxyPoint": 29.484824241568177,
+      "proxyPoint": {
+        "x": -13.875513311165966,
+        "y": 6.71364663520499
+      }
+    },
+    {
+      "time": 21.799999999996317,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 25.205128779429412,
+      "relativeSpeedAtProxyPoint": 28.302363483424443,
+      "proxyPoint": {
+        "x": -13.884043617022202,
+        "y": 6.7273567767348075
+      }
+    },
+    {
+      "time": 21.80166666666298,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 24.79114268300197,
+      "relativeSpeedAtProxyPoint": 27.232225054470625,
+      "proxyPoint": {
+        "x": -13.891673537093302,
+        "y": 6.741813890258681
+      }
+    },
+    {
+      "time": 21.803333333329647,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 24.427629243921142,
+      "relativeSpeedAtProxyPoint": 26.28439278572043,
+      "proxyPoint": {
+        "x": -13.898437252454553,
+        "y": 6.756968788655995
+      }
+    },
+    {
+      "time": 21.804999999996312,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 24.105737340553162,
+      "relativeSpeedAtProxyPoint": 25.464225429543934,
+      "proxyPoint": {
+        "x": -13.904357524233724,
+        "y": 6.77277756576424
+      }
+    },
+    {
+      "time": 21.806666666662977,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 22.595986442700593,
+      "relativeSpeedAtProxyPoint": 29.068834031908466,
+      "proxyPoint": {
+        "x": -13.910193304498163,
+        "y": 6.789153474246409
+      }
+    },
+    {
+      "time": 21.808333333329642,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 22.22911674967416,
+      "relativeSpeedAtProxyPoint": 29.141425406349683,
+      "proxyPoint": {
+        "x": -13.916992567520339,
+        "y": 6.8060370670463595
+      }
+    },
+    {
+      "time": 21.809999999996307,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 21.86751878175114,
+      "relativeSpeedAtProxyPoint": 29.274142568735382,
+      "proxyPoint": {
+        "x": -13.92279423236957,
+        "y": 6.823568122467368
+      }
+    },
+    {
+      "time": 21.811666666662973,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 21.508876335306187,
+      "relativeSpeedAtProxyPoint": 29.44886912765655,
+      "proxyPoint": {
+        "x": -13.927526624572689,
+        "y": 6.841711614949261
+      }
+    },
+    {
+      "time": 21.813333333329638,
+      "a": {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 3.4715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      "b": {
+        "role": "arm",
+        "id": "beam"
+      },
+      "absoluteSpeed": 73.76097837296811,
+      "relativeSpeedAtProxyPoint": 340.9690823321957,
+      "proxyPoint": {
+        "x": -12.567152544394062,
+        "y": 8.896998719151888
+      }
+    },
+    {
+      "time": 21.814999999996303,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 20.802731384331146,
+      "relativeSpeedAtProxyPoint": 29.849779277029036,
+      "proxyPoint": {
+        "x": -13.9334623656468,
+        "y": 6.879661329155017
+      }
+    },
+    {
+      "time": 21.816666666662968,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 20.460309926987872,
+      "relativeSpeedAtProxyPoint": 30.031219619623865,
+      "proxyPoint": {
+        "x": -13.934492959627931,
+        "y": 6.899356569911711
+      }
+    },
+    {
+      "time": 21.818333333329633,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 20.131472397949157,
+      "relativeSpeedAtProxyPoint": 30.14729620837676,
+      "proxyPoint": {
+        "x": -13.93481444683976,
+        "y": 6.919567314171243
+      }
+    },
+    {
+      "time": 21.8199999999963,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 19.82343531443744,
+      "relativeSpeedAtProxyPoint": 30.201417352020222,
+      "proxyPoint": {
+        "x": -13.932935057867764,
+        "y": 6.939949610987121
+      }
+    },
+    {
+      "time": 21.821666666662964,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 19.544799699828815,
+      "relativeSpeedAtProxyPoint": 30.148178956817425,
+      "proxyPoint": {
+        "x": -13.929398965621436,
+        "y": 6.960528545464054
+      }
+    },
+    {
+      "time": 21.82333333332963,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 19.304517759228595,
+      "relativeSpeedAtProxyPoint": 29.956922613328757,
+      "proxyPoint": {
+        "x": -13.924233992276498,
+        "y": 6.98119007997503
+      }
+    },
+    {
+      "time": 21.824999999996294,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 19.110380448233652,
+      "relativeSpeedAtProxyPoint": 24.234024553703783,
+      "proxyPoint": {
+        "x": -13.831546988971096,
+        "y": 7.716095846368548
+      }
+    },
+    {
+      "time": 21.82666666666296,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 18.96737530724176,
+      "relativeSpeedAtProxyPoint": 24.6582903897772,
+      "proxyPoint": {
+        "x": -13.820369074826601,
+        "y": 7.736148907106756
+      }
+    },
+    {
+      "time": 21.828333333329624,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 18.876474441097326,
+      "relativeSpeedAtProxyPoint": 24.838067482007197,
+      "proxyPoint": {
+        "x": -13.807581570046468,
+        "y": 7.755902952662322
+      }
+    },
+    {
+      "time": 21.82999999999629,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 18.991891052904744,
+      "relativeSpeedAtProxyPoint": 24.99917337523159,
+      "proxyPoint": {
+        "x": -13.793248956640161,
+        "y": 7.7752584469361885
+      }
+    },
+    {
+      "time": 21.831666666662954,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.510033299032626,
+      "relativeSpeedAtProxyPoint": 9.436158902541692,
+      "proxyPoint": {
+        "x": -13.780619542497092,
+        "y": 7.778049040801516
+      }
+    },
+    {
+      "time": 21.83333333332962,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.679633176313762,
+      "relativeSpeedAtProxyPoint": 9.161485469223027,
+      "proxyPoint": {
+        "x": -13.76823082342192,
+        "y": 7.777055901167255
+      }
+    },
+    {
+      "time": 21.834999999996285,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.850096909273031,
+      "relativeSpeedAtProxyPoint": 8.889008368200878,
+      "proxyPoint": {
+        "x": -13.755810014461963,
+        "y": 7.776237139040205
+      }
+    },
+    {
+      "time": 21.83666666666295,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.021194872030043,
+      "relativeSpeedAtProxyPoint": 8.620151357200342,
+      "proxyPoint": {
+        "x": -13.743357781225447,
+        "y": 7.775596795857424
+      }
+    },
+    {
+      "time": 21.838333333329615,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.192704928478278,
+      "relativeSpeedAtProxyPoint": 8.356538320784058,
+      "proxyPoint": {
+        "x": -13.73087460912555,
+        "y": 7.77513854592211
+      }
+    },
+    {
+      "time": 21.83999999999628,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.364410312866723,
+      "relativeSpeedAtProxyPoint": 8.100012705568114,
+      "proxyPoint": {
+        "x": -13.718360788371541,
+        "y": 7.774865685520969
+      }
+    },
+    {
+      "time": 21.841666666662945,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.536098442592434,
+      "relativeSpeedAtProxyPoint": 7.852652240647042,
+      "proxyPoint": {
+        "x": -13.705816400928118,
+        "y": 7.774781121055563
+      }
+    },
+    {
+      "time": 21.84333333332961,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.709012897284322,
+      "relativeSpeedAtProxyPoint": 7.550236703676359,
+      "proxyPoint": {
+        "x": -13.693238710149851,
+        "y": 7.7748865240955745
+      }
+    },
+    {
+      "time": 21.844999999996276,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.882642633733365,
+      "relativeSpeedAtProxyPoint": 7.245350798388173,
+      "proxyPoint": {
+        "x": -13.680555156202248,
+        "y": 7.7751608455474575
+      }
+    },
+    {
+      "time": 21.84666666666294,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.054052869240617,
+      "relativeSpeedAtProxyPoint": 7.017463057438907,
+      "proxyPoint": {
+        "x": -13.667819552278681,
+        "y": 7.775623924129048
+      }
+    },
+    {
+      "time": 21.848333333329606,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.224613605607583,
+      "relativeSpeedAtProxyPoint": 6.813463707238278,
+      "proxyPoint": {
+        "x": -13.655032139187158,
+        "y": 7.776277403667712
+      }
+    },
+    {
+      "time": 21.84999999999627,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.394126396790271,
+      "relativeSpeedAtProxyPoint": 6.637288872327173,
+      "proxyPoint": {
+        "x": -13.642190945353773,
+        "y": 7.777121756992536
+      }
+    },
+    {
+      "time": 21.851666666662936,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.56239144839093,
+      "relativeSpeedAtProxyPoint": 6.492849905166011,
+      "proxyPoint": {
+        "x": -13.629293600808897,
+        "y": 7.778156849379138
+      }
+    },
+    {
+      "time": 21.8533333333296,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.729205288103151,
+      "relativeSpeedAtProxyPoint": 6.383796300142613,
+      "proxyPoint": {
+        "x": -13.616337337641847,
+        "y": 7.779381897115667
+      }
+    },
+    {
+      "time": 21.854999999996267,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.894358393895094,
+      "relativeSpeedAtProxyPoint": 6.313230230734022,
+      "proxyPoint": {
+        "x": -13.603318997619835,
+        "y": 7.780795421920664
+      }
+    },
+    {
+      "time": 21.85666666666293,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.057632761374492,
+      "relativeSpeedAtProxyPoint": 6.283403903062585,
+      "proxyPoint": {
+        "x": -13.590235048311877,
+        "y": 7.782395201215056
+      }
+    },
+    {
+      "time": 21.858333333329597,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.218799401434553,
+      "relativeSpeedAtProxyPoint": 6.2954453412923,
+      "proxyPoint": {
+        "x": -13.577081609214542,
+        "y": 7.784178214447708
+      }
+    },
+    {
+      "time": 21.859999999996262,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.377615771133656,
+      "relativeSpeedAtProxyPoint": 6.34916143722154,
+      "proxyPoint": {
+        "x": -13.563854489513762,
+        "y": 7.786140585937732
+      }
+    },
+    {
+      "time": 21.861666666662927,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.533823155710716,
+      "relativeSpeedAtProxyPoint": 6.44295421463091,
+      "proxyPoint": {
+        "x": -13.550549239215034,
+        "y": 7.788277525037335
+      }
+    },
+    {
+      "time": 21.863333333329592,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.18637045299729,
+      "relativeSpeedAtProxyPoint": 6.685873686427186,
+      "proxyPoint": {
+        "x": -13.537231156914697,
+        "y": 7.79042657129153
+      }
+    },
+    {
+      "time": 21.864999999996257,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.482369542534134,
+      "relativeSpeedAtProxyPoint": 5.1800307409225175,
+      "proxyPoint": {
+        "x": -13.523935044696028,
+        "y": 7.79232778268384
+      }
+    },
+    {
+      "time": 21.866666666662923,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.59584795531868,
+      "relativeSpeedAtProxyPoint": 5.129028679207471,
+      "proxyPoint": {
+        "x": -13.509782484209701,
+        "y": 7.793320461487967
+      }
+    },
+    {
+      "time": 21.868333333329588,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.716316804196497,
+      "relativeSpeedAtProxyPoint": 5.055217795826441,
+      "proxyPoint": {
+        "x": -13.49552019583393,
+        "y": 7.794329047834237
+      }
+    },
+    {
+      "time": 21.869999999996253,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.83710013494558,
+      "relativeSpeedAtProxyPoint": 5.00897775694328,
+      "proxyPoint": {
+        "x": -13.481144822602847,
+        "y": 7.791734533696372
+      }
+    },
+    {
+      "time": 21.871666666662918,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.958056086255045,
+      "relativeSpeedAtProxyPoint": 4.959873919469606,
+      "proxyPoint": {
+        "x": -13.466657739592723,
+        "y": 7.7926322686375435
+      }
+    },
+    {
+      "time": 21.873333333329583,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.078958593510462,
+      "relativeSpeedAtProxyPoint": 4.9199135638161735,
+      "proxyPoint": {
+        "x": -13.45206050622134,
+        "y": 7.793540070807218
+      }
+    },
+    {
+      "time": 21.87499999999625,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.199496779397325,
+      "relativeSpeedAtProxyPoint": 5.806098591622349,
+      "proxyPoint": {
+        "x": -13.225867454931265,
+        "y": 7.729488902636305
+      }
+    },
+    {
+      "time": 21.876666666662913,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.31928688231481,
+      "relativeSpeedAtProxyPoint": 5.819650079763276,
+      "proxyPoint": {
+        "x": -13.211877671506844,
+        "y": 7.727806725495553
+      }
+    },
+    {
+      "time": 21.87833333332958,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.43787094478292,
+      "relativeSpeedAtProxyPoint": 5.827678356491398,
+      "proxyPoint": {
+        "x": -13.197825134386626,
+        "y": 7.726112734857836
+      }
+    },
+    {
+      "time": 21.879999999996244,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.554728894305347,
+      "relativeSpeedAtProxyPoint": 5.8259806238741945,
+      "proxyPoint": {
+        "x": -13.183712364805178,
+        "y": 7.724408964455764
+      }
+    },
+    {
+      "time": 21.88166666666291,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.669289535042529,
+      "relativeSpeedAtProxyPoint": 5.810504824118157,
+      "proxyPoint": {
+        "x": -13.169542063674347,
+        "y": 7.72269751588928
+      }
+    },
+    {
+      "time": 21.883333333329574,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.780942432341384,
+      "relativeSpeedAtProxyPoint": 5.777481459669015,
+      "proxyPoint": {
+        "x": -13.155317150000213,
+        "y": 7.720980528249509
+      }
+    },
+    {
+      "time": 21.88499999999624,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.889050276853945,
+      "relativeSpeedAtProxyPoint": 5.723539280444697,
+      "proxyPoint": {
+        "x": -13.141040791896827,
+        "y": 7.719260148326635
+      }
+    },
+    {
+      "time": 21.886666666662904,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.992961144688373,
+      "relativeSpeedAtProxyPoint": 5.645806054544909,
+      "proxyPoint": {
+        "x": -13.126716429485064,
+        "y": 7.717538500649232
+      }
+    },
+    {
+      "time": 21.88833333332957,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.09202008557003,
+      "relativeSpeedAtProxyPoint": 5.541996209806541,
+      "proxyPoint": {
+        "x": -13.112347789215837,
+        "y": 7.715817656275976
+      }
+    },
+    {
+      "time": 21.889999999996235,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.184969289099167,
+      "relativeSpeedAtProxyPoint": 5.411098840061226,
+      "proxyPoint": {
+        "x": -13.09793892687366,
+        "y": 7.714099518821328
+      }
+    },
+    {
+      "time": 21.8916666666629,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.266672716813542,
+      "relativeSpeedAtProxyPoint": 5.257145853335552,
+      "proxyPoint": {
+        "x": -13.083495344691544,
+        "y": 7.712383652658396
+      }
+    },
+    {
+      "time": 21.893333333329565,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.335858356694372,
+      "relativeSpeedAtProxyPoint": 5.081580987624081,
+      "proxyPoint": {
+        "x": -13.0690241409985,
+        "y": 7.7106670329748885
+      }
+    },
+    {
+      "time": 21.89499999999623,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.392249307522638,
+      "relativeSpeedAtProxyPoint": 4.885909632638623,
+      "proxyPoint": {
+        "x": -13.054532724764822,
+        "y": 7.708946434749396
+      }
+    },
+    {
+      "time": 21.896666666662895,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.435662356272742,
+      "relativeSpeedAtProxyPoint": 4.67248095529205,
+      "proxyPoint": {
+        "x": -13.040028693981473,
+        "y": 7.707218576479174
+      }
+    },
+    {
+      "time": 21.89833333332956,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.466010228676888,
+      "relativeSpeedAtProxyPoint": 4.444580336922283,
+      "proxyPoint": {
+        "x": -13.025519780343757,
+        "y": 7.705480131186874
+      }
+    },
+    {
+      "time": 21.899999999996226,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.483301067431498,
+      "relativeSpeedAtProxyPoint": 4.2065632539411295,
+      "proxyPoint": {
+        "x": -13.011013791995186,
+        "y": 7.703727738039772
+      }
+    },
+    {
+      "time": 21.90166666666289,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.487635318553425,
+      "relativeSpeedAtProxyPoint": 3.964041882919747,
+      "proxyPoint": {
+        "x": -12.996518556157266,
+        "y": 7.701958014396318
+      }
+    },
+    {
+      "time": 21.903333333329556,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.479200342308223,
+      "relativeSpeedAtProxyPoint": 3.724125058888084,
+      "proxyPoint": {
+        "x": -12.982041863334546,
+        "y": 7.700167568071519
+      }
+    },
+    {
+      "time": 21.90499999999622,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.458263164611461,
+      "relativeSpeedAtProxyPoint": 3.4956807143498723,
+      "proxyPoint": {
+        "x": -12.96759141456358,
+        "y": 7.6983530096001465
+      }
+    },
+    {
+      "time": 21.906666666662886,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.425161843194477,
+      "relativeSpeedAtProxyPoint": 3.2895188186818873,
+      "proxyPoint": {
+        "x": -12.953174772895288,
+        "y": 7.696510964277028
+      }
+    },
+    {
+      "time": 21.90833333332955,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.380295940662062,
+      "relativeSpeedAtProxyPoint": 3.1182684638179214,
+      "proxyPoint": {
+        "x": -12.938799319990771,
+        "y": 7.694638083765513
+      }
+    },
+    {
+      "time": 21.909999999996217,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.32411657863351,
+      "relativeSpeedAtProxyPoint": 2.995585833438029,
+      "proxyPoint": {
+        "x": -12.924472218395742,
+        "y": 7.692731057087036
+      }
+    },
+    {
+      "time": 21.91166666666288,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.257116501095073,
+      "relativeSpeedAtProxyPoint": 2.9343631735476348,
+      "proxyPoint": {
+        "x": -12.91020037976083,
+        "y": 7.690786620833979
+      }
+    },
+    {
+      "time": 21.913333333329547,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.179820509892755,
+      "relativeSpeedAtProxyPoint": 2.9441050557487247,
+      "proxyPoint": {
+        "x": -12.895990439010735,
+        "y": 7.688801568481997
+      }
+    },
+    {
+      "time": 21.914999999996212,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.09277655994514,
+      "relativeSpeedAtProxyPoint": 3.0285362431486793,
+      "proxyPoint": {
+        "x": -12.881848734244633,
+        "y": 7.686772758713733
+      }
+    },
+    {
+      "time": 21.916666666662877,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.996547724205922,
+      "relativeSpeedAtProxyPoint": 3.184885380599094,
+      "proxyPoint": {
+        "x": -12.867781291978996,
+        "y": 7.684697122700886
+      }
+    },
+    {
+      "time": 21.918333333329542,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.891705164954184,
+      "relativeSpeedAtProxyPoint": 3.4053022946869644,
+      "proxyPoint": {
+        "x": -12.853793817221664,
+        "y": 7.682571670323913
+      }
+    },
+    {
+      "time": 21.919999999996207,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.778822183039384,
+      "relativeSpeedAtProxyPoint": 3.679394127758906,
+      "proxyPoint": {
+        "x": -12.839891687789518,
+        "y": 7.680393495336682
+      }
+    },
+    {
+      "time": 21.921666666662873,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.658469362834774,
+      "relativeSpeedAtProxyPoint": 3.9964943713067886,
+      "proxyPoint": {
+        "x": -12.826079952245315,
+        "y": 7.678159779506268
+      }
+    },
+    {
+      "time": 21.923333333329538,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.531210788861978,
+      "relativeSpeedAtProxyPoint": 4.347004729865806,
+      "proxyPoint": {
+        "x": -12.8123633308252,
+        "y": 7.675867795775293
+      }
+    },
+    {
+      "time": 21.924999999996203,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.397601280142585,
+      "relativeSpeedAtProxyPoint": 4.722895282785073,
+      "proxyPoint": {
+        "x": -12.798746218749283,
+        "y": 7.673514910505958
+      }
+    },
+    {
+      "time": 21.926666666662868,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.258184569284914,
+      "relativeSpeedAtProxyPoint": 5.11770828551272,
+      "proxyPoint": {
+        "x": -12.785232691346696,
+        "y": 7.6710985848714
+      }
+    },
+    {
+      "time": 21.928333333329533,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.113492343618882,
+      "relativeSpeedAtProxyPoint": 5.526353274482703,
+      "proxyPoint": {
+        "x": -12.77182651047709,
+        "y": 7.668616375461804
+      }
+    },
+    {
+      "time": 21.9299999999962,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.9640440636414604,
+      "relativeSpeedAtProxyPoint": 5.9448545109469455,
+      "proxyPoint": {
+        "x": -12.758531131787288,
+        "y": 7.6660659341706765
+      }
+    },
+    {
+      "time": 21.931666666662863,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.810347477924594,
+      "relativeSpeedAtProxyPoint": 6.370119636366742,
+      "proxyPoint": {
+        "x": -12.74534971240081,
+        "y": 7.663445007421252
+      }
+    },
+    {
+      "time": 21.93333333332953,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.652899761887,
+      "relativeSpeedAtProxyPoint": 6.7997500227424545,
+      "proxyPoint": {
+        "x": -12.732285118695891,
+        "y": 7.660751434785379
+      }
+    },
+    {
+      "time": 21.934999999996194,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.492189219063195,
+      "relativeSpeedAtProxyPoint": 7.231892768175764,
+      "proxyPoint": {
+        "x": -12.719339933882368,
+        "y": 7.657983147037444
+      }
+    },
+    {
+      "time": 21.93666666666286,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.3286974965457095,
+      "relativeSpeedAtProxyPoint": 7.665127536022689,
+      "proxyPoint": {
+        "x": -12.706516465138264,
+        "y": 7.655138163675347
+      }
+    },
+    {
+      "time": 21.938333333329524,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.1629022801455,
+      "relativeSpeedAtProxyPoint": 8.098380452047726,
+      "proxyPoint": {
+        "x": -12.69381675011231,
+        "y": 7.652214589929224
+      }
+    },
+    {
+      "time": 21.93999999999619,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.9952804486622835,
+      "relativeSpeedAtProxyPoint": 8.530858281278906,
+      "proxyPoint": {
+        "x": -12.681242562638982,
+        "y": 7.649210613267222
+      }
+    },
+    {
+      "time": 21.941666666662854,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.826311679679852,
+      "relativeSpeedAtProxyPoint": 8.962102580586897,
+      "proxyPoint": {
+        "x": -12.668768010890851,
+        "y": 7.646124499396953
+      }
+    },
+    {
+      "time": 21.94333333332952,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.656482510658568,
+      "relativeSpeedAtProxyPoint": 9.392835500903017,
+      "proxyPoint": {
+        "x": -12.656139967981327,
+        "y": 7.642954587751186
+      }
+    },
+    {
+      "time": 21.944999999996185,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.48629086777345,
+      "relativeSpeedAtProxyPoint": 9.821860902487115,
+      "proxyPoint": {
+        "x": -12.64364137974335,
+        "y": 7.639699286438131
+      }
+    },
+    {
+      "time": 21.94666666666285,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.316251079606075,
+      "relativeSpeedAtProxyPoint": 10.249092929870566,
+      "proxyPoint": {
+        "x": -12.631272996201304,
+        "y": 7.6363570666300244
+      }
+    },
+    {
+      "time": 21.948333333329515,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.146899391613523,
+      "relativeSpeedAtProxyPoint": 10.674554810309187,
+      "proxyPoint": {
+        "x": -12.619035317303444,
+        "y": 7.63292645636008
+      }
+    },
+    {
+      "time": 21.94999999999618,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.9787999877372116,
+      "relativeSpeedAtProxyPoint": 11.098359480678633,
+      "proxyPoint": {
+        "x": -12.606928592457177,
+        "y": 7.62940603369711
+      }
+    },
+    {
+      "time": 21.951666666662845,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.812551505342237,
+      "relativeSpeedAtProxyPoint": 11.52069207628008,
+      "proxyPoint": {
+        "x": -12.594952819040952,
+        "y": 7.625794419270703
+      }
+    },
+    {
+      "time": 21.95333333332951,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.648793990963175,
+      "relativeSpeedAtProxyPoint": 11.94179356662389,
+      "proxyPoint": {
+        "x": -12.583107739963257,
+        "y": 7.622090268127186
+      }
+    },
+    {
+      "time": 21.954999999996176,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.488218990210201,
+      "relativeSpeedAtProxyPoint": 12.361937518055354,
+      "proxyPoint": {
+        "x": -12.571392840378566,
+        "y": 7.6182922609117885
+      }
+    },
+    {
+      "time": 21.95666666666284,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.331568497437476,
+      "relativeSpeedAtProxyPoint": 12.781436508318412,
+      "proxyPoint": {
+        "x": -12.559807343675747,
+        "y": 7.614399094380847
+      }
+    },
+    {
+      "time": 21.958333333329506,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.179649781991097,
+      "relativeSpeedAtProxyPoint": 13.200606791269731,
+      "proxyPoint": {
+        "x": -12.548350206976508,
+        "y": 7.610409471346436
+      }
+    },
+    {
+      "time": 21.95999999999617,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.033340925577756,
+      "relativeSpeedAtProxyPoint": 13.619754564763845,
+      "proxyPoint": {
+        "x": -12.537020116316409,
+        "y": 7.60632209006191
+      }
+    },
+    {
+      "time": 21.961666666662836,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.893594935281785,
+      "relativeSpeedAtProxyPoint": 14.03916211204411,
+      "proxyPoint": {
+        "x": -12.525815481773968,
+        "y": 7.602135713479382
+      }
+    },
+    {
+      "time": 21.9633333333295,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.761492494334923,
+      "relativeSpeedAtProxyPoint": 14.459139653482794,
+      "proxyPoint": {
+        "x": -12.514734424566523,
+        "y": 7.597848967938281
+      }
+    },
+    {
+      "time": 21.964999999996166,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.638594661808439,
+      "relativeSpeedAtProxyPoint": 14.88041464410926,
+      "proxyPoint": {
+        "x": -12.50377451852949,
+        "y": 7.593463098840733
+      }
+    },
+    {
+      "time": 21.96666666666283,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.526174916989191,
+      "relativeSpeedAtProxyPoint": 15.303008956074617,
+      "proxyPoint": {
+        "x": -12.492932780040784,
+        "y": 7.588982548936612
+      }
+    },
+    {
+      "time": 21.968333333329497,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.425441418350564,
+      "relativeSpeedAtProxyPoint": 15.726696782939007,
+      "proxyPoint": {
+        "x": -12.482206003336202,
+        "y": 7.5843968278618785
+      }
+    },
+    {
+      "time": 21.969999999996162,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.3376226248694065,
+      "relativeSpeedAtProxyPoint": 16.151182814735844,
+      "proxyPoint": {
+        "x": -12.471590783899742,
+        "y": 7.579704148976156
+      }
+    },
+    {
+      "time": 21.971666666662827,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.263935298090298,
+      "relativeSpeedAtProxyPoint": 16.576086858492022,
+      "proxyPoint": {
+        "x": -12.461083522568101,
+        "y": 7.574902700193312
+      }
+    },
+    {
+      "time": 21.973333333329492,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.205544494030777,
+      "relativeSpeedAtProxyPoint": 17.00093872517127,
+      "proxyPoint": {
+        "x": -12.4506804313607,
+        "y": 7.569990640614407
+      }
+    },
+    {
+      "time": 21.974999999996157,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.16351731955353,
+      "relativeSpeedAtProxyPoint": 17.42517592943113,
+      "proxyPoint": {
+        "x": -12.4403775412332,
+        "y": 7.564966098974425
+      }
+    },
+    {
+      "time": 21.976666666662823,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.138773762637425,
+      "relativeSpeedAtProxyPoint": 17.84814477577313,
+      "proxyPoint": {
+        "x": -12.430170711905575,
+        "y": 7.55982717424301
+      }
+    },
+    {
+      "time": 21.978333333329488,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.1320392661552034,
+      "relativeSpeedAtProxyPoint": 18.269105312314597,
+      "proxyPoint": {
+        "x": -12.420055643851272,
+        "y": 7.554571938690422
+      }
+    },
+    {
+      "time": 21.979999999996153,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.1438044509750425,
+      "relativeSpeedAtProxyPoint": 18.687240475847172,
+      "proxyPoint": {
+        "x": -12.410027892453146,
+        "y": 7.549198443673216
+      }
+    },
+    {
+      "time": 21.981666666662818,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.174297120868362,
+      "relativeSpeedAtProxyPoint": 19.10166953114568,
+      "proxyPoint": {
+        "x": -12.400082884238179,
+        "y": 7.543704728309042
+      }
+    },
+    {
+      "time": 21.983333333329483,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.223470270331099,
+      "relativeSpeedAtProxyPoint": 19.5114656335099,
+      "proxyPoint": {
+        "x": -12.390215935001383,
+        "y": 7.538088831097765
+      }
+    },
+    {
+      "time": 21.98499999999615,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.291007515024857,
+      "relativeSpeedAtProxyPoint": 19.9156770318126,
+      "proxyPoint": {
+        "x": -12.380422269527353,
+        "y": 7.53234882423452
+      }
+    },
+    {
+      "time": 21.986666666662813,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.376344750445851,
+      "relativeSpeedAtProxyPoint": 20.313351088840953,
+      "proxyPoint": {
+        "x": -12.370697042524057,
+        "y": 7.526482915269746
+      }
+    },
+    {
+      "time": 21.98833333332948,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.4787046069961765,
+      "relativeSpeedAtProxyPoint": 20.703560295179958,
+      "proxyPoint": {
+        "x": -12.36103536030655,
+        "y": 7.520489113615223
+      }
+    },
+    {
+      "time": 21.989999999996144,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.597138935497694,
+      "relativeSpeedAtProxyPoint": 21.085428590269277,
+      "proxyPoint": {
+        "x": -12.351432302716393,
+        "y": 7.5143656244244195
+      }
+    },
+    {
+      "time": 21.99166666666281,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.730574308413076,
+      "relativeSpeedAtProxyPoint": 21.458156987434116,
+      "proxyPoint": {
+        "x": -12.341882944742066,
+        "y": 7.50811074675158
+      }
+    },
+    {
+      "time": 21.993333333329474,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 4.877856190607736,
+      "relativeSpeedAtProxyPoint": 21.821047006701768,
+      "proxyPoint": {
+        "x": -12.33238237731922,
+        "y": 7.501722896299627
+      }
+    },
+    {
+      "time": 21.99499999999614,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.037788641120241,
+      "relativeSpeedAtProxyPoint": 22.17352072853919,
+      "proxyPoint": {
+        "x": -12.32292572683708,
+        "y": 7.495200627874332
+      }
+    },
+    {
+      "time": 21.996666666662804,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.209167748083516,
+      "relativeSpeedAtProxyPoint": 22.515136505316963,
+      "proxyPoint": {
+        "x": -12.313508172954187,
+        "y": 7.488542656828717
+      }
+    },
+    {
+      "time": 21.99833333332947,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.390808171047038,
+      "relativeSpeedAtProxyPoint": 22.845599693454343,
+      "proxyPoint": {
+        "x": -12.30412496442561,
+        "y": 7.481747878843949
+      }
+    },
+    {
+      "time": 21.999999999996135,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.581563017920853,
+      "relativeSpeedAtProxyPoint": 23.16476813574274,
+      "proxyPoint": {
+        "x": -12.29477143275562,
+        "y": 7.4748153874943615
+      }
+    },
+    {
+      "time": 22.0016666666628,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.780337796476442,
+      "relativeSpeedAtProxyPoint": 23.47265248765454,
+      "proxyPoint": {
+        "x": -12.285443003603952,
+        "y": 7.467744489174256
+      }
+    },
+    {
+      "time": 22.003333333329465,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 5.986099410052838,
+      "relativeSpeedAtProxyPoint": 23.76941180536638,
+      "proxyPoint": {
+        "x": -12.276135205981177,
+        "y": 7.460534715109748
+      }
+    },
+    {
+      "time": 22.00499999999613,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.197881199864508,
+      "relativeSpeedAtProxyPoint": 24.05534506740363,
+      "proxyPoint": {
+        "x": -12.26684367936133,
+        "y": 7.453185830327053
+      }
+    },
+    {
+      "time": 22.006666666662795,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.414784954065446,
+      "relativeSpeedAtProxyPoint": 24.33087946986812,
+      "proxyPoint": {
+        "x": -12.2575641789124,
+        "y": 7.445697839587199
+      }
+    },
+    {
+      "time": 22.00833333332946,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.635980669078337,
+      "relativeSpeedAtProxyPoint": 24.596556413447342,
+      "proxyPoint": {
+        "x": -12.24829257909559,
+        "y": 7.438070990417177
+      }
+    },
+    {
+      "time": 22.009999999996126,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 6.860704702259601,
+      "relativeSpeedAtProxyPoint": 24.853016096829023,
+      "proxyPoint": {
+        "x": -12.23902487591159,
+        "y": 7.430305773462804
+      }
+    },
+    {
+      "time": 22.01166666666279,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.088256818918549,
+      "relativeSpeedAtProxyPoint": 25.100981561240296,
+      "proxyPoint": {
+        "x": -12.229757188079493,
+        "y": 7.422402920456616
+      }
+    },
+    {
+      "time": 22.013333333329456,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.317996520529006,
+      "relativeSpeedAtProxyPoint": 25.34124291443399,
+      "proxyPoint": {
+        "x": -12.220485757424104,
+        "y": 7.414363400135018
+      }
+    },
+    {
+      "time": 22.01499999999612,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.549338946522399,
+      "relativeSpeedAtProxyPoint": 25.57464231962405,
+      "proxyPoint": {
+        "x": -12.211206948724971,
+        "y": 7.406188412455556
+      }
+    },
+    {
+      "time": 22.016666666662786,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.781750567524267,
+      "relativeSpeedAtProxyPoint": 25.802060184064352,
+      "proxyPoint": {
+        "x": -12.201917249249547,
+        "y": 7.397879381461388
+      }
+    },
+    {
+      "time": 22.01833333332945,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.01474482986378,
+      "relativeSpeedAtProxyPoint": 26.024402836859494,
+      "proxyPoint": {
+        "x": -12.192613268157574,
+        "y": 7.3894379471206895
+      }
+    },
+    {
+      "time": 22.019999999996116,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.247877866387176,
+      "relativeSpeedAtProxyPoint": 26.242591856666287,
+      "proxyPoint": {
+        "x": -12.183291735927073,
+        "y": 7.380865956438559
+      }
+    },
+    {
+      "time": 22.02166666666278,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.480744353965495,
+      "relativeSpeedAtProxyPoint": 26.45755510225993,
+      "proxyPoint": {
+        "x": -12.173949503917136,
+        "y": 7.372165454102488
+      }
+    },
+    {
+      "time": 22.023333333329447,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.71297357135859,
+      "relativeSpeedAtProxyPoint": 26.670219414915593,
+      "proxyPoint": {
+        "x": -12.164583544150457,
+        "y": 7.3633386728831915
+      }
+    },
+    {
+      "time": 22.024999999996112,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.944225690439668,
+      "relativeSpeedAtProxyPoint": 26.881504900294555,
+      "proxyPoint": {
+        "x": -12.155190949370411,
+        "y": 7.354388023973554
+      }
+    },
+    {
+      "time": 22.026666666662777,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.174188317933067,
+      "relativeSpeedAtProxyPoint": 27.092320656831006,
+      "proxyPoint": {
+        "x": -12.145768933403824,
+        "y": 7.345316087411575
+      }
+    },
+    {
+      "time": 22.028333333329442,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.402573292734052,
+      "relativeSpeedAtProxyPoint": 27.303561793948433,
+      "proxyPoint": {
+        "x": -12.136314831841695,
+        "y": 7.3361256026999495
+      }
+    },
+    {
+      "time": 22.029999999996107,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.629113734865836,
+      "relativeSpeedAtProxyPoint": 27.51610757336967,
+      "proxyPoint": {
+        "x": -12.126826103035224,
+        "y": 7.326819459705883
+      }
+    },
+    {
+      "time": 22.031666666662773,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 9.853561335496028,
+      "relativeSpeedAtProxyPoint": 27.730820506398725,
+      "proxyPoint": {
+        "x": -12.117300329393611,
+        "y": 7.317400689900209
+      }
+    },
+    {
+      "time": 22.033333333329438,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.638491917897265,
+      "relativeSpeedAtProxyPoint": 5.173288942745686,
+      "proxyPoint": {
+        "x": -12.108698689478583,
+        "y": 7.307451587371963
+      }
+    },
+    {
+      "time": 22.034999999996103,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.77402822419941,
+      "relativeSpeedAtProxyPoint": 5.175357259895848,
+      "proxyPoint": {
+        "x": -12.100557376215452,
+        "y": 7.297470114108059
+      }
+    },
+    {
+      "time": 22.036666666662768,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.908222085836873,
+      "relativeSpeedAtProxyPoint": 5.178231362100892,
+      "proxyPoint": {
+        "x": -12.092399614332969,
+        "y": 7.287415518542119
+      }
+    },
+    {
+      "time": 22.038333333329433,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.04090332655899,
+      "relativeSpeedAtProxyPoint": 5.181983914756049,
+      "proxyPoint": {
+        "x": -12.084222184696936,
+        "y": 7.277290750743852
+      }
+    },
+    {
+      "time": 22.0399999999961,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.151231548134625,
+      "relativeSpeedAtProxyPoint": 5.091118326482265,
+      "proxyPoint": {
+        "x": -12.076022744598506,
+        "y": 7.267097896045563
+      }
+    },
+    {
+      "time": 22.041666666662763,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.263546824952298,
+      "relativeSpeedAtProxyPoint": 5.020593523389603,
+      "proxyPoint": {
+        "x": -12.067815597562793,
+        "y": 7.256846346251212
+      }
+    },
+    {
+      "time": 22.04333333332943,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.373172359841604,
+      "relativeSpeedAtProxyPoint": 4.949471773613193,
+      "proxyPoint": {
+        "x": -12.059591028439666,
+        "y": 7.246537375351158
+      }
+    },
+    {
+      "time": 22.044999999996094,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.479952085442214,
+      "relativeSpeedAtProxyPoint": 4.877917600244573,
+      "proxyPoint": {
+        "x": -12.051346808615772,
+        "y": 7.236174572480978
+      }
+    },
+    {
+      "time": 22.04666666666276,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.583737666698296,
+      "relativeSpeedAtProxyPoint": 4.806096141931495,
+      "proxyPoint": {
+        "x": -12.043080831681692,
+        "y": 7.2257616161517735
+      }
+    },
+    {
+      "time": 22.048333333329424,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.684390118776344,
+      "relativeSpeedAtProxyPoint": 4.734549233507977,
+      "proxyPoint": {
+        "x": -12.034770985114985,
+        "y": 7.2150743223660445
+      }
+    },
+    {
+      "time": 22.04999999999609,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.781776089743634,
+      "relativeSpeedAtProxyPoint": 4.662753570710498,
+      "proxyPoint": {
+        "x": -12.026455297236092,
+        "y": 7.204572398074616
+      }
+    },
+    {
+      "time": 22.051666666662754,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.875765794426696,
+      "relativeSpeedAtProxyPoint": 4.591178600737121,
+      "proxyPoint": {
+        "x": -12.018112516561008,
+        "y": 7.194032081251901
+      }
+    },
+    {
+      "time": 22.05333333332942,
+      "a": {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.96624381885204,
+      "relativeSpeedAtProxyPoint": 4.520005233584781,
+      "proxyPoint": {
+        "x": -12.009740655535388,
+        "y": 7.183457251813389
+      }
+    },
+    {
+      "time": 22.054999999996085,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.169242498180769,
+      "relativeSpeedAtProxyPoint": 8.615575669031578,
+      "proxyPoint": {
+        "x": -11.543701581601532,
+        "y": 6.861113339018829
+      }
+    },
+    {
+      "time": 22.05666666666275,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.2187993414968945,
+      "relativeSpeedAtProxyPoint": 8.568279891277056,
+      "proxyPoint": {
+        "x": -11.532475958471323,
+        "y": 6.854627138302535
+      }
+    },
+    {
+      "time": 22.058333333329415,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.270398913761227,
+      "relativeSpeedAtProxyPoint": 8.52963806389315,
+      "proxyPoint": {
+        "x": -11.52126549903119,
+        "y": 6.848127929194853
+      }
+    },
+    {
+      "time": 22.05999999999608,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.316501303524725,
+      "relativeSpeedAtProxyPoint": 8.45972560854549,
+      "proxyPoint": {
+        "x": -11.510070674018799,
+        "y": 6.841616366987598
+      }
+    },
+    {
+      "time": 22.061666666662745,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.364521952629415,
+      "relativeSpeedAtProxyPoint": 8.398493941721862,
+      "proxyPoint": {
+        "x": -11.498892781641791,
+        "y": 6.8350924509494675
+      }
+    },
+    {
+      "time": 22.06333333332941,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.411899563256123,
+      "relativeSpeedAtProxyPoint": 8.332678572295093,
+      "proxyPoint": {
+        "x": -11.487731825901665,
+        "y": 6.828557211123124
+      }
+    },
+    {
+      "time": 22.064999999996076,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.458587987159054,
+      "relativeSpeedAtProxyPoint": 8.262285973548906,
+      "proxyPoint": {
+        "x": -11.476589898245372,
+        "y": 6.822009964529059
+      }
+    },
+    {
+      "time": 22.06666666666274,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.507014919970095,
+      "relativeSpeedAtProxyPoint": 8.20036788379999,
+      "proxyPoint": {
+        "x": -11.46546711303917,
+        "y": 6.815451640846796
+      }
+    },
+    {
+      "time": 22.068333333329406,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.549643075565028,
+      "relativeSpeedAtProxyPoint": 8.108023449556962,
+      "proxyPoint": {
+        "x": -11.454364608196268,
+        "y": 6.808882290183117
+      }
+    },
+    {
+      "time": 22.06999999999607,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.5939062114749385,
+      "relativeSpeedAtProxyPoint": 8.024261392723135,
+      "proxyPoint": {
+        "x": -11.443283759576047,
+        "y": 6.802301806278791
+      }
+    },
+    {
+      "time": 22.071666666662736,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.637253786885851,
+      "relativeSpeedAtProxyPoint": 7.936184038988339,
+      "proxyPoint": {
+        "x": -11.4322252283473,
+        "y": 6.79571062093407
+      }
+    },
+    {
+      "time": 22.0733333333294,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.679635354069415,
+      "relativeSpeedAtProxyPoint": 7.843880611262761,
+      "proxyPoint": {
+        "x": -11.421190013387115,
+        "y": 6.789108884362832
+      }
+    },
+    {
+      "time": 22.074999999996066,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.721002510472356,
+      "relativeSpeedAtProxyPoint": 7.747452147500129,
+      "proxyPoint": {
+        "x": -11.41017912362575,
+        "y": 6.782496727112239
+      }
+    },
+    {
+      "time": 22.07666666666273,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.76130903267818,
+      "relativeSpeedAtProxyPoint": 7.647011791455142,
+      "proxyPoint": {
+        "x": -11.399193576604535,
+        "y": 6.775874258007793
+      }
+    },
+    {
+      "time": 22.078333333329397,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.800510989795277,
+      "relativeSpeedAtProxyPoint": 7.542685277692616,
+      "proxyPoint": {
+        "x": -11.388234397130468,
+        "y": 6.769241568180846
+      }
+    },
+    {
+      "time": 22.079999999996062,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.838566876158268,
+      "relativeSpeedAtProxyPoint": 7.434611274909803,
+      "proxyPoint": {
+        "x": -11.377302615800282,
+        "y": 6.762598730646651
+      }
+    },
+    {
+      "time": 22.081666666662727,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.87543774780134,
+      "relativeSpeedAtProxyPoint": 7.322941725977182,
+      "proxyPoint": {
+        "x": -11.36639926768571,
+        "y": 6.7559457996267085
+      }
+    },
+    {
+      "time": 22.083333333329392,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.9110873434135796,
+      "relativeSpeedAtProxyPoint": 7.207842313537137,
+      "proxyPoint": {
+        "x": -11.355525390862585,
+        "y": 6.7492828132498985
+      }
+    },
+    {
+      "time": 22.084999999996057,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.945482208253349,
+      "relativeSpeedAtProxyPoint": 7.089492898254502,
+      "proxyPoint": {
+        "x": -11.344682024940159,
+        "y": 6.742609794707015
+      }
+    },
+    {
+      "time": 22.086666666662722,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 7.978598438112679,
+      "relativeSpeedAtProxyPoint": 6.968073954060822,
+      "proxyPoint": {
+        "x": -11.33387074782412,
+        "y": 6.735926354950866
+      }
+    },
+    {
+      "time": 22.088333333329388,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.010395230511316,
+      "relativeSpeedAtProxyPoint": 6.843823731975313,
+      "proxyPoint": {
+        "x": -11.323091514241494,
+        "y": 6.729233302440896
+      }
+    },
+    {
+      "time": 22.089999999996053,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.040861452348317,
+      "relativeSpeedAtProxyPoint": 6.716939761953569,
+      "proxyPoint": {
+        "x": -11.312346430220549,
+        "y": 6.722529829362334
+      }
+    },
+    {
+      "time": 22.091666666662718,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.072535470700684,
+      "relativeSpeedAtProxyPoint": 6.598024422129467,
+      "proxyPoint": {
+        "x": -11.301635757748464,
+        "y": 6.715816485355283
+      }
+    },
+    {
+      "time": 22.093333333329383,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.09769475823354,
+      "relativeSpeedAtProxyPoint": 6.456310406391742,
+      "proxyPoint": {
+        "x": -11.290960686938385,
+        "y": 6.709093094675891
+      }
+    },
+    {
+      "time": 22.09499999999605,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.124036158573608,
+      "relativeSpeedAtProxyPoint": 6.323087747057321,
+      "proxyPoint": {
+        "x": -11.280322585747214,
+        "y": 6.702359386129361
+      }
+    },
+    {
+      "time": 22.096666666662713,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.148976209580479,
+      "relativeSpeedAtProxyPoint": 6.188318811080223,
+      "proxyPoint": {
+        "x": -11.269722166151356,
+        "y": 6.695615515106397
+      }
+    },
+    {
+      "time": 22.09833333332938,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.172507510904959,
+      "relativeSpeedAtProxyPoint": 6.05231920245964,
+      "proxyPoint": {
+        "x": -11.259160421759137,
+        "y": 6.688861429827977
+      }
+    },
+    {
+      "time": 22.099999999996044,
+      "a": {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      "b": {
+        "role": "frame",
+        "id": "support"
+      },
+      "absoluteSpeed": 8.19462619552263,
+      "relativeSpeedAtProxyPoint": 5.915425579546933,
+      "proxyPoint": {
+        "x": -11.248638333684621,
+        "y": 6.6820970732557
+      }
+    }
+  ]
+}

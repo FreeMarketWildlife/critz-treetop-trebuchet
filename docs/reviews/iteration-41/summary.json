@@ -1,0 +1,184 @@
+{
+  "baseline": "8995a93c4dc4d1165cb037f8206b3e0278827649",
+  "sync": "Prior denied sync resolved by one authorized normal push; verified remote8995a93 before iteration41 work.",
+  "decision": "Neither correction adopted in ordinary play. All mechanism policies are explicit research script imports, and loadingConstraintSubsteps remains absent/false in game entry points. Mechanism resolution improves, but cost, retained inner angular excursions and gameplay outcomes do not yet justify promotion.",
+  "tests": 250,
+  "ordinaryLoad": {
+    "cases": 264,
+    "counts": {
+      "launched": 262,
+      "seating_failed": 2
+    },
+    "flags": {
+      "angular_limit_error": 58,
+      "backward_or_vertical_launch": 18,
+      "downward_launch": 10,
+      "explosive_speed": 2,
+      "inner_angular_limit_error": 118,
+      "launch_branch_impact": 57
+    },
+    "sourcesChangedDuringRun": [],
+    "releaseMaxComponentDifference": 0,
+    "releaseExactlyEqual": 264,
+    "windingWorkExactlyEqual": 264,
+    "repeatOuterExactlyEqual": 264,
+    "maxInnerRope": 0.011749443778315438,
+    "maxInnerAnchor": 0.013258959362050234,
+    "maxInnerAngular": 0.2758519023581556,
+    "maxCumulativeEnergyResidual": 0,
+    "nonfinite": [],
+    "innerRopeOrAnchorCases": []
+  },
+  "experimentalLoad": {
+    "cases": 264,
+    "counts": {
+      "launched": 263,
+      "seating_failed": 1
+    },
+    "flags": {
+      "angular_limit_error": 55,
+      "backward_or_vertical_launch": 28,
+      "downward_launch": 16,
+      "explosive_speed": 1,
+      "inner_angular_limit_error": 108,
+      "launch_branch_impact": 57
+    },
+    "sourcesChangedDuringRun": [],
+    "releaseMaxComponentDifference": 0,
+    "releaseExactlyEqual": 264,
+    "windingWorkExactlyEqual": 264,
+    "repeatOuterExactlyEqual": 264,
+    "maxInnerRope": 0.02230861037786358,
+    "maxInnerAnchor": 0.020400666527562214,
+    "maxInnerAngular": 0.46149617918145514,
+    "maxCumulativeEnergyResidual": 0,
+    "nonfinite": [],
+    "innerRopeOrAnchorCases": []
+  },
+  "cohorts": {
+    "original": {
+      "before": {
+        "attempts": 33,
+        "releases": 24,
+        "backwardCases": [
+          1,
+          18,
+          29,
+          31
+        ],
+        "maximumMovingActiveGap": 6.466666666666651
+      },
+      "research": {
+        "attempts": 33,
+        "releases": 24,
+        "backwardCases": [
+          1,
+          13,
+          16,
+          18,
+          24,
+          26,
+          27,
+          29,
+          30
+        ],
+        "maximumMovingActiveGap": 4.649999999999988
+      }
+    },
+    "holdout": {
+      "before": {
+        "attempts": 11,
+        "releases": 11,
+        "backwardCases": [
+          18,
+          19
+        ],
+        "maximumMovingActiveGap": 3.2499999999999933
+      },
+      "research": {
+        "attempts": 11,
+        "releases": 11,
+        "backwardCases": [
+          11,
+          18,
+          19
+        ],
+        "maximumMovingActiveGap": 9.716666666666733
+      }
+    },
+    "sling": {
+      "before": {
+        "attempts": 22,
+        "releases": 22,
+        "backwardCases": [
+          0,
+          2,
+          6,
+          7,
+          9,
+          13,
+          14,
+          15,
+          19,
+          20
+        ],
+        "maximumMovingActiveGap": 7.243333333331982
+      },
+      "research": {
+        "attempts": 22,
+        "releases": 22,
+        "backwardCases": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          9,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "maximumMovingActiveGap": 7.199999999999978
+      }
+    }
+  },
+  "runtime": {
+    "falling rig": {
+      "baseline": 41.006665999999996,
+      "research": 231.2255,
+      "ratio": 5.638729566553888,
+      "integrations": [
+        600,
+        3414
+      ]
+    },
+    "ordinary rig impact": {
+      "baseline": 63.78887500000019,
+      "research": 90.3350419999997,
+      "ratio": 1.4161566887642938,
+      "integrations": [
+        777,
+        1102
+      ]
+    },
+    "ordinary canopy impact": {
+      "baseline": 56.53520800000001,
+      "research": 77.72387500000013,
+      "ratio": 1.3747871061162473,
+      "integrations": [
+        733,
+        1013
+      ]
+    }
+  },
+  "scope": "Inner maxima cover all integrations and stages; outer maxima and flags retained separately. Default means default LOADING with research mechanism refinement; candidate means experimental loading plus research mechanism refinement. Neither matrix is ordinary live gameplay.",
+  "limitations": [
+    "Node timings are not device FPS.",
+    "Fresh uninterrupted and same-restored-state trials are separate evidence, not equivalent contact warm starts.",
+    "Contact predictor remains a conservative AABB heuristic, including common motion; it does not fully sum both dynamic fixtures’ angular sweeps.",
+    "Positive individual integration energy residuals remain despite nonpositive cumulative residuals; neither metric establishes universal stability.",
+    "Audio quality, human reactions and actual-device performance remain unverified."
+  ]
+}
