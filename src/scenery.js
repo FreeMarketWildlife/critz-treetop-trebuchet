@@ -82,14 +82,16 @@ export function drawFace(ctx,{x,y,angle=0,size=7,species='mouse',color='#b6b0a9'
  * x/y,size are screen coordinates/radius; shapes are readable original visual cues,
  * not extra collision geometry. No animation, health or injury state.
  */
-export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',kind='',color='#ad8059',angle=0}={}){
- if(!ctx||![x,y,size,angle].every(Number.isFinite)||size<=0)return;
- ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size;
+export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',kind='',color='#ad8059',angle=0,motion=0}={}){
+ if(!ctx||![x,y,size,angle,motion].every(Number.isFinite)||size<=0)return;
+ ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size,flap=Math.max(-1,Math.min(1,motion))*.16;
+ // Markings animate inside the invariant round collision silhouette.
+ ctx.beginPath();ctx.arc(0,0,s,0,Math.PI*2);ctx.clip();
  ctx.strokeStyle='#394d43';ctx.lineWidth=Math.max(.7,s*.07);ctx.lineCap='round';
  if(kind==='round bird'){
   ellipse(ctx,s*.3,-s*.2,s*.3,s*.32,'#e8e0be');ctx.fillStyle='#dfb35c';ctx.beginPath();ctx.moveTo(s*.5,-s*.12);ctx.lineTo(s*.87,s*.05);ctx.lineTo(s*.5,s*.18);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(-s*.65,0);ctx.quadraticCurveTo(-s*.25,s*.5,s*.1,s*.16);ctx.stroke();
  }else if(shape==='wings'){
-  ellipse(ctx,-s*.35,0,s*.35,s*.65,'#f4e8e6',-.35);ellipse(ctx,s*.35,0,s*.35,s*.65,'#f4e8e6',.35);ellipse(ctx,0,0,s*.12,s*.6,color);
+  ellipse(ctx,-s*.35,0,s*.35,s*.65,'#f4e8e6',-.35-flap);ellipse(ctx,s*.35,0,s*.35,s*.65,'#f4e8e6',.35+flap);ellipse(ctx,0,0,s*.12,s*.6,color);
  }else if(shape==='leaf'){
   ctx.beginPath();ctx.moveTo(-s*.7,s*.4);ctx.quadraticCurveTo(-s*.7,-s*.7,s*.65,-s*.5);ctx.quadraticCurveTo(s*.6,s*.55,-s*.7,s*.4);ctx.fillStyle='#c9dda0';ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(-s*.6,s*.35);ctx.lineTo(s*.5,-s*.4);ctx.stroke();
  }else if(shape==='cap'){
