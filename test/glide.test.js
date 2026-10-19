@@ -33,20 +33,30 @@ test('invalid states reject; extreme speed remains bounded and reports limits', 
   assert.throws(()=>aero({...body,area:1e308}),RangeError);
   const f=aero({...body,vx:1e5,input:2});assert.ok(f.diagnostic.forceLimited&&f.diagnostic.speedLimited&&f.diagnostic.inputLimited);
 });
-function fly(dt,withAero=true) {
- let x=0,y=100,vx=15,vy=0,energy=9.81*body.mass*y+.5*body.mass*vx*vx,maxGain=0;
+function fly(dt,withAero=true,{input=0,omega=0,area=.22}={}) {
+ let time=0,stallTime=0,x=0,y=100,vx=15,vy=0,energy=9.81*body.mass*y+.5*body.mass*vx*vx,maxGain=0;
  for(let t=0;t<50&&y>0;t+=dt){
-  const f=withAero?aero({...body,vx,vy,pitch:-.2}):{fx:0,fy:0};
+  const f=withAero?aero({...body,vx,vy,area,input,pitch:-.2+omega*t}):{fx:0,fy:0};
   // Midpoint integration avoids forward-Euler lift spuriously adding energy.
   const ax=f.fx/body.mass,ay=f.fy/body.mass-9.81;
-  const mid=withAero?aero({...body,vx:vx+ax*dt/2,vy:vy+ay*dt/2,pitch:-.2}):{fx:0,fy:0};
+  const mid=withAero?aero({...body,vx:vx+ax*dt/2,vy:vy+ay*dt/2,area,input,pitch:-.2+omega*(t+dt/2)}):{fx:0,fy:0};
   x+=(vx+ax*dt/2)*dt;y+=(vy+ay*dt/2)*dt;vx+=mid.fx/body.mass*dt;vy+=(mid.fy/body.mass-9.81)*dt;
+  time=t+dt;if(f.diagnostic?.stalled)stallTime+=dt;
   const next=9.81*body.mass*y+.5*body.mass*(vx*vx+vy*vy);maxGain=Math.max(maxGain,next-energy);energy=next;
  }
- return{x,maxGain,energy};
+ return{x,maxGain,energy,time,stallFraction:stallTime/time};
 }
 test('fixed-pitch glide extends range over ballistic flight without creating energy; timestep converges',()=>{
  const a=fly(.002),b=fly(.001),vacuum=fly(.001,false);
  assert.ok(a.x>vacuum.x*1.15,`${a.x} vs ballistic ${vacuum.x}`);
  assert.ok(a.maxGain<1e-5);assert.ok(Math.abs(a.x-b.x)<.1);
+});
+
+test('sustained flare stalls while dive trades hang time for descent; tumbling defeats ideal glide',()=>{
+ const glide=fly(.002),dive=fly(.002,true,{input:1}),flare=fly(.002,true,{input:-1});
+ const tumble=fly(.002,true,{omega:3});
+ assert.ok(dive.time<glide.time*.65);assert.ok(dive.x>flare.x);
+ assert.ok(flare.stallFraction>.7);assert.ok(tumble.stallFraction>.6);
+ assert.ok(tumble.x<glide.x*.2);
+ for(const f of [glide,dive,flare,tumble])assert.ok(f.maxGain<1e-4);
 });

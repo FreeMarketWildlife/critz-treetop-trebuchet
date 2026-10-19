@@ -1,7 +1,9 @@
 import {world as layout} from './world.js';
 import {drawScenery,drawFace} from './scenery.js';
-export function viewportFor(width){return width<=650?{width:480,height:600,portrait:true,originX:240,originY:560}:{width:960,height:480,portrait:false,originX:260,originY:440};}
-export function pointerWorld(point,bounds,viewport){const x=(point.clientX-bounds.left)*viewport.width/bounds.width,y=(point.clientY-bounds.top)*viewport.height/bounds.height;
+export function viewportFor(width,height=Infinity){return width<=650&&height>=width?{width:480,height:600,portrait:true,originX:240,originY:560}:{width:960,height:480,portrait:false,originX:260,originY:440};}
+export function pointerWorld(point,bounds,viewport){
+ if(![point.clientX,point.clientY,bounds.left,bounds.top,bounds.width,bounds.height].every(Number.isFinite)||bounds.width<=0||bounds.height<=0)return null;
+ const x=(point.clientX-bounds.left)*viewport.width/bounds.width,y=(point.clientY-bounds.top)*viewport.height/bounds.height;
  return {x:(x-viewport.originX)/45,y:294+(viewport.originY-y)/45};}
 export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000);
  const line=(a,b,color,width=3)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();};
@@ -14,7 +16,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
  if(role==='part' && b.getUserData().id==='head'){const p=transform(b.getPosition()),profile=scene.rig.bodies.find(p=>p.id==='head');drawFace(ctx,{x:p[0],y:p[1],angle:-b.getAngle(),size:Math.max(3,(profile.shape.radius??.1)*scale),species:scene.rig.id,color:scene.rig.color});}
  }
  return {get viewport(){return viewport;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
- draw(scene,preview,effects,time,reduced,width){viewport=viewportFor(width);if(canvas.width!==viewport.width || canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
+ draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity){viewport=viewportFor(width,height);if(canvas.width!==viewport.width || canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
  const {portrait,originX,originY}=viewport,c=scene.center(),local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
  if(!portrait || scene.phase!=='flight'){
  ctx.save();ctx.beginPath();ctx.rect(0,0,portrait?480:480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});

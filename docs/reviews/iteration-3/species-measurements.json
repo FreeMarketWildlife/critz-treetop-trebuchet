@@ -1,0 +1,580 @@
+{
+  "scope": "Baseline contact-loading sweep with identical force-hand input recipe; failures are retained. No teleportation, per-species rescue, arcade assistance, encounters or biological calibration. Release means geometric pin event, not proof of a good throw or that every body has left the cradle.",
+  "sourceHashes": {
+    "articulated.js": "81f361fae9f0f01890ae8db45363a6a24432cca875f24b600b6a39a956962047",
+    "species.js": "156aaafe21f2b8203a9c1fce7dbda275c84266c73c4ed116d77a684934bbd35d",
+    "physics.js": "b721c9236dbef77db8d1b6fca766287175e699fc11824e2335aa9f8a4c118bb0",
+    "world.js": "dee8c8b189a36c5c8f2e8f1045da36405c5526ca6e91b69d4832e65e28784e80"
+  },
+  "dt": 0.0016666666666666668,
+  "recipe": {
+    "initialSettlingSteps": 600,
+    "liftTarget": {
+      "x": -4.3,
+      "y": 297
+    },
+    "liftSteps": 600,
+    "pouchRelativeTarget": {
+      "x": 0,
+      "y": 0.85
+    },
+    "pouchTrackingSteps": 1200,
+    "unheldSettlingSteps": 300,
+    "maxLaunchSteps": 3000
+  },
+  "summary": {
+    "profiles": 11,
+    "loaded": 10,
+    "released": 10,
+    "failures": 1
+  },
+  "measurements": [
+    {
+      "species": "lizard",
+      "label": "Lizard",
+      "mass": 0.65,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.343333333333355,
+        "center": {
+          "x": -1.55364365951397,
+          "y": 303.66532305578727,
+          "vx": 16.861871210231023,
+          "vy": 21.994144199267662,
+          "mass": 0.65
+        },
+        "speed": 27.713987078163207,
+        "angleDegrees": 52.52432250746507
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.4811016808229303,
+        "y": 295.7578202575869,
+        "vx": 0.2840970891103535,
+        "vy": -0.16107897849263927,
+        "mass": 0.65
+      },
+      "pouchPosition": {
+        "x": -2.4784555801036996,
+        "y": 295.7063445566814
+      },
+      "handWork": 13.181017235390975,
+      "forceCapped": false,
+      "energyBeforeLaunch": -662.8613323579009,
+      "framePositionBeforeLaunch": {
+        "x": 0.0004551121984596189,
+        "y": 293.9995197920613
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.55364365951397,
+        "y": 303.66532305578727,
+        "vx": 16.861871210231023,
+        "vy": 21.994144199267662,
+        "mass": 0.65
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.18788480635911106,
+        "y": 294.0701180595704
+      },
+      "energyAtEnd": -788.9776369537844,
+      "assistWork": 0
+    },
+    {
+      "species": "salamander",
+      "label": "Salamander",
+      "mass": 0.8,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.343333333333355,
+        "center": {
+          "x": -1.8903443999789515,
+          "y": 303.4110479204495,
+          "vx": 14.313412153047071,
+          "vy": 22.181417782623754,
+          "mass": 0.8
+        },
+        "speed": 26.398656448961425,
+        "angleDegrees": 57.166315073005464
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.321329175798792,
+        "y": 295.7717940784251,
+        "vx": 0.26853000483108713,
+        "vy": -1.562767509981876,
+        "mass": 0.8
+      },
+      "pouchPosition": {
+        "x": -2.395663340090856,
+        "y": 295.7051544683073
+      },
+      "handWork": 14.753766725393618,
+      "forceCapped": false,
+      "energyBeforeLaunch": -667.7362485716474,
+      "framePositionBeforeLaunch": {
+        "x": 0.00043255291990898243,
+        "y": 293.9995196108972
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.8903443999789515,
+        "y": 303.4110479204495,
+        "vx": 14.313412153047071,
+        "vy": 22.181417782623754,
+        "mass": 0.8
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.19524594980929655,
+        "y": 294.0574921464933
+      },
+      "energyAtEnd": -796.4461195048248,
+      "assistWork": 0
+    },
+    {
+      "species": "mouse",
+      "label": "Mouse",
+      "mass": 0.75,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.338333333333354,
+        "center": {
+          "x": -1.7670766715976267,
+          "y": 303.5119132651468,
+          "vx": 15.299287395072056,
+          "vy": 22.050663669399935,
+          "mass": 0.75
+        },
+        "speed": 26.83840462952306,
+        "angleDegrees": 55.2461450367601
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.4318296155993817,
+        "y": 295.7702595678763,
+        "vx": -0.016227256971132236,
+        "vy": 0.03760687195846598,
+        "mass": 0.75
+      },
+      "pouchPosition": {
+        "x": -2.4119870548710476,
+        "y": 295.7051727509556
+      },
+      "handWork": 10.86274787420729,
+      "forceCapped": false,
+      "energyBeforeLaunch": -666.837038152877,
+      "framePositionBeforeLaunch": {
+        "x": 0.00047177276808185275,
+        "y": 293.9995195161507
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.7670766715976267,
+        "y": 303.5119132651468,
+        "vx": 15.299287395072056,
+        "vy": 22.050663669399935,
+        "mass": 0.75
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.19530552873974066,
+        "y": 294.06036172101517
+      },
+      "energyAtEnd": -795.8649983478814,
+      "assistWork": 0
+    },
+    {
+      "species": "turtle",
+      "label": "Turtle",
+      "mass": 2.4,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.496666666666712,
+        "center": {
+          "x": -1.7033855842660115,
+          "y": 303.9851276637356,
+          "vx": 11.357674705825831,
+          "vy": 14.684285937114206,
+          "mass": 2.4
+        },
+        "speed": 18.564078975437646,
+        "angleDegrees": 52.279563262590045
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.5026076744518853,
+        "y": 295.7484868684188,
+        "vx": -0.6318025751149859,
+        "vy": -0.15670501402575515,
+        "mass": 2.4
+      },
+      "pouchPosition": {
+        "x": -2.1048798226335235,
+        "y": 295.7227505662323
+      },
+      "handWork": 14.267401681700342,
+      "forceCapped": false,
+      "energyBeforeLaunch": -735.0329902297634,
+      "framePositionBeforeLaunch": {
+        "x": 0.0005935624014168971,
+        "y": 293.9995149270189
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.7033855842660115,
+        "y": 303.9851276637356,
+        "vx": 11.357674705825831,
+        "vy": 14.684285937114206,
+        "mass": 2.4
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.20240862863473066,
+        "y": 294.0032175846133
+      },
+      "energyAtEnd": -877.0823376753498,
+      "assistWork": 0
+    },
+    {
+      "species": "snake",
+      "label": "Snake",
+      "mass": 1.1,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.436666666666703,
+        "center": {
+          "x": -0.4182011473390672,
+          "y": 303.74694172911234,
+          "vx": 14.50075616974694,
+          "vy": 14.562249580810118,
+          "mass": 1.1
+        },
+        "speed": 20.550694449294372,
+        "angleDegrees": 45.12122998199887
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -3.4170867578979114,
+        "y": 295.9702360949401,
+        "vx": 0.26997746343034906,
+        "vy": -0.2283491095315656,
+        "mass": 1.1
+      },
+      "pouchPosition": {
+        "x": -3.801746015565208,
+        "y": 296.13437368724607
+      },
+      "handWork": 21.04793893709208,
+      "forceCapped": false,
+      "energyBeforeLaunch": -678.8094557987665,
+      "framePositionBeforeLaunch": {
+        "x": 0.0004799224121715103,
+        "y": 293.9995133400529
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -0.4182011473390672,
+        "y": 303.74694172911234,
+        "vx": 14.50075616974694,
+        "vy": 14.562249580810118,
+        "mass": 1.1
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.2590772569990768,
+        "y": 294.0449828697355
+      },
+      "energyAtEnd": -827.3050452782455,
+      "assistWork": 0
+    },
+    {
+      "species": "chipmunk",
+      "label": "Chipmunk",
+      "mass": 1,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.37333333333336,
+        "center": {
+          "x": -1.638613767155099,
+          "y": 303.74775682956306,
+          "vx": 15.480775731303936,
+          "vy": 20.23585289704439,
+          "mass": 1
+        },
+        "speed": 25.478307630487325,
+        "angleDegrees": 52.58338934400297
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.4610903612913244,
+        "y": 295.84610611941054,
+        "vx": -0.17704262620482814,
+        "vy": -1.5443606468474242,
+        "mass": 1
+      },
+      "pouchPosition": {
+        "x": -2.353851881280677,
+        "y": 295.7056002049742
+      },
+      "handWork": 13.594573661038318,
+      "forceCapped": false,
+      "energyBeforeLaunch": -675.146553640854,
+      "framePositionBeforeLaunch": {
+        "x": 0.0004539178051328548,
+        "y": 293.9995199007398
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.638613767155099,
+        "y": 303.74775682956306,
+        "vx": 15.480775731303936,
+        "vy": 20.23585289704439,
+        "mass": 1
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.23651403008588195,
+        "y": 294.0372544995209
+      },
+      "energyAtEnd": -819.8436054886117,
+      "assistWork": 0
+    },
+    {
+      "species": "flying-squirrel",
+      "label": "Flying squirrel",
+      "mass": 0.9,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.388333333333362,
+        "center": {
+          "x": -1.1314692597456,
+          "y": 304.2238023148066,
+          "vx": 19.398255517169982,
+          "vy": 18.550106385000525,
+          "mass": 0.9
+        },
+        "speed": 26.84024522995744,
+        "angleDegrees": 43.71964759201435
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.5441434751101952,
+        "y": 295.89282687007454,
+        "vx": -0.3334207819115729,
+        "vy": -0.5528026014625576,
+        "mass": 0.9
+      },
+      "pouchPosition": {
+        "x": -2.3378668595653553,
+        "y": 295.70594939260695
+      },
+      "handWork": 12.675804590396309,
+      "forceCapped": false,
+      "energyBeforeLaunch": -671.9832672032712,
+      "framePositionBeforeLaunch": {
+        "x": 0.0005125755883542862,
+        "y": 293.9995209395267
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.1314692597456,
+        "y": 304.2238023148066,
+        "vx": 19.398255517169982,
+        "vy": 18.550106385000525,
+        "mass": 0.9
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.2610600776102239,
+        "y": 294.0338832659829
+      },
+      "energyAtEnd": -825.5192184573796,
+      "assistWork": 0
+    },
+    {
+      "species": "armadillo",
+      "label": "Armadillo",
+      "mass": 5,
+      "grabbed": true,
+      "isLoaded": false,
+      "release": null,
+      "failure": "Same force-hand recipe did not seat this rig according to current isLoaded predicate",
+      "loadingCenter": {
+        "x": -6.244657685043919,
+        "y": 297.20718279702703,
+        "vx": -3.600987293768381,
+        "vy": -1.5805741835296174,
+        "mass": 5
+      },
+      "pouchPosition": {
+        "x": -4.018026810679193,
+        "y": 298.9623385428077
+      },
+      "handWork": 186.47342210973224,
+      "forceCapped": true,
+      "energyBeforeLaunch": -727.5985127180351,
+      "framePositionBeforeLaunch": {
+        "x": 0.0026535184721061793,
+        "y": 293.9997183900973
+      }
+    },
+    {
+      "species": "small-marsupial",
+      "label": "Pygmy possum",
+      "mass": 0.7,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.3316666666666865,
+        "center": {
+          "x": -1.7841306746314651,
+          "y": 303.58099583314356,
+          "vx": 16.24881503600899,
+          "vy": 22.57751135117123,
+          "mass": 0.7
+        },
+        "speed": 27.816685799834193,
+        "angleDegrees": 54.257802252122886
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.2976285439997253,
+        "y": 295.74935091531273,
+        "vx": -0.026280095605718326,
+        "vy": 0.1712917960343595,
+        "mass": 0.7
+      },
+      "pouchPosition": {
+        "x": -2.3424312599560304,
+        "y": 295.7058421329329
+      },
+      "handWork": 10.20079797286386,
+      "forceCapped": false,
+      "energyBeforeLaunch": -665.2044685141718,
+      "framePositionBeforeLaunch": {
+        "x": 0.00043937638254985833,
+        "y": 293.9995207335898
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.7841306746314651,
+        "y": 303.58099583314356,
+        "vx": 16.24881503600899,
+        "vy": 22.57751135117123,
+        "mass": 0.7
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.1816205230935448,
+        "y": 294.06512586938396
+      },
+      "energyAtEnd": -785.7366929631128,
+      "assistWork": 0
+    },
+    {
+      "species": "tiny-primate",
+      "label": "Pygmy marmoset",
+      "mass": 0.8500000000000001,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.348333333333356,
+        "center": {
+          "x": -1.7809525604473146,
+          "y": 303.6781424631277,
+          "vx": 15.962828991136314,
+          "vy": 21.70558554545438,
+          "mass": 0.8500000000000001
+        },
+        "speed": 26.943354528924196,
+        "angleDegrees": 53.66830910135243
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.2831010491504573,
+        "y": 295.736587389012,
+        "vx": -0.1948466676637418,
+        "vy": -0.4421974730068295,
+        "mass": 0.8500000000000001
+      },
+      "pouchPosition": {
+        "x": -2.254247582500229,
+        "y": 295.70947130850124
+      },
+      "handWork": 10.895450749972905,
+      "forceCapped": false,
+      "energyBeforeLaunch": -671.4290328150942,
+      "framePositionBeforeLaunch": {
+        "x": 0.00043404876824743423,
+        "y": 293.99952036623074
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.7809525604473146,
+        "y": 303.6781424631277,
+        "vx": 15.962828991136314,
+        "vy": 21.70558554545438,
+        "mass": 0.8500000000000001
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.1970831775173341,
+        "y": 294.0538181530966
+      },
+      "energyAtEnd": -796.9126841749883,
+      "assistWork": 0
+    },
+    {
+      "species": "frog",
+      "label": "Frog",
+      "mass": 1.05,
+      "grabbed": true,
+      "isLoaded": true,
+      "release": {
+        "time": 5.386666666666695,
+        "center": {
+          "x": -1.3795506132044602,
+          "y": 304.0659059079393,
+          "vx": 17.314522031212643,
+          "vy": 19.113754979000078,
+          "mass": 1.05
+        },
+        "speed": 25.790081476540514,
+        "angleDegrees": 47.8276042060664
+      },
+      "failure": null,
+      "loadingCenter": {
+        "x": -2.483795539811848,
+        "y": 295.7326450641308,
+        "vx": 0.20059810089997962,
+        "vy": -0.04237453647504831,
+        "mass": 1.05
+      },
+      "pouchPosition": {
+        "x": -2.149457036546493,
+        "y": 295.71865826508827
+      },
+      "handWork": 14.326654797127917,
+      "forceCapped": false,
+      "energyBeforeLaunch": -680.0161915379506,
+      "framePositionBeforeLaunch": {
+        "x": 0.00043918145462002746,
+        "y": 293.9995197803625
+      },
+      "phase": "flight",
+      "finalCenter": {
+        "x": -1.3795506132044602,
+        "y": 304.0659059079393,
+        "vx": 17.314522031212643,
+        "vy": 19.113754979000078,
+        "mass": 1.05
+      },
+      "framePositionAfterLaunch": {
+        "x": 0.25001461615350673,
+        "y": 294.03133262691057
+      },
+      "energyAtEnd": -822.5645994748918,
+      "assistWork": 0
+    }
+  ]
+}

@@ -19,8 +19,8 @@ export function cockedConfig(overrides={},desiredFraction=.6){
 }
 export class CritterScene {
  constructor(overrides={},species='lizard',saved=null){
-  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;
-  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0});this.index();return;}
+  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;this.dampingWork=0;this.dragWork=0;
+  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0,dampingWork:saved.dampingWork??0,dragWork:saved.dragWork??0});this.index();return;}
   const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
   for(const s of layout.surfaces)ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
@@ -84,7 +84,7 @@ export class CritterScene {
   }
   for(const [id,b]of this.enemies)if(b && this.elapsed>b.getUserData().expiresAt && Math.hypot(b.getPosition().x-this.center().x,b.getPosition().y-this.center().y)>4){this.world.destroyBody(b);this.enemies.delete(id);}
  }
- snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {windingWork:this.windingWork,windingInput:this.windingInput,windingBraking:this.windingBraking,windingTarget:this.windingTarget,windingStart:this.windingStart,assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
+ snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {dampingWork:this.dampingWork,dragWork:this.dragWork,windingWork:this.windingWork,windingInput:this.windingInput,windingBraking:this.windingBraking,windingTarget:this.windingTarget,windingStart:this.windingStart,assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
  clone(){return new CritterScene(this.p,this.rig.id,this.snapshot());}
  center(){let x=0,y=0,vx=0,vy=0,m=0;for(const b of this.parts){const w=b.getMass(),q=b.getWorldCenter(),v=b.getLinearVelocity();m+=w;x+=q.x*w;y+=q.y*w;vx+=v.x*w;vy+=v.y*w;}return {x:x/m,y:y/m,vx:vx/m,vy:vy/m,mass:m};}
  isLoaded(){const c=this.center(),p=this.pouch.getPosition();return Math.abs(c.x-p.x)<.8 && c.y>p.y-.2 && c.y<p.y+.8;}
@@ -100,8 +100,9 @@ export class CritterScene {
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
   const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
   if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q);let fx=80*(this.hand.target.x-q.x)-12*v.x,fy=80*(this.hand.target.y-q.y)-12*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,80/(mag||1));this.forceCapped=mag>80;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
-  if(this.p.armDamping)this.arm.applyTorque(-this.p.armDamping*this.arm.getAngularVelocity(),true);
-  if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y);b.applyForceToCenter(V(-k*v.x,-k*v.y),true);}
+  const dampingTorque=-this.p.armDamping*this.pivot.getJointSpeed(),dampingAngle=this.pivot.getJointAngle(),drag=[];
+  if(dampingTorque){this.arm.applyTorque(dampingTorque,true);this.frame.applyTorque(-dampingTorque,true);}
+  if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y),F=V(-k*v.x,-k*v.y);drag.push({body:b,force:F,before:{...b.getWorldCenter()}});b.applyForceToCenter(F,true);}
   this.updateWinding();this.updateEncounters();const winding=this.phase==='winding',oldRelativeAngle=this.pivot.getJointAngle();const old=this.relative();const assist=[];
   if(this.phase==='flight' && (this.control || this.rig.id==='flying-squirrel')){
    const c=this.center(),speed=Math.hypot(c.vx,c.vy),root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
@@ -109,7 +110,7 @@ export class CritterScene {
     for(const b of this.parts){const share=b.getMass()/c.mass,F=V(aero.fx*share,aero.fy*share);assist.push({body:b,force:F,before:{...b.getWorldCenter()},angle:b.getAngle(),torque:0});b.applyForceToCenter(F,true);}
    } else if(this.rig.id!=='flying-squirrel'){const F=V(this.control*.25,0);assist.push({body:root,force:F,before:{...root.getWorldCenter()},angle:root.getAngle(),torque:0});root.applyForceToCenter(F,true);}
   }
-  this.world.step(dt,20,12);this.elapsed+=dt;if(winding){const work=this.pivot.getMotorTorque(1/dt)*(this.pivot.getJointAngle()-oldRelativeAngle);this.windingWork+=work;if(work>=0)this.windingInput+=work;else this.windingBraking-=work;}for(const a of assist){const q=a.body.getWorldCenter();this.assistWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y)+a.torque*(a.body.getAngle()-a.angle);}
+  this.world.step(dt,20,12);this.elapsed+=dt;this.dampingWork+=dampingTorque*(this.pivot.getJointAngle()-dampingAngle);for(const a of drag){const q=a.body.getWorldCenter();this.dragWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y);}if(winding){const work=this.pivot.getMotorTorque(1/dt)*(this.pivot.getJointAngle()-oldRelativeAngle);this.windingWork+=work;if(work>=0)this.windingInput+=work;else this.windingBraking-=work;}for(const a of assist){const q=a.body.getWorldCenter();this.assistWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y)+a.torque*(a.body.getAngle()-a.angle);}
   if(this.hand){const q=this.hand.body.getWorldPoint(this.hand.local);this.handWork+=force.x*(q.x-before.x)+force.y*(q.y-before.y);}
   if(this.phase==='launching' && this.rope){const rel=this.relative(),a=this.rope.getAnchorA(),b=this.rope.getAnchorB(),r=Math.hypot(a.x-b.x,a.y-b.y);
     const pulling=this.ropes.some(rope=>{const a=rope.getAnchorA(),b=rope.getAnchorB(),F=rope.getReactionForce(1/dt),d=Math.hypot(b.x-a.x,b.y-a.y);return d>0 && -(F.x*(b.x-a.x)+F.y*(b.y-a.y))/d>.001;});
@@ -121,7 +122,7 @@ export class CritterScene {
   for(const b of this.parts){const q=b.getPosition(),v=b.getLinearVelocity();if(![q.x,q.y,v.x,v.y,b.getAngle()].every(Number.isFinite))throw new Error('Nonfinite articulated state');}
  }
  relative(){const a=this.arm.getWorldPoint(V(this.p.longArm,0)),b=this.pouch.getPosition();return ((Math.atan2(b.y-a.y,b.x-a.x)-this.arm.getAngle())%(2*Math.PI)+2*Math.PI)%(2*Math.PI);}
- predict(){if(this.hand || this.control || !this.isLoaded())return null;const saved=this.snapshot(),clone=new CritterScene(this.p,this.rig.id,saved),points=[];clone.unlatch();
+ predict(){if(this.phase!=='loading' || this.hand || this.control || !this.isLoaded())return null;const saved=this.snapshot(),clone=new CritterScene(this.p,this.rig.id,saved),points=[];clone.unlatch();
   for(let i=0;i<3000 && !clone.release;i++)clone.step();if(!clone.release)return {points,reason:'no pin release'};
   points.push(clone.center());for(let i=0;i<480;i++){const before=clone.center();clone.step();const after=clone.center();if(clone.events.some(e=>e.type==='impact'))break;
    // Stop before any authored surface, without exposing bounce outcomes.

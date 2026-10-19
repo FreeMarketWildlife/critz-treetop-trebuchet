@@ -1,0 +1,785 @@
+{
+  "scope": "Bounded exploratory measurements; optional planar C-link is not a replacement for the baseline release. No calibrated-realism claim.",
+  "protocol": {
+    "loadingStep": 0.0016666666666666668,
+    "loading": "600 gravity steps; grip torso COM; 600 steps target(-4.3,297); 1200 steps target(pouch.x,pouch.y+0.85); drop; 300 settling steps; require isLoaded; clone canonical snapshot; unlatch and observe at most 5 seconds.",
+    "units": "metres, seconds, kilograms; velocities are ragdoll center of mass at observed release. Parameter changes alter actual contact-loading histories. Comparisons do not isolate release efficiency alone.",
+    "release": "No body velocity assignment, no release-time fixture disabling or joint deletion. Both straps persist. Detector waits 0.01 seconds after payload no longer contacts cradle and is at least 0.7m away, and link is >0.22m from peg.",
+    "timestep": "Loading always uses 1/600; only launch timestep changes. This isolates launch integration from loading differences."
+  },
+  "sourceSHA256": {
+    "src/articulated.js": "81f361fae9f0f01890ae8db45363a6a24432cca875f24b600b6a39a956962047",
+    "src/hook-experiment.js": "e0dc0ad710f18312237b49bd4e1bae2f136614028393871478f47e6974c2f7a3",
+    "src/species.js": "156aaafe21f2b8203a9c1fce7dbda275c84266c73c4ed116d77a684934bbd35d"
+  },
+  "limitations": [
+    "Open planar C-link is not a closed 3D ring.",
+    "C-link collides only with peg; massless rope constraints do not collide with bodies.",
+    "Rigid U cradle does not model flexible fabric opening.",
+    "Many tested configurations spill early, throw backward, or release weakly.",
+    "Timestep sensitivity remains material: do not claim calibrated contact release.",
+    "Baseline uses idealized geometric release with ghost cradle and therefore has different release physics."
+  ],
+  "sweep": [
+    {
+      "parameters": {
+        "hookAngle": 3,
+        "hookSpan": 110,
+        "hookAttachmentAngle": -110
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.016666666666982,
+      "center": {
+        "x": 4.627691160990487,
+        "y": 303.9255962357004,
+        "vx": 3.0616908884535348,
+        "vy": -0.7365620380835053,
+        "mass": 0.65
+      },
+      "speed": 3.1490434630828963,
+      "energy": -1141.979710012569,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.4,
+        "hookSpan": 110,
+        "hookAttachmentAngle": -110
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.39000000000006096,
+      "center": {
+        "x": -2.1526869922034817,
+        "y": 295.93519781752485,
+        "vx": 1.1248770529580772,
+        "vy": -0.45383309864004556,
+        "mass": 0.65
+      },
+      "speed": 1.2129768611531195,
+      "energy": -667.1567842309578,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.8,
+        "hookSpan": 110,
+        "hookAttachmentAngle": -110
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.31500000000004924,
+      "center": {
+        "x": -2.233289880733558,
+        "y": 295.30713295293845,
+        "vx": 1.060775432023907,
+        "vy": -2.4447674447694574,
+        "mass": 0.65
+      },
+      "speed": 2.664982622117842,
+      "energy": -667.1396959263843,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 4.2,
+        "hookSpan": 110,
+        "hookAttachmentAngle": -110
+      },
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14333333333335574,
+      "center": {
+        "x": -2.225190316044406,
+        "y": 294.5482254812962,
+        "vx": -1.2900479098434838,
+        "vy": -4.9916577195276695,
+        "mass": 0.65
+      },
+      "speed": 5.1556639144354355,
+      "energy": -667.4647726711801,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.4,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14333333333335574,
+      "center": {
+        "x": -2.222120820977409,
+        "y": 294.5485364002337,
+        "vx": -1.2803450173264317,
+        "vy": -4.99158010438282,
+        "mass": 0.65
+      },
+      "speed": 5.1531694423784495,
+      "energy": -667.4294772425674,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.8,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14500000000002267,
+      "center": {
+        "x": -2.2308633148319945,
+        "y": 294.5440148572992,
+        "vx": -1.2940357960311117,
+        "vy": -4.99749733788922,
+        "mass": 0.65
+      },
+      "speed": 5.162316174317466,
+      "energy": -667.5753080315964,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 4.2,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.03000000000000469,
+      "center": {
+        "x": -2.1593791546879397,
+        "y": 295.7210791421424,
+        "vx": -1.659533625659144,
+        "vy": -1.815639039589975,
+        "mass": 0.65
+      },
+      "speed": 2.4597961250430065,
+      "energy": -665.2953171625875,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 110
+      },
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.4,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 110
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.16666666666669272,
+      "center": {
+        "x": -2.2868439921537806,
+        "y": 294.61902431922294,
+        "vx": -1.399673436572024,
+        "vy": -0.38097487683801917,
+        "mass": 0.65
+      },
+      "speed": 1.450595596928063,
+      "energy": -672.7128155165495,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.8,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 110
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14833333333335652,
+      "center": {
+        "x": -2.2574294352397355,
+        "y": 294.53587072174395,
+        "vx": -1.309071575337728,
+        "vy": -5.023353531375478,
+        "mass": 0.65
+      },
+      "speed": 5.191122141747359,
+      "energy": -667.6586307167228,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 4.2,
+        "hookSpan": 110,
+        "hookAttachmentAngle": 110
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.1466666666666896,
+      "center": {
+        "x": -2.2471930131395106,
+        "y": 294.5442922783567,
+        "vx": -1.300439093770696,
+        "vy": -5.011955707971942,
+        "mass": 0.65
+      },
+      "speed": 5.17791867986353,
+      "energy": -667.6302797357725,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3,
+        "hookSpan": 130,
+        "hookAttachmentAngle": -130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.0283333333336504,
+      "center": {
+        "x": 4.5663831565287225,
+        "y": 304.0304941259441,
+        "vx": 2.88179377623443,
+        "vy": -0.6236739122047357,
+        "mass": 0.65
+      },
+      "speed": 2.9485088633932,
+      "energy": -1149.597683455792,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.4,
+        "hookSpan": 130,
+        "hookAttachmentAngle": -130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 1.9733333333336418,
+      "center": {
+        "x": 4.539560775875555,
+        "y": 304.35660894408505,
+        "vx": 4.633713985881766,
+        "vy": 0.6987315861267626,
+        "mass": 0.65
+      },
+      "speed": 4.686099778323921,
+      "energy": -1140.5963907430385,
+      "hookOpen": true,
+      "forwardUpward": true
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.8,
+        "hookSpan": 130,
+        "hookAttachmentAngle": -130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.151666666667003,
+      "center": {
+        "x": 2.9185393053561146,
+        "y": 305.11879758889427,
+        "vx": -0.2000856980936476,
+        "vy": -2.0425398837398627,
+        "mass": 0.65
+      },
+      "speed": 2.052316608920192,
+      "energy": -1281.6909715266406,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 4.2,
+        "hookSpan": 130,
+        "hookAttachmentAngle": -130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.1150000000003306,
+      "center": {
+        "x": 2.8491681196626835,
+        "y": 305.2438154921173,
+        "vx": 2.480270839410398,
+        "vy": 2.327915322249095,
+        "mass": 0.65
+      },
+      "speed": 3.401607441253571,
+      "energy": -1258.8834596362772,
+      "hookOpen": true,
+      "forwardUpward": true
+    },
+    {
+      "parameters": {
+        "hookAngle": 3,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14500000000002267,
+      "center": {
+        "x": -2.2447628272061064,
+        "y": 294.5397089201156,
+        "vx": -1.2882447741644811,
+        "vy": -5.009218799399515,
+        "mass": 0.65
+      },
+      "speed": 5.172218825457756,
+      "energy": -667.6525748724409,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.4,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14333333333335574,
+      "center": {
+        "x": -2.2779707877302755,
+        "y": 294.55262914052093,
+        "vx": -1.2934740423460653,
+        "vy": -4.991030444922635,
+        "mass": 0.65
+      },
+      "speed": 5.155915049762526,
+      "energy": -667.5775885715174,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.8,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.15000000000002345,
+      "center": {
+        "x": -2.262995405001729,
+        "y": 294.5484242894146,
+        "vx": -1.2969028048266646,
+        "vy": -5.014303689435297,
+        "mass": 0.65
+      },
+      "speed": 5.179304815807977,
+      "energy": -667.7010917818827,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 4.2,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 0
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.14500000000002267,
+      "center": {
+        "x": -2.2621303772716863,
+        "y": 294.5449504951325,
+        "vx": -1.3045840027318525,
+        "vy": -5.0108117617176475,
+        "mass": 0.65
+      },
+      "speed": 5.177854182144547,
+      "energy": -667.612457221712,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.7766666666671007,
+      "center": {
+        "x": -5.959849362511094,
+        "y": 300.4516458832317,
+        "vx": -8.529843824477231,
+        "vy": -0.7432578829282063,
+        "mass": 0.65
+      },
+      "speed": 8.562164910261147,
+      "energy": -1353.5422367069698,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.4,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 130
+      },
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 3.8,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.725000000000426,
+      "center": {
+        "x": -6.159542728379701,
+        "y": 300.4347636761299,
+        "vx": -11.06576247347795,
+        "vy": -0.08173273608679563,
+        "mass": 0.65
+      },
+      "speed": 11.066064312102162,
+      "energy": -1347.807813394537,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "parameters": {
+        "hookAngle": 4.2,
+        "hookSpan": 130,
+        "hookAttachmentAngle": 130
+      },
+      "loaded": true,
+      "released": true,
+      "launchTime": 2.633333333333745,
+      "center": {
+        "x": -6.0794655076833655,
+        "y": 300.3956669753361,
+        "vx": -13.990172728535141,
+        "vy": 0.5495019616810066,
+        "mass": 0.65
+      },
+      "speed": 14.000960159222641,
+      "energy": -1304.5961572435358,
+      "hookOpen": true,
+      "forwardUpward": false
+    }
+  ],
+  "variants": [
+    {
+      "species": "lizard",
+      "parameters": {},
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.9733333333336418,
+        "center": {
+          "x": 4.539560775875555,
+          "y": 304.35660894408505,
+          "vx": 4.633713985881766,
+          "vy": 0.6987315861267626,
+          "mass": 0.65
+        },
+        "speed": 4.686099778323921,
+        "energy": -1140.5963907430385,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8433333333334652,
+        "center": {
+          "x": -1.5517607550158052,
+          "y": 303.6685293894768,
+          "vx": 16.888685782666194,
+          "vy": 22.000966482518272,
+          "mass": 0.65
+        },
+        "speed": 27.735721256720975,
+        "energy": -787.30649947191,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "lizard",
+      "parameters": {
+        "counterMass": 150
+      },
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 4.456666666667363,
+        "center": {
+          "x": -12.968966745169846,
+          "y": 295.1436552889411,
+          "vx": -12.454319644779904,
+          "vy": 7.062125149685717,
+          "mass": 0.65
+        },
+        "speed": 14.317251462629764,
+        "energy": -2335.574857534513,
+        "hookOpen": true,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.7500000000001172,
+        "center": {
+          "x": -1.154224333134974,
+          "y": 304.0601019541409,
+          "vx": 25.575831659403903,
+          "vy": 27.664013774968897,
+          "mass": 0.65
+        },
+        "speed": 37.67520170101065,
+        "energy": -514.587965371396,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "lizard",
+      "parameters": {
+        "longArm": 2.6
+      },
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.4066666666668866,
+        "center": {
+          "x": 0.1526778133587321,
+          "y": 301.5366783976816,
+          "vx": -2.2942873312057954,
+          "vy": 10.497030937896964,
+          "mass": 0.65
+        },
+        "speed": 10.744831914427394,
+        "energy": -1266.7315510526246,
+        "hookOpen": true,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.7650000000001196,
+        "center": {
+          "x": -1.4784064775448154,
+          "y": 302.8774902779896,
+          "vx": 13.870515451766153,
+          "vy": 23.433855338715233,
+          "mass": 0.65
+        },
+        "speed": 27.231172852697988,
+        "energy": -702.1376737986761,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "lizard",
+      "parameters": {
+        "longArm": 3.4
+      },
+      "hook": {
+        "loaded": true,
+        "released": false,
+        "launchTime": null,
+        "speed": null,
+        "energy": -1110.1639795650424,
+        "hookOpen": false,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8866666666668053,
+        "center": {
+          "x": -2.3670973537809297,
+          "y": 303.7488396304849,
+          "vx": 14.672600322673789,
+          "vy": 22.565598852044715,
+          "mass": 0.65
+        },
+        "speed": 26.91637887570185,
+        "energy": -829.8817629751175,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "turtle",
+      "parameters": {},
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 3.273333333333845,
+        "center": {
+          "x": 0.5842791179368895,
+          "y": 299.9525101277875,
+          "vx": 1.1894786317498085,
+          "vy": -1.303208090521119,
+          "mass": 2.4
+        },
+        "speed": 1.7644292965684676,
+        "energy": -1377.663386335622,
+        "hookOpen": true,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.9966666666668225,
+        "center": {
+          "x": -1.7031592229691965,
+          "y": 303.9849205152983,
+          "vx": 11.359706820801508,
+          "vy": 14.690300619725297,
+          "mass": 2.4
+        },
+        "speed": 18.570080003932823,
+        "energy": -877.1220668898677,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "armadillo",
+      "parameters": {},
+      "hook": {
+        "loaded": false,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": false,
+        "forwardUpward": false
+      }
+    }
+  ],
+  "timesteps": [
+    {
+      "dt": 0.0033333333333333335,
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.973333333333116,
+        "center": {
+          "x": 4.432760136637156,
+          "y": 304.6143612693535,
+          "vx": 4.983692913198628,
+          "vy": 1.1391401196923843,
+          "mass": 0.65
+        },
+        "speed": 5.112224101637076,
+        "energy": -1165.7590850783727,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8433333333332405,
+        "center": {
+          "x": -1.5205535228186797,
+          "y": 303.7089680824241,
+          "vx": 16.864518476824703,
+          "vy": 21.973613513164278,
+          "mass": 0.65
+        },
+        "speed": 27.699308191380474,
+        "energy": -774.3486812373413,
+        "forwardUpward": true
+      }
+    },
+    {
+      "dt": 0.0016666666666666668,
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.9733333333336418,
+        "center": {
+          "x": 4.539560775875555,
+          "y": 304.35660894408505,
+          "vx": 4.633713985881766,
+          "vy": 0.6987315861267626,
+          "mass": 0.65
+        },
+        "speed": 4.686099778323921,
+        "energy": -1140.5963907430385,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8433333333334652,
+        "center": {
+          "x": -1.5517607550158052,
+          "y": 303.6685293894768,
+          "vx": 16.888685782666194,
+          "vy": 22.000966482518272,
+          "mass": 0.65
+        },
+        "speed": 27.735721256720975,
+        "energy": -787.30649947191,
+        "forwardUpward": true
+      }
+    },
+    {
+      "dt": 0.0008333333333333334,
+      "hook": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.9316666666669686,
+        "center": {
+          "x": 4.671171419237709,
+          "y": 304.4461782003417,
+          "vx": 5.611821804006168,
+          "vy": 1.14792589060369,
+          "mass": 0.65
+        },
+        "speed": 5.728025646785926,
+        "energy": -1101.296666231118,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8433333333334652,
+        "center": {
+          "x": -1.5595942086430294,
+          "y": 303.664117562564,
+          "vx": 17.02982685664692,
+          "vy": 22.02308432644669,
+          "mass": 0.65
+        },
+        "speed": 27.839383003528553,
+        "energy": -786.6890485611492,
+        "forwardUpward": true
+      }
+    }
+  ]
+}

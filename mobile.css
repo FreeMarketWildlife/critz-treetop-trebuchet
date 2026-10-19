@@ -1,4 +1,4 @@
-/* Load after the lab's base styles. Canvas keeps its 960:480 coordinate ratio. */
+/* Renderer sets the matching 480:600 portrait or 960:480 landscape ratio inline. */
 canvas#view{width:100%;height:auto;min-height:0;aspect-ratio:2 / 1;object-fit:contain;touch-action:none;user-select:none;-webkit-user-select:none}
 button,input,select,summary{min-height:44px}
 input[type=checkbox]{min-height:24px;min-width:24px;margin:0 4px 0 0}
@@ -13,6 +13,8 @@ progress#power{max-width:100%;height:20px;vertical-align:middle}
  h1{font-size:21px;line-height:1.2}
  body>label{width:calc(50% - 12px);vertical-align:top;justify-content:space-between;font-size:12px}
  body>label select{max-width:100%;width:100%}
+ .hardware label{min-width:0;gap:8px;justify-content:space-between}
+ .hardware select{min-width:0;width:100%;max-width:100%}
  input[type=number]{width:78px;font-size:16px}
  select{font-size:16px;max-width:100%}
  button{font-size:14px;max-width:100%;white-space:normal}

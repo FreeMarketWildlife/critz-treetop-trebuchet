@@ -5,6 +5,8 @@
  * A flare trades speed for height; there is no thrust. This helper applies no
  * pitch motor: torque is zero. Incidence represents ideal massless membrane
  * deflection; actual articulated pitch changes must be separately accounted.
+ * A freely tumbling rig therefore loses attached-flow glide: these controls
+ * cannot recover body attitude. Holding a flare can stall and shorten range.
  */
 export const GLIDE_DEFAULTS = Object.freeze({
   airDensity: 1.225, liftSlope: 4, maxLiftCoefficient: 1.1,

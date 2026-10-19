@@ -1,0 +1,94 @@
+{
+  "scope": "Controlled isolated diagnostics only. These do not identify the many-body launcher contact loss; its residual remains mixed with constraints, restitution and numerical error.",
+  "freeFall": [
+    {
+      "hz": 300,
+      "driftJ": -0.005038910412828557,
+      "analyticSemiImplicitDriftJ": -0.005038910412835546
+    },
+    {
+      "hz": 600,
+      "driftJ": -0.0025194552064391473,
+      "analyticSemiImplicitDriftJ": -0.002519455206417773
+    },
+    {
+      "hz": 1200,
+      "driftJ": -0.0012597276032728644,
+      "analyticSemiImplicitDriftJ": -0.0012597276032088865
+    }
+  ],
+  "impacts": [
+    {
+      "hz": 300,
+      "restitution": 0,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0,
+      "expectedLossJ": 0.06283185307179587,
+      "measuredLossJ": 0.06283185307179587
+    },
+    {
+      "hz": 300,
+      "restitution": 0.5,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0.015707963267948967,
+      "expectedLossJ": 0.0471238898038469,
+      "measuredLossJ": 0.0471238898038469
+    },
+    {
+      "hz": 300,
+      "restitution": 1,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0.06283185307179587,
+      "expectedLossJ": 0,
+      "measuredLossJ": 0
+    },
+    {
+      "hz": 600,
+      "restitution": 0,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0,
+      "expectedLossJ": 0.06283185307179587,
+      "measuredLossJ": 0.06283185307179587
+    },
+    {
+      "hz": 600,
+      "restitution": 0.5,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0.015707963267948967,
+      "expectedLossJ": 0.0471238898038469,
+      "measuredLossJ": 0.0471238898038469
+    },
+    {
+      "hz": 600,
+      "restitution": 1,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0.06283185307179587,
+      "expectedLossJ": 0,
+      "measuredLossJ": 0
+    },
+    {
+      "hz": 1200,
+      "restitution": 0,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0,
+      "expectedLossJ": 0.06283185307179587,
+      "measuredLossJ": 0.06283185307179587
+    },
+    {
+      "hz": 1200,
+      "restitution": 0.5,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0.015707963267948967,
+      "expectedLossJ": 0.0471238898038469,
+      "measuredLossJ": 0.0471238898038469
+    },
+    {
+      "hz": 1200,
+      "restitution": 1,
+      "initialJ": 0.06283185307179587,
+      "finalJ": 0.06283185307179587,
+      "expectedLossJ": 0,
+      "measuredLossJ": 0
+    }
+  ]
+}

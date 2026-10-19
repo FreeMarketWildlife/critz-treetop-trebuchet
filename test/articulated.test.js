@@ -72,3 +72,16 @@ test('motor inputs reject unbounded or invalid actuator settings',()=>{
  assert.throws(()=>new CritterScene({mechanicalWinding:'yes'}));
  assert.doesNotThrow(()=>new CritterScene({windingTorque:0,mechanicalWinding:true}));
 });
+
+test('deliberate damping and drag work are separate from unexplained solver/contact residual',()=>{
+ const s=new CritterScene({armDamping:2,flightDrag:.02});s.pivot.enableLimit(false);
+ s.arm.setAngularVelocity(.1);for(const b of s.parts)b.setLinearVelocity({x:3,y:0});
+ for(let i=0;i<30;i++)s.step();assert.ok(s.dampingWork<0);assert.ok(s.dragWork<0);
+ const clone=s.clone();assert.equal(clone.dampingWork,s.dampingWork);assert.equal(clone.dragWork,s.dragWork);
+});
+
+test('axle damping reacts on frame and uses relative angular motion',()=>{
+ const s=new CritterScene({armDamping:3}),jointSpeed=.7;
+ s.arm.setAngularVelocity(jointSpeed);s.frame.setAngularVelocity(jointSpeed);
+ s.step();assert.ok(Math.abs(s.dampingWork)<1e-12,'rigid co-rotation should not incur axle work');
+});
