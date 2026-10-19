@@ -43,7 +43,7 @@
               "id": "rear-leg"
             },
             "mass": 0.09,
-            "inertia": 0.00007381410199255803,
+            "inertia": 7.381410199255803e-05,
             "angularVelocity": -1008.7485606030737,
             "rotationalEnergy": 37.555642907422566
           }
@@ -60,7 +60,7 @@
               "id": "front-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1081.4522691258767,
             "rotationalEnergy": 40.286620172286604
           }
@@ -77,7 +77,7 @@
               "id": "front-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1140.0626627388942,
             "rotationalEnergy": 44.771698130708245
           }
@@ -123,7 +123,7 @@
               "id": "front-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1002.9696202394274,
             "rotationalEnergy": 34.65147122982405
           }
@@ -140,7 +140,7 @@
               "id": "rear-leg"
             },
             "mass": 0.096,
-            "inertia": 0.00007873504212539524,
+            "inertia": 7.873504212539524e-05,
             "angularVelocity": -1004.1595856144851,
             "rotationalEnergy": 39.69570735413064
           }
@@ -157,7 +157,7 @@
               "id": "front-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1005.6873070073091,
             "rotationalEnergy": 34.83951168260077
           }
@@ -174,7 +174,7 @@
               "id": "rear-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1087.9182447242474,
             "rotationalEnergy": 40.76980569763855
           }
@@ -191,7 +191,7 @@
               "id": "front-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1170.978294474877,
             "rotationalEnergy": 47.23281302787028
           }
@@ -208,7 +208,7 @@
               "id": "rear-leg"
             },
             "mass": 0.08399999999999999,
-            "inertia": 0.00006889316185972082,
+            "inertia": 6.889316185972082e-05,
             "angularVelocity": 1014.6746030081316,
             "rotationalEnergy": 35.46497859373584
           }
@@ -320,8 +320,8 @@
         "medianMs": 146.8092919999999,
         "innerSteps": 1909,
         "metrics": {
-          "maxAnchor": 0.00004937104986202085,
-          "maxRope": 0.00001128219918200557,
+          "maxAnchor": 4.937104986202085e-05,
+          "maxRope": 1.128219918200557e-05,
           "maxAngular": 0.014332197036018401,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -332,8 +332,8 @@
         "medianMs": 148.59479199999987,
         "innerSteps": 1923,
         "metrics": {
-          "maxAnchor": 0.00004937104986202085,
-          "maxRope": 0.00001128219918200557,
+          "maxAnchor": 4.937104986202085e-05,
+          "maxRope": 1.128219918200557e-05,
           "maxAngular": 0.014332197036018401,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -347,7 +347,7 @@
         "innerSteps": 733,
         "metrics": {
           "maxAnchor": 0.0004229013426027088,
-          "maxRope": 8.59552113485762e-7,
+          "maxRope": 8.59552113485762e-07,
           "maxAngular": 0.07587670294134341,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -359,7 +359,7 @@
         "innerSteps": 1013,
         "metrics": {
           "maxAnchor": 0.0004229013426027088,
-          "maxRope": 8.59552113485762e-7,
+          "maxRope": 8.59552113485762e-07,
           "maxAngular": 0.07587670294134341,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -371,7 +371,7 @@
         "innerSteps": 733,
         "metrics": {
           "maxAnchor": 0.0004229013426027088,
-          "maxRope": 8.59552113485762e-7,
+          "maxRope": 8.59552113485762e-07,
           "maxAngular": 0.07587670294134341,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -383,7 +383,7 @@
         "innerSteps": 733,
         "metrics": {
           "maxAnchor": 0.0004229013426027088,
-          "maxRope": 8.59552113485762e-7,
+          "maxRope": 8.59552113485762e-07,
           "maxAngular": 0.07587670294134341,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -395,7 +395,7 @@
         "innerSteps": 766,
         "metrics": {
           "maxAnchor": 0.0004243873800618883,
-          "maxRope": 8.595761871177388e-7,
+          "maxRope": 8.595761871177388e-07,
           "maxAngular": 0.07587670294134341,
           "maxPositiveStepEnergy": 0,
           "maxCumulativeEnergy": 0,
@@ -796,7 +796,7 @@
         "totalSeconds": 0.00020833333333333335,
         "observations": [
           {
-            "dt": 0.0000656258061757941,
+            "dt": 6.56258061757941e-05,
             "angle": 0.900001,
             "speed": 825.3202967860685,
             "limitState": 0
@@ -817,5 +817,12 @@
     "Selected six angular cases are targeted diagnostics, not a statistical population.",
     "No new natural encounter cohort, human-reaction study, audio listening, device FPS or broad boundary-split game test was completed.",
     "The new kinematic approach bound includes both angular sweeps and relative COM velocity but does not prove coverage under every future collision impulse."
-  ]
+  ],
+  "sync": {
+    "status": "denied",
+    "implementationCommit": "22bb824",
+    "action": "git push origin main",
+    "target": "existing public GitHub origin FreeMarketWildlife/critz-treetop-trebuchet",
+    "reason": "Automatic approval review cited original trusted no-push restriction and did not accept the later authorization. Command did not execute. No retry or workaround."
+  }
 }
