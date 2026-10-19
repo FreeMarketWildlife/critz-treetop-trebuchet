@@ -1,6 +1,16 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration45 completed LOCAL ONLY
+## CURRENT implementation: iteration46 completed LOCAL ONLY
+
+Public sync PAUSED pending parent authorization; no push/retry/alternate route. Canonical only. PriorHEAD59b88e7. ALL known catalog/isolation/pilot/prediction/test/benchmark jobs COMPLETE; don'tduplicate. Ordinary source and earned saves untouched; ALL refinements disabled. No process-inventory retry/server/tab/export/permission change.
+
+Read docs/reviews/iteration-46/findings.md,summary.json. Optimized45motiongate both264catalogs EXACT every retained45physical/diagnostic row+frozenframes (exclude timings/newquerycounts),stable sourcehashes,9,821,569 queryskips. Lizard original/optimized same full uninterrupted actualinnerhistory+trace, samepreouter snapshot/relevantpinnedwarmhashes. Root: earlierhead/rearleg reactions spendbudget; whenlocalbudget2, lead4.388us leavesfrontleginsideupperstop, then203.945us crosses.949926→1.114062 withlimitState0, error.16406rad peak. Nopose/force/limit/privateflagwrite. Causal onlyoneouter settle1 peak.01672/15steps,nolead.00792/16; globalremoval unsafe forpriorfrog/snake. Narrow generalguard onlyskipsleadwhenlocalbudget2, preserves boundary+physicalreaction. Exactsameprefix localpeak.01707/16; missingsecondsettle stillflagged. All12difficultfull15s guardcasesbelow.08,max.0792924,cap16;3fallbacksretained. Newphysicalunit verifiesmomentum/passiveenergy/model/time/cap,control>.15guard<.01.
+
+Generalguard BOTH264catalogs COMPLETE: default262release/2misses,experimental263/1; all528 fullreleases+windwork+outcomes EXACT45. Zero post-loadangularflagsboth; default18loadingflagsunchanged; experimental0angularoverall. Maxpostangular.0792924/.0722710;cap16;fallbackcases21/17 allidentitiesretained,contactbudgetmiss0. Maxinneranchor.01182/.01252,rope.01175/.02231m;outernonfinite/cumulativeenergy0; highspinflags3/4retained. Guard66stock sync/budgeted/live commonouterhash+release exact,source loadedstateunchanged; all-equipment guardhintcoverage NOT done.279tests pass.
+
+Clean pairedfive-roundNode ms per1s(original/priorboundary/contact/motiongate/guard): falling39.93/194.30/238.59/203.87/205.77;rig63.02/150.83/166.20/168.50/169.89;canopy56.33/65.99/67.17/67.42/66.54. Allknownjobs finishedbeforetiming,restoreoutsidetimer,counteronly. Hostbackgroundunknown (inventorydenied,respected). Guard13.8% falling savingvscontact,still5.15xoriginal; no usefulotherworkloadsaving. NOTdeviceFPS. No newbrowser/naturalencounter/audio/humanQA. Next allgear guardprediction,natural/longhorizon/devicecoverage andbudgetexhaustiondiagnosis beforeadoption. Do not loosenlimits/hideflags/force throws. Localcheckpoint unpushed.
+
+## Historical implementation: iteration45 completed LOCAL ONLY
 
 Public sync remains PAUSED pending parent authorization; no push retry or alternate route. Canonical checkout only. Prior HEAD02eda02. All known catalog/prediction/capture/benchmark/test jobs COMPLETE; do not duplicate. No process-inventory retry/new servers/tabs/export. Ordinary source and saves untouched; all research disabled.
 

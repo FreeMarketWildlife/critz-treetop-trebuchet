@@ -1,0 +1,995 @@
+{
+  "catalog": {
+    "default": {
+      "cases": 264,
+      "allRetainedPhysicsAndDiagnosticsExact": true,
+      "counts": {
+        "launched": 262,
+        "seating_failed": 2
+      },
+      "sourcesChangedDuringRun": [],
+      "maxActualIntegrations": 16,
+      "angularFlagCases": [
+        {
+          "id": "stock-chipmunk-0.6",
+          "error": 0.13462300572187247
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "error": 0.08026380071503714
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.45",
+          "error": 0.08611909995305145
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.6",
+          "error": 0.138867746238317
+        },
+        {
+          "id": "beam-long-salamander-0.6",
+          "error": 0.10468990652878118
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "error": 0.08595437767620706
+        },
+        {
+          "id": "beam-long-mouse-0.75",
+          "error": 0.09185257659710033
+        },
+        {
+          "id": "beam-long-snake-0.75",
+          "error": 0.09251145366187541
+        },
+        {
+          "id": "beam-light-chipmunk-0.6",
+          "error": 0.13484478861395144
+        },
+        {
+          "id": "sling-long-chipmunk-0.45",
+          "error": 0.08074277256047346
+        },
+        {
+          "id": "sling-long-frog-0.75",
+          "error": 0.08077039332254654
+        },
+        {
+          "id": "frame-heavy-chipmunk-0.45",
+          "error": 0.08499567065513891
+        },
+        {
+          "id": "frame-heavy-chipmunk-0.6",
+          "error": 0.14322235494845637
+        },
+        {
+          "id": "frame-grip-chipmunk-0.6",
+          "error": 0.1350279959009948
+        },
+        {
+          "id": "combined-snake-0.6",
+          "error": 0.08782419162245425
+        },
+        {
+          "id": "combined-snake-0.75",
+          "error": 0.11577003900117178
+        },
+        {
+          "id": "combined-chipmunk-0.75",
+          "error": 0.1666861182877375
+        },
+        {
+          "id": "combined-small-marsupial-0.75",
+          "error": 0.08327478806629718
+        }
+      ],
+      "fallbackCases": [
+        {
+          "id": "stock-lizard-0.6",
+          "count": 1
+        },
+        {
+          "id": "stock-mouse-0.6",
+          "count": 1
+        },
+        {
+          "id": "stock-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "stock-small-marsupial-0.75",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-mouse-0.45",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-long-lizard-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-long-frog-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-turtle-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-snake-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-light-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-light-tiny-primate-0.75",
+          "count": 1
+        },
+        {
+          "id": "sling-long-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-grip-mouse-0.6",
+          "count": 1
+        },
+        {
+          "id": "frame-grip-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-grip-frog-0.75",
+          "count": 1
+        },
+        {
+          "id": "combined-lizard-0.45",
+          "count": 1
+        },
+        {
+          "id": "combined-turtle-0.6",
+          "count": 1
+        }
+      ],
+      "motionSkips": 3816239,
+      "geometryQueries": 2485518,
+      "contactBudgetMisses": 0
+    },
+    "candidate": {
+      "cases": 264,
+      "allRetainedPhysicsAndDiagnosticsExact": true,
+      "counts": {
+        "launched": 263,
+        "seating_failed": 1
+      },
+      "sourcesChangedDuringRun": [],
+      "maxActualIntegrations": 16,
+      "angularFlagCases": [
+        {
+          "id": "beam-light-lizard-0.6",
+          "error": 0.16406234753380322
+        }
+      ],
+      "fallbackCases": [
+        {
+          "id": "counterweight-heavy-mouse-0.75",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-turtle-0.45",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "count": 2
+        },
+        {
+          "id": "counterweight-heavy-tiny-primate-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-long-mouse-0.45",
+          "count": 1
+        },
+        {
+          "id": "beam-long-turtle-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-lizard-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "sling-long-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-lizard-0.45",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-mouse-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-tiny-primate-0.6",
+          "count": 1
+        },
+        {
+          "id": "combined-salamander-0.45",
+          "count": 1
+        },
+        {
+          "id": "combined-mouse-0.45",
+          "count": 2
+        },
+        {
+          "id": "combined-tiny-primate-0.45",
+          "count": 1
+        }
+      ],
+      "motionSkips": 6005330,
+      "geometryQueries": 2306351,
+      "contactBudgetMisses": 0
+    }
+  },
+  "guardCatalog": {
+    "default": {
+      "cases": 264,
+      "counts": {
+        "launched": 262,
+        "seating_failed": 2
+      },
+      "allReleasesWindWorkAndOutcomesExact": true,
+      "sourcesChangedDuringRun": [],
+      "maxActualIntegrations": 16,
+      "innerAngularFlagCases": [
+        {
+          "id": "stock-chipmunk-0.6",
+          "error": 0.13462300572187247
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "error": 0.08026380071503714
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.45",
+          "error": 0.08611909995305145
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.6",
+          "error": 0.138867746238317
+        },
+        {
+          "id": "beam-long-salamander-0.6",
+          "error": 0.10468990652878118
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "error": 0.08595437767620706
+        },
+        {
+          "id": "beam-long-mouse-0.75",
+          "error": 0.09185257659710033
+        },
+        {
+          "id": "beam-long-snake-0.75",
+          "error": 0.09251145366187541
+        },
+        {
+          "id": "beam-light-chipmunk-0.6",
+          "error": 0.13484478861395144
+        },
+        {
+          "id": "sling-long-chipmunk-0.45",
+          "error": 0.08074277256047346
+        },
+        {
+          "id": "sling-long-frog-0.75",
+          "error": 0.08077039332254654
+        },
+        {
+          "id": "frame-heavy-chipmunk-0.45",
+          "error": 0.08499567065513891
+        },
+        {
+          "id": "frame-heavy-chipmunk-0.6",
+          "error": 0.14322235494845637
+        },
+        {
+          "id": "frame-grip-chipmunk-0.6",
+          "error": 0.1350279959009948
+        },
+        {
+          "id": "combined-snake-0.6",
+          "error": 0.08782419162245425
+        },
+        {
+          "id": "combined-snake-0.75",
+          "error": 0.11577003900117178
+        },
+        {
+          "id": "combined-chipmunk-0.75",
+          "error": 0.1666861182877375
+        },
+        {
+          "id": "combined-small-marsupial-0.75",
+          "error": 0.08327478806629718
+        }
+      ],
+      "postLoadAngularFlagCases": [],
+      "maxPostLoadAngular": 0.0792923936022476,
+      "maxInnerAnchor": 0.011821236043677127,
+      "maxInnerRope": 0.011749443778315438,
+      "outerNonfiniteCases": 0,
+      "maxOuterCumulativeEnergyResidual": 0,
+      "fallbackCases": [
+        {
+          "id": "stock-lizard-0.6",
+          "count": 1
+        },
+        {
+          "id": "stock-mouse-0.6",
+          "count": 1
+        },
+        {
+          "id": "stock-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "stock-small-marsupial-0.75",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-mouse-0.45",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-frog-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-long-lizard-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-long-frog-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-turtle-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-snake-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-light-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-light-tiny-primate-0.75",
+          "count": 1
+        },
+        {
+          "id": "sling-long-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-grip-mouse-0.6",
+          "count": 1
+        },
+        {
+          "id": "frame-grip-chipmunk-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-grip-frog-0.75",
+          "count": 1
+        },
+        {
+          "id": "combined-lizard-0.45",
+          "count": 1
+        },
+        {
+          "id": "combined-turtle-0.6",
+          "count": 1
+        }
+      ],
+      "highSpinCases": [
+        {
+          "id": "stock-mouse-0.45",
+          "spin": 1005.9413426626722
+        },
+        {
+          "id": "counterweight-heavy-small-marsupial-0.75",
+          "spin": 1097.2072248802688
+        },
+        {
+          "id": "frame-heavy-small-marsupial-0.45",
+          "spin": 1018.4018970759341
+        }
+      ],
+      "contactBudgetMisses": 0
+    },
+    "candidate": {
+      "cases": 264,
+      "counts": {
+        "launched": 263,
+        "seating_failed": 1
+      },
+      "allReleasesWindWorkAndOutcomesExact": true,
+      "sourcesChangedDuringRun": [],
+      "maxActualIntegrations": 16,
+      "innerAngularFlagCases": [],
+      "postLoadAngularFlagCases": [],
+      "maxPostLoadAngular": 0.07227101053384621,
+      "maxInnerAnchor": 0.012524735116943138,
+      "maxInnerRope": 0.02230861037786358,
+      "outerNonfiniteCases": 0,
+      "maxOuterCumulativeEnergyResidual": 0,
+      "fallbackCases": [
+        {
+          "id": "counterweight-heavy-mouse-0.75",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-turtle-0.45",
+          "count": 1
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "count": 2
+        },
+        {
+          "id": "counterweight-heavy-tiny-primate-0.75",
+          "count": 1
+        },
+        {
+          "id": "beam-long-mouse-0.45",
+          "count": 1
+        },
+        {
+          "id": "beam-long-turtle-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-lizard-0.6",
+          "count": 1
+        },
+        {
+          "id": "beam-light-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "sling-long-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "sling-long-chipmunk-0.6",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-lizard-0.45",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-mouse-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-turtle-0.75",
+          "count": 1
+        },
+        {
+          "id": "frame-heavy-tiny-primate-0.6",
+          "count": 1
+        },
+        {
+          "id": "combined-salamander-0.45",
+          "count": 1
+        },
+        {
+          "id": "combined-mouse-0.45",
+          "count": 2
+        },
+        {
+          "id": "combined-tiny-primate-0.45",
+          "count": 1
+        }
+      ],
+      "highSpinCases": [
+        {
+          "id": "stock-small-marsupial-0.6",
+          "spin": 1032.3081317517835
+        },
+        {
+          "id": "beam-long-small-marsupial-0.45",
+          "spin": 1011.6049187974286
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "spin": 1023.47151719765
+        },
+        {
+          "id": "combined-small-marsupial-0.75",
+          "spin": 1024.932442720095
+        }
+      ],
+      "contactBudgetMisses": 0
+    }
+  },
+  "lizard": {
+    "id": "beam-light-lizard-0.6",
+    "rows": [
+      {
+        "policy": "original",
+        "prefix": {
+          "poseHash": "baa0e02d17eba33e4f97f9787c06cab0be6c5403793ad8e3b4576684b09d396f",
+          "warmHash": "c705237f6b8b2ba1bbab150964271cd1a0b6bb1340cd76046117e3a58a5ab527",
+          "historyHash": "c39eb3778ae4cff9755daefa0775a57a5298f74370abe228b2c3fe70b635e4b2",
+          "elapsed": 16.796666666667406,
+          "before": {
+            "angular": 0.00047726227998845516,
+            "anchor": 0.0003205198975449122,
+            "rope": 3.340732135370672e-09,
+            "worst": {
+              "a": {
+                "role": "pouch",
+                "id": "cradle"
+              },
+              "b": {
+                "role": "pouchflap",
+                "id": "right-panel"
+              },
+              "angle": -3.1420699158697816,
+              "speed": 8.67066624882229e-05,
+              "lower": -3.141592653589793,
+              "upper": 0,
+              "limitState": 1
+            },
+            "near": [
+              {
+                "a": {
+                  "role": "pouch",
+                  "id": "cradle"
+                },
+                "b": {
+                  "role": "pouchflap",
+                  "id": "right-panel"
+                },
+                "angle": -3.1420699158697816,
+                "speed": 8.67066624882229e-05,
+                "lower": -3.141592653589793,
+                "upper": 0,
+                "limitState": 1
+              }
+            ]
+          }
+        },
+        "historyHash": "c9f43b74604d7e22e813345e8db89f6917c933c30ecd969ae622d5b814eb9e28",
+        "traceHash": "6def3aab4f6ab9f6794f8bbeb357383302ea0d399bedd0eedd752ba3820bb75e",
+        "peakAngular": 0.16406234753380322,
+        "targetOuterIntegrations": 16,
+        "maxOuterActual": 16,
+        "maxAnchor": 0.0004028363832790324,
+        "maxRope": 1.4965905403840907e-08,
+        "maxCumulativeEnergyResidual": -11.54849911088968
+      },
+      {
+        "policy": "optimized",
+        "prefix": {
+          "poseHash": "baa0e02d17eba33e4f97f9787c06cab0be6c5403793ad8e3b4576684b09d396f",
+          "warmHash": "c705237f6b8b2ba1bbab150964271cd1a0b6bb1340cd76046117e3a58a5ab527",
+          "historyHash": "c39eb3778ae4cff9755daefa0775a57a5298f74370abe228b2c3fe70b635e4b2",
+          "elapsed": 16.796666666667406,
+          "before": {
+            "angular": 0.00047726227998845516,
+            "anchor": 0.0003205198975449122,
+            "rope": 3.340732135370672e-09,
+            "worst": {
+              "a": {
+                "role": "pouch",
+                "id": "cradle"
+              },
+              "b": {
+                "role": "pouchflap",
+                "id": "right-panel"
+              },
+              "angle": -3.1420699158697816,
+              "speed": 8.67066624882229e-05,
+              "lower": -3.141592653589793,
+              "upper": 0,
+              "limitState": 1
+            },
+            "near": [
+              {
+                "a": {
+                  "role": "pouch",
+                  "id": "cradle"
+                },
+                "b": {
+                  "role": "pouchflap",
+                  "id": "right-panel"
+                },
+                "angle": -3.1420699158697816,
+                "speed": 8.67066624882229e-05,
+                "lower": -3.141592653589793,
+                "upper": 0,
+                "limitState": 1
+              }
+            ]
+          }
+        },
+        "historyHash": "c9f43b74604d7e22e813345e8db89f6917c933c30ecd969ae622d5b814eb9e28",
+        "traceHash": "6def3aab4f6ab9f6794f8bbeb357383302ea0d399bedd0eedd752ba3820bb75e",
+        "peakAngular": 0.16406234753380322,
+        "targetOuterIntegrations": 16,
+        "maxOuterActual": 16,
+        "maxAnchor": 0.0004028363832790324,
+        "maxRope": 1.4965905403840907e-08,
+        "maxCumulativeEnergyResidual": -11.54849911088968
+      },
+      {
+        "policy": "settle1",
+        "prefix": {
+          "poseHash": "baa0e02d17eba33e4f97f9787c06cab0be6c5403793ad8e3b4576684b09d396f",
+          "warmHash": "c705237f6b8b2ba1bbab150964271cd1a0b6bb1340cd76046117e3a58a5ab527",
+          "historyHash": "c39eb3778ae4cff9755daefa0775a57a5298f74370abe228b2c3fe70b635e4b2",
+          "elapsed": 16.796666666667406,
+          "before": {
+            "angular": 0.00047726227998845516,
+            "anchor": 0.0003205198975449122,
+            "rope": 3.340732135370672e-09,
+            "worst": {
+              "a": {
+                "role": "pouch",
+                "id": "cradle"
+              },
+              "b": {
+                "role": "pouchflap",
+                "id": "right-panel"
+              },
+              "angle": -3.1420699158697816,
+              "speed": 8.67066624882229e-05,
+              "lower": -3.141592653589793,
+              "upper": 0,
+              "limitState": 1
+            },
+            "near": [
+              {
+                "a": {
+                  "role": "pouch",
+                  "id": "cradle"
+                },
+                "b": {
+                  "role": "pouchflap",
+                  "id": "right-panel"
+                },
+                "angle": -3.1420699158697816,
+                "speed": 8.67066624882229e-05,
+                "lower": -3.141592653589793,
+                "upper": 0,
+                "limitState": 1
+              }
+            ]
+          }
+        },
+        "historyHash": "43982e66a7ebc29da93a993f214ebd1f32be0bb86ce16e542a9a65efa570ada8",
+        "traceHash": "a46c0b340bfa5d613efdc0117b43b971bd5399422476750463aa7b5daedd2462",
+        "peakAngular": 0.016717633912492147,
+        "targetOuterIntegrations": 15,
+        "maxOuterActual": 15,
+        "maxAnchor": 0.0004028363832790324,
+        "maxRope": 1.5063853275876227e-08,
+        "maxCumulativeEnergyResidual": -11.54849911088968
+      },
+      {
+        "policy": "settle0",
+        "prefix": {
+          "poseHash": "baa0e02d17eba33e4f97f9787c06cab0be6c5403793ad8e3b4576684b09d396f",
+          "warmHash": "c705237f6b8b2ba1bbab150964271cd1a0b6bb1340cd76046117e3a58a5ab527",
+          "historyHash": "c39eb3778ae4cff9755daefa0775a57a5298f74370abe228b2c3fe70b635e4b2",
+          "elapsed": 16.796666666667406,
+          "before": {
+            "angular": 0.00047726227998845516,
+            "anchor": 0.0003205198975449122,
+            "rope": 3.340732135370672e-09,
+            "worst": {
+              "a": {
+                "role": "pouch",
+                "id": "cradle"
+              },
+              "b": {
+                "role": "pouchflap",
+                "id": "right-panel"
+              },
+              "angle": -3.1420699158697816,
+              "speed": 8.67066624882229e-05,
+              "lower": -3.141592653589793,
+              "upper": 0,
+              "limitState": 1
+            },
+            "near": [
+              {
+                "a": {
+                  "role": "pouch",
+                  "id": "cradle"
+                },
+                "b": {
+                  "role": "pouchflap",
+                  "id": "right-panel"
+                },
+                "angle": -3.1420699158697816,
+                "speed": 8.67066624882229e-05,
+                "lower": -3.141592653589793,
+                "upper": 0,
+                "limitState": 1
+              }
+            ]
+          }
+        },
+        "historyHash": "43982e66a7ebc29da93a993f214ebd1f32be0bb86ce16e542a9a65efa570ada8",
+        "traceHash": "a46c0b340bfa5d613efdc0117b43b971bd5399422476750463aa7b5daedd2462",
+        "peakAngular": 0.016717633912492147,
+        "targetOuterIntegrations": 15,
+        "maxOuterActual": 15,
+        "maxAnchor": 0.0004028363832790324,
+        "maxRope": 1.5063853275876227e-08,
+        "maxCumulativeEnergyResidual": -11.54849911088968
+      },
+      {
+        "policy": "noLead",
+        "prefix": {
+          "poseHash": "baa0e02d17eba33e4f97f9787c06cab0be6c5403793ad8e3b4576684b09d396f",
+          "warmHash": "c705237f6b8b2ba1bbab150964271cd1a0b6bb1340cd76046117e3a58a5ab527",
+          "historyHash": "c39eb3778ae4cff9755daefa0775a57a5298f74370abe228b2c3fe70b635e4b2",
+          "elapsed": 16.796666666667406,
+          "before": {
+            "angular": 0.00047726227998845516,
+            "anchor": 0.0003205198975449122,
+            "rope": 3.340732135370672e-09,
+            "worst": {
+              "a": {
+                "role": "pouch",
+                "id": "cradle"
+              },
+              "b": {
+                "role": "pouchflap",
+                "id": "right-panel"
+              },
+              "angle": -3.1420699158697816,
+              "speed": 8.67066624882229e-05,
+              "lower": -3.141592653589793,
+              "upper": 0,
+              "limitState": 1
+            },
+            "near": [
+              {
+                "a": {
+                  "role": "pouch",
+                  "id": "cradle"
+                },
+                "b": {
+                  "role": "pouchflap",
+                  "id": "right-panel"
+                },
+                "angle": -3.1420699158697816,
+                "speed": 8.67066624882229e-05,
+                "lower": -3.141592653589793,
+                "upper": 0,
+                "limitState": 1
+              }
+            ]
+          }
+        },
+        "historyHash": "5929768b07d48fcd2e0b2da9a05dd4f87357a51be277e4d13bd9f6546de6bde5",
+        "traceHash": "9690a0829abffebb1c0670b02f1680ca189871cdf6d73ca77aa931274834c0ca",
+        "peakAngular": 0.007920074756273765,
+        "targetOuterIntegrations": 16,
+        "maxOuterActual": 16,
+        "maxAnchor": 0.0004028363832790324,
+        "maxRope": 1.505981916949395e-08,
+        "maxCumulativeEnergyResidual": -11.54849911088968
+      },
+      {
+        "policy": "guardLead",
+        "prefix": {
+          "poseHash": "baa0e02d17eba33e4f97f9787c06cab0be6c5403793ad8e3b4576684b09d396f",
+          "warmHash": "c705237f6b8b2ba1bbab150964271cd1a0b6bb1340cd76046117e3a58a5ab527",
+          "historyHash": "c39eb3778ae4cff9755daefa0775a57a5298f74370abe228b2c3fe70b635e4b2",
+          "elapsed": 16.796666666667406,
+          "before": {
+            "angular": 0.00047726227998845516,
+            "anchor": 0.0003205198975449122,
+            "rope": 3.340732135370672e-09,
+            "worst": {
+              "a": {
+                "role": "pouch",
+                "id": "cradle"
+              },
+              "b": {
+                "role": "pouchflap",
+                "id": "right-panel"
+              },
+              "angle": -3.1420699158697816,
+              "speed": 8.67066624882229e-05,
+              "lower": -3.141592653589793,
+              "upper": 0,
+              "limitState": 1
+            },
+            "near": [
+              {
+                "a": {
+                  "role": "pouch",
+                  "id": "cradle"
+                },
+                "b": {
+                  "role": "pouchflap",
+                  "id": "right-panel"
+                },
+                "angle": -3.1420699158697816,
+                "speed": 8.67066624882229e-05,
+                "lower": -3.141592653589793,
+                "upper": 0,
+                "limitState": 1
+              }
+            ]
+          }
+        },
+        "historyHash": "2d1194faca124be99af8aa1795c5ce82d196e93b47518fff2d37d0cb8b1f2219",
+        "traceHash": "cfbba0d7961dd8eabcefbb56b8aed7c5f2535a1bbdf29e3289cfcf341702a121",
+        "peakAngular": 0.01706858893371077,
+        "targetOuterIntegrations": 16,
+        "maxOuterActual": 16,
+        "maxAnchor": 0.0004028363832790324,
+        "maxRope": 1.5061134117644315e-08,
+        "maxCumulativeEnergyResidual": -11.54849911088968
+      }
+    ],
+    "prefixHistoriesAndCheckedCachesExact": true
+  },
+  "guardPilot": {
+    "optimized": {
+      "cases": 12,
+      "maxAngular": 0.16406234753380322,
+      "angularFlagCases": [
+        {
+          "id": "beam-light-lizard-0.6",
+          "error": 0.16406234753380322
+        }
+      ],
+      "maxActualIntegrations": 16,
+      "contactBudgetMisses": 0,
+      "fallbacks": 3,
+      "maxCumulativeEnergyResidual": 0
+    },
+    "guardLead": {
+      "cases": 12,
+      "maxAngular": 0.0792923936022476,
+      "angularFlagCases": [],
+      "maxActualIntegrations": 16,
+      "contactBudgetMisses": 0,
+      "fallbacks": 3,
+      "maxCumulativeEnergyResidual": 0
+    }
+  },
+  "guardPrediction": {
+    "exact_research_prediction_parity": 66
+  },
+  "timing": {
+    "newCleanBenchmark": true,
+    "evidence": "docs/reviews/iteration-46/live-runtime.json",
+    "conditions": "Five paired alternating clean rounds after warmup, restore outside timer, integration counter only, all catalog/prediction/isolation jobs completed before timer. Host background activity not inventoried because the denied inventory was respected. Node CPU cost, not device performance. Full catalog includes diagnostic scans and concurrent isolation/pilot work; not compared as a runtime benchmark."
+  },
+  "runtime": {
+    "falling rig": {
+      "original": {
+        "medianMilliseconds": 39.92674999999963,
+        "integrations": 600
+      },
+      "boundaryLead": {
+        "medianMilliseconds": 194.29720799999996,
+        "integrations": 2925
+      },
+      "contact1": {
+        "medianMilliseconds": 238.59091699999954,
+        "integrations": 2925
+      },
+      "motionGated": {
+        "medianMilliseconds": 203.86879100000078,
+        "integrations": 2925
+      },
+      "guardLead": {
+        "medianMilliseconds": 205.76874999999927,
+        "integrations": 2925
+      }
+    },
+    "ordinary rig impact": {
+      "original": {
+        "medianMilliseconds": 63.0185419999998,
+        "integrations": 777
+      },
+      "boundaryLead": {
+        "medianMilliseconds": 150.83108300000094,
+        "integrations": 1920
+      },
+      "contact1": {
+        "medianMilliseconds": 166.20137500000055,
+        "integrations": 1924
+      },
+      "motionGated": {
+        "medianMilliseconds": 168.50395899999967,
+        "integrations": 1924
+      },
+      "guardLead": {
+        "medianMilliseconds": 169.8876250000003,
+        "integrations": 1924
+      }
+    },
+    "ordinary canopy impact": {
+      "original": {
+        "medianMilliseconds": 56.32799999999952,
+        "integrations": 733
+      },
+      "boundaryLead": {
+        "medianMilliseconds": 65.98895800000037,
+        "integrations": 789
+      },
+      "contact1": {
+        "medianMilliseconds": 67.16975000000093,
+        "integrations": 793
+      },
+      "motionGated": {
+        "medianMilliseconds": 67.41704100000061,
+        "integrations": 793
+      },
+      "guardLead": {
+        "medianMilliseconds": 66.54025000000001,
+        "integrations": 793
+      }
+    }
+  },
+  "validation": {
+    "tests": 279,
+    "passed": 279,
+    "failed": 0,
+    "ordinarySourceChanged": false,
+    "publicSync": "paused pending parent authorization; no push retry"
+  }
+}
