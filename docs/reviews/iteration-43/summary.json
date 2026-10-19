@@ -1,0 +1,733 @@
+{
+  "baseline": "4722fba177bc59727b07f318014c8f6a0ab81b24",
+  "priorPushRetry": "Succeeded; existing origin main verified4722fba at start of43.",
+  "decision": "Research only. Ordinary game source unchanged; all corrections remain disabled. No delivered ordinary-play improvement claimed. Candidate is promising but budget fallbacks, five contact-generated post-load angular peaks, common prediction-kernel integration, encounters and performance validation remain.",
+  "tests": 270,
+  "matrices": {
+    "default": {
+      "cases": 264,
+      "counts": {
+        "launched": 262,
+        "seating_failed": 2
+      },
+      "releaseRecordsExactlyEqual": 264,
+      "windingWorkExactlyEqual": 264,
+      "sourcesChangedDuringRun": [],
+      "priorInnerAngularCases": 103,
+      "flags": {
+        "angular_limit_error": 19,
+        "backward_or_vertical_launch": 18,
+        "boundary_budget_fallback": 16,
+        "downward_launch": 10,
+        "explosive_speed": 3,
+        "inner_angular_limit_error": 20,
+        "launch_branch_impact": 57
+      },
+      "loadingAngularCases": 18,
+      "postLoadAngularCases": [
+        "counterweight-heavy-mouse-0.45",
+        "sling-long-salamander-0.45"
+      ],
+      "maxInnerAngular": 0.1804111562097035,
+      "maxInnerAnchor": 0.015354755823675462,
+      "maxInnerRope": 0.011749443778315438,
+      "maxOuterIntegrations": 16,
+      "budgetFallbacks": 16,
+      "maxCumulativeEnergyResidual": 0,
+      "nonfinite": [],
+      "seatingFailures": [
+        "frame-heavy-snake-0.75",
+        "combined-frog-0.75"
+      ]
+    },
+    "candidate": {
+      "cases": 264,
+      "counts": {
+        "launched": 263,
+        "seating_failed": 1
+      },
+      "releaseRecordsExactlyEqual": 264,
+      "windingWorkExactlyEqual": 264,
+      "sourcesChangedDuringRun": [],
+      "priorInnerAngularCases": 69,
+      "flags": {
+        "backward_or_vertical_launch": 28,
+        "boundary_budget_fallback": 10,
+        "downward_launch": 16,
+        "explosive_speed": 2,
+        "inner_angular_limit_error": 3,
+        "launch_branch_impact": 56
+      },
+      "loadingAngularCases": 0,
+      "postLoadAngularCases": [
+        "stock-mouse-0.6",
+        "frame-heavy-mouse-0.75",
+        "frame-heavy-small-marsupial-0.6"
+      ],
+      "maxInnerAngular": 0.15817811875931231,
+      "maxInnerAnchor": 0.01720573122978869,
+      "maxInnerRope": 0.02230861037786358,
+      "maxOuterIntegrations": 16,
+      "budgetFallbacks": 10,
+      "maxCumulativeEnergyResidual": 0,
+      "nonfinite": [],
+      "seatingFailures": [
+        "combined-frog-0.75"
+      ]
+    }
+  },
+  "liveSummary": {
+    "union8": {
+      "cases": 6,
+      "angularFlagCases": [
+        "stock-snake-0.75",
+        "sling-long-frog-0.6",
+        "stock-snake-0.45"
+      ],
+      "maxAngular": 0.11035569881115348,
+      "maxAnchor": 0.013150899852137002,
+      "maxRope": 0.001543408291506676,
+      "maxCumulativeEnergyResidual": 0,
+      "maxPositiveStepEnergyResidual": 0.0018847876553991227,
+      "maxOuterIntegrations": 0,
+      "budgetFallbacks": 0
+    },
+    "boundary": {
+      "cases": 6,
+      "angularFlagCases": [
+        "stock-snake-0.75"
+      ],
+      "maxAngular": 0.10493261114225727,
+      "maxAnchor": 0.0023433143679560298,
+      "maxRope": 0.001543408291506676,
+      "maxCumulativeEnergyResidual": 0,
+      "maxPositiveStepEnergyResidual": 0.0018847876553991227,
+      "maxOuterIntegrations": 14,
+      "budgetFallbacks": 0
+    },
+    "boundaryLead": {
+      "cases": 6,
+      "angularFlagCases": [],
+      "maxAngular": 0.07833422669154544,
+      "maxAnchor": 0.0023433143679560298,
+      "maxRope": 0.001543408291506676,
+      "maxCumulativeEnergyResidual": 0,
+      "maxPositiveStepEnergyResidual": 0.0018847876553991227,
+      "maxOuterIntegrations": 14,
+      "budgetFallbacks": 0
+    },
+    "original": {
+      "cases": 6,
+      "angularFlagCases": [
+        "beam-long-frog-0.6",
+        "sling-long-frog-0.6"
+      ],
+      "maxAngular": 0.17106995940100944,
+      "maxAnchor": 0.022841301924577156,
+      "maxRope": 0.02109115793533034,
+      "maxCumulativeEnergyResidual": 0,
+      "maxPositiveStepEnergyResidual": 0.001661134532696451,
+      "maxOuterIntegrations": 0,
+      "budgetFallbacks": 0
+    },
+    "boundaryOnly": {
+      "cases": 6,
+      "angularFlagCases": [
+        "frame-grip-mouse-0.45"
+      ],
+      "maxAngular": 0.09228464966890049,
+      "maxAnchor": 0.01866259240450676,
+      "maxRope": 0.010517959694164247,
+      "maxCumulativeEnergyResidual": 0,
+      "maxPositiveStepEnergyResidual": 0.0017305246092291782,
+      "maxOuterIntegrations": 16,
+      "budgetFallbacks": 1
+    }
+  },
+  "runtime": {
+    "falling rig": {
+      "original": {
+        "medianMs": 40.2626250000003,
+        "integrations": 600,
+        "maxOuterActual": null,
+        "budgetFallbacks": null
+      },
+      "boundaryOnly": {
+        "medianMs": 44.34266699999989,
+        "integrations": 604,
+        "maxOuterActual": 4,
+        "budgetFallbacks": 0
+      },
+      "union8": {
+        "medianMs": 203.08520799999997,
+        "integrations": 2952,
+        "maxOuterActual": null,
+        "budgetFallbacks": null
+      },
+      "boundaryLead": {
+        "medianMs": 193.26541700000007,
+        "integrations": 2925,
+        "maxOuterActual": 11,
+        "budgetFallbacks": 0
+      }
+    },
+    "ordinary rig impact": {
+      "original": {
+        "medianMs": 64.25329199999987,
+        "integrations": 777,
+        "maxOuterActual": null,
+        "budgetFallbacks": null
+      },
+      "boundaryOnly": {
+        "medianMs": 55.0121250000002,
+        "integrations": 619,
+        "maxOuterActual": 4,
+        "budgetFallbacks": 0
+      },
+      "union8": {
+        "medianMs": 150.94141599999966,
+        "integrations": 1923,
+        "maxOuterActual": null,
+        "budgetFallbacks": null
+      },
+      "boundaryLead": {
+        "medianMs": 151.11683300000004,
+        "integrations": 1920,
+        "maxOuterActual": 11,
+        "budgetFallbacks": 0
+      }
+    },
+    "ordinary canopy impact": {
+      "original": {
+        "medianMs": 56.52241700000013,
+        "integrations": 733,
+        "maxOuterActual": null,
+        "budgetFallbacks": null
+      },
+      "boundaryOnly": {
+        "medianMs": 56.39537500000006,
+        "integrations": 744,
+        "maxOuterActual": 11,
+        "budgetFallbacks": 0
+      },
+      "union8": {
+        "medianMs": 63.276666000000205,
+        "integrations": 766,
+        "maxOuterActual": null,
+        "budgetFallbacks": null
+      },
+      "boundaryLead": {
+        "medianMs": 64.5375410000006,
+        "integrations": 789,
+        "maxOuterActual": 11,
+        "budgetFallbacks": 0
+      }
+    }
+  },
+  "restoration": [
+    {
+      "id": "default-beam-long-frog-0.6",
+      "live": 0.06568802911464644,
+      "restoredUniform": 0.06568802911464644
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "live": 0.08195459475258704,
+      "restoredUniform": 0.08195459475258704
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "live": 0.04416784501176563,
+      "restoredUniform": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "live": 0.06461074685585122,
+      "restoredUniform": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "live": 0.11035569881115348,
+      "restoredUniform": 0.11035569881115348
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "live": 0.08816401446347011,
+      "restoredUniform": 0.08816401446347011
+    }
+  ],
+  "onsets": [
+    {
+      "mode": "default",
+      "id": "counterweight-heavy-mouse-0.45",
+      "peakExactlyReproduced": true,
+      "error": 0.0916961433718797,
+      "worst": {
+        "stepIndex": 5780,
+        "time": 15.536666666667685,
+        "dt": 0.00020833333333333335,
+        "diagnosticPhase": "impact_recovery",
+        "physicsPhase": "flight",
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "before": {
+          "angle": -0.9204758193060201,
+          "speed": 42.93775150126232
+        },
+        "afterAngle": -1.0416961433718797,
+        "afterSpeed": -587.6778944132237,
+        "lower": -0.95,
+        "upper": 0.95,
+        "limitState": 0,
+        "impulses": [
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.3861502974541379,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.01199755122043611,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.03161618856451772,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.004873895080471988,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "canopy-route"
+            },
+            "b": {
+              "role": "part",
+              "id": "torso"
+            },
+            "normalImpulseSum": 42.952112668568915,
+            "toiCount": 0,
+            "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+          },
+          {
+            "a": {
+              "role": "part",
+              "id": "tail"
+            },
+            "b": {
+              "role": "static",
+              "id": "canopy-route"
+            },
+            "normalImpulseSum": 0.46699651567421363,
+            "toiCount": 0,
+            "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+          }
+        ]
+      },
+      "sameOuterBudgetFallback": [
+        {
+          "stepIndex": 5780,
+          "time": 15.536666666667685,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "mode": "default",
+      "id": "sling-long-salamander-0.45",
+      "peakExactlyReproduced": true,
+      "error": 0.1804111562097035,
+      "worst": {
+        "stepIndex": 7189,
+        "time": 17.781249999999066,
+        "dt": 0.00020833333333333335,
+        "diagnosticPhase": "descent_after_obstacle",
+        "physicsPhase": "flight",
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "before": {
+          "angle": 0.9259706506317045,
+          "speed": -0.17106644804845272
+        },
+        "afterAngle": 1.1304111562097034,
+        "afterSpeed": 997.7838378576489,
+        "lower": -0.95,
+        "upper": 0.95,
+        "limitState": 0,
+        "impulses": [
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.29665619740367627,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.008839821303334192,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.07632020400603118,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.006254305273277572,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "part",
+              "id": "head"
+            },
+            "normalImpulseSum": 58.668036635875694,
+            "toiCount": 0,
+            "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+          }
+        ]
+      },
+      "sameOuterBudgetFallback": []
+    },
+    {
+      "mode": "candidate",
+      "id": "stock-mouse-0.6",
+      "peakExactlyReproduced": true,
+      "error": 0.13269154569549646,
+      "worst": {
+        "stepIndex": 5511,
+        "time": 15.23812500000112,
+        "dt": 0.00020833333333333335,
+        "diagnosticPhase": "impact_recovery",
+        "physicsPhase": "flight",
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "before": {
+          "angle": -0.949956847674656,
+          "speed": 5.028312495593717
+        },
+        "afterAngle": -1.0826915456954964,
+        "afterSpeed": -644.5869602324958,
+        "lower": -0.95,
+        "upper": 0.95,
+        "limitState": 0,
+        "impulses": [
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.18866116670218133,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.16739089824798598,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.017016589154317252,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "canopy-route"
+            },
+            "b": {
+              "role": "part",
+              "id": "torso"
+            },
+            "normalImpulseSum": 37.37224069258584,
+            "toiCount": 0,
+            "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+          }
+        ]
+      },
+      "sameOuterBudgetFallback": []
+    },
+    {
+      "mode": "candidate",
+      "id": "frame-heavy-mouse-0.75",
+      "peakExactlyReproduced": true,
+      "error": 0.15817811875931231,
+      "worst": {
+        "stepIndex": 6355,
+        "time": 17.17979166666661,
+        "dt": 0.00020833333333333335,
+        "diagnosticPhase": "impact_recovery",
+        "physicsPhase": "flight",
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "before": {
+          "angle": -0.890738782686185,
+          "speed": -267.6864967247526
+        },
+        "afterAngle": -1.1081781187593123,
+        "afterSpeed": -1052.1789674064578,
+        "lower": -0.95,
+        "upper": 0.95,
+        "limitState": 0,
+        "impulses": [
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.18105632748498682,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.236754451918589,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.02585992833279507,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "part",
+              "id": "torso"
+            },
+            "normalImpulseSum": 42.90068399161721,
+            "toiCount": 0,
+            "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+          }
+        ]
+      },
+      "sameOuterBudgetFallback": []
+    },
+    {
+      "mode": "candidate",
+      "id": "frame-heavy-small-marsupial-0.6",
+      "peakExactlyReproduced": true,
+      "error": 0.11257037586500762,
+      "worst": {
+        "stepIndex": 6259,
+        "time": 16.45937500000093,
+        "dt": 0.00020833333333333335,
+        "diagnosticPhase": "impact_recovery",
+        "physicsPhase": "flight",
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "before": {
+          "angle": 0.9487977115836799,
+          "speed": -8.026464636390727
+        },
+        "afterAngle": 1.0625703758650076,
+        "afterSpeed": 552.2899778051486,
+        "lower": -0.95,
+        "upper": 0.95,
+        "limitState": 0,
+        "impulses": [
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.3123405477056981,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.008021040366697124,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.0691491722715035,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "frame",
+              "id": "support"
+            },
+            "normalImpulseSum": 0.006915847224798556,
+            "toiCount": 0
+          },
+          {
+            "a": {
+              "role": "static",
+              "id": "world"
+            },
+            "b": {
+              "role": "part",
+              "id": "torso"
+            },
+            "normalImpulseSum": 31.71680394252101,
+            "toiCount": 0,
+            "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+          }
+        ]
+      },
+      "sameOuterBudgetFallback": []
+    }
+  ],
+  "limitations": [
+    "Local eight-integration budget and composed whole-step sixteen-integration budget are distinct; no exponential nesting.",
+    "Canonically restored states are not exact warm-start continuation; mouse control differs from uninterrupted live peak.",
+    "No new natural encounter or device FPS/audio/human study; broad prediction comparison verifies full release records, not a newly shared research flight-hint kernel.",
+    "Extra local subdivisions and changed hard-stop timing intentionally change post-release trajectories; energy passivity is not full accuracy proof.",
+    "Uniform64 local refinement is a comparison, not a full-world converged solution; subsequent20ms uses the same coarser continuation for all variants."
+  ]
+}

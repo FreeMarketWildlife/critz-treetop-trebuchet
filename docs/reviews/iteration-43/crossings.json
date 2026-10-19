@@ -1,0 +1,161 @@
+{
+  "protocol": "Fresh real winding/grip history and loaded hash equal to iteration42 asserted. Full world captured immediately before the exact retained live integration; resulting live angular peak and complete release record equal42. These live snapshots are not a claim that canonical restoration preserves all contact/joint warm-start caches.",
+  "cases": [
+    {
+      "id": "default-beam-long-frog-0.6",
+      "case": "beam-long-frog-0.6",
+      "candidate": false,
+      "file": "default-beam-long-frog-0.6-before.json",
+      "tags": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "head"
+        }
+      },
+      "dt": 0.00020833333333333335,
+      "liveError": 0.06568802911464644,
+      "kinematics": {
+        "angle": 0.21164541687679872,
+        "speed": 507.3773660126193,
+        "lower": -0.25,
+        "upper": 0.25
+      },
+      "liveTime": 17.412083333333207,
+      "loadedHash": "634bd79f365b57305966227b08048b432822868c5806891c1187db7c3fc81776"
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "case": "stock-snake-0.75",
+      "candidate": false,
+      "file": "default-stock-snake-0.75-before.json",
+      "tags": {
+        "a": {
+          "role": "part",
+          "id": "head"
+        },
+        "b": {
+          "role": "part",
+          "id": "segment-1"
+        }
+      },
+      "dt": 0.00020833333333333335,
+      "liveError": 0.08195459475258704,
+      "kinematics": {
+        "angle": 1.0307212402908732,
+        "speed": 510.0548701465462,
+        "lower": -1.05,
+        "upper": 1.05
+      },
+      "liveTime": 18.7431249999978,
+      "loadedHash": "a87b4a57118d42091c455f92bbdb5775c81165b0d194b41ba920c6acff3afada"
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "case": "sling-long-frog-0.75",
+      "candidate": false,
+      "file": "default-sling-long-frog-0.75-before.json",
+      "tags": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        }
+      },
+      "dt": 0.0016666666666666668,
+      "liveError": 0.04416784501176563,
+      "kinematics": {
+        "angle": -0.9308497218452558,
+        "speed": -4.018205856937129e-8,
+        "lower": -0.9,
+        "upper": 0.9
+      },
+      "liveTime": 19.053333333331455,
+      "loadedHash": "bc7a8ac199255026da7adab7f2bafc995a8a5952705aa3bd5f22d9e38e2544f2"
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "case": "frame-grip-mouse-0.45",
+      "candidate": true,
+      "file": "candidate-frame-grip-mouse-0.45-before.json",
+      "tags": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        }
+      },
+      "dt": 0.00020833333333333335,
+      "liveError": 0.06461074685585122,
+      "kinematics": {
+        "angle": -0.9243747070277237,
+        "speed": 13.899793189616709,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "liveTime": 14.769583333334408,
+      "loadedHash": "e7399baf19ed5214b7a06ba4eccd15765561503adee3c693213296292c692f53"
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "case": "sling-long-frog-0.6",
+      "candidate": true,
+      "file": "candidate-sling-long-frog-0.6-before.json",
+      "tags": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        }
+      },
+      "dt": 0.00020833333333333335,
+      "liveError": 0.11035569881115348,
+      "kinematics": {
+        "angle": 0.8458386901701687,
+        "speed": 825.3202967860685,
+        "lower": -0.9,
+        "upper": 0.9
+      },
+      "liveTime": 16.607708333333605,
+      "loadedHash": "3ed9a2a369ec0537ae705cc0f5f096845e82a47c138f523f01f5b5f3f6ae815a"
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "case": "stock-snake-0.45",
+      "candidate": true,
+      "file": "candidate-stock-snake-0.45-before.json",
+      "tags": {
+        "a": {
+          "role": "part",
+          "id": "segment-5"
+        },
+        "b": {
+          "role": "part",
+          "id": "segment-6"
+        }
+      },
+      "dt": 0.00020833333333333335,
+      "liveError": 0.08816401446347011,
+      "kinematics": {
+        "angle": -1.0207766173668489,
+        "speed": -627.120238486261,
+        "lower": -1.05,
+        "upper": 1.05
+      },
+      "liveTime": 15.823541666667468,
+      "loadedHash": "99d45029224f97d822860a19493ac8ec32caa700e43c22fb35c7b48d6097bd64"
+    }
+  ]
+}

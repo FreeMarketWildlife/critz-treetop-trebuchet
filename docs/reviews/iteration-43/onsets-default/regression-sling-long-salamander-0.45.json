@@ -1,0 +1,833 @@
+{
+  "experimentalPreload": false,
+  "nodeExecArgv": [],
+  "scope": "Bounded stratified diagnostic of the explicit stopped-pouch0.5kg physical prototype. One force-driven loading recipe cannot establish universal input validity; seating failures and poor throws are preserved separately from numeric faults.",
+  "protocol": {
+    "cases": 1,
+    "dt": 0.0016666666666666668,
+    "limits": {
+      "ropeStretch": 0.05,
+      "hingeAnchorError": 0.05,
+      "angularLimitError": 0.08,
+      "explosiveEnergyResidual": 250,
+      "bodySpeed": 300,
+      "bodySpin": 1000,
+      "surfaceDepth": 0.08,
+      "releaseSeconds": 5
+    },
+    "phases": "Actual bounded motor; torso/head/offset physical grip; unheld gravity settling; canonical same-solver prediction/live launch; first world impact plus0.5s recovery; continue to ground plus0.5s recovery within15s flight when possible.",
+    "matrix": "8actual catalog equipment sets x11species x3winding fractions(.45,.6,.75)=264cases; head pickup for odd-index species, torso for even; each group88cases is one winding fraction.",
+    "equipment": "Acquired and equipped in isolated in-memory economy state through actual reducers. No user save or account writes.",
+    "surfaceDetection": "Suspected surface penetration means a part COM crossed through authored material depth with no matching recent per-part surface impulse. Candidates require review; this is not proof of continuous-collision failure.",
+    "finiteChecks": "Every diagnostic step inspects every dynamic body and rope/revolute joint. Energy residual is mechanical-energy change minus recorded hand/motor/control/damping/drag/spawn work.",
+    "runtime": "Node wall time includes prediction and diagnostic scanning; not browser FPS."
+  },
+  "runtime": {
+    "node": "v24.21.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "planck": "1.5.1"
+  },
+  "sourceSHA256": {
+    "src/loading-refinement.js": "f2ed3018bfe9f22c003af3bf2366e557ead3b278005ce65d4d52f654a1db142b",
+    "scripts/rig-policy42.js": "a8416aeddfd143b2ff754c7a8e47153af5060bca3a32844efe88f8f3b79f514a",
+    "scripts/joint-policy42.js": "6910101d690c98d18b7f543597ffff361152cacda874e37be756ff51fe11de1c",
+    "scripts/measure-onset43.js": "ba99a152c803510a2d0ee1c425673389805ac8fda9a0f1dd93be1b20a2451748",
+    "scripts/boundary-policy43.js": "9e24c6278fe77984888220d3e2e308c0e304ea036f79b2c83476987c68c10d97",
+    "scripts/boundary-union43.js": "f69088ee0e37355dfae10c87f22ff66967c658390fda6c2d81bff8b9c3911c61",
+    "mobile.css": "555cb15119e2a26b0157ed9ca887fd641e005044b6df9ad9d459d0f39ad47981",
+    "src/render.js": "d926d7ec76ee771a497e422e707cc63ad98eff21f905fed5cbd942c2f00b13ae",
+    "src/grip-art.js": "ae546e8c6694b6b15cd3df1d7c279f2a04826077da89a949a99a19c02ca60f4c",
+    "src/view-recovery.js": "2dcccbe0bf5ffe52f12ec6e43f2a6718b2451274bc755ca3fa1f6c19efd856d6",
+    "src/lab.js": "d2d83b33bbb2729b9fe64aa5df49a5679c2c1fc77a35816fc8a7df1dfb100839",
+    "index.html": "601327ac7e488082e9eebcdba7a8c3a696ad9bfe0a98ef354b3155d21d1128da",
+    "src/terrain.js": "f523e56bdccf384071b4055eda8e94d2c0c07367de638af55962b1be4a6276da",
+    "src/articulated.js": "54d1041f4c22eda83d03225bfb499a42f1df1d398eef1803b5db6c195a00f56b",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/staging.js": "f47f8b77668ccfd5bbffe5c09f2ac7139a1b3a62c69525f058e552f54d0b4599",
+    "src/physics.js": "c85adf5a38dbabf7b3ba8d8cd769799f2fcb85769c6fec32e46507b585426960",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/economy.js": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/prediction.js": "80287225a49557583e137007cd6a6a6e576aae01f5619c12fc7b1642362e275f",
+    "src/starter.js": "327a060f9bee7e2511452e416a45b7fa92f3bea349480e63c7184ece28ae97ab",
+    "src/audio.js": "d440a76ac15d7efd6ea38845d9fc104cab7d8648750a366718ce36fe16277f3c",
+    "src/journey.js": "f01728b32d3b16cf77ac95ab9e7103d44af1eef434063a2603a9e284c43e1255"
+  },
+  "sourcesChangedDuringRun": [],
+  "totalWallMilliseconds": 1016.199958,
+  "counts": {
+    "launched": 1
+  },
+  "rows": [
+    {
+      "id": "sling-long-salamander-0.45",
+      "hardware": "sling-long",
+      "species": "salamander",
+      "grip": "head",
+      "fraction": 0.45,
+      "equipment": [
+        "sling-long"
+      ],
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "collisionStepHz": 2400,
+        "fastCollisionStepHz": 4800,
+        "initialArm": -3,
+        "counterMass": 140,
+        "longArm": 3,
+        "shortArm": 0.8,
+        "sling": 2.9,
+        "hookAngle": 3.55,
+        "channelLength": 0.18
+      },
+      "equipped": {
+        "sling": "sling-long"
+      },
+      "flags": [
+        "launch_branch_impact",
+        "inner_angular_limit_error"
+      ],
+      "winding": {
+        "phase": "loading",
+        "target": -2.6748273145424966,
+        "actualAngle": -2.6787985681961066,
+        "work": 301.73408711868456
+      },
+      "actualGrabbedPart": "head",
+      "loading": {
+        "cradleSpeed": 0.9762308211215862,
+        "cradleSpin": 0.2571368521075076,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 5,
+        "relativeSpeed": 0.0004106547947177291,
+        "maxPartRelativeSpeed": 0.0011278773435593247,
+        "maxRelativeSpin": 0.010815813579495237,
+        "waited": 0.22666666666666715,
+        "quiet": 0.10166666666666654
+      },
+      "prediction": {
+        "wallMilliseconds": 73.33683399999995,
+        "mutatedLive": false,
+        "reason": "contact hook experiment",
+        "maximumDifference": 0
+      },
+      "loadingDiagnostics": {
+        "samples": 3480,
+        "maxRopeStretch": 0.0000225127975421735,
+        "maxHingeAnchorError": 0.00010028365709646138,
+        "maxAngularLimitError": 0.053583083997026604,
+        "maxBodySpeed": 8.920340484818496,
+        "maxBodySpin": 36.29577581788693,
+        "maxEnergyResidual": 0,
+        "nonfinite": null,
+        "surfaceCandidates": [],
+        "phaseStats": {
+          "winding": {
+            "samples": 644,
+            "anchorBadSteps": 0,
+            "angularBadSteps": 0,
+            "anchorRun": 0,
+            "angularRun": 0,
+            "longestAnchorSeconds": 0,
+            "longestAngularSeconds": 0,
+            "finalAnchor": 7.607944847704338e-7,
+            "finalAngular": 0.001801949929849278
+          },
+          "loading": {
+            "samples": 2836,
+            "anchorBadSteps": 0,
+            "angularBadSteps": 0,
+            "anchorRun": 0,
+            "angularRun": 0,
+            "longestAnchorSeconds": 0,
+            "longestAngularSeconds": 0,
+            "finalAnchor": 2.3311704904494468e-7,
+            "finalAngular": 0.004208155053545437
+          }
+        },
+        "inner": {
+          "samples": 3480,
+          "maxRope": 0.0000225127975421735,
+          "maxAnchor": 0.00010028365709646138,
+          "maxAngular": 0.053583083997026604,
+          "worst": {
+            "stepIndex": 1275,
+            "time": 2.1250000000000187,
+            "dt": 0.0016666666666666668,
+            "diagnosticPhase": "loading",
+            "physicsPhase": "loading",
+            "a": {
+              "role": "part",
+              "id": "torso"
+            },
+            "b": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "before": {
+              "angle": -0.9190589415271582,
+              "speed": -50.8743101841992
+            },
+            "afterAngle": -1.0035830839970266,
+            "afterSpeed": -50.98052462229056,
+            "lower": -0.95,
+            "upper": 0.95,
+            "limitState": 0,
+            "impulses": [
+              {
+                "a": {
+                  "role": "arm",
+                  "id": "beam"
+                },
+                "b": {
+                  "role": "hooklink",
+                  "id": "channel-bead",
+                  "channelAlpha": 3.55,
+                  "channelLength": 0.18,
+                  "beadRadius": 0.025,
+                  "pegLocal": {
+                    "x": 2.8715143691647214,
+                    "y": -0.055600743420034376
+                  }
+                },
+                "normalImpulseSum": 0.006523053249333246,
+                "toiCount": 0
+              },
+              {
+                "a": {
+                  "role": "arm",
+                  "id": "beam"
+                },
+                "b": {
+                  "role": "hooklink",
+                  "id": "channel-bead",
+                  "channelAlpha": 3.55,
+                  "channelLength": 0.18,
+                  "beadRadius": 0.025,
+                  "pegLocal": {
+                    "x": 2.8715143691647214,
+                    "y": -0.055600743420034376
+                  }
+                },
+                "normalImpulseSum": 0.004775287218980519,
+                "toiCount": 0
+              },
+              {
+                "a": {
+                  "role": "static",
+                  "id": "world"
+                },
+                "b": {
+                  "role": "frame",
+                  "id": "support"
+                },
+                "normalImpulseSum": 2.7725931460928095,
+                "toiCount": 0
+              },
+              {
+                "a": {
+                  "role": "static",
+                  "id": "world"
+                },
+                "b": {
+                  "role": "frame",
+                  "id": "support"
+                },
+                "normalImpulseSum": 0.11434893207105729,
+                "toiCount": 0
+              },
+              {
+                "a": {
+                  "role": "static",
+                  "id": "world"
+                },
+                "b": {
+                  "role": "part",
+                  "id": "tail"
+                },
+                "normalImpulseSum": 0.0010672573169509833,
+                "toiCount": 0
+              }
+            ]
+          }
+        },
+        "boundaryEvents": [],
+        "boundaryPolicy": {
+          "composeUnion": true,
+          "outerSteps": 3480,
+          "baseIntervals": 0,
+          "actualIntegrations": 3480,
+          "extraIntegrations": 0,
+          "budgetFallbacks": 0,
+          "maxOuterBase": 0,
+          "maxOuterActual": 1,
+          "union": {
+            "outerSteps": 3480,
+            "refinedSteps": 0,
+            "distanceSteps": 0,
+            "stopSteps": 0,
+            "compatiblePairs": 0,
+            "distanceQueries": 0
+          }
+        },
+        "worstSpin": {
+          "phase": "loading",
+          "time": 2.1250000000000187,
+          "tag": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "mass": 0.096,
+          "inertia": 0.00007873504212539524,
+          "angularVelocity": -36.29577581788693,
+          "rotationalEnergy": 0.05186211647258359
+        },
+        "worstHinge": {
+          "phase": "loading",
+          "time": 3.6149999999998546,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "torso"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "value": 0.00010028365709646138
+        },
+        "worstRope": {
+          "phase": "loading",
+          "time": 5.445000000000038,
+          "joint": {
+            "role": "rope",
+            "id": 1
+          },
+          "bodyA": {
+            "role": "hooklink",
+            "id": "channel-bead",
+            "channelAlpha": 3.55,
+            "channelLength": 0.18,
+            "beadRadius": 0.025,
+            "pegLocal": {
+              "x": 2.8715143691647214,
+              "y": -0.055600743420034376
+            }
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.0000225127975421735
+        },
+        "worstAngular": {
+          "phase": "loading",
+          "time": 2.1250000000000187,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "torso"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "value": 0.053583083997026604,
+          "angle": -1.0035830839970266,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        }
+      },
+      "canonicalJointAngleDiscontinuities": [],
+      "release": {
+        "time": 6.605000000000219,
+        "center": {
+          "x": -2.2627818643600848,
+          "y": 301.977491385379,
+          "vx": 2.295837116621662,
+          "vy": 11.952149516071993,
+          "mass": 0.8
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.331296849684835,
+              "y": 302.17807418884684
+            },
+            "v": {
+              "x": 5.059377324851946,
+              "y": 13.335291927035021
+            },
+            "w": -8.304303961584308
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.526800164333531,
+              "y": 302.17829713304894
+            },
+            "v": {
+              "x": 5.223296675914174,
+              "y": 15.99156734396082
+            },
+            "w": -10.459221877785204
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -2.1201197108055405,
+              "y": 301.8461508959537
+            },
+            "v": {
+              "x": 0.6869115587544838,
+              "y": 9.999932183849793
+            },
+            "w": -15.25792658293953
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.9541067124435119,
+              "y": 301.69363786291404
+            },
+            "v": {
+              "x": -3.0514018563739556,
+              "y": 5.507275456956876
+            },
+            "w": -26.10269009796041
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.2732111540434374,
+              "y": 301.9667763419231
+            },
+            "v": {
+              "x": 2.484739338219757,
+              "y": 12.505504401997506
+            },
+            "w": -16.392974591151198
+          }
+        ]
+      },
+      "firstImpact": {
+        "surface": "launch branch",
+        "x": 4.561062368357571,
+        "y": 294.0075340897797,
+        "time": 9.559583333333501
+      },
+      "groundImpact": {
+        "surface": "ground",
+        "x": 23.74625628031256,
+        "y": 0.005449650460330524,
+        "time": 17.781041666665732
+      },
+      "outcome": "launched",
+      "wallMilliseconds": 1015.3723339999999,
+      "diagnostics": {
+        "samples": 10970,
+        "surfaceCandidates": [],
+        "nonfinite": null,
+        "maxRopeStretch": 0.0011719743118443482,
+        "maxHingeAnchorError": 0.0015614591747469206,
+        "maxAngularLimitError": 0.05561313871783402,
+        "maxBodySpeed": 76.20246746308344,
+        "maxBodySpin": 696.5818425321863,
+        "maxEnergyResidual": 0,
+        "worstRope": {
+          "phase": "flight",
+          "time": 6.981666666666941,
+          "joint": {
+            "role": "rope",
+            "id": 1
+          },
+          "bodyA": {
+            "role": "hooklink",
+            "id": "channel-bead",
+            "channelAlpha": 3.55,
+            "channelLength": 0.18,
+            "beadRadius": 0.025,
+            "pegLocal": {
+              "x": 2.8715143691647214,
+              "y": -0.055600743420034376
+            }
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.0011719743118443482
+        },
+        "worstHinge": {
+          "phase": "flight",
+          "time": 6.980000000000274,
+          "joint": {
+            "role": "pouchhinge",
+            "id": "stopped-V",
+            "halfAngle": 0.3490658503988659
+          },
+          "bodyA": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.0015614591747469206
+        },
+        "worstAngular": {
+          "phase": "descent_after_obstacle",
+          "time": 17.781666666665732,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "torso"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "rear-leg"
+          },
+          "value": 0.05561313871783402,
+          "angle": 1.005613138717834,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "worstSpin": {
+          "phase": "descent_after_obstacle",
+          "time": 17.781666666665732,
+          "tag": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "mass": 0.096,
+          "inertia": 0.00007873504212539524,
+          "angularVelocity": 696.5818425321863,
+          "rotationalEnergy": 19.102155142429435
+        },
+        "inner": {
+          "samples": 15392,
+          "maxRope": 0.0011719743118443482,
+          "maxAnchor": 0.008748011043826201,
+          "maxAngular": 0.1804111562097035
+        },
+        "innerStages": [
+          {
+            "samples": 3480,
+            "maxRope": 0.0000225127975421735,
+            "maxAnchor": 0.00010028365709646138,
+            "maxAngular": 0.053583083997026604,
+            "worst": {
+              "stepIndex": 1275,
+              "time": 2.1250000000000187,
+              "dt": 0.0016666666666666668,
+              "diagnosticPhase": "loading",
+              "physicsPhase": "loading",
+              "a": {
+                "role": "part",
+                "id": "torso"
+              },
+              "b": {
+                "role": "part",
+                "id": "front-leg"
+              },
+              "before": {
+                "angle": -0.9190589415271582,
+                "speed": -50.8743101841992
+              },
+              "afterAngle": -1.0035830839970266,
+              "afterSpeed": -50.98052462229056,
+              "lower": -0.95,
+              "upper": 0.95,
+              "limitState": 0,
+              "impulses": [
+                {
+                  "a": {
+                    "role": "arm",
+                    "id": "beam"
+                  },
+                  "b": {
+                    "role": "hooklink",
+                    "id": "channel-bead",
+                    "channelAlpha": 3.55,
+                    "channelLength": 0.18,
+                    "beadRadius": 0.025,
+                    "pegLocal": {
+                      "x": 2.8715143691647214,
+                      "y": -0.055600743420034376
+                    }
+                  },
+                  "normalImpulseSum": 0.006523053249333246,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "arm",
+                    "id": "beam"
+                  },
+                  "b": {
+                    "role": "hooklink",
+                    "id": "channel-bead",
+                    "channelAlpha": 3.55,
+                    "channelLength": 0.18,
+                    "beadRadius": 0.025,
+                    "pegLocal": {
+                      "x": 2.8715143691647214,
+                      "y": -0.055600743420034376
+                    }
+                  },
+                  "normalImpulseSum": 0.004775287218980519,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "frame",
+                    "id": "support"
+                  },
+                  "normalImpulseSum": 2.7725931460928095,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "frame",
+                    "id": "support"
+                  },
+                  "normalImpulseSum": 0.11434893207105729,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "part",
+                    "id": "tail"
+                  },
+                  "normalImpulseSum": 0.0010672573169509833,
+                  "toiCount": 0
+                }
+              ]
+            }
+          },
+          {
+            "samples": 11912,
+            "maxRope": 0.0011719743118443482,
+            "maxAnchor": 0.008748011043826201,
+            "maxAngular": 0.1804111562097035,
+            "worst": {
+              "stepIndex": 7189,
+              "time": 17.781249999999066,
+              "dt": 0.00020833333333333335,
+              "diagnosticPhase": "descent_after_obstacle",
+              "physicsPhase": "flight",
+              "a": {
+                "role": "part",
+                "id": "torso"
+              },
+              "b": {
+                "role": "part",
+                "id": "rear-leg"
+              },
+              "before": {
+                "angle": 0.9259706506317045,
+                "speed": -0.17106644804845272
+              },
+              "afterAngle": 1.1304111562097034,
+              "afterSpeed": 997.7838378576489,
+              "lower": -0.95,
+              "upper": 0.95,
+              "limitState": 0,
+              "impulses": [
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "frame",
+                    "id": "support"
+                  },
+                  "normalImpulseSum": 0.29665619740367627,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "frame",
+                    "id": "support"
+                  },
+                  "normalImpulseSum": 0.008839821303334192,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "frame",
+                    "id": "support"
+                  },
+                  "normalImpulseSum": 0.07632020400603118,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "frame",
+                    "id": "support"
+                  },
+                  "normalImpulseSum": 0.006254305273277572,
+                  "toiCount": 0
+                },
+                {
+                  "a": {
+                    "role": "static",
+                    "id": "world"
+                  },
+                  "b": {
+                    "role": "part",
+                    "id": "head"
+                  },
+                  "normalImpulseSum": 58.668036635875694,
+                  "toiCount": 0,
+                  "stack": "Error\n    at World2.<anonymous> (file://$REPO/scripts/measure-onset43.js:47:496)\n    at World2.publish (file://$REPO/node_modules/planck/dist/planck.mjs:6492:22)\n    at World2.postSolve (file://$REPO/node_modules/planck/dist/planck.mjs:6506:12)\n    at Solver2.postSolveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4652:22)\n    at Solver2.solveIsland (file://$REPO/node_modules/planck/dist/planck.mjs:4379:12)\n    at Solver2.solveWorld (file://$REPO/node_modules/planck/dist/planck.mjs:4261:14)\n    at World2.step (file://$REPO/node_modules/planck/dist/planck.mjs:6327:23)\n    at PhysicalHookScene.integrate (file://$REPO/src/articulated.js:189:14)\n    at scene.integrate (file://$REPO/scripts/measure-onset43.js:47:846)\n    at integrate (file://$REPO/scripts/boundary-union43.js:8:71)"
+                }
+              ]
+            }
+          }
+        ],
+        "boundaryEvents": [
+          [],
+          []
+        ],
+        "boundary": {
+          "maxOuterActual": 11,
+          "maxOuterBase": 8,
+          "extraIntegrations": 34,
+          "budgetFallbacks": 0
+        },
+        "phases": [
+          {
+            "winding": {
+              "samples": 644,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 7.607944847704338e-7,
+              "finalAngular": 0.001801949929849278
+            },
+            "loading": {
+              "samples": 2836,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 2.3311704904494468e-7,
+              "finalAngular": 0.004208155053545437
+            }
+          },
+          {
+            "canonical_restore": {
+              "samples": 1,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 2.3311704904494468e-7,
+              "finalAngular": 0.004208155053545437
+            },
+            "launch": {
+              "samples": 483,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00013197369228791462,
+              "finalAngular": 0.006021682444161902
+            },
+            "flight": {
+              "samples": 1773,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00008822905588423531,
+              "finalAngular": 0
+            },
+            "impact_recovery": {
+              "samples": 300,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.0000075162632840869206,
+              "finalAngular": 0.00007108391038457285
+            },
+            "descent_after_obstacle": {
+              "samples": 4633,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00003617480745791007,
+              "finalAngular": 0.05561313871783402
+            },
+            "ground_recovery": {
+              "samples": 300,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00002292671577837408,
+              "finalAngular": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

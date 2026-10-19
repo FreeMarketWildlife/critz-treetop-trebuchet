@@ -1,0 +1,1475 @@
+{
+  "protocol": "Five alternating paired clean rounds after warmup, identical retained actual initial state per policy,1s real simulation. Reconstruction outside timer; actual-integration counter only, no diagnostic scans. Node elapsed cost, not device FPS. Isolated boundary overlay and full union composition remain explicit research imports.",
+  "rows": [
+    {
+      "id": "falling rig",
+      "policy": "original",
+      "round": 0,
+      "milliseconds": 41.7443330000001,
+      "integrations": 600,
+      "stats": {},
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      },
+      "energy": -630286.5164817557
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryOnly",
+      "round": 0,
+      "milliseconds": 44.95183399999996,
+      "integrations": 604,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 604,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.6774715100798883,
+        "y": 294.0893033671871,
+        "vx": 0.0000014028506104057916,
+        "vy": -2.1035652643096031e-7,
+        "mass": 1.1
+      },
+      "energy": -629965.3367292413
+    },
+    {
+      "id": "falling rig",
+      "policy": "union8",
+      "round": 0,
+      "milliseconds": 203.1349170000001,
+      "integrations": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      },
+      "energy": -614155.4632174768
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryLead",
+      "round": 0,
+      "milliseconds": 200.03066599999988,
+      "integrations": 2925,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 2910,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "end": {
+        "x": -2.677473120595824,
+        "y": 294.08930387175405,
+        "vx": 0.000001908710521396768,
+        "vy": -2.859987188740989e-7,
+        "mass": 1.1
+      },
+      "energy": -614113.1506567966
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "original",
+      "round": 0,
+      "milliseconds": 65.11495799999989,
+      "integrations": 777,
+      "stats": {},
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      },
+      "energy": -1704.728941123913
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryOnly",
+      "round": 0,
+      "milliseconds": 55.109375,
+      "integrations": 619,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 619,
+        "extraIntegrations": 19,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.0986180910272014,
+        "y": 297.66880963760616,
+        "vx": -2.056936960801277,
+        "vy": -7.443195864858536,
+        "mass": 5
+      },
+      "energy": -1589.022595412397
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "union8",
+      "round": 0,
+      "milliseconds": 154.10137499999996,
+      "integrations": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      },
+      "energy": -1687.5184834470806
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryLead",
+      "round": 0,
+      "milliseconds": 152.71616700000004,
+      "integrations": 1920,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 1916,
+        "actualIntegrations": 1920,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53343,
+          "distanceQueries": 3899
+        }
+      },
+      "end": {
+        "x": -1.6869464891865913,
+        "y": 297.70142234670556,
+        "vx": -1.4628933691915116,
+        "vy": -7.092547948723885,
+        "mass": 5
+      },
+      "energy": -1687.5962948232723
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "original",
+      "round": 0,
+      "milliseconds": 56.71487500000012,
+      "integrations": 733,
+      "stats": {},
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.72803412885
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryOnly",
+      "round": 0,
+      "milliseconds": 57.48620800000026,
+      "integrations": 744,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 726,
+        "actualIntegrations": 744,
+        "extraIntegrations": 18,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": null
+      },
+      "end": {
+        "x": 31.314282794178315,
+        "y": 107.26780099751034,
+        "vx": -11.793755004582154,
+        "vy": -9.832719397751971,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21202.011940711887
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "union8",
+      "round": 0,
+      "milliseconds": 63.276666000000205,
+      "integrations": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.67543644821
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryLead",
+      "round": 0,
+      "milliseconds": 65.55091599999969,
+      "integrations": 789,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 777,
+        "actualIntegrations": 789,
+        "extraIntegrations": 12,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "end": {
+        "x": 31.31428279417823,
+        "y": 107.26784742299586,
+        "vx": -11.793755004582174,
+        "vy": -9.832719397751946,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21201.954258243593
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryLead",
+      "round": 1,
+      "milliseconds": 193.69108400000005,
+      "integrations": 2925,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 2910,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "end": {
+        "x": -2.677473120595824,
+        "y": 294.08930387175405,
+        "vx": 0.000001908710521396768,
+        "vy": -2.859987188740989e-7,
+        "mass": 1.1
+      },
+      "energy": -614113.1506567966
+    },
+    {
+      "id": "falling rig",
+      "policy": "union8",
+      "round": 1,
+      "milliseconds": 203.15158299999985,
+      "integrations": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      },
+      "energy": -614155.4632174768
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryOnly",
+      "round": 1,
+      "milliseconds": 44.805207999999766,
+      "integrations": 604,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 604,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.6774715100798883,
+        "y": 294.0893033671871,
+        "vx": 0.0000014028506104057916,
+        "vy": -2.1035652643096031e-7,
+        "mass": 1.1
+      },
+      "energy": -629965.3367292413
+    },
+    {
+      "id": "falling rig",
+      "policy": "original",
+      "round": 1,
+      "milliseconds": 40.611875000000055,
+      "integrations": 600,
+      "stats": {},
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      },
+      "energy": -630286.5164817557
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryLead",
+      "round": 1,
+      "milliseconds": 152.487208,
+      "integrations": 1920,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 1916,
+        "actualIntegrations": 1920,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53343,
+          "distanceQueries": 3899
+        }
+      },
+      "end": {
+        "x": -1.6869464891865913,
+        "y": 297.70142234670556,
+        "vx": -1.4628933691915116,
+        "vy": -7.092547948723885,
+        "mass": 5
+      },
+      "energy": -1687.5962948232723
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "union8",
+      "round": 1,
+      "milliseconds": 149.92787499999986,
+      "integrations": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      },
+      "energy": -1687.5184834470806
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryOnly",
+      "round": 1,
+      "milliseconds": 55.36170800000036,
+      "integrations": 619,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 619,
+        "extraIntegrations": 19,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.0986180910272014,
+        "y": 297.66880963760616,
+        "vx": -2.056936960801277,
+        "vy": -7.443195864858536,
+        "mass": 5
+      },
+      "energy": -1589.022595412397
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "original",
+      "round": 1,
+      "milliseconds": 64.25329199999987,
+      "integrations": 777,
+      "stats": {},
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      },
+      "energy": -1704.728941123913
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryLead",
+      "round": 1,
+      "milliseconds": 64.92379200000005,
+      "integrations": 789,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 777,
+        "actualIntegrations": 789,
+        "extraIntegrations": 12,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "end": {
+        "x": 31.31428279417823,
+        "y": 107.26784742299586,
+        "vx": -11.793755004582174,
+        "vy": -9.832719397751946,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21201.954258243593
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "union8",
+      "round": 1,
+      "milliseconds": 62.61904199999981,
+      "integrations": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.67543644821
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryOnly",
+      "round": 1,
+      "milliseconds": 56.39537500000006,
+      "integrations": 744,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 726,
+        "actualIntegrations": 744,
+        "extraIntegrations": 18,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": null
+      },
+      "end": {
+        "x": 31.314282794178315,
+        "y": 107.26780099751034,
+        "vx": -11.793755004582154,
+        "vy": -9.832719397751971,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21202.011940711887
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "original",
+      "round": 1,
+      "milliseconds": 54.94541700000036,
+      "integrations": 733,
+      "stats": {},
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.72803412885
+    },
+    {
+      "id": "falling rig",
+      "policy": "original",
+      "round": 2,
+      "milliseconds": 40.2626250000003,
+      "integrations": 600,
+      "stats": {},
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      },
+      "energy": -630286.5164817557
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryOnly",
+      "round": 2,
+      "milliseconds": 44.34266699999989,
+      "integrations": 604,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 604,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.6774715100798883,
+        "y": 294.0893033671871,
+        "vx": 0.0000014028506104057916,
+        "vy": -2.1035652643096031e-7,
+        "mass": 1.1
+      },
+      "energy": -629965.3367292413
+    },
+    {
+      "id": "falling rig",
+      "policy": "union8",
+      "round": 2,
+      "milliseconds": 203.08520799999997,
+      "integrations": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      },
+      "energy": -614155.4632174768
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryLead",
+      "round": 2,
+      "milliseconds": 193.26541700000007,
+      "integrations": 2925,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 2910,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "end": {
+        "x": -2.677473120595824,
+        "y": 294.08930387175405,
+        "vx": 0.000001908710521396768,
+        "vy": -2.859987188740989e-7,
+        "mass": 1.1
+      },
+      "energy": -614113.1506567966
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "original",
+      "round": 2,
+      "milliseconds": 66.63516600000003,
+      "integrations": 777,
+      "stats": {},
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      },
+      "energy": -1704.728941123913
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryOnly",
+      "round": 2,
+      "milliseconds": 55.0121250000002,
+      "integrations": 619,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 619,
+        "extraIntegrations": 19,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.0986180910272014,
+        "y": 297.66880963760616,
+        "vx": -2.056936960801277,
+        "vy": -7.443195864858536,
+        "mass": 5
+      },
+      "energy": -1589.022595412397
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "union8",
+      "round": 2,
+      "milliseconds": 150.94141599999966,
+      "integrations": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      },
+      "energy": -1687.5184834470806
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryLead",
+      "round": 2,
+      "milliseconds": 150.2827500000003,
+      "integrations": 1920,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 1916,
+        "actualIntegrations": 1920,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53343,
+          "distanceQueries": 3899
+        }
+      },
+      "end": {
+        "x": -1.6869464891865913,
+        "y": 297.70142234670556,
+        "vx": -1.4628933691915116,
+        "vy": -7.092547948723885,
+        "mass": 5
+      },
+      "energy": -1687.5962948232723
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "original",
+      "round": 2,
+      "milliseconds": 55.78304200000002,
+      "integrations": 733,
+      "stats": {},
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.72803412885
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryOnly",
+      "round": 2,
+      "milliseconds": 56.707042,
+      "integrations": 744,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 726,
+        "actualIntegrations": 744,
+        "extraIntegrations": 18,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": null
+      },
+      "end": {
+        "x": 31.314282794178315,
+        "y": 107.26780099751034,
+        "vx": -11.793755004582154,
+        "vy": -9.832719397751971,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21202.011940711887
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "union8",
+      "round": 2,
+      "milliseconds": 63.58637499999986,
+      "integrations": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.67543644821
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryLead",
+      "round": 2,
+      "milliseconds": 64.5375410000006,
+      "integrations": 789,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 777,
+        "actualIntegrations": 789,
+        "extraIntegrations": 12,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "end": {
+        "x": 31.31428279417823,
+        "y": 107.26784742299586,
+        "vx": -11.793755004582174,
+        "vy": -9.832719397751946,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21201.954258243593
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryLead",
+      "round": 3,
+      "milliseconds": 191.68574999999964,
+      "integrations": 2925,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 2910,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "end": {
+        "x": -2.677473120595824,
+        "y": 294.08930387175405,
+        "vx": 0.000001908710521396768,
+        "vy": -2.859987188740989e-7,
+        "mass": 1.1
+      },
+      "energy": -614113.1506567966
+    },
+    {
+      "id": "falling rig",
+      "policy": "union8",
+      "round": 3,
+      "milliseconds": 197.17004200000065,
+      "integrations": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      },
+      "energy": -614155.4632174768
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryOnly",
+      "round": 3,
+      "milliseconds": 43.04329199999938,
+      "integrations": 604,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 604,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.6774715100798883,
+        "y": 294.0893033671871,
+        "vx": 0.0000014028506104057916,
+        "vy": -2.1035652643096031e-7,
+        "mass": 1.1
+      },
+      "energy": -629965.3367292413
+    },
+    {
+      "id": "falling rig",
+      "policy": "original",
+      "round": 3,
+      "milliseconds": 38.70100000000002,
+      "integrations": 600,
+      "stats": {},
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      },
+      "energy": -630286.5164817557
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryLead",
+      "round": 3,
+      "milliseconds": 151.11683300000004,
+      "integrations": 1920,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 1916,
+        "actualIntegrations": 1920,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53343,
+          "distanceQueries": 3899
+        }
+      },
+      "end": {
+        "x": -1.6869464891865913,
+        "y": 297.70142234670556,
+        "vx": -1.4628933691915116,
+        "vy": -7.092547948723885,
+        "mass": 5
+      },
+      "energy": -1687.5962948232723
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "union8",
+      "round": 3,
+      "milliseconds": 148.45400000000063,
+      "integrations": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      },
+      "energy": -1687.5184834470806
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryOnly",
+      "round": 3,
+      "milliseconds": 54.007542000000285,
+      "integrations": 619,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 619,
+        "extraIntegrations": 19,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.0986180910272014,
+        "y": 297.66880963760616,
+        "vx": -2.056936960801277,
+        "vy": -7.443195864858536,
+        "mass": 5
+      },
+      "energy": -1589.022595412397
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "original",
+      "round": 3,
+      "milliseconds": 64.03125,
+      "integrations": 777,
+      "stats": {},
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      },
+      "energy": -1704.728941123913
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryLead",
+      "round": 3,
+      "milliseconds": 63.88262500000019,
+      "integrations": 789,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 777,
+        "actualIntegrations": 789,
+        "extraIntegrations": 12,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "end": {
+        "x": 31.31428279417823,
+        "y": 107.26784742299586,
+        "vx": -11.793755004582174,
+        "vy": -9.832719397751946,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21201.954258243593
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "union8",
+      "round": 3,
+      "milliseconds": 62.87479100000019,
+      "integrations": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.67543644821
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryOnly",
+      "round": 3,
+      "milliseconds": 56.18420900000001,
+      "integrations": 744,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 726,
+        "actualIntegrations": 744,
+        "extraIntegrations": 18,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": null
+      },
+      "end": {
+        "x": 31.314282794178315,
+        "y": 107.26780099751034,
+        "vx": -11.793755004582154,
+        "vy": -9.832719397751971,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21202.011940711887
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "original",
+      "round": 3,
+      "milliseconds": 56.52241700000013,
+      "integrations": 733,
+      "stats": {},
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.72803412885
+    },
+    {
+      "id": "falling rig",
+      "policy": "original",
+      "round": 4,
+      "milliseconds": 39.61933299999964,
+      "integrations": 600,
+      "stats": {},
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      },
+      "energy": -630286.5164817557
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryOnly",
+      "round": 4,
+      "milliseconds": 43.48645800000031,
+      "integrations": 604,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 604,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.6774715100798883,
+        "y": 294.0893033671871,
+        "vx": 0.0000014028506104057916,
+        "vy": -2.1035652643096031e-7,
+        "mass": 1.1
+      },
+      "energy": -629965.3367292413
+    },
+    {
+      "id": "falling rig",
+      "policy": "union8",
+      "round": 4,
+      "milliseconds": 199.2915409999996,
+      "integrations": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      },
+      "energy": -614155.4632174768
+    },
+    {
+      "id": "falling rig",
+      "policy": "boundaryLead",
+      "round": 4,
+      "milliseconds": 190.4130409999998,
+      "integrations": 2925,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 2910,
+        "actualIntegrations": 2925,
+        "extraIntegrations": 15,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 330,
+          "distanceSteps": 326,
+          "stopSteps": 16,
+          "compatiblePairs": 135288,
+          "distanceQueries": 802
+        }
+      },
+      "end": {
+        "x": -2.677473120595824,
+        "y": 294.08930387175405,
+        "vx": 0.000001908710521396768,
+        "vy": -2.859987188740989e-7,
+        "mass": 1.1
+      },
+      "energy": -614113.1506567966
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "original",
+      "round": 4,
+      "milliseconds": 62.86445800000001,
+      "integrations": 777,
+      "stats": {},
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      },
+      "energy": -1704.728941123913
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryOnly",
+      "round": 4,
+      "milliseconds": 54.37683300000026,
+      "integrations": 619,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 600,
+        "actualIntegrations": 619,
+        "extraIntegrations": 19,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 1,
+        "maxOuterActual": 4,
+        "union": null
+      },
+      "end": {
+        "x": -2.0986180910272014,
+        "y": 297.66880963760616,
+        "vx": -2.056936960801277,
+        "vy": -7.443195864858536,
+        "mass": 5
+      },
+      "energy": -1589.022595412397
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "union8",
+      "round": 4,
+      "milliseconds": 151.08925,
+      "integrations": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      },
+      "energy": -1687.5184834470806
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "boundaryLead",
+      "round": 4,
+      "milliseconds": 148.26458300000013,
+      "integrations": 1920,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 1916,
+        "actualIntegrations": 1920,
+        "extraIntegrations": 4,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 188,
+          "distanceSteps": 186,
+          "stopSteps": 15,
+          "compatiblePairs": 53343,
+          "distanceQueries": 3899
+        }
+      },
+      "end": {
+        "x": -1.6869464891865913,
+        "y": 297.70142234670556,
+        "vx": -1.4628933691915116,
+        "vy": -7.092547948723885,
+        "mass": 5
+      },
+      "energy": -1687.5962948232723
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "original",
+      "round": 4,
+      "milliseconds": 56.84949999999935,
+      "integrations": 733,
+      "stats": {},
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.72803412885
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryOnly",
+      "round": 4,
+      "milliseconds": 55.8286250000001,
+      "integrations": 744,
+      "stats": {
+        "composeUnion": false,
+        "outerSteps": 600,
+        "baseIntervals": 726,
+        "actualIntegrations": 744,
+        "extraIntegrations": 18,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": null
+      },
+      "end": {
+        "x": 31.314282794178315,
+        "y": 107.26780099751034,
+        "vx": -11.793755004582154,
+        "vy": -9.832719397751971,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21202.011940711887
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "union8",
+      "round": 4,
+      "milliseconds": 63.68987500000003,
+      "integrations": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      },
+      "energy": -18834.67543644821
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "boundaryLead",
+      "round": 4,
+      "milliseconds": 64.19070899999952,
+      "integrations": 789,
+      "stats": {
+        "composeUnion": true,
+        "outerSteps": 600,
+        "baseIntervals": 777,
+        "actualIntegrations": 789,
+        "extraIntegrations": 12,
+        "budgetFallbacks": 0,
+        "maxOuterBase": 8,
+        "maxOuterActual": 11,
+        "union": {
+          "outerSteps": 600,
+          "refinedSteps": 11,
+          "distanceSteps": 0,
+          "stopSteps": 11,
+          "compatiblePairs": 61248,
+          "distanceQueries": 84
+        }
+      },
+      "end": {
+        "x": 31.31428279417823,
+        "y": 107.26784742299586,
+        "vx": -11.793755004582174,
+        "vy": -9.832719397751946,
+        "mass": 0.8500000000000001
+      },
+      "energy": -21201.954258243593
+    }
+  ]
+}

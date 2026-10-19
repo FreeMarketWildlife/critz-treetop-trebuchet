@@ -1,0 +1,6701 @@
+{
+  "protocol": "31alternating paired rounds after3warmup rounds. Identical freshly restored actual pre-crossing state for each variant; reconstruction and lookup outside timer. Only the equal-duration original retained inner interval is timed, no continuation or diagnostic scans except integration counter. Node microbenchmark, not full-game CPU cost or device FPS.",
+  "rows": [
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 0,
+      "milliseconds": 0.4697500000000048,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 0,
+      "milliseconds": 0.1536249999999768,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 0,
+      "milliseconds": 0.19116699999997877,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 0,
+      "milliseconds": 0.3655000000000257,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 0,
+      "milliseconds": 4.485624999999999,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 0,
+      "milliseconds": 0.20524999999997817,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 0,
+      "milliseconds": 0.2757090000000062,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 0,
+      "milliseconds": 0.43979199999998286,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 0,
+      "milliseconds": 0.35916700000001356,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 0,
+      "milliseconds": 0.05808299999998212,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 0,
+      "milliseconds": 0.07183399999999551,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 0,
+      "milliseconds": 0.05583399999997596,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 0,
+      "milliseconds": 0.5930410000000279,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 0,
+      "milliseconds": 0.11662499999999909,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 0,
+      "milliseconds": 0.08999999999997499,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 0,
+      "milliseconds": 0.09104199999998741,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 0,
+      "milliseconds": 0.40295799999998394,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 0,
+      "milliseconds": 0.15512499999999818,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 0,
+      "milliseconds": 0.1720420000000047,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 0,
+      "milliseconds": 0.24524999999999864,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 0,
+      "milliseconds": 0.38750000000001705,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 0,
+      "milliseconds": 0.11474999999998658,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 0,
+      "milliseconds": 0.14208300000001373,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 0,
+      "milliseconds": 0.2270420000000115,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 1,
+      "milliseconds": 0.26237500000002,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 1,
+      "milliseconds": 0.181083000000001,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 1,
+      "milliseconds": 0.13041700000002265,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 1,
+      "milliseconds": 0.3626250000000084,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 1,
+      "milliseconds": 0.4224169999999958,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 1,
+      "milliseconds": 0.25020800000001486,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 1,
+      "milliseconds": 0.1826250000000016,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 1,
+      "milliseconds": 0.5939580000000149,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 1,
+      "milliseconds": 0.06245799999999235,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 1,
+      "milliseconds": 0.05412499999999909,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 1,
+      "milliseconds": 0.055291999999980135,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 1,
+      "milliseconds": 0.31204199999999105,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 1,
+      "milliseconds": 0.11416600000001154,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 1,
+      "milliseconds": 0.08466699999999605,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 1,
+      "milliseconds": 0.10149999999998727,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 1,
+      "milliseconds": 0.6335420000000056,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 1,
+      "milliseconds": 0.29283399999999915,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 1,
+      "milliseconds": 0.31620800000001736,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 1,
+      "milliseconds": 0.19779199999999264,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 1,
+      "milliseconds": 0.5359579999999937,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 1,
+      "milliseconds": 0.24479100000002063,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 1,
+      "milliseconds": 0.18174999999996544,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 1,
+      "milliseconds": 0.13212499999997362,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 1,
+      "milliseconds": 0.46500000000003183,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 2,
+      "milliseconds": 0.5392499999999814,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 2,
+      "milliseconds": 0.12958399999996573,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 2,
+      "milliseconds": 0.17758299999997007,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 2,
+      "milliseconds": 0.2672080000000392,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 2,
+      "milliseconds": 0.7062500000000114,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 2,
+      "milliseconds": 0.19025000000004866,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 2,
+      "milliseconds": 0.2797919999999863,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 2,
+      "milliseconds": 0.45512500000000955,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 2,
+      "milliseconds": 0.39083299999998644,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 2,
+      "milliseconds": 0.05958399999997255,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 2,
+      "milliseconds": 0.06495899999998755,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 2,
+      "milliseconds": 0.07387500000004366,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 2,
+      "milliseconds": 2.619708000000003,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 2,
+      "milliseconds": 0.10145800000003646,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 2,
+      "milliseconds": 0.08958300000000463,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 2,
+      "milliseconds": 0.08524999999997362,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 2,
+      "milliseconds": 0.41908300000000054,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 2,
+      "milliseconds": 0.11091699999997218,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 2,
+      "milliseconds": 0.15337499999998272,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 2,
+      "milliseconds": 0.233916000000022,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 2,
+      "milliseconds": 0.5475830000000315,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 2,
+      "milliseconds": 0.11741600000004837,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 2,
+      "milliseconds": 0.18845800000002555,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 2,
+      "milliseconds": 0.20949999999999136,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 3,
+      "milliseconds": 0.2707089999999539,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 3,
+      "milliseconds": 0.22749999999996362,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 3,
+      "milliseconds": 0.1293749999999818,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 3,
+      "milliseconds": 0.42983300000003055,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 3,
+      "milliseconds": 0.5029580000000351,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 3,
+      "milliseconds": 0.2961660000000279,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 3,
+      "milliseconds": 0.21800000000001774,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 3,
+      "milliseconds": 0.7546250000000327,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 3,
+      "milliseconds": 0.06958299999996598,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 3,
+      "milliseconds": 0.06091700000001765,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 3,
+      "milliseconds": 0.05962500000003956,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 3,
+      "milliseconds": 0.36958299999997735,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 3,
+      "milliseconds": 0.11270899999999529,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 3,
+      "milliseconds": 0.09783300000003692,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 3,
+      "milliseconds": 0.09308399999997619,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 3,
+      "milliseconds": 0.6528329999999869,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 3,
+      "milliseconds": 0.3301660000000197,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 3,
+      "milliseconds": 0.19037500000001728,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 3,
+      "milliseconds": 0.14508299999999963,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 3,
+      "milliseconds": 0.517832999999996,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 3,
+      "milliseconds": 0.2293749999999477,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 3,
+      "milliseconds": 0.1454159999999547,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 3,
+      "milliseconds": 0.10379199999999855,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 3,
+      "milliseconds": 0.34070800000000645,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 4,
+      "milliseconds": 0.45891699999998536,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 4,
+      "milliseconds": 0.13962500000002365,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 4,
+      "milliseconds": 0.169208000000026,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 4,
+      "milliseconds": 0.21820800000000418,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 4,
+      "milliseconds": 0.5345419999999876,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 4,
+      "milliseconds": 0.14845900000000256,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 4,
+      "milliseconds": 0.2512079999999628,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 4,
+      "milliseconds": 0.35037499999998545,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 4,
+      "milliseconds": 0.3060410000000502,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 4,
+      "milliseconds": 0.050707999999985987,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 4,
+      "milliseconds": 0.05054200000000719,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 4,
+      "milliseconds": 0.05841699999996308,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 4,
+      "milliseconds": 0.5289999999999964,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 4,
+      "milliseconds": 0.08816600000000108,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 4,
+      "milliseconds": 0.08458400000000665,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 4,
+      "milliseconds": 0.08070800000001555,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 4,
+      "milliseconds": 0.37333300000000236,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 4,
+      "milliseconds": 0.10562500000003183,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 4,
+      "milliseconds": 0.14887499999997544,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 4,
+      "milliseconds": 0.2562499999999659,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 4,
+      "milliseconds": 0.3090000000000259,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 4,
+      "milliseconds": 0.09195799999997689,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 4,
+      "milliseconds": 0.12391699999994898,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 4,
+      "milliseconds": 0.18904200000002902,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 5,
+      "milliseconds": 0.2356669999999781,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 5,
+      "milliseconds": 0.14479199999999537,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 5,
+      "milliseconds": 0.123958000000016,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 5,
+      "milliseconds": 0.3784159999999588,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 5,
+      "milliseconds": 0.35116699999997536,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 5,
+      "milliseconds": 0.25670800000000327,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 5,
+      "milliseconds": 0.21387499999997317,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 5,
+      "milliseconds": 0.5557909999999993,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 5,
+      "milliseconds": 0.06345800000002555,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 5,
+      "milliseconds": 0.05475000000001273,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 5,
+      "milliseconds": 0.051040999999997894,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 5,
+      "milliseconds": 5.541624999999954,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 5,
+      "milliseconds": 0.14962500000001455,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 5,
+      "milliseconds": 0.12116700000001401,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 5,
+      "milliseconds": 0.08483400000000074,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 5,
+      "milliseconds": 0.5416250000000105,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 5,
+      "milliseconds": 0.2560829999999896,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 5,
+      "milliseconds": 0.14879200000001447,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 5,
+      "milliseconds": 0.10570899999999028,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 5,
+      "milliseconds": 0.3574160000000006,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 5,
+      "milliseconds": 0.23133300000000645,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 5,
+      "milliseconds": 0.12545799999998053,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 5,
+      "milliseconds": 0.08933399999995117,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 5,
+      "milliseconds": 0.3098749999999768,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 6,
+      "milliseconds": 0.36149999999997817,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 6,
+      "milliseconds": 0.10308299999996962,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 6,
+      "milliseconds": 0.1656669999999849,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 6,
+      "milliseconds": 0.2945839999999862,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 6,
+      "milliseconds": 0.5062920000000304,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 6,
+      "milliseconds": 0.16595799999998917,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 6,
+      "milliseconds": 0.22287499999998772,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 6,
+      "milliseconds": 0.3176250000000209,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 6,
+      "milliseconds": 0.28991700000000264,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 6,
+      "milliseconds": 0.04979100000002745,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 6,
+      "milliseconds": 0.056708000000014636,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 6,
+      "milliseconds": 0.04862500000001546,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 6,
+      "milliseconds": 0.5250419999999849,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 6,
+      "milliseconds": 0.08020799999997053,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 6,
+      "milliseconds": 0.07904200000001538,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 6,
+      "milliseconds": 0.077541999999994,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 6,
+      "milliseconds": 0.3872079999999869,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 6,
+      "milliseconds": 0.11516699999998536,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 6,
+      "milliseconds": 0.20579099999997652,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 6,
+      "milliseconds": 0.25983300000001464,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 6,
+      "milliseconds": 0.2953330000000278,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 6,
+      "milliseconds": 0.08729100000005019,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 6,
+      "milliseconds": 0.272625000000005,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 6,
+      "milliseconds": 0.3184999999999718,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 7,
+      "milliseconds": 0.22129200000000537,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 7,
+      "milliseconds": 0.14758399999999483,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 7,
+      "milliseconds": 0.10770899999999983,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 7,
+      "milliseconds": 0.3817500000000109,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 7,
+      "milliseconds": 0.3983329999999796,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 7,
+      "milliseconds": 0.2638329999999769,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 7,
+      "milliseconds": 0.16870899999997846,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 7,
+      "milliseconds": 0.5746670000000336,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 7,
+      "milliseconds": 0.060374999999964984,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 7,
+      "milliseconds": 0.09020800000001827,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 7,
+      "milliseconds": 0.05520799999999326,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 7,
+      "milliseconds": 0.32129199999997127,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 7,
+      "milliseconds": 0.09658399999995027,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 7,
+      "milliseconds": 0.09087499999998272,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 7,
+      "milliseconds": 0.08562499999999318,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 7,
+      "milliseconds": 0.5321250000000077,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 7,
+      "milliseconds": 0.2554590000000303,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 7,
+      "milliseconds": 0.17199999999996862,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 7,
+      "milliseconds": 0.1275829999999587,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 7,
+      "milliseconds": 0.3915829999999687,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 7,
+      "milliseconds": 0.21179100000000517,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 7,
+      "milliseconds": 0.40266699999995126,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 7,
+      "milliseconds": 0.1197920000000181,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 7,
+      "milliseconds": 0.39308399999998755,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 8,
+      "milliseconds": 0.45479199999999764,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 8,
+      "milliseconds": 0.12179199999997081,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 8,
+      "milliseconds": 0.15320800000000645,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 8,
+      "milliseconds": 0.23324999999999818,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 8,
+      "milliseconds": 0.5968330000000037,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 8,
+      "milliseconds": 0.171875,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 8,
+      "milliseconds": 0.2492080000000101,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 8,
+      "milliseconds": 0.4052920000000313,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 8,
+      "milliseconds": 0.339416999999969,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 8,
+      "milliseconds": 0.06091700000001765,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 8,
+      "milliseconds": 0.056667000000004464,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 8,
+      "milliseconds": 0.06304199999999582,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 8,
+      "milliseconds": 0.6383330000000456,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 8,
+      "milliseconds": 0.09141699999997854,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 8,
+      "milliseconds": 0.09245800000002191,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 8,
+      "milliseconds": 0.1366249999999809,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 8,
+      "milliseconds": 0.41858400000000984,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 8,
+      "milliseconds": 0.11808300000001282,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 8,
+      "milliseconds": 0.35829200000000583,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 8,
+      "milliseconds": 0.29704199999997627,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 8,
+      "milliseconds": 0.44412499999998545,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 8,
+      "milliseconds": 0.11275000000000546,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 8,
+      "milliseconds": 0.15183400000000802,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 8,
+      "milliseconds": 0.23424999999997453,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 9,
+      "milliseconds": 0.26083300000004783,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 9,
+      "milliseconds": 0.188083000000006,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 9,
+      "milliseconds": 4.0540000000000305,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 9,
+      "milliseconds": 1.480542000000014,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 9,
+      "milliseconds": 0.4289999999999736,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 9,
+      "milliseconds": 0.23879199999998946,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 9,
+      "milliseconds": 0.15529199999997445,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 9,
+      "milliseconds": 0.5777079999999728,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 9,
+      "milliseconds": 0.06808399999999892,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 9,
+      "milliseconds": 0.05700000000001637,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 9,
+      "milliseconds": 0.05720800000000281,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 9,
+      "milliseconds": 0.33049999999997226,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 9,
+      "milliseconds": 0.120666999999969,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 9,
+      "milliseconds": 0.08841699999999264,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 9,
+      "milliseconds": 0.11383299999999963,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 9,
+      "milliseconds": 0.5228339999999889,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 9,
+      "milliseconds": 0.2973749999999882,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 9,
+      "milliseconds": 0.14958400000000438,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 9,
+      "milliseconds": 0.11683299999998553,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 9,
+      "milliseconds": 0.37125000000003183,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 9,
+      "milliseconds": 0.18833300000000008,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 9,
+      "milliseconds": 0.14412500000003092,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 9,
+      "milliseconds": 0.09224999999997863,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 9,
+      "milliseconds": 0.28683300000000145,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 10,
+      "milliseconds": 0.3128749999999627,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 10,
+      "milliseconds": 0.09341699999998809,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 10,
+      "milliseconds": 0.12754200000000537,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 10,
+      "milliseconds": 0.35120900000003985,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 10,
+      "milliseconds": 0.5588750000000005,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 10,
+      "milliseconds": 0.16354100000000926,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 10,
+      "milliseconds": 0.22854200000000446,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 10,
+      "milliseconds": 0.3644999999999641,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 10,
+      "milliseconds": 0.3133330000000001,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 10,
+      "milliseconds": 0.05629199999998491,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 10,
+      "milliseconds": 0.05062500000002501,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 10,
+      "milliseconds": 0.04795799999999417,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 10,
+      "milliseconds": 0.5601659999999811,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 10,
+      "milliseconds": 0.08745800000002646,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 10,
+      "milliseconds": 0.08745800000002646,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 10,
+      "milliseconds": 0.07641699999999219,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 10,
+      "milliseconds": 0.39654200000001083,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 10,
+      "milliseconds": 0.11954199999996717,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 10,
+      "milliseconds": 0.14350000000001728,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 10,
+      "milliseconds": 0.23279200000001765,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 10,
+      "milliseconds": 0.2827090000000112,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 10,
+      "milliseconds": 0.08650000000000091,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 10,
+      "milliseconds": 0.11770799999999326,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 10,
+      "milliseconds": 0.1795420000000263,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 11,
+      "milliseconds": 0.20470799999998235,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 11,
+      "milliseconds": 0.12975000000000136,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 11,
+      "milliseconds": 0.09387500000002547,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 11,
+      "milliseconds": 0.3949999999999818,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 11,
+      "milliseconds": 0.38645800000000463,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 11,
+      "milliseconds": 0.20100000000002183,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 11,
+      "milliseconds": 0.14312499999999773,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 11,
+      "milliseconds": 0.486582999999996,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 11,
+      "milliseconds": 0.08641699999998309,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 11,
+      "milliseconds": 0.06091700000001765,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 11,
+      "milliseconds": 0.05587500000001455,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 11,
+      "milliseconds": 0.28412499999996044,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 11,
+      "milliseconds": 0.09449999999998226,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 11,
+      "milliseconds": 0.07787500000000591,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 11,
+      "milliseconds": 0.07433299999996734,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 11,
+      "milliseconds": 0.487542000000019,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 11,
+      "milliseconds": 0.24304100000000517,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 11,
+      "milliseconds": 0.14041700000001356,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 11,
+      "milliseconds": 0.10279100000002472,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 11,
+      "milliseconds": 0.34116699999998445,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 11,
+      "milliseconds": 0.19454200000001265,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 11,
+      "milliseconds": 0.11716599999999744,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 11,
+      "milliseconds": 0.08462499999995998,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 11,
+      "milliseconds": 0.28145799999998644,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 12,
+      "milliseconds": 0.31358299999999417,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 12,
+      "milliseconds": 0.0931250000000432,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 12,
+      "milliseconds": 0.15625,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 12,
+      "milliseconds": 0.22883399999994936,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 12,
+      "milliseconds": 0.48216600000000653,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 12,
+      "milliseconds": 0.14449999999999363,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 12,
+      "milliseconds": 0.35725000000002183,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 12,
+      "milliseconds": 0.3490419999999972,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 12,
+      "milliseconds": 0.4082499999999527,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 12,
+      "milliseconds": 0.058417000000019925,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 12,
+      "milliseconds": 0.05166699999995217,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 12,
+      "milliseconds": 0.04904199999998582,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 12,
+      "milliseconds": 0.49554200000000037,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 12,
+      "milliseconds": 0.07912499999997635,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 12,
+      "milliseconds": 0.07583299999998871,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 12,
+      "milliseconds": 0.0751250000000141,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 12,
+      "milliseconds": 0.36425000000002683,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 12,
+      "milliseconds": 0.1027080000000069,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 12,
+      "milliseconds": 0.1393340000000194,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 12,
+      "milliseconds": 0.22304099999996652,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 12,
+      "milliseconds": 0.30175000000002683,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 12,
+      "milliseconds": 0.08600000000001273,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 12,
+      "milliseconds": 0.12429200000002538,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 12,
+      "milliseconds": 0.18837500000000773,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 13,
+      "milliseconds": 0.2141250000000241,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 13,
+      "milliseconds": 0.12941699999998946,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 13,
+      "milliseconds": 0.09466699999995853,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 13,
+      "milliseconds": 0.3031670000000304,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 13,
+      "milliseconds": 0.4448330000000169,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 13,
+      "milliseconds": 0.30666700000000446,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 13,
+      "milliseconds": 0.16466600000001108,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 13,
+      "milliseconds": 0.5680409999999938,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 13,
+      "milliseconds": 0.07062499999994998,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 13,
+      "milliseconds": 0.055041999999957625,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 13,
+      "milliseconds": 0.05216699999999719,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 13,
+      "milliseconds": 0.31450000000000955,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 13,
+      "milliseconds": 0.1239999999999668,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 13,
+      "milliseconds": 0.0983749999999759,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 13,
+      "milliseconds": 0.10416600000002063,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 13,
+      "milliseconds": 0.5595000000000141,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 13,
+      "milliseconds": 0.26474999999999227,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 13,
+      "milliseconds": 0.13900000000001,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 13,
+      "milliseconds": 0.09812499999998181,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 13,
+      "milliseconds": 0.33595900000000256,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 13,
+      "milliseconds": 0.17787500000002865,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 13,
+      "milliseconds": 0.1296249999999759,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 13,
+      "milliseconds": 0.08683300000001282,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 13,
+      "milliseconds": 0.31929099999996424,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 14,
+      "milliseconds": 0.3523339999999848,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 14,
+      "milliseconds": 0.10304100000001881,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 14,
+      "milliseconds": 0.17508399999996982,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 14,
+      "milliseconds": 0.36470800000000736,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 14,
+      "milliseconds": 0.6906659999999647,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 14,
+      "milliseconds": 0.1947499999999991,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 14,
+      "milliseconds": 0.2817919999999958,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 14,
+      "milliseconds": 0.4214589999999703,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 14,
+      "milliseconds": 0.34341700000004494,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 14,
+      "milliseconds": 0.05779200000000628,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 14,
+      "milliseconds": 0.05712499999998499,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 14,
+      "milliseconds": 0.05475000000001273,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 14,
+      "milliseconds": 0.6419999999999959,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 14,
+      "milliseconds": 0.09529199999997218,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 14,
+      "milliseconds": 0.1224170000000413,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 14,
+      "milliseconds": 0.09195799999997689,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 14,
+      "milliseconds": 0.42712499999998954,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 14,
+      "milliseconds": 0.12029200000000628,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 14,
+      "milliseconds": 0.1685420000000022,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 14,
+      "milliseconds": 0.2718330000000151,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 14,
+      "milliseconds": 0.34095800000000054,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 14,
+      "milliseconds": 0.1542919999999981,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 14,
+      "milliseconds": 0.15229199999998855,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 14,
+      "milliseconds": 0.22995900000000802,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 15,
+      "milliseconds": 0.2739169999999831,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 15,
+      "milliseconds": 0.1770829999999819,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 15,
+      "milliseconds": 0.12824999999998,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 15,
+      "milliseconds": 0.36712499999998727,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 15,
+      "milliseconds": 0.45137499999998454,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 15,
+      "milliseconds": 0.25087500000000773,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 15,
+      "milliseconds": 0.16370799999998553,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 15,
+      "milliseconds": 0.5708329999999933,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 15,
+      "milliseconds": 0.05629200000004175,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 15,
+      "milliseconds": 0.054916999999989,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 15,
+      "milliseconds": 0.05225000000001501,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 15,
+      "milliseconds": 0.32670799999999645,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 15,
+      "milliseconds": 0.09458300000000008,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 15,
+      "milliseconds": 0.08891600000004019,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 15,
+      "milliseconds": 0.08562499999999318,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 15,
+      "milliseconds": 0.5607079999999769,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 15,
+      "milliseconds": 0.24725000000000819,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 15,
+      "milliseconds": 0.15462500000001,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 15,
+      "milliseconds": 0.1114170000000172,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 15,
+      "milliseconds": 0.395417000000009,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 15,
+      "milliseconds": 0.2144999999999868,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 15,
+      "milliseconds": 0.14195799999998826,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 15,
+      "milliseconds": 0.09704199999998764,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 15,
+      "milliseconds": 5.082291999999995,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 16,
+      "milliseconds": 0.38604200000003175,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 16,
+      "milliseconds": 0.0936659999999847,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 16,
+      "milliseconds": 0.12787500000001728,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 16,
+      "milliseconds": 0.19687499999997726,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 16,
+      "milliseconds": 0.49954200000001947,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 16,
+      "milliseconds": 0.13775000000003956,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 16,
+      "milliseconds": 0.2099579999999719,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 16,
+      "milliseconds": 0.34225000000003547,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 16,
+      "milliseconds": 0.29179199999998673,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 16,
+      "milliseconds": 0.055999999999983174,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 16,
+      "milliseconds": 0.04737499999998818,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 16,
+      "milliseconds": 0.04758399999997209,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 16,
+      "milliseconds": 0.46683300000000827,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 16,
+      "milliseconds": 0.0740409999999656,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 16,
+      "milliseconds": 0.0740830000000301,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 16,
+      "milliseconds": 0.07287499999995362,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 16,
+      "milliseconds": 0.36291599999998425,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 16,
+      "milliseconds": 0.09691700000001902,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 16,
+      "milliseconds": 0.136792000000014,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 16,
+      "milliseconds": 0.21354199999996126,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 16,
+      "milliseconds": 0.2953749999999786,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 16,
+      "milliseconds": 0.171875,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 16,
+      "milliseconds": 0.1815000000000282,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 16,
+      "milliseconds": 0.2578749999999559,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 17,
+      "milliseconds": 0.2209160000000452,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 17,
+      "milliseconds": 0.140625,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 17,
+      "milliseconds": 0.21674999999999045,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 17,
+      "milliseconds": 0.40791600000000017,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 17,
+      "milliseconds": 0.3450409999999806,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 17,
+      "milliseconds": 0.2287499999999909,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 17,
+      "milliseconds": 0.14312499999999773,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 17,
+      "milliseconds": 0.4906670000000304,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 17,
+      "milliseconds": 0.05658299999998917,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 17,
+      "milliseconds": 0.05470799999994824,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 17,
+      "milliseconds": 0.057375000000035925,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 17,
+      "milliseconds": 0.27345900000000256,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 17,
+      "milliseconds": 0.08804100000003245,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 17,
+      "milliseconds": 0.08199999999999363,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 17,
+      "milliseconds": 0.07437500000003183,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 17,
+      "milliseconds": 0.467790999999977,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 17,
+      "milliseconds": 0.2247499999999718,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 17,
+      "milliseconds": 0.13716700000003357,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 17,
+      "milliseconds": 0.09708299999999781,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 17,
+      "milliseconds": 0.33079200000003084,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 17,
+      "milliseconds": 0.3220410000000129,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 17,
+      "milliseconds": 0.2088330000000269,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 17,
+      "milliseconds": 0.09841699999998355,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 17,
+      "milliseconds": 0.3059159999999679,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 18,
+      "milliseconds": 0.36070799999998826,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 18,
+      "milliseconds": 0.09554199999996627,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 18,
+      "milliseconds": 0.12991699999997763,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 18,
+      "milliseconds": 0.20362499999998818,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 18,
+      "milliseconds": 0.4981249999999591,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 18,
+      "milliseconds": 0.15020899999996118,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 18,
+      "milliseconds": 0.214999999999975,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 18,
+      "milliseconds": 0.3088340000000471,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 18,
+      "milliseconds": 0.2811669999999822,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 18,
+      "milliseconds": 0.04870799999997644,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 18,
+      "milliseconds": 0.04758300000003146,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 18,
+      "milliseconds": 0.047040999999978794,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 18,
+      "milliseconds": 0.5023750000000291,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 18,
+      "milliseconds": 0.09087500000003956,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 18,
+      "milliseconds": 0.088374999999985,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 18,
+      "milliseconds": 0.08604199999996354,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 18,
+      "milliseconds": 0.3510840000000144,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 18,
+      "milliseconds": 0.10970800000001191,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 18,
+      "milliseconds": 0.13704099999995378,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 18,
+      "milliseconds": 0.223542000000009,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 18,
+      "milliseconds": 0.36983400000002575,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 18,
+      "milliseconds": 0.14249999999998408,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 18,
+      "milliseconds": 0.12487499999997453,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 18,
+      "milliseconds": 0.17987499999998136,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 19,
+      "milliseconds": 0.23099999999999454,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 19,
+      "milliseconds": 0.16100000000000136,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 19,
+      "milliseconds": 0.09612499999997226,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 19,
+      "milliseconds": 0.3390420000000063,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 19,
+      "milliseconds": 3.744041999999979,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 19,
+      "milliseconds": 0.23816699999997581,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 19,
+      "milliseconds": 0.1425830000000019,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 19,
+      "milliseconds": 0.5153339999999957,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 19,
+      "milliseconds": 0.07645899999999983,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 19,
+      "milliseconds": 0.0484159999999747,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 19,
+      "milliseconds": 0.04837500000002137,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 19,
+      "milliseconds": 0.273290999999972,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 19,
+      "milliseconds": 0.17366600000002563,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 19,
+      "milliseconds": 0.08487500000001091,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 19,
+      "milliseconds": 0.07825000000002547,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 19,
+      "milliseconds": 0.5347499999999741,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 19,
+      "milliseconds": 0.24816700000002356,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 19,
+      "milliseconds": 0.14533299999999372,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 19,
+      "milliseconds": 0.09845799999999372,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 19,
+      "milliseconds": 0.4127920000000245,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 19,
+      "milliseconds": 0.21520800000001827,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 19,
+      "milliseconds": 0.12720899999999347,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 19,
+      "milliseconds": 0.11212499999999181,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 19,
+      "milliseconds": 0.2827080000000137,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 20,
+      "milliseconds": 0.35445800000002237,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 20,
+      "milliseconds": 0.11095899999997982,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 20,
+      "milliseconds": 0.15329100000002427,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 20,
+      "milliseconds": 0.21604200000001583,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 20,
+      "milliseconds": 0.4834579999999846,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 20,
+      "milliseconds": 0.1382920000000354,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 20,
+      "milliseconds": 0.20291700000001356,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 20,
+      "milliseconds": 0.3234160000000088,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 20,
+      "milliseconds": 0.28145799999998644,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 20,
+      "milliseconds": 0.04758299999997462,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 20,
+      "milliseconds": 0.046666999999956715,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 20,
+      "milliseconds": 0.04662500000000591,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 20,
+      "milliseconds": 0.5491250000000036,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 20,
+      "milliseconds": 0.0866659999999797,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 20,
+      "milliseconds": 0.08349999999995816,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 20,
+      "milliseconds": 0.08833300000003419,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 20,
+      "milliseconds": 0.3642080000000192,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 20,
+      "milliseconds": 0.10387500000001637,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 20,
+      "milliseconds": 0.1801669999999831,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 20,
+      "milliseconds": 0.2352910000000179,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 20,
+      "milliseconds": 0.2887920000000008,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 20,
+      "milliseconds": 0.09583300000002737,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 20,
+      "milliseconds": 0.12304100000000062,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 20,
+      "milliseconds": 0.2077910000000429,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 21,
+      "milliseconds": 0.22512499999999136,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 21,
+      "milliseconds": 0.14741700000001856,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 21,
+      "milliseconds": 0.09850000000000136,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 21,
+      "milliseconds": 0.38783300000000054,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 21,
+      "milliseconds": 0.36920800000001464,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 21,
+      "milliseconds": 0.20079199999997854,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 21,
+      "milliseconds": 0.1412920000000213,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 21,
+      "milliseconds": 0.48099999999999454,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 21,
+      "milliseconds": 0.05895900000001575,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 21,
+      "milliseconds": 0.05475000000001273,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 21,
+      "milliseconds": 0.04904199999998582,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 21,
+      "milliseconds": 0.3003330000000233,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 21,
+      "milliseconds": 0.0817079999999919,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 21,
+      "milliseconds": 0.07529099999999289,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 21,
+      "milliseconds": 0.07491699999997081,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 21,
+      "milliseconds": 0.48266600000005155,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 21,
+      "milliseconds": 0.26858399999997573,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 21,
+      "milliseconds": 0.14599999999995816,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 21,
+      "milliseconds": 0.10195800000002464,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 21,
+      "milliseconds": 0.34416699999997036,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 21,
+      "milliseconds": 0.18812500000001364,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 21,
+      "milliseconds": 0.11329200000000128,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 21,
+      "milliseconds": 0.08562500000005002,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 21,
+      "milliseconds": 0.30816600000002836,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 22,
+      "milliseconds": 0.3036250000000109,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 22,
+      "milliseconds": 0.09133300000002009,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 22,
+      "milliseconds": 0.125,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 22,
+      "milliseconds": 0.1958750000000009,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 22,
+      "milliseconds": 0.48808300000001736,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 22,
+      "milliseconds": 5.405499999999961,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 22,
+      "milliseconds": 0.30033299999996643,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 22,
+      "milliseconds": 0.33895800000004783,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 22,
+      "milliseconds": 0.275792000000024,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 22,
+      "milliseconds": 0.04804100000001199,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 22,
+      "milliseconds": 0.046790999999984706,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 22,
+      "milliseconds": 0.04750000000001364,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 22,
+      "milliseconds": 0.46408300000001645,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 22,
+      "milliseconds": 0.07429199999995717,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 22,
+      "milliseconds": 0.07599999999996498,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 22,
+      "milliseconds": 0.07233299999995779,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 22,
+      "milliseconds": 0.3317089999999894,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 22,
+      "milliseconds": 0.09675000000004275,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 22,
+      "milliseconds": 0.13570900000001984,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 22,
+      "milliseconds": 0.21200000000004593,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 22,
+      "milliseconds": 0.27062499999999545,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 22,
+      "milliseconds": 0.08612499999998136,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 22,
+      "milliseconds": 0.11250000000001137,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 22,
+      "milliseconds": 0.18995799999999008,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 23,
+      "milliseconds": 0.19912500000003774,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 23,
+      "milliseconds": 0.12649999999996453,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 23,
+      "milliseconds": 0.10458399999998846,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 23,
+      "milliseconds": 0.30270799999999554,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 23,
+      "milliseconds": 0.34337499999998045,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 23,
+      "milliseconds": 0.1927919999999972,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 23,
+      "milliseconds": 0.14533400000004804,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 23,
+      "milliseconds": 0.4639169999999808,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 23,
+      "milliseconds": 0.11745799999999917,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 23,
+      "milliseconds": 0.054874999999981355,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 23,
+      "milliseconds": 0.053916999999955806,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 23,
+      "milliseconds": 0.2814159999999788,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 23,
+      "milliseconds": 0.09645900000003849,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 23,
+      "milliseconds": 0.07787499999994907,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 23,
+      "milliseconds": 0.0762920000000804,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 23,
+      "milliseconds": 0.4757080000000542,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 23,
+      "milliseconds": 0.23470900000006623,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 23,
+      "milliseconds": 0.14012500000001182,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 23,
+      "milliseconds": 0.09895800000003874,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 23,
+      "milliseconds": 0.4000829999999951,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 23,
+      "milliseconds": 0.25025000000005093,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 23,
+      "milliseconds": 0.1290840000000344,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 23,
+      "milliseconds": 0.09437500000001364,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 23,
+      "milliseconds": 0.3079169999999749,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 24,
+      "milliseconds": 0.3645409999999174,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 24,
+      "milliseconds": 0.10500000000001819,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 24,
+      "milliseconds": 0.1452080000000251,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 24,
+      "milliseconds": 0.21754199999998036,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 24,
+      "milliseconds": 0.4946670000000495,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 24,
+      "milliseconds": 0.14237500000001546,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 24,
+      "milliseconds": 0.19991700000002766,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 24,
+      "milliseconds": 0.30741599999998925,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 24,
+      "milliseconds": 0.30054100000006656,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 24,
+      "milliseconds": 0.05666700000006131,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 24,
+      "milliseconds": 0.04837499999996453,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 24,
+      "milliseconds": 0.06279199999994489,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 24,
+      "milliseconds": 0.4780000000000655,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 24,
+      "milliseconds": 0.07545799999991232,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 24,
+      "milliseconds": 0.07312500000000455,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 24,
+      "milliseconds": 0.07241700000008677,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 24,
+      "milliseconds": 0.34120899999993526,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 24,
+      "milliseconds": 0.10099999999999909,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 24,
+      "milliseconds": 0.13762500000007094,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 24,
+      "milliseconds": 0.21479099999999107,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 24,
+      "milliseconds": 0.2741249999999127,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 24,
+      "milliseconds": 0.08329200000002857,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 24,
+      "milliseconds": 0.12008300000002237,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 24,
+      "milliseconds": 0.17533400000002075,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 25,
+      "milliseconds": 0.22779099999991104,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 25,
+      "milliseconds": 0.14091599999994742,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 25,
+      "milliseconds": 0.11562500000002274,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 25,
+      "milliseconds": 0.3125830000000178,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 25,
+      "milliseconds": 0.3125840000000153,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 25,
+      "milliseconds": 0.19287500000007185,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 25,
+      "milliseconds": 0.13620800000001054,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 25,
+      "milliseconds": 0.4677920000000313,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 25,
+      "milliseconds": 0.07504099999994196,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 25,
+      "milliseconds": 0.06579199999998764,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 25,
+      "milliseconds": 0.05437500000005002,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 25,
+      "milliseconds": 0.29091699999992215,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 25,
+      "milliseconds": 0.10179200000004585,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 25,
+      "milliseconds": 0.08429200000000492,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 25,
+      "milliseconds": 0.08687499999996362,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 25,
+      "milliseconds": 0.464458000000036,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 25,
+      "milliseconds": 0.22449999999992087,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 25,
+      "milliseconds": 0.1376670000000786,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 25,
+      "milliseconds": 0.09600000000000364,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 25,
+      "milliseconds": 0.33466699999996763,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 25,
+      "milliseconds": 0.18591700000001765,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 25,
+      "milliseconds": 0.11462500000004638,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 25,
+      "milliseconds": 0.08354100000008202,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 25,
+      "milliseconds": 0.2689579999999978,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 26,
+      "milliseconds": 0.30979200000001583,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 26,
+      "milliseconds": 0.10154199999999491,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 26,
+      "milliseconds": 0.12783399999989342,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 26,
+      "milliseconds": 0.21816599999999653,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 26,
+      "milliseconds": 0.4887499999999818,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 26,
+      "milliseconds": 0.14079099999992195,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 26,
+      "milliseconds": 0.19808399999999438,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 26,
+      "milliseconds": 0.30133299999999963,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 26,
+      "milliseconds": 0.30895799999996143,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 26,
+      "milliseconds": 0.047584000000028936,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 26,
+      "milliseconds": 0.04691600000001017,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 26,
+      "milliseconds": 0.04720800000006875,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 26,
+      "milliseconds": 0.6452080000000251,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 26,
+      "milliseconds": 0.14858299999991686,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 26,
+      "milliseconds": 0.10000000000002274,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 26,
+      "milliseconds": 0.07874999999989996,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 26,
+      "milliseconds": 0.3425000000000864,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 26,
+      "milliseconds": 0.09912499999995816,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 26,
+      "milliseconds": 0.13704099999995378,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 26,
+      "milliseconds": 0.2137919999998985,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 26,
+      "milliseconds": 0.27804200000002766,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 26,
+      "milliseconds": 0.08387500000003456,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 26,
+      "milliseconds": 0.11304099999995287,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 26,
+      "milliseconds": 0.1720420000000331,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 27,
+      "milliseconds": 0.2092080000001033,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 27,
+      "milliseconds": 0.12920900000005986,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 27,
+      "milliseconds": 0.09004200000003948,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 27,
+      "milliseconds": 0.2975410000000238,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 27,
+      "milliseconds": 0.31766700000002857,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 27,
+      "milliseconds": 0.1950410000000602,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 27,
+      "milliseconds": 0.13724999999999454,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 27,
+      "milliseconds": 0.4689170000000331,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 27,
+      "milliseconds": 0.053875000000061846,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 27,
+      "milliseconds": 0.04858400000000529,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 27,
+      "milliseconds": 0.046875,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 27,
+      "milliseconds": 0.2724590000000262,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 27,
+      "milliseconds": 0.0790829999999687,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 27,
+      "milliseconds": 0.07445799999993596,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 27,
+      "milliseconds": 0.0735419999999749,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 27,
+      "milliseconds": 0.4625419999999849,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 27,
+      "milliseconds": 0.27062499999999545,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 27,
+      "milliseconds": 0.14545899999995981,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 27,
+      "milliseconds": 0.10029099999997015,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 27,
+      "milliseconds": 0.34587499999997817,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 27,
+      "milliseconds": 0.19508400000006532,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 27,
+      "milliseconds": 0.11979199999996126,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 27,
+      "milliseconds": 0.09770800000001145,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 27,
+      "milliseconds": 0.39850000000001273,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 28,
+      "milliseconds": 0.3523329999999305,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 28,
+      "milliseconds": 0.1250840000000153,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 28,
+      "milliseconds": 0.14608300000008967,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 28,
+      "milliseconds": 0.22908399999994344,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 28,
+      "milliseconds": 0.62925000000007,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 28,
+      "milliseconds": 0.16654200000004948,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 28,
+      "milliseconds": 0.22850000000005366,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 28,
+      "milliseconds": 0.39041599999995924,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 28,
+      "milliseconds": 0.2765829999999596,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 28,
+      "milliseconds": 0.04724999999996271,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 28,
+      "milliseconds": 0.047416999999995824,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 28,
+      "milliseconds": 0.05266699999992852,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 28,
+      "milliseconds": 5.505583999999999,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 28,
+      "milliseconds": 0.11595900000008896,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 28,
+      "milliseconds": 0.1241659999999456,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 28,
+      "milliseconds": 0.08033299999999599,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 28,
+      "milliseconds": 0.36262499999998,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 28,
+      "milliseconds": 0.09850000000005821,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 28,
+      "milliseconds": 0.13683399999990797,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 28,
+      "milliseconds": 0.2127500000000282,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 28,
+      "milliseconds": 0.2734580000000051,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 28,
+      "milliseconds": 0.12854199999992488,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 28,
+      "milliseconds": 0.11312499999996817,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 28,
+      "milliseconds": 0.17137500000001182,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 29,
+      "milliseconds": 0.20183299999996507,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 29,
+      "milliseconds": 0.12483299999996689,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 29,
+      "milliseconds": 0.08829099999991286,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 29,
+      "milliseconds": 0.31166700000005676,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 29,
+      "milliseconds": 0.3084999999999809,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 29,
+      "milliseconds": 0.19137499999999363,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 29,
+      "milliseconds": 0.13649999999995543,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 29,
+      "milliseconds": 0.49766599999998107,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 29,
+      "milliseconds": 0.049999999999954525,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 29,
+      "milliseconds": 0.047916999999984,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 29,
+      "milliseconds": 0.04624999999998636,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 29,
+      "milliseconds": 0.28708399999993617,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 29,
+      "milliseconds": 0.07558400000004895,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 29,
+      "milliseconds": 0.07712500000002365,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 29,
+      "milliseconds": 0.07254199999999855,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 29,
+      "milliseconds": 0.6302500000000464,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 29,
+      "milliseconds": 0.24345799999991868,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 29,
+      "milliseconds": 0.14241699999990942,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 29,
+      "milliseconds": 0.0993750000000091,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 29,
+      "milliseconds": 0.3886659999999438,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 29,
+      "milliseconds": 0.17495799999994688,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 29,
+      "milliseconds": 0.11158299999999599,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 29,
+      "milliseconds": 0.08170799999993505,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 29,
+      "milliseconds": 0.2665829999999687,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 30,
+      "milliseconds": 0.29970800000000963,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0004805289628961873
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 30,
+      "milliseconds": 0.08970799999997325,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.003579547899327906
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle2",
+      "round": 30,
+      "milliseconds": 0.12362500000006094,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0035292833260029965
+    },
+    {
+      "id": "default-beam-long-frog-0.6",
+      "policy": "settle4",
+      "round": 30,
+      "milliseconds": 0.19258300000001327,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.003507931809274112
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "uniform8",
+      "round": 30,
+      "milliseconds": 0.5009999999999764,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.003991005390686864
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "allSlop8",
+      "round": 30,
+      "milliseconds": 0.13812500000005912,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.00004109330775103892
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle2",
+      "round": 30,
+      "milliseconds": 0.19600000000002638,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-stock-snake-0.75",
+      "policy": "settle4",
+      "round": 30,
+      "milliseconds": 0.3055419999999458,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "uniform8",
+      "round": 30,
+      "milliseconds": 0.29033400000002985,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.03462329769639749
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "allSlop8",
+      "round": 30,
+      "milliseconds": 0.050707999999985987,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle2",
+      "round": 30,
+      "milliseconds": 0.04712500000005093,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "default-sling-long-frog-0.75",
+      "policy": "settle4",
+      "round": 30,
+      "milliseconds": 0.04620799999997871,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04416784501176563
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "uniform8",
+      "round": 30,
+      "milliseconds": 0.4988749999999982,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.0005669238563001944
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "allSlop8",
+      "round": 30,
+      "milliseconds": 0.07208300000002055,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle2",
+      "round": 30,
+      "milliseconds": 0.07237500000007913,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-frame-grip-mouse-0.45",
+      "policy": "settle4",
+      "round": 30,
+      "milliseconds": 0.07158300000003237,
+      "integrations": 1,
+      "budgetFallback": false,
+      "targetError": 0.04184834047554209
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "uniform8",
+      "round": 30,
+      "milliseconds": 0.4664579999999887,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.008119084036641744
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "allSlop8",
+      "round": 30,
+      "milliseconds": 0.1220419999999649,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0.0023993008050581244
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle2",
+      "round": 30,
+      "milliseconds": 0.14733300000000327,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0.0023412847678144777
+    },
+    {
+      "id": "candidate-sling-long-frog-0.6",
+      "policy": "settle4",
+      "round": 30,
+      "milliseconds": 0.22020800000007057,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0.0023257727060638222
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "uniform8",
+      "round": 30,
+      "milliseconds": 0.2940000000000964,
+      "integrations": 8,
+      "budgetFallback": false,
+      "targetError": 0.011790143337482517
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "allSlop8",
+      "round": 30,
+      "milliseconds": 0.12475000000006276,
+      "integrations": 2,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle2",
+      "round": 30,
+      "milliseconds": 0.14291700000001129,
+      "integrations": 3,
+      "budgetFallback": false,
+      "targetError": 0
+    },
+    {
+      "id": "candidate-stock-snake-0.45",
+      "policy": "settle4",
+      "round": 30,
+      "milliseconds": 0.17966699999999491,
+      "integrations": 5,
+      "budgetFallback": false,
+      "targetError": 0
+    }
+  ]
+}
