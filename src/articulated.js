@@ -1,3 +1,4 @@
+import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js';
 import {fixedObstacleVertices} from './fixed-obstacles.js';
 import {createEncounterBody} from './encounter-body.js';
 import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js';
@@ -153,6 +154,14 @@ export class CritterScene {
   this.routeTerrainReady=true;
  }
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');if(this.phase==='flight'&&!this.routeTerrainReady)this.installRouteTerrain();
+  // Loading contacts and fast arrivals at angular stops need connected-joint
+  // resolution too. Keep the same force laws and limits, at at most 1200 Hz.
+  if(this.p.loadingConstraintSubsteps&&this.p.collisionSubsteps&&this.phase==='loading'&&
+     (loadingJointRegion(this,dt)||loadingCollisionRegion(this,dt))){
+   const count=Math.min(2,Math.ceil(dt*1200));
+   for(let i=0;i<count;i++)this.integrate(dt/count);
+   return;
+  }
   const near=this.p.collisionSubsteps&&this.collisionRegion(dt);
   // Pinned Planck TOI solves contacts without connected joints. Resolve a fast
   // arrival more finely before that contact-only pass can rotate a small limb.

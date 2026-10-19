@@ -1,0 +1,1135 @@
+{
+  "protocol": "Fresh identical deterministic winding per policy, exact post-winding snapshot digest asserted. Current-policy world-space grip/force-target tape and waiting duration replayed unchanged, no adaptive target following for variants. Every loading integration (including substeps) inspected; launch restored canonically with original20/12 solver settings. No pose/velocity assignment, eligibility relaxation or forced success. Instrumented runtime is not production cost.",
+  "rows": [
+    {
+      "id": "stock-chipmunk-0.6",
+      "policy": "current",
+      "windHash": "098e86e6a6243b64f8564b850741deab1647d76f14108d307f693007d1c98021",
+      "postWindIdentical": true,
+      "inputTapeDigest": "4a73f0cefa08c96e0345b9b5563f7e54a817819b0632fb32dbcaf3fe21fd2cd7",
+      "metrics": {
+        "maxAngular": 0.13462300572187247,
+        "maxAnchor": 0.0000970938865847284,
+        "maxSpin": 74.49221316292251,
+        "innerSteps": 3017,
+        "badSeconds": 0.0016666666666666668,
+        "longestBadSeconds": 0.0016666666666666668,
+        "maxPositiveStepEnergyResidual": 0.0016570784956684292,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 3.603333333333189
+      },
+      "stats": {
+        "loadingSteps": 3017,
+        "refinedSteps": 0
+      },
+      "loading": {
+        "cradleSpeed": 1.0178532770027975,
+        "cradleSpin": 0.3218595182128994,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.1378140145150664,
+        "maxPartRelativeSpeed": 0.4129140192794226,
+        "maxRelativeSpin": 3.3769706256499017
+      },
+      "loaded": true,
+      "handWork": 35.56512968798804,
+      "windingWork": 449.9160381495334,
+      "loadingEnergy": -531.7885336689698,
+      "loadingEnergyResidual": -38.66520844991544,
+      "outcome": "released",
+      "release": {
+        "time": 7.2783333333336575,
+        "center": {
+          "x": -1.1946156612812286,
+          "y": 303.21357644376076,
+          "vx": 5.992510861276703,
+          "vy": 14.408715998457195,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.103886328125508,
+              "y": 303.0327841182552
+            },
+            "v": {
+              "x": 6.539875237624781,
+              "y": 13.679120950070821
+            },
+            "w": 5.765474554896615
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.9366236118540576,
+              "y": 303.3298315624145
+            },
+            "v": {
+              "x": 5.0813522801041096,
+              "y": 15.423233143857685
+            },
+            "w": 14.342895175922543
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.3547828194744158,
+              "y": 303.12016744589414
+            },
+            "v": {
+              "x": 5.919827988065677,
+              "y": 13.61487234491537
+            },
+            "w": 0.9592651870164917
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.5450412029925482,
+              "y": 303.3018536748137
+            },
+            "v": {
+              "x": 7.0619632700747665,
+              "y": 16.63419678140158
+            },
+            "w": -16.492605888447187
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.1892913600218487,
+              "y": 303.20933712989336
+            },
+            "v": {
+              "x": 5.9605134722402475,
+              "y": 13.689173471407232
+            },
+            "w": -0.467944093839593
+          }
+        ]
+      },
+      "releaseKinetic": 122.85092400478314,
+      "releaseEnergy": -687.3965883828453,
+      "instrumentedMs": 368.559208
+    },
+    {
+      "id": "stock-chipmunk-0.6",
+      "policy": "contact2",
+      "windHash": "098e86e6a6243b64f8564b850741deab1647d76f14108d307f693007d1c98021",
+      "postWindIdentical": true,
+      "inputTapeDigest": "4a73f0cefa08c96e0345b9b5563f7e54a817819b0632fb32dbcaf3fe21fd2cd7",
+      "metrics": {
+        "maxAngular": 0.06151799710916461,
+        "maxAnchor": 0.00006647514789224984,
+        "maxSpin": 68.70989122907766,
+        "innerSteps": 3626,
+        "badSeconds": 0,
+        "longestBadSeconds": 0,
+        "maxPositiveStepEnergyResidual": 0.0016919186366521899,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 3.600833333333257
+      },
+      "stats": {
+        "loadingSteps": 3017,
+        "refinedSteps": 609
+      },
+      "loading": {
+        "cradleSpeed": 1.434103075963661,
+        "cradleSpin": 0.4616266351406736,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.9701672553787197,
+        "maxPartRelativeSpeed": 1.1607941915571713,
+        "maxRelativeSpin": 6.198334079664248
+      },
+      "loaded": true,
+      "handWork": 33.361059996424146,
+      "windingWork": 449.9160381495334,
+      "loadingEnergy": -531.5056976525616,
+      "loadingEnergyResidual": -36.17830274194341,
+      "outcome": "released",
+      "release": {
+        "time": 7.2333333333338246,
+        "center": {
+          "x": -1.9322833176415202,
+          "y": 302.1032330262666,
+          "vx": 3.650297021996471,
+          "vy": 12.293870098437033,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.0126987419263322,
+              "y": 302.2942969023065
+            },
+            "v": {
+              "x": 7.183296361786417,
+              "y": 14.121405671361709
+            },
+            "w": -24.666285601675455
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.205775537680766,
+              "y": 302.1311466196819
+            },
+            "v": {
+              "x": 4.006445728479132,
+              "y": 15.681382542475639
+            },
+            "w": -11.376344931289502
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.7404978813290561,
+              "y": 302.11574005937734
+            },
+            "v": {
+              "x": 3.9874713070916306,
+              "y": 10.533500644598286
+            },
+            "w": -9.859416505453437
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.6259652001888563,
+              "y": 301.8864352728046
+            },
+            "v": {
+              "x": -0.6360759800631675,
+              "y": 6.2673902135023525
+            },
+            "w": -29.693056098423373
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.928765440209695,
+              "y": 302.09898298014775
+            },
+            "v": {
+              "x": 3.7004782173104434,
+              "y": 12.521497916910231
+            },
+            "w": -11.391921947141087
+          }
+        ]
+      },
+      "releaseKinetic": 89.08886159165337,
+      "releaseEnergy": -669.4645049301465,
+      "instrumentedMs": 320.395375
+    },
+    {
+      "id": "stock-chipmunk-0.6",
+      "policy": "contact4",
+      "windHash": "098e86e6a6243b64f8564b850741deab1647d76f14108d307f693007d1c98021",
+      "postWindIdentical": true,
+      "inputTapeDigest": "4a73f0cefa08c96e0345b9b5563f7e54a817819b0632fb32dbcaf3fe21fd2cd7",
+      "metrics": {
+        "maxAngular": 0.03513558781395276,
+        "maxAnchor": 0.00006869516550241279,
+        "maxSpin": 65.75108192140232,
+        "innerSteps": 4784,
+        "badSeconds": 0,
+        "longestBadSeconds": 0,
+        "maxPositiveStepEnergyResidual": 0.00048341560625431157,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 5.888333333333343
+      },
+      "stats": {
+        "loadingSteps": 3017,
+        "refinedSteps": 589
+      },
+      "loading": {
+        "cradleSpeed": 1.4865420489401118,
+        "cradleSpin": 0.40647809554330894,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 1.1157728916904868,
+        "maxPartRelativeSpeed": 1.2475562854459348,
+        "maxRelativeSpin": 6.9069727386393795
+      },
+      "loaded": true,
+      "handWork": 32.327895811801675,
+      "windingWork": 449.9160381495334,
+      "loadingEnergy": -531.2841198981253,
+      "loadingEnergyResidual": -34.923560802884595,
+      "outcome": "released",
+      "release": {
+        "time": 7.240000000000143,
+        "center": {
+          "x": -1.8435001355843283,
+          "y": 302.2526983818142,
+          "vx": 4.225486051792713,
+          "vy": 12.50058765185894,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.9422975460468477,
+              "y": 302.4267675983769
+            },
+            "v": {
+              "x": 7.0648980073468595,
+              "y": 14.696487234730286
+            },
+            "w": -23.375534260506612
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.1059805032212036,
+              "y": 302.3179692349513
+            },
+            "v": {
+              "x": 4.980475736731672,
+              "y": 15.442135175316826
+            },
+            "w": -10.919000324945758
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.6521860283484946,
+              "y": 302.2431692146437
+            },
+            "v": {
+              "x": 4.2581753364213295,
+              "y": 10.95984326396
+            },
+            "w": -9.420382998757628
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.5349535019688445,
+              "y": 302.0324497312774
+            },
+            "v": {
+              "x": 0.40411313710443314,
+              "y": 6.591942170794649
+            },
+            "w": -29.574613577791506
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.8405163971085967,
+              "y": 302.2430084934777
+            },
+            "v": {
+              "x": 4.22811022179214,
+              "y": 12.735926685463802
+            },
+            "w": -9.440321854087353
+          }
+        ]
+      },
+      "releaseKinetic": 92.9741410065326,
+      "releaseEnergy": -671.9778619909366,
+      "instrumentedMs": 364.5458749999999
+    },
+    {
+      "id": "stock-chipmunk-0.6",
+      "policy": "contact8",
+      "windHash": "098e86e6a6243b64f8564b850741deab1647d76f14108d307f693007d1c98021",
+      "postWindIdentical": true,
+      "inputTapeDigest": "4a73f0cefa08c96e0345b9b5563f7e54a817819b0632fb32dbcaf3fe21fd2cd7",
+      "metrics": {
+        "maxAngular": 0.052622804579033344,
+        "maxAnchor": 0.00006617992349058148,
+        "maxSpin": 63.169809003162925,
+        "innerSteps": 7840,
+        "badSeconds": 0,
+        "longestBadSeconds": 0,
+        "maxPositiveStepEnergyResidual": 0.0004883178722252524,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 3.4416666666663884
+      },
+      "stats": {
+        "loadingSteps": 3017,
+        "refinedSteps": 689
+      },
+      "loading": {
+        "cradleSpeed": 1.0429601063973932,
+        "cradleSpin": 0.32584903149253036,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.053245262237548004,
+        "maxPartRelativeSpeed": 0.09302947612286251,
+        "maxRelativeSpin": 0.4203152813562296
+      },
+      "loaded": true,
+      "handWork": 32.00164228665257,
+      "windingWork": 449.9160381495334,
+      "loadingEnergy": -531.927725370758,
+      "loadingEnergyResidual": -35.24091275036824,
+      "outcome": "released",
+      "release": {
+        "time": 7.254999999999272,
+        "center": {
+          "x": -1.5276870281365795,
+          "y": 302.6025057515213,
+          "vx": 5.927118076318263,
+          "vy": 12.961953944904767,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.6014346414887835,
+              "y": 302.7822061957728
+            },
+            "v": {
+              "x": 8.987516033616021,
+              "y": 14.600221145638233
+            },
+            "w": -19.725934382434957
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.7635240717155398,
+              "y": 302.72441162775084
+            },
+            "v": {
+              "x": 7.192907433088905,
+              "y": 15.464449298884057
+            },
+            "w": -6.572779431306444
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.3228681872031005,
+              "y": 302.5686558921643
+            },
+            "v": {
+              "x": 6.2578858363187715,
+              "y": 11.13235178132706
+            },
+            "w": -4.149074656722478
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.3281573661130175,
+              "y": 302.2871661133078
+            },
+            "v": {
+              "x": 0.2452654960612211,
+              "y": 9.529928770988375
+            },
+            "w": -23.432404579414417
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.5148963180366355,
+              "y": 302.60043809462474
+            },
+            "v": {
+              "x": 6.109776397256623,
+              "y": 12.888987427124723
+            },
+            "w": -13.533563789617034
+          }
+        ]
+      },
+      "releaseKinetic": 107.05395592088028,
+      "releaseEnergy": -673.0968596917825,
+      "instrumentedMs": 517.6370829999998
+    },
+    {
+      "id": "stock-chipmunk-0.6",
+      "policy": "iterations40",
+      "windHash": "098e86e6a6243b64f8564b850741deab1647d76f14108d307f693007d1c98021",
+      "postWindIdentical": true,
+      "inputTapeDigest": "4a73f0cefa08c96e0345b9b5563f7e54a817819b0632fb32dbcaf3fe21fd2cd7",
+      "metrics": {
+        "maxAngular": 0.14724487269248265,
+        "maxAnchor": 0.00011859469246354078,
+        "maxSpin": 86.81939161656486,
+        "innerSteps": 3017,
+        "badSeconds": 0.0016666666666666668,
+        "longestBadSeconds": 0.0016666666666666668,
+        "maxPositiveStepEnergyResidual": 0.0006299167041561304,
+        "largestCumulativeEnergyResidual": 0.00018405104947305517,
+        "worstTime": 3.603333333333189
+      },
+      "stats": {
+        "loadingSteps": 3017,
+        "refinedSteps": 0
+      },
+      "loading": {
+        "cradleSpeed": 1.0306844766858054,
+        "cradleSpin": 0.3375741620323017,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.00026853976873172155,
+        "maxPartRelativeSpeed": 0.0006099897252025206,
+        "maxRelativeSpin": 0.002092496371239261
+      },
+      "loaded": true,
+      "handWork": 36.1493095498913,
+      "windingWork": 449.9160381495334,
+      "loadingEnergy": -528.8058883732018,
+      "loadingEnergyResidual": -36.26674301605078,
+      "outcome": "released",
+      "release": {
+        "time": 7.283333333333658,
+        "center": {
+          "x": -1.1734259577415798,
+          "y": 303.24951381316725,
+          "vx": 6.314393469531998,
+          "vy": 14.1142697463859,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.064218099272074,
+              "y": 303.08545094839155
+            },
+            "v": {
+              "x": 5.499116747326253,
+              "y": 13.649113938968341
+            },
+            "w": -1.7545964121584083
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.9183609957873218,
+              "y": 303.2768356095967
+            },
+            "v": {
+              "x": 6.01498675404644,
+              "y": 13.0841883782189
+            },
+            "w": -3.0960156588858303
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.3565036488705675,
+              "y": 303.11969711185685
+            },
+            "v": {
+              "x": 5.953200980522116,
+              "y": 14.017488181470242
+            },
+            "w": 2.4936453465810686
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.4510309864343873,
+              "y": 303.5000227364502
+            },
+            "v": {
+              "x": 9.21390426167724,
+              "y": 16.89181709982558
+            },
+            "w": -21.022129302692765
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.1875188850477398,
+              "y": 303.2430836471618
+            },
+            "v": {
+              "x": 5.905373110146197,
+              "y": 13.91047347281899
+            },
+            "w": -3.049496324607427
+          }
+        ]
+      },
+      "releaseKinetic": 121.06163778647793,
+      "releaseEnergy": -680.885244438495,
+      "instrumentedMs": 314.5882919999999
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "policy": "current",
+      "windHash": "b00f30c35073ad5f268f8998238ea510a62aca9b31112e6f97f8fa7f21ab3b38",
+      "postWindIdentical": true,
+      "inputTapeDigest": "0dfe857eee1dcec0cfdfe0cdaa0ae57b040b7e4b6492aefa668b352ef375a1bd",
+      "metrics": {
+        "maxAngular": 0.1666861182877375,
+        "maxAnchor": 0.006692420203023489,
+        "maxSpin": 99.28040474510065,
+        "innerSteps": 3060,
+        "badSeconds": 0.0016666666666666668,
+        "longestBadSeconds": 0.0016666666666666668,
+        "maxPositiveStepEnergyResidual": 0.015730600805682116,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 4.0266666666664825
+      },
+      "stats": {
+        "loadingSteps": 3060,
+        "refinedSteps": 0
+      },
+      "loading": {
+        "cradleSpeed": 0.09214750573293937,
+        "cradleSpin": -0.07257039033939516,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.09495132465065825,
+        "maxPartRelativeSpeed": 0.35574951834995416,
+        "maxRelativeSpin": 1.7766114501186423
+      },
+      "loaded": true,
+      "handWork": 53.49873810286563,
+      "windingWork": 873.5531546586478,
+      "loadingEnergy": -72.67920042864819,
+      "loadingEnergyResidual": -70.33673183909741,
+      "outcome": "released",
+      "release": {
+        "time": 7.82500000000041,
+        "center": {
+          "x": -3.2744905975412557,
+          "y": 302.52339742565186,
+          "vx": 1.2197768742994448,
+          "vy": 17.856347934916407,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -3.0904343798361613,
+              "y": 302.4873242667106
+            },
+            "v": {
+              "x": 0.8418811960089465,
+              "y": 13.635013634425658
+            },
+            "w": -22.815585893028473
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -3.027418234945277,
+              "y": 302.60634641690706
+            },
+            "v": {
+              "x": 2.3334865504847118,
+              "y": 13.947484741593044
+            },
+            "w": -12.065222981813575
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -3.4283466293592015,
+              "y": 302.3881012546428
+            },
+            "v": {
+              "x": -1.0328617951787626,
+              "y": 19.54300631333242
+            },
+            "w": -16.199336902372877
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -3.6477544851157395,
+              "y": 302.5640613943448
+            },
+            "v": {
+              "x": 2.595510429819409,
+              "y": 27.93721077139239
+            },
+            "w": -43.586733282931036
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -3.2849887125202564,
+              "y": 302.52034674056557
+            },
+            "v": {
+              "x": 1.0199555354101328,
+              "y": 17.33407254089725
+            },
+            "w": -14.69630100100123
+          }
+        ]
+      },
+      "releaseKinetic": 171.93122269107508,
+      "releaseEnergy": -334.90402620567704,
+      "instrumentedMs": 314.13037499999996
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "policy": "contact2",
+      "windHash": "b00f30c35073ad5f268f8998238ea510a62aca9b31112e6f97f8fa7f21ab3b38",
+      "postWindIdentical": true,
+      "inputTapeDigest": "0dfe857eee1dcec0cfdfe0cdaa0ae57b040b7e4b6492aefa668b352ef375a1bd",
+      "metrics": {
+        "maxAngular": 0.03559731678998124,
+        "maxAnchor": 0.00004758077600196058,
+        "maxSpin": 94.69687442924176,
+        "innerSteps": 4381,
+        "badSeconds": 0,
+        "longestBadSeconds": 0,
+        "maxPositiveStepEnergyResidual": 0.0029314919549960905,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 4.024999999999867
+      },
+      "stats": {
+        "loadingSteps": 3060,
+        "refinedSteps": 1321
+      },
+      "loading": {
+        "cradleSpeed": 0.1713436563369793,
+        "cradleSpin": -0.13116086446123118,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.11485126729884208,
+        "maxPartRelativeSpeed": 0.7176432856213307,
+        "maxRelativeSpin": 6.487993854725021
+      },
+      "loaded": true,
+      "handWork": 39.18348564264429,
+      "windingWork": 873.5531546586478,
+      "loadingEnergy": -72.54963183336554,
+      "loadingEnergyResidual": -55.8919107835934,
+      "outcome": "released",
+      "release": {
+        "time": 7.828333333333795,
+        "center": {
+          "x": -3.266799778111868,
+          "y": 302.6569755426367,
+          "vx": 1.4826700465790923,
+          "vy": 18.147006586409784,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -3.085176041446658,
+              "y": 302.6143858124134
+            },
+            "v": {
+              "x": 0.8873452441340871,
+              "y": 13.891593583961921
+            },
+            "w": -23.629522017707355
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -3.0170041381041846,
+              "y": 302.7297933512841
+            },
+            "v": {
+              "x": 2.4998164654729216,
+              "y": 14.123588712605152
+            },
+            "w": -12.515874333751292
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -3.425093572798765,
+              "y": 302.5229199301977
+            },
+            "v": {
+              "x": -0.7890191384546557,
+              "y": 19.73731151221355
+            },
+            "w": -12.725200743996485
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -3.6360133140351114,
+              "y": 302.71902512015834
+            },
+            "v": {
+              "x": 3.432526471137372,
+              "y": 28.06608269182123
+            },
+            "w": -41.60304658470102
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -3.2778717812953855,
+              "y": 302.65364399452545
+            },
+            "v": {
+              "x": 1.2201841385002736,
+              "y": 17.763324377699856
+            },
+            "w": -15.887462247827314
+          }
+        ]
+      },
+      "releaseKinetic": 177.53224886483522,
+      "releaseEnergy": -334.9624035885478,
+      "instrumentedMs": 383.9887090000002
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "policy": "contact4",
+      "windHash": "b00f30c35073ad5f268f8998238ea510a62aca9b31112e6f97f8fa7f21ab3b38",
+      "postWindIdentical": true,
+      "inputTapeDigest": "0dfe857eee1dcec0cfdfe0cdaa0ae57b040b7e4b6492aefa668b352ef375a1bd",
+      "metrics": {
+        "maxAngular": 0.034987762266621925,
+        "maxAnchor": 0.00007020737531088525,
+        "maxSpin": 66.42052939019756,
+        "innerSteps": 6747,
+        "badSeconds": 0,
+        "longestBadSeconds": 0,
+        "maxPositiveStepEnergyResidual": 0.0031549798718515376,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 5.083333333332929
+      },
+      "stats": {
+        "loadingSteps": 3060,
+        "refinedSteps": 1229
+      },
+      "loading": {
+        "cradleSpeed": 0.12033690684038818,
+        "cradleSpin": -0.09225343782249924,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.044022035501753216,
+        "maxPartRelativeSpeed": 0.1077916753921382,
+        "maxRelativeSpin": 0.5375776135529156
+      },
+      "loaded": true,
+      "handWork": 57.53340196396695,
+      "windingWork": 873.5531546586478,
+      "loadingEnergy": -73.02122088568319,
+      "loadingEnergyResidual": -74.71341615723372,
+      "outcome": "released",
+      "release": {
+        "time": 7.829999999998492,
+        "center": {
+          "x": -3.17633614100371,
+          "y": 302.6331469577839,
+          "vx": 2.6153429915896718,
+          "vy": 18.06575363964454,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -3.1140744473311672,
+              "y": 302.4439016494213
+            },
+            "v": {
+              "x": -4.2329943173738664,
+              "y": 15.22308451604391
+            },
+            "w": -40.73451173432244
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.9206976946000833,
+              "y": 302.5569678848508
+            },
+            "v": {
+              "x": 1.401388896962292,
+              "y": 12.501688013802983
+            },
+            "w": -11.369262332977582
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -3.390786540954698,
+              "y": 302.58666557134296
+            },
+            "v": {
+              "x": 1.4433840828990723,
+              "y": 21.103289186908174
+            },
+            "w": 3.807222512425249
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -3.3955116105948395,
+              "y": 302.9381195999723
+            },
+            "v": {
+              "x": 11.471637055582423,
+              "y": 25.36357012015635
+            },
+            "w": -29.774800672686776
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -3.1865041258420015,
+              "y": 302.6421622472688
+            },
+            "v": {
+              "x": 2.740710751415055,
+              "y": 18.392993202114813
+            },
+            "w": -31.939499419969014
+          }
+        ]
+      },
+      "releaseKinetic": 186.15561582213175,
+      "releaseEnergy": -335.38165415785477,
+      "instrumentedMs": 558.7462500000001
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "policy": "contact8",
+      "windHash": "b00f30c35073ad5f268f8998238ea510a62aca9b31112e6f97f8fa7f21ab3b38",
+      "postWindIdentical": true,
+      "inputTapeDigest": "0dfe857eee1dcec0cfdfe0cdaa0ae57b040b7e4b6492aefa668b352ef375a1bd",
+      "metrics": {
+        "maxAngular": 0.060188495959885735,
+        "maxAnchor": 0.00007251841175301047,
+        "maxSpin": 66.74865166154251,
+        "innerSteps": 12356,
+        "badSeconds": 0,
+        "longestBadSeconds": 0,
+        "maxPositiveStepEnergyResidual": 0.021679315240248798,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 4.326666666666184
+      },
+      "stats": {
+        "loadingSteps": 3060,
+        "refinedSteps": 1328
+      },
+      "loading": {
+        "cradleSpeed": 0.022926453670169784,
+        "cradleSpin": -0.020962898163812967,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.0011605871974514031,
+        "maxPartRelativeSpeed": 0.0038016333809568234,
+        "maxRelativeSpin": 0.016979667607540043
+      },
+      "loaded": true,
+      "handWork": 51.984052966698094,
+      "windingWork": 873.5531546586478,
+      "loadingEnergy": -72.79344699921603,
+      "loadingEnergyResidual": -68.93629327349765,
+      "outcome": "released",
+      "release": {
+        "time": 7.826666666664772,
+        "center": {
+          "x": -3.215706272887658,
+          "y": 302.58239400263307,
+          "vx": 2.329859795845124,
+          "vy": 18.095330479478545,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -3.122285341191959,
+              "y": 302.40664608435367
+            },
+            "v": {
+              "x": -3.6877949141812842,
+              "y": 14.28306492988126
+            },
+            "w": -39.37692268149681
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.955078950665139,
+              "y": 302.5335842096045
+            },
+            "v": {
+              "x": 1.7207512293601992,
+              "y": 12.558354192116708
+            },
+            "w": -12.285845663571223
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -3.425152423228083,
+              "y": 302.52097694036854
+            },
+            "v": {
+              "x": 0.6501740845459957,
+              "y": 20.988799803957313
+            },
+            "w": 1.2189185406667418
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -3.47109281965766,
+              "y": 302.85445111832365
+            },
+            "v": {
+              "x": 10.364809786451726,
+              "y": 26.420912390426146
+            },
+            "w": -32.868887157684306
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -3.227339266206348,
+              "y": 302.5890319822405
+            },
+            "v": {
+              "x": 2.332090179745568,
+              "y": 18.410040144742272
+            },
+            "w": -30.074819486714716
+          }
+        ]
+      },
+      "releaseKinetic": 185.51160119102255,
+      "releaseEnergy": -313.1651903316938,
+      "instrumentedMs": 882.2917499999999
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "policy": "iterations40",
+      "windHash": "b00f30c35073ad5f268f8998238ea510a62aca9b31112e6f97f8fa7f21ab3b38",
+      "postWindIdentical": true,
+      "inputTapeDigest": "0dfe857eee1dcec0cfdfe0cdaa0ae57b040b7e4b6492aefa668b352ef375a1bd",
+      "metrics": {
+        "maxAngular": 0.16143498984012639,
+        "maxAnchor": 0.00017899920293003895,
+        "maxSpin": 99.7819943335866,
+        "innerSteps": 3060,
+        "badSeconds": 0.0033333333333333335,
+        "longestBadSeconds": 0.0016666666666666668,
+        "maxPositiveStepEnergyResidual": 0.0009433359814465803,
+        "largestCumulativeEnergyResidual": 0,
+        "worstTime": 4.0283333333331495
+      },
+      "stats": {
+        "loadingSteps": 3060,
+        "refinedSteps": 0
+      },
+      "loading": {
+        "cradleSpeed": 0.2244552762355001,
+        "cradleSpin": -0.1627215289330056,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.06877282247421368,
+        "maxPartRelativeSpeed": 0.5036938388916712,
+        "maxRelativeSpin": 3.0929576806933703
+      },
+      "loaded": true,
+      "handWork": 46.91265947112123,
+      "windingWork": 873.5531546586478,
+      "loadingEnergy": -70.86336621474982,
+      "loadingEnergyResidual": -61.934818993454655,
+      "outcome": "released",
+      "release": {
+        "time": 7.845000000000413,
+        "center": {
+          "x": -3.0462894953616226,
+          "y": 303.0404974523377,
+          "vx": 3.991989886745343,
+          "vy": 18.98182868769884,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -3.0853608847888765,
+              "y": 302.84450937106976
+            },
+            "v": {
+              "x": -4.131175036523012,
+              "y": 19.876506759861318
+            },
+            "w": -47.51338162095434
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.8175418446586966,
+              "y": 302.898395351805
+            },
+            "v": {
+              "x": 0.9369306233510081,
+              "y": 13.657712291059694
+            },
+            "w": -12.509687358060685
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -3.256320694675605,
+              "y": 303.0274558786251
+            },
+            "v": {
+              "x": 4.600482027959231,
+              "y": 22.48787085432962
+            },
+            "w": 1.8775048603667868
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -3.156653916036894,
+              "y": 303.4074046854633
+            },
+            "v": {
+              "x": 14.085795960844004,
+              "y": 22.75149849108906
+            },
+            "w": -22.106108062936286
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -3.0498007623473242,
+              "y": 303.0539998672166
+            },
+            "v": {
+              "x": 4.458449879518778,
+              "y": 19.090386306842817
+            },
+            "w": -33.74472268814564
+          }
+        ]
+      },
+      "releaseKinetic": 208.27934182070288,
+      "releaseEnergy": -360.00691116071584,
+      "instrumentedMs": 361.09037499999977
+    }
+  ]
+}

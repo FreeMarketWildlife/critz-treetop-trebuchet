@@ -1,0 +1,225 @@
+{
+  "protocol": "Five alternating paired rounds after warmup; exact baseline world-space input tape and wait count; no diagnostic scans, only integration counter. Node loading wall time excludes winding and flight; not device FPS.",
+  "rows": [
+    {
+      "round": 0,
+      "id": "stock-chipmunk-0.6",
+      "policy": "baseline",
+      "milliseconds": 177.74245899999983,
+      "integrations": 3017,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 35.56512968798804,
+      "energy": -531.7885336689698
+    },
+    {
+      "round": 0,
+      "id": "stock-chipmunk-0.6",
+      "policy": "current",
+      "milliseconds": 215.51229200000012,
+      "integrations": 3585,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 32.555836810642745,
+      "energy": -532.3181848932849
+    },
+    {
+      "round": 0,
+      "id": "combined-chipmunk-0.75",
+      "policy": "baseline",
+      "milliseconds": 181.66708400000016,
+      "integrations": 3060,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 53.49873810286563,
+      "energy": -72.67920042864819
+    },
+    {
+      "round": 0,
+      "id": "combined-chipmunk-0.75",
+      "policy": "current",
+      "milliseconds": 246.24662500000022,
+      "integrations": 4163,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 37.700440021268705,
+      "energy": -72.15961074408028
+    },
+    {
+      "round": 1,
+      "id": "stock-chipmunk-0.6",
+      "policy": "current",
+      "milliseconds": 213.44650000000001,
+      "integrations": 3585,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 32.555836810642745,
+      "energy": -532.3181848932849
+    },
+    {
+      "round": 1,
+      "id": "stock-chipmunk-0.6",
+      "policy": "baseline",
+      "milliseconds": 170.0283340000001,
+      "integrations": 3017,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 35.56512968798804,
+      "energy": -531.7885336689698
+    },
+    {
+      "round": 1,
+      "id": "combined-chipmunk-0.75",
+      "policy": "current",
+      "milliseconds": 245.25475000000006,
+      "integrations": 4163,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 37.700440021268705,
+      "energy": -72.15961074408028
+    },
+    {
+      "round": 1,
+      "id": "combined-chipmunk-0.75",
+      "policy": "baseline",
+      "milliseconds": 183.13154200000008,
+      "integrations": 3060,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 53.49873810286563,
+      "energy": -72.67920042864819
+    },
+    {
+      "round": 2,
+      "id": "stock-chipmunk-0.6",
+      "policy": "baseline",
+      "milliseconds": 167.54045899999983,
+      "integrations": 3017,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 35.56512968798804,
+      "energy": -531.7885336689698
+    },
+    {
+      "round": 2,
+      "id": "stock-chipmunk-0.6",
+      "policy": "current",
+      "milliseconds": 201.41445799999974,
+      "integrations": 3585,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 32.555836810642745,
+      "energy": -532.3181848932849
+    },
+    {
+      "round": 2,
+      "id": "combined-chipmunk-0.75",
+      "policy": "baseline",
+      "milliseconds": 181.2044579999997,
+      "integrations": 3060,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 53.49873810286563,
+      "energy": -72.67920042864819
+    },
+    {
+      "round": 2,
+      "id": "combined-chipmunk-0.75",
+      "policy": "current",
+      "milliseconds": 235.88841599999978,
+      "integrations": 4163,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 37.700440021268705,
+      "energy": -72.15961074408028
+    },
+    {
+      "round": 3,
+      "id": "stock-chipmunk-0.6",
+      "policy": "current",
+      "milliseconds": 204.35191599999962,
+      "integrations": 3585,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 32.555836810642745,
+      "energy": -532.3181848932849
+    },
+    {
+      "round": 3,
+      "id": "stock-chipmunk-0.6",
+      "policy": "baseline",
+      "milliseconds": 165.4260830000003,
+      "integrations": 3017,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 35.56512968798804,
+      "energy": -531.7885336689698
+    },
+    {
+      "round": 3,
+      "id": "combined-chipmunk-0.75",
+      "policy": "current",
+      "milliseconds": 237.3481670000001,
+      "integrations": 4163,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 37.700440021268705,
+      "energy": -72.15961074408028
+    },
+    {
+      "round": 3,
+      "id": "combined-chipmunk-0.75",
+      "policy": "baseline",
+      "milliseconds": 181.89066699999967,
+      "integrations": 3060,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 53.49873810286563,
+      "energy": -72.67920042864819
+    },
+    {
+      "round": 4,
+      "id": "stock-chipmunk-0.6",
+      "policy": "baseline",
+      "milliseconds": 180.92816700000003,
+      "integrations": 3017,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 35.56512968798804,
+      "energy": -531.7885336689698
+    },
+    {
+      "round": 4,
+      "id": "stock-chipmunk-0.6",
+      "policy": "current",
+      "milliseconds": 203.2380830000002,
+      "integrations": 3585,
+      "outerSteps": 3017,
+      "loaded": true,
+      "handWork": 32.555836810642745,
+      "energy": -532.3181848932849
+    },
+    {
+      "round": 4,
+      "id": "combined-chipmunk-0.75",
+      "policy": "baseline",
+      "milliseconds": 180.46595799999977,
+      "integrations": 3060,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 53.49873810286563,
+      "energy": -72.67920042864819
+    },
+    {
+      "round": 4,
+      "id": "combined-chipmunk-0.75",
+      "policy": "current",
+      "milliseconds": 240.68129099999987,
+      "integrations": 4163,
+      "outerSteps": 3060,
+      "loaded": true,
+      "handWork": 37.700440021268705,
+      "energy": -72.15961074408028
+    }
+  ]
+}

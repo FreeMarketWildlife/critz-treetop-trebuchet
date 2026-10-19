@@ -1,0 +1,29 @@
+{
+  "baseline": "364d7ea91a6c79ab759beef4dacdc95713419bc6",
+  "decision": "Deferred: loadingConstraintSubsteps is explicitly opt-in; ordinary gameplay unchanged. New candidate mechanism-only ground collision needs correction before adoption.",
+  "tests": 249,
+  "loading": {
+    "affectedCases": 18,
+    "historicalWorstPhaseClassificationLoading": 17,
+    "candidateAll264MaxInnerAngularRad": 0.06468815706059039,
+    "candidateAll264Above08": 0
+  },
+  "matrix": {
+    "beforeReleases": 262,
+    "candidateReleases": 263,
+    "beforeBackwardOrVertical": 18,
+    "candidateBackwardOrVertical": 28,
+    "beforeAngularFlagCases": 51,
+    "candidateAngularFlagCases": 64,
+    "newSevereCase": "combined-snake-0.75",
+    "newMaxRopeStretchM": 0.7306791171872451,
+    "newMaxHingeSeparationM": 0.7143634428641304
+  },
+  "scope": "All files calling the new solver current/after mean the experimental candidate, not default ordinary gameplay. Recorded source hashes in raw runs refer to candidate before the opt-in gate was added. The helper was subsequently formatted with equivalent arithmetic. No raw measurement was changed.",
+  "limitations": [
+    "Node timing is not device FPS.",
+    "Static restored browser incoming state is not exact uninterrupted contact warm-start continuation.",
+    "Actual-device performance, audible quality and human reactions remain unverified.",
+    "Backward-flight and activity targets remain unmet."
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Candidate combined snake \u2014 incoming mechanism collision",
+    "file": "incoming-combined-snake.json",
+    "seconds": 0.2
+  },
+  {
+    "label": "Historical failed snake \u2014 below cradle",
+    "file": "../iteration-39/loading-frame-heavy-snake-0.75.json",
+    "seconds": 0
+  },
+  {
+    "label": "Historical failed frog \u2014 folded cradle",
+    "file": "../iteration-39/loading-combined-frog-0.75.json",
+    "seconds": 0
+  }
+]

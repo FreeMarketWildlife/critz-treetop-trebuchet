@@ -1,0 +1,503 @@
+{
+  "experimentalPreload": false,
+  "nodeExecArgv": [],
+  "scope": "Bounded stratified diagnostic of the explicit stopped-pouch0.5kg physical prototype. One force-driven loading recipe cannot establish universal input validity; seating failures and poor throws are preserved separately from numeric faults.",
+  "protocol": {
+    "cases": 1,
+    "dt": 0.0016666666666666668,
+    "limits": {
+      "ropeStretch": 0.05,
+      "hingeAnchorError": 0.05,
+      "angularLimitError": 0.08,
+      "explosiveEnergyResidual": 250,
+      "bodySpeed": 300,
+      "bodySpin": 1000,
+      "surfaceDepth": 0.08,
+      "releaseSeconds": 5
+    },
+    "phases": "Actual bounded motor; torso/head/offset physical grip; unheld gravity settling; canonical same-solver prediction/live launch; first world impact plus0.5s recovery; continue to ground plus0.5s recovery within15s flight when possible.",
+    "matrix": "8actual catalog equipment sets x11species x3winding fractions(.45,.6,.75)=264cases; head pickup for odd-index species, torso for even; each group88cases is one winding fraction.",
+    "equipment": "Acquired and equipped in isolated in-memory economy state through actual reducers. No user save or account writes.",
+    "surfaceDetection": "Suspected surface penetration means a part COM crossed through authored material depth with no matching recent per-part surface impulse. Candidates require review; this is not proof of continuous-collision failure.",
+    "finiteChecks": "Every diagnostic step inspects every dynamic body and rope/revolute joint. Energy residual is mechanical-energy change minus recorded hand/motor/control/damping/drag/spawn work.",
+    "runtime": "Node wall time includes prediction and diagnostic scanning; not browser FPS."
+  },
+  "runtime": {
+    "node": "v24.21.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "planck": "1.5.1"
+  },
+  "sourceSHA256": {
+    "mobile.css": "555cb15119e2a26b0157ed9ca887fd641e005044b6df9ad9d459d0f39ad47981",
+    "src/render.js": "d926d7ec76ee771a497e422e707cc63ad98eff21f905fed5cbd942c2f00b13ae",
+    "src/grip-art.js": "ae546e8c6694b6b15cd3df1d7c279f2a04826077da89a949a99a19c02ca60f4c",
+    "src/view-recovery.js": "2dcccbe0bf5ffe52f12ec6e43f2a6718b2451274bc755ca3fa1f6c19efd856d6",
+    "src/lab.js": "d2d83b33bbb2729b9fe64aa5df49a5679c2c1fc77a35816fc8a7df1dfb100839",
+    "index.html": "601327ac7e488082e9eebcdba7a8c3a696ad9bfe0a98ef354b3155d21d1128da",
+    "src/terrain.js": "f523e56bdccf384071b4055eda8e94d2c0c07367de638af55962b1be4a6276da",
+    "src/articulated.js": "54d1041f4c22eda83d03225bfb499a42f1df1d398eef1803b5db6c195a00f56b",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/staging.js": "f47f8b77668ccfd5bbffe5c09f2ac7139a1b3a62c69525f058e552f54d0b4599",
+    "src/physics.js": "c85adf5a38dbabf7b3ba8d8cd769799f2fcb85769c6fec32e46507b585426960",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/economy.js": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/prediction.js": "80287225a49557583e137007cd6a6a6e576aae01f5619c12fc7b1642362e275f",
+    "src/starter.js": "327a060f9bee7e2511452e416a45b7fa92f3bea349480e63c7184ece28ae97ab",
+    "src/audio.js": "d440a76ac15d7efd6ea38845d9fc104cab7d8648750a366718ce36fe16277f3c",
+    "src/journey.js": "f01728b32d3b16cf77ac95ab9e7103d44af1eef434063a2603a9e284c43e1255"
+  },
+  "sourcesChangedDuringRun": [],
+  "totalWallMilliseconds": 1541.132,
+  "counts": {
+    "launched": 1
+  },
+  "rows": [
+    {
+      "id": "combined-snake-0.75",
+      "hardware": "combined",
+      "species": "snake",
+      "grip": "torso",
+      "fraction": 0.75,
+      "equipment": [
+        "beam-long",
+        "sling-long",
+        "counterweight-heavy"
+      ],
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "collisionStepHz": 2400,
+        "fastCollisionStepHz": 4800,
+        "initialArm": -3,
+        "counterMass": 180,
+        "longArm": 3.6,
+        "shortArm": 0.9,
+        "sling": 2.9,
+        "hookAngle": 3.55,
+        "channelLength": 0.18,
+        "beamLinearDensity": 2.2
+      },
+      "equipped": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "flags": [
+        "backward_or_vertical_launch",
+        "downward_launch",
+        "launch_branch_impact",
+        "rope_stretch",
+        "hinge_anchor_error",
+        "angular_limit_error"
+      ],
+      "winding": {
+        "phase": "loading",
+        "target": -2.293530574608312,
+        "actualAngle": -2.297506589201309,
+        "work": 874.7948856221062
+      },
+      "actualGrabbedPart": "head",
+      "loading": {
+        "cradleSpeed": 0.03581031228304475,
+        "cradleSpin": -0.01411988536136093,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 0.1648216269570993,
+        "maxPartRelativeSpeed": 0.661799639260128,
+        "maxRelativeSpin": 1.5907946502211852,
+        "waited": 1.2500000000000153,
+        "quiet": 0.10166666666666654
+      },
+      "prediction": {
+        "wallMilliseconds": 16.798457999999982,
+        "mutatedLive": false,
+        "reason": "contact hook experiment",
+        "maximumDifference": 0
+      },
+      "loadingDiagnostics": {
+        "samples": 4538,
+        "maxRopeStretch": 0.0000047457176055587524,
+        "maxHingeAnchorError": 0.0002489020884922683,
+        "maxAngularLimitError": 0.035681312962073664,
+        "maxBodySpeed": 13.75044561879065,
+        "maxBodySpin": 57.241387008787044,
+        "maxEnergyResidual": 0,
+        "nonfinite": null,
+        "surfaceCandidates": [],
+        "phaseStats": {
+          "winding": {
+            "samples": 1088,
+            "anchorBadSteps": 0,
+            "angularBadSteps": 0,
+            "anchorRun": 0,
+            "angularRun": 0,
+            "longestAnchorSeconds": 0,
+            "longestAngularSeconds": 0,
+            "finalAnchor": 6.312523955704635e-7,
+            "finalAngular": 0.0032213883087500728
+          },
+          "loading": {
+            "samples": 3450,
+            "anchorBadSteps": 0,
+            "angularBadSteps": 0,
+            "anchorRun": 0,
+            "angularRun": 0,
+            "longestAnchorSeconds": 0,
+            "longestAngularSeconds": 0,
+            "finalAnchor": 0.000005936835826786352,
+            "finalAngular": 0.004958085383994115
+          }
+        },
+        "innerLoading": {
+          "samples": 4441,
+          "maxAngularLimitError": 0.04550808764992964
+        },
+        "worstSpin": {
+          "phase": "loading",
+          "time": 3.9716666666665814,
+          "tag": {
+            "role": "part",
+            "id": "segment-3"
+          },
+          "mass": 0.15400000000000003,
+          "inertia": 0.0007027836775843918,
+          "angularVelocity": -57.241387008787044,
+          "rotationalEnergy": 1.1513622014619949
+        },
+        "worstRope": {
+          "phase": "winding",
+          "time": 1.280000000000016,
+          "joint": {
+            "role": "rope",
+            "id": 1
+          },
+          "bodyA": {
+            "role": "hooklink",
+            "id": "channel-bead",
+            "channelAlpha": 3.55,
+            "channelLength": 0.18,
+            "beadRadius": 0.025,
+            "pegLocal": {
+              "x": 3.4715143691647214,
+              "y": -0.055600743420034376
+            }
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.0000047457176055587524
+        },
+        "worstHinge": {
+          "phase": "loading",
+          "time": 3.878333333333249,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "segment-3"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "segment-4"
+          },
+          "value": 0.0002489020884922683
+        },
+        "worstAngular": {
+          "phase": "loading",
+          "time": 4.258333333333293,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "segment-2"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "segment-3"
+          },
+          "value": 0.035681312962073664,
+          "angle": 1.0856813129620737,
+          "limits": [
+            -1.05,
+            1.05
+          ]
+        }
+      },
+      "canonicalJointAngleDiscontinuities": [],
+      "release": {
+        "time": 7.626666666667153,
+        "center": {
+          "x": -1.8212388017169072,
+          "y": 294.4333748600736,
+          "vx": -0.18685618832387632,
+          "vy": -0.04619199751900574,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.8293210884855022,
+              "y": 294.79023351333336
+            },
+            "v": {
+              "x": -0.8682156709760226,
+              "y": -0.3228431752110984
+            },
+            "w": 5.217732464827542
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.7131406341115714,
+              "y": 294.66115504914563
+            },
+            "v": {
+              "x": -0.31793000322539045,
+              "y": -0.09788688048368765
+            },
+            "w": 1.250509748121285
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.598540241893374,
+              "y": 294.5317466012255
+            },
+            "v": {
+              "x": -0.16471442746621667,
+              "y": 0.04070917410600505
+            },
+            "w": 1.1832134961597924
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.65478134443336,
+              "y": 294.36856187879914
+            },
+            "v": {
+              "x": -0.007946691466966712,
+              "y": -0.007932967417527243
+            },
+            "w": 0.9591242557762385
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.8306572420855782,
+              "y": 294.30490048713347
+            },
+            "v": {
+              "x": 0.04641059554488005,
+              "y": 0.017012213900367102
+            },
+            "w": -0.5608362991555014
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.9863361143884188,
+              "y": 294.22329739614776
+            },
+            "v": {
+              "x": 0.04274740938426288,
+              "y": 0.0693280611590167
+            },
+            "w": -0.0433734282441615
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -2.134740334225033,
+              "y": 294.1027492871218
+            },
+            "v": {
+              "x": 0.05899253888862596,
+              "y": 0.01779118812704038
+            },
+            "w": 0.5675314550663685
+          }
+        ]
+      },
+      "firstImpact": {
+        "surface": "launch branch",
+        "x": -2.1658040243026466,
+        "y": 294.0100015361335,
+        "time": 7.626666666667153
+      },
+      "groundImpact": null,
+      "outcome": "launched",
+      "wallMilliseconds": 1540.36325,
+      "diagnostics": {
+        "samples": 13578,
+        "surfaceCandidates": [],
+        "nonfinite": null,
+        "maxRopeStretch": 0.7306791171872451,
+        "maxHingeAnchorError": 0.7143634428641304,
+        "maxAngularLimitError": 0.14714491430466925,
+        "maxBodySpeed": 205.64125848169056,
+        "maxBodySpin": 194.35808756138852,
+        "maxEnergyResidual": 0,
+        "worstRope": {
+          "phase": "descent_after_obstacle",
+          "time": 21.21166666666352,
+          "joint": {
+            "role": "rope",
+            "id": 0
+          },
+          "bodyA": {
+            "role": "arm",
+            "id": "beam"
+          },
+          "bodyB": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "value": 0.7306791171872451
+        },
+        "worstHinge": {
+          "phase": "descent_after_obstacle",
+          "time": 21.209999999996853,
+          "joint": {
+            "role": "pouchhinge",
+            "id": "stopped-V",
+            "halfAngle": 0.3490658503988659
+          },
+          "bodyA": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.7143634428641304
+        },
+        "worstAngular": {
+          "phase": "descent_after_obstacle",
+          "time": 21.24166666666349,
+          "joint": {
+            "role": "pouchhinge",
+            "id": "stopped-V",
+            "halfAngle": 0.3490658503988659
+          },
+          "bodyA": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.14714491430466925,
+          "angle": -3.2887375678944624,
+          "limits": [
+            -3.141592653589793,
+            0
+          ]
+        },
+        "worstSpin": {
+          "phase": "descent_after_obstacle",
+          "time": 21.219999999996844,
+          "tag": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "mass": 0.5,
+          "inertia": 0.04162790026812219,
+          "angularVelocity": 194.35808756138852,
+          "rotationalEnergy": 786.2483442084877
+        },
+        "phases": [
+          {
+            "winding": {
+              "samples": 1088,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 6.312523955704635e-7,
+              "finalAngular": 0.0032213883087500728
+            },
+            "loading": {
+              "samples": 3450,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.000005936835826786352,
+              "finalAngular": 0.004958085383994115
+            }
+          },
+          {
+            "canonical_restore": {
+              "samples": 1,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.000005936835826786352,
+              "finalAngular": 0.004958085383994115
+            },
+            "launch": {
+              "samples": 38,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00001581758259062303,
+              "finalAngular": 0.00920678797611063
+            },
+            "flight": {
+              "samples": 1,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.000017162238560499327,
+              "finalAngular": 0.009554900386733456
+            },
+            "impact_recovery": {
+              "samples": 300,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.0000033328707872652296,
+              "finalAngular": 0.010432132939429573
+            },
+            "descent_after_obstacle": {
+              "samples": 8700,
+              "anchorBadSteps": 21,
+              "angularBadSteps": 2,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0.034999999999999996,
+              "longestAngularSeconds": 0.0016666666666666668,
+              "finalAnchor": 0.0008408891846965415,
+              "finalAngular": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
