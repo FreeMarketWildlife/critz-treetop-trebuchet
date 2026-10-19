@@ -1,0 +1,408 @@
+{
+  "scope": "Torso/head physical grip targets with unchanged finite-force path and actual winding. Includes failures. No body pose assignments, rescue, random force or automatic tuning. Stopped split pouch is an unpromoted research model.",
+  "stopped": true,
+  "rows": [
+    {
+      "class": "light",
+      "species": "lizard",
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "hookAngle": 3.4,
+        "channelLength": 0.22,
+        "counterMass": 100,
+        "longArm": 3,
+        "sling": 2.5
+      },
+      "grabbed": "torso",
+      "contact": {
+        "waited": 0.1416666666666666,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.7564427558309692,
+          "cradleSpin": -0.27561268079545675,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 4,
+          "relativeSpeed": 0.007245767048925285,
+          "maxPartRelativeSpeed": 0.01932731046442928,
+          "maxRelativeSpin": 0.12275440764812634
+        }
+      },
+      "initial": {
+        "cradleSpeed": 0.7564427558309692,
+        "cradleSpin": -0.27561268079545675,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 4,
+        "relativeSpeed": 0.007245767048925285,
+        "maxPartRelativeSpeed": 0.01932731046442928,
+        "maxRelativeSpin": 0.12275440764812634
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.583333333334368,
+          "x": 29.82641347942246,
+          "y": 0.03473860771169843,
+          "surface": "ground"
+        },
+        "time": 0.8683333333334691,
+        "center": {
+          "x": -2.4648916009552013,
+          "y": 303.11801454700134,
+          "vx": 3.3105277372881408,
+          "vy": 15.421250358294508,
+          "mass": 0.65
+        },
+        "speed": 15.772588770159219,
+        "firstHardwareExit": 0.6600000000001032,
+        "firstPanelOpening": 0.7883333333334566,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.8132745028434112,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -666.1830600573633,
+        "energyChange": -130.82882487101665,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "light",
+      "species": "lizard",
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "hookAngle": 3.4,
+        "channelLength": 0.22,
+        "counterMass": 100,
+        "longArm": 3,
+        "sling": 2.5
+      },
+      "grabbed": "head",
+      "contact": {
+        "waited": 0.13666666666666658,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.33561935085764266,
+          "cradleSpin": 0.07702518799579658,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.060049631666961464,
+          "maxPartRelativeSpeed": 0.5185725239589924,
+          "maxRelativeSpin": 5.105617469030349
+        }
+      },
+      "initial": {
+        "cradleSpeed": 0.33561935085764266,
+        "cradleSpin": 0.07702518799579658,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.060049631666961464,
+        "maxPartRelativeSpeed": 0.5185725239589924,
+        "maxRelativeSpin": 5.105617469030349
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 2.7766666666671007,
+          "x": 4.158296236198321,
+          "y": 294.00812000376015,
+          "surface": "launch branch"
+        },
+        "time": 0.8483333333334659,
+        "center": {
+          "x": -1.7976659308098295,
+          "y": 301.89204723403054,
+          "vx": 2.098107161824388,
+          "vy": 10.567131385040762,
+          "mass": 0.65
+        },
+        "speed": 10.773407973859168,
+        "firstHardwareExit": 0.6666666666667709,
+        "firstPanelOpening": 0.7866666666667896,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.2068951875679157,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -663.8468586983729,
+        "energyChange": -103.89557858135254,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "medium",
+      "species": "turtle",
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "hookAngle": 3.55,
+        "channelLength": 0.12,
+        "counterMass": 200,
+        "longArm": 3,
+        "sling": 2.5
+      },
+      "grabbed": "torso",
+      "contact": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 1.5767459308850282,
+          "cradleSpin": -0.633240080053845,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.01144376078234491,
+          "maxPartRelativeSpeed": 0.07090595719690898,
+          "maxRelativeSpin": 0.39978642151676475
+        }
+      },
+      "initial": {
+        "cradleSpeed": 1.5767459308850282,
+        "cradleSpin": -0.633240080053845,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.01144376078234491,
+        "maxPartRelativeSpeed": 0.07090595719690898,
+        "maxRelativeSpin": 0.39978642151676475
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 10.071666666667253,
+          "x": 45.67425203316703,
+          "y": 0.022397955943980613,
+          "surface": "ground"
+        },
+        "time": 0.7850000000001227,
+        "center": {
+          "x": -2.373611114421547,
+          "y": 303.4669770930434,
+          "vx": 4.769003951294838,
+          "vy": 19.30624315080828,
+          "mass": 2.4
+        },
+        "speed": 19.88653874573445,
+        "firstHardwareExit": 0.6316666666667654,
+        "firstPanelOpening": 0.7133333333334448,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 2.20048276147213,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -273.92559738358386,
+        "energyChange": -335.18550180836405,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "medium",
+      "species": "turtle",
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "hookAngle": 3.55,
+        "channelLength": 0.12,
+        "counterMass": 200,
+        "longArm": 3,
+        "sling": 2.5
+      },
+      "grabbed": "head",
+      "contact": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 1.0966172910010779,
+          "cradleSpin": 0.24980670270869426,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.09778793806780349,
+          "maxPartRelativeSpeed": 1.9868255016036338,
+          "maxRelativeSpin": 16.486709100501603
+        }
+      },
+      "initial": {
+        "cradleSpeed": 1.0966172910010779,
+        "cradleSpin": 0.24980670270869426,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.09778793806780349,
+        "maxPartRelativeSpeed": 1.9868255016036338,
+        "maxRelativeSpin": 16.486709100501603
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 2.1850000000003416,
+          "x": -4.7256822504495055,
+          "y": 295.54960845936023,
+          "surface": "loading shelf/other"
+        },
+        "time": 0.6816666666667732,
+        "center": {
+          "x": -2.4119254718988894,
+          "y": 300.1705869408982,
+          "vx": -0.2439385415774031,
+          "vy": 9.793525909674576,
+          "mass": 2.4
+        },
+        "speed": 9.796563466621045,
+        "firstHardwareExit": 0.5083333333334128,
+        "firstPanelOpening": 0.6200000000000969,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.6395038795147787,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -274.55711454008326,
+        "energyChange": -110.69409870881907,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "heavy",
+      "species": "armadillo",
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "hookAngle": 3.7,
+        "channelLength": 0.22,
+        "counterMass": 200,
+        "longArm": 2.2,
+        "sling": 2.2
+      },
+      "grabbed": "torso",
+      "contact": {
+        "waited": 0.13166666666666654,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.9770991038345828,
+          "cradleSpin": -0.5216075807968371,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.11476111148187787,
+          "maxPartRelativeSpeed": 1.3908473315541912,
+          "maxRelativeSpin": 9.061152381136385
+        }
+      },
+      "initial": {
+        "cradleSpeed": 0.9770991038345828,
+        "cradleSpin": -0.5216075807968371,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.11476111148187787,
+        "maxPartRelativeSpeed": 1.3908473315541912,
+        "maxRelativeSpin": 9.061152381136385
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.221666666667774,
+          "x": 56.94516265999913,
+          "y": 0.024641383702895495,
+          "surface": "ground"
+        },
+        "time": 0.9550000000001493,
+        "center": {
+          "x": -0.26566214974891633,
+          "y": 305.3254288433521,
+          "vx": 6.20567253788758,
+          "vy": 12.162358205483267,
+          "mass": 5
+        },
+        "speed": 13.654059058242652,
+        "firstHardwareExit": 0.6216666666667638,
+        "firstPanelOpening": 0.7816666666667889,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.4158280290836989,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -317.9194993263418,
+        "energyChange": -287.87590350374774,
+        "maximumEnergyGain": 0.6396042253725227,
+        "maximumStepEnergyGain": 0.0847410444016532,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "heavy",
+      "species": "armadillo",
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "hookAngle": 3.7,
+        "channelLength": 0.22,
+        "counterMass": 200,
+        "longArm": 2.2,
+        "sling": 2.2
+      },
+      "grabbed": "head",
+      "contact": {
+        "waited": 0.5933333333333335,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 6.750829807278895,
+          "cradleSpin": 2.258984028650119,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.05876429669044222,
+          "maxPartRelativeSpeed": 0.9989999336721488,
+          "maxRelativeSpin": 6.699514145514954
+        }
+      },
+      "initial": {
+        "cradleSpeed": 6.750829807278895,
+        "cradleSpin": 2.258984028650119,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.05876429669044222,
+        "maxPartRelativeSpeed": 0.9989999336721488,
+        "maxRelativeSpin": 6.699514145514954
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 3.1050000000004854,
+          "x": 3.2918579877481946,
+          "y": 294.0114711515686,
+          "surface": "launch branch"
+        },
+        "time": 0.7383333333334487,
+        "center": {
+          "x": -1.754084507024454,
+          "y": 301.33848596670583,
+          "vx": 1.3875416052867628,
+          "vy": 12.892775743710493,
+          "mass": 5
+        },
+        "speed": 12.96722553532603,
+        "firstHardwareExit": 0.595000000000093,
+        "firstPanelOpening": 0.6566666666667693,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.2933209158101637,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -217.52641620909014,
+        "energyChange": -292.21975192798027,
+        "maximumEnergyGain": 0.012780806386672339,
+        "maximumStepEnergyGain": 0.09000514018487138,
+        "explicitWork": 0
+      }
+    }
+  ]
+}

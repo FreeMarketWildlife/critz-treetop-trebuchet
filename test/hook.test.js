@@ -97,3 +97,51 @@ test('each visible channel setup works after actual torque-limited winding and c
   const result=measureSnapshot(scene.snapshot(),scene.p,entry.species,1/600);assert.ok(result.center.vx>0&&result.center.vy>0);assert.equal(result.firstWorldImpact?.surface,'ground');assert.ok(result.maximumEnergyGain<1);assert.equal(result.explicitWork,0);
  }
 });
+
+test('stopped V starts with coincident hinges, equal unstretched strands and finite geometry',()=>{
+ for(const splitHalfAngle of[Math.PI/36,Math.PI/9,7*Math.PI/36]){
+  const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,splitHalfAngle}),a=s.pouchHinge.getAnchorA(),b=s.pouchHinge.getAnchorB();
+  assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<1e-10);assert.ok(Math.abs(s.pouchHinge.getJointAngle())<1e-12);
+  for(const rope of s.ropes){const p=rope.getAnchorA(),q=rope.getAnchorB();assert.ok(Math.abs(Math.hypot(q.x-p.x,q.y-p.y)-rope.getMaxLength())<1e-10);assert.equal(rope.getMaxLength(),Math.hypot(s.p.sling,.65));}
+  const clone=s.clone();assert.ok(clone.pouchHinge.isLimitEnabled());assert.equal(clone.pouchHinge.getUpperLimit(),0);assert.equal(clone.pouchHinge.getLowerLimit(),-Math.PI);
+ }
+ for(const p of[{stoppedSplitPouch:'yes'},{splitHalfAngle:NaN},{splitHalfAngle:0},{splitHalfAngle:Math.PI/2}])assert.throws(()=>new PhysicalHookScene(p));
+});
+test('permanent V stop resists gravity collapse without an actuator or starting stretch impulse',()=>{
+ const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true}),initial=s.energy();let peak=0;
+ for(let i=0;i<1200;i++){s.step();peak=Math.max(peak,s.energy()-initial);assert.ok(s.pouchHinge.getJointAngle()<.005);assert.ok(s.pouchHinge.getJointAngle()>-.01);}
+ assert.ok(peak<.01);assert.ok(s.energy()<initial);assert.equal(s.hookOpen,false);assert.equal(s.ropes.length,2);
+});
+test('stopped light pouch opens physically after bead exit and preserves permanent contact hardware',async()=>{
+ const {stoppedMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js'),entry=stoppedMatrix[0];
+ const source=new PhysicalHookScene({...entry.parameters,mechanicalWinding:true,initialArm:-3},entry.species);source.startWinding(.6);for(let i=0;i<7200&&source.phase==='winding';i++)source.step();assert.ok(load(source));waitForContact(source);
+ const saved=source.snapshot(),results=[1/300,1/600,1/1200].map(dt=>measureSnapshot(saved,source.p,entry.species,dt));
+ for(const r of results){assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.panelOpeningAtDeparture>.2);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.maximumEnergyGain<.01);assert.equal(r.explicitWork,0);}
+ const a=results[1].center,b=results[2].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.1);
+ const s=source.clone(),fixtures=body=>{let n=0;for(let f=body.getFixtureList();f;f=f.getNext())n++;return n;};const before=[fixtures(s.pouch),fixtures(s.flap)];s.unlatch();for(let i=0;i<3000&&!s.release;i++)s.step();assert.ok(s.release);assert.equal(s.ropes.length,2);assert.deepEqual([fixtures(s.pouch),fixtures(s.flap)],before);assert.equal(s.pouchHinge.getUpperLimit(),0);assert.equal(s.pouchHinge.getLowerLimit(),-Math.PI);
+});
+
+test('explicit panel mass preserves fixture COM and scales rotational inertia at construction',()=>{
+ const base=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true});
+ for(const pouchPanelMass of[.25,.5,1]){const scene=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass});
+  for(const[left,right]of[[base.pouch,scene.pouch],[base.flap,scene.flap]]){const a={center:P.Vec2()},b={center:P.Vec2()};left.getMassData(a);right.getMassData(b);assert.equal(b.mass,pouchPanelMass);assert.deepEqual(b.center,a.center);assert.ok(Math.abs(b.I-a.I*pouchPanelMass/a.mass)<1e-12);}
+  assert.equal(scene.clone().pouch.getMass(),pouchPanelMass);
+ }
+ for(const p of[{pouchPanelMass:0},{pouchPanelMass:NaN},{pouchPanelMass:3},{pouchPanelMass:.5}])assert.throws(()=>new PhysicalHookScene({...p,stoppedSplitPouch:p.pouchPanelMass===.5?false:true}));
+});
+test('half-kilogram heavy panels have a bounded causal reference throw at two launch timesteps',async()=>{
+ const {stoppedMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js'),entry=stoppedMatrix[2];
+ const source=new PhysicalHookScene({...entry.parameters,pouchPanelMass:.5,mechanicalWinding:true,initialArm:-3,solverVelocityIterations:20,solverPositionIterations:12},entry.species);source.startWinding(.6);for(let i=0;i<7200&&source.phase==='winding';i++)source.step();assert.ok(load(source));waitForContact(source);
+ const saved=source.snapshot(),results=[1/600,1/1200].map(dt=>measureSnapshot(saved,source.p,entry.species,dt));
+ for(const r of results){assert.ok(r.center.vx>0&&r.center.vy>0);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.maximumEnergyGain<.01);assert.equal(r.explicitWork,0);}
+ const a=results[0].center,b=results[1].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.5);
+});
+
+test('explicit half-kilogram panel matrix retains causal release and passive energy for all three masses',async()=>{
+ const {stoppedMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
+ for(const entry of stoppedMatrix){const source=new PhysicalHookScene({...entry.parameters,pouchPanelMass:.5,mechanicalWinding:true,initialArm:-3},entry.species);source.startWinding(.6);for(let i=0;i<7200&&source.phase==='winding';i++)source.step();assert.ok(load(source));waitForContact(source);
+  const saved=source.snapshot(),samples=[1/300,1/600,1/1200].map(dt=>measureSnapshot(saved,source.p,entry.species,dt));
+  for(const r of samples){assert.ok(r.center.vx>0&&r.center.vy>0,entry.class);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.maximumEnergyGain<.01);assert.ok(r.maximumStepEnergyGain<.01);assert.equal(r.explicitWork,0);}
+  const a=samples[1].center,b=samples[2].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.5);
+ }
+});

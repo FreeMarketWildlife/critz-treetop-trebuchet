@@ -108,3 +108,7 @@ test('loading diagnostics distinguish proximity from actual contact without chan
  const initial=new CritterScene(),before=initial.snapshot(),status=initial.loadingStatus();assert.equal(status.contacting,false);assert.deepEqual(initial.snapshot(),before);
  const heavy=physicalLoad(new CritterScene({},'armadillo'));for(let i=0;i<600;i++)heavy.step();const ready=heavy.loadingStatus();assert.ok(ready.withinEnvelope);assert.ok(ready.contacting);assert.ok(ready.relativeSpeed<.35);
 });
+test('solver research iteration options reject unsafe values without changing production defaults',()=>{
+ for(const key of ['solverVelocityIterations','solverPositionIterations'])for(const value of[0,-1,1.5,101,NaN,Infinity])assert.throws(()=>new CritterScene({[key]:value}));
+ const scene=new CritterScene({solverVelocityIterations:40,solverPositionIterations:30});for(let i=0;i<30;i++)scene.step();assert.ok(Number.isFinite(scene.energy()));
+});

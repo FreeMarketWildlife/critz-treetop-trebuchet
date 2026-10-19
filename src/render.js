@@ -9,7 +9,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
  const line=(a,b,color,width=3)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();};
  const dot=(p,r,color)=>{ctx.beginPath();ctx.fillStyle=color;ctx.arc(...p,r,0,Math.PI*2);ctx.fill();};
  function body(scene,b,transform,scale){const role=b.getUserData()?.role;if(role==='static')return;
- for(let f=b.getFixtureList();f;f=f.getNext()){const s=f.getShape(),color=role==='part'?scene.rig.color:role==='pouch'?'#71988b':role==='frame'?'#92724a':role==='hooklink'?'#d0b35e':role==='enemy'?b.getUserData().color:'#594936';ctx.fillStyle=color;
+ for(let f=b.getFixtureList();f;f=f.getNext()){const s=f.getShape(),color=role==='part'?scene.rig.color:['pouch','pouchflap'].includes(role)?'#71988b':role==='frame'?'#92724a':role==='hooklink'?'#d0b35e':role==='enemy'?b.getUserData().color:'#594936';ctx.fillStyle=color;
   if(s.getType()==='circle')dot(transform(b.getWorldPoint(s.getCenter())),s.getRadius()*scale,color);
   else if(s.getType()==='polygon'){const points=s.m_vertices.map(v=>transform(b.getWorldPoint(v)));ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.closePath();ctx.fill();ctx.strokeStyle='#45554a';ctx.lineWidth=1;ctx.stroke();}
  }
