@@ -1,6 +1,12 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 21
+## CURRENT implementation: iteration 22
+
+Read docs/reviews/iteration-22/findings.md. Production saves/choice/restore now use exclusive WebLocks + captured raw/revision token (ABA-safe), queued autosaves/cancel epochs/current-economy guards. Cross-tab event pauses local autosave and exposes Keep session/Use saved version; alternate retained, no branch merging. Blocked/quota/no-safe-lock environments keep play in memory. Existing v1 saves preserved. Browser two-tab synthetic conflict/choice/reload checked; actual earned1723points/8bells counter180 Remove→Equip→reload unchanged. Portrait shop descriptions now spell real tradeoffs/slot replacement and disabled text remains readable. Viewport reset, olderQA tabs preserved, consoleclean.
+
+190tests pass. Longer264 physics/economy session all11species×24,21configs,253release/11seatingmiss;264saveReloads/264staleBlocks,first132rows EXACT21.517worlds0retained24GCchecks,90m08.71s sim; enginep952.5115/max65.0356ms (largesttick62.85ms wall/.601msCPU, sharedhost/testsuiteconcurrent, noFPSclaim). Full35numerical parity21 excludingtiming;32launch/3miss/10angularflags, steppingexperimental. Audio lifecycle double only. NEXT human reaction/device/audio/screenreader, six-item progression and bounded history decisions; legacy tabs mustreload beforeconcurrent saving. No push/deploy/unlock/exportretry. Earlier21andbelowhistory.
+
+## Historical implementation: iteration 21
 
 Read docs/reviews/iteration-21/findings.md. Cue coverage now uses full silhouette/rim/HUD clearance, actual pose bounds, grouped counts and CSS-readable arrows. 2,880 synthetic cases no post-notice gaps; actual seventeen-contact continuous minima portrait .342917s/landscape .292917s, NOT guarantee or comparable to old first-notice metric. Save recovery disables unreadable startup persistence, preserves exact invalid/displaced bytes before explicit replacement, names backup candidate, keeps failures visible through reset. Twelve helper tests; 183 total pass. Full35 numeric parity20; 132soak126release/6miss/0retained, 258worlds0retained; stepping experimental.
 

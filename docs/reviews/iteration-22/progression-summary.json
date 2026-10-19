@@ -1,0 +1,86 @@
+{
+  "scope": "Actual deterministic finite-force264attempt progression, not a human play session. Six purchases only from recorded earned rewards; no user storage access. In-memory storage + serial lock double checks coordinator after every attempt; real WebLocks/browser storage verified separately through two-tab UI.",
+  "first132RowsExactlyMatchIteration21": true,
+  "species": {
+    "lizard": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 12
+    },
+    "salamander": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 12
+    },
+    "mouse": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 11
+    },
+    "turtle": {
+      "attempts": 24,
+      "releases": 23,
+      "misses": 1,
+      "configurations": 12
+    },
+    "snake": {
+      "attempts": 24,
+      "releases": 18,
+      "misses": 6,
+      "configurations": 13
+    },
+    "chipmunk": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 11
+    },
+    "flying-squirrel": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 13
+    },
+    "armadillo": {
+      "attempts": 24,
+      "releases": 21,
+      "misses": 3,
+      "configurations": 11
+    },
+    "small-marsupial": {
+      "attempts": 24,
+      "releases": 23,
+      "misses": 1,
+      "configurations": 13
+    },
+    "tiny-primate": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 12
+    },
+    "frog": {
+      "attempts": 24,
+      "releases": 24,
+      "misses": 0,
+      "configurations": 10
+    }
+  },
+  "configurations": 21,
+  "trackedWorlds": 517,
+  "saveReloads": 264,
+  "staleWriterRejections": 264,
+  "paidShots": 253,
+  "owned": [
+    "counterweight-heavy",
+    "beam-long",
+    "beam-light",
+    "sling-long",
+    "frame-heavy",
+    "frame-grip"
+  ],
+  "physicsSourcesStable": true
+}

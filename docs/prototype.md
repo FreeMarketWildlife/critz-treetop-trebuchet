@@ -218,3 +218,8 @@ Approaching off-screen physical enemies have quiet bounded edge arrows and kind/
 ## Iteration 21 review
 
 See [continuous approach and recovery findings](reviews/iteration-21/findings.md): full-silhouette edge warnings, deliberate preserved-byte recovery, 183 passing tests and unchanged physics regression. Natural sampled notice is not a fairness guarantee; device/audio and cross-tab durability remain open.
+
+
+## Iteration 22 review
+
+See [coordinated saves and longer progression](reviews/iteration-22/findings.md): exclusive save coordination with explicit branch choices, failure-safe session play, readable equipment tradeoffs, 190 passing tests and a 264-attempt earned progression soak. Existing saves stay compatible; reload older builds before using multiple saving tabs.
