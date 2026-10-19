@@ -1,0 +1,515 @@
+{
+  "protocol": "Three naturally launched rigs; canonical identical snapshot per species at descending COM below3m; one second through ground contact; no encounters or controls. Only timestep and solver iterations vary. All world bodies contribute energy; joint maxima restrict to articulated part joints. Diagnostic rather than calibrated tolerance.",
+  "sourceSHA256": {
+    "src/articulated.js": "a314b46d95928edc0c8e66b237271ea15544c0b1d46c60b9f07535c839044002",
+    "src/hook-experiment.js": "a5289b746b0bb61eaa513b61d9089ebd50dddf17e70abdff3ab39b8fc95e05b1",
+    "src/species.js": "156aaafe21f2b8203a9c1fce7dbda275c84266c73c4ed116d77a684934bbd35d",
+    "src/physics.js": "6be965296b88faf7b3584b1ad2f1e2e7a1a9973371f52d714119226339aa7ff2"
+  },
+  "rows": [
+    {
+      "species": "mouse",
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.16089663487355202,
+      "maxAngular": 0.7041186433057505,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 18.931875000000048
+    },
+    {
+      "species": "mouse",
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.16141592711207214,
+      "maxAngular": 0.4404081538839677,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 17.908500000000004
+    },
+    {
+      "species": "mouse",
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03166666666667162,
+      "maxAnchor": 0.1171176380214819,
+      "maxAngular": 0.7830847348805208,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 22.07325000000003
+    },
+    {
+      "species": "mouse",
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03166666666667162,
+      "maxAnchor": 0.11711763802147904,
+      "maxAngular": 0.7830847348805634,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 29.364041999999927
+    },
+    {
+      "species": "mouse",
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03249999999997044,
+      "maxAnchor": 0.07011135257178555,
+      "maxAngular": 0.28913531192728503,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 40.52541699999995
+    },
+    {
+      "species": "mouse",
+      "snapshotSHA256": "3809770b117c65dd762317e7039b065b2eb17630ffbee42dbff67fe6c9a14ed0",
+      "initialCenter": {
+        "x": 47.27695724718216,
+        "y": 2.8718099752248825,
+        "vx": 5.501857171330954,
+        "vy": -77.34714108188372,
+        "mass": 0.75
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03249999999997044,
+      "maxAnchor": 0.06963428120909601,
+      "maxAngular": 0.2596962874605311,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 54.65620799999999
+    },
+    {
+      "species": "salamander",
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.033333333333338544,
+      "maxAnchor": 0.1718837341476559,
+      "maxAngular": 0.39128462464333325,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "tail"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 9.890291000000047
+    },
+    {
+      "species": "salamander",
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.033333333333338544,
+      "maxAnchor": 0.17234138875387178,
+      "maxAngular": 0.3922584985544546,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "tail"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 12.432542000000012
+    },
+    {
+      "species": "salamander",
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.1541021626867939,
+      "maxAngular": 0.5547912847043392,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 16.5959170000001
+    },
+    {
+      "species": "salamander",
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.15363569619002312,
+      "maxAngular": 0.26153292939601447,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 22.710041000000047
+    },
+    {
+      "species": "salamander",
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.06848811738219605,
+      "maxAngular": 0.09068377698078511,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 29.593665999999985
+    },
+    {
+      "species": "salamander",
+      "snapshotSHA256": "beae2fe9108ad88157b9a790406fbbce36bfc30fbd9aac285878c3b3d129035b",
+      "initialCenter": {
+        "x": 40.34838296950611,
+        "y": 2.9645998635893993,
+        "vx": 4.6845206387178235,
+        "vy": -77.52093136927127,
+        "mass": 0.8
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03333333333330302,
+      "maxAnchor": 0.06802447891714486,
+      "maxAngular": 0.08744715551194138,
+      "worstAnchor": [
+        "torso",
+        "head"
+      ],
+      "worstAngular": [
+        "torso",
+        "front-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 42.3464170000002
+    },
+    {
+      "species": "tiny-primate",
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.0829560334570222,
+      "maxAngular": 1.044035086629286,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 11.393916999999874
+    },
+    {
+      "species": "tiny-primate",
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0033333333333333335,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.03000000000000469,
+      "maxAnchor": 0.09811467473847593,
+      "maxAngular": 1.0306668737005822,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 12.91579200000001
+    },
+    {
+      "species": "tiny-primate",
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.023890301800140453,
+      "maxAngular": 0.5161664464078228,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 17.713459000000057
+    },
+    {
+      "species": "tiny-primate",
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0016666666666666668,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.030684110886316708,
+      "maxAngular": 0.5513804548585384,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 24.393374999999878
+    },
+    {
+      "species": "tiny-primate",
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 20,
+      "position": 12,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.008241581093739132,
+      "maxAngular": 0.11233233891434513,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 33.90604099999996
+    },
+    {
+      "species": "tiny-primate",
+      "snapshotSHA256": "c2cc4644df555be8797a113fa898046cbfbabaf57c063d95805a23a87ebd2556",
+      "initialCenter": {
+        "x": 61.0321602465793,
+        "y": 2.879099061734708,
+        "vx": 6.947945705995061,
+        "vy": -77.49143392761005,
+        "mass": 0.8500000000000001
+      },
+      "dt": 0.0008333333333333334,
+      "velocity": 40,
+      "position": 30,
+      "firstImpact": 0.029999999999972715,
+      "maxAnchor": 0.006894779591741922,
+      "maxAngular": 0.12413906708376743,
+      "worstAnchor": [
+        "torso",
+        "tail"
+      ],
+      "worstAngular": [
+        "torso",
+        "head"
+      ],
+      "maxEnergyResidual": 0,
+      "nonfinite": false,
+      "wallMilliseconds": 48.010499999999865
+    }
+  ]
+}

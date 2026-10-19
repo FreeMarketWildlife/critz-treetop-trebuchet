@@ -1,4 +1,9 @@
 import {world as layout} from './world.js';
+export function capturePredictionPose(scene){return {elapsed:scene.elapsed,parts:scene.parts.map(b=>({id:b.getUserData().id,x:b.getPosition().x,y:b.getPosition().y,angle:b.getAngle()}))};}
+export function predictionPoseIsCurrent(scene,capture){
+ if(!capture||scene.elapsed<capture.elapsed||scene.elapsed-capture.elapsed>1||scene.parts.length!==capture.parts.length)return false;
+ return scene.parts.every((b,i)=>{const p=capture.parts[i],q=b.getPosition();return p.id===b.getUserData().id&&Math.hypot(q.x-p.x,q.y-p.y)<=.2&&Math.abs(b.getAngle()-p.angle)<=.4;});
+}
 // Same canonical physics, advanced in bounded RAF-sized slices rather than pointer events.
 export function createPredictionJob(scene,{now=()=>performance.now()}={}){
  if(scene.phase!=='loading'||scene.hand||scene.control||!scene.isLoaded())return null;

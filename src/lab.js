@@ -1,7 +1,7 @@
 import {CritterScene,gripParameters} from './articulated.js';
 import {PhysicalHookScene} from './hook-experiment.js';
 import {createGripController} from './input.js';
-import {createPredictionJob} from './prediction.js';
+import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent} from './prediction.js';
 import {createRenderer} from './render.js';
 import {installReviewExports} from './review.js';
 import {profiles,createVolunteerQueue} from './species.js';
@@ -18,10 +18,10 @@ let persistence=createEconomyPersistence(storageBackend);
 function saveProgress(){try{return persistence.save(economy);}catch{error='Saving is unavailable; progress remains in this session.';return false;}}
 const setText=(id,value)=>{if($(id).textContent!==value)$(id).textContent=value;};
 const equipmentNotes={'counterweight-heavy':'140 kg counterweight; changes energy and balance.','beam-long':'3.6 / 0.9 m beam; changes leverage and mass.','beam-light':'Lighter beam material; changes inertia.','sling-long':'Longer sling; changes timing and clearance.','frame-heavy':'50 kg frame; changes recoil and can reduce range.','frame-grip':'Grippier feet; changes sliding behavior.'};
-const seed=Date.now()>>>0,queue=createVolunteerQueue(seed);let fraction=.6,scene,preview=null,previewJob=null,previewSource=null,previewCapture=null,previewStarted=0,lastPredictionMs=0,nextStatus=0,statusPhase='',error='',last=performance.now(),accumulator=0,nextPreview=0,clock=0,sliderRunning=true,sliderStart=performance.now(),held=false;
+const seed=Date.now()>>>0,queue=createVolunteerQueue(seed);let fraction=.6,scene,preview=null,previewJob=null,previewSource=null,previewCapture=null,previewBasis=null,lastPredictionMs=0,nextStatus=0,statusPhase='',error='',last=performance.now(),accumulator=0,nextPreview=0,clock=0,sliderRunning=true,sliderStart=performance.now(),held=false;
 const settings=()=>derivePhysicalConfig(economy,{counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),pivotHeight:300,armDamping:Number($('friction').value),flightDrag:Number($('drag').value),initialArm:-3,mechanicalWinding:true,releaseHardware:'channel',stoppedSplitPouch:$('split').checked,...($('split').checked&&$('hook').checked?{pouchPanelMass:Number($('panelMass').value)}:{}),sling:Number($('sling').value),hookAngle:Number($('railAngle').value),channelLength:Number($('railLength').value)});
 $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</option>`).join('');$('species').value=queue.current;
-function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;preview=null;}
+function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
 function reset(){try{grip.reset();sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;}catch(e){error=e.message;}}
 $('hook').onchange=reset;$('split').onchange=reset;
 for(const id of ['species','mass','long','short','friction','drag','sling','railAngle','railLength','panelMass'])$(id).onchange=reset;
@@ -54,12 +54,12 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  const eligible=scene.phase==='loading'&&!held&&!scene.control&&scene.isLoaded()&&inContact;
  if(!eligible){clearPreview();nextPreview=clock+.15;}
  else {
+  if(preview&&!predictionPoseIsCurrent(scene,previewBasis)){preview=null;previewBasis=null;}
   if(previewJob&&previewSource!==scene)clearPreview();
-  if(!previewJob&&clock>nextPreview){previewJob=createPredictionJob(scene);previewSource=scene;previewCapture=scene.parts.map(b=>({x:b.getPosition().x,y:b.getPosition().y,angle:b.getAngle()}));previewStarted=clock;}
+  if(!previewJob&&clock>nextPreview){previewJob=createPredictionJob(scene);previewSource=scene;previewCapture=capturePredictionPose(scene);}
   if(previewJob){previewJob.advance({maxSteps:300,budgetMs:2.5});
    if(previewJob.done){lastPredictionMs=previewJob.stats.cpuMs;
-    const moved=scene.parts.some((b,i)=>Math.hypot(b.getPosition().x-previewCapture[i].x,b.getPosition().y-previewCapture[i].y)>.2||Math.abs(b.getAngle()-previewCapture[i].angle)>.4);
-    preview=clock-previewStarted<=1&&!moved?previewJob.result:null;previewJob=null;nextPreview=clock+Math.max(.6,lastPredictionMs/1000*8);
+    preview=predictionPoseIsCurrent(scene,previewCapture)?previewJob.result:null;previewBasis=preview?previewCapture:null;previewJob=null;nextPreview=clock+Math.max(.6,lastPredictionMs/1000*8);
    }
   }
  }

@@ -1,0 +1,11 @@
+# Prediction freshness and controlled impact study
+
+The displayed hint previously checked pose freshness only when its job finished. While a replacement job ran, the old line could persist after its original snapshot moved or aged. The UI now stores a separate basis for the displayed result and rejects it every frame if any part moves more than 0.2 m, rotates more than 0.4 rad or its simulation age exceeds one second. A test covers the distinction between an old displayed basis and a newer job capture. Thresholds are presentation choices; the hinted launch still uses unchanged canonical physics.
+
+Reproduce the impact experiment with `node scripts/measure-impact.js`. Three naturally launched rigs are captured while descending below 3 m. Each species' identical snapshot is replayed through one second at 300, 600 and 1200 Hz with production 20/12 and research 40/30 solver iterations. No encounters or arcade controls. Unlike iteration 7's first-impact stop, this includes subsequent contact response. The snapshots and source hashes are recorded in `impact.json`.
+
+At production iterations, 600 → 1200 Hz reduces maximum part-joint anchor error from 0.117 → 0.070 m (mouse), 0.154 → 0.068 m (salamander) and 0.024 → 0.008 m (tiny primate). Angular excess falls from 0.783 → 0.289, 0.555 → 0.091 and 0.516 → 0.112 rad respectively. None of the 18 trials is nonfinite or has a positive work-adjusted energy residual. These are dissipative responses, not accurate joint preservation.
+
+Doubling solver iterations at 600 Hz does not consistently improve these responses: tiny-primate angular error increases to 0.551 rad. Smaller time steps help these samples more reliably, but do not eliminate deformation. No production iteration or timestep change is justified yet without measuring the broader CPU cost and impacts at branches/canopy. A next experiment should compare bounded collision-region substeps against full 1200 Hz using identical incoming states; preserve the same rule in prediction and live simulation. Do not repair the pose or inject compensating velocity.
+
+Full tests after the hint change: 125 passing. No push, deployment or export. Browser manual play remains separately unverified as recorded in iteration 7.
