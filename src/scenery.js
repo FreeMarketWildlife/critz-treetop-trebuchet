@@ -1,12 +1,14 @@
 /** Original decorative vectors, deliberately pale/distant so collider strokes remain readable.
  * Draw inside the caller's clipped viewport; width/height are viewport pixels.
  * camera:{x,y} is its centre in world metres, scale pixels/metre (y up).
- * All scenery is fixed authored decoration; time affects only a tiny atmospheric drift.
+ * Geography is fixed authored decoration; time animates haze and distant noncolliding birds.
  * None of these silhouettes represents a collision surface.
  */
 const palettes={tree:['#b8d2cb','#e6eacb','#547b68'],sky:['#a9d4ed','#eef6e8','#699ab1'],canopy:['#98bca2','#d5dfb4','#447a62'],floor:['#aab893','#e0d1a8','#637a4e']};
 function biome(region){const r=String(region??'').toLowerCase();return r.includes('floor')||r==='ground'?'floor':r.includes('canopy')||r.includes('jungle')?'canopy':r.includes('sky')||r.includes('air')?'sky':'tree';}
 function ellipse(ctx,x,y,rx,ry,color,angle=0){ctx.beginPath();ctx.ellipse(x,y,rx,ry,angle,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
+/** Five authored distant bird paths: decoration only, never enemy descriptors. */
+export function backgroundBirds(time=0,reducedMotion=false){const t=reducedMotion?0:time;return [[-10,278],[18,303],[42,330],[67,258],[95,315]].map(([x,y],i)=>({x:x+8*Math.sin(t*.22+i),y:y+2*Math.sin(t*.31+i*2),wing:Math.sin(t*3+i),size:4+i%2}));}
 export function drawScenery(ctx,{width,height,region,camera={x:0,y:300},scale=24,reducedMotion=false,time=0}={}){
  if(!ctx||![width,height,scale,camera.x,camera.y,time].every(Number.isFinite)||width<=0||height<=0||scale<=0)return;
  const key=biome(region),p=palettes[key],drift=reducedMotion?0:Math.sin(time*.12)*2;
@@ -43,6 +45,8 @@ export function drawScenery(ctx,{width,height,region,camera={x:0,y:300},scale=24
    ellipse(ctx,x,y,20+(i%4)*6,7+(i%3)*2,p[2],(i%5-2)*.4);
   }
  }
+ // Pale, small, distant silhouettes have no eyes/outline, cues, collision or rewards.
+ if(key==='tree'){ctx.globalAlpha=.32;ctx.strokeStyle='#567b73';ctx.lineWidth=1.3;ctx.lineCap='round';for(const bird of backgroundBirds(time,reducedMotion)){const x=width/2+(bird.x-camera.x)*scale*.35,y=height/2-(bird.y-camera.y)*scale*.35,size=bird.size;ctx.beginPath();ctx.moveTo(x-size,y-1-bird.wing*2);ctx.quadraticCurveTo(x-size*.45,y-3,x,y);ctx.quadraticCurveTo(x+size*.45,y-3,x+size,y-1-bird.wing*2);ctx.stroke();}}
  // Haze panel has no hard outline or collider-like boundary.
  ctx.globalAlpha=.16;ctx.fillStyle='#fff8db';ctx.fillRect(0,height*.73,width,height*.27);
  ctx.restore();

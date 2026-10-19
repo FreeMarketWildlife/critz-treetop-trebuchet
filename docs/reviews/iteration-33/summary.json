@@ -1,0 +1,168 @@
+{
+  "stock": {
+    "attempts": 22,
+    "releases": 22,
+    "reversals": [
+      0,
+      2,
+      4,
+      7,
+      9,
+      18
+    ],
+    "backwardDistance": 108.08106475636308,
+    "sourcesChanged": false,
+    "placements": {
+      "-0.15": {
+        "releases": 11,
+        "reversals": 5
+      },
+      "0.15": {
+        "releases": 11,
+        "reversals": 1
+      }
+    },
+    "activity": {
+      "activity": {
+        "480": {
+          "medianMaxActiveGap": 1.0750000000000013,
+          "worstMaxActiveGap": 34.816666666665974
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8333333333333345,
+          "worstMaxActiveGap": 34.816666666665974
+        }
+      },
+      "movingActivity": {
+        "480": {
+          "medianMaxActiveGap": 1.1500000000000012,
+          "worstMaxActiveGap": 35.166666666665954
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8333333333333345,
+          "worstMaxActiveGap": 35.166666666665954
+        }
+      }
+    }
+  },
+  "heavy": {
+    "attempts": 22,
+    "releases": 22,
+    "reversals": [
+      7,
+      8,
+      12,
+      18
+    ],
+    "backwardDistance": 18.658517114599995,
+    "sourcesChanged": false,
+    "placements": {
+      "-0.15": {
+        "releases": 11,
+        "reversals": 2
+      },
+      "0.15": {
+        "releases": 11,
+        "reversals": 2
+      }
+    },
+    "activity": {
+      "activity": {
+        "480": {
+          "medianMaxActiveGap": 1.0583333333333345,
+          "worstMaxActiveGap": 2.133333333333331
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8000000000000008,
+          "worstMaxActiveGap": 1.483333333333333
+        }
+      },
+      "movingActivity": {
+        "480": {
+          "medianMaxActiveGap": 1.0583333333333345,
+          "worstMaxActiveGap": 2.133333333333331
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8000000000000008,
+          "worstMaxActiveGap": 1.5333333333333314
+        }
+      }
+    }
+  },
+  "sling": {
+    "attempts": 22,
+    "releases": 22,
+    "reversals": [
+      0,
+      2,
+      6,
+      7,
+      9,
+      13,
+      14,
+      15,
+      19,
+      20
+    ],
+    "backwardDistance": 144.45803882245107,
+    "sourcesChanged": false,
+    "placements": {
+      "-0.15": {
+        "releases": 11,
+        "reversals": 5
+      },
+      "0.15": {
+        "releases": 11,
+        "reversals": 5
+      }
+    },
+    "activity": {
+      "activity": {
+        "480": {
+          "medianMaxActiveGap": 1.0500000000000012,
+          "worstMaxActiveGap": 5.0833333333333215
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8000000000000008,
+          "worstMaxActiveGap": 1.2166666666666672
+        }
+      },
+      "movingActivity": {
+        "480": {
+          "medianMaxActiveGap": 1.0500000000000012,
+          "worstMaxActiveGap": 7.243333333331982
+        },
+        "960": {
+          "medianMaxActiveGap": 0.8000000000000008,
+          "worstMaxActiveGap": 1.2166666666666672
+        }
+      }
+    }
+  },
+  "baselinePhysicsHashesMatch": {
+    "src/encounters.js": true,
+    "src/encounter-body.js": true,
+    "src/articulated.js": true,
+    "src/hook-experiment.js": true,
+    "src/species.js": true,
+    "src/world.js": true,
+    "src/approach-cues.js": true,
+    "src/fixed-obstacles.js": true,
+    "src/mushroom-geometry.js": true
+  },
+  "allReleased": 66,
+  "meaningfulReversalRuns": 20,
+  "outlierDiagnosis": {
+    "equipment": "stock",
+    "case": 0,
+    "gap": [
+      17.9,
+      52.71666666666667
+    ],
+    "samples": 349,
+    "allBelowSpeedThreshold": true,
+    "maxSpeed": 0.02837218392959785,
+    "maxHeight": 0.08840652118840443,
+    "metricRetained": true
+  }
+}

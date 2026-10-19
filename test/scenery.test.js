@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {drawScenery,drawFace,drawEncounterDetails} from '../src/scenery.js';
+import {backgroundBirds,drawScenery,drawFace,drawEncounterDetails} from '../src/scenery.js';
 function context(){const calls=[];const ctx=new Proxy({}, {get(_,key){if(key==='createLinearGradient')return(...args)=>{calls.push([key,...args]);return {addColorStop(){}};};return(...args)=>calls.push([key,...args]);},set(_,key,value){calls.push(['set',key,typeof value==='object'?'gradient':value]);return true;}});return {ctx,calls};}
 test('all scenery biomes are deterministic, bounded and restore context',()=>{
  for(const region of ['Grandfather Tree','open sky','jungle canopy','forest floor']){
@@ -19,3 +19,7 @@ test('encounter shape markings stay bounded and restore canvas state',()=>{
 });
 
 test('wing markings flap inside the same clipped physical circle',()=>{const a=context(),b=context();drawEncounterDetails(a.ctx,{x:0,y:0,shape:'wings',size:12,motion:-1});drawEncounterDetails(b.ctx,{x:0,y:0,shape:'wings',size:12,motion:1});assert.ok(a.calls.some(c=>c[0]==='clip'));assert.deepEqual(a.calls.find(c=>c[0]==='arc'),b.calls.find(c=>c[0]==='arc'));assert.notDeepEqual(a.calls.filter(c=>c[0]==='ellipse'),b.calls.filter(c=>c[0]==='ellipse'));assert.ok(a.calls.length<100&&b.calls.length<100);});
+
+test('distant bird paths are bounded authored decoration and freeze for reduced motion',()=>{
+ const before=backgroundBirds(0);for(const t of [1,60,10000]){const birds=backgroundBirds(t);assert.equal(birds.length,5);for(const [i,b]of birds.entries()){assert.ok(Math.abs(b.x-[-10,18,42,67,95][i])<=8);assert.ok(Math.abs(b.y-[278,303,330,258,315][i])<=2);assert.equal(b.kind,undefined);}assert.deepEqual(backgroundBirds(t,true),backgroundBirds(0,true));}assert.notDeepEqual(before,backgroundBirds(1));
+});
