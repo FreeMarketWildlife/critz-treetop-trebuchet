@@ -16,17 +16,30 @@ export function drawScenery(ctx,{width,height,region,camera={x:0,y:300},scale=24
  ctx.globalAlpha=.26;
  for(let i=0;i<7;i++){const x=width*.5+(i*95-240-camera.x*.15)*Math.min(scale,30)/24,y=height*.5-((315-i*44)-camera.y)*scale*.06+drift;
   ellipse(ctx,x,y,50+(i%3)*14,12+(i%2)*4,'#ffffff');ellipse(ctx,x-20,y-7,25,14,'#ffffff');}
- // Fixed distant tree forms: soft background, rather than sharp walkable platforms.
- ctx.globalAlpha=key==='sky'?.06:.18;ctx.strokeStyle=p[2];ctx.lineCap='round';
- for(let i=0;i<5;i++){
-  const x=width*.5+(i*150-320-camera.x*.08)*Math.min(scale,30)/24;
-  ctx.lineWidth=24+(i%2)*11;ctx.beginPath();ctx.moveTo(x,height+30);ctx.bezierCurveTo(x-25,height*.65,x+35,height*.3,x+8,-50);ctx.stroke();
-  ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(x+5,height*.36);ctx.bezierCurveTo(x+40,height*.28,x+60,height*.22,x+100,height*.17);ctx.moveTo(x,height*.66);ctx.bezierCurveTo(x-35,height*.58,x-70,height*.57,x-115,height*.48);ctx.stroke();
+ // A single enormous, distant trunk gives the departure a sense of scale.
+ // Authored world coordinates and weak parallax keep it behind every collider.
+ const sx=x=>width*.5+(x+25-camera.x*.08)*scale*.5;
+ const sy=y=>height*.5-(y-camera.y)*scale*.10;
+ ctx.globalAlpha=key==='sky'?.08:.13;ctx.fillStyle=p[2];
+ ctx.beginPath();ctx.moveTo(sx(-45),sy(1000));ctx.bezierCurveTo(sx(-48),sy(240),sx(-58),sy(90),sx(-78),sy(-25));ctx.lineTo(sx(-12),sy(-25));ctx.bezierCurveTo(sx(-35),sy(100),sx(-28),sy(240),sx(-30),sy(1000));ctx.closePath();ctx.fill();
+ // Bark runs past the camera as altitude changes, rather than sticking to the screen.
+ ctx.globalAlpha=.10;ctx.strokeStyle=p[2];ctx.lineCap='round';ctx.lineWidth=3;
+ for(let i=0;i<4;i++){const x=-41+i*3;ctx.beginPath();ctx.moveTo(sx(x),sy(1000));ctx.bezierCurveTo(sx(x-4),sy(220),sx(x-1),sy(100),sx(x-12),sy(-10));ctx.stroke();}
+ // Distant woodland crowns are broad and soft; no sharp platform-like edges.
+ if(key==='canopy'||key==='floor'){
+  ctx.globalAlpha=key==='floor'?.20:.14;
+  for(let i=0;i<9;i++){
+   const x=width*.5+(i*8-32-camera.x*.05)*scale*.6;
+   const y=sy(35+(i%3)*24);
+   ellipse(ctx,x,y,55+(i%3)*18,36+(i%2)*13,p[2]);
+  }
+  ctx.globalAlpha=.12;ctx.lineWidth=16;
+  for(let i=0;i<4;i++){const x=width*.5+(i*18-26-camera.x*.05)*scale*.6;ctx.beginPath();ctx.moveTo(x,sy(45));ctx.bezierCurveTo(x-18,sy(20),x+12,sy(-15),x+20,sy(-40));ctx.stroke();}
  }
  if(key!=='sky'){
   ctx.globalAlpha=.14;
-  for(let i=0;i<22;i++){
-   const x=(i*89%Math.ceil(width+120))-60-camera.x*.015,y=key==='floor'?height-10-(i*23%70):height*.5-((320-i*15)-camera.y)*scale*.10;
+  for(let i=0;i<18;i++){
+   const x=(i*89%Math.ceil(width+120))-60-camera.x*.015,y=key==='floor'?sy(2+i%4):sy(320-i*18);
    ellipse(ctx,x,y,20+(i%4)*6,7+(i%3)*2,p[2],(i%5-2)*.4);
   }
  }

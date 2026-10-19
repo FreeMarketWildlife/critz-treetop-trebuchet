@@ -41,7 +41,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    dot(local(scene.arm.getWorldPoint({x:0,y:0})),5,'#e6c475');
    if(scene.phase==='loading'&&!scene.hand&&scene.parts?.length){const root=scene.parts.find(b=>b.getUserData().id==='torso')??scene.parts[Math.floor(scene.parts.length/2)],p=local(root.getWorldCenter());ctx.setLineDash([3,3]);ctx.beginPath();ctx.strokeStyle='#f8eab8';ctx.lineWidth=2;ctx.arc(...p,14,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#273f35';ctx.font='12px system-ui';ctx.fillText('Grab here',p[0]-27,p[1]-20);}
    if(portrait&&preview)preview.points.forEach((p,i)=>dot(local(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
-   ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':scene.phase==='launching'?'Arm moving under gravity':'Lift over green cradle; release grip to seat',12,24);ctx.restore();
+   ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':scene.phase==='launching'?'Arm moving under gravity':'Lift beside cradle → across above → release',12,24);ctx.restore();
   }
   if(!portrait||flying){
    const panel=flying?{x:0,y:0,w:canvas.width,h:canvas.height}:{x:500,y:56,w:460,h:424},biome=biomeAt(c.y),scale=flying?42:100;

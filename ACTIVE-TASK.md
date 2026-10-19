@@ -1,6 +1,14 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 17
+## CURRENT implementation: iteration 18
+
+Read docs/reviews/iteration-18/findings.md. 161 tests pass; all35 numerical regression rows exactly match17 excluding timings (32release/3low-seatmiss/11angular warnings). No production physics changed. Loading copy nowexplicit upbeside→acrossabovefloor→release; original distant gianttrunk/worldheight bark and separatecanopy/floor silhouettes replace screenfixedsmalltrees. Actualbrowser18salamander clearroute→61.4deg17.37m/s→119m8bounces→Collect1385points21bells→retryunchanged. SaveOFF,stickyON,Sound35%,ownednone,normalviewport,tab1219045097idleopen. WarmbrowserCPU p95/max1.8/2.6ms,draw.6,RAF9.8/10.4ms; later2.6/2.9ms,draw.4; sharedhost notFPS. Hidden nativeMac stilllocked,no unlock/exportretry/audibleQAclaim.
+
+Allsix17soakseatingmisses releaseatmediumsameequipment (firstcontact≤.207s); lowpossum hasreadytick0butmissed61ticksearch. Armadillomediumvx.877m/s retainedpoorresult. All11angularrows finalrecover; longestrecordedsinglebadoutertick1.67ms, approx1–2pxangularonlytipdelta. Exactincominglizardfixtures showmaxcrossingsAFTERbounce in FREE600Hzstep, notsimultaneousstretchedanchors; samejointgap.00356/.03267mm. Currentmaxcontactpenetration.807/5.168mm. ContactonlyhigherHzheadworse. Researchrelativejointmotioncap8 gives.05681/.07712rad, residual0; NOTselectedwithoutnatural/all-species/CPUvalidation. Armadilloincomingfixtureabsent(doesnotreachgroundcriterionwithinbound); needcaptureactualearlierimpactbeforestudying19.69mmtailgap. Localcommitsonly,nopush/deploy.
+
+NEXT: validateflight-onlyrelativejointmotionrefinement against identicalincomingfixtures,natural35/all11species/CPU beforeconsideringproduction. Capturearmadilloactualfirstobstacleincoming, notassumeground. Reviewcontinuousskytravel/portraitnewscenery whenuseful. Preservefiniteframe/realforces/poorresults, no posefix/collisiondisable. Earlier17andbelowarehistory. Neverreportobsoletecompletedloretaskinsteadcurrentgamework.
+
+## Historical implementation: iteration 17
 
 Read docs/reviews/iteration-17/findings.md. Source161tests pass; initial-staging.js is construction-only, fullfixtureGJKdistance≥.025m. ExactretainedmarmosetrootcausewasheadINSIDEpouchflooratconstruction, beforehand; firststepneckgap.151549m. Freshwhole-riglowering−.325m aboveexistingloadingshelf givesclearance.07m/firststepgap7.67e−8; masses/inertia/velocities/angles/jointsettings/forces/CCDunchanged. Savedcorruptfixturesbypassstagingandremainreproducible. Independentreviewpassed. All396species×36gearstarts clear,66moved/330unchanged,maxanchor.000136mover.5s. Source/helper current sourcehashes match final evidence.
 

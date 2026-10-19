@@ -1,0 +1,25 @@
+{
+  "caveat": "Node no-op context tests bounded JS work, not browser rasterization or FPS.",
+  "rows": [
+    {
+      "region": "Grandfather Tree",
+      "methodCalls": 127,
+      "tenThousandNoopContextMs": 46.335083
+    },
+    {
+      "region": "open sky",
+      "methodCalls": 73,
+      "tenThousandNoopContextMs": 27.173167
+    },
+    {
+      "region": "jungle canopy",
+      "methodCalls": 170,
+      "tenThousandNoopContextMs": 59.80095899999999
+    },
+    {
+      "region": "forest floor",
+      "methodCalls": 170,
+      "tenThousandNoopContextMs": 59.31812500000001
+    }
+  ]
+}

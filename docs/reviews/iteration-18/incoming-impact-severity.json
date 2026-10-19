@@ -1,0 +1,2281 @@
+{
+  "protocol": "Each unchangedcanonical incomingfixture replayed1s at600Hzouter. Currentproduction stepping versusresearch-only allcollisionregion9600/19200Hz orrelativepartjointmotion: jointMotion8 addsintegrationceil(max|relativeOmega|*dt/.05),cap8; jointMotion16 target.025rad,cap16; bothretainexistingcollisionrefinement; noforces/material/mass/inertia/geometry/limit/CCDchanges. Allpartjoint and touching-enabled partcontact measurements AFTEREACHinternalintegration. Contactseparation usescurrentworldmanifold inclshape skins; notabsoluteproofagainstmissedcontacts/tunneling. Durationssuminternaldt whileanypartangular>.08; exactwithinobservedinternalcadence, notcontinuousanalyticduration. Energyallworldminusrecordedwork. Tracecaptureswarnings,largeanchors,first.1scontact. Noperformanceclaim.",
+  "sourceSHA256": {
+    "src/articulated.js": "c9457fbd8314e51e48d54bd89669caa7add821dc7c737171efbe925179b745bd",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6"
+  },
+  "missingFixtures": [
+    "docs/reviews/iteration-18/incoming-winding-armadillo-0.9.json"
+  ],
+  "rows": [
+    {
+      "name": "default-lizard-head",
+      "variant": "current",
+      "snapshotSHA256": "b009c6039ba86f56891180f774997b62b4ff19f593ed0b5b03ddde9b5291d3b2",
+      "initialCenter": {
+        "x": -1.3327116714222311,
+        "y": 303.4933595183405,
+        "vx": 5.617119498273261,
+        "vy": 14.071962739574325,
+        "mass": 0.65
+      },
+      "firstImpact": 0.02979166666663957,
+      "integrations": 995,
+      "maxAngular": 0.17062765885565345,
+      "maxAnchor": 0.0007752978345401676,
+      "maxContactPenetration": 0.0008070982664105802,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0.0016666666666666668,
+      "totalBadSeconds": 0.0016666666666666668,
+      "worstAngular": {
+        "time": 0.03833333333329847,
+        "dt": 0.0016666666666666668,
+        "angular": 0.17062765885565345,
+        "anchor": 0.000004331736553345332,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -128.93113420145127,
+          "a": "torso",
+          "b": "front-leg",
+          "anchorGap": 0.0000035555432624388453,
+          "angle": -1.1206276588556534,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.08583333333325527,
+        "dt": 0.0004166666666666667,
+        "angular": 0,
+        "anchor": 0.000020802591879294367,
+        "minContactSeparation": -0.0008070982664105802,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.0008070982664105802,
+            "points": [
+              {
+                "x": 53.038132771045824,
+                "y": 0.009596450866794705
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 0.000035395784249139095,
+        "center": {
+          "x": 70.2599549876827,
+          "y": 0.7634041826918958,
+          "vx": 18.201855902348218,
+          "vy": 0.28260138795562434,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.02979166666663957,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00020663236816009125,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0014855836132107655,
+              "points": [
+                {
+                  "x": 51.4167686941885,
+                  "y": 0.010742791806605385
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03833333333329847,
+          "dt": 0.0016666666666666668,
+          "angular": 0.17062765885565345,
+          "anchor": 0.000004331736553345332,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": -128.93113420145127,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 0.0000035555432624388453,
+            "angle": -1.1206276588556534,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": []
+        },
+        {
+          "time": 0.08583333333325527,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000020802591879294367,
+          "minContactSeparation": -0.0008070982664105802,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0008070982664105802,
+              "points": [
+                {
+                  "x": 53.038132771045824,
+                  "y": 0.009596450866794705
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08624999999992156,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000025288763354766532,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.001470524084275976,
+              "points": [
+                {
+                  "x": 53.04676759828879,
+                  "y": 0.010735262042137983
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default-lizard-head",
+      "variant": "near9600",
+      "snapshotSHA256": "b009c6039ba86f56891180f774997b62b4ff19f593ed0b5b03ddde9b5291d3b2",
+      "initialCenter": {
+        "x": -1.3327116714222311,
+        "y": 303.4933595183405,
+        "vx": 5.617119498273261,
+        "vy": 14.071962739574325,
+        "mass": 0.65
+      },
+      "firstImpact": 0.029687499999973,
+      "integrations": 1845,
+      "maxAngular": 0.1926994738367711,
+      "maxAnchor": 0.0007832350935076915,
+      "maxContactPenetration": 0.0011234708443856115,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0.0016666666666666668,
+      "totalBadSeconds": 0.0033333333333333335,
+      "worstAngular": {
+        "time": 0.03833333333329847,
+        "dt": 0.0016666666666666668,
+        "angular": 0.1926994738367711,
+        "anchor": 0.0006958752259083086,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -130.1502658090746,
+          "a": "torso",
+          "b": "front-leg",
+          "anchorGap": 0.0005460667680590601,
+          "angle": -1.142699473836771,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.029687499999973,
+        "dt": 0.00010416666666666667,
+        "angular": 0,
+        "anchor": 0.00009344628358624165,
+        "minContactSeparation": -0.0011234708443856115,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0011234708443856115,
+            "points": [
+              {
+                "x": 51.42158449594062,
+                "y": 0.009438264577807196
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0.0010216837000911472,
+        "anchor": 0.00009534971377228542,
+        "center": {
+          "x": 70.2668353672839,
+          "y": 0.7706648272471768,
+          "vx": 18.28891112916574,
+          "vy": 0.1615226320117951,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.029687499999973,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.00009344628358624165,
+          "minContactSeparation": -0.0011234708443856115,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0011234708443856115,
+              "points": [
+                {
+                  "x": 51.42158449594062,
+                  "y": 0.009438264577807196
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.02979166666663957,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.000030454095245816087,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.001472012792249476,
+              "points": [
+                {
+                  "x": 51.416777838616866,
+                  "y": 0.01073600639612474
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03833333333329847,
+          "dt": 0.0016666666666666668,
+          "angular": 0.1926994738367711,
+          "anchor": 0.0006958752259083086,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": -130.1502658090746,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 0.0005460667680590601,
+            "angle": -1.142699473836771,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": []
+        },
+        {
+          "time": 0.04499999999995907,
+          "dt": 0.0016666666666666668,
+          "angular": 0.09947315591526551,
+          "anchor": 0.0007832350935076915,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 174.1333248458908,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0007832350935076915,
+            "angle": 1.0494731559152655,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": []
+        },
+        {
+          "time": 0.08510416666658926,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 8.626932098938852e-7,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.0001608630503610181,
+              "points": [
+                {
+                  "x": 53.023389391114435,
+                  "y": 0.010080431525180504
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default-lizard-head",
+      "variant": "near19200",
+      "snapshotSHA256": "b009c6039ba86f56891180f774997b62b4ff19f593ed0b5b03ddde9b5291d3b2",
+      "initialCenter": {
+        "x": -1.3327116714222311,
+        "y": 303.4933595183405,
+        "vx": 5.617119498273261,
+        "vy": 14.071962739574325,
+        "mass": 0.65
+      },
+      "firstImpact": 0.029635416666639713,
+      "integrations": 3607,
+      "maxAngular": 0.19617830206009335,
+      "maxAnchor": 0.0007816630611963576,
+      "maxContactPenetration": 0.0023627838351198208,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0.0016666666666666668,
+      "totalBadSeconds": 0.0033333333333333335,
+      "worstAngular": {
+        "time": 0.03833333333329847,
+        "dt": 0.0016666666666666668,
+        "angular": 0.19617830206009335,
+        "anchor": 0.0006972113838231932,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -130.95642264535238,
+          "a": "torso",
+          "b": "front-leg",
+          "anchorGap": 0.0005513185370006231,
+          "angle": -1.1461783020600933,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.029635416666639713,
+        "dt": 0.00005208333333333334,
+        "angular": 0,
+        "anchor": 0.00004434986784872733,
+        "minContactSeparation": -0.0023627838351198208,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0023627838351198208,
+            "points": [
+              {
+                "x": 51.42400961438788,
+                "y": 0.008818608082440092
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0.00037761703997607476,
+        "anchor": 1.2197287594828936e-7,
+        "center": {
+          "x": 70.33775385951583,
+          "y": 0.45986129157484207,
+          "vx": 18.788720860149834,
+          "vy": -2.000159304345307,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.029635416666639713,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.00004434986784872733,
+          "minContactSeparation": -0.0023627838351198208,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0023627838351198208,
+              "points": [
+                {
+                  "x": 51.42400961438788,
+                  "y": 0.008818608082440092
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.029687499999973,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000010750371258571439,
+          "minContactSeparation": -0.0011418484466246617,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0011418484466246617,
+              "points": [
+                {
+                  "x": 51.42158270827878,
+                  "y": 0.009429075776687671
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.029739583333306285,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000009767001468031619,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.00014660648784505653,
+              "points": [
+                {
+                  "x": 51.41917783264568,
+                  "y": 0.01007330324392253
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03833333333329847,
+          "dt": 0.0016666666666666668,
+          "angular": 0.19617830206009335,
+          "anchor": 0.0006972113838231932,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": -130.95642264535238,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 0.0005513185370006231,
+            "angle": -1.1461783020600933,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": []
+        },
+        {
+          "time": 0.04499999999995907,
+          "dt": 0.0016666666666666668,
+          "angular": 0.10179055055820929,
+          "anchor": 0.0007816630611963576,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 174.07755636741064,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0007816630611963576,
+            "angle": 1.0517905505582092,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": []
+        },
+        {
+          "time": 0.08499999999992269,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 3.6566883162964735e-7,
+          "minContactSeparation": -0.00040409432409375945,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.00040409432409375945,
+              "points": [
+                {
+                  "x": 53.02058929109929,
+                  "y": 0.009797952837953115
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08505208333325598,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 3.2979398663416547e-7,
+          "minContactSeparation": -0.0001388544086309701,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0001388544086309701,
+              "points": [
+                {
+                  "x": 53.02167793226374,
+                  "y": 0.00993057279568451
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08510416666658926,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 4.0274170600527846e-7,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.00012822038189426455,
+              "points": [
+                {
+                  "x": 53.02276505238465,
+                  "y": 0.010064110190947127
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default-lizard-head",
+      "variant": "jointMotion8",
+      "snapshotSHA256": "b009c6039ba86f56891180f774997b62b4ff19f593ed0b5b03ddde9b5291d3b2",
+      "initialCenter": {
+        "x": -1.3327116714222311,
+        "y": 303.4933595183405,
+        "vx": 5.617119498273261,
+        "vy": 14.071962739574325,
+        "mass": 0.65
+      },
+      "firstImpact": 0.02979166666663957,
+      "integrations": 928,
+      "maxAngular": 0.056807390926397305,
+      "maxAnchor": 0.0005317971214246024,
+      "maxContactPenetration": 0.0009672120765110356,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "worstAngular": {
+        "time": 0.03124999999997158,
+        "dt": 0.00020833333333333335,
+        "angular": 0.056807390926397305,
+        "anchor": 0.00012788768486113273,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -440.17718610461014,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.00004949489820639529,
+          "angle": -1.0068073909263973,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.9712499999991593,
+        "dt": 0.0004166666666666667,
+        "angular": 0.0007782011659458465,
+        "anchor": 0.000004228991678582378,
+        "minContactSeparation": -0.0009672120765110356,
+        "worstJoint": {
+          "speed": -0.001260539724258436,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.0000030197121634832508,
+          "angle": 0.9507782011659458,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "front-leg",
+            "separation": -0.0009672120765110356,
+            "points": [
+              {
+                "x": 69.90876500654288,
+                "y": 0.009516393961744484
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0.004765821783397017,
+        "anchor": 7.854966309692183e-7,
+        "center": {
+          "x": 70.35544231011117,
+          "y": 0.3133724391222415,
+          "vx": 17.862830703902777,
+          "vy": 1.8727351552537725,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.02979166666663957,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00020663236816009125,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0014855836132107655,
+              "points": [
+                {
+                  "x": 51.4167686941885,
+                  "y": 0.010742791806605385
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08499999999996533,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000024808243628617057,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.0006013171712916932,
+              "points": [
+                {
+                  "x": 53.01607733909655,
+                  "y": 0.010300658585645842
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default-lizard-head",
+      "variant": "jointMotion16",
+      "snapshotSHA256": "b009c6039ba86f56891180f774997b62b4ff19f593ed0b5b03ddde9b5291d3b2",
+      "initialCenter": {
+        "x": -1.3327116714222311,
+        "y": 303.4933595183405,
+        "vx": 5.617119498273261,
+        "vy": 14.071962739574325,
+        "mass": 0.65
+      },
+      "firstImpact": 0.02979166666663957,
+      "integrations": 1202,
+      "maxAngular": 0.014915739049558896,
+      "maxAnchor": 0.00020663236816009125,
+      "maxContactPenetration": 0.002157624170100278,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "worstAngular": {
+        "time": 0.031145833333305006,
+        "dt": 0.00010416666666666667,
+        "angular": 0.014915739049558896,
+        "anchor": 0.0000322926642391576,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -444.7202727185056,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.000012337722784169022,
+          "angle": -0.9649157390495589,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.08458333333322798,
+        "dt": 0.00020833333333333335,
+        "angular": 0,
+        "anchor": 0.000005948972157253028,
+        "minContactSeparation": -0.002157624170100278,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.002157624170100278,
+            "points": [
+              {
+                "x": 53.003146895267854,
+                "y": 0.008921187914949856
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0.0015029719798775876,
+        "anchor": 0.000001146102327828241,
+        "center": {
+          "x": 70.31228518277813,
+          "y": 0.5170160028060252,
+          "vx": 18.037864466265006,
+          "vy": 1.0439249451747996,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.02979166666663957,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00020663236816009125,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0014855836132107655,
+              "points": [
+                {
+                  "x": 51.4167686941885,
+                  "y": 0.010742791806605385
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08458333333322798,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.000005948972157253028,
+          "minContactSeparation": -0.002157624170100278,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.002157624170100278,
+              "points": [
+                {
+                  "x": 53.003146895267854,
+                  "y": 0.008921187914949856
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08479166666656113,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.000008383189257617796,
+          "minContactSeparation": -0.0010533960451533236,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0010533960451533236,
+              "points": [
+                {
+                  "x": 53.00735625298704,
+                  "y": 0.009473301977423333
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08499999999989427,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.000008692213270311746,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.00008780460517993083,
+              "points": [
+                {
+                  "x": 53.011533360001124,
+                  "y": 0.01004390230258996
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "owned-beam-light",
+      "variant": "current",
+      "snapshotSHA256": "7579e8d7c4e6099c115354c4203545abba0491cbd89a01e43888862d603e48cb",
+      "initialCenter": {
+        "x": -1.333058426478106,
+        "y": 304.6110485565072,
+        "vx": 8.626031879910784,
+        "vy": 18.00027243916635,
+        "mass": 0.65
+      },
+      "firstImpact": 0.03083333333330529,
+      "integrations": 691,
+      "maxAngular": 0.17507699620906014,
+      "maxAnchor": 0.00023954969212253532,
+      "maxContactPenetration": 0.0051683741724134445,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0.0016666666666666668,
+      "totalBadSeconds": 0.0016666666666666668,
+      "worstAngular": {
+        "time": 0.051666666666619676,
+        "dt": 0.0016666666666666668,
+        "angular": 0.17507699620906014,
+        "anchor": 0.000041404498242144454,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": 132.90420264517724,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.000032665039816090224,
+          "angle": 1.12507699620906,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.03874999999996476,
+        "dt": 0.00020833333333333335,
+        "angular": 0,
+        "anchor": 0.00011165551122517215,
+        "minContactSeparation": -0.0051683741724134445,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": 0.0030581938993403945,
+            "points": [
+              {
+                "x": 83.92315870424555,
+                "y": 0.011529096949670192
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.0051683741724134445,
+            "points": [
+              {
+                "x": 83.86616846303522,
+                "y": 0.011366575842335074
+              },
+              {
+                "x": 83.90538027106712,
+                "y": 0.007415812913793278
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 7.068692673619438e-7,
+        "center": {
+          "x": 80.5020930498546,
+          "y": 9.073805686154454,
+          "vx": -3.878742785645734,
+          "vy": 4.549753394573001,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.03083333333330529,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00012998615642583684,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0001563326597409584,
+              "points": [
+                {
+                  "x": 84.64743980220935,
+                  "y": 0.010078166329870481
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.003023998537521933,
+              "points": [
+                {
+                  "x": 84.61593562623443,
+                  "y": 0.011511999268760967
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03604166666663389,
+          "dt": 0.00020833333333333335,
+          "angular": 0.0339281732775476,
+          "anchor": 0.00009585844774304058,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.00008623823265452302,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00006816384605028798,
+            "angle": -0.9839281732775476,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.002490760055696529,
+              "points": [
+                {
+                  "x": 84.35208388151939,
+                  "y": 0.011245380027848265
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03833333333329847,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00020171245945040084,
+          "minContactSeparation": -0.003787003743611666,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.003787003743611666,
+              "points": [
+                {
+                  "x": 84.04570141834938,
+                  "y": 0.008106498128194167
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03854166666663161,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00023954969212253532,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.00007813787769235872,
+              "points": [
+                {
+                  "x": 84.04508158389538,
+                  "y": 0.01003906893884618
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03874999999996476,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00011165551122517215,
+          "minContactSeparation": -0.0051683741724134445,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.0030581938993403945,
+              "points": [
+                {
+                  "x": 83.92315870424555,
+                  "y": 0.011529096949670192
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0051683741724134445,
+              "points": [
+                {
+                  "x": 83.86616846303522,
+                  "y": 0.011366575842335074
+                },
+                {
+                  "x": 83.90538027106712,
+                  "y": 0.007415812913793278
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0389583333332979,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00005112514461414726,
+          "minContactSeparation": -0.00023715389189269895,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.00023715389189269895,
+              "points": [
+                {
+                  "x": 83.90539115031086,
+                  "y": 0.00988142305405365
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.039166666666631045,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.000056658404593458954,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.004748468783945598,
+              "points": [
+                {
+                  "x": 83.90547058502139,
+                  "y": 0.0123742343919728
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.051666666666619676,
+          "dt": 0.0016666666666666668,
+          "angular": 0.17507699620906014,
+          "anchor": 0.000041404498242144454,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 132.90420264517724,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000032665039816090224,
+            "angle": 1.12507699620906,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": []
+        }
+      ]
+    },
+    {
+      "name": "owned-beam-light",
+      "variant": "near9600",
+      "snapshotSHA256": "7579e8d7c4e6099c115354c4203545abba0491cbd89a01e43888862d603e48cb",
+      "initialCenter": {
+        "x": -1.333058426478106,
+        "y": 304.6110485565072,
+        "vx": 8.626031879910784,
+        "vy": 18.00027243916635,
+        "mass": 0.65
+      },
+      "firstImpact": 0.03072916666663872,
+      "integrations": 810,
+      "maxAngular": 0.03824696158887653,
+      "maxAnchor": 0.00014226680071734299,
+      "maxContactPenetration": 0.004332258127596973,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "worstAngular": {
+        "time": 0.0949999999999136,
+        "dt": 0.0016666666666666668,
+        "angular": 0.03824696158887653,
+        "anchor": 0.00009420129472295329,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -33.29632840241665,
+          "a": "torso",
+          "b": "tail",
+          "anchorGap": 0.000011022449448582737,
+          "angle": -1.1382469615888766,
+          "limits": [
+            -1.1,
+            1.1
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.03072916666663872,
+        "dt": 0.00010416666666666667,
+        "angular": 0,
+        "anchor": 0.00003015329305985673,
+        "minContactSeparation": -0.004332258127596973,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.004332258127596973,
+            "points": [
+              {
+                "x": 84.63718713756889,
+                "y": 0.007833870936201515
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0002634437371952618,
+            "points": [
+              {
+                "x": 84.60450286372374,
+                "y": 0.00986827813140237
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 3.3619543616405754e-7,
+        "center": {
+          "x": 76.81748357951115,
+          "y": 9.041513200197485,
+          "vx": -7.710725957436771,
+          "vy": 4.513308159095638,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.03072916666663872,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.00003015329305985673,
+          "minContactSeparation": -0.004332258127596973,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004332258127596973,
+              "points": [
+                {
+                  "x": 84.63718713756889,
+                  "y": 0.007833870936201515
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0002634437371952618,
+              "points": [
+                {
+                  "x": 84.60450286372374,
+                  "y": 0.00986827813140237
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03083333333330529,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.00003890715746929825,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.00020228515980629663,
+              "points": [
+                {
+                  "x": 84.64741822397242,
+                  "y": 0.01010114257990315
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.003068164969589105,
+              "points": [
+                {
+                  "x": 84.61591586978102,
+                  "y": 0.011534082484794553
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.035937499999967315,
+          "dt": 0.00010416666666666667,
+          "angular": 0.03164965003437037,
+          "anchor": 0.00002524142976834629,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.00009295148834098654,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000019028890080599196,
+            "angle": -0.9816496500343703,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0005316807775435535,
+              "points": [
+                {
+                  "x": 84.3497372332036,
+                  "y": 0.010265840388771777
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.038124999999965326,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.00004953865791821472,
+          "minContactSeparation": -0.0014490133837410483,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0014490133837410483,
+              "points": [
+                {
+                  "x": 84.04472781338694,
+                  "y": 0.009275493308129476
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0382291666666319,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.000056632557028797554,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0003099716988666269,
+              "points": [
+                {
+                  "x": 84.04459346582948,
+                  "y": 0.010154985849433314
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03854166666663161,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.000021587711726532966,
+          "minContactSeparation": -0.0019349567395263827,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0019349567395263827,
+              "points": [
+                {
+                  "x": 83.9045555615837,
+                  "y": 0.009032521630236809
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.038645833333298185,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.00001316142956998822,
+          "minContactSeparation": -0.000005747858971571346,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.000005747858971571346,
+              "points": [
+                {
+                  "x": 83.90460128408401,
+                  "y": 0.009997126070514215
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03874999999996476,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.000011717340352939755,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.001939949345409437,
+              "points": [
+                {
+                  "x": 83.9046767993497,
+                  "y": 0.010969974672704719
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "owned-beam-light",
+      "variant": "near19200",
+      "snapshotSHA256": "7579e8d7c4e6099c115354c4203545abba0491cbd89a01e43888862d603e48cb",
+      "initialCenter": {
+        "x": -1.333058426478106,
+        "y": 304.6110485565072,
+        "vx": 8.626031879910784,
+        "vy": 18.00027243916635,
+        "mass": 0.65
+      },
+      "firstImpact": 0.030624999999972147,
+      "integrations": 1623,
+      "maxAngular": 0.024187796530029004,
+      "maxAnchor": 0.0001361039514519473,
+      "maxContactPenetration": 0.002790073008888623,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "worstAngular": {
+        "time": 0.12499999999988631,
+        "dt": 0.0016666666666666668,
+        "angular": 0.024187796530029004,
+        "anchor": 0.00003514472570668461,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": 21.388948397001368,
+          "a": "torso",
+          "b": "head",
+          "anchorGap": 1.3393827533976055e-9,
+          "angle": 0.524187796530029,
+          "limits": [
+            -0.5,
+            0.5
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.030624999999972147,
+        "dt": 0.00005208333333333334,
+        "angular": 0,
+        "anchor": 0.000008758656373406415,
+        "minContactSeparation": -0.002790073008888623,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.002790073008888623,
+            "points": [
+              {
+                "x": 84.6315195496762,
+                "y": 0.00860496349555569
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 0.000015668964369630098,
+        "center": {
+          "x": 79.1768646262108,
+          "y": 5.8101089871697305,
+          "vx": -5.26290355063643,
+          "vy": 1.1723320021643382,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.030624999999972147,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000008758656373406415,
+          "minContactSeparation": -0.002790073008888623,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.002790073008888623,
+              "points": [
+                {
+                  "x": 84.6315195496762,
+                  "y": 0.00860496349555569
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.030677083333305433,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000010605512960627302,
+          "minContactSeparation": -0.0012720618963577637,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0012720618963577637,
+              "points": [
+                {
+                  "x": 84.63662509448903,
+                  "y": 0.00936396905182112
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03072916666663872,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000010671736737498894,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0003417484909991539,
+              "points": [
+                {
+                  "x": 84.64163976799344,
+                  "y": 0.010170874245499579
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.035052083333301454,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000010584960819615553,
+          "minContactSeparation": -0.00046616803508101046,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00046616803508101046,
+              "points": [
+                {
+                  "x": 84.36210470494015,
+                  "y": 0.00976691598245949
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03510416666663474,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000011546457684820149,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0002611760108913175,
+              "points": [
+                {
+                  "x": 84.36361306523648,
+                  "y": 0.010130588005445654
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0356249999999676,
+          "dt": 0.00005208333333333334,
+          "angular": 0.01660266611664274,
+          "anchor": 0.000005329532437380518,
+          "minContactSeparation": -0.0003254189290755709,
+          "worstJoint": {
+            "speed": 0.00000658850746049211,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004037593686672142,
+            "angle": -0.9666026661166427,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0003254189290755709,
+              "points": [
+                {
+                  "x": 84.33910379861122,
+                  "y": 0.009837290535462215
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.035677083333300885,
+          "dt": 0.00005208333333333334,
+          "angular": 0.016476709150015312,
+          "anchor": 0.000005396544602257979,
+          "minContactSeparation": -0.00008857692571049777,
+          "worstJoint": {
+            "speed": 1.5906539688398311,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004170175108841885,
+            "angle": -0.9664767091500153,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00008857692571049777,
+              "points": [
+                {
+                  "x": 84.34053156765228,
+                  "y": 0.009955711537144751
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03572916666663417,
+          "dt": 0.00005208333333333334,
+          "angular": 0.01627122682843951,
+          "anchor": 0.000005378949599756088,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 3.15953514279434,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004181924282280782,
+            "angle": -0.9662712268284395,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.00017832186285281562,
+              "points": [
+                {
+                  "x": 84.34193837518936,
+                  "y": 0.010089160931426408
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03791666666663218,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000011458032970803602,
+          "minContactSeparation": -0.0002384888064379219,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0002384888064379219,
+              "points": [
+                {
+                  "x": 84.03632747350481,
+                  "y": 0.00988075559678104
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03796874999996547,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000012932188761891203,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0007052121550832659,
+              "points": [
+                {
+                  "x": 84.03633015749529,
+                  "y": 0.010352606077541633
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03848958333329833,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.000005892337039053842,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.0005303391858957375,
+              "points": [
+                {
+                  "x": 83.90351234955305,
+                  "y": 0.010265169592947869
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.038645833333298185,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.0000019973554669198318,
+          "minContactSeparation": -0.00010380623726453583,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00010380623726453583,
+              "points": [
+                {
+                  "x": 84.38341357288634,
+                  "y": 0.009948096881367732
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03869791666663147,
+          "dt": 0.00005208333333333334,
+          "angular": 0,
+          "anchor": 0.0000019561720898848355,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.00001339123801265621,
+              "points": [
+                {
+                  "x": 84.38304333786695,
+                  "y": 0.010006695619006328
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "owned-beam-light",
+      "variant": "jointMotion8",
+      "snapshotSHA256": "7579e8d7c4e6099c115354c4203545abba0491cbd89a01e43888862d603e48cb",
+      "initialCenter": {
+        "x": -1.333058426478106,
+        "y": 304.6110485565072,
+        "vx": 8.626031879910784,
+        "vy": 18.00027243916635,
+        "mass": 0.65
+      },
+      "firstImpact": 0.03083333333330529,
+      "integrations": 723,
+      "maxAngular": 0.07712170048008038,
+      "maxAnchor": 0.00023954969212253532,
+      "maxContactPenetration": 0.0051683741724134445,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "worstAngular": {
+        "time": 0.036458333333300175,
+        "dt": 0.00020833333333333335,
+        "angular": 0.07712170048008038,
+        "anchor": 0.00009888814136868692,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -617.7631927696326,
+          "a": "torso",
+          "b": "front-leg",
+          "anchorGap": 0.00006610500425220082,
+          "angle": -1.0271217004800803,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.03874999999996476,
+        "dt": 0.00020833333333333335,
+        "angular": 0,
+        "anchor": 0.00011165551122517215,
+        "minContactSeparation": -0.0051683741724134445,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": 0.0030581938993403945,
+            "points": [
+              {
+                "x": 83.92315870424555,
+                "y": 0.011529096949670192
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.0051683741724134445,
+            "points": [
+              {
+                "x": 83.86616846303522,
+                "y": 0.011366575842335074
+              },
+              {
+                "x": 83.90538027106712,
+                "y": 0.007415812913793278
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 6.989137128302392e-7,
+        "center": {
+          "x": 80.50209304985455,
+          "y": 9.074007336154411,
+          "vx": -3.8787427856457466,
+          "vy": 4.54975339457293,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.03083333333330529,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00012998615642583684,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0001563326597409584,
+              "points": [
+                {
+                  "x": 84.64743980220935,
+                  "y": 0.010078166329870481
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.003023998537521933,
+              "points": [
+                {
+                  "x": 84.61593562623443,
+                  "y": 0.011511999268760967
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03604166666663389,
+          "dt": 0.00020833333333333335,
+          "angular": 0.0339281732775476,
+          "anchor": 0.00009585844774304058,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.00008623823265452302,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00006816384605028798,
+            "angle": -0.9839281732775476,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.002490760055696529,
+              "points": [
+                {
+                  "x": 84.35208388151939,
+                  "y": 0.011245380027848265
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03833333333329847,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00020171245945040084,
+          "minContactSeparation": -0.003787003743611666,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.003787003743611666,
+              "points": [
+                {
+                  "x": 84.04570141834938,
+                  "y": 0.008106498128194167
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03854166666663161,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00023954969212253532,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.00007813787769235872,
+              "points": [
+                {
+                  "x": 84.04508158389538,
+                  "y": 0.01003906893884618
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03874999999996476,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00011165551122517215,
+          "minContactSeparation": -0.0051683741724134445,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.0030581938993403945,
+              "points": [
+                {
+                  "x": 83.92315870424555,
+                  "y": 0.011529096949670192
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0051683741724134445,
+              "points": [
+                {
+                  "x": 83.86616846303522,
+                  "y": 0.011366575842335074
+                },
+                {
+                  "x": 83.90538027106712,
+                  "y": 0.007415812913793278
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0389583333332979,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00005112514461414726,
+          "minContactSeparation": -0.00023715389189269895,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.00023715389189269895,
+              "points": [
+                {
+                  "x": 83.90539115031086,
+                  "y": 0.00988142305405365
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.039166666666631045,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.000056658404593458954,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.004748468783945598,
+              "points": [
+                {
+                  "x": 83.90547058502139,
+                  "y": 0.0123742343919728
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "owned-beam-light",
+      "variant": "jointMotion16",
+      "snapshotSHA256": "7579e8d7c4e6099c115354c4203545abba0491cbd89a01e43888862d603e48cb",
+      "initialCenter": {
+        "x": -1.333058426478106,
+        "y": 304.6110485565072,
+        "vx": 8.626031879910784,
+        "vy": 18.00027243916635,
+        "mass": 0.65
+      },
+      "firstImpact": 0.03083333333330529,
+      "integrations": 828,
+      "maxAngular": 0.0347878374672661,
+      "maxAnchor": 0.0001492703455047239,
+      "maxContactPenetration": 0.0008552948417461341,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "worstAngular": {
+        "time": 0.03583333333330074,
+        "dt": 0.00010416666666666667,
+        "angular": 0.0347878374672661,
+        "anchor": 0.000014598937433585235,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": -1.4210854715202004e-13,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.000014598937433585235,
+          "angle": -0.9847878374672661,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.0385416666666174,
+        "dt": 0.00010416666666666667,
+        "angular": 0,
+        "anchor": 0.000021104729519812323,
+        "minContactSeparation": -0.0008552948417461341,
+        "worstJoint": null,
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.0008552948417461341,
+            "points": [
+              {
+                "x": 83.90446509314981,
+                "y": 0.009572352579126933
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 4.5673127867580107e-7,
+        "center": {
+          "x": 76.7409333203178,
+          "y": 9.007799714867627,
+          "vx": -7.7903161577788165,
+          "vy": 4.477308373212313,
+          "mass": 0.65
+        }
+      },
+      "samples": [
+        {
+          "time": 0.03083333333330529,
+          "dt": 0.00020833333333333335,
+          "angular": 0,
+          "anchor": 0.00012998615642583684,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0001563326597409584,
+              "points": [
+                {
+                  "x": 84.64743980220935,
+                  "y": 0.010078166329870481
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.003023998537521933,
+              "points": [
+                {
+                  "x": 84.61593562623443,
+                  "y": 0.011511999268760967
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.035937499999967315,
+          "dt": 0.00010416666666666667,
+          "angular": 0.03455268808790213,
+          "anchor": 0.000025197212592268425,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.0000892247552428671,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000019017058901678366,
+            "angle": -0.9845526880879021,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0007296900299644422,
+              "points": [
+                {
+                  "x": 84.34954310178891,
+                  "y": 0.010364845014982221
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03811111111106413,
+          "dt": 0.00011111111111111112,
+          "angular": 0,
+          "anchor": 0.00005575709206947496,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.000045975381394520315,
+              "points": [
+                {
+                  "x": 84.04403203121058,
+                  "y": 0.01002298769069726
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0385416666666174,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.000021104729519812323,
+          "minContactSeparation": -0.0008552948417461341,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": -0.0008552948417461341,
+              "points": [
+                {
+                  "x": 83.90446509314981,
+                  "y": 0.009572352579126933
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.038645833333283974,
+          "dt": 0.00010416666666666667,
+          "angular": 0,
+          "anchor": 0.000013190653015387723,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "contacts": [
+            {
+              "a": "world",
+              "b": "head",
+              "separation": 0.001050150874881254,
+              "points": [
+                {
+                  "x": 83.90451328193271,
+                  "y": 0.010525075437440627
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

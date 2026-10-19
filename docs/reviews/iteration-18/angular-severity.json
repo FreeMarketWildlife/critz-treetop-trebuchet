@@ -1,0 +1,779 @@
+{
+  "protocol": "Read-only severityreview of iteration17 retained35case regression. No physicsrerun, noincomingfixturecapture, productionunchanged. All11 rawangularflags preserved. Duplicate snakehead/torso cases sharefallbackgrip/trajectory and are not independentimpacts. Apparentsize at42px/m flight and100px/m loadingcloseup;100px flightnumber is comparisononly, not actualflightzoom.",
+  "inputSHA256": "8fee060e2aff3cf0ba62bba1b5cd959cae5212d64ef370db449103373539ee71",
+  "speciesSourceMatchesRecorded": true,
+  "summary": {
+    "flaggedRows": 11,
+    "distinctWorstCasePatterns": 10,
+    "maxRecordedConsecutiveSeconds": 0.0016666666666666668,
+    "totalBadOuterSamples": 13,
+    "allFinalEndpointsBelowPoint08": true,
+    "maxApproxFlightTipPixels": 1.6080049223301005,
+    "maxApproxCloseupTipPixels": 3.8285831484050012
+  },
+  "rows": [
+    {
+      "id": "default-turtle-torso",
+      "species": "turtle",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "flight",
+        "time": 16.29833333333475,
+        "pair": [
+          "torso",
+          "head"
+        ],
+        "radians": 0.09826679552210749,
+        "degrees": 5.630272649691816,
+        "angle": -0.5982667955221075,
+        "limits": [
+          -0.5,
+          0.5
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.19,
+          "radius": 0.075
+        },
+        "localAnchorB": {
+          "x": -0.15,
+          "y": 0
+        },
+        "maxLeverMetres": 0.245,
+        "approximateExcessTipChordMetres": 0.0240656793860211,
+        "flight42pxPerMetre": 1.0107585342128862,
+        "closeup100pxPerMetre": 2.40656793860211,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "flight",
+          "samples": 5492,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.09826679552210749,
+          "phaseEndpointMaxAnchor": 0.00010119859680161231
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "impact_recovery",
+        "angularExcess": 0,
+        "maxAnchor": 0.00003648844059948382
+      },
+      "wholeRunAnchor": {
+        "metres": 0.004316501423266599,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.731666666667062,
+        "flight42pxPerMetre": 0.18129305977719717,
+        "closeup100pxPerMetre": 0.43165014232665994,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "default-snake-torso",
+      "species": "snake",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "ground_recovery",
+        "time": 19.148333333332054,
+        "pair": [
+          "head",
+          "segment-1"
+        ],
+        "radians": 0.10687621033859496,
+        "degrees": 6.123555782753947,
+        "angle": 1.156876210338595,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.25,
+          "radius": 0.065
+        },
+        "localAnchorB": {
+          "x": 0.10000000000000003,
+          "y": 0
+        },
+        "maxLeverMetres": 0.22500000000000003,
+        "approximateExcessTipChordMetres": 0.024035703996637747,
+        "flight42pxPerMetre": 1.0094995678587853,
+        "closeup100pxPerMetre": 2.4035703996637747,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "ground_recovery",
+          "samples": 300,
+          "angularBadSteps": 2,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.021594403636311155,
+          "phaseEndpointMaxAnchor": 0.000042701244203886594
+        }
+      ],
+      "totalAngularBadSamples": 2,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "ground_recovery",
+        "angularExcess": 0.021594403636311155,
+        "maxAnchor": 0.000042701244203886594
+      },
+      "wholeRunAnchor": {
+        "metres": 0.00803245338761953,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.371666666667005,
+        "flight42pxPerMetre": 0.3373630422800203,
+        "closeup100pxPerMetre": 0.803245338761953,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "default-lizard-head",
+      "species": "lizard",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "impact_recovery",
+        "time": 16.76166666666766,
+        "pair": [
+          "torso",
+          "front-leg"
+        ],
+        "radians": 0.17062765885565345,
+        "degrees": 9.776244720626948,
+        "angle": -1.1206276588556534,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.12,
+          "radius": 0.04
+        },
+        "localAnchorB": {
+          "x": -0.085,
+          "y": 0.06
+        },
+        "maxLeverMetres": 0.16093386622447825,
+        "approximateExcessTipChordMetres": 0.027426470188163916,
+        "flight42pxPerMetre": 1.1519117479028844,
+        "closeup100pxPerMetre": 2.742647018816392,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "impact_recovery",
+          "samples": 300,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0,
+          "phaseEndpointMaxAnchor": 0.00004508286796385585
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "impact_recovery",
+        "angularExcess": 0,
+        "maxAnchor": 0.00004508286796385585
+      },
+      "wholeRunAnchor": {
+        "metres": 0.014135996150638645,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.838333333333745,
+        "flight42pxPerMetre": 0.5937118383268231,
+        "closeup100pxPerMetre": 1.4135996150638646,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "default-snake-head",
+      "species": "snake",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "ground_recovery",
+        "time": 19.148333333332054,
+        "pair": [
+          "head",
+          "segment-1"
+        ],
+        "radians": 0.10687621033859496,
+        "degrees": 6.123555782753947,
+        "angle": 1.156876210338595,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.25,
+          "radius": 0.065
+        },
+        "localAnchorB": {
+          "x": 0.10000000000000003,
+          "y": 0
+        },
+        "maxLeverMetres": 0.22500000000000003,
+        "approximateExcessTipChordMetres": 0.024035703996637747,
+        "flight42pxPerMetre": 1.0094995678587853,
+        "closeup100pxPerMetre": 2.4035703996637747,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "ground_recovery",
+          "samples": 300,
+          "angularBadSteps": 2,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.021594403636311155,
+          "phaseEndpointMaxAnchor": 0.000042701244203886594
+        }
+      ],
+      "totalAngularBadSamples": 2,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "ground_recovery",
+        "angularExcess": 0.021594403636311155,
+        "maxAnchor": 0.000042701244203886594
+      },
+      "wholeRunAnchor": {
+        "metres": 0.00803245338761953,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.371666666667005,
+        "flight42pxPerMetre": 0.3373630422800203,
+        "closeup100pxPerMetre": 0.803245338761953,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "default-chipmunk-head",
+      "species": "chipmunk",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "loading",
+        "time": 3.603333333333189,
+        "pair": [
+          "torso",
+          "rear-leg"
+        ],
+        "radians": 0.13462300572187247,
+        "degrees": 7.713330053228825,
+        "angle": -1.0846230057218724,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.135,
+          "radius": 0.045
+        },
+        "localAnchorB": {
+          "x": 0.07,
+          "y": 0.08
+        },
+        "maxLeverMetres": 0.1672957480863501,
+        "approximateExcessTipChordMetres": 0.022504853155549634,
+        "flight42pxPerMetre": 0.9452038325330846,
+        "closeup100pxPerMetre": 2.2504853155549633,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "loading",
+          "samples": 3017,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.0037667883643225375,
+          "phaseEndpointMaxAnchor": 0.0000013200917158283321
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "impact_recovery",
+        "angularExcess": 0,
+        "maxAnchor": 0.00001258507480875886
+      },
+      "wholeRunAnchor": {
+        "metres": 0.0195575077954323,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.771666666667068,
+        "flight42pxPerMetre": 0.8214153274081567,
+        "closeup100pxPerMetre": 1.95575077954323,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "default-frog-head",
+      "species": "frog",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "loading",
+        "time": 3.599999999999856,
+        "pair": [
+          "torso",
+          "rear-thigh"
+        ],
+        "radians": 0.08501817726753069,
+        "degrees": 4.871182739324587,
+        "angle": -1.1850181772675308,
+        "limits": [
+          -1.1,
+          1.1
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.32,
+          "radius": 0.08
+        },
+        "localAnchorB": {
+          "x": 0.1,
+          "y": 0.05
+        },
+        "maxLeverMetres": 0.26681541692269406,
+        "approximateExcessTipChordMetres": 0.022677329232394013,
+        "flight42pxPerMetre": 0.9524478277605486,
+        "closeup100pxPerMetre": 2.2677329232394015,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "loading",
+          "samples": 2826,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.020014746580899856,
+          "phaseEndpointMaxAnchor": 0.000001581004680148606
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "descent_after_obstacle",
+        "angularExcess": 0,
+        "maxAnchor": 0.00001442699744626554
+      },
+      "wholeRunAnchor": {
+        "metres": 0.018860746851662943,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.463333333333686,
+        "flight42pxPerMetre": 0.7921513677698436,
+        "closeup100pxPerMetre": 1.8860746851662942,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "winding-armadillo-0.9",
+      "species": "armadillo",
+      "outcome": "launched",
+      "otherFlags": [
+        "backward_or_vertical_launch"
+      ],
+      "worstAngular": {
+        "phase": "impact_recovery",
+        "time": 10.196666666667447,
+        "pair": [
+          "torso",
+          "rear-leg"
+        ],
+        "radians": 0.16908380776324639,
+        "degrees": 9.687788568835362,
+        "angle": -1.1190838077632463,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.165,
+          "radius": 0.055
+        },
+        "localAnchorB": {
+          "x": 0.1,
+          "y": 0.115
+        },
+        "maxLeverMetres": 0.22670104833692772,
+        "approximateExcessTipChordMetres": 0.038285831484050015,
+        "flight42pxPerMetre": 1.6080049223301005,
+        "closeup100pxPerMetre": 3.8285831484050012,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "impact_recovery",
+          "samples": 300,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.002221332138847787,
+          "phaseEndpointMaxAnchor": 7.380606460632945e-8
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "descent_after_obstacle",
+        "angularExcess": 0.0033550043252681405,
+        "maxAnchor": 0.000005916793511311436
+      },
+      "wholeRunAnchor": {
+        "metres": 0.0196915421379215,
+        "pair": [
+          "torso",
+          "tail"
+        ],
+        "phase": "impact_recovery",
+        "time": 10.19000000000078,
+        "flight42pxPerMetre": 0.827044769792703,
+        "closeup100pxPerMetre": 1.96915421379215,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "owned-counterweight-heavy",
+      "species": "lizard",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "impact_recovery",
+        "time": 17.02333333333409,
+        "pair": [
+          "torso",
+          "rear-leg"
+        ],
+        "radians": 0.13887576724583828,
+        "degrees": 7.95699533982769,
+        "angle": 1.0888757672458382,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.12,
+          "radius": 0.04
+        },
+        "localAnchorB": {
+          "x": 0.085,
+          "y": 0.06
+        },
+        "maxLeverMetres": 0.16093386622447825,
+        "approximateExcessTipChordMetres": 0.02233185809320942,
+        "flight42pxPerMetre": 0.9379380399147956,
+        "closeup100pxPerMetre": 2.233185809320942,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "impact_recovery",
+          "samples": 300,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0,
+          "phaseEndpointMaxAnchor": 0.00019298722093914576
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "impact_recovery",
+        "angularExcess": 0,
+        "maxAnchor": 0.00019298722093914576
+      },
+      "wholeRunAnchor": {
+        "metres": 0.013614363720612258,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.311666666666996,
+        "flight42pxPerMetre": 0.5718032762657148,
+        "closeup100pxPerMetre": 1.361436372061226,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "owned-beam-long",
+      "species": "lizard",
+      "outcome": "launched",
+      "otherFlags": [
+        "launch_branch_impact"
+      ],
+      "worstAngular": {
+        "phase": "flight",
+        "time": 9.756666666667378,
+        "pair": [
+          "torso",
+          "rear-leg"
+        ],
+        "radians": 0.09094281567245877,
+        "degrees": 5.210639515068085,
+        "angle": -1.0409428156724587,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.12,
+          "radius": 0.04
+        },
+        "localAnchorB": {
+          "x": 0.085,
+          "y": 0.06
+        },
+        "maxLeverMetres": 0.16093386622447825,
+        "approximateExcessTipChordMetres": 0.01463073584412775,
+        "flight42pxPerMetre": 0.6144909054533655,
+        "closeup100pxPerMetre": 1.463073584412775,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "flight",
+          "samples": 2124,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.019918147332319336,
+          "phaseEndpointMaxAnchor": 0.000023075744143376248
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "ground_recovery",
+        "angularExcess": 0,
+        "maxAnchor": 0.0005201869984877186
+      },
+      "wholeRunAnchor": {
+        "metres": 0.001606250795570949,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.273333333333657,
+        "flight42pxPerMetre": 0.06746253341397986,
+        "closeup100pxPerMetre": 0.1606250795570949,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "owned-beam-light",
+      "species": "lizard",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "impact_recovery",
+        "time": 16.843333333334254,
+        "pair": [
+          "torso",
+          "rear-leg"
+        ],
+        "radians": 0.17485337325004768,
+        "degrees": 10.018360320853418,
+        "angle": 1.1248533732500476,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.12,
+          "radius": 0.04
+        },
+        "localAnchorB": {
+          "x": 0.085,
+          "y": 0.06
+        },
+        "maxLeverMetres": 0.16093386622447825,
+        "approximateExcessTipChordMetres": 0.02810399562849275,
+        "flight42pxPerMetre": 1.1803678163966955,
+        "closeup100pxPerMetre": 2.810399562849275,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "impact_recovery",
+          "samples": 300,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.02620079966888511,
+          "phaseEndpointMaxAnchor": 0.000021110558646740625
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "impact_recovery",
+        "angularExcess": 0.02620079966888511,
+        "maxAnchor": 0.000021110558646740625
+      },
+      "wholeRunAnchor": {
+        "metres": 0.017243270969221416,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.328333333333665,
+        "flight42pxPerMetre": 0.7242173807072995,
+        "closeup100pxPerMetre": 1.7243270969221416,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    },
+    {
+      "id": "owned-long-beam-sling-heavy-counter",
+      "species": "lizard",
+      "outcome": "launched",
+      "otherFlags": [],
+      "worstAngular": {
+        "phase": "loading",
+        "time": 3.5349999999998634,
+        "pair": [
+          "torso",
+          "rear-leg"
+        ],
+        "radians": 0.09301804618240905,
+        "degrees": 5.3295414648050174,
+        "angle": 1.043018046182409,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "geometry": {
+        "shape": {
+          "type": "capsule",
+          "length": 0.12,
+          "radius": 0.04
+        },
+        "localAnchorB": {
+          "x": 0.085,
+          "y": 0.06
+        },
+        "maxLeverMetres": 0.16093386622447825,
+        "approximateExcessTipChordMetres": 0.014964357565574514,
+        "flight42pxPerMetre": 0.6285030177541295,
+        "closeup100pxPerMetre": 1.4964357565574513,
+        "method": "Maximum bodyB extent from its fixed jointlocalanchor. Chord2Rsin(excess/2) compares justangularlimitexcess withbodyAheldfixed. Not measuredrendererror or fullrigdisplacement."
+      },
+      "warnings": [
+        {
+          "phase": "loading",
+          "samples": 2864,
+          "angularBadSteps": 1,
+          "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+          "phaseEndpointAngularExcess": 0.0038318160687660363,
+          "phaseEndpointMaxAnchor": 0.0000013320235710351758
+        }
+      ],
+      "totalAngularBadSamples": 1,
+      "longestRecordedConsecutiveSeconds": 0.0016666666666666668,
+      "finalEndpoint": {
+        "phase": "impact_recovery",
+        "angularExcess": 0,
+        "maxAnchor": 0.00002542079591421148
+      },
+      "wholeRunAnchor": {
+        "metres": 0.01654809602110768,
+        "pair": [
+          "cradle",
+          "right-panel"
+        ],
+        "phase": "flight",
+        "time": 7.616666666667044,
+        "flight42pxPerMetre": 0.6950200328865226,
+        "closeup100pxPerMetre": 1.6548096021107679,
+        "note": "Whole-run independent maximum; usually pouchhinge and not the samejoint/time asangularpeak."
+      },
+      "maxPositiveEnergyResidual": 0,
+      "nonfinite": null,
+      "limitations": "600Hz outer diagnostics retain phase aggregates, not perjointfulltraces/internal4800Hzpeaks. Counteddt is sampled occupancy, not exactcontinuousduration. No simultaneousanchor/contactpenetration data atangularpeak. Finalendpoint aggregates all joints; no proof against unseencontacterror."
+    }
+  ]
+}
