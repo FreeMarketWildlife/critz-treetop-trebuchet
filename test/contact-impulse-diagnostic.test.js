@@ -1,0 +1,6 @@
+import test from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';import{PhysicalHookScene}from'../src/hook-experiment.js';import{contactImpulseOnBody}from'../scripts/contact-impulse36.js';
+test('applied solver normal closes canopy momentum ledger without changing the replay',()=>{
+ const saved=JSON.parse(readFileSync(new URL('../docs/reviews/iteration-35/canopy-incoming.json',import.meta.url))),s=new PhysicalHookScene(saved.p,saved.species,saved),control=new PhysicalHookScene(saved.p,saved.species,saved),before=s.center();let solver=0,postPosition=0,count=0;
+ s.world.on('post-solve',(c,i)=>{const a=c.getFixtureA().getBody(),b=c.getFixtureB().getBody(),pa=a.getUserData()?.role==='part',pb=b.getUserData()?.role==='part';if(pa===pb)return;const q=contactImpulseOnBody(c,i,pa?a:b);solver+=q.x;postPosition+=q.postPositionX;count++;});
+ for(let k=0;k<180;k++){s.step();control.step();}const change=s.rig.totalMass*(s.center().vx-before.vx);assert.ok(count>0);assert.ok(Math.abs(change-solver)<1e-9);assert.ok(Math.abs(change-postPosition)>.5);assert.deepEqual(s.center(),control.center());assert.equal(JSON.stringify(s.snapshot()),JSON.stringify(control.snapshot()));
+});

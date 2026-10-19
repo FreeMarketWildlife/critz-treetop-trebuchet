@@ -1,0 +1,115 @@
+{
+  "baseline": "9d3b7d5",
+  "tests": {
+    "pass": 238,
+    "fail": 0
+  },
+  "solverChanged": false,
+  "measurementCorrection": {
+    "oldResidualKgMPerS": -1.2945390548287534,
+    "solverNormalResidualKgMPerS": -5.684341886080802e-14,
+    "maxPerIntegrationCorrectedResidual": 7.105427357601002e-15,
+    "firstContactSeconds": 0.08770833333325889,
+    "maxJointErrorM": 0.0004229013426027088,
+    "allPayloadStepEnergyChangesNegative": true,
+    "allCorrectedWorldStepEnergyChangesNegative": true
+  },
+  "referenceComparison": {
+    "referenceHz": 9600,
+    "notGroundTruth": true,
+    "deltaPositionX": 0.057670928112990794,
+    "deltaPositionY": -0.03290511118312622,
+    "logicalPixelsAt42PerMetreX": 2.4221789807456133,
+    "logicalPixelsAt42PerMetreY": -1.3820146696913014
+  },
+  "benchmark": [
+    {
+      "spec": {
+        "name": "current",
+        "hz": 600,
+        "v": 20,
+        "p": 12
+      },
+      "medianMs": 21.50758399999995,
+      "p95Ms": 23.28150000000005,
+      "medianRatioToCurrent": 1
+    },
+    {
+      "spec": {
+        "name": "external1200",
+        "hz": 1200,
+        "v": 20,
+        "p": 12
+      },
+      "medianMs": 30.1271670000001,
+      "p95Ms": 30.656583000000865,
+      "medianRatioToCurrent": 1.4007694681094895
+    },
+    {
+      "spec": {
+        "name": "external2400",
+        "hz": 2400,
+        "v": 20,
+        "p": 12
+      },
+      "medianMs": 49.16791699999976,
+      "p95Ms": 50.68462499999987,
+      "medianRatioToCurrent": 2.2860734613427462
+    },
+    {
+      "spec": {
+        "name": "external4800",
+        "hz": 4800,
+        "v": 20,
+        "p": 12
+      },
+      "medianMs": 93.67595799999981,
+      "p95Ms": 95.81841600000007,
+      "medianRatioToCurrent": 4.355484930338992
+    },
+    {
+      "spec": {
+        "name": "external9600",
+        "hz": 9600,
+        "v": 20,
+        "p": 12
+      },
+      "medianMs": 183.46870900000022,
+      "p95Ms": 187.64708400000018,
+      "medianRatioToCurrent": 8.53041926977947
+    },
+    {
+      "spec": {
+        "name": "iterations40",
+        "hz": 600,
+        "v": 40,
+        "p": 24
+      },
+      "medianMs": 28.075040999999146,
+      "p95Ms": 29.580582999999933,
+      "medianRatioToCurrent": 1.3053554039356168
+    },
+    {
+      "spec": {
+        "name": "iterations80",
+        "hz": 600,
+        "v": 80,
+        "p": 48
+      },
+      "medianMs": 41.59345899999971,
+      "p95Ms": 43.77829100000008,
+      "medianRatioToCurrent": 1.9338973173369824
+    }
+  ],
+  "physicalSourcesExactBaseline": {
+    "src/articulated.js": true,
+    "src/hook-experiment.js": true,
+    "src/species.js": true,
+    "src/world.js": true,
+    "src/encounters.js": true,
+    "src/encounter-body.js": true,
+    "src/fixed-obstacles.js": true,
+    "src/mushroom-geometry.js": true
+  },
+  "pinnedPlanckFileSha256": "70d3eed1eb7714823f93718fd90b671a41b9c7920b568f06dde695172eda16f1"
+}
