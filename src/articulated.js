@@ -123,6 +123,9 @@ export class CritterScene {
   for(const b of this.parts){const v=b.getLinearVelocity(),speed=Math.hypot(v.x,v.y),spin=Math.abs(b.getAngularVelocity());if(speed<3&&spin<10&&enemySpeed<3)continue;
    const pad=.15+(speed+enemySpeed)*dt;
    for(let f=b.getFixtureList();f;f=f.getNext()){const a=f.getAABB(0),lo=a.lowerBound,hi=a.upperBound;
+    // The loading shelf is also a real arrival surface when a poor throw
+    // returns toward the rig. Its centre/half-extents match construction above.
+    if(hi.x+pad>=-5.1&&lo.x-pad<=-3.5&&hi.y+pad>=this.p.pivotHeight-4.54&&lo.y-pad<=this.p.pivotHeight-4.46)return true;
     if(layout.surfaces.some(s=>hi.x+pad>=s.minX&&lo.x-pad<=s.maxX&&hi.y+pad>=s.y-.08&&lo.y-pad<=s.y))return true;
     for(const obstacle of obstacles)if(hi.x+pad>=obstacle.x-obstacle.radius&&lo.x-pad<=obstacle.x+obstacle.radius&&hi.y+pad>=obstacle.y-obstacle.radius&&lo.y-pad<=obstacle.y+obstacle.radius)return true;
    }
