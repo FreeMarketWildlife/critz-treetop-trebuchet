@@ -1,6 +1,16 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 27 checkpoint
+## CURRENT implementation: iteration 28 checkpoint
+
+Canonical only: /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Preserved task-5/treetop recovery copy stays untouched. Baseline217986c. Read docs/reviews/iteration-28/findings.md, verification.json, launch-parity.json; contact-review.html is save-free actual renderer/solver with LABELLED SYNTHETIC incoming poses, not normal throws.
+
+New original waxleaf skid(canopy4kg) and seed-husk skid(floor6kg): actual passive three-fixture capsules, low friction/restitution, matching chevrons/silhouette. Full conservative radius in spawn clearance/edge cues; individual ↔ warning badge. Pools now2tree/2sky/3canopy/3floor. Birth silhouettes+scheduledmotion fit biome; active gravity may cross regions. Fixed geography/launch/economy/save unchanged. Catalog/margin intentionally changes seeded encounter schedules; reviewed golden updated.
+
+213tests pass incl passive energy, material response, capsulemass/bounds, regional births, fullradiuscue, actual repeatedcontact rewards/idempotence,40contact-pulse80mscooldown, capsuleexactclone. Three fullphysical loading/release cases lizard/turtle/armadillo EXACT recoverybaseline,assistWork0. Browser390actualsize syntheticcanopy1impact/2s,floor7/~2.01s; actualcapsules/fungus visible,edge↔noticeverified, reducedchecked,consoleclean,viewportreset. No full132/264soak rerun. Natural encounter frequency/human fairness/deviceFPS/audio remain unverified.
+
+Earned saves untouched. IsolatedQA127.0.0.1:8082; obsolete27tab closedonlyafter0wallet/SaveOFF/nohand/idleconfirmed. One paused encounter viewer retained; older/user tabs untouched. Existing8080 canonical server retained. No exportretry/unlock/deploy/install/forcepush. Next assess natural encounter contact frequency/readability and broader original world/art direction without forced collisions or hidden boosts.
+
+## Historical implementation: iteration 27 checkpoint
 
 Canonical project: /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Continue exclusively here; the old task-5/treetop checkout is a preserved recovery copy. Canonical baseline and public GitHub were verified at 473e282 before this refinement. Existing loopback 8080 now serves this folder; original destination empty Git metadata is backed up outside the project. No force push or deployment is authorized.
 

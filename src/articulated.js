@@ -1,3 +1,4 @@
+import {createEncounterBody} from './encounter-body.js';
 import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js';
 import * as P from '../node_modules/planck/dist/planck.mjs';
 import {aerodynamicForces} from './glide.js';
@@ -65,7 +66,7 @@ export class CritterScene {
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight' || this.elapsed-this.lastImpact<.08)return;
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
-   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>surfaceNear(s,point,.25))?.id:null;this.events.push({type:'impact',strength,position:point?{x:point.x,y:point.y}:this.center(),material,surface:surface??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
+   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'||d.shape==='skid'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>surfaceNear(s,point,.25))?.id:null;this.events.push({type:'impact',strength,position:point?{x:point.x,y:point.y}:this.center(),material,surface:surface??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
  }
  startWinding(fraction){
   if(this.hand || !['uncocked','loading','wind-stalled'].includes(this.phase))throw new Error('Winding requires an unloaded grip and idle mechanism');
@@ -91,8 +92,7 @@ export class CritterScene {
   const births=this.encounters.update(time,c).spawns;let added=false;
   for(const e of births)if(!this.enemies.has(e.id)&&this.enemies.size<8){
    if(Math.hypot(e.x-c.x,e.y-c.y)<e.radius+1.5||!this.canSpawnEncounter(e))continue;
-   const body=this.world.createDynamicBody({position:V(e.x,e.y),linearVelocity:V(e.vx,e.vy),bullet:true});body.setUserData({role:'enemy',id:e.id,color:e.color,kind:e.kind,biome:e.biome,shape:e.shape,expiresAt:e.expiresAt});
-   body.createFixture(P.Circle(e.radius),{density:e.mass/(Math.PI*e.radius**2),friction:e.material.friction,restitution:e.material.restitution,filterCategoryBits:32,filterMaskBits:5});
+   const body=createEncounterBody(this.world,e);
    this.enemies.set(e.id,body);this.spawnEnergy+=this.bodyEnergy(body);added=true;
   }
   if(added&&time-this.lastEnemySound>=.4){this.lastEnemySound=time;this.events.push({type:'enemy'});if(this.events.length>16)this.events.shift();}

@@ -1,4 +1,4 @@
-// Original placeholder encounter recipes. Values are gameplay tuning, not biology.
+// Original passive encounter recipes. Values are gameplay tuning, not biology.
 // Descriptors are observations of a seeded world schedule; no terrain is changed.
 export const encounterPools = Object.freeze({
   grandfatherTree: [
@@ -9,10 +9,12 @@ export const encounterPools = Object.freeze({
     {kind:'round bird',shape:'oval',color:'#7faed0',radius:.55,mass:.8,friction:.12,restitution:.6,motion:'wave'}],
   jungleCanopy: [
     {kind:'springy pod',shape:'pod',color:'#d69e5f',radius:.65,mass:1.5,friction:.18,restitution:.8,motion:'bob'},
-    {kind:'vine bug',shape:'oval',color:'#97b95d',radius:.45,mass:.7,friction:.28,restitution:.65,motion:'hop'}],
+    {kind:'vine bug',shape:'oval',color:'#97b95d',radius:.45,mass:.7,friction:.28,restitution:.65,motion:'hop'},
+    {kind:'waxleaf skid',shape:'skid',color:'#60bda0',radius:1.1,mass:4,friction:.015,restitution:.08,motion:'wave'}],
   forestFloor: [
     {kind:'round fungus',shape:'cap',color:'#d28ba8',radius:.8,mass:2.5,friction:.2,restitution:.75,motion:'bob'},
-    {kind:'rolling beetle',shape:'circle',color:'#ad8059',radius:.6,mass:1.8,friction:.15,restitution:.7,motion:'roll'}]
+    {kind:'rolling beetle',shape:'circle',color:'#ad8059',radius:.6,mass:1.8,friction:.15,restitution:.7,motion:'roll'},
+    {kind:'seed-husk skid',shape:'skid',color:'#c3a16a',radius:1.2,mass:6,friction:.025,restitution:.1,motion:'roll'}]
 });
 for(const pool of Object.values(encounterPools)){pool.forEach(Object.freeze);Object.freeze(pool);}
 const regions={grandfatherTree:[245,320],openSky:[120,245],jungleCanopy:[5,120],forestFloor:[.8,5]};
@@ -49,7 +51,7 @@ export function createEncounterDirector(seed=0,saved=null){
   const recipes=new Map();
   function recipeFor(id,biome,c,s){let entry=recipes.get(id);if(entry)return entry;
     const rng=random(`${seed}:${id}`),start=s*4+rng()*1.5;
-    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*80+10+rng()*60,[low,high]=regions[biome],baseY=low+rng()*(high-low),phase=rng()*Math.PI*2;
+    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*80+10+rng()*60,[low,high]=regions[biome],margin=recipe.radius+(biome==='forestFloor'?.2:1.5),baseY=low+margin+rng()*Math.max(0,high-low-2*margin),phase=rng()*Math.PI*2;
     entry={start,recipe,baseX,baseY,phase};recipes.set(id,entry);if(recipes.size>64)recipes.delete(recipes.keys().next().value);return entry;
   }
   if(saved!==null){

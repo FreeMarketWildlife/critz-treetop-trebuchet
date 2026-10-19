@@ -1,0 +1,80 @@
+{
+  "baseline": "217986c38fb4a97942d33321ca62f619a96d3615",
+  "tests": {
+    "pass": 213,
+    "fail": 0,
+    "log": "/tmp/critz28-tests-final.log"
+  },
+  "catalog": {
+    "grandfatherTree": 2,
+    "openSky": 2,
+    "jungleCanopy": 3,
+    "forestFloor": 3,
+    "newKinds": [
+      "waxleaf skid",
+      "seed-husk skid"
+    ]
+  },
+  "physicalProbe": {
+    "incomingVelocity": [
+      3,
+      -8
+    ],
+    "projectileMass": 0.1,
+    "gravity": 0,
+    "seedHuskFinalVelocity": [
+      2.3906853077172023,
+      0.6170110157952069
+    ],
+    "roundFungusFinalVelocity": [
+      3.8866402402690636,
+      4.3150590095284524
+    ],
+    "energyNonincreasing": true,
+    "note": "Controlled contact test, not a normal throw; no force after initial fixture setup."
+  },
+  "checks": [
+    "All scheduled active silhouettes stay inside birth biome over eight seeds per band.",
+    "Regional kind coverage, fresh-birth clearance, .4-second arrival audio rate, bounded eight active bodies and sixteen pending events pass existing suite.",
+    "Three capsule fixtures sum to specified mass and fit conservative radius.",
+    "Real two-drop mouse fixture counts two contacts; reward50points9bells; duplicate banking idempotent; 50-impact cap retained.",
+    "Forty forced contact pulses respect >=80ms cooldown despite capsule seams/multiple limbs.",
+    "Capsule fixture/warning metadata and energy survive exact snapshot continuation.",
+    "Lizard/turtle/armadillo full physical loading+release match untouched recovery baseline exactly; assistWork0."
+  ],
+  "browser": {
+    "origin": "http://127.0.0.1:8082",
+    "viewer": "docs/reviews/iteration-28/contact-review.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "canopyFinal": {
+      "seconds": 2,
+      "impacts": 1
+    },
+    "floorFinal": {
+      "seconds": 2.01,
+      "impacts": 7
+    },
+    "edgeWarning": "Nearby: waxleaf skid (right).",
+    "slideBadgeObserved": true,
+    "reducedMotionChecked": true,
+    "warningsErrors": [],
+    "viewportReset": true,
+    "closedObsoletePreparationQA": {
+      "points": 0,
+      "bells": 0,
+      "saveEnabled": false,
+      "held": false,
+      "phase": "Ready to wind"
+    }
+  },
+  "limitations": [
+    "Browser viewer uses labelled synthetic incoming poses with the real renderer and live solver; not a normal end-to-end run.",
+    "Natural encounter frequency and human reaction fairness remain unmeasured.",
+    "No actual-device FPS or audible quality assessment.",
+    "No 132/264-attempt full-game soak rerun for this bounded encounter iteration.",
+    "No game saves or recovery-copy files changed; no export retry, native unlock, install or deployment."
+  ]
+}

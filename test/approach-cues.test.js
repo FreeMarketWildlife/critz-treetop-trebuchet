@@ -18,3 +18,8 @@ test('four simultaneous directions fit on the rim and actual long poses extend t
 });
 
 test('a reversal updates the warned direction immediately without stale receding threats',()=>{const p={x:0,y:200,vx:50,vy:0},o={...options,camera:{x:1,y:200}},enemies=[{...enemy,id:'right',x:40,y:200},{...enemy,id:'left',x:-40,y:200}];assert.deepEqual(approachCues(p,enemies,o).map(q=>q.id),['right']);assert.deepEqual(approachCues({...p,vx:-50},enemies,o).map(q=>q.id),['left']);});
+
+test('skid warning uses the whole capsule radius and carries a slide telegraph',()=>{
+ const p={x:0,y:200,vx:8,vy:0},o={...options,camera:{x:0,y:200}},e={id:'skid',kind:'waxleaf skid',shape:'skid',x:4.8,y:200,vx:0,vy:0,radius:1.1};
+ const cues=approachCues(p,[e],o);assert.equal(cues.length,1);assert.equal(cues[0].interaction,'slide');assert.ok(cues[0].time>.5);assert.deepEqual(approachCues(p,[{...e,radius:.242}],o),[]);
+});
