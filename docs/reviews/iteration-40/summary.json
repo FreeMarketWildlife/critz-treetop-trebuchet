@@ -25,5 +25,12 @@
     "Static restored browser incoming state is not exact uninterrupted contact warm-start continuation.",
     "Actual-device performance, audible quality and human reactions remain unverified.",
     "Backward-flight and activity targets remain unmet."
-  ]
+  ],
+  "sync": {
+    "status": "denied",
+    "localImplementationCommit": "0c2637b",
+    "action": "git push origin main",
+    "target": "existing GitHub origin",
+    "reason": "Automatic approval review cited original trusted no-push restriction and no later trusted authorization in its transcript. No push executed; no retry or workaround."
+  }
 }
