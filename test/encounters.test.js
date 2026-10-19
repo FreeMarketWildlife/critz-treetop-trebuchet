@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createEncounterDirector,encounterPools,hasArrivalClearance} from '../src/encounters.js';
+import {createEncounterDirector,encounterPools,hasArrivalClearance,encounterRegions} from '../src/encounters.js';
 test('seeded active schedule is reproducible and independent of update history',()=>{
  const a=createEncounterDirector('abc'),b=createEncounterDirector('abc'),p={x:30,y:200};
  a.update(1,p);a.update(40,p);assert.deepEqual(a.update(8,p).active,b.update(8,p).active);
  assert.notDeepEqual(a.update(8,p).active,createEncounterDirector('other').update(8,p).active);
 });
-test('all four biome pools yield passive harmless bounded descriptors',()=>{
+test('all five biome pools yield bounded non-damaging descriptors',()=>{
  for(const biome of Object.keys(encounterPools))for(let t=0;t<100;t+=.37){
   const {active}=createEncounterDirector(4).update(t,{x:20,y:200},biome);assert.ok(active.length<=8);
   assert.equal(new Set(active.map(e=>e.id)).size,active.length);
@@ -25,7 +25,7 @@ test('visibility events occur once, snapshots do not leak mutable state, reset r
 test('invalid input is rejected and region inference covers fixed height bands',()=>{
  assert.throws(()=>createEncounterDirector(NaN));const d=createEncounterDirector(0);
  for(const t of [NaN,-1,Infinity])assert.throws(()=>d.update(t,{x:0,y:0}));assert.throws(()=>d.update(0,{x:NaN,y:0}));
- for(const [y,biome] of [[300,'grandfatherTree'],[200,'openSky'],[80,'jungleCanopy'],[0,'forestFloor']])assert.ok(d.update(8,{x:0,y}).active.every(e=>e.biome===biome));
+ for(const [y,biome] of [[300,'grandfatherTree'],[540,'space'],[420,'openSky'],[180,'jungleCanopy'],[0,'forestFloor']])assert.ok(d.update(8,{x:0,y}).active.every(e=>e.biome===biome));
 });
 test('fresh spawn stream never replays stale observations or rewinds',()=>{
  const d=createEncounterDirector(11),p={x:20,y:200},seen=new Set();let count=0;
@@ -66,7 +66,7 @@ test('initial snapshots are JSON-safe detached state and reject invalid restorat
 });
 test('seeded long canopy and floor travel reveal every regional kind with clear births',()=>{
  const seen=Object.fromEntries(Object.keys(encounterPools).map(k=>[k,new Set()]));
- for(let seed=0;seed<12;seed++)for(const [biome,y]of [['grandfatherTree',280],['openSky',180],['jungleCanopy',65],['forestFloor',1]]){const d=createEncounterDirector(seed);for(let i=0;i<1800;i++){const t=i/30,p={x:t*9,y,vx:9,vy:0},r=d.update(t,p,biome);assert.ok(r.active.length<=8);for(const e of r.spawns){seen[biome].add(e.kind);assert.ok(Math.hypot(e.x-p.x,e.y-p.y)>e.radius+1.5);}}}
+ for(let seed=0;seed<12;seed++)for(const [biome,y]of [['space',540],['grandfatherTree',280],['openSky',420],['jungleCanopy',180],['forestFloor',60]]){const d=createEncounterDirector(seed);for(let i=0;i<1800;i++){const t=i/30,p={x:t*9,y,vx:9,vy:0},r=d.update(t,p,biome);assert.ok(r.active.length<=8);for(const e of r.spawns){seen[biome].add(e.kind);assert.ok(Math.hypot(e.x-p.x,e.y-p.y)>e.radius+1.5);}}}
  for(const [biome,pool]of Object.entries(encounterPools))assert.deepEqual([...seen[biome]].sort(),pool.map(e=>e.kind).sort());
 });
 
@@ -79,11 +79,11 @@ test('revised encounter catalog remains deterministic across cache eviction and 
  for(let i=0;i<2500;i++){const t=i/15;h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));}
  for(const t of [0,1,2,100,100,200])h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));
  // Iteration 31 contact geometry/mass descriptor baseline; includes births/events and cache eviction.
- assert.equal(h.digest('hex'),'fca0d46d33dda5ca30f486f1c594098b2f1fe4ad159040233c6730b2e52e171b');
+ assert.equal(h.digest('hex'),'f601783285335db6acf1027e9ec5f6ddc2b507a362ff379e8935309585d0fbfe');
 });
 
 test('scheduled silhouettes and motion stay inside their birth biome; skid kinds are regional',()=>{
- const bands={grandfatherTree:[245,320],openSky:[120,245],jungleCanopy:[5,120],forestFloor:[.8,5]};
+ const bands=encounterRegions;
  assert.equal(encounterPools.grandfatherTree.some(e=>e.shape==='skid'),false);assert.equal(encounterPools.openSky.some(e=>e.shape==='skid'),false);
  for(const [biome,[low,high]]of Object.entries(bands))for(let seed=0;seed<8;seed++){const d=createEncounterDirector(seed);for(let i=0;i<1000;i++){const r=d.update(i/30,{x:i,y:(low+high)/2},biome);for(const e of r.active){assert.ok(e.y-e.radius>=low-1e-10);assert.ok(e.y+e.radius<=high+1e-10);}}}
 });

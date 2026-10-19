@@ -1,3 +1,4 @@
+import {atmosphereAt} from './journey.js';
 import {counterOutline} from './workshop.js';
 import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js';
 import {fixedObstacleVertices} from './fixed-obstacles.js';
@@ -11,10 +12,10 @@ import {createEncounterDirector} from './encounters.js';
 import {world as layout} from './world.js';
 import {stageInitialVolunteer} from './staging.js';
 const serializer=new P.Serializer({rootClass:P.World,
- postSerialize:(data,obj)=>{if(obj.getAngle&&obj.getMassData)data.angle=obj.getAngle();if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;}return data;},
+ postSerialize:(data,obj)=>{if(obj.getAngle&&obj.getMassData)data.angle=obj.getAngle();if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;if(obj.getGravityScale()!==1)data.labGravityScale=obj.getGravityScale();}return data;},
  // Planck 1.5.1 constructs bodies through a wrapped rotation. Restore the
  // unwrapped sweep before joints are reconstructed; public setAngle wraps again.
- postDeserialize:(obj,data)=>{if(obj.getMassData&&obj.m_sweep&&Number.isFinite(data.angle)){obj.m_sweep.a=data.angle;obj.m_sweep.a0=data.angle;}if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);return obj;}});
+ postDeserialize:(obj,data)=>{if(obj.getMassData&&obj.m_sweep&&Number.isFinite(data.angle)){obj.m_sweep.a=data.angle;obj.m_sweep.a0=data.angle;}if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);if(Number.isFinite(data.labGravityScale)&&obj.setGravityScale)obj.setGravityScale(data.labGravityScale);return obj;}});
 const V=(x,y)=>P.Vec2(x,y);
 // External hand effort scales with total payload mass; all supplied work is tracked.
 export function gripParameters(mass){if(!Number.isFinite(mass)||mass<=0)throw new Error('Invalid grip mass');return {stiffness:120*mass,damping:18*mass,maxForce:Math.max(80,60*mass)};}
@@ -158,7 +159,7 @@ export class CritterScene {
   for(const s of layout.surfaces.filter(s=>s.flightOnly))terrain.createFixture(P.Polygon(surfaceVertices(s).map(p=>V(p.x,p.y))),{friction:.12,restitution:.3,filterCategoryBits:1});
   this.routeTerrainReady=true;
  }
- step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');if(this.phase==='flight'&&!this.routeTerrainReady)this.installRouteTerrain();
+ step(dt=1/600){if(this.phase==='dead')return;if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');if(this.phase==='flight'&&!this.routeTerrainReady)this.installRouteTerrain();
   // Loading contacts and fast arrivals at angular stops need connected-joint
   // resolution too. Keep the same force laws and limits, at at most 1200 Hz.
   if(this.p.loadingConstraintSubsteps&&this.p.collisionSubsteps&&this.phase==='loading'&&
@@ -177,15 +178,39 @@ export class CritterScene {
   for(let i=0;i<count;i++)this.integrate(dt/count);
  }
  integrate(dt){
+  if(this.phase==='dead')return;
+  if(this.phase==='flight'){
+   const c=this.center(),a=atmosphereAt(c.y,this.elapsed,c.x);
+   if(a.dead){this.phase='dead';this.control=0;this.events.push({type:'deep-space'});return;}
+   // Each body samples local altitude; machinery stays under normal gravity.
+   for(const body of [...this.parts,...this.enemies.values()]){
+    const local=atmosphereAt(body.getPosition().y,this.elapsed,body.getPosition().x);
+    body.setGravityScale(local.gravity);
+    if(this.parts.includes(body))body.applyForceToCenter(V(body.getMass()*a.wind,body.getMass()*a.lift),true);
+   }
+   for(const enemy of this.enemies.values()){
+    const q=enemy.getPosition(),tag=enemy.getUserData(),dx=q.x-c.x,dy=q.y-c.y,d=Math.hypot(dx,dy);
+    // Readable proximity interactions; all act through forces, never teleportation.
+    if(d>5||d<.01)continue;
+    for(const body of this.parts){const m=body.getMass(),v=body.getLinearVelocity();let fx=0,fy=0;
+     if(tag.interaction==='yokai-pull'){fx=dx/d*2;fy=dy/d*2;}
+     if(tag.interaction==='updraft')fy=8*(1-d/5);
+     if(tag.interaction==='gust')fx=4*Math.sin(this.elapsed*2);
+     if(tag.interaction==='snare'){fx=-v.x*.8;fy=-v.y*.8;}
+     if(tag.interaction==='spin'){fx=-dy/d*3;fy=dx/d*3;}
+     body.applyForceToCenter(V(m*fx,m*fy),true);
+    }
+   }
+  }
   const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
   if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q),grip=gripParameters(this.rig.totalMass);let fx=grip.stiffness*(this.hand.target.x-q.x)-grip.damping*v.x,fy=grip.stiffness*(this.hand.target.y-q.y)-grip.damping*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,grip.maxForce/(mag||1));this.forceCapped=mag>grip.maxForce;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
   const dampingTorque=-this.p.armDamping*this.pivot.getJointSpeed(),dampingAngle=this.pivot.getJointAngle(),drag=[];
   if(dampingTorque){this.arm.applyTorque(dampingTorque,true);this.frame.applyTorque(-dampingTorque,true);}
-  if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y),F=V(-k*v.x,-k*v.y);drag.push({body:b,force:F,before:{...b.getWorldCenter()}});b.applyForceToCenter(F,true);}
+  if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=(this.phase==='flight'?atmosphereAt(b.getPosition().y).air:1)*this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y),F=V(-k*v.x,-k*v.y);drag.push({body:b,force:F,before:{...b.getWorldCenter()}});b.applyForceToCenter(F,true);}
   this.updateWinding();this.updateEncounters();const winding=this.phase==='winding',oldRelativeAngle=this.pivot.getJointAngle();const old=this.phase==='launching'&&this.releaseMode!=='physical-hook'?this.relative():null;const assist=[];
   if(this.phase==='flight' && (this.control || this.rig.id==='flying-squirrel')){
    const root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
-   if(this.rig.id==='flying-squirrel'){const velocity=root.getLinearVelocity(),aero=aerodynamicForces({vx:velocity.x,vy:velocity.y,mass:root.getMass(),area:.22,pitch:root.getAngle(),angularVelocity:root.getAngularVelocity(),input:this.control});
+   if(this.rig.id==='flying-squirrel'){const velocity=root.getLinearVelocity(),aero=aerodynamicForces({vx:velocity.x,vy:velocity.y,mass:root.getMass(),area:.22*atmosphereAt(root.getPosition().y).air,pitch:root.getAngle(),angularVelocity:root.getAngularVelocity(),input:this.control});
     // Equivalent membrane+tail loads act on the torso used to evaluate local airflow.
     // F·v + torque*omega is passive for this same body, even while the rig tumbles.
     const F=V(aero.fx,aero.fy);assist.push({body:root,force:F,before:{...root.getWorldCenter()},angle:root.getAngle(),torque:aero.torque});root.applyForceToCenter(F,true);root.applyTorque(aero.torque,true);

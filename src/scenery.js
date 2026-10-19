@@ -4,8 +4,8 @@
  * Geography is fixed authored decoration; time animates haze and distant noncolliding birds.
  * None of these silhouettes represents a collision surface.
  */
-const palettes={tree:['#b8d2cb','#e6eacb','#547b68'],sky:['#a9d4ed','#eef6e8','#699ab1'],canopy:['#98bca2','#d5dfb4','#447a62'],floor:['#aab893','#e0d1a8','#637a4e']};
-function biome(region){const r=String(region??'').toLowerCase();return r.includes('floor')||r==='ground'?'floor':r.includes('canopy')||r.includes('jungle')?'canopy':r.includes('sky')||r.includes('air')?'sky':'tree';}
+const palettes={tree:['#b8d2cb','#e6eacb','#547b68'],sky:['#a9d4ed','#eef6e8','#699ab1'],canopy:['#98bca2','#d5dfb4','#447a62'],space:['#11132e','#343054','#958ccc'],floor:['#aab893','#e0d1a8','#637a4e']};
+function biome(region){const r=String(region??'').toLowerCase();return r==='space'?'space':r.includes('floor')||r==='ground'?'floor':r.includes('canopy')||r.includes('jungle')?'canopy':r.includes('sky')||r.includes('air')?'sky':'tree';}
 function ellipse(ctx,x,y,rx,ry,color,angle=0){ctx.beginPath();ctx.ellipse(x,y,rx,ry,angle,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
 /** Five authored distant bird paths: decoration only, never enemy descriptors. */
 export function backgroundBirds(time=0,reducedMotion=false){const t=reducedMotion?0:time;return [[-10,278],[18,303],[42,330],[67,258],[95,315]].map(([x,y],i)=>({x:x+8*Math.sin(t*.22+i),y:y+2*Math.sin(t*.31+i*2),wing:Math.sin(t*3+i),size:4+i%2}));}
@@ -14,6 +14,27 @@ export function drawScenery(ctx,{width,height,region,camera={x:0,y:300},scale=24
  const key=biome(region),p=palettes[key],drift=reducedMotion?0:Math.sin(time*.12)*2;
  ctx.save();ctx.beginPath();ctx.rect(0,0,width,height);ctx.clip();
  const gradient=ctx.createLinearGradient(0,0,0,height);gradient.addColorStop(0,p[0]);gradient.addColorStop(1,p[1]);ctx.fillStyle=gradient;ctx.fillRect(0,0,width,height);
+ if(key==='space'){
+  ctx.globalAlpha=.8;
+  for(let i=0;i<95;i++){const x=((i*137.37-camera.x*1.7)%width+width)%width,y=((i*i*17.31+camera.y*.8)%height+height)%height;ellipse(ctx,x,y,i%7===0?1.8:.8,i%7===0?1.8:.8,'#f9eacf');}
+  // Libriam orbits Saturn-like Kronos; Moon is its sub-satellite.
+  const px=width*.74,py=height*.3;ctx.globalAlpha=.9;
+  ellipse(ctx,px,py,80,65,'#c2997b');
+  ctx.save();ctx.translate(px,py);ctx.rotate(-.32);ctx.strokeStyle='#e3c9a2';ctx.lineWidth=10;ctx.beginPath();ctx.ellipse(0,0,125,25,0,0,Math.PI*2);ctx.stroke();ctx.restore();
+  ellipse(ctx,width*.18,height*.23,14,14,'#d6d9e1');
+  ctx.fillStyle='#e9def6';ctx.font='12px system-ui';ctx.fillText('KRONOS',px-23,py+100);
+  const edge=height/2-(600-camera.y)*scale;
+  if(edge>-50&&edge<height+50){ctx.strokeStyle='#ed8fa1';ctx.setLineDash([8,8]);ctx.beginPath();ctx.moveTo(0,edge);ctx.lineTo(width,edge);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ffe3eb';ctx.fillText('DEEP SPACE · LETHAL',20,Math.max(20,edge-12));}
+  ctx.restore();return;
+ }
+ if(key==='sky'){
+  ctx.globalAlpha=.28;ctx.fillStyle='#495e88';
+  for(let i=0;i<9;i++){const x=((i*171-camera.x*4)% (width+200)+width+200)%(width+200)-100,y=height*.16+(i%3)*height*.23;ellipse(ctx,x,y,105,28,'#495e88');ellipse(ctx,x+35,y-20,54,34,'#495e88');
+   ctx.strokeStyle='#d7e5f2';ctx.lineWidth=1;for(let j=0;j<9;j++){ctx.beginPath();ctx.moveTo(x-65+j*17,y+35);ctx.lineTo(x-73+j*17,y+58);ctx.stroke();}}
+  ctx.globalAlpha=.7;ctx.strokeStyle='#fff0aa';ctx.lineWidth=3;const bx=width*.64;ctx.beginPath();ctx.moveTo(bx,height*.28);ctx.lineTo(bx-16,height*.36);ctx.lineTo(bx+9,height*.36);ctx.lineTo(bx-12,height*.45);ctx.stroke();
+  ctx.globalAlpha=.35;ctx.strokeStyle='#fff9dc';ctx.lineWidth=2;for(let i=0;i<4;i++){const x=width*(.1+i*.24);ctx.beginPath();ctx.moveTo(x,height*.85);ctx.bezierCurveTo(x-25,height*.68,x+25,height*.58,x,height*.48);ctx.stroke();}
+  ctx.restore();return;
+ }
  // Clouds use authored world x positions and distant parallax; never regenerate on movement.
  ctx.globalAlpha=.26;
  for(let i=0;i<7;i++){const x=width*.5+(i*95-240-camera.x*.15)*Math.min(scale,30)/24,y=height*.5-((315-i*44)-camera.y)*scale*.06+drift;
@@ -99,7 +120,9 @@ export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',kind='',col
  ctx.beginPath();ctx.arc(0,0,s,0,Math.PI*2);ctx.clip();
  const opacity=Number.isFinite(ctx.globalAlpha)?ctx.globalAlpha:1;ctx.globalAlpha=opacity*.22;ellipse(ctx,-s*.36,-s*.48,s*.16,s*.10,'#fff5dc',-.4);ctx.globalAlpha=opacity;
  ctx.strokeStyle='#394d43';ctx.lineWidth=Math.max(.7,s*.07);ctx.lineCap='round';
- if(kind==='round bird'){
+ if(shape==='yokai'){
+  ellipse(ctx,0,0,s*.65,s*.8,'#e3d8ff');ctx.strokeStyle='#7962b5';ctx.beginPath();ctx.moveTo(-s*.6,-s*.3);ctx.lineTo(-s*.4,-s*.85);ctx.moveTo(s*.6,-s*.3);ctx.lineTo(s*.4,-s*.85);ctx.stroke();
+ }else if(kind.includes('letter bird')){
   ellipse(ctx,s*.3,-s*.2,s*.3,s*.32,'#e8e0be');ctx.fillStyle='#dfb35c';ctx.beginPath();ctx.moveTo(s*.5,-s*.12);ctx.lineTo(s*.87,s*.05);ctx.lineTo(s*.5,s*.18);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(-s*.65,0);ctx.quadraticCurveTo(-s*.25,s*.5,s*.1,s*.16);ctx.stroke();
  }else if(shape==='wings'){
   ellipse(ctx,-s*.35,0,s*.35,s*.65,'#f4e8e6',-.35-flap);ellipse(ctx,s*.35,0,s*.35,s*.65,'#f4e8e6',.35+flap);ellipse(ctx,0,0,s*.12,s*.6,color);

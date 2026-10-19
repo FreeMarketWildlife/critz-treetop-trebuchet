@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import {backgroundBirds,drawScenery,drawFace,drawEncounterDetails} from '../src/scenery.js';
 function context(){const calls=[];const ctx=new Proxy({}, {get(_,key){if(key==='createLinearGradient')return(...args)=>{calls.push([key,...args]);return {addColorStop(){}};};return(...args)=>calls.push([key,...args]);},set(_,key,value){calls.push(['set',key,typeof value==='object'?'gradient':value]);return true;}});return {ctx,calls};}
 test('all scenery biomes are deterministic, bounded and restore context',()=>{
- for(const region of ['Grandfather Tree','open sky','jungle canopy','forest floor']){
-  const a=context(),b=context(),options={width:460,height:480,region,camera:{x:100,y:200},scale:24,time:5};drawScenery(a.ctx,options);drawScenery(b.ctx,options);assert.deepEqual(a.calls,b.calls);assert.ok(a.calls.length<350);assert.equal(a.calls[0][0],'save');assert.equal(a.calls.at(-1)[0],'restore');
+ for(const region of ['Grandfather Tree','open sky','jungle canopy','forest floor','space']){
+  const a=context(),b=context(),options={width:460,height:480,region,camera:{x:100,y:200},scale:24,time:5};drawScenery(a.ctx,options);drawScenery(b.ctx,options);assert.deepEqual(a.calls,b.calls);assert.ok(a.calls.length<800);assert.equal(a.calls[0][0],'save');assert.equal(a.calls.at(-1)[0],'restore');
  }
 });
 test('reduced-motion scenery does not depend on time',()=>{const a=context(),b=context(),o={width:460,height:480,reducedMotion:true};drawScenery(a.ctx,{...o,time:0});drawScenery(b.ctx,{...o,time:90});assert.deepEqual(a.calls,b.calls);});

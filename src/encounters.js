@@ -1,27 +1,32 @@
+import {biomeAt} from './journey.js';
 // Original passive encounter recipes. Values are gameplay tuning, not biology.
 // Descriptors are observations of a seeded world schedule; no terrain is changed.
 export const encounterPools = Object.freeze({
+  space: [
+    {kind:'wandering yokai',shape:'yokai',color:'#b7a2ef',radius:.8,mass:.7,friction:.03,restitution:.85,motion:'wave',interaction:'yokai-pull'},
+    {kind:'Kronos ring fragment',shape:'pod',color:'#d7b28d',radius:.7,mass:3,friction:.06,restitution:.6,motion:'roll',interaction:'spin'}],
   grandfatherTree: [
-    {kind:'round beetle',shape:'oval',color:'#b77a42',radius:.5,mass:1.2,friction:.22,restitution:.65,motion:'bob'},
-    {kind:'leaf hopper',shape:'leaf',color:'#80ae56',radius:.4,mass:.65,friction:.3,restitution:.72,motion:'hop'}],
+    {interaction:'spin',kind:'archive beetle',shape:'oval',color:'#b77a42',radius:.5,mass:1.2,friction:.22,restitution:.65,motion:'bob'},
+    {interaction:'updraft',kind:'Fey-blood leaf hopper',shape:'leaf',color:'#80ae56',radius:.4,mass:.65,friction:.3,restitution:.72,motion:'hop'}],
   openSky: [
-    {kind:'puffy moth',shape:'wings',color:'#dfc6ef',radius:.65,mass:.45,friction:.08,restitution:.7,motion:'wave'},
-    {kind:'round bird',shape:'oval',color:'#7faed0',radius:.55,mass:.8,friction:.12,restitution:.6,motion:'wave'}],
+    {interaction:'updraft',kind:'restoration raincloud',shape:'wings',color:'#dfc6ef',radius:.65,mass:.45,friction:.08,restitution:.7,motion:'wave'},
+    {interaction:'gust',kind:'migrating letter bird',shape:'oval',color:'#7faed0',radius:.55,mass:.8,friction:.12,restitution:.6,motion:'wave'}],
   jungleCanopy: [
-    {kind:'springy pod',shape:'pod',color:'#d69e5f',radius:.65,mass:1.5,friction:.18,restitution:.8,motion:'bob'},
-    {kind:'vine bug',shape:'oval',color:'#97b95d',radius:.45,mass:.7,friction:.28,restitution:.65,motion:'hop'},
-    {kind:'waxleaf skid',shape:'skid',color:'#60bda0',radius:1.1,mass:1.2,friction:.015,restitution:.08,motion:'wave'}],
+    {interaction:'updraft',kind:'Grimroot spring pod',shape:'pod',color:'#d69e5f',radius:.65,mass:1.5,friction:.18,restitution:.8,motion:'bob'},
+    {interaction:'snare',kind:'Grimroot vine bug',shape:'oval',color:'#97b95d',radius:.45,mass:.7,friction:.28,restitution:.65,motion:'hop'},
+    {interaction:'gust',kind:'waxleaf skid',shape:'skid',color:'#60bda0',radius:1.1,mass:1.2,friction:.015,restitution:.08,motion:'wave'}],
   forestFloor: [
-    {kind:'round fungus',shape:'cap',geometry:'dome',color:'#d28ba8',radius:.8,mass:2.5,friction:.2,restitution:.75,motion:'bob'},
-    {kind:'rolling beetle',shape:'circle',color:'#ad8059',radius:.6,mass:1.8,friction:.15,restitution:.7,motion:'roll'},
-    {kind:'seed-husk skid',shape:'skid',color:'#c3a16a',radius:1.2,mass:6,friction:.025,restitution:.1,motion:'roll'}]
+    {interaction:'updraft',kind:'round fungus',shape:'cap',geometry:'dome',color:'#d28ba8',radius:.8,mass:2.5,friction:.2,restitution:.75,motion:'bob'},
+    {interaction:'spin',kind:'Grimroot rolling beetle',shape:'circle',color:'#ad8059',radius:.6,mass:1.8,friction:.15,restitution:.7,motion:'roll'},
+    {interaction:'gust',kind:'Grandfather seed-husk skid',shape:'skid',color:'#c3a16a',radius:1.2,mass:6,friction:.025,restitution:.1,motion:'roll'}]
 });
 for(const pool of Object.values(encounterPools)){pool.forEach(Object.freeze);Object.freeze(pool);}
-const regions={grandfatherTree:[245,320],openSky:[120,245],jungleCanopy:[5,120],forestFloor:[.8,5]};
+export const encounterRegions={space:[480,600],openSky:[360,480],grandfatherTree:[240,360],jungleCanopy:[120,240],forestFloor:[.8,120]};
+const regions=encounterRegions;
 const aliases={'Grandfather Tree':'grandfatherTree','Grandfather Tree branches/leaves':'grandfatherTree','open sky':'openSky','open air':'openSky','Jungle canopy':'jungleCanopy','forest floor':'forestFloor','Ground':'forestFloor'};
 function hash(value){let h=2166136261;for(const c of String(value)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
 function random(key){let a=hash(key);return ()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
-function resolveRegion(region,y){if(regions[region])return region;if(aliases[region])return aliases[region];return y>245?'grandfatherTree':y>120?'openSky':y>5?'jungleCanopy':'forestFloor';}
+function resolveRegion(region,y){if(regions[region])return region;if(aliases[region])return aliases[region];return biomeAt(y).id;}
 /** Reject materialization on the player's short relative-motion corridor. This
  * only chooses whether a fresh encounter is born; it never moves an existing body.
  * The full solver separately checks every fixture for actual overlap. */
@@ -71,7 +76,7 @@ export function createEncounterDirector(seed=0,saved=null){
       if(age<0||age>=2)continue;
       const amplitude=biome==='forestFloor'?.2:1.5,omega=1.2;
       const horizontal=recipe.motion==='roll'||recipe.motion==='wave',offset=amplitude*Math.sin(age*omega+phase),velocity=amplitude*omega*Math.cos(age*omega+phase);
-      candidates.push({id,biome,kind:recipe.kind,shape:recipe.shape,color:recipe.color,motion:recipe.motion,...(recipe.geometry?{geometry:recipe.geometry}:{}),
+      candidates.push({id,biome,kind:recipe.kind,interaction:recipe.interaction,shape:recipe.shape,color:recipe.color,motion:recipe.motion,...(recipe.geometry?{geometry:recipe.geometry}:{}),
         x:baseX+(horizontal?offset:0),y:baseY+(horizontal?0:offset),vx:horizontal?velocity:0,vy:horizontal?0:velocity,
         radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+2,harmless:true});
     }

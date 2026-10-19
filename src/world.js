@@ -15,7 +15,7 @@ const surfaces=[
   {id:'canopy outer crossing',flightOnly:true,slope:-.35,y:58,minX:145,maxX:157,restitution:.3,tangentRetention:.8},
   {id:'canopy outer lower',flightOnly:true,slope:-.35,y:26,minX:180,maxX:193,restitution:.3,tangentRetention:.8}
 ];
-export const world=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(p=>Object.freeze({...p,shape:'deflector',slope:-.65,friction:.08,restitution:.3}))),launchHeight:300,canopyTop:120,ground:0,
+export const world=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(p=>Object.freeze({...p,lore:'Grimroot Grove wind-worn branch',shape:'deflector',slope:-.65,friction:.08,restitution:.3}))),launchHeight:300,canopyTop:240,ground:0,
   groundDeceleration:2, surfaces:Object.freeze(surfaces.map(Object.freeze)),
   regions:Object.freeze(['Grandfather Tree branches/leaves → open-air freefall','Long jungle-canopy descent','Ground travel while horizontal momentum remains'])});
 export function regionAt(y){return y>world.canopyTop?'Branches / open air':y>world.ground?'Jungle canopy':'Ground';}

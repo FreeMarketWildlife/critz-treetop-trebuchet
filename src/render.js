@@ -9,7 +9,7 @@ import {drawSurfaceTrim} from './surface-art.js';
 import {PICKUP_RADIUS_CSS} from './pickup.js';
 import {approachCues,payloadWarningRadius} from './approach-cues.js';
 import {drawSpeciesMarkings} from './species-art.js';
-import {biomeAt} from './journey.js';
+import {biomeAt,atmosphereAt} from './journey.js';
 import {createFlightCamera} from './camera.js';
 import {world as layout} from './world.js';
 import {drawScenery,drawFace,drawEncounterDetails} from './scenery.js';
@@ -36,17 +36,21 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
   ctx.save();ctx.fillStyle='rgba(250,245,219,.88)';ctx.fillRect(panel.x+8,panel.y+8,Math.min(panel.w-16,360),52);
   drawFace(ctx,{x:panel.x+27,y:panel.y+28,size:11,species:scene.rig?.id,color:scene.rig?.color});
   ctx.fillStyle='#273f35';ctx.font='bold 15px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${biome.label}`,panel.x+47,panel.y+29);
-  ctx.font='12px system-ui';ctx.fillText(contactLabel||`${Math.max(0,c.x-(scene.release?.center.x??0)).toFixed(0)} m forward • ${Math.max(0,c.y).toFixed(0)} m high`,panel.x+16,panel.y+49,Math.min(panel.w-32,336));
-  if(panel.w>=800){const x=panel.x+panel.w-14,top=panel.y+70,h=panel.h-92,level=y=>top+(1-Math.max(0,Math.min(320,y))/320)*h;ctx.globalAlpha=.85;
-   for(const [high,low,color]of [[320,245,'#52795d'],[245,120,'#7eb6d3'],[120,5,'#4f8b5b'],[5,0,'#9c7852']]){ctx.fillStyle=color;ctx.fillRect(x,level(high),6,Math.max(2,level(low)-level(high)));}
-   dot([x+3,level(c.y)],5,'#fff7d7');ctx.globalAlpha=1;ctx.font='11px system-ui';for(const [y,label]of [[300,'Tree'],[185,'Sky'],[65,'Canopy'],[0,'Floor']])ctx.fillText(label,x-48,level(y)+4);
+  ctx.font='12px system-ui';ctx.fillText(scene.phase==='dead'?'Lost to deep space · Choose next volunteer':contactLabel||`${Math.max(0,c.x-(scene.release?.center.x??0)).toFixed(0)} m forward • ${Math.max(0,c.y).toFixed(0)} m high · ${Math.round(atmosphereAt(c.y).gravity*100)}% gravity`,panel.x+16,panel.y+49,Math.min(panel.w-32,336));
+  const nearest=[...scene.enemies.values()].map(b=>({tag:b.getUserData(),d:Math.hypot(b.getPosition().x-c.x,b.getPosition().y-c.y)})).sort((a,b)=>a.d-b.d)[0];
+  const actions={'yokai-pull':'Pulls you inward',updraft:'Rising air',gust:'Sideways gust',snare:'Slows your flight',spin:'Swirling current'};
+  const note=scene.phase==='dead'?'DEEP SPACE · Run ended':c.y>570?'DEEP SPACE AHEAD · 600 m is lethal':nearest&&nearest.d<8?`${nearest.tag.kind} · ${actions[nearest.tag.interaction]??'Deflects on contact'}`:biome.id==='openSky'?'Cloud lift ↑ · Storms push sideways':biome.id==='space'?'Low gravity · No gliding · Deep space at 600 m':'';
+  if(note){ctx.fillStyle='rgba(250,245,219,.92)';ctx.fillRect(panel.x+8,panel.y+66,Math.min(panel.w-16,380),28);ctx.fillStyle='#4b3154';ctx.font='12px system-ui';ctx.fillText(note,panel.x+16,panel.y+85,Math.min(panel.w-32,364));}
+  if(panel.w>=800){const x=panel.x+panel.w-14,top=panel.y+70,h=panel.h-92,level=y=>top+(1-Math.max(0,Math.min(600,y))/600)*h;ctx.globalAlpha=.85;
+   for(const [high,low,color]of [[600,480,'#8d80c5'],[480,360,'#7eb6d3'],[360,240,'#52795d'],[240,120,'#4f8b5b'],[120,0,'#9c7852']]){ctx.fillStyle=color;ctx.fillRect(x,level(high),6,Math.max(2,level(low)-level(high)));}
+   dot([x+3,level(c.y)],5,'#fff7d7');ctx.globalAlpha=1;ctx.font='11px system-ui';for(const [y,label]of [[590,'DEATH'],[540,'Space'],[420,'Storm'],[300,'Tree'],[180,'Canopy'],[60,'Floor']])ctx.fillText(label,x-48,level(y)+4);
   }ctx.restore();
  }
  return {get approachNotice(){return approachNotice;},get viewport(){return viewport;},get cssPixelsPerMetre(){return cssPixelsPerMetre;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
  draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity,contactLabel=''){
   approachNotice='';viewport=viewportFor(width,height);if(canvas.width!==viewport.width||canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
   if(width!==lastCssWidth||height!==lastCssHeight){lastCssWidth=width;lastCssHeight=height;const displayed=canvas.getBoundingClientRect?.().width??Math.max(240,width-16);cueScale=Math.max(1,Math.min(1.75,viewport.width/Math.max(1,displayed)));cssPixelsPerMetre=45*Math.max(1,displayed)/viewport.width;}
-  const {portrait,originX,originY}=viewport,c=scene.center(),flying=scene.phase==='flight',local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
+  const {portrait,originX,originY}=viewport,c=scene.center(),flying=['flight','dead'].includes(scene.phase),local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
   if(!flying){cameraScene=null;
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
    line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',7);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',4);
