@@ -4,7 +4,7 @@ import {createPredictionJob} from '../src/prediction.js';
 import {profiles} from '../src/species.js';
 import {catalog,createEconomyState,economyReducer,derivePhysicalConfig} from '../src/economy.js';
 import {world as layout} from '../src/world.js';
-import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+import {mkdirSync,writeFileSync,readFileSync,existsSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
 
@@ -28,6 +28,7 @@ const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('h
 const work=s=>s.handWork+s.windingWork+s.assistWork+s.dampingWork+s.dragWork+s.spawnEnergy-s.despawnEnergy;
 function equipped(ids){let state={...createEconomyState(),bells:1000};for(const id of ids){state=economyReducer(state,{type:'purchase',id});state=economyReducer(state,{type:'equip',id});}return state;}
 function surfaceFor(point){return layout.surfaces.find(s=>Math.abs(s.y-point.y)<.15&&point.x>=s.minX-.25&&point.x<=s.maxX+.25)?.id??'loading shelf/other';}
+let capturedGround=false;if(process.argv.includes('--capture-ground')&&!selectedId)throw Error('Select one case for an incoming fixture');
 function diagnostics(scene){
  const initialEnergy=scene.energy(),initialWork=work(scene),above=new Map(),contactSteps=new Map(),surfaceCandidates=[];
  const data={samples:0,maxRopeStretch:0,maxHingeAnchorError:0,maxAngularLimitError:0,maxBodySpeed:0,maxBodySpin:0,maxEnergyResidual:0,nonfinite:null,surfaceCandidates,phaseStats:{}};let stepIndex=0,phase='setup',firstFlightImpact=null,groundImpact=null;
@@ -37,7 +38,7 @@ function diagnostics(scene){
   const point=contact.getWorldManifold()?.points[0];if(!point)return;const fixture=other===a?contact.getFixtureA():contact.getFixtureB(),surface=fixture.getShape().getType()==='circle'?'bumper':surfaceFor(point);contactSteps.set(`${part.getUserData().id}:${surface}`,stepIndex);
   if(scene.phase==='flight'&&!firstFlightImpact)firstFlightImpact={surface,x:point.x,y:point.y,time:scene.elapsed};if(scene.phase==='flight'&&surface==='ground'&&!groundImpact)groundImpact={surface,x:point.x,y:point.y,time:scene.elapsed};
  });
- const inspect=()=>{data.samples++;let anchorBad=false,angularBad=false,finalAnchor=0,finalAngular=0;
+ const inspect=()=>{if(process.argv.includes('--capture-ground')&&!capturedGround&&scene.phase==='flight'&&scene.center().y<3&&scene.center().vy<0){capturedGround=true;mkdirSync('docs/reviews/iteration-14',{recursive:true});const incomingPath=`docs/reviews/iteration-14/incoming-${selectedId}.json`;if(!existsSync(incomingPath))writeFileSync(incomingPath,JSON.stringify(scene.snapshot(),null,2)+'\n');}data.samples++;let anchorBad=false,angularBad=false,finalAnchor=0,finalAngular=0;
   for(let body=scene.world.getBodyList();body;body=body.getNext())if(body.isDynamic()){
    const q=body.getWorldCenter(),v=body.getLinearVelocity(),w=body.getAngularVelocity(),tag=body.getUserData();
    if(![q.x,q.y,v.x,v.y,w,body.getAngle(),body.getMass(),body.getInertia()].every(Number.isFinite)){data.nonfinite??={phase,time:scene.elapsed,tag};continue;}
@@ -107,4 +108,4 @@ function run(entry){
 const start=performance.now(),rows=[];for(const entry of selected){const row=run(entry);rows.push(row);console.error(`${entry.id}: ${row.outcome}${row.flags.length?' ['+row.flags.join(', ')+']':''} (${row.wallMilliseconds.toFixed(0)} ms)`);}
 const totalWallMilliseconds=performance.now()-start,counts={};for(const r of rows)counts[r.outcome]=(counts[r.outcome]??0)+1;
 const evidence={scope:'Bounded stratified diagnostic of the explicit stopped-pouch0.5kg physical prototype. One force-driven loading recipe cannot establish universal input validity; seating failures and poor throws are preserved separately from numeric faults.',protocol:{cases:selected.length,dt:DT,limits,phases:'Actual bounded motor; torso/head/offset physical grip; unheld gravity settling; canonical same-solver prediction/live launch; first world impact plus0.5s recovery; continue to ground plus0.5s recovery within15s flight when possible.',equipment:'Acquired and equipped in isolated in-memory economy state through actual reducers. No user save or account writes.',surfaceDetection:'Suspected surface penetration means a part COM crossed through authored material depth with no matching recent per-part surface impulse. Candidates require review; this is not proof of continuous-collision failure.',finiteChecks:'Every diagnostic step inspects every dynamic body and rope/revolute joint. Energy residual is mechanical-energy change minus recorded hand/motor/control/damping/drag/spawn work.',runtime:'Node wall time includes prediction and diagnostic scanning; not browser FPS.'},runtime:{node:process.version,platform:process.platform,arch:process.arch,planck:JSON.parse(readFileSync('node_modules/planck/package.json')).version},sourceSHA256,sourcesChangedDuringRun:sourcePaths.filter(p=>createHash('sha256').update(readFileSync(p)).digest('hex')!==sourceSHA256[p]),totalWallMilliseconds,counts,rows};
-mkdirSync('docs/reviews/iteration-13',{recursive:true});const suffix=selectedId?'-'+selectedId:benchmarkOnly?'-prediction-benchmark':'';writeFileSync(`docs/reviews/iteration-13/regression${suffix}.json`,JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify({totalWallMilliseconds,counts,cases:rows.length},null,2));
+mkdirSync('docs/reviews/iteration-14',{recursive:true});const suffix=selectedId?'-'+selectedId:benchmarkOnly?'-prediction-benchmark':'';writeFileSync(`docs/reviews/iteration-14/regression${suffix}.json`,JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify({totalWallMilliseconds,counts,cases:rows.length},null,2));

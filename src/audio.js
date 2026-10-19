@@ -41,7 +41,7 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
   const limit = Math.round(clamp(maxVoices, 1, 16));
   function stopVoice(voice) {
     if (!voices.delete(voice)) return;
-    for (const source of voice.sources) { try { source.stop(); } catch {} }
+    for (const source of voice.sources) { source.onended=null;try { source.stop(); } catch {} }
     for (const node of voice.nodes) { try { node.disconnect(); } catch {} }
   }
   function hush() { for (const voice of [...voices]) stopVoice(voice); }
@@ -110,6 +110,7 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
   }
   return {
     unlock, play,
+    async pause(){hush();if(context?.state==='running'&&context.suspend)try{await context.suspend();}catch{}},
     getStatus(){return {muted,volume,contextState:context?.state??'not-started',voices:voices.size,lastCue};},
     setMuted(value) { muted = Boolean(value); updateGain(); if (muted) hush(); },
     setVolume(value) { volume = clamp(value, 0, 1); updateGain(); if (!volume) hush(); },

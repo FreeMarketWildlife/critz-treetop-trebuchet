@@ -178,3 +178,8 @@ The turtle uses a total-mass-preserving 74% shell / 6% tail profile. A saved leg
 ## Iteration 13 — volunteer identity and fair arrivals
 
 All11 rigs now have original markings clipped to their real body shapes, same-geometry next-three portraits and current handling hints. The lab exposes actual part masses and contact values. Seeded100000-draw checks produce147rare squirrels and allow valid repeats; no run-uniqueness claim. Fresh encounters leave a0.4second relative-motion reaction corridor. Impacts use contact-point rings, with reduced-motion suppression. [Findings and evidence](reviews/iteration-13/findings.md) record142passing tests, same-state all-species drops without added energy, unchanged32/35natural releases and remaining joint warnings. Live squirrel tree→sky→canopy→floor and final-runtime lizard launch/bank/retry were observed; audible quality and real-device FPS remain unverified.
+
+
+## Iteration 14 — recovery, hold/release and sustained play
+
+Pointer/Space/Enter winding commits on release; a direct target slider remains accessible. Loading guidance observes real contact/motion and offers an explicit same-volunteer medium-winding retry. Replacement hardware validates before consuming the next volunteer. Pause/lifecycle handling clears inputs/audio and discards wall-clock gaps. [Findings](reviews/iteration-14/findings.md) record150passing tests,132attempts/43m49ssimulated soak,259oldworlds collected, bounded audio and no duplicate bank payouts. Node p95 engine batch2.687ms/max13.371ms; this is not a universal4ms or mobileFPS guarantee. Remaining0.273rad leg transient is reproduced and guarded, not fixed by expensive solver iteration increases. Real hidden-tab behavior and audible quality remain unverified.

@@ -34,7 +34,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
  draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity){
   viewport=viewportFor(width,height);if(canvas.width!==viewport.width||canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
   const {portrait,originX,originY}=viewport,c=scene.center(),flying=scene.phase==='flight',local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(!flying){
+  if(!flying){cameraScene=null;
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
    line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',7);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',4);
    for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);for(const rope of scene.ropes)line(local(rope.getAnchorA()),local(rope.getAnchorB()),'#444',2);

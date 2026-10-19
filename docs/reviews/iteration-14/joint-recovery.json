@@ -1,0 +1,66 @@
+{
+  "protocol": "Same natural owned-heavy-frame lizard ground arrival; identical snapshot positions/velocities/material/masses/limits, one second600Hz; solver iterations/collision frequency only varied before integration. CPU includes scanning, not browserFPS. Research only; no production solver change.",
+  "snapshotSHA256": "6d0c03f7651b2efa87eab855a94b7e70e0890a47860349d7ea3feac95cc909c1",
+  "rows": [
+    {
+      "velocity": 20,
+      "position": 12,
+      "hz": 2400,
+      "maxAngularExcess": 0.27268860188117405,
+      "maxAnchorError": 0.0005890900366703062,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "badSteps": 1,
+      "maxPositiveEnergyResidual": 0,
+      "batchMaxMs": 10.0775,
+      "batchP95Ms": 6.383166000000003
+    },
+    {
+      "velocity": 20,
+      "position": 24,
+      "hz": 2400,
+      "maxAngularExcess": 0.27268860188117405,
+      "maxAnchorError": 0.0005890900366703062,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "badSteps": 1,
+      "maxPositiveEnergyResidual": 0,
+      "batchMaxMs": 3.2953329999999994,
+      "batchP95Ms": 2.833042000000006
+    },
+    {
+      "velocity": 40,
+      "position": 24,
+      "hz": 2400,
+      "maxAngularExcess": 0.2717916755313212,
+      "maxAnchorError": 0.0005882042984004285,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "badSteps": 1,
+      "maxPositiveEnergyResidual": 0,
+      "batchMaxMs": 3.3255829999999946,
+      "batchP95Ms": 3.1370830000000183
+    },
+    {
+      "velocity": 40,
+      "position": 40,
+      "hz": 2400,
+      "maxAngularExcess": 0.2717916755313212,
+      "maxAnchorError": 0.0005882042984004285,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "badSteps": 1,
+      "maxPositiveEnergyResidual": 0,
+      "batchMaxMs": 3.4034169999999904,
+      "batchP95Ms": 2.9487080000000105
+    }
+  ]
+}

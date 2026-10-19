@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {PhysicalHookScene} from '../src/hook-experiment.js';
+test('recorded heavy-frame leg arrival stays finite and recovers with unchanged limits',()=>{
+ const saved=JSON.parse(readFileSync(new URL('../docs/reviews/iteration-14/incoming-owned-frame-heavy.json',import.meta.url))),s=new PhysicalHookScene(saved.p,saved.species,saved),work=()=>s.handWork+s.windingWork+s.assistWork+s.dragWork+s.dampingWork+s.spawnEnergy-s.despawnEnergy,e0=s.energy(),w0=work();let max=0,badSteps=0,final=0;
+ for(let i=0;i<600;i++){s.step();let excess=0;for(let j=s.world.getJointList();j;j=j.getNext())if(j.getType()==='revolute-joint'&&[j.getBodyA(),j.getBodyB()].every(b=>b.getUserData()?.role==='part')){const a=j.getAnchorA(),b=j.getAnchorB();assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<.005);excess=Math.max(excess,0,j.getJointAngle()-j.getUpperLimit(),j.getLowerLimit()-j.getJointAngle());}assert.ok(Number.isFinite(excess));assert.ok(s.energy()-e0-(work()-w0)<.01);max=Math.max(max,excess);badSteps+=Number(excess>.08);final=excess;}
+ assert.ok(max<.3,'known transient must not worsen');assert.ok(badSteps<=2);assert.ok(final<.08);
+});

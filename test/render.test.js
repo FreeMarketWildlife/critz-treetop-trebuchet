@@ -24,3 +24,7 @@ test('renderer resize keeps logical dimensions, CSS ratio and drag targets synch
   const actual=renderer.point({clientX:bounds.left+logical.x/v.width*bounds.width,clientY:bounds.top+logical.y/v.height*bounds.height});assert.ok(Math.abs(actual.x-target.x)<1e-10);assert.ok(Math.abs(actual.y-target.y)<1e-10);
  }
 });
+test('loading and flight resize/render passes do not change a real articulated world',async()=>{
+ const {PhysicalHookScene}=await import('../src/hook-experiment.js'),{STARTER_HARDWARE}=await import('../src/starter.js'),{createRenderer}=await import('../src/render.js');const ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??(()=>{})});const canvas={width:960,height:480,style:{},getContext:()=>ctx,getBoundingClientRect:()=>({left:0,top:0,width:390,height:488})};const s=new PhysicalHookScene({...STARTER_HARDWARE,stoppedSplitPouch:true,releaseHardware:'channel'},'snake'),r=createRenderer(canvas);
+ for(const phase of ['loading','flight']){s.phase=phase;const before=JSON.stringify(s.snapshot());for(const [width,height]of [[1200,900],[390,844],[844,390],[1200,900]])r.draw(s,null,[],1,true,width,height);assert.equal(JSON.stringify(s.snapshot()),before);}
+});

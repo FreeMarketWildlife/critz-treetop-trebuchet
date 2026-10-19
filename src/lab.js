@@ -1,3 +1,6 @@
+import {createWindingInput,windingMeter} from './winding-input.js';
+import {createFrameClock,createRuntimeMetrics} from './runtime.js';
+import {createLoadingCoach} from './loading-coach.js';
 import {drawVolunteerPortrait,speciesTraits} from './species-art.js';
 import {loadProgressConsent,saveProgressConsent} from './progress-preferences.js';
 import {createJourneyTracker} from './journey.js';
@@ -26,7 +29,8 @@ if(progressEnabled){try{economy=persistence.load()??economy;}catch{startupWarnin
 function saveProgress(){try{return persistence.save(economy);}catch{error='Saving is unavailable; progress remains in this session.';return false;}}
 const setText=(id,value)=>{if($(id).textContent!==value)$(id).textContent=value;};
 const equipmentNotes={'counterweight-heavy':'180 kg counterweight; changes energy and balance.','beam-long':'3.6 / 0.9 m beam; changes leverage and mass.','beam-light':'Lighter beam material; changes inertia.','sling-long':'Longer sling; changes timing and clearance.','frame-heavy':'50 kg frame; changes recoil and can reduce range.','frame-grip':'Grippier feet; changes sliding behavior.'};
-const seed=Date.now()>>>0,queue=createVolunteerQueue(seed);let fraction=.6,scene,preview=null,previewJob=null,previewSource=null,previewCapture=null,previewBasis=null,lastPredictionMs=0,nextStatus=0,statusPhase='',error=startupWarning,last=performance.now(),accumulator=0,nextPreview=0,clock=0,sliderRunning=true,sliderStart=performance.now(),held=false,journey=createJourneyTracker(),zoneNotice='',zoneNoticeUntil=0;
+const seed=Date.now()>>>0,queue=createVolunteerQueue(seed);let fraction=.6,scene,preview=null,previewJob=null,previewSource=null,previewCapture=null,previewBasis=null,lastPredictionMs=0,nextStatus=0,statusPhase='',error=startupWarning,accumulator=0,nextPreview=0,clock=0,sliderRunning=false,sliderStart=performance.now(),held=false,journey=createJourneyTracker(),zoneNotice='',zoneNoticeUntil=0;
+const frameClock=createFrameClock(),runtimeMetrics=createRuntimeMetrics();let manualPaused=false,focusPaused=false,nextRuntime=0,loadingCoach=createLoadingCoach(),resizeNoticeUntil=0;const isPaused=()=>manualPaused||document.hidden||focusPaused;
 const settings=()=>derivePhysicalConfig(economy,{counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),pivotHeight:300,armDamping:Number($('friction').value),flightDrag:Number($('drag').value),initialArm:-3,mechanicalWinding:true,collisionSubsteps:true,collisionStepHz:2400,releaseHardware:'channel',stoppedSplitPouch:$('split').checked,...($('split').checked&&$('hook').checked?{pouchPanelMass:Number($('panelMass').value)}:{}),sling:Number($('sling').value),hookAngle:Number($('railAngle').value),channelLength:Number($('railLength').value)});
 function restoreStarterValues(){for(const [id,key]of Object.entries({mass:'counterMass',long:'longArm',short:'shortArm',sling:'sling',railAngle:'hookAngle',railLength:'channelLength',panelMass:'pouchPanelMass'}))$(id).value=STARTER_HARDWARE[key];}
 restoreStarterValues();
@@ -35,19 +39,28 @@ $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</opti
 function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
 let rosterKey='';
 function updateRoster(){const ids=queue.peek(),key=ids.join(',');if(key===rosterKey)return;rosterKey=key;$('roster').replaceChildren(...ids.map((id,i)=>{const p=profiles.find(p=>p.id===id),card=document.createElement('div'),canvas=document.createElement('canvas'),label=document.createElement('span');card.className='volunteer-card';canvas.width=160;canvas.height=72;canvas.setAttribute('aria-hidden','true');label.textContent=`${i+1}. ${p.label}${id==='flying-squirrel'?' • rare':''}`;card.append(canvas,label);drawVolunteerPortrait(canvas.getContext('2d'),createRig(id),160,72);return card;}));}
-function reset(){try{bank();grip.reset();runObstacle=null;journey=createJourneyTracker();zoneNotice='';zoneNoticeUntil=0;sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;economyUI();updateRoster();setText('speciesTrait',speciesTraits[scene.rig.id]);setText('rigFacts',`${scene.rig.label}: ${scene.rig.bodies.map(b=>`${b.id} ${(b.mass*1000).toFixed(0)} g`).join(' • ')}. Contact friction ${scene.rig.friction}; restitution ${scene.rig.restitution}. Prototype units, not biological measurements.`);}catch(e){error=e.message;}}
+function installScene(candidate){bank();winding.cancel();grip.reset();held=false;effects=[];runObstacle=null;journey=createJourneyTracker();loadingCoach=createLoadingCoach();zoneNotice='';zoneNoticeUntil=0;sliderRunning=false;shotId=null;banked=false;launchStarted=null;scene=candidate;fraction=.6;$('power').value=(fraction-.2)/.75;clearPreview();nextPreview=clock+.15;error='';accumulator=0;nextStatus=0;nextRuntime=0;frameClock.reset();economyUI();updateRoster();setText('speciesTrait',speciesTraits[scene.rig.id]);setText('rigFacts',`${scene.rig.label}: ${scene.rig.bodies.map(b=>`${b.id} ${(b.mass*1000).toFixed(0)} g`).join(' • ')}. Contact friction ${scene.rig.friction}; restitution ${scene.rig.restitution}. Prototype units, not biological measurements.`);}
+function reset(){try{const candidate=new (SceneType())(settings(),$('species').value);installScene(candidate);return true;}catch(e){error=e.message;return false;}}
 $('hook').onchange=reset;$('split').onchange=reset;
 for(const id of ['species','mass','long','short','friction','drag','sling','railAngle','railLength','panelMass'])$(id).onchange=reset;
 $('reset').onclick=reset;
-$('next').onclick=()=>{bank();queue.consume();$('species').value=queue.current;reset();};
-$('time').onclick=()=>{if(sliderRunning){fraction=.2+.75*Number($('power').value);sliderRunning=false;try{scene.startWinding(fraction);clearPreview();const windingScene=scene;sound.unlock().then(ok=>{if(ok&&scene===windingScene&&scene.phase==='winding')sound.play('wind',{intensity:.35});});}catch(e){error=e.message;}}else{sliderRunning=true;sliderStart=performance.now();}};
+$('next').onclick=()=>{try{const id=queue.peek()[0],candidate=new (SceneType())(settings(),id);bank();queue.consume();$('species').value=id;installScene(candidate);}catch(e){error=e.message;}};
+function beginWinding(){if(isPaused())return;fraction=.2+.75*Number($('power').value);sliderRunning=false;try{scene.startWinding(fraction);clearPreview();error='';const windingScene=scene;sound.unlock().then(ok=>{if(ok&&!isPaused()&&scene===windingScene&&scene.phase==='winding')sound.play('wind',{intensity:.35});});}catch(e){error=e.message;}}
+const winding=createWindingInput({enabled:()=>!isPaused()&&!held&&['uncocked','loading','wind-stalled'].includes(scene?.phase),onAim:()=>{sliderRunning=true;sliderStart=performance.now();$('power').value=0;sound.unlock();clearPreview();},onCommit:()=>{if(sliderRunning)$('power').value=windingMeter(performance.now(),sliderStart);beginWinding();},onCancel:()=>{sliderRunning=false;},capture:id=>$('time').setPointerCapture(id),releaseCapture:id=>{if($('time').hasPointerCapture(id))$('time').releasePointerCapture(id);}});
+$('time').onpointerdown=winding.pointerDown;$('time').onpointerup=winding.pointerUp;$('time').onpointercancel=winding.pointerCancel;$('time').onlostpointercapture=winding.lostPointerCapture;$('time').onkeydown=winding.keyDown;$('time').onkeyup=winding.keyUp;$('time').onclick=winding.click;
+$('power').oninput=()=>{winding.cancel();sliderRunning=false;};$('power').onchange=beginWinding;
+$('retry').onclick=()=>{if(reset()){$('power').value=(.6-.2)/.75;beginWinding();}};
+function freezeInputs(){grip.blur();winding.cancel();if(scene)scene.control=0;accumulator=0;frameClock.reset();clearPreview();sound.pause();}
+$('pause').onclick=()=>{manualPaused=!manualPaused;freezeInputs();if(!manualPaused)sound.unlock();setText('pause',manualPaused?'Resume':'Pause');setText('pauseStatus',manualPaused?'Paused. Resume when ready.':'');};
+document.addEventListener('visibilitychange',()=>{freezeInputs();setText('pauseStatus',document.hidden?'Paused while this tab is hidden.':manualPaused?'Paused. Resume when ready.':'');});
+window.addEventListener('resize',()=>{resizeNoticeUntil=grip.active?clock+2:0;grip.reset();winding.cancel();if(scene)scene.control=0;clearPreview();});
 $('launch').onclick=()=>{sound.unlock();try{if(!scene.loadingStatus().contacting)throw new Error('Let the volunteer contact the cradle before unlatching');const saved=scene.snapshot();scene=new (SceneType())(scene.p,scene.rig.id,saved);scene.unlatch();launchStarted=clock;scene.enableEncounters(seed+shotCount);shotId=`${seed}:${shotCount++}`;banked=false;clearPreview();error='';sound.play('unlatch');}catch(e){error=e.message;}};
 const grip=createGripController({toPoint:e=>renderer.point(e),tapHold:()=>$('sticky').checked,
- onStart:p=>{sound.unlock();const grabbed=scene?.grab(p)??false;held=grabbed;if(grabbed)clearPreview();return grabbed;},onMove:p=>scene?.move(p),onEnd:()=>{held=false;scene?.drop();},
+ onStart:p=>{if(isPaused())return false;sound.unlock();const grabbed=scene?.grab(p)??false;held=grabbed;if(grabbed)clearPreview();return grabbed;},onMove:p=>scene?.move(p),onEnd:()=>{held=false;scene?.drop();},
  capture:id=>canvas.setPointerCapture(id),releaseCapture:id=>{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}});
 canvas.onpointerdown=grip.pointerDown;canvas.onpointermove=grip.pointerMove;canvas.onpointerup=grip.pointerUp;canvas.onpointercancel=grip.pointerCancel;canvas.onlostpointercapture=grip.lostPointerCapture;
 window.addEventListener('keydown',e=>{if(isFlightControlKey(e)){e.preventDefault();scene.control=e.key==='ArrowRight'?1:-1;}});
-window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight')scene.control=0;});window.addEventListener('blur',()=>{grip.blur();if(scene)scene.control=0;});
+window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight')scene.control=0;});window.addEventListener('blur',()=>{focusPaused=true;freezeInputs();setText('pauseStatus','Paused while the game is unfocused.');});window.addEventListener('focus',()=>{focusPaused=false;frameClock.reset();setText('pauseStatus',manualPaused?'Paused. Resume when ready.':'');});
 function economyUI(){
  const effective=settings();setText('shopPreview',`Next setup: ${effective.counterMass} kg counterweight • ${effective.longArm} / ${effective.shortArm} m beam • ${effective.sling} m sling • ${(effective.frameMass??30)} kg frame • grip ${(effective.frameFriction??.65).toFixed(2)}`);
  $('wallet').textContent=`Points ${economy.points} • Bells ${economy.bells} • prototype balance`;
@@ -63,11 +76,11 @@ setText('audioStatus',`${audioPreferences.muted?'Muted':'Sound on'} • ${Math.r
 $('save').onchange=()=>{saveProgressConsent(storageBackend,$('save').checked);persistence=createEconomyPersistence(storageBackend,{enabled:$('save').checked});if($('save').checked){try{economy=persistence.load()??economy;saveProgress();economyUI();}catch{error='Saved progress could not be read; this session is still available.';}}};
 for(const [id,direction]of [['left',-1],['right',1]]){$(id).onpointerdown=e=>{e.preventDefault();$(id).setPointerCapture(e.pointerId);scene.control=direction;};$(id).onpointerup=$(id).onpointercancel=$(id).onlostpointercapture=()=>scene.control=0;}
 economyUI();
-function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;clock+=dt;accumulator+=dt;
- if(sliderRunning)$('power').value=(Math.sin((now-sliderStart)/650)+1)/2;
+function render(now){const frameBegan=performance.now(),paused=isPaused(),dt=frameClock.advance(now,paused);clock+=dt;accumulator+=dt;
+ if(sliderRunning&&!paused)$('power').value=windingMeter(now,sliderStart);
  try{if(scene){while(accumulator>=1/600){scene.step();accumulator-=1/600;}
  const loading=scene.loadingStatus(),inContact=loading.contacting;
- const eligible=scene.phase==='loading'&&!held&&!scene.control&&scene.isLoaded()&&inContact;
+ const eligible=!paused&&scene.phase==='loading'&&!held&&!scene.control&&scene.isLoaded()&&inContact;
  if(!eligible){clearPreview();nextPreview=clock+.15;}
  else {
   if(preview&&!predictionPoseIsCurrent(scene,previewBasis)){preview=null;previewBasis=null;}
@@ -79,30 +92,20 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
    }
   }
  }
- $('launch').disabled=scene.phase!=='loading'||held||!scene.isLoaded()||!inContact;$('time').disabled=!['uncocked','loading','wind-stalled'].includes(scene.phase);$('time').textContent=scene.phase==='winding'?'Winding…':sliderRunning?'Set winding height':'Restart height meter';
+ $('launch').disabled=paused||scene.phase!=='loading'||held||!scene.isLoaded()||!inContact;$('time').disabled=paused||held||!['uncocked','loading','wind-stalled'].includes(scene.phase);$('power').disabled=$('time').disabled;$('time').textContent=scene.phase==='winding'?'Winding…':sliderRunning?'Release to wind':'Hold to aim; release to wind';
  const c=scene.center(),release=scene.release?.center;
- const hints=[];const travel=journey.update(scene.phase,c.y);if(travel.changed){zoneNotice=`Entering ${travel.biome.label}`;zoneNoticeUntil=clock+2.5;if(travel.firstVisit)sound.play('zone',{biome:travel.biome.id});}if(clock<zoneNoticeUntil)hints.push(zoneNotice+'.');
- if(scene.phase==='uncocked')hints.push('Starter tip: aim near the middle of the winding meter, then lift the volunteer over the green cradle.');
+ const hints=[];if(clock<resizeNoticeUntil)hints.push('View resized; grip released. Re-grip the volunteer to continue.');const travel=journey.update(scene.phase,c.y);if(travel.changed){zoneNotice=`Entering ${travel.biome.label}`;zoneNoticeUntil=clock+2.5;if(travel.firstVisit)sound.play('zone',{biome:travel.biome.id});}if(clock<zoneNoticeUntil)hints.push(zoneNotice+'.');
+ if(scene.phase==='uncocked')hints.push('Hold the winding button (or Space/Enter), release near the middle, then lift the volunteer over the green cradle.');
  $('bank').disabled=!scene.release||banked;setText('bank',banked?'Run banked':'Bank run');
  setText('reset',scene.release?'Bank & retry setup':'Reset setup');
  if(banked)hints.push('Run banked. Continue to the next volunteer or retry; later impacts do not change this payout.');
  if(runObstacle==='launch branch')hints.push('The volunteer hit the launch branch. Bank & retry keeps this run’s rewards; adjust the load or hardware before another shot.');
  if(scene.phase==='launching'&&launchStarted!==null&&clock-launchStarted>5)hints.push('Payload is still supported. Reset and try different rail mounting, sling length or counterweight.');
+ const coaching=loadingCoach.update(scene,{fraction,held});$('retry').hidden=!coaching.retry||paused;if(coaching.reason)hints.push(coaching.reason);
  if(scene.phase==='loading'){
-  if(fraction<.3&&loading.withinEnvelope&&inContact&&!held)hints.push('Low winding can give a short seating window. Unlatch while contact is ready; waiting may lose the load.');
-  if(previewJob&&!preview)hints.push('Calculating a short physical snapshot hint…');
-  if(scene.hardwareHasEscaped?.())hints.push('The release bead slipped out while loading. Reset the setup or test this loose pouch.');
-  if(preview&&!preview.release)hints.push('No separation in the five-second preview. Try different loading or mechanical settings.');
-  const advice=predictionAdvice(preview);if(advice)hints.push(advice);
-  if(fraction<.3&&!held&&!inContact&&c.y<scene.pouch.getPosition().y-.5)hints.push('The load slipped from this low winding setup. Reset and try a higher winding target or a different placement.');
   if(held&&scene.hand?.body.getUserData()?.id==='head'&&scene.rig.bodies.some(b=>b.id==='torso'))hints.push('Head grip: try the torso for steadier loading.');
-  if(held&&scene.rig.totalMass>=2)hints.push('Heavy load: move slowly; compare the release hint.');
-  if(held)hints.push('Release your grip before launching.');
-  else if(!loading.withinEnvelope)hints.push('Lift the volunteer over the cradle and let gravity seat it.');
-  else if(!loading.contacting)hints.push('Volunteer is near the cradle but not in contact. Let it land before launching.');
-  else if(loading.relativeSpeed>.35)hints.push('Volunteer is contacting the cradle and still moving. Wait to settle or test this moving load.');
-  else if(loading.maxPartRelativeSpeed>.35||loading.maxRelativeSpin>1)hints.push('The body is still rolling or redistributing inside the cradle. Wait or test this pose.');
-  else if(loading.cradleSpeed>.35||Math.abs(loading.cradleSpin)>.5)hints.push('The cradle is still swinging. Waiting changes the shot; watch the updating preview.');
+  if(held&&scene.rig.totalMass>=2)hints.push('Heavy load: move slowly.');
+  const advice=predictionAdvice(preview);if(advice)hints.push(advice);else if(previewJob)hints.push('Updating the short physical hint…');
  }
  if(held&&scene.forceCapped)hints.push('Grip force limit reached. Move more gently.');
  setText('guidance',hints.join(' '));
@@ -114,6 +117,7 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  setText('queue',`Next 3: ${queue.peek().map(id=>profiles.find(p=>p.id===id).label).join(' → ')}`);
  }
  renderer.draw(scene,preview,effects,clock,$('reduced').checked,window.innerWidth);
+ if(!paused)runtimeMetrics.record(performance.now()-frameBegan);if(clock>=nextRuntime){nextRuntime=clock+1;const stats=runtimeMetrics.snapshot();setText('runtimeReadout',`Simulation ${scene.elapsed.toFixed(2)} s • ${scene.world.getBodyCount()} bodies / ${scene.world.getJointCount()} joints • ${scene.enemies.size} encounters • ${sound.getStatus().voices} audio voices • frame CPU p95 ${stats.p95.toFixed(2)} ms (last ${stats.samples} frames)${performance.memory?` • JS heap ${(performance.memory.usedJSHeapSize/1048576).toFixed(1)} MB (browser estimate)`:''}`);}
  }}catch(e){error=e.message;$('readout').textContent=error;}
  requestAnimationFrame(render);
 }
