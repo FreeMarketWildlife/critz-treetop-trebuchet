@@ -1,10 +1,11 @@
 /** Original synthesized cues. No assets, autoplay, persistent loops, or physics side effects. */
-export const AUDIO_EVENTS = Object.freeze(['launch', 'impact', 'coin', 'shop', 'enemy', 'wind', 'zone']);
+export const AUDIO_EVENTS = Object.freeze(['unlatch', 'launch', 'impact', 'coin', 'shop', 'enemy', 'wind', 'zone']);
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, Number.isFinite(v) ? v : lo));
 export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, variant = 0, biome = 'openSky' } = {}) {
   const strength = clamp(intensity, 0, 1);
   const notes={grandfatherTree:392,openSky:523,jungleCanopy:330,forestFloor:262};
   const cues = {
+    unlatch: {frequency:180,endFrequency:105,duration:.10,gain:.07,type:'triangle',noise:.06},
     launch: { frequency: 150, endFrequency: 420, duration: .28, gain: .15, type: 'triangle', noise: .35 },
     impact: { frequency: 190 + strength * 100, endFrequency: 76, duration: .12 + strength * .12, gain: .14, type: 'sine', noise: .12, harmony: 1.9, bend: 1.18, noiseFrequency: 900 },
     coin: { frequency: 880, endFrequency: 1320, duration: .19, gain: .09, type: 'sine', harmony: 1.5 },
@@ -35,7 +36,7 @@ export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, v
 
 /** Call unlock directly from a click/touch/key gesture. Unsupported/blocked audio fails silently. */
 export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
-  let context, master, noiseBuffer, muted = false, volume = .55, pendingUnlock;
+  let context, master, noiseBuffer, muted = false, volume = .55, pendingUnlock,lastCue=null;
   const voices = new Set(), lastPlayed = new Map(), sequence = new Map();
   const limit = Math.round(clamp(maxVoices, 1, 16));
   function stopVoice(voice) {
@@ -75,7 +76,7 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
     const now = context.currentTime;
     // Contact chatter cannot fill the voice pool or create hundreds of nodes per frame.
     if (now - (lastPlayed.get(event) ?? -Infinity) < (event === 'zone'?2:event === 'wind' ? .35:event==='impact'?.09:.06)) return false;
-    lastPlayed.set(event, now);sequence.set(event,(sequence.get(event)??0)+1);
+    lastCue=event;lastPlayed.set(event, now);sequence.set(event,(sequence.get(event)??0)+1);
     while (voices.size >= limit) stopVoice(voices.values().next().value);
     const voice = { sources: [], nodes: [] }; voices.add(voice);
     const envelope = context.createGain(); voice.nodes.push(envelope);
@@ -109,10 +110,10 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
   }
   return {
     unlock, play,
-    getStatus(){return {muted,volume,contextState:context?.state??'not-started',voices:voices.size};},
+    getStatus(){return {muted,volume,contextState:context?.state??'not-started',voices:voices.size,lastCue};},
     setMuted(value) { muted = Boolean(value); updateGain(); if (muted) hush(); },
     setVolume(value) { volume = clamp(value, 0, 1); updateGain(); if (!volume) hush(); },
     // Optional lifecycle hook for a disposed game; re-unlock can recreate its context.
-    dispose() { hush(); const old = context; context = master = noiseBuffer = undefined; lastPlayed.clear();sequence.clear(); if (old) return old.close().catch(() => {}); },
+    dispose() { hush(); const old = context; context = master = noiseBuffer = undefined; lastPlayed.clear();sequence.clear();lastCue=null; if (old) return old.close().catch(() => {}); },
   };
 }

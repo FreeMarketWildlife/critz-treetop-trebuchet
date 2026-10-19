@@ -1,0 +1,275 @@
+{
+  "protocol": "Isolated research process overrides only turtle tail/shell mass fractions, preserving total mass; original rigid-channel medium setup, same saved load per three launch timesteps.",
+  "rows": [
+    {
+      "fraction": 0.04,
+      "dt": 0.0033333333333333335,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 5.131666666667468,
+        "x": 2.5418242815564085,
+        "y": 294.0099545396409,
+        "surface": "launch branch"
+      },
+      "time": 0.6966666666665899,
+      "center": {
+        "x": -2.7407981030407598,
+        "y": 301.28462665299475,
+        "vx": 1.1355046978927237,
+        "vy": 14.873273277108563,
+        "mass": 2.4
+      },
+      "speed": 14.916555530499933,
+      "firstHardwareExit": 0.5499999999999394,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.99197805427036,
+      "energyChange": -151.76665804874216,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.04,
+      "dt": 0.0016666666666666668,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 3.475000000000543,
+        "x": 3.0247814468402816,
+        "y": 294.0095540277753,
+        "surface": "launch branch"
+      },
+      "time": 0.7000000000001094,
+      "center": {
+        "x": -2.752405620289284,
+        "y": 301.29973362428984,
+        "vx": 1.0480173323195356,
+        "vy": 14.73062048093647,
+        "mass": 2.4
+      },
+      "speed": 14.76785428158834,
+      "firstHardwareExit": 0.548333333333419,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.99197805427036,
+      "energyChange": -159.9679498168083,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.04,
+      "dt": 0.0008333333333333334,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 3.570000000000557,
+        "x": 3.526876741166671,
+        "y": 294.0085194633575,
+        "surface": "launch branch"
+      },
+      "time": 0.7008333333334429,
+      "center": {
+        "x": -2.756823860455285,
+        "y": 301.2980434023077,
+        "vx": 1.04446018617662,
+        "vy": 14.709193709651744,
+        "mass": 2.4
+      },
+      "speed": 14.74622923558991,
+      "firstHardwareExit": 0.548333333333419,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.99197805427036,
+      "energyChange": -177.37383045348906,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.05,
+      "dt": 0.0033333333333333335,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 9.103333333334756,
+        "x": -1.225650028657694,
+        "y": 294.0092527664956,
+        "surface": "launch branch"
+      },
+      "time": 0.689999999999924,
+      "center": {
+        "x": -2.7595435366004257,
+        "y": 301.04556762516575,
+        "vx": 0.4085780940268793,
+        "vy": 13.870249409796566,
+        "mass": 2.4
+      },
+      "speed": 13.876265879150653,
+      "firstHardwareExit": 0.5399999999999405,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.53034423871463,
+      "energyChange": -135.96098105042302,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.05,
+      "dt": 0.0016666666666666668,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 3.410000000000533,
+        "x": -2.0744511378613737,
+        "y": 294.0100933901612,
+        "surface": "launch branch"
+      },
+      "time": 0.6916666666667748,
+      "center": {
+        "x": -2.767911261311271,
+        "y": 301.0281628821158,
+        "vx": 0.33805556864590525,
+        "vy": 13.697678243112112,
+        "mass": 2.4
+      },
+      "speed": 13.70184917517776,
+      "firstHardwareExit": 0.5400000000000844,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.53034423871463,
+      "energyChange": -127.72514397087025,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.05,
+      "dt": 0.0008333333333333334,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 3.575000000000559,
+        "x": 2.9682787798205563,
+        "y": 294.0042908637363,
+        "surface": "launch branch"
+      },
+      "time": 0.6933333333334417,
+      "center": {
+        "x": -2.7779056588911297,
+        "y": 301.0117674713415,
+        "vx": 0.25192287478369957,
+        "vy": 13.501910234377771,
+        "mass": 2.4
+      },
+      "speed": 13.504260257860647,
+      "firstHardwareExit": 0.539166666666751,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.53034423871463,
+      "energyChange": -154.06143442985353,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.06,
+      "dt": 0.0033333333333333335,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 9.955000000001556,
+        "x": 39.00421587948472,
+        "y": 0.01736506246520685,
+        "surface": "ground"
+      },
+      "time": 0.7333333333332526,
+      "center": {
+        "x": -2.3567768304595083,
+        "y": 302.4472812305755,
+        "vx": 4.157672706136416,
+        "vy": 18.498048428516597,
+        "mass": 2.4
+      },
+      "speed": 18.959536861302734,
+      "firstHardwareExit": 0.5766666666666032,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.6001050238899,
+      "energyChange": -171.4441109593928,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.06,
+      "dt": 0.0016666666666666668,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 9.938333333334887,
+        "x": 38.11173482929651,
+        "y": 0.022593110591818212,
+        "surface": "ground"
+      },
+      "time": 0.731666666666781,
+      "center": {
+        "x": -2.384305427972762,
+        "y": 302.37005391062576,
+        "vx": 4.0916704309947045,
+        "vy": 18.36748963372492,
+        "mass": 2.4
+      },
+      "speed": 18.817716183449807,
+      "firstHardwareExit": 0.5766666666667568,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.6001050238899,
+      "energyChange": -174.94151822198023,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    },
+    {
+      "fraction": 0.06,
+      "dt": 0.0008333333333333334,
+      "released": true,
+      "firstWorldImpact": {
+        "afterRelease": 9.911666666668216,
+        "x": 36.924410485033995,
+        "y": 0.011477774550197821,
+        "surface": "ground"
+      },
+      "time": 0.7350000000001149,
+      "center": {
+        "x": -2.3954525760669974,
+        "y": 302.37727774157236,
+        "vx": 3.964484090027929,
+        "vy": 18.147861410390927,
+        "mass": 2.4
+      },
+      "speed": 18.575844741783367,
+      "firstHardwareExit": 0.5766666666667568,
+      "firstPanelOpening": null,
+      "escapedAtPanelOpening": null,
+      "panelOpeningAtDeparture": null,
+      "hardwareEscapedAtPayloadDeparture": true,
+      "initialEnergy": -271.6001050238899,
+      "energyChange": -241.19931715054918,
+      "maximumEnergyGain": 0,
+      "maximumStepEnergyGain": 0,
+      "explicitWork": 0
+    }
+  ]
+}

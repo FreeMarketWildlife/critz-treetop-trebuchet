@@ -26,7 +26,7 @@ test('voices, chatter, mute, and gesture resume are bounded with a WebAudio doub
   const context = { state:'suspended', currentTime:0, sampleRate:100, destination:{}, createGain:node, createOscillator:node, createBufferSource:node, createBiquadFilter:node, createBuffer:()=>({getChannelData:()=>new Float32Array(100)}), async resume(){this.state='running';}, async close(){this.state='closed';} };
   const audio = createAudio({ contextFactory:()=>{ factories++; return context; }, maxVoices:2 });
   assert.equal(factories,0); assert.equal(await audio.unlock(),true);
-  assert.equal(audio.play('coin'),true); assert.equal(audio.play('coin'),false);
+  assert.equal(audio.play('coin'),true);assert.equal(audio.getStatus().lastCue,'coin');assert.equal(audio.getStatus().contextState,'running'); assert.equal(audio.play('coin'),false);
   context.currentTime += .1; audio.play('coin'); context.currentTime += .1; audio.play('coin');
   assert.equal(starts,6); assert.ok(stops>=8); // eviction stops both oscillators as well as scheduled stops
   audio.setMuted(true); assert.equal(audio.play('impact'),false);
@@ -68,5 +68,5 @@ test('impact WebAudio scheduling has bounded nodes, positive ramps and quiet-tai
 test('original biome cues and bounded repeated-impact variation stay finite',()=>{
  const frequencies=new Set();for(const biome of ['grandfatherTree','openSky','jungleCanopy','forestFloor','__proto__']){const cue=soundSpec('zone',1,{biome});assert.ok(Number.isFinite(cue.frequency));assert.ok(cue.gain<=.05);if(biome!=='__proto__')frequencies.add(cue.frequency);}assert.equal(frequencies.size,4);
  const variants=[0,1,2,3].map(variant=>soundSpec('impact',.5,{material:'wood',variant}));assert.equal(new Set(variants.map(v=>v.frequency)).size,4);assert.equal(new Set(variants.map(v=>v.gain)).size,1);
- const audio=createAudio();assert.deepEqual(audio.getStatus(),{muted:false,volume:.55,contextState:'not-started',voices:0});audio.setMuted(true);audio.setVolume(.15);assert.equal(audio.getStatus().muted,true);assert.equal(audio.getStatus().volume,.15);
+ const audio=createAudio();assert.deepEqual(audio.getStatus(),{muted:false,volume:.55,contextState:'not-started',voices:0,lastCue:null});audio.setMuted(true);audio.setVolume(.15);assert.equal(audio.getStatus().muted,true);assert.equal(audio.getStatus().volume,.15);
 });

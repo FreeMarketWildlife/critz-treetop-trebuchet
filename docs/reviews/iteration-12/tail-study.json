@@ -1,0 +1,131 @@
+{
+  "protocol": "Same natural turtle-head-grip incoming ground snapshot, one second response; fixture/material/mass changes occur only before trial integration as explicit counterfactual hardware. No production runtime pose/velocity correction.",
+  "snapshotSHA256": "51d33b000b39320cff97e9b1a738736189bd8c3629efbdd999f85f13198cc7cc",
+  "rows": [
+    {
+      "id": "compound",
+      "maxAngle": 0.7648701690868706,
+      "maxAnchor": 0.05733091215741117,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.03666666666666666,
+      "finalAngle": 0.36535365215281956,
+      "wallMs": 82.584292,
+      "steps": 600
+    },
+    {
+      "id": "soft-tip",
+      "restitution": 0,
+      "maxAngle": 0.7765013622660547,
+      "maxAnchor": 0.057729022582531105,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.034999999999999996,
+      "finalAngle": 0.35462487615951943,
+      "wallMs": 54.09975,
+      "steps": 600
+    },
+    {
+      "id": "slippery-tip",
+      "friction": 0,
+      "maxAngle": 0.1400077504356375,
+      "maxAnchor": 0.045442838347747844,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.0033333333333333335,
+      "finalAngle": -0.09459747579533229,
+      "wallMs": 24.09691700000002,
+      "steps": 600
+    },
+    {
+      "id": "heavy-tip",
+      "massScale": 2,
+      "maxAngle": 0.025372077845653984,
+      "maxAnchor": 0.021056952136344564,
+      "maxEnergyResidual": 0,
+      "longestBad": 0,
+      "finalAngle": -0.13208790106187962,
+      "wallMs": 40.090666,
+      "steps": 600
+    },
+    {
+      "id": "redistribute-15",
+      "massScale": 1.5,
+      "redistribute": true,
+      "maxAngle": 0.1206130836623146,
+      "maxAnchor": 0.030881690856621357,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.0016666666666666668,
+      "finalAngle": -0.3621507432842037,
+      "wallMs": 34.74595799999997,
+      "steps": 600
+    },
+    {
+      "id": "redistribute-2",
+      "massScale": 2,
+      "redistribute": true,
+      "maxAngle": 0.0254598975270085,
+      "maxAnchor": 0.020289015895690855,
+      "maxEnergyResidual": 0,
+      "longestBad": 0,
+      "finalAngle": 0.2037395801617521,
+      "wallMs": 40.57845900000001,
+      "steps": 600
+    },
+    {
+      "id": "redistribute-25",
+      "massScale": 2.5,
+      "redistribute": true,
+      "maxAngle": 0.01849861987126078,
+      "maxAnchor": 0.012464523516036108,
+      "maxEnergyResidual": 0,
+      "longestBad": 0,
+      "finalAngle": -0.350054557159325,
+      "wallMs": 53.33862499999998,
+      "steps": 600
+    },
+    {
+      "id": "redistribute-3",
+      "massScale": 3,
+      "redistribute": true,
+      "maxAngle": 0.030982528368463158,
+      "maxAnchor": 0.00002978783490231633,
+      "maxEnergyResidual": 0,
+      "longestBad": 0,
+      "finalAngle": -0.35144327217250293,
+      "wallMs": 56.05966599999999,
+      "steps": 600
+    },
+    {
+      "id": "hull",
+      "hull": true,
+      "maxAngle": 0.8374404654387689,
+      "maxAnchor": 0.04525028808570072,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.02,
+      "finalAngle": -0.35022517210859405,
+      "wallMs": 58.87983300000002,
+      "steps": 600
+    },
+    {
+      "id": "soft-hull",
+      "hull": true,
+      "restitution": 0,
+      "maxAngle": 0.837229576084448,
+      "maxAnchor": 0.045293404885777024,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.02,
+      "finalAngle": -0.2657497068744874,
+      "wallMs": 53.57299999999992,
+      "steps": 600
+    },
+    {
+      "id": "fine-reference",
+      "step": 0.00020833333333333335,
+      "maxAngle": 0.23052135632090087,
+      "maxAnchor": 0.03258156010163981,
+      "maxEnergyResidual": 0,
+      "longestBad": 0.003125,
+      "finalAngle": -0.350711406686429,
+      "wallMs": 174.41437500000006,
+      "steps": 4800
+    }
+  ]
+}

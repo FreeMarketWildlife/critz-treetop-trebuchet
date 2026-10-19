@@ -14,7 +14,7 @@ export function drawScenery(ctx,{width,height,region,camera={x:0,y:300},scale=24
  const gradient=ctx.createLinearGradient(0,0,0,height);gradient.addColorStop(0,p[0]);gradient.addColorStop(1,p[1]);ctx.fillStyle=gradient;ctx.fillRect(0,0,width,height);
  // Clouds use authored world x positions and distant parallax; never regenerate on movement.
  ctx.globalAlpha=.26;
- for(let i=0;i<7;i++){const x=width*.5+(i*95-240-camera.x*.15)*Math.min(scale,30)/24,y=height*.14+((i*47)%85)+drift;
+ for(let i=0;i<7;i++){const x=width*.5+(i*95-240-camera.x*.15)*Math.min(scale,30)/24,y=height*.5-((315-i*44)-camera.y)*scale*.06+drift;
   ellipse(ctx,x,y,50+(i%3)*14,12+(i%2)*4,'#ffffff');ellipse(ctx,x-20,y-7,25,14,'#ffffff');}
  // Fixed distant tree forms: soft background, rather than sharp walkable platforms.
  ctx.globalAlpha=key==='sky'?.06:.18;ctx.strokeStyle=p[2];ctx.lineCap='round';
@@ -26,7 +26,7 @@ export function drawScenery(ctx,{width,height,region,camera={x:0,y:300},scale=24
  if(key!=='sky'){
   ctx.globalAlpha=.14;
   for(let i=0;i<22;i++){
-   const x=(i*89%Math.ceil(width+120))-60-camera.x*.015,y=key==='floor'?height-10-(i*23%70):(i*67%Math.ceil(height+80))-40;
+   const x=(i*89%Math.ceil(width+120))-60-camera.x*.015,y=key==='floor'?height-10-(i*23%70):height*.5-((320-i*15)-camera.y)*scale*.10;
    ellipse(ctx,x,y,20+(i%4)*6,7+(i%3)*2,p[2],(i%5-2)*.4);
   }
  }

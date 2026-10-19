@@ -32,13 +32,13 @@ restoreStarterValues();
 $('starter').onclick=()=>{restoreStarterValues();reset();};
 $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</option>`).join('');$('species').value=queue.current;
 function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
-function reset(){try{bank();grip.reset();runObstacle=null;journey=createJourneyTracker();zoneNotice='';zoneNoticeUntil=0;sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;}catch(e){error=e.message;}}
+function reset(){try{bank();grip.reset();runObstacle=null;journey=createJourneyTracker();zoneNotice='';zoneNoticeUntil=0;sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;economyUI();}catch(e){error=e.message;}}
 $('hook').onchange=reset;$('split').onchange=reset;
 for(const id of ['species','mass','long','short','friction','drag','sling','railAngle','railLength','panelMass'])$(id).onchange=reset;
 $('reset').onclick=reset;
 $('next').onclick=()=>{bank();queue.consume();$('species').value=queue.current;reset();};
-$('time').onclick=()=>{if(sliderRunning){fraction=.2+.75*Number($('power').value);sliderRunning=false;try{scene.startWinding(fraction);clearPreview();}catch(e){error=e.message;}}else{sliderRunning=true;sliderStart=performance.now();}};
-$('launch').onclick=()=>{sound.unlock();try{if(!scene.loadingStatus().contacting)throw new Error('Let the volunteer contact the cradle before unlatching');const saved=scene.snapshot();scene=new (SceneType())(scene.p,scene.rig.id,saved);scene.unlatch();launchStarted=clock;scene.enableEncounters(seed+shotCount);shotId=`${seed}:${shotCount++}`;banked=false;clearPreview();error='';sound.play('launch');}catch(e){error=e.message;}};
+$('time').onclick=()=>{if(sliderRunning){fraction=.2+.75*Number($('power').value);sliderRunning=false;try{scene.startWinding(fraction);clearPreview();const windingScene=scene;sound.unlock().then(ok=>{if(ok&&scene===windingScene&&scene.phase==='winding')sound.play('wind',{intensity:.35});});}catch(e){error=e.message;}}else{sliderRunning=true;sliderStart=performance.now();}};
+$('launch').onclick=()=>{sound.unlock();try{if(!scene.loadingStatus().contacting)throw new Error('Let the volunteer contact the cradle before unlatching');const saved=scene.snapshot();scene=new (SceneType())(scene.p,scene.rig.id,saved);scene.unlatch();launchStarted=clock;scene.enableEncounters(seed+shotCount);shotId=`${seed}:${shotCount++}`;banked=false;clearPreview();error='';sound.play('unlatch');}catch(e){error=e.message;}};
 const grip=createGripController({toPoint:e=>renderer.point(e),tapHold:()=>$('sticky').checked,
  onStart:p=>{sound.unlock();const grabbed=scene?.grab(p)??false;held=grabbed;if(grabbed)clearPreview();return grabbed;},onMove:p=>scene?.move(p),onEnd:()=>{held=false;scene?.drop();},
  capture:id=>canvas.setPointerCapture(id),releaseCapture:id=>{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}});
@@ -46,6 +46,7 @@ canvas.onpointerdown=grip.pointerDown;canvas.onpointermove=grip.pointerMove;canv
 window.addEventListener('keydown',e=>{if(isFlightControlKey(e)){e.preventDefault();scene.control=e.key==='ArrowRight'?1:-1;}});
 window.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight')scene.control=0;});window.addEventListener('blur',()=>{grip.blur();if(scene)scene.control=0;});
 function economyUI(){
+ const effective=settings();setText('shopPreview',`Next setup: ${effective.counterMass} kg counterweight • ${effective.longArm} / ${effective.shortArm} m beam • ${effective.sling} m sling • ${(effective.frameMass??30)} kg frame • grip ${(effective.frameFriction??.65).toFixed(2)}`);
  $('wallet').textContent=`Points ${economy.points} • Bells ${economy.bells} • prototype balance`;
  $('shop').innerHTML=catalog.map(item=>{const owned=economy.owned.includes(item.id),equipped=Object.values(economy.equipped).includes(item.id);return `<button data-item="${item.id}" ${!owned&&economy.bells<item.price?'disabled':''}>${item.label} — ${equipped?'equipped: remove':owned?'equip':item.price+' bells'}<small>${equipmentNotes[item.id]}${!owned&&economy.bells<item.price?' Need '+(item.price-economy.bells)+' more bells.':''}</small></button>`;}).join(' ');
  for(const button of $('shop').querySelectorAll('button'))button.onclick=()=>{sound.unlock();try{const id=button.dataset.item,item=catalog.find(item=>item.id===id);if(economy.equipped[item.slot]===id)economy=economyReducer(economy,{type:'unequip',slot:item.slot});else{if(!economy.owned.includes(id))economy=economyReducer(economy,{type:'purchase',id});economy=economyReducer(economy,{type:'equip',id});}saveProgress();economyUI();sound.play('shop');}catch(e){error=e.message;}};
@@ -91,7 +92,7 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
   if(preview&&!preview.release)hints.push('No separation in the five-second preview. Try different loading or mechanical settings.');
   const advice=predictionAdvice(preview);if(advice)hints.push(advice);
   if(fraction<.3&&!held&&!inContact&&c.y<scene.pouch.getPosition().y-.5)hints.push('The load slipped from this low winding setup. Reset and try a higher winding target or a different placement.');
-  if(held&&scene.hand?.body.getUserData()?.id==='head')hints.push('Head grip: try the torso for steadier loading.');
+  if(held&&scene.hand?.body.getUserData()?.id==='head'&&scene.rig.bodies.some(b=>b.id==='torso'))hints.push('Head grip: try the torso for steadier loading.');
   if(held&&scene.rig.totalMass>=2)hints.push('Heavy load: move slowly; compare the release hint.');
   if(held)hints.push('Release your grip before launching.');
   else if(!loading.withinEnvelope)hints.push('Lift the volunteer over the cradle and let gravity seat it.');
@@ -102,9 +103,9 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  }
  if(held&&scene.forceCapped)hints.push('Grip force limit reached. Move more gently.');
  setText('guidance',hints.join(' '));
- for(const event of scene.events.splice(0)){if(event.type==='impact'){runObstacle??=event.surface??null;sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4,strength:Math.min(1,event.strength/Math.max(.1,scene.rig.totalMass*10))});}else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
+ for(const event of scene.events.splice(0)){if(event.type==='impact'){runObstacle??=event.surface??null;sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4,strength:Math.min(1,event.strength/Math.max(.1,scene.rig.totalMass*10))});}else if(event.type==='launch')sound.play('launch');else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
  effects=effects.map(e=>({...e,life:e.life-dt})).filter(e=>e.life>0).slice(-20);
- if(clock>=nextStatus||statusPhase!==scene.phase){nextStatus=clock+.25;statusPhase=scene.phase;
+ if(clock>=nextStatus||statusPhase!==scene.phase){const audio=sound.getStatus();setText('audioEngine',audio.muted?'Audio muted; no cues are being scheduled.':audio.contextState==='running'?`Audio active • recent cue: ${audio.lastCue??'none'}`:'Audio waiting for an interaction.');nextStatus=clock+.25;statusPhase=scene.phase;
  setText('readout',error||`${scene.rig.label} • ${({uncocked:'Ready to wind',winding:'Winding',loading:'Load the cradle',launching:'Arm moving',flight:'In flight','wind-stalled':'Winding stalled'})[scene.phase]??scene.phase} • ${release?Math.max(0,c.x-release.x).toFixed(0)+' m • '+scene.impactCount+' bounces • '+(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(1)+' m/s':'Counterweight '+(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)+' m above axle'}`);
  setText('mechanicsReadout',`${scene.rig.label} • ${scene.phase} • ${release?(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(2)+' m/s • ':''}hand work ${scene.handWork.toFixed(2)} J • arcade work ${scene.assistWork.toFixed(2)} J${scene.forceCapped?' ('+gripParameters(scene.rig.totalMass).maxForce.toFixed(0)+' N cap)':''} • motor net work ${scene.windingWork.toFixed(1)} J • counterweight lift ${(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)} m above pivot • frame x ${scene.frame.getPosition().x.toFixed(3)} m • queue seed ${seed}`);
  setText('queue',`Next 3: ${queue.peek().map(id=>profiles.find(p=>p.id===id).label).join(' → ')}`);
