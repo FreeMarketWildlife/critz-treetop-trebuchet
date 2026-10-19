@@ -1,0 +1,410 @@
+{
+  "scope": "Honest additional unheld waiting changes physical load state; no state reset or force. These are motor-wound, contact-settled setups, not arbitrary manual load coverage.",
+  "rows": [
+    {
+      "class": "light",
+      "delay": 0,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.09465846197691699,
+          "cradleSpin": -0.03651372277103384,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 5,
+          "relativeSpeed": 0.000501901100694246,
+          "maxPartRelativeSpeed": 0.001255996250610548,
+          "maxRelativeSpin": 0.010346514189548663
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.320000000001171,
+          "x": 22.687710691499866,
+          "y": 0.00745708457792961,
+          "surface": "ground"
+        },
+        "time": 0.8666666666668021,
+        "center": {
+          "x": -2.2795312463618167,
+          "y": 302.66729634722543,
+          "vx": 2.6691001817010984,
+          "vy": 13.307272289669154,
+          "mass": 0.65
+        },
+        "speed": 13.57230973605279,
+        "firstHardwareExit": 0.6366666666667662,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -665.7731394000268,
+        "energyChange": -121.639695173581,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "light",
+      "delay": 0.2,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.037307602125467,
+          "cradleSpin": 0.009123197889209057,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 5,
+          "relativeSpeed": 0.0005000817347204774,
+          "maxPartRelativeSpeed": 0.0012526142793704033,
+          "maxRelativeSpin": 0.010314665436612767
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.296666666667647,
+          "x": 21.196348377171333,
+          "y": 0.009254447140583127,
+          "surface": "ground"
+        },
+        "time": 0.8650000000001352,
+        "center": {
+          "x": -2.277116025748491,
+          "y": 302.58540889950547,
+          "vx": 2.5013401940418727,
+          "vy": 13.112326960200468,
+          "mass": 0.65
+        },
+        "speed": 13.348776014209298,
+        "firstHardwareExit": 0.6350000000000993,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -665.820102054281,
+        "energyChange": -121.96881547031455,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "light",
+      "delay": 0.5,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.21845399410986915,
+          "cradleSpin": 0.07186083001182907,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 5,
+          "relativeSpeed": 0.0005138964081553571,
+          "maxPartRelativeSpeed": 0.0012718684589279323,
+          "maxRelativeSpin": 0.010536962743141046
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 3.131666666667156,
+          "x": 4.423015272476419,
+          "y": 294.00842788151203,
+          "surface": "launch branch"
+        },
+        "time": 0.8566666666668006,
+        "center": {
+          "x": -2.3351308714191505,
+          "y": 302.38476639674013,
+          "vx": 2.1139649663908324,
+          "vy": 12.829883419538492,
+          "mass": 0.65
+        },
+        "speed": 13.002874929725216,
+        "firstHardwareExit": 0.6283333333334316,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -665.889242186546,
+        "energyChange": -122.72030492878582,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "medium",
+      "delay": 0,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.8980348859646682,
+          "cradleSpin": -0.3119223472408087,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 4,
+          "relativeSpeed": 0.005926914458472565,
+          "maxPartRelativeSpeed": 0.03505703351878907,
+          "maxRelativeSpin": 0.2532364389429741
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.943333333333952,
+          "x": 45.87219894677229,
+          "y": 0.022421743863587407,
+          "surface": "ground"
+        },
+        "time": 0.7433333333334495,
+        "center": {
+          "x": -2.2941613444767706,
+          "y": 302.61989311351715,
+          "vx": 4.8327156452947575,
+          "vy": 18.369500334379794,
+          "mass": 2.4
+        },
+        "speed": 18.994569830429327,
+        "firstHardwareExit": 0.5800000000000907,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -272.6045689465086,
+        "energyChange": -238.37139668311238,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "medium",
+      "delay": 0.2,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.5921084701113837,
+          "cradleSpin": -0.20615852346964403,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 4,
+          "relativeSpeed": 0.005753674889609568,
+          "maxPartRelativeSpeed": 0.030072855300213096,
+          "maxRelativeSpin": 0.22131682525403357
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.87833333333381,
+          "x": 43.14808905369593,
+          "y": 0.008010271725571373,
+          "surface": "ground"
+        },
+        "time": 0.731666666666781,
+        "center": {
+          "x": -2.2266145429928015,
+          "y": 302.3358716086602,
+          "vx": 4.565085648449365,
+          "vy": 17.885845411062377,
+          "mass": 2.4
+        },
+        "speed": 18.459238149124666,
+        "firstHardwareExit": 0.571666666666756,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -272.67442102373263,
+        "energyChange": -154.2723912925851,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "medium",
+      "delay": 0.5,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.017805952903779836,
+          "cradleSpin": 0.0045668111050779165,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.003409366888681971,
+          "maxPartRelativeSpeed": 0.029306525475821455,
+          "maxRelativeSpin": 0.24106094330129066
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.725000000000307,
+          "x": 34.346773051063074,
+          "y": 0.018115381592173057,
+          "surface": "ground"
+        },
+        "time": 0.7216666666667795,
+        "center": {
+          "x": -2.183496282240157,
+          "y": 301.93622766552346,
+          "vx": 3.747602857798745,
+          "vy": 16.69642972812973,
+          "mass": 2.4
+        },
+        "speed": 17.111846564475602,
+        "firstHardwareExit": 0.5600000000000875,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -272.49114634526404,
+        "energyChange": -159.02935301743082,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "heavy",
+      "delay": 0,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.04215961310458812,
+          "cradleSpin": -0.03225165137294997,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 0.09361034307163962,
+          "maxPartRelativeSpeed": 0.8368153190537243,
+          "maxRelativeSpin": 5.968982731806126
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 0.49833333333341123,
+          "x": 2.330811769171747,
+          "y": 294.01067984300806,
+          "surface": "launch branch"
+        },
+        "time": 1.6900000000002642,
+        "center": {
+          "x": 1.7419464835776488,
+          "y": 297.90783687244755,
+          "vx": -5.931319477556412,
+          "vy": -7.1297811058063045,
+          "mass": 5
+        },
+        "speed": 9.274391050713392,
+        "firstHardwareExit": 1.4550000000002274,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -535.2358768045717,
+        "energyChange": -857.4675235533914,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "heavy",
+      "delay": 0.2,
+      "loaded": true,
+      "ready": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.03517286862347375,
+          "cradleSpin": -0.02232816178124608,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 0.33862946854575404,
+          "maxPartRelativeSpeed": 0.6842335194725798,
+          "maxRelativeSpin": 0.8775501258258507
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 0.3500000000000547,
+          "x": 2.374542977469118,
+          "y": 294.00711096999134,
+          "surface": "launch branch"
+        },
+        "time": 1.6300000000002548,
+        "center": {
+          "x": 2.7868851068578513,
+          "y": 297.6930013289747,
+          "vx": -2.5913118979567793,
+          "vy": -9.593982889672173,
+          "mass": 5
+        },
+        "speed": 9.937776664818685,
+        "firstHardwareExit": 1.3900000000002173,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -535.6250228222681,
+        "energyChange": -762.2222925492939,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "class": "heavy",
+      "delay": 0.5,
+      "loaded": true,
+      "ready": {
+        "waited": 0.45333333333333187,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.20080244266525926,
+          "cradleSpin": -0.07322727330512757,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.27864448517190565,
+          "maxPartRelativeSpeed": 0.8096311006941076,
+          "maxRelativeSpin": 3.6570353012733148
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 8.963333333333733,
+          "x": 49.212911408649255,
+          "y": 0.019869911781028426,
+          "surface": "ground"
+        },
+        "time": 1.0333333333334949,
+        "center": {
+          "x": 0.146382303667903,
+          "y": 304.92377199704686,
+          "vx": 5.481604842010555,
+          "vy": 10.031358412108508,
+          "mass": 5
+        },
+        "speed": 11.431366639038997,
+        "firstHardwareExit": 0.6266666666667646,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -544.2656412317413,
+        "energyChange": -173.57293888953063,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    }
+  ]
+}

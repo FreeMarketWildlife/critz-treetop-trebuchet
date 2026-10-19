@@ -104,3 +104,7 @@ test('articulated squirrel recovers launch tumble through passive torso forces a
  const torso=s.parts.find(b=>b.getUserData().id==='torso'),initial=Math.abs(torso.getAngularVelocity());assert.ok(initial>1);
  for(let i=0;i<6000;i++)s.step();assert.ok(Math.abs(torso.getAngularVelocity())<initial*.1);assert.ok(s.assistWork<0);assert.ok(s.center().y< s.release.center.y);
 });
+test('loading diagnostics distinguish proximity from actual contact without changing state',()=>{
+ const initial=new CritterScene(),before=initial.snapshot(),status=initial.loadingStatus();assert.equal(status.contacting,false);assert.deepEqual(initial.snapshot(),before);
+ const heavy=physicalLoad(new CritterScene({},'armadillo'));for(let i=0;i<600;i++)heavy.step();const ready=heavy.loadingStatus();assert.ok(ready.withinEnvelope);assert.ok(ready.contacting);assert.ok(ready.relativeSpeed<.35);
+});

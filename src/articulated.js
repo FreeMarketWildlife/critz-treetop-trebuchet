@@ -89,6 +89,13 @@ export class CritterScene {
  snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {dampingWork:this.dampingWork,dragWork:this.dragWork,windingWork:this.windingWork,windingInput:this.windingInput,windingBraking:this.windingBraking,windingTarget:this.windingTarget,windingStart:this.windingStart,assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
  clone(){return new CritterScene(this.p,this.rig.id,this.snapshot());}
  center(){let x=0,y=0,vx=0,vy=0,m=0;for(const b of this.parts){const w=b.getMass(),q=b.getWorldCenter(),v=b.getLinearVelocity();m+=w;x+=q.x*w;y+=q.y*w;vx+=v.x*w;vy+=v.y*w;}return {x:x/m,y:y/m,vx:vx/m,vy:vy/m,mass:m};}
+ loadingStatus(){const c=this.center(),cup=this.pouch.getPosition(),v=this.pouch.getLinearVelocityFromWorldPoint(c);let contacting=false,contactingParts=0,maxPartRelativeSpeed=0,maxRelativeSpin=0;
+  for(const part of this.parts){let contact=false;for(let edge=part.getContactList();edge;edge=edge.next)if(['pouch','pouchflap'].includes(edge.other.getUserData()?.role)&&edge.contact.isTouching())contact=true;
+   contacting ||=contact;if(contact)contactingParts++;const q=part.getWorldCenter(),pv=part.getLinearVelocity(),cv=this.pouch.getLinearVelocityFromWorldPoint(q);maxPartRelativeSpeed=Math.max(maxPartRelativeSpeed,Math.hypot(pv.x-cv.x,pv.y-cv.y));maxRelativeSpin=Math.max(maxRelativeSpin,Math.abs(part.getAngularVelocity()-this.pouch.getAngularVelocity()));
+  }
+  const cv=this.pouch.getLinearVelocity();
+  return {cradleSpeed:Math.hypot(cv.x,cv.y),cradleSpin:this.pouch.getAngularVelocity(),withinEnvelope:Math.abs(c.x-cup.x)<.8&&c.y>cup.y-.2&&c.y<cup.y+.8,contacting,contactingParts,relativeSpeed:Math.hypot(c.vx-v.x,c.vy-v.y),maxPartRelativeSpeed,maxRelativeSpin};
+ }
  isLoaded(){const c=this.center(),p=this.pouch.getPosition();return Math.abs(c.x-p.x)<.8 && c.y>p.y-.2 && c.y<p.y+.8;}
  grab(point){if(this.phase!=='loading')return false;let selected=null,anchor=null;
   for(const b of this.parts)for(let f=b.getFixtureList();f;f=f.getNext())if(f.testPoint(point)){selected=b;anchor=point;}

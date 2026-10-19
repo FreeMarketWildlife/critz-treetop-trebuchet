@@ -79,3 +79,21 @@ test('channel exit diagnostic uses actual axial mouth position for each channel 
   const clone=scene.clone();assert.equal(clone.link.getUserData().channelLength,channelLength);
  }
 });
+
+test('visible light/medium/heavy hardware matrix clears launch branch from contact-settled snapshots',async()=>{
+ const {physicalMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
+ for(const entry of physicalMatrix){
+  const scene=new PhysicalHookScene(entry.parameters,entry.species);assert.ok(load(scene));const settled=waitForContact(scene);
+  assert.ok(settled.status.contacting&&settled.status.withinEnvelope&&settled.status.relativeSpeed<.35);assert.ok(settled.quiet>=.1);
+  const saved=scene.snapshot(),samples=[1/300,1/600,1/1200].map(dt=>measureSnapshot(saved,scene.p,entry.species,dt));
+  for(const r of samples){assert.ok(r.released);assert.ok(r.center.vx>0&&r.center.vy>0);assert.ok(r.speed>10);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.maximumEnergyGain<1);assert.ok(r.energyChange<0);assert.equal(r.explicitWork,0);}
+  const a=samples[1].center,b=samples[2].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.65,entry.class);
+ }
+});
+test('each visible channel setup works after actual torque-limited winding and contacted loading',async()=>{
+ const {physicalMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
+ for(const entry of physicalMatrix){const scene=new PhysicalHookScene({...entry.parameters,mechanicalWinding:true,initialArm:-3},entry.species);scene.startWinding(.6);
+  for(let i=0;i<7200&&scene.phase==='winding';i++)scene.step();assert.equal(scene.phase,'loading');assert.ok(scene.windingWork>100);assert.ok(load(scene));const settled=waitForContact(scene);assert.ok(settled.status.contacting&&settled.quiet>=.1);
+  const result=measureSnapshot(scene.snapshot(),scene.p,entry.species,1/600);assert.ok(result.center.vx>0&&result.center.vy>0);assert.equal(result.firstWorldImpact?.surface,'ground');assert.ok(result.maximumEnergyGain<1);assert.equal(result.explicitWork,0);
+ }
+});
