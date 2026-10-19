@@ -1,4 +1,5 @@
 import * as P from '../node_modules/planck/dist/planck.mjs';
+import {aerodynamicForces} from './glide.js';
 import {config} from './physics.js';
 import {createRig} from './species.js';
 import {createEncounterDirector} from './encounters.js';
@@ -18,8 +19,8 @@ export function cockedConfig(overrides={},desiredFraction=.6){
 }
 export class CritterScene {
  constructor(overrides={},species='lizard',saved=null){
-  this.p=config(overrides);this.rig=createRig(species);this.phase='loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;
-  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0});this.index();return;}
+  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;
+  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0});this.index();return;}
   const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
   for(const s of layout.surfaces)ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
@@ -29,8 +30,8 @@ export class CritterScene {
   this.frame=this.world.createDynamicBody({position:V(0,p.pivotHeight-6)});tag(this.frame,'frame','support');
   // A rigid A-frame with finite fixtures; feet meet the authored branch at y=294.
   for(const sign of [-1,1]){
-   this.frame.createFixture(P.Polygon([V(sign*1.3,0),V(sign*1.6,.15),V(.16,6),V(-.16,6)]),{density:1,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
-   this.frame.createFixture(P.Box(.4,.1,V(sign*1.5,.1)),{density:3,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
+   this.frame.createFixture(P.Polygon([V(sign*1.3,.02),V(sign*1.6,.15),V(.16,6),V(-.16,6)]),{density:1,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
+   this.frame.createFixture(P.Box(.4,.1,V(sign*1.5,.12)),{density:3,friction:p.frameFriction,restitution:0,filterCategoryBits:16,filterMaskBits:15});
   }
   const frameMass={center:V()};this.frame.getMassData(frameMass);this.frame.setMassData({mass:p.frameMass,center:frameMass.center,I:frameMass.I*p.frameMass/frameMass.mass});
   this.arm=this.world.createDynamicBody({position:V(0,p.pivotHeight),angle:p.initialArm});tag(this.arm,'arm','beam');
@@ -60,6 +61,18 @@ export class CritterScene {
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
    const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;this.events.push({type:'impact',strength,position:this.center()});if(this.events.length>16)this.events.shift();}});
  }
+ startWinding(fraction){
+  if(this.hand || !['uncocked','loading','wind-stalled'].includes(this.phase))throw new Error('Winding requires an unloaded grip and idle mechanism');
+  const feasible=cockedConfig(this.p,fraction);this.windingTarget=feasible.initialArm;this.windingStart=this.elapsed;
+  this.pivot.enableLimit(false);this.pivot.setMaxMotorTorque(this.p.windingTorque??1800);this.pivot.enableMotor(true);this.phase='winding';
+ }
+ updateWinding(){
+  if(this.phase!=='winding')return;
+  const error=this.windingTarget-this.arm.getAngle(),frameSpeed=this.frame.getAngularVelocity(),relativeSpeed=this.pivot.getJointSpeed();
+  if(Math.abs(error)<.004 && Math.abs(relativeSpeed)<.025){const angle=this.pivot.getJointAngle();this.pivot.enableMotor(false);this.pivot.setLimits(angle,angle);this.pivot.enableLimit(true);this.phase='loading';this.events.push({type:'cocked'});return;}
+  const speed=Math.max(-.6,Math.min(.6,error*5))-frameSpeed;this.pivot.setMotorSpeed(speed);
+  if(this.elapsed-this.windingStart>12){this.pivot.enableMotor(false);this.phase='wind-stalled';this.events.push({type:'wind-stalled'});}
+ }
  enableEncounters(seed){this.encounters=createEncounterDirector(seed);}
  updateEncounters(){if(!this.encounters || this.phase!=='flight' || this.elapsed-this.release.time<.8)return;
   const active=this.encounters.update(this.elapsed,this.center()).active;
@@ -71,7 +84,7 @@ export class CritterScene {
   }
   for(const [id,b]of this.enemies)if(b && this.elapsed>b.getUserData().expiresAt && Math.hypot(b.getPosition().x-this.center().x,b.getPosition().y-this.center().y)>4){this.world.destroyBody(b);this.enemies.delete(id);}
  }
- snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
+ snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {windingWork:this.windingWork,windingInput:this.windingInput,windingBraking:this.windingBraking,windingTarget:this.windingTarget,windingStart:this.windingStart,assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
  clone(){return new CritterScene(this.p,this.rig.id,this.snapshot());}
  center(){let x=0,y=0,vx=0,vy=0,m=0;for(const b of this.parts){const w=b.getMass(),q=b.getWorldCenter(),v=b.getLinearVelocity();m+=w;x+=q.x*w;y+=q.y*w;vx+=v.x*w;vy+=v.y*w;}return {x:x/m,y:y/m,vx:vx/m,vy:vy/m,mass:m};}
  isLoaded(){const c=this.center(),p=this.pouch.getPosition();return Math.abs(c.x-p.x)<.8 && c.y>p.y-.2 && c.y<p.y+.8;}
@@ -82,26 +95,25 @@ export class CritterScene {
 
  move(point){if(this.hand && Number.isFinite(point.x)&&Number.isFinite(point.y))this.hand.target=V(point.x,point.y);}
  drop(){this.hand=null;}
- unlatch(){if(this.hand)throw new Error('Release your grip first');if(!this.isLoaded())throw new Error('Place critter in cradle first');this.pivot.enableLimit(false);this.phase='launching';}
+ unlatch(){if(this.phase!=='loading')throw new Error('Finish physical winding before unlatching');if(this.hand)throw new Error('Release your grip first');if(!this.isLoaded())throw new Error('Place critter in cradle first');this.pivot.enableLimit(false);this.phase='launching';}
  energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic()){const m=b.getMass(),c=b.getWorldCenter(),v=b.getLinearVelocity(),local=b.getLocalCenter(),I=b.getInertia()-m*(local.x**2+local.y**2);e+=.5*m*(v.x**2+v.y**2)+.5*I*b.getAngularVelocity()**2+m*this.p.gravity*(c.y-this.p.pivotHeight);}return e;}
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
   const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
   if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q);let fx=80*(this.hand.target.x-q.x)-12*v.x,fy=80*(this.hand.target.y-q.y)-12*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,80/(mag||1));this.forceCapped=mag>80;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
   if(this.p.armDamping)this.arm.applyTorque(-this.p.armDamping*this.arm.getAngularVelocity(),true);
   if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y);b.applyForceToCenter(V(-k*v.x,-k*v.y),true);}
-  this.updateEncounters();const old=this.relative();const assist=[];
+  this.updateWinding();this.updateEncounters();const winding=this.phase==='winding',oldRelativeAngle=this.pivot.getJointAngle();const old=this.relative();const assist=[];
   if(this.phase==='flight' && (this.control || this.rig.id==='flying-squirrel')){
    const c=this.center(),speed=Math.hypot(c.vx,c.vy),root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
-   if(this.rig.id==='flying-squirrel' && speed>0.1){const q=.012*speed*speed,cl=.45-this.control*.7;
-    const fx=q*(-cl*c.vy/speed-.18*c.vx/speed),fy=q*(cl*c.vx/speed-.18*c.vy/speed);
-    for(const b of this.parts){const share=b.getMass()/c.mass;const F=V(fx*share,fy*share);assist.push({body:b,force:F,before:{...b.getWorldCenter()},angle:b.getAngle(),torque:0});b.applyForceToCenter(F,true);}assist.push({body:root,force:V(0,0),before:{...root.getWorldCenter()},angle:root.getAngle(),torque:-this.control*.02});root.applyTorque(-this.control*.02,true);
+   if(this.rig.id==='flying-squirrel' && speed>0.1){const aero=aerodynamicForces({vx:c.vx,vy:c.vy,mass:c.mass,area:.22,pitch:root.getAngle(),input:this.control});
+    for(const b of this.parts){const share=b.getMass()/c.mass,F=V(aero.fx*share,aero.fy*share);assist.push({body:b,force:F,before:{...b.getWorldCenter()},angle:b.getAngle(),torque:0});b.applyForceToCenter(F,true);}
    } else if(this.rig.id!=='flying-squirrel'){const F=V(this.control*.25,0);assist.push({body:root,force:F,before:{...root.getWorldCenter()},angle:root.getAngle(),torque:0});root.applyForceToCenter(F,true);}
   }
-  this.world.step(dt,20,12);this.elapsed+=dt;for(const a of assist){const q=a.body.getWorldCenter();this.assistWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y)+a.torque*(a.body.getAngle()-a.angle);}
+  this.world.step(dt,20,12);this.elapsed+=dt;if(winding){const work=this.pivot.getMotorTorque(1/dt)*(this.pivot.getJointAngle()-oldRelativeAngle);this.windingWork+=work;if(work>=0)this.windingInput+=work;else this.windingBraking-=work;}for(const a of assist){const q=a.body.getWorldCenter();this.assistWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y)+a.torque*(a.body.getAngle()-a.angle);}
   if(this.hand){const q=this.hand.body.getWorldPoint(this.hand.local);this.handWork+=force.x*(q.x-before.x)+force.y*(q.y-before.y);}
   if(this.phase==='launching' && this.rope){const rel=this.relative(),a=this.rope.getAnchorA(),b=this.rope.getAnchorB(),r=Math.hypot(a.x-b.x,a.y-b.y);
     const pulling=this.ropes.some(rope=>{const a=rope.getAnchorA(),b=rope.getAnchorB(),F=rope.getReactionForce(1/dt),d=Math.hypot(b.x-a.x,b.y-a.y);return d>0 && -(F.x*(b.x-a.x)+F.y*(b.y-a.y))/d>.001;});
-    if(old>this.p.releasePinAngle && rel<=this.p.releasePinAngle && old-rel<Math.PI && pulling && r>Math.hypot(this.p.sling,.65)-.03){
+    if(this.releaseMode!=='physical-hook' && old>this.p.releasePinAngle && rel<=this.p.releasePinAngle && old-rel<Math.PI && pulling && r>Math.hypot(this.p.sling,.65)-.03){
      for(const rope of this.ropes)this.world.destroyJoint(rope);this.ropes=[];this.rope=null;for(let f=this.pouch.getFixtureList();f;f=f.getNext())f.setFilterData({categoryBits:2,maskBits:0,groupIndex:0});
      this.phase='flight';this.events.push({type:'launch'});this.release={time:this.elapsed,center:this.center(),parts:this.parts.map(b=>({id:b.getUserData().id,p:{...b.getPosition()},v:{...b.getLinearVelocity()},w:b.getAngularVelocity()}))};
     }

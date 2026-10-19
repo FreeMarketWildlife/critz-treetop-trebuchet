@@ -1,0 +1,76 @@
+{
+  "method": "One physically force-loaded lizard state, reconstructed identically at each timestep; contacts and numerical losses remain mixed. Winding measured after one second settling. No encounters or postflight control.",
+  "shots": [
+    {
+      "hz": 300,
+      "release": {
+        "x": -1.5205535228186797,
+        "y": 303.7089680824241,
+        "vx": 16.864518476824703,
+        "vy": 21.973613513164278,
+        "mass": 0.65
+      },
+      "elapsed": 0.8433333333332405,
+      "energyChangeJ": -111.49295442831146,
+      "handWorkDuringShotJ": 0
+    },
+    {
+      "hz": 600,
+      "release": {
+        "x": -1.5517607550158052,
+        "y": 303.6685293894768,
+        "vx": 16.888685782666194,
+        "vy": 22.000966482518272,
+        "mass": 0.65
+      },
+      "elapsed": 0.8433333333334652,
+      "energyChangeJ": -124.45077266288013,
+      "handWorkDuringShotJ": 0
+    },
+    {
+      "hz": 1200,
+      "release": {
+        "x": -1.5595942086430294,
+        "y": 303.664117562564,
+        "vx": 17.02982685664692,
+        "vy": 22.02308432644669,
+        "mass": 0.65
+      },
+      "elapsed": 0.8433333333334652,
+      "energyChangeJ": -123.83332175211933,
+      "handWorkDuringShotJ": 0
+    }
+  ],
+  "winding": [
+    {
+      "fraction": 0.2,
+      "phase": "loading",
+      "netMotorWorkJ": 38.596360275771275,
+      "positiveMotorInputJ": 38.596360275771275,
+      "brakingJ": 0,
+      "mechanicalEnergyChangeJ": 38.10037798319888,
+      "unseparatedLossJ": 0.4959822925723927,
+      "counterweightHeightAbovePivotM": 0.15688838931554355
+    },
+    {
+      "fraction": 0.6,
+      "phase": "loading",
+      "netMotorWorkJ": 317.20272362731055,
+      "positiveMotorInputJ": 317.20272362731055,
+      "brakingJ": 0,
+      "mechanicalEnergyChangeJ": 315.9854330927236,
+      "unseparatedLossJ": 1.2172905345869367,
+      "counterweightHeightAbovePivotM": 0.47743930095635617
+    },
+    {
+      "fraction": 0.9,
+      "phase": "loading",
+      "netMotorWorkJ": 527.2037842532363,
+      "positiveMotorInputJ": 527.2037842532363,
+      "brakingJ": 0,
+      "mechanicalEnergyChangeJ": 525.2818042569322,
+      "unseparatedLossJ": 1.9219799963041169,
+      "counterweightHeightAbovePivotM": 0.718605621876689
+    }
+  ]
+}

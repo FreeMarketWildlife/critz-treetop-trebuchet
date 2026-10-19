@@ -55,3 +55,20 @@ test('cocking height respects beam/sling clearance and rejects impossible setups
  const p=cockedConfig({longArm:3.6,sling:2.9},.95);assert.ok(-Math.sin(p.initialArm)<.8);
  assert.doesNotThrow(()=>new CritterScene(p));assert.throws(()=>cockedConfig({longArm:20,sling:5},.95));
 });
+test('winding supplies bounded motor work and latches without assigning pose',()=>{
+ const s=new CritterScene({mechanicalWinding:true,initialArm:-3});for(let i=0;i<600;i++)s.step();
+ const E=s.energy();s.startWinding(.6);let maximumTorque=0,lastAngle=s.arm.getAngle();
+ for(let i=0;i<7200 && s.phase==='winding';i++){s.step();maximumTorque=Math.max(maximumTorque,Math.abs(s.pivot.getMotorTorque(600)));assert.ok(Math.abs(s.arm.getAngle()-lastAngle)<.01);lastAngle=s.arm.getAngle();}
+ assert.equal(s.phase,'loading');assert.ok(maximumTorque<=1800+1e-6);assert.ok(s.windingInput>100);assert.ok(s.windingBraking>=0);
+ assert.ok(s.energy()-E<=s.windingWork+3);assert.ok(Math.abs(s.energy()-E-s.windingWork)<10);
+ assert.ok(Math.abs(-s.p.shortArm*Math.sin(s.arm.getAngle())-.48)<.01);
+});
+test('insufficient motor torque cannot fake the requested winding height',()=>{
+ const s=new CritterScene({mechanicalWinding:true,initialArm:-3,windingTorque:10});s.startWinding(.9);for(let i=0;i<1800;i++)s.step();assert.notEqual(s.phase,'loading');assert.ok(Math.abs(-s.p.shortArm*Math.sin(s.arm.getAngle())-.72)>.05);
+});
+
+test('motor inputs reject unbounded or invalid actuator settings',()=>{
+ for(const windingTorque of [-10,NaN,Infinity,10001])assert.throws(()=>new CritterScene({windingTorque}));
+ assert.throws(()=>new CritterScene({mechanicalWinding:'yes'}));
+ assert.doesNotThrow(()=>new CritterScene({windingTorque:0,mechanicalWinding:true}));
+});
