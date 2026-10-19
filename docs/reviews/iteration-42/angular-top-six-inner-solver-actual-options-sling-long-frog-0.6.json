@@ -1,0 +1,658 @@
+{
+  "pinnedPrivateDiagnostic": {
+    "version": "1.5.1",
+    "field": "RevoluteJoint.m_limitState",
+    "inactiveLimit": 0,
+    "scope": "Read-only diagnostic; never used to control integration."
+  },
+  "protocol": "Top3 retained inner angular cases for default and experimental loads, selected before running variants. Fresh actual winding/grip histories; loaded snapshot digest equality asserted per policy. Every launch and15s flight integration inspected, including after ground contact. Actual contacts read at peak; no contact-normal impulse inference, force/pose/limit edits or saves. This longer horizon is not identical to prior stop-at-ground+0.5s matrix.",
+  "rows": [
+    {
+      "id": "sling-long-frog-0.6",
+      "candidate": true,
+      "previous": 0.32035669886442264,
+      "policy": "stop8",
+      "windHash": "62f7b780771bc0a561ded8ff8aaacc6d1141754cdf84595c2add05505eb71a18",
+      "startHash": "3ed9a2a369ec0537ae705cc0f5f096845e82a47c138f523f01f5b5f3f6ae815a",
+      "metrics": {
+        "innerSteps": 18838,
+        "maxAngular": 0.11035569881115348,
+        "maxRope": 0.0007050987169265888,
+        "maxAnchor": 0.0012771378308814364,
+        "above08Seconds": 0.00020833333333333335,
+        "longestAbove08Seconds": 0.00020833333333333335,
+        "maxCumulativeEnergy": 0,
+        "maxPositiveStepEnergy": 0,
+        "nonfinite": false,
+        "joints": {
+          "[{\"role\":\"pouch\",\"id\":\"cradle\"},{\"role\":\"pouchflap\",\"id\":\"right-panel\"}]": {
+            "max": 0.03490667067863207,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"front-leg\"}]": {
+            "max": 0.11035569881115348,
+            "aboveSeconds": 0.00020833333333333335
+          },
+          "[{\"role\":\"part\",\"id\":\"rear-thigh\"},{\"role\":\"part\",\"id\":\"rear-shin\"}]": {
+            "max": 0.02626312467228331,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"rear-thigh\"}]": {
+            "max": 0.00041695664727958714,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"head\"}]": {
+            "max": 0.037869481353467904,
+            "aboveSeconds": 0
+          }
+        },
+        "worst": {
+          "phase": "flight",
+          "time": 16.607708333333605,
+          "dt": 0.00020833333333333335,
+          "actualSolverOptions": {
+            "velocity": 20,
+            "position": 12
+          },
+          "solverLimitState": 0,
+          "angle": 1.0103556988111535,
+          "limits": [
+            -0.9,
+            0.9
+          ],
+          "a": {
+            "tag": {
+              "role": "part",
+              "id": "torso"
+            },
+            "w": -177.16245125738564,
+            "mass": 0.441,
+            "contacts": []
+          },
+          "b": {
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "w": 625.1178735656546,
+            "mass": 0.10500000000000001,
+            "contacts": []
+          }
+        }
+      },
+      "stats": {
+        "outerSteps": 9568,
+        "refinedSteps": 683,
+        "distanceSteps": 648,
+        "stopSteps": 40,
+        "compatiblePairs": 1064872,
+        "distanceQueries": 4149
+      },
+      "release": {
+        "time": 7.153333333333672,
+        "center": {
+          "x": -1.297932535583899,
+          "y": 304.2107578515134,
+          "vx": 7.992467865278348,
+          "vy": 14.232385930912816,
+          "mass": 1.05
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.441131540518182,
+              "y": 304.3702720309466
+            },
+            "v": {
+              "x": 9.389470776090521,
+              "y": 15.606573497937582
+            },
+            "w": -12.094718456924998
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.514024467594741,
+              "y": 304.2347682226013
+            },
+            "v": {
+              "x": 8.012805015389441,
+              "y": 15.587664373506225
+            },
+            "w": -6.4710159691224005
+          },
+          {
+            "id": "rear-shin",
+            "p": {
+              "x": -0.9717332201284355,
+              "y": 304.2073293594972
+            },
+            "v": {
+              "x": 8.235722241262739,
+              "y": 12.232175225804957
+            },
+            "w": -14.30911283520126
+          },
+          {
+            "id": "rear-thigh",
+            "p": {
+              "x": -1.0940184602292047,
+              "y": 304.13634988123175
+            },
+            "v": {
+              "x": 7.662626271593507,
+              "y": 13.132554123221377
+            },
+            "w": -0.7862236737862055
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.3059945785993374,
+              "y": 304.1893636249991
+            },
+            "v": {
+              "x": 7.716931563577103,
+              "y": 14.09051484917089
+            },
+            "w": -7.864398041468922
+          }
+        ]
+      },
+      "end": {
+        "x": 160.95769357615526,
+        "y": 0.18654036789247655,
+        "vx": 13.183162948626904,
+        "vy": -0.0000014449431010604204,
+        "mass": 1.05
+      }
+    },
+    {
+      "id": "sling-long-frog-0.6",
+      "candidate": true,
+      "previous": 0.32035669886442264,
+      "policy": "innerPosition24",
+      "windHash": "62f7b780771bc0a561ded8ff8aaacc6d1141754cdf84595c2add05505eb71a18",
+      "startHash": "3ed9a2a369ec0537ae705cc0f5f096845e82a47c138f523f01f5b5f3f6ae815a",
+      "metrics": {
+        "innerSteps": 18888,
+        "maxAngular": 0.11035569881115348,
+        "maxRope": 0.0007050987169265888,
+        "maxAnchor": 0.0012771378308814364,
+        "above08Seconds": 0.00020833333333333335,
+        "longestAbove08Seconds": 0.00020833333333333335,
+        "maxCumulativeEnergy": 0,
+        "maxPositiveStepEnergy": 0,
+        "nonfinite": false,
+        "joints": {
+          "[{\"role\":\"pouch\",\"id\":\"cradle\"},{\"role\":\"pouchflap\",\"id\":\"right-panel\"}]": {
+            "max": 0.03490667067863207,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"front-leg\"}]": {
+            "max": 0.11035569881115348,
+            "aboveSeconds": 0.00020833333333333335
+          },
+          "[{\"role\":\"part\",\"id\":\"rear-thigh\"},{\"role\":\"part\",\"id\":\"rear-shin\"}]": {
+            "max": 0.01105790283929764,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"rear-thigh\"}]": {
+            "max": 0.00032057603802959633,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"head\"}]": {
+            "max": 0.037869481353467904,
+            "aboveSeconds": 0
+          }
+        },
+        "worst": {
+          "phase": "flight",
+          "time": 16.607708333333605,
+          "dt": 0.00020833333333333335,
+          "actualSolverOptions": {
+            "velocity": 20,
+            "position": 24
+          },
+          "solverLimitState": 0,
+          "angle": 1.0103556988111535,
+          "limits": [
+            -0.9,
+            0.9
+          ],
+          "a": {
+            "tag": {
+              "role": "part",
+              "id": "torso"
+            },
+            "w": -177.16245125738564,
+            "mass": 0.441,
+            "contacts": []
+          },
+          "b": {
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "w": 625.1178735656546,
+            "mass": 0.10500000000000001,
+            "contacts": []
+          }
+        }
+      },
+      "stats": {
+        "outerSteps": 9568,
+        "refinedSteps": 683,
+        "distanceSteps": 648,
+        "stopSteps": 40,
+        "compatiblePairs": 1064872,
+        "distanceQueries": 4149,
+        "extraSolveIntegrations": 21
+      },
+      "release": {
+        "time": 7.153333333333672,
+        "center": {
+          "x": -1.297932535583899,
+          "y": 304.2107578515134,
+          "vx": 7.992467865278348,
+          "vy": 14.232385930912816,
+          "mass": 1.05
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.441131540518182,
+              "y": 304.3702720309466
+            },
+            "v": {
+              "x": 9.389470776090521,
+              "y": 15.606573497937582
+            },
+            "w": -12.094718456924998
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.514024467594741,
+              "y": 304.2347682226013
+            },
+            "v": {
+              "x": 8.012805015389441,
+              "y": 15.587664373506225
+            },
+            "w": -6.4710159691224005
+          },
+          {
+            "id": "rear-shin",
+            "p": {
+              "x": -0.9717332201284355,
+              "y": 304.2073293594972
+            },
+            "v": {
+              "x": 8.235722241262739,
+              "y": 12.232175225804957
+            },
+            "w": -14.30911283520126
+          },
+          {
+            "id": "rear-thigh",
+            "p": {
+              "x": -1.0940184602292047,
+              "y": 304.13634988123175
+            },
+            "v": {
+              "x": 7.662626271593507,
+              "y": 13.132554123221377
+            },
+            "w": -0.7862236737862055
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.3059945785993374,
+              "y": 304.1893636249991
+            },
+            "v": {
+              "x": 7.716931563577103,
+              "y": 14.09051484917089
+            },
+            "w": -7.864398041468922
+          }
+        ]
+      },
+      "end": {
+        "x": 160.95467554891385,
+        "y": 0.18654000733859022,
+        "vx": 13.1820805117392,
+        "vy": -0.000001444939087901185,
+        "mass": 1.05
+      }
+    },
+    {
+      "id": "sling-long-frog-0.6",
+      "candidate": true,
+      "previous": 0.32035669886442264,
+      "policy": "innerPosition48",
+      "windHash": "62f7b780771bc0a561ded8ff8aaacc6d1141754cdf84595c2add05505eb71a18",
+      "startHash": "3ed9a2a369ec0537ae705cc0f5f096845e82a47c138f523f01f5b5f3f6ae815a",
+      "metrics": {
+        "innerSteps": 18892,
+        "maxAngular": 0.11035569881115348,
+        "maxRope": 0.0007050987169265888,
+        "maxAnchor": 0.0012771378308814364,
+        "above08Seconds": 0.00020833333333333335,
+        "longestAbove08Seconds": 0.00020833333333333335,
+        "maxCumulativeEnergy": 0,
+        "maxPositiveStepEnergy": 0,
+        "nonfinite": false,
+        "joints": {
+          "[{\"role\":\"pouch\",\"id\":\"cradle\"},{\"role\":\"pouchflap\",\"id\":\"right-panel\"}]": {
+            "max": 0.03490667067863207,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"front-leg\"}]": {
+            "max": 0.11035569881115348,
+            "aboveSeconds": 0.00020833333333333335
+          },
+          "[{\"role\":\"part\",\"id\":\"rear-thigh\"},{\"role\":\"part\",\"id\":\"rear-shin\"}]": {
+            "max": 0.01105836918330283,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"rear-thigh\"}]": {
+            "max": 0.00236490733754513,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"head\"}]": {
+            "max": 0.037869481353467904,
+            "aboveSeconds": 0
+          }
+        },
+        "worst": {
+          "phase": "flight",
+          "time": 16.607708333333605,
+          "dt": 0.00020833333333333335,
+          "actualSolverOptions": {
+            "velocity": 20,
+            "position": 48
+          },
+          "solverLimitState": 0,
+          "angle": 1.0103556988111535,
+          "limits": [
+            -0.9,
+            0.9
+          ],
+          "a": {
+            "tag": {
+              "role": "part",
+              "id": "torso"
+            },
+            "w": -177.16245125738564,
+            "mass": 0.441,
+            "contacts": []
+          },
+          "b": {
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "w": 625.1178735656546,
+            "mass": 0.10500000000000001,
+            "contacts": []
+          }
+        }
+      },
+      "stats": {
+        "outerSteps": 9568,
+        "refinedSteps": 684,
+        "distanceSteps": 648,
+        "stopSteps": 41,
+        "compatiblePairs": 1064872,
+        "distanceQueries": 4149,
+        "extraSolveIntegrations": 21
+      },
+      "release": {
+        "time": 7.153333333333672,
+        "center": {
+          "x": -1.297932535583899,
+          "y": 304.2107578515134,
+          "vx": 7.992467865278348,
+          "vy": 14.232385930912816,
+          "mass": 1.05
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.441131540518182,
+              "y": 304.3702720309466
+            },
+            "v": {
+              "x": 9.389470776090521,
+              "y": 15.606573497937582
+            },
+            "w": -12.094718456924998
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.514024467594741,
+              "y": 304.2347682226013
+            },
+            "v": {
+              "x": 8.012805015389441,
+              "y": 15.587664373506225
+            },
+            "w": -6.4710159691224005
+          },
+          {
+            "id": "rear-shin",
+            "p": {
+              "x": -0.9717332201284355,
+              "y": 304.2073293594972
+            },
+            "v": {
+              "x": 8.235722241262739,
+              "y": 12.232175225804957
+            },
+            "w": -14.30911283520126
+          },
+          {
+            "id": "rear-thigh",
+            "p": {
+              "x": -1.0940184602292047,
+              "y": 304.13634988123175
+            },
+            "v": {
+              "x": 7.662626271593507,
+              "y": 13.132554123221377
+            },
+            "w": -0.7862236737862055
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.3059945785993374,
+              "y": 304.1893636249991
+            },
+            "v": {
+              "x": 7.716931563577103,
+              "y": 14.09051484917089
+            },
+            "w": -7.864398041468922
+          }
+        ]
+      },
+      "end": {
+        "x": 160.95743396844054,
+        "y": 0.1863676409791141,
+        "vx": 13.187434745613206,
+        "vy": -0.0002076342076524201,
+        "mass": 1.05
+      }
+    },
+    {
+      "id": "sling-long-frog-0.6",
+      "candidate": true,
+      "previous": 0.32035669886442264,
+      "policy": "innerBoth40x24",
+      "windHash": "62f7b780771bc0a561ded8ff8aaacc6d1141754cdf84595c2add05505eb71a18",
+      "startHash": "3ed9a2a369ec0537ae705cc0f5f096845e82a47c138f523f01f5b5f3f6ae815a",
+      "metrics": {
+        "innerSteps": 18888,
+        "maxAngular": 0.11035569870836637,
+        "maxRope": 0.0007050987169265888,
+        "maxAnchor": 0.0012771378308814364,
+        "above08Seconds": 0.00020833333333333335,
+        "longestAbove08Seconds": 0.00020833333333333335,
+        "maxCumulativeEnergy": 0,
+        "maxPositiveStepEnergy": 0,
+        "nonfinite": false,
+        "joints": {
+          "[{\"role\":\"pouch\",\"id\":\"cradle\"},{\"role\":\"pouchflap\",\"id\":\"right-panel\"}]": {
+            "max": 0.03490667067863207,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"front-leg\"}]": {
+            "max": 0.11035569870836637,
+            "aboveSeconds": 0.00020833333333333335
+          },
+          "[{\"role\":\"part\",\"id\":\"rear-thigh\"},{\"role\":\"part\",\"id\":\"rear-shin\"}]": {
+            "max": 0.011057927488991481,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"rear-thigh\"}]": {
+            "max": 0.00032222607694043504,
+            "aboveSeconds": 0
+          },
+          "[{\"role\":\"part\",\"id\":\"torso\"},{\"role\":\"part\",\"id\":\"head\"}]": {
+            "max": 0.037869481353467904,
+            "aboveSeconds": 0
+          }
+        },
+        "worst": {
+          "phase": "flight",
+          "time": 16.607708333333605,
+          "dt": 0.00020833333333333335,
+          "actualSolverOptions": {
+            "velocity": 40,
+            "position": 24
+          },
+          "solverLimitState": 0,
+          "angle": 1.0103556987083664,
+          "limits": [
+            -0.9,
+            0.9
+          ],
+          "a": {
+            "tag": {
+              "role": "part",
+              "id": "torso"
+            },
+            "w": -177.16245113331186,
+            "mass": 0.441,
+            "contacts": []
+          },
+          "b": {
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "w": 625.1178735769599,
+            "mass": 0.10500000000000001,
+            "contacts": []
+          }
+        }
+      },
+      "stats": {
+        "outerSteps": 9568,
+        "refinedSteps": 683,
+        "distanceSteps": 648,
+        "stopSteps": 40,
+        "compatiblePairs": 1064836,
+        "distanceQueries": 4149,
+        "extraSolveIntegrations": 21
+      },
+      "release": {
+        "time": 7.153333333333672,
+        "center": {
+          "x": -1.297932535583899,
+          "y": 304.2107578515134,
+          "vx": 7.992467865278348,
+          "vy": 14.232385930912816,
+          "mass": 1.05
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.441131540518182,
+              "y": 304.3702720309466
+            },
+            "v": {
+              "x": 9.389470776090521,
+              "y": 15.606573497937582
+            },
+            "w": -12.094718456924998
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.514024467594741,
+              "y": 304.2347682226013
+            },
+            "v": {
+              "x": 8.012805015389441,
+              "y": 15.587664373506225
+            },
+            "w": -6.4710159691224005
+          },
+          {
+            "id": "rear-shin",
+            "p": {
+              "x": -0.9717332201284355,
+              "y": 304.2073293594972
+            },
+            "v": {
+              "x": 8.235722241262739,
+              "y": 12.232175225804957
+            },
+            "w": -14.30911283520126
+          },
+          {
+            "id": "rear-thigh",
+            "p": {
+              "x": -1.0940184602292047,
+              "y": 304.13634988123175
+            },
+            "v": {
+              "x": 7.662626271593507,
+              "y": 13.132554123221377
+            },
+            "w": -0.7862236737862055
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.3059945785993374,
+              "y": 304.1893636249991
+            },
+            "v": {
+              "x": 7.716931563577103,
+              "y": 14.09051484917089
+            },
+            "w": -7.864398041468922
+          }
+        ]
+      },
+      "end": {
+        "x": 160.95467533278594,
+        "y": 0.18654013142892262,
+        "vx": 13.182079729911417,
+        "vy": -0.0000014450807482379332,
+        "mass": 1.05
+      }
+    }
+  ]
+}

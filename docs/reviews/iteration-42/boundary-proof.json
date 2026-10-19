@@ -1,0 +1,71 @@
+{
+  "scope": "Idealized two-body revolute joint, NOT a new game correction. Same initial angle/speed sampled from retained frog onset, fixed geometry/mass/limits and equal total simulated time. Only timestep placement or position-iteration count changes. Boundary split crosses by1e-6rad inside existing angular slop, then lets the unchanged solver apply the physical stop. No poses/velocities assigned after construction. Private limit-state read is diagnostic only, pinned Planck1.5.1.",
+  "rows": [
+    {
+      "policy": "uniform12",
+      "before": {
+        "energy": 73.38294700905757,
+        "angularMomentum": 0.17782901328083825
+      },
+      "after": {
+        "energy": 73.38294700905757,
+        "angularMomentum": 0.17782901328083825
+      },
+      "totalSeconds": 0.00020833333333333335,
+      "observations": [
+        {
+          "dt": 0.00020833333333333335,
+          "angle": 1.0177804186672663,
+          "speed": 825.3202967860685,
+          "limitState": 0
+        }
+      ]
+    },
+    {
+      "policy": "position48",
+      "before": {
+        "energy": 73.38294700905757,
+        "angularMomentum": 0.17782901328083825
+      },
+      "after": {
+        "energy": 73.38294700905757,
+        "angularMomentum": 0.17782901328083825
+      },
+      "totalSeconds": 0.00020833333333333335,
+      "observations": [
+        {
+          "dt": 0.00020833333333333335,
+          "angle": 1.0177804186672663,
+          "speed": 825.3202967860685,
+          "limitState": 0
+        }
+      ]
+    },
+    {
+      "policy": "boundarySplit",
+      "before": {
+        "energy": 73.38294700905757,
+        "angularMomentum": 0.17782901328083825
+      },
+      "after": {
+        "energy": 36.69147350452879,
+        "angularMomentum": 0.17782901328083825
+      },
+      "totalSeconds": 0.00020833333333333335,
+      "observations": [
+        {
+          "dt": 0.0000656258061757941,
+          "angle": 0.900001,
+          "speed": 825.3202967860685,
+          "limitState": 0
+        },
+        {
+          "dt": 0.00014270752715753925,
+          "angle": 0.900001,
+          "speed": 0,
+          "limitState": 2
+        }
+      ]
+    }
+  ]
+}

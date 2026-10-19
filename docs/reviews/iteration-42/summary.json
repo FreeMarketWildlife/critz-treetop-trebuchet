@@ -1,0 +1,821 @@
+{
+  "baseline": "43768c54c33576869808896923e6f87447d85b9f",
+  "tests": 259,
+  "decision": "Research only. Ordinary game source and saved progress unchanged. Both corrections remain disabled. No delivered ordinary-play improvement claimed. Complete coverage costs more in one ordinary impact; inner angular errors and high-spin diagnostics remain.",
+  "matrices": {
+    "default": {
+      "cases": 264,
+      "counts": {
+        "launched": 262,
+        "seating_failed": 2
+      },
+      "flags": {
+        "angular_limit_error": 32,
+        "backward_or_vertical_launch": 18,
+        "downward_launch": 10,
+        "explosive_speed": 3,
+        "inner_angular_limit_error": 103,
+        "launch_branch_impact": 57
+      },
+      "previousInnerAngularFlagCases": 118,
+      "releaseExactlyEqual": 264,
+      "windingWorkExactlyEqual": 264,
+      "sourcesChangedDuringRun": [],
+      "maxInnerAnchor": 0.01670161968844837,
+      "maxInnerRope": 0.011749443778315438,
+      "maxInnerAngular": 0.20767777502131257,
+      "maxCumulativeEnergyResidual": 0,
+      "nonfiniteCases": [],
+      "seatingFailureCases": [
+        "frame-heavy-snake-0.75",
+        "combined-frog-0.75"
+      ],
+      "highSpinOrSpeedCases": [
+        {
+          "id": "stock-mouse-0.45",
+          "maxBodySpeed": 81.3577002680364,
+          "maxBodySpin": 1008.7485606030737,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 15.868333333334581,
+            "tag": {
+              "role": "part",
+              "id": "rear-leg"
+            },
+            "mass": 0.09,
+            "inertia": 0.00007381410199255803,
+            "angularVelocity": -1008.7485606030737,
+            "rotationalEnergy": 37.555642907422566
+          }
+        },
+        {
+          "id": "counterweight-heavy-small-marsupial-0.75",
+          "maxBodySpeed": 113.84063123138397,
+          "maxBodySpin": 1081.4522691258767,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 16.91166666666672,
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1081.4522691258767,
+            "rotationalEnergy": 40.286620172286604
+          }
+        },
+        {
+          "id": "frame-heavy-small-marsupial-0.45",
+          "maxBodySpeed": 80.20798017143794,
+          "maxBodySpin": 1140.0626627388942,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 15.971666666667616,
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1140.0626627388942,
+            "rotationalEnergy": 44.771698130708245
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "cases": 264,
+      "counts": {
+        "launched": 263,
+        "seating_failed": 1
+      },
+      "flags": {
+        "angular_limit_error": 11,
+        "backward_or_vertical_launch": 28,
+        "downward_launch": 16,
+        "explosive_speed": 6,
+        "inner_angular_limit_error": 69,
+        "launch_branch_impact": 56
+      },
+      "previousInnerAngularFlagCases": 108,
+      "releaseExactlyEqual": 264,
+      "windingWorkExactlyEqual": 264,
+      "sourcesChangedDuringRun": [],
+      "maxInnerAnchor": 0.016886269388172233,
+      "maxInnerRope": 0.02230861037786358,
+      "maxInnerAngular": 0.17928289699316058,
+      "maxCumulativeEnergyResidual": 0,
+      "nonfiniteCases": [],
+      "seatingFailureCases": [
+        "combined-frog-0.75"
+      ],
+      "highSpinOrSpeedCases": [
+        {
+          "id": "stock-small-marsupial-0.75",
+          "maxBodySpeed": 95.54230886694906,
+          "maxBodySpin": 1002.9696202394274,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 16.951666666667023,
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1002.9696202394274,
+            "rotationalEnergy": 34.65147122982405
+          }
+        },
+        {
+          "id": "beam-light-salamander-0.75",
+          "maxBodySpeed": 107.8853286241494,
+          "maxBodySpin": 1004.1595856144851,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 16.640000000000022,
+            "tag": {
+              "role": "part",
+              "id": "rear-leg"
+            },
+            "mass": 0.096,
+            "inertia": 0.00007873504212539524,
+            "angularVelocity": -1004.1595856144851,
+            "rotationalEnergy": 39.69570735413064
+          }
+        },
+        {
+          "id": "beam-light-small-marsupial-0.6",
+          "maxBodySpeed": 95.75752975699716,
+          "maxBodySpin": 1005.6873070073091,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 16.68333333333328,
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1005.6873070073091,
+            "rotationalEnergy": 34.83951168260077
+          }
+        },
+        {
+          "id": "beam-light-small-marsupial-0.75",
+          "maxBodySpeed": 101.27636668446986,
+          "maxBodySpin": 1087.9182447242474,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 16.86000000000033,
+            "tag": {
+              "role": "part",
+              "id": "rear-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1087.9182447242474,
+            "rotationalEnergy": 40.76980569763855
+          }
+        },
+        {
+          "id": "sling-long-small-marsupial-0.75",
+          "maxBodySpeed": 92.85917807610771,
+          "maxBodySpin": 1170.978294474877,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 16.94000000000012,
+            "tag": {
+              "role": "part",
+              "id": "front-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1170.978294474877,
+            "rotationalEnergy": 47.23281302787028
+          }
+        },
+        {
+          "id": "combined-small-marsupial-0.75",
+          "maxBodySpeed": 119.50416021810582,
+          "maxBodySpin": 1014.6746030081316,
+          "worstSpin": {
+            "phase": "flight",
+            "time": 17.68999999999911,
+            "tag": {
+              "role": "part",
+              "id": "rear-leg"
+            },
+            "mass": 0.08399999999999999,
+            "inertia": 0.00006889316185972082,
+            "angularVelocity": 1014.6746030081316,
+            "rotationalEnergy": 35.46497859373584
+          }
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "falling rig": {
+      "baseline": {
+        "medianMs": 39.70245900000009,
+        "innerSteps": 600,
+        "metrics": {
+          "maxAnchor": 0.30031353562650454,
+          "maxRope": 0.21212729742669723,
+          "maxAngular": 0.24453819480916572,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "aabb8": {
+        "medianMs": 226.80349999999999,
+        "innerSteps": 3414,
+        "metrics": {
+          "maxAnchor": 0.032312680793651335,
+          "maxRope": 0.0073797917678986025,
+          "maxAngular": 0.08676016608299542,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "distanceLegacy8": {
+        "medianMs": 153.68841600000087,
+        "innerSteps": 2350,
+        "metrics": {
+          "maxAnchor": 0.022053755514630458,
+          "maxRope": 0.0019485929676004154,
+          "maxAngular": 0.051079325813847665,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "distance8": {
+        "medianMs": 153.45708400000012,
+        "innerSteps": 2350,
+        "metrics": {
+          "maxAnchor": 0.022053755514630458,
+          "maxRope": 0.0019485929676004154,
+          "maxAngular": 0.051079325813847665,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "stop8": {
+        "medianMs": 199.94924999999967,
+        "innerSteps": 2952,
+        "metrics": {
+          "maxAnchor": 0.022053755514630458,
+          "maxRope": 0.006300689429125317,
+          "maxAngular": 0.0413851447710335,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      }
+    },
+    "ordinary rig impact": {
+      "baseline": {
+        "medianMs": 63.75966700000026,
+        "innerSteps": 777,
+        "metrics": {
+          "maxAnchor": 0.013544574497375781,
+          "maxRope": 0.01014260775197684,
+          "maxAngular": 0.10882283380999669,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "aabb8": {
+        "medianMs": 89.55049999999937,
+        "innerSteps": 1102,
+        "metrics": {
+          "maxAnchor": 0.013544574497375781,
+          "maxRope": 0.007614166677492928,
+          "maxAngular": 0.02262038362889529,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "distanceLegacy8": {
+        "medianMs": 54.6805830000003,
+        "innerSteps": 614,
+        "metrics": {
+          "maxAnchor": 0.013544574497375781,
+          "maxRope": 0.007614166677492928,
+          "maxAngular": 0.056655604696316475,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "distance8": {
+        "medianMs": 146.8092919999999,
+        "innerSteps": 1909,
+        "metrics": {
+          "maxAnchor": 0.00004937104986202085,
+          "maxRope": 0.00001128219918200557,
+          "maxAngular": 0.014332197036018401,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "stop8": {
+        "medianMs": 148.59479199999987,
+        "innerSteps": 1923,
+        "metrics": {
+          "maxAnchor": 0.00004937104986202085,
+          "maxRope": 0.00001128219918200557,
+          "maxAngular": 0.014332197036018401,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      }
+    },
+    "ordinary canopy impact": {
+      "baseline": {
+        "medianMs": 56.531167000000096,
+        "innerSteps": 733,
+        "metrics": {
+          "maxAnchor": 0.0004229013426027088,
+          "maxRope": 8.59552113485762e-7,
+          "maxAngular": 0.07587670294134341,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "aabb8": {
+        "medianMs": 76.27920900000026,
+        "innerSteps": 1013,
+        "metrics": {
+          "maxAnchor": 0.0004229013426027088,
+          "maxRope": 8.59552113485762e-7,
+          "maxAngular": 0.07587670294134341,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "distanceLegacy8": {
+        "medianMs": 57.231541000001016,
+        "innerSteps": 733,
+        "metrics": {
+          "maxAnchor": 0.0004229013426027088,
+          "maxRope": 8.59552113485762e-7,
+          "maxAngular": 0.07587670294134341,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "distance8": {
+        "medianMs": 59.10770799999955,
+        "innerSteps": 733,
+        "metrics": {
+          "maxAnchor": 0.0004229013426027088,
+          "maxRope": 8.59552113485762e-7,
+          "maxAngular": 0.07587670294134341,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      },
+      "stop8": {
+        "medianMs": 62.2622080000001,
+        "innerSteps": 766,
+        "metrics": {
+          "maxAnchor": 0.0004243873800618883,
+          "maxRope": 8.595761871177388e-7,
+          "maxAngular": 0.07587670294134341,
+          "maxPositiveStepEnergy": 0,
+          "maxCumulativeEnergy": 0,
+          "nonfinite": false
+        }
+      }
+    }
+  },
+  "exactStateQueryCost": [
+    {
+      "id": "falling rig",
+      "queryMilliseconds": {
+        "aabb": 2.5591586999999185,
+        "distanceLegacy": 5.352759900000005,
+        "distanceComplete": 4.974522300000067,
+        "stop": 0.09018299999992581
+      },
+      "selectedTicks": {
+        "aabb": 555,
+        "distanceLegacy": 409,
+        "distanceComplete": 409,
+        "stop": 19
+      },
+      "mutations": 0
+    },
+    {
+      "id": "ordinary rig impact",
+      "queryMilliseconds": {
+        "aabb": 0.7615287000000814,
+        "distanceLegacy": 2.167058299999996,
+        "distanceComplete": 6.456346700000187,
+        "stop": 0.06504749999994595
+      },
+      "selectedTicks": {
+        "aabb": 24,
+        "distanceLegacy": 12,
+        "distanceComplete": 141,
+        "stop": 13
+      },
+      "mutations": 0
+    },
+    {
+      "id": "ordinary canopy impact",
+      "queryMilliseconds": {
+        "aabb": 0.6215282999997841,
+        "distanceLegacy": 1.948363699999744,
+        "distanceComplete": 4.107700299999656,
+        "stop": 0.051333400000180475
+      },
+      "selectedTicks": {
+        "aabb": 42,
+        "distanceLegacy": 0,
+        "distanceComplete": 0,
+        "stop": 11
+      },
+      "mutations": 0
+    }
+  ],
+  "angularSelected": [
+    {
+      "id": "beam-long-frog-0.6",
+      "policies": [
+        {
+          "policy": "distance8",
+          "maxAngular": 0.06863737333349107,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 16492,
+          "peakDt": 0.0016666666666666668,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop2",
+          "maxAngular": 0.08611946277311233,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 14485,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop4",
+          "maxAngular": 0.11310290761078079,
+          "above08Seconds": 0.0004166666666666667,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 18716,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop8",
+          "maxAngular": 0.06568802911464644,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 14953,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        }
+      ]
+    },
+    {
+      "id": "stock-snake-0.75",
+      "policies": [
+        {
+          "policy": "distance8",
+          "maxAngular": 0.08084055425166947,
+          "above08Seconds": 0.0016666666666666668,
+          "longestAbove08Seconds": 0.0016666666666666668,
+          "innerSteps": 16544,
+          "peakDt": 0.0016666666666666668,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop2",
+          "maxAngular": 0.06904505270615213,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 15067,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop4",
+          "maxAngular": 0.038043728093085205,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 14419,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop8",
+          "maxAngular": 0.08195459475258704,
+          "above08Seconds": 0.0004166666666666667,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 21211,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        }
+      ]
+    },
+    {
+      "id": "sling-long-frog-0.75",
+      "policies": [
+        {
+          "policy": "distance8",
+          "maxAngular": 0.06044662337687612,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 12860,
+          "peakDt": 0.0016666666666666668,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop2",
+          "maxAngular": 0.10592648025321694,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 18439,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop4",
+          "maxAngular": 0.048389435467670605,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 14009,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop8",
+          "maxAngular": 0.04416784501176563,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 13426,
+          "peakDt": 0.0016666666666666668,
+          "maxCumulativeEnergy": 0
+        }
+      ]
+    },
+    {
+      "id": "frame-grip-mouse-0.45",
+      "policies": [
+        {
+          "policy": "distance8",
+          "maxAngular": 0.08316505215664738,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 17802,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop2",
+          "maxAngular": 0.10967426350524367,
+          "above08Seconds": 0.0004166666666666667,
+          "longestAbove08Seconds": 0.0004166666666666667,
+          "innerSteps": 15606,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop4",
+          "maxAngular": 0.08483549895022979,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 15745,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop8",
+          "maxAngular": 0.06461074685585122,
+          "above08Seconds": 0,
+          "longestAbove08Seconds": 0,
+          "innerSteps": 14529,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        }
+      ]
+    },
+    {
+      "id": "sling-long-frog-0.6",
+      "policies": [
+        {
+          "policy": "distance8",
+          "maxAngular": 0.09841402568999624,
+          "above08Seconds": 0.0016666666666666668,
+          "longestAbove08Seconds": 0.0016666666666666668,
+          "innerSteps": 21012,
+          "peakDt": 0.0016666666666666668,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop2",
+          "maxAngular": 0.11203788566844819,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 18093,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop4",
+          "maxAngular": 0.11229083939610118,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 17491,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop8",
+          "maxAngular": 0.11035569881115348,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 18838,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        }
+      ]
+    },
+    {
+      "id": "stock-snake-0.45",
+      "policies": [
+        {
+          "policy": "distance8",
+          "maxAngular": 0.0938388355390003,
+          "above08Seconds": 0.0016666666666666668,
+          "longestAbove08Seconds": 0.0016666666666666668,
+          "innerSteps": 18871,
+          "peakDt": 0.0016666666666666668,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop2",
+          "maxAngular": 0.10231288184586584,
+          "above08Seconds": 0.0008333333333333334,
+          "longestAbove08Seconds": 0.0008333333333333334,
+          "innerSteps": 19392,
+          "peakDt": 0.0008333333333333334,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop4",
+          "maxAngular": 0.08152659444158838,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 20183,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        },
+        {
+          "policy": "stop8",
+          "maxAngular": 0.08816401446347011,
+          "above08Seconds": 0.00020833333333333335,
+          "longestAbove08Seconds": 0.00020833333333333335,
+          "innerSteps": 22866,
+          "peakDt": 0.00020833333333333335,
+          "maxCumulativeEnergy": 0
+        }
+      ]
+    }
+  ],
+  "inactiveLimitProof": [
+    {
+      "policy": "stop8",
+      "error": 0.11035569881115348,
+      "actualSolverOptions": {
+        "velocity": 20,
+        "position": 12
+      },
+      "limitState": 0
+    },
+    {
+      "policy": "innerPosition24",
+      "error": 0.11035569881115348,
+      "actualSolverOptions": {
+        "velocity": 20,
+        "position": 24
+      },
+      "limitState": 0
+    },
+    {
+      "policy": "innerPosition48",
+      "error": 0.11035569881115348,
+      "actualSolverOptions": {
+        "velocity": 20,
+        "position": 48
+      },
+      "limitState": 0
+    },
+    {
+      "policy": "innerBoth40x24",
+      "error": 0.11035569870836637,
+      "actualSolverOptions": {
+        "velocity": 40,
+        "position": 24
+      },
+      "limitState": 0
+    }
+  ],
+  "boundaryProof": {
+    "scope": "Idealized two-body revolute joint, NOT a new game correction. Same initial angle/speed sampled from retained frog onset, fixed geometry/mass/limits and equal total simulated time. Only timestep placement or position-iteration count changes. Boundary split crosses by1e-6rad inside existing angular slop, then lets the unchanged solver apply the physical stop. No poses/velocities assigned after construction. Private limit-state read is diagnostic only, pinned Planck1.5.1.",
+    "rows": [
+      {
+        "policy": "uniform12",
+        "before": {
+          "energy": 73.38294700905757,
+          "angularMomentum": 0.17782901328083825
+        },
+        "after": {
+          "energy": 73.38294700905757,
+          "angularMomentum": 0.17782901328083825
+        },
+        "totalSeconds": 0.00020833333333333335,
+        "observations": [
+          {
+            "dt": 0.00020833333333333335,
+            "angle": 1.0177804186672663,
+            "speed": 825.3202967860685,
+            "limitState": 0
+          }
+        ]
+      },
+      {
+        "policy": "position48",
+        "before": {
+          "energy": 73.38294700905757,
+          "angularMomentum": 0.17782901328083825
+        },
+        "after": {
+          "energy": 73.38294700905757,
+          "angularMomentum": 0.17782901328083825
+        },
+        "totalSeconds": 0.00020833333333333335,
+        "observations": [
+          {
+            "dt": 0.00020833333333333335,
+            "angle": 1.0177804186672663,
+            "speed": 825.3202967860685,
+            "limitState": 0
+          }
+        ]
+      },
+      {
+        "policy": "boundarySplit",
+        "before": {
+          "energy": 73.38294700905757,
+          "angularMomentum": 0.17782901328083825
+        },
+        "after": {
+          "energy": 36.69147350452879,
+          "angularMomentum": 0.17782901328083825
+        },
+        "totalSeconds": 0.00020833333333333335,
+        "observations": [
+          {
+            "dt": 0.0000656258061757941,
+            "angle": 0.900001,
+            "speed": 825.3202967860685,
+            "limitState": 0
+          },
+          {
+            "dt": 0.00014270752715753925,
+            "angle": 0.900001,
+            "speed": 0,
+            "limitState": 2
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "All broad results use explicit research union with default20/12 solver iterations; extra-iteration trials are narrow separate studies.",
+    "Same retained initial states do not imply identical corrected trajectories. Pure query costs separately hold every instantaneous state fixed.",
+    "Selected six angular cases are targeted diagnostics, not a statistical population.",
+    "No new natural encounter cohort, human-reaction study, audio listening, device FPS or broad boundary-split game test was completed.",
+    "The new kinematic approach bound includes both angular sweeps and relative COM velocity but does not prove coverage under every future collision impulse."
+  ]
+}

@@ -1,0 +1,2854 @@
+{
+  "protocol": "Identical retained actual initial state per policy;1s integration, same8x cap and0.15m safety guard, actual-shape GJK adds both angular sweeps and relative COM velocity. Every inner joint/body and work-corrected energy checked in diagnostic trials; separate five alternating clean timing rounds after warmup. No actor/save writes or pose/force assignment. Node costs are not device FPS.",
+  "diagnostics": [
+    {
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 95.492042,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "metrics": {
+        "maxAnchor": 0.30031353562650454,
+        "maxRope": 0.21212729742669723,
+        "maxAngular": 0.24453819480916572,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 263.793958,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "metrics": {
+        "maxAnchor": 0.032312680793651335,
+        "maxRope": 0.0073797917678986025,
+        "maxAngular": 0.08676016608299542,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "distanceLegacy8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 178.10220900000002,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 166520,
+        "distanceQueries": 1033
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.0019485929676004154,
+        "maxAngular": 0.051079325813847665,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "distance2",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 93.39320900000007,
+      "innerSteps": 1093,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 493,
+        "compatiblePairs": 97308,
+        "distanceQueries": 1343
+      },
+      "metrics": {
+        "maxAnchor": 0.09736175454044195,
+        "maxRope": 0.06581992313247031,
+        "maxAngular": 0.1601950393448074,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -616894.9149773802,
+      "end": {
+        "x": -2.6774728779865304,
+        "y": 294.0893038072187,
+        "vx": 0.000001908769191530408,
+        "vy": -2.860129084097699e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "distance4",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 107.05070899999998,
+      "innerSteps": 1434,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 278,
+        "compatiblePairs": 139041,
+        "distanceQueries": 921
+      },
+      "metrics": {
+        "maxAnchor": 0.019550335067422785,
+        "maxRope": 0.025988299128139936,
+        "maxAngular": 0.0643686397632407,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -610922.2077501472,
+      "end": {
+        "x": -2.6774726782792455,
+        "y": 294.0893037467075,
+        "vx": 0.0000018285256094605068,
+        "vy": -2.7399787118511783e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 157.23816699999998,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.0019485929676004154,
+        "maxAngular": 0.051079325813847665,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "distance16",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 276.27312500000005,
+      "innerSteps": 4080,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 232,
+        "compatiblePairs": 154358,
+        "distanceQueries": 837
+      },
+      "metrics": {
+        "maxAnchor": 0.013415448760539057,
+        "maxRope": 0.0017997824286144493,
+        "maxAngular": 0.1518395105722049,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -613435.6101723062,
+      "end": {
+        "x": -2.67747271003206,
+        "y": 294.08930374788065,
+        "vx": 0.000013078448910641982,
+        "vy": -9.29719219389108e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 95.89204199999995,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "metrics": {
+        "maxAnchor": 0.013544574497375781,
+        "maxRope": 0.01014260775197684,
+        "maxAngular": 0.10882283380999669,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 114.24795799999993,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "metrics": {
+        "maxAnchor": 0.013544574497375781,
+        "maxRope": 0.007614166677492928,
+        "maxAngular": 0.02262038362889529,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "distanceLegacy8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 55.065292,
+      "innerSteps": 614,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 2,
+        "compatiblePairs": 2206,
+        "distanceQueries": 12
+      },
+      "metrics": {
+        "maxAnchor": 0.013544574497375781,
+        "maxRope": 0.007614166677492928,
+        "maxAngular": 0.056655604696316475,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1589.2428060152677,
+      "end": {
+        "x": -2.177590560835904,
+        "y": 297.5952414615898,
+        "vx": -2.1509763580836427,
+        "vy": -7.531239098511894,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "distance2",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 87.84095900000011,
+      "innerSteps": 1071,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 138,
+        "compatiblePairs": 66670,
+        "distanceQueries": 3513
+      },
+      "metrics": {
+        "maxAnchor": 0.0004649162352004159,
+        "maxRope": 0.00001632827315312113,
+        "maxAngular": 0.03552445336023102,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1670.2395935584223,
+      "end": {
+        "x": -3.186100014784278,
+        "y": 295.23655371507505,
+        "vx": -3.530001167980899,
+        "vy": -9.500709066971428,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "distance4",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 95.24725000000012,
+      "innerSteps": 1236,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 212,
+        "compatiblePairs": 52353,
+        "distanceQueries": 3860
+      },
+      "metrics": {
+        "maxAnchor": 0.00011976588108452835,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.034550834570743705,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1603.8299795937314,
+      "end": {
+        "x": -1.5471954833679469,
+        "y": 297.6957216214654,
+        "vx": -1.2709690294644014,
+        "vy": -7.093848935727705,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 134.2361249999999,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "metrics": {
+        "maxAnchor": 0.00004937104986202085,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.014332197036018401,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "distance16",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 226.63874999999985,
+      "innerSteps": 3450,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 190,
+        "compatiblePairs": 54496,
+        "distanceQueries": 3956
+      },
+      "metrics": {
+        "maxAnchor": 0.000021825789960547492,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.028533408839990004,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.4589125229954,
+      "end": {
+        "x": -1.7339789874338252,
+        "y": 297.68211838502623,
+        "vx": -1.5224082362594626,
+        "vy": -7.124585308922496,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 76.60829100000024,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 80.0864590000001,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "distanceLegacy8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.30683399999998,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 4656,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "distance2",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.30387500000006,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "distance4",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 62.476166999999805,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 61.59179200000017,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "distance16",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.42204200000015,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    }
+  ],
+  "timings": [
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 42.22912499999984,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 228.48995800000012,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "distanceLegacy8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 161.62595799999963,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 166520,
+        "distanceQueries": 1033
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "distance2",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 86.20958400000018,
+      "innerSteps": 1093,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 493,
+        "compatiblePairs": 97308,
+        "distanceQueries": 1343
+      },
+      "energy": -616894.9149773802,
+      "end": {
+        "x": -2.6774728779865304,
+        "y": 294.0893038072187,
+        "vx": 0.000001908769191530408,
+        "vy": -2.860129084097699e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "distance4",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 101.7519170000005,
+      "innerSteps": 1434,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 278,
+        "compatiblePairs": 139041,
+        "distanceQueries": 921
+      },
+      "energy": -610922.2077501472,
+      "end": {
+        "x": -2.6774726782792455,
+        "y": 294.0893037467075,
+        "vx": 0.0000018285256094605068,
+        "vy": -2.7399787118511783e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 159.62608400000045,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "distance16",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 265.3575000000001,
+      "innerSteps": 4080,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 232,
+        "compatiblePairs": 154358,
+        "distanceQueries": 837
+      },
+      "energy": -613435.6101723062,
+      "end": {
+        "x": -2.67747271003206,
+        "y": 294.08930374788065,
+        "vx": 0.000013078448910641982,
+        "vy": -9.29719219389108e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 64.06758399999944,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 89.91379200000029,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "distanceLegacy8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 57.04362499999934,
+      "innerSteps": 614,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 2,
+        "compatiblePairs": 2206,
+        "distanceQueries": 12
+      },
+      "energy": -1589.2428060152677,
+      "end": {
+        "x": -2.177590560835904,
+        "y": 297.5952414615898,
+        "vx": -2.1509763580836427,
+        "vy": -7.531239098511894,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "distance2",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 92.99637499999972,
+      "innerSteps": 1071,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 138,
+        "compatiblePairs": 66670,
+        "distanceQueries": 3513
+      },
+      "energy": -1670.2395935584223,
+      "end": {
+        "x": -3.186100014784278,
+        "y": 295.23655371507505,
+        "vx": -3.530001167980899,
+        "vy": -9.500709066971428,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "distance4",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 104.38683300000048,
+      "innerSteps": 1236,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 212,
+        "compatiblePairs": 52353,
+        "distanceQueries": 3860
+      },
+      "energy": -1603.8299795937314,
+      "end": {
+        "x": -1.5471954833679469,
+        "y": 297.6957216214654,
+        "vx": -1.2709690294644014,
+        "vy": -7.093848935727705,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 150.69304199999988,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "distance16",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 254.14137500000015,
+      "innerSteps": 3450,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 190,
+        "compatiblePairs": 54496,
+        "distanceQueries": 3956
+      },
+      "energy": -1687.4589125229954,
+      "end": {
+        "x": -1.7339789874338252,
+        "y": 297.68211838502623,
+        "vx": -1.5224082362594626,
+        "vy": -7.124585308922496,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 54.32945899999959,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 76.56708299999991,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "distanceLegacy8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 57.679041999999754,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 4656,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "distance2",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.54516700000022,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "distance4",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.82304199999999,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 58.82233300000007,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "distance16",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.31616600000052,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "distance16",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 258.80945900000006,
+      "innerSteps": 4080,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 232,
+        "compatiblePairs": 154358,
+        "distanceQueries": 837
+      },
+      "energy": -613435.6101723062,
+      "end": {
+        "x": -2.67747271003206,
+        "y": 294.08930374788065,
+        "vx": 0.000013078448910641982,
+        "vy": -9.29719219389108e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 153.2522089999993,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "distance4",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 98.67691599999944,
+      "innerSteps": 1434,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 278,
+        "compatiblePairs": 139041,
+        "distanceQueries": 921
+      },
+      "energy": -610922.2077501472,
+      "end": {
+        "x": -2.6774726782792455,
+        "y": 294.0893037467075,
+        "vx": 0.0000018285256094605068,
+        "vy": -2.7399787118511783e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "distance2",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 81.05470800000057,
+      "innerSteps": 1093,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 493,
+        "compatiblePairs": 97308,
+        "distanceQueries": 1343
+      },
+      "energy": -616894.9149773802,
+      "end": {
+        "x": -2.6774728779865304,
+        "y": 294.0893038072187,
+        "vx": 0.000001908769191530408,
+        "vy": -2.860129084097699e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "distanceLegacy8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 153.5064169999996,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 166520,
+        "distanceQueries": 1033
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 226.56541600000037,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 39.79779099999996,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "distance16",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 253.30762500000037,
+      "innerSteps": 3450,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 190,
+        "compatiblePairs": 54496,
+        "distanceQueries": 3956
+      },
+      "energy": -1687.4589125229954,
+      "end": {
+        "x": -1.7339789874338252,
+        "y": 297.68211838502623,
+        "vx": -1.5224082362594626,
+        "vy": -7.124585308922496,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 150.49254199999996,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "distance4",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 102.18754099999933,
+      "innerSteps": 1236,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 212,
+        "compatiblePairs": 52353,
+        "distanceQueries": 3860
+      },
+      "energy": -1603.8299795937314,
+      "end": {
+        "x": -1.5471954833679469,
+        "y": 297.6957216214654,
+        "vx": -1.2709690294644014,
+        "vy": -7.093848935727705,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "distance2",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 94.56624999999985,
+      "innerSteps": 1071,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 138,
+        "compatiblePairs": 66670,
+        "distanceQueries": 3513
+      },
+      "energy": -1670.2395935584223,
+      "end": {
+        "x": -3.186100014784278,
+        "y": 295.23655371507505,
+        "vx": -3.530001167980899,
+        "vy": -9.500709066971428,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "distanceLegacy8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 54.24537500000042,
+      "innerSteps": 614,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 2,
+        "compatiblePairs": 2206,
+        "distanceQueries": 12
+      },
+      "energy": -1589.2428060152677,
+      "end": {
+        "x": -2.177590560835904,
+        "y": 297.5952414615898,
+        "vx": -2.1509763580836427,
+        "vy": -7.531239098511894,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 89.70129199999974,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 61.657375000000684,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "distance16",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.86341700000048,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.89641699999993,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "distance4",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.888082999999824,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "distance2",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.355250000000524,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "distanceLegacy8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 57.919167000000016,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 4656,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 78.09754199999952,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 56.869833000000654,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 40.39579100000083,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 228.1715830000012,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "distanceLegacy8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 158.26437499999884,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 166520,
+        "distanceQueries": 1033
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "distance2",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 84.73733300000094,
+      "innerSteps": 1093,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 493,
+        "compatiblePairs": 97308,
+        "distanceQueries": 1343
+      },
+      "energy": -616894.9149773802,
+      "end": {
+        "x": -2.6774728779865304,
+        "y": 294.0893038072187,
+        "vx": 0.000001908769191530408,
+        "vy": -2.860129084097699e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "distance4",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 99.16658299999835,
+      "innerSteps": 1434,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 278,
+        "compatiblePairs": 139041,
+        "distanceQueries": 921
+      },
+      "energy": -610922.2077501472,
+      "end": {
+        "x": -2.6774726782792455,
+        "y": 294.0893037467075,
+        "vx": 0.0000018285256094605068,
+        "vy": -2.7399787118511783e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 156.88462499999878,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "distance16",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 268.95658300000105,
+      "innerSteps": 4080,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 232,
+        "compatiblePairs": 154358,
+        "distanceQueries": 837
+      },
+      "energy": -613435.6101723062,
+      "end": {
+        "x": -2.67747271003206,
+        "y": 294.08930374788065,
+        "vx": 0.000013078448910641982,
+        "vy": -9.29719219389108e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 65.21120800000062,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 88.94341700000041,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "distanceLegacy8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 54.98175000000083,
+      "innerSteps": 614,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 2,
+        "compatiblePairs": 2206,
+        "distanceQueries": 12
+      },
+      "energy": -1589.2428060152677,
+      "end": {
+        "x": -2.177590560835904,
+        "y": 297.5952414615898,
+        "vx": -2.1509763580836427,
+        "vy": -7.531239098511894,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "distance2",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 93.68412499999977,
+      "innerSteps": 1071,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 138,
+        "compatiblePairs": 66670,
+        "distanceQueries": 3513
+      },
+      "energy": -1670.2395935584223,
+      "end": {
+        "x": -3.186100014784278,
+        "y": 295.23655371507505,
+        "vx": -3.530001167980899,
+        "vy": -9.500709066971428,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "distance4",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 111.09908299999915,
+      "innerSteps": 1236,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 212,
+        "compatiblePairs": 52353,
+        "distanceQueries": 3860
+      },
+      "energy": -1603.8299795937314,
+      "end": {
+        "x": -1.5471954833679469,
+        "y": 297.6957216214654,
+        "vx": -1.2709690294644014,
+        "vy": -7.093848935727705,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 147.82408299999952,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "distance16",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 257.9435000000012,
+      "innerSteps": 3450,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 190,
+        "compatiblePairs": 54496,
+        "distanceQueries": 3956
+      },
+      "energy": -1687.4589125229954,
+      "end": {
+        "x": -1.7339789874338252,
+        "y": 297.68211838502623,
+        "vx": -1.5224082362594626,
+        "vy": -7.124585308922496,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 57.124957999998514,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 77.26991699999962,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "distanceLegacy8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 58.02091699999983,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 4656,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "distance2",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.7362090000006,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "distance4",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.402333,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.33525000000009,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "distance16",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.713041000000885,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "distance16",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 267.71699999999873,
+      "innerSteps": 4080,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 232,
+        "compatiblePairs": 154358,
+        "distanceQueries": 837
+      },
+      "energy": -613435.6101723062,
+      "end": {
+        "x": -2.67747271003206,
+        "y": 294.08930374788065,
+        "vx": 0.000013078448910641982,
+        "vy": -9.29719219389108e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 154.4659589999992,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "distance4",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 99.23441700000149,
+      "innerSteps": 1434,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 278,
+        "compatiblePairs": 139041,
+        "distanceQueries": 921
+      },
+      "energy": -610922.2077501472,
+      "end": {
+        "x": -2.6774726782792455,
+        "y": 294.0893037467075,
+        "vx": 0.0000018285256094605068,
+        "vy": -2.7399787118511783e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "distance2",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 80.72645799999918,
+      "innerSteps": 1093,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 493,
+        "compatiblePairs": 97308,
+        "distanceQueries": 1343
+      },
+      "energy": -616894.9149773802,
+      "end": {
+        "x": -2.6774728779865304,
+        "y": 294.0893038072187,
+        "vx": 0.000001908769191530408,
+        "vy": -2.860129084097699e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "distanceLegacy8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 150.60991699999977,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 166520,
+        "distanceQueries": 1033
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 236.38791700000002,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 45.04704200000015,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "distance16",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 260.48775000000023,
+      "innerSteps": 3450,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 190,
+        "compatiblePairs": 54496,
+        "distanceQueries": 3956
+      },
+      "energy": -1687.4589125229954,
+      "end": {
+        "x": -1.7339789874338252,
+        "y": 297.68211838502623,
+        "vx": -1.5224082362594626,
+        "vy": -7.124585308922496,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 157.0961669999997,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "distance4",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 110.46933399999944,
+      "innerSteps": 1236,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 212,
+        "compatiblePairs": 52353,
+        "distanceQueries": 3860
+      },
+      "energy": -1603.8299795937314,
+      "end": {
+        "x": -1.5471954833679469,
+        "y": 297.6957216214654,
+        "vx": -1.2709690294644014,
+        "vy": -7.093848935727705,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "distance2",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 91.39812499999971,
+      "innerSteps": 1071,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 138,
+        "compatiblePairs": 66670,
+        "distanceQueries": 3513
+      },
+      "energy": -1670.2395935584223,
+      "end": {
+        "x": -3.186100014784278,
+        "y": 295.23655371507505,
+        "vx": -3.530001167980899,
+        "vy": -9.500709066971428,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "distanceLegacy8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 55.07658300000003,
+      "innerSteps": 614,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 2,
+        "compatiblePairs": 2206,
+        "distanceQueries": 12
+      },
+      "energy": -1589.2428060152677,
+      "end": {
+        "x": -2.177590560835904,
+        "y": 297.5952414615898,
+        "vx": -2.1509763580836427,
+        "vy": -7.531239098511894,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 89.46345900000051,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 61.169041999999536,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "distance16",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 58.11724999999933,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.763708000000406,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "distance4",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 58.3755000000001,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "distance2",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 57.96200000000135,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "distanceLegacy8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 56.57900000000154,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 4656,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 75.88174999999865,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 54.64854099999866,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 39.62395800000013,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 222.22179099999994,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "distanceLegacy8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 152.91949999999997,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 166520,
+        "distanceQueries": 1033
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "distance2",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 80.18812500000058,
+      "innerSteps": 1093,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 493,
+        "compatiblePairs": 97308,
+        "distanceQueries": 1343
+      },
+      "energy": -616894.9149773802,
+      "end": {
+        "x": -2.6774728779865304,
+        "y": 294.0893038072187,
+        "vx": 0.000001908769191530408,
+        "vy": -2.860129084097699e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "distance4",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 97.03149999999914,
+      "innerSteps": 1434,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 278,
+        "compatiblePairs": 139041,
+        "distanceQueries": 921
+      },
+      "energy": -610922.2077501472,
+      "end": {
+        "x": -2.6774726782792455,
+        "y": 294.0893037467075,
+        "vx": 0.0000018285256094605068,
+        "vy": -2.7399787118511783e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 155.109375,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "distance16",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 258.7594590000008,
+      "innerSteps": 4080,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 232,
+        "compatiblePairs": 154358,
+        "distanceQueries": 837
+      },
+      "energy": -613435.6101723062,
+      "end": {
+        "x": -2.67747271003206,
+        "y": 294.08930374788065,
+        "vx": 0.000013078448910641982,
+        "vy": -9.29719219389108e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 62.55891700000029,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 89.72600000000057,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "distanceLegacy8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 55.24974999999904,
+      "innerSteps": 614,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 2,
+        "compatiblePairs": 2206,
+        "distanceQueries": 12
+      },
+      "energy": -1589.2428060152677,
+      "end": {
+        "x": -2.177590560835904,
+        "y": 297.5952414615898,
+        "vx": -2.1509763580836427,
+        "vy": -7.531239098511894,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "distance2",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 92.47662499999933,
+      "innerSteps": 1071,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 138,
+        "compatiblePairs": 66670,
+        "distanceQueries": 3513
+      },
+      "energy": -1670.2395935584223,
+      "end": {
+        "x": -3.186100014784278,
+        "y": 295.23655371507505,
+        "vx": -3.530001167980899,
+        "vy": -9.500709066971428,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "distance4",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 104.80025000000023,
+      "innerSteps": 1236,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 212,
+        "compatiblePairs": 52353,
+        "distanceQueries": 3860
+      },
+      "energy": -1603.8299795937314,
+      "end": {
+        "x": -1.5471954833679469,
+        "y": 297.6957216214654,
+        "vx": -1.2709690294644014,
+        "vy": -7.093848935727705,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 149.43783300000177,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "distance16",
+      "startHash": "9c7b7d388d1547a4c2b3ba15a6892884d066fc3e4201cc96f52f02519c076858",
+      "milliseconds": 262.0687089999992,
+      "innerSteps": 3450,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 190,
+        "compatiblePairs": 54496,
+        "distanceQueries": 3956
+      },
+      "energy": -1687.4589125229954,
+      "end": {
+        "x": -1.7339789874338252,
+        "y": 297.68211838502623,
+        "vx": -1.5224082362594626,
+        "vy": -7.124585308922496,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 54.90479200000118,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 76.32804100000067,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "distanceLegacy8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.87091700000019,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 4656,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "distance2",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 61.09233400000085,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "distance4",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.874792000000525,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.61399999999958,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "distance16",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.58008399999926,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    }
+  ]
+}

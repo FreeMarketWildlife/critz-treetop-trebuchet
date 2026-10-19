@@ -1,0 +1,1186 @@
+{
+  "protocol": "Identical retained actual initial state per policy;1s integration, same8x cap and0.15m safety guard, actual-shape GJK adds both angular sweeps and relative COM velocity. Every inner joint/body and work-corrected energy checked in diagnostic trials; separate five alternating clean timing rounds after warmup. No actor/save writes or pose/force assignment. Node costs are not device FPS.",
+  "diagnostics": [
+    {
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 93.65620899999999,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "metrics": {
+        "maxAnchor": 0.30031353562650454,
+        "maxRope": 0.21212729742669723,
+        "maxAngular": 0.24453819480916572,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 265.431458,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "metrics": {
+        "maxAnchor": 0.032312680793651335,
+        "maxRope": 0.0073797917678986025,
+        "maxAngular": 0.08676016608299542,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 176.55945899999995,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.0019485929676004154,
+        "maxAngular": 0.051079325813847665,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 97.39625000000001,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "metrics": {
+        "maxAnchor": 0.013544574497375781,
+        "maxRope": 0.01014260775197684,
+        "maxAngular": 0.10882283380999669,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 111.475458,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "metrics": {
+        "maxAnchor": 0.013544574497375781,
+        "maxRope": 0.007614166677492928,
+        "maxAngular": 0.02262038362889529,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 143.488208,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "metrics": {
+        "maxAnchor": 0.00004937104986202085,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.014332197036018401,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 75.64645900000005,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 80.72841699999992,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.80616699999996,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004229013426027088,
+        "maxRope": 8.59552113485762e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    }
+  ],
+  "timings": [
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 40.30916700000034,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 224.0117909999999,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 155.68687499999987,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 62.9539579999996,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 89.40770799999973,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 149.02583300000015,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 56.2726660000003,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 77.00954100000035,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 57.85529200000019,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 154.9481249999999,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 224.79433299999982,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 39.97258299999976,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 147.86295800000016,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 89.40816600000016,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 63.80391700000018,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.70079200000009,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 76.65812499999993,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 55.98987500000021,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 41.33941700000014,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 228.473833,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 162.65370799999982,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 65.39141699999982,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 89.28874999999971,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 149.83616699999948,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 55.023167000000285,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 77.99654199999986,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 59.920874999999796,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 158.96362500000032,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 230.08758299999954,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 40.632666999999856,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 151.6643750000003,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 89.25675000000047,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 62.16154199999983,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.15495899999951,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 76.38262500000019,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 55.72404199999983,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "baseline",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 40.50854200000049,
+      "innerSteps": 600,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -630286.5164817557,
+      "end": {
+        "x": -2.6774715077640514,
+        "y": 294.0893033905387,
+        "vx": -0.000023275894099857513,
+        "vy": -0.000002430923637810099,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "aabb8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 227.38283299999966,
+      "innerSteps": 3414,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 402
+      },
+      "energy": -615560.2387692471,
+      "end": {
+        "x": -2.6774735083132515,
+        "y": 294.08930398457017,
+        "vx": 0.000001647100878269279,
+        "vy": -1.1706949086234589e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "distance8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 153.38620900000024,
+      "innerSteps": 2350,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 250,
+        "compatiblePairs": 159735,
+        "distanceQueries": 718
+      },
+      "energy": -616019.3282145066,
+      "end": {
+        "x": -2.677472813065151,
+        "y": 294.08930375948603,
+        "vx": 0.000012065087089377148,
+        "vy": -8.586323885413764e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "baseline",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 63.469750000000204,
+      "innerSteps": 777,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -1704.728941123913,
+      "end": {
+        "x": -3.135353269948562,
+        "y": 295.3333104117332,
+        "vx": -3.0682670983389917,
+        "vy": -7.725450207428921,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "aabb8",
+      "startHash": "fe5bfce46989e943f38e012b331bd1de7359a1222d6aa852db1c2e497689823f",
+      "milliseconds": 92.30450000000019,
+      "innerSteps": 1102,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 28
+      },
+      "energy": -1770.5505232966339,
+      "end": {
+        "x": -3.1481307776885012,
+        "y": 295.60402131176966,
+        "vx": 2.8076999580066184,
+        "vy": -3.3754784857083124,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "distance8",
+      "startHash": "3ed9e52d9437e94fe7ffba76b5a59d40cc7f65325c65ded22616166616b11016",
+      "milliseconds": 149.51058299999931,
+      "innerSteps": 1909,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 187,
+        "compatiblePairs": 53637,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5580085556735,
+      "end": {
+        "x": -1.6903218266347655,
+        "y": 297.69874193309346,
+        "vx": -1.4673684784416217,
+        "vy": -7.09682020640461,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "baseline",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 56.19725000000017,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "aabb8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 77.17758400000002,
+      "innerSteps": 1013,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 40
+      },
+      "energy": -18834.187725885873,
+      "end": {
+        "x": 31.476115400136795,
+        "y": 107.21742286417971,
+        "vx": -11.616089992268531,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "distance8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.01170900000034,
+      "innerSteps": 733,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 0,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.72803412885,
+      "end": {
+        "x": 31.476115400136802,
+        "y": 107.21694598917982,
+        "vx": -11.616089992268522,
+        "vy": -9.889588266254636,
+        "mass": 0.8500000000000001
+      }
+    }
+  ]
+}

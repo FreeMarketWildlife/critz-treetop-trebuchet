@@ -1,0 +1,1873 @@
+{
+  "protocol": "Identical retained actual initial state per policy;1s integration, same8x cap and0.15m safety guard, actual-shape GJK adds both angular sweeps and relative COM velocity. Every inner joint/body and work-corrected energy checked in diagnostic trials; separate five alternating clean timing rounds after warmup. No actor/save writes or pose/force assignment. Node costs are not device FPS.",
+  "diagnostics": [
+    {
+      "id": "falling rig",
+      "policy": "stop8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 281.106125,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.006300689429125317,
+        "maxAngular": 0.0413851447710335,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -614155.4632174768,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "position24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 223.54100000000005,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.006300689429125317,
+        "maxAngular": 0.0413851447710335,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -614155.4595271386,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "position48",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 209.15245900000002,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.006300689429125317,
+        "maxAngular": 0.0413851447710335,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -614155.4595271543,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "falling rig",
+      "policy": "both40x24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 193.18870800000002,
+      "innerSteps": 2721,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 303,
+        "distanceSteps": 297,
+        "stopSteps": 15,
+        "compatiblePairs": 147780,
+        "distanceQueries": 526,
+        "extraSolveSteps": 15
+      },
+      "metrics": {
+        "maxAnchor": 0.022053755514630458,
+        "maxRope": 0.007872768298975874,
+        "maxAngular": 0.034908308411293554,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -614699.9005105922,
+      "end": {
+        "x": -2.677473008229927,
+        "y": 294.0893038460653,
+        "vx": 0.0000018284554739953144,
+        "vy": -2.739798920340168e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "stop8",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 211.49225000000013,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "metrics": {
+        "maxAnchor": 0.00004937104986202085,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.014332197036018401,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "position24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 148.52908300000013,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "metrics": {
+        "maxAnchor": 0.00004937104986202085,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.014332197036018401,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "position48",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 139.37874999999985,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "metrics": {
+        "maxAnchor": 0.00004937104986202085,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.014332197036018401,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary rig impact",
+      "policy": "both40x24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 138.15929200000005,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 16,
+        "compatiblePairs": 53638,
+        "distanceQueries": 3933,
+        "extraSolveSteps": 16
+      },
+      "metrics": {
+        "maxAnchor": 0.00004937104986202085,
+        "maxRope": 0.00001128219918200557,
+        "maxAngular": 0.014332197036018401,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -1687.4979265995246,
+      "end": {
+        "x": -1.6908754551135197,
+        "y": 297.69389450276793,
+        "vx": -1.4681554787914333,
+        "vy": -7.104454712993774,
+        "mass": 5
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "stop8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 82.21050000000014,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "metrics": {
+        "maxAnchor": 0.0004243873800618883,
+        "maxRope": 8.595761871177388e-7,
+        "maxAngular": 0.07587670294134341,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.67543644821,
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "position24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 67.09345799999983,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "metrics": {
+        "maxAnchor": 0.00042438935679125963,
+        "maxRope": 8.595761871177388e-7,
+        "maxAngular": 0.0758767488438643,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.67541367695,
+      "end": {
+        "x": 31.476114374283334,
+        "y": 107.21698795905182,
+        "vx": -11.61609100394623,
+        "vy": -9.889587069206387,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "position48",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 68.23137500000007,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "metrics": {
+        "maxAnchor": 0.0004243893630148691,
+        "maxRope": 8.595761871177388e-7,
+        "maxAngular": 0.0758767488460883,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.67541363867,
+      "end": {
+        "x": 31.476114353614324,
+        "y": 107.21698853117634,
+        "vx": -11.616091026905734,
+        "vy": -9.88958642999802,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "id": "ordinary canopy impact",
+      "policy": "both40x24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 67.56616599999984,
+      "innerSteps": 773,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 10,
+        "distanceSteps": 0,
+        "stopSteps": 10,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 10
+      },
+      "metrics": {
+        "maxAnchor": 0.0004187219072456937,
+        "maxRope": 8.59612023784706e-7,
+        "maxAngular": 0.07587673771300274,
+        "maxPositiveStepEnergy": 0,
+        "maxCumulativeEnergy": 0,
+        "nonfinite": false
+      },
+      "energy": -18834.69905986876,
+      "end": {
+        "x": 31.468024323636243,
+        "y": 107.32975129411433,
+        "vx": -11.624988466473418,
+        "vy": -9.765682204503559,
+        "mass": 0.8500000000000001
+      }
+    }
+  ],
+  "timings": [
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "stop8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 202.71262500000012,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "energy": -614155.4632174768,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "position24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 201.07458300000008,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271386,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "position48",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 201.3908339999998,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271543,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "falling rig",
+      "policy": "both40x24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 178.70558299999993,
+      "innerSteps": 2721,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 303,
+        "distanceSteps": 297,
+        "stopSteps": 15,
+        "compatiblePairs": 147780,
+        "distanceQueries": 526,
+        "extraSolveSteps": 15
+      },
+      "energy": -614699.9005105922,
+      "end": {
+        "x": -2.677473008229927,
+        "y": 294.0893038460653,
+        "vx": 0.0000018284554739953144,
+        "vy": -2.739798920340168e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "stop8",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 151.51495799999975,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "position24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 149.49983299999985,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "position48",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 150.6625840000006,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary rig impact",
+      "policy": "both40x24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 153.1782920000005,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 16,
+        "compatiblePairs": 53638,
+        "distanceQueries": 3933,
+        "extraSolveSteps": 16
+      },
+      "energy": -1687.4979265995246,
+      "end": {
+        "x": -1.6908754551135197,
+        "y": 297.69389450276793,
+        "vx": -1.4681554787914333,
+        "vy": -7.104454712993774,
+        "mass": 5
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "stop8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 64.77691700000014,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.67543644821,
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "position24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.77058300000044,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541367695,
+      "end": {
+        "x": 31.476114374283334,
+        "y": 107.21698795905182,
+        "vx": -11.61609100394623,
+        "vy": -9.889587069206387,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "position48",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 64.61795799999982,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541363867,
+      "end": {
+        "x": 31.476114353614324,
+        "y": 107.21698853117634,
+        "vx": -11.616091026905734,
+        "vy": -9.88958642999802,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 0,
+      "id": "ordinary canopy impact",
+      "policy": "both40x24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 64.87225000000035,
+      "innerSteps": 773,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 10,
+        "distanceSteps": 0,
+        "stopSteps": 10,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 10
+      },
+      "energy": -18834.69905986876,
+      "end": {
+        "x": 31.468024323636243,
+        "y": 107.32975129411433,
+        "vx": -11.624988466473418,
+        "vy": -9.765682204503559,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "both40x24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 182.53649999999925,
+      "innerSteps": 2721,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 303,
+        "distanceSteps": 297,
+        "stopSteps": 15,
+        "compatiblePairs": 147780,
+        "distanceQueries": 526,
+        "extraSolveSteps": 15
+      },
+      "energy": -614699.9005105922,
+      "end": {
+        "x": -2.677473008229927,
+        "y": 294.0893038460653,
+        "vx": 0.0000018284554739953144,
+        "vy": -2.739798920340168e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "position48",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 201.32183299999997,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271543,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "position24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 200.7937090000005,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271386,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "falling rig",
+      "policy": "stop8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 197.35841700000037,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "energy": -614155.4632174768,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "both40x24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 151.72962499999994,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 16,
+        "compatiblePairs": 53638,
+        "distanceQueries": 3933,
+        "extraSolveSteps": 16
+      },
+      "energy": -1687.4979265995246,
+      "end": {
+        "x": -1.6908754551135197,
+        "y": 297.69389450276793,
+        "vx": -1.4681554787914333,
+        "vy": -7.104454712993774,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "position48",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 148.79774999999972,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "position24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 149.65866600000027,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary rig impact",
+      "policy": "stop8",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 150.65145800000028,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "both40x24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.78741600000012,
+      "innerSteps": 773,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 10,
+        "distanceSteps": 0,
+        "stopSteps": 10,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 10
+      },
+      "energy": -18834.69905986876,
+      "end": {
+        "x": 31.468024323636243,
+        "y": 107.32975129411433,
+        "vx": -11.624988466473418,
+        "vy": -9.765682204503559,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "position48",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.68666699999994,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541363867,
+      "end": {
+        "x": 31.476114353614324,
+        "y": 107.21698853117634,
+        "vx": -11.616091026905734,
+        "vy": -9.88958642999802,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "position24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 60.7182499999999,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541367695,
+      "end": {
+        "x": 31.476114374283334,
+        "y": 107.21698795905182,
+        "vx": -11.61609100394623,
+        "vy": -9.889587069206387,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 1,
+      "id": "ordinary canopy impact",
+      "policy": "stop8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 61.73845799999981,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.67543644821,
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "stop8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 203.28870800000004,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "energy": -614155.4632174768,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "position24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 198.01508300000023,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271386,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "position48",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 201.59062499999982,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271543,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "falling rig",
+      "policy": "both40x24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 183.60412499999984,
+      "innerSteps": 2721,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 303,
+        "distanceSteps": 297,
+        "stopSteps": 15,
+        "compatiblePairs": 147780,
+        "distanceQueries": 526,
+        "extraSolveSteps": 15
+      },
+      "energy": -614699.9005105922,
+      "end": {
+        "x": -2.677473008229927,
+        "y": 294.0893038460653,
+        "vx": 0.0000018284554739953144,
+        "vy": -2.739798920340168e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "stop8",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 151.09637500000008,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "position24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 149.524042,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "position48",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 151.2386660000002,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary rig impact",
+      "policy": "both40x24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 150.5569999999998,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 16,
+        "compatiblePairs": 53638,
+        "distanceQueries": 3933,
+        "extraSolveSteps": 16
+      },
+      "energy": -1687.4979265995246,
+      "end": {
+        "x": -1.6908754551135197,
+        "y": 297.69389450276793,
+        "vx": -1.4681554787914333,
+        "vy": -7.104454712993774,
+        "mass": 5
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "stop8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.33458299999984,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.67543644821,
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "position24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.660791999998764,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541367695,
+      "end": {
+        "x": 31.476114374283334,
+        "y": 107.21698795905182,
+        "vx": -11.61609100394623,
+        "vy": -9.889587069206387,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "position48",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.27283399999942,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541363867,
+      "end": {
+        "x": 31.476114353614324,
+        "y": 107.21698853117634,
+        "vx": -11.616091026905734,
+        "vy": -9.88958642999802,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 2,
+      "id": "ordinary canopy impact",
+      "policy": "both40x24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 65.71312500000022,
+      "innerSteps": 773,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 10,
+        "distanceSteps": 0,
+        "stopSteps": 10,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 10
+      },
+      "energy": -18834.69905986876,
+      "end": {
+        "x": 31.468024323636243,
+        "y": 107.32975129411433,
+        "vx": -11.624988466473418,
+        "vy": -9.765682204503559,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "both40x24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 182.75704199999927,
+      "innerSteps": 2721,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 303,
+        "distanceSteps": 297,
+        "stopSteps": 15,
+        "compatiblePairs": 147780,
+        "distanceQueries": 526,
+        "extraSolveSteps": 15
+      },
+      "energy": -614699.9005105922,
+      "end": {
+        "x": -2.677473008229927,
+        "y": 294.0893038460653,
+        "vx": 0.0000018284554739953144,
+        "vy": -2.739798920340168e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "position48",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 205.76737499999945,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271543,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "position24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 205.96587499999987,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271386,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "falling rig",
+      "policy": "stop8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 201.7651249999999,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "energy": -614155.4632174768,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "both40x24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 152.8033749999995,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 16,
+        "compatiblePairs": 53638,
+        "distanceQueries": 3933,
+        "extraSolveSteps": 16
+      },
+      "energy": -1687.4979265995246,
+      "end": {
+        "x": -1.6908754551135197,
+        "y": 297.69389450276793,
+        "vx": -1.4681554787914333,
+        "vy": -7.104454712993774,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "position48",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 151.32308300000113,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "position24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 150.43987500000003,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary rig impact",
+      "policy": "stop8",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 148.8692919999994,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "both40x24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.43045799999891,
+      "innerSteps": 773,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 10,
+        "distanceSteps": 0,
+        "stopSteps": 10,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 10
+      },
+      "energy": -18834.69905986876,
+      "end": {
+        "x": 31.468024323636243,
+        "y": 107.32975129411433,
+        "vx": -11.624988466473418,
+        "vy": -9.765682204503559,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "position48",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.31354199999987,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541363867,
+      "end": {
+        "x": 31.476114353614324,
+        "y": 107.21698853117634,
+        "vx": -11.616091026905734,
+        "vy": -9.88958642999802,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "position24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.58312500000102,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541367695,
+      "end": {
+        "x": 31.476114374283334,
+        "y": 107.21698795905182,
+        "vx": -11.61609100394623,
+        "vy": -9.889587069206387,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 3,
+      "id": "ordinary canopy impact",
+      "policy": "stop8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 63.57362499999908,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.67543644821,
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "stop8",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 198.07183299999997,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 625
+      },
+      "energy": -614155.4632174768,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "position24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 198.30075000000033,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271386,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "position48",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 199.32641599999988,
+      "innerSteps": 2952,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 336,
+        "distanceSteps": 332,
+        "stopSteps": 15,
+        "compatiblePairs": 127884,
+        "distanceQueries": 627,
+        "extraSolveSteps": 15
+      },
+      "energy": -614155.4595271543,
+      "end": {
+        "x": -2.677473190752158,
+        "y": 294.08930388743516,
+        "vx": 0.0000016460593979237104,
+        "vy": -1.1700030844852742e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "falling rig",
+      "policy": "both40x24",
+      "startHash": "aa9c5150493fa66738020e2cb01c76916e5a3ab0f23f3887fa1d025cfd46b14c",
+      "milliseconds": 177.00183299999844,
+      "innerSteps": 2721,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 303,
+        "distanceSteps": 297,
+        "stopSteps": 15,
+        "compatiblePairs": 147780,
+        "distanceQueries": 526,
+        "extraSolveSteps": 15
+      },
+      "energy": -614699.9005105922,
+      "end": {
+        "x": -2.677473008229927,
+        "y": 294.0893038460653,
+        "vx": 0.0000018284554739953144,
+        "vy": -2.739798920340168e-7,
+        "mass": 1.1
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "stop8",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 148.20804099999987,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "position24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 149.34820899999977,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "position48",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 147.21091700000034,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 18,
+        "compatiblePairs": 53631,
+        "distanceQueries": 3934,
+        "extraSolveSteps": 18
+      },
+      "energy": -1687.5184834470806,
+      "end": {
+        "x": -1.6899823020138853,
+        "y": 297.6991328659413,
+        "vx": -1.4668254516449886,
+        "vy": -7.096233137446077,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary rig impact",
+      "policy": "both40x24",
+      "startHash": "7be3bff1d15f263e81ffd957d083943af5a5a51fee70715b78af52eaf99b19b8",
+      "milliseconds": 153.1950829999987,
+      "innerSteps": 1923,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 189,
+        "distanceSteps": 187,
+        "stopSteps": 16,
+        "compatiblePairs": 53638,
+        "distanceQueries": 3933,
+        "extraSolveSteps": 16
+      },
+      "energy": -1687.4979265995246,
+      "end": {
+        "x": -1.6908754551135197,
+        "y": 297.69389450276793,
+        "vx": -1.4681554787914333,
+        "vy": -7.104454712993774,
+        "mass": 5
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "stop8",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 61.91945900000064,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84
+      },
+      "energy": -18834.67543644821,
+      "end": {
+        "x": 31.476115400136838,
+        "y": 107.21698686417993,
+        "vx": -11.616089992268586,
+        "vy": -9.88958826625468,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "position24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 61.82720899999913,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541367695,
+      "end": {
+        "x": 31.476114374283334,
+        "y": 107.21698795905182,
+        "vx": -11.61609100394623,
+        "vy": -9.889587069206387,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "position48",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 62.495874999998705,
+      "innerSteps": 766,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 9,
+        "distanceSteps": 0,
+        "stopSteps": 9,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 9
+      },
+      "energy": -18834.67541363867,
+      "end": {
+        "x": 31.476114353614324,
+        "y": 107.21698853117634,
+        "vx": -11.616091026905734,
+        "vy": -9.88958642999802,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "round": 4,
+      "id": "ordinary canopy impact",
+      "policy": "both40x24",
+      "startHash": "f47f0307b0b7260f54b9c5bec2af6ae05dcee7cf00149377e9786f98d2a670dc",
+      "milliseconds": 64.69187500000044,
+      "innerSteps": 773,
+      "stats": {
+        "outerSteps": 600,
+        "refinedSteps": 10,
+        "distanceSteps": 0,
+        "stopSteps": 10,
+        "compatiblePairs": 61248,
+        "distanceQueries": 84,
+        "extraSolveSteps": 10
+      },
+      "energy": -18834.69905986876,
+      "end": {
+        "x": 31.468024323636243,
+        "y": 107.32975129411433,
+        "vx": -11.624988466473418,
+        "vy": -9.765682204503559,
+        "mass": 0.8500000000000001
+      }
+    }
+  ]
+}

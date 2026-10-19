@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Earlier falling rig \u2014 identical initial state",
+    "file": "../iteration-41/earlier-incoming.json",
+    "seconds": 1
+  },
+  {
+    "label": "Ordinary rig impact \u2014 identical initial state",
+    "file": "../iteration-35/rig-incoming.json",
+    "seconds": 1
+  },
+  {
+    "label": "Ordinary canopy impact \u2014 identical initial state",
+    "file": "../iteration-35/canopy-incoming.json",
+    "seconds": 1
+  }
+]
