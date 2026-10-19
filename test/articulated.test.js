@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {CritterScene} from '../src/articulated.js';
+import {CritterScene,cockedConfig} from '../src/articulated.js';
 import {profiles} from '../src/species.js';
 function physicalLoad(s){for(let i=0;i<600;i++)s.step();const root=s.parts.find(b=>b.getUserData().id==='torso')??s.parts[0];
  assert.ok(s.grab(root.getWorldCenter()));for(let i=0;i<600;i++){s.move({x:-4.3,y:297});s.step();}
@@ -49,4 +49,9 @@ test('encounters remain dynamically bounded and do not randomize terrain',()=>{
  const before=[];for(let b=s.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role==='static')before.push({...b.getPosition()});
  for(let i=0;i<3600;i++)s.step();assert.ok(s.enemies.size<=12);assert.ok(Number.isFinite(s.spawnEnergy));
  const after=[];for(let b=s.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role==='static')after.push({...b.getPosition()});assert.deepEqual(before,after);
+});
+
+test('cocking height respects beam/sling clearance and rejects impossible setups',()=>{
+ const p=cockedConfig({longArm:3.6,sling:2.9},.95);assert.ok(-Math.sin(p.initialArm)<.8);
+ assert.doesNotThrow(()=>new CritterScene(p));assert.throws(()=>cockedConfig({longArm:20,sling:5},.95));
 });

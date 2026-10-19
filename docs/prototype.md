@@ -33,7 +33,7 @@ Lift the critter over the cradle and release the grip. Gravity, actual body cont
 
 The release pin is currently an **idealized geometric switch**: a descending relative cradle/beam angle crossing, with positive strap tension, removes the straps and disables cradle collisions. Critter positions, part velocities and spins are not reassigned. This instantly opens the support model; an actual articulated hook, flexible fabric pouch and opening motion are **not** simulated. There is no claim that this is the final full-physics release mechanism.
 
-The meter chooses a starting angle on the reachable cocking branch `theta=-pi+asin(f)`, with `f in [0.2,0.95]`, so the counterweight center begins at `pivotY + shortArm*f`. Its initial gravitational potential is physical. Changing it currently rebuilds the setup before loading: winch motor/work and winding animation are not yet implemented. No projectile speed bonus is applied. Geometry clearance across all possible upgraded configurations still needs broader testing.
+The meter chooses a starting angle on the reachable cocking branch `theta=-pi+asin(f)`, with `f in [0.2,min(0.95,(6-sling-0.3)/longArm)]`, so the counterweight center begins at `pivotY + shortArm*f`. Its initial gravitational potential is physical. Changing it currently rebuilds the setup before loading: winch motor/work and winding animation are not yet implemented. No projectile speed bonus is applied. The cocking setup clamps lift to keep the cradle above the support branch and rejects impossible beam/sling combinations. Other contacts, frame stability and clearance during motion still need broader testing.
 
 ### Prediction and reproducibility
 

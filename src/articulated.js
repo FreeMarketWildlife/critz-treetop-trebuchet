@@ -8,11 +8,19 @@ const serializer=new P.Serializer({rootClass:P.World,
  postDeserialize:(obj,data)=>{if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);return obj;}});
 const V=(x,y)=>P.Vec2(x,y);
 const tag=(body,role,id)=>body.setUserData({role,id});
+// Cocking setup is a reachable initial pose, with clearance above the support branch.
+export function cockedConfig(overrides={},desiredFraction=.6){
+ const p=config(overrides);if(!Number.isFinite(desiredFraction))throw new Error('Invalid cocking input');
+ const maxFraction=Math.min(.95,(6-p.sling-.3)/p.longArm);
+ if(maxFraction<.2)throw new Error('Beam/sling geometry cannot clear this six-metre frame');
+ const fraction=Math.max(.2,Math.min(maxFraction,desiredFraction));
+ return {...p,initialArm:-Math.PI+Math.asin(fraction)};
+}
 export class CritterScene {
  constructor(overrides={},species='lizard',saved=null){
   this.p=config(overrides);this.rig=createRig(species);this.phase='loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;
   if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0});this.index();return;}
-  const p=this.p;this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
+  const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
   for(const s of layout.surfaces)ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
   for(const pin of layout.bumpers)ground.createFixture(P.Circle(V(pin.x,pin.y),pin.radius),{friction:.08,restitution:.85,filterCategoryBits:1});

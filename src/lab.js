@@ -1,4 +1,4 @@
-import {CritterScene} from './articulated.js';
+import {CritterScene,cockedConfig} from './articulated.js';
 import {profiles,createVolunteerQueue} from './species.js';
 import {createAudio} from './audio.js';
 import {catalog,createEconomyState,economyReducer,derivePhysicalConfig,createEconomyPersistence} from './economy.js';
@@ -8,7 +8,7 @@ $('reduced').checked=window.matchMedia('(prefers-reduced-motion: reduce)').match
 const sound=createAudio();sound.setVolume(.35);let economy=createEconomyState(),shotId=null,banked=false,shotCount=0,effects=[];
 let persistence=createEconomyPersistence(localStorage);
 const seed=Date.now()>>>0,queue=createVolunteerQueue(seed);let fraction=.6,scene,preview=null,error='',last=performance.now(),accumulator=0,nextPreview=0,clock=0,sliderRunning=true,sliderStart=performance.now(),held=false;
-const settings=()=>derivePhysicalConfig(economy,{counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),pivotHeight:300,armDamping:Number($('friction').value),flightDrag:Number($('drag').value),initialArm:-Math.PI+Math.asin(fraction)});
+const settings=()=>cockedConfig(derivePhysicalConfig(economy,{counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),pivotHeight:300,armDamping:Number($('friction').value),flightDrag:Number($('drag').value),initialArm:-Math.PI+Math.asin(fraction)}),fraction);
 const local=p=>[260+p.x*45,440-(p.y-294)*45];
 const fromEvent=e=>{const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*960/r.width,y=(e.clientY-r.top)*480/r.height;return {x:(x-260)/45,y:294+(440-y)/45};};
 $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</option>`).join('');$('species').value=queue.current;
@@ -50,7 +50,7 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  const c=scene.center(),release=scene.release?.center;
  for(const event of scene.events.splice(0)){if(event.type==='impact'){sound.play('impact',{intensity:Math.min(1,event.strength/5)});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4});}else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
  effects=effects.map(e=>({...e,life:e.life-dt})).filter(e=>e.life>0).slice(-20);
- $('readout').textContent=error||`${scene.rig.label} • ${scene.phase} • ${release?(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(2)+' m/s • ':''}hand work ${scene.handWork.toFixed(2)} J • arcade work ${scene.assistWork.toFixed(2)} J${scene.forceCapped?' (80 N cap)':''} • counterweight cocked lift ${(scene.p.shortArm*fraction).toFixed(2)} m above pivot • frame x ${scene.frame.getPosition().x.toFixed(3)} m`;
+ $('readout').textContent=error||`${scene.rig.label} • ${scene.phase} • ${release?(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(2)+' m/s • ':''}hand work ${scene.handWork.toFixed(2)} J • arcade work ${scene.assistWork.toFixed(2)} J${scene.forceCapped?' (80 N cap)':''} • counterweight cocked lift ${(-scene.p.shortArm*Math.sin(scene.p.initialArm)).toFixed(2)} m above pivot • frame x ${scene.frame.getPosition().x.toFixed(3)} m`;
  $('queue').textContent=`Next 3: ${queue.peek().map(id=>profiles.find(p=>p.id===id).label).join(' → ')} • queue seed ${seed}`;
  ctx.clearRect(0,0,960,480);ctx.fillStyle='#263a31';ctx.font='15px system-ui';ctx.fillText('Physical frame, cradle and articulated payload',12,25);
  line([480,0],[480,480],'#8c9f95',1);line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',6);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',3);
