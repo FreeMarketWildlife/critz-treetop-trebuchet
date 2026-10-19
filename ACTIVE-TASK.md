@@ -1,6 +1,16 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 25
+## CURRENT implementation: iteration 26 checkpoint
+
+Read docs/reviews/iteration-26/findings.md,checkpoint-summary.json,manual-session.json. UI-only real-anchor/target tether(existingforcecapcolor),nearLetgo+status,resize/cancel viewrecovery afterlayout(coalesced/reset-cancelled),reservedcontrol/statusspace and body scrollanchoringoff. No physics/collider/economy/save changes.206tests pass.44real-force pointer-mapped cases allpicked/alltargetsvisible,39ready;ALLphysicalrowsexactbaseline. All35non-timingregrowsEXACT25,32release/3lowmiss,32predictiondiff0. Nineangularposesactualfixturecaptured/read-onlybrowser4xreview no grossbreak;singlebodyproxy .479–.795CSSpx,anchorcombined .531–1.475,oneoutertick threshold;notvideo/downstreambound. No solverchanges.
+
+Both132×15/40ssoaks126release6miss,132reload/staleblocks,zero worldsretained12GCchecks,ALLphysicalrowsEXACT25. p95/max2.698/8.996ms short,3.722/11.095long. Afterchecks ONLYmobile.css bodyoverflow-anchor:none andindexcachekeychanged;summaryreconstructsrecordedhashesexactly,allphysics/interactionJShashesstillmatch. Do not claim alltrackedfinalUIhashesmatch; no redundant physics rerun forlateCSS. Earliercapture-heldsnapshotrejected/early-layoutfiles historical.
+
+Actualall11long/low390pickup+Enterrelease passes;single-diagonal variablehold recipe2support/9recovery is NOTrecommended2stage successbenchmark. Rotationheld390→844→390 drop/regripandvisiblecanvasverified;final320→844 canvas0.172..320.172. FinalCSSpickupstable390/320; directpointerLetgoSalamander leavescanvas/scrollunchanged. REMAINING: locatorEnter movesfocus/scroll72.367→-19.133;pointerrelease doesnot. Keyboardreleaseworksbutnativefocusvsautomationnotisolated; finalCSSall-roster release-layout passpartial. No permission/browserstallblocker. Parentrequested50minutecheckpoint; stopduplicatingcompletedphysicschecks.
+
+ActualstarterChipmunk finalJS+reservedCSS: rawmeter.54=>physicalfraction.605,318m12bounce60.7deg16.6m/s→3477points29bells→retryretained. Earnedtab1219045195keepSaveOFF. LatestCSSzero-wallettab1219045203idleSalamander,longlab3.6/.9/sling2.9,SaveOFF. Prior25tab1219045172still4684/32;recovery24tab1219045169still1724/19. All4normalviewportsverifiedlogical960/CSS1096. OriginalstoredsavestouchedNONE;no export/unlock/push/deploy/install. Next isolatekeyboardfocus;finalCSSrosterpointer-release sample/realdevicehumanfeedback. Earlier25andbelowhistory.
+
+## Historical implementation: iteration 25
 
 Read docs/reviews/iteration-25/findings.md + summary.json. Seven new canopy shelves now fixed downhill slopes-.35, exact shared endpoint/convex/swept geometry across physics/refinement/render/preview. Passive contact redirects fall forward; no boosts/posefix. Fixed branches/bumper/ground now share existing max4groupededgecues with movingencounters, contact-section targets and realposebounds.
 

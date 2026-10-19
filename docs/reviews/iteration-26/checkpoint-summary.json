@@ -1,0 +1,92 @@
+{
+  "startingCheckpoint": "50f4e21",
+  "tests": {
+    "pass": 206,
+    "fail": 0
+  },
+  "regression35AllNonTimingRowsExactly25": true,
+  "predictionCases": 32,
+  "loading44RowsExactlyBaseline": true,
+  "all44PickupsAndTargetsVisible": true,
+  "ready44": 39,
+  "angularWarnings": 9,
+  "short": {
+    "counts": {
+      "released": 126,
+      "seating_failed": 6
+    },
+    "sourceChangesDuringRun": [],
+    "lateUIOnlyMismatches": [
+      "mobile.css",
+      "index.html"
+    ],
+    "engineBatchMs": {
+      "samples": 161797,
+      "p95": 2.697790999984136,
+      "max": 8.995959000000006,
+      "firstQuarterP95": 2.967665999996825,
+      "lastQuarterP95": 2.5734570000349777
+    },
+    "coordination": {
+      "roundTrips": 132,
+      "staleBlocks": 132,
+      "saveMsP95": 0.04441699999733828
+    },
+    "zeroRetainedWorlds": true
+  },
+  "long": {
+    "counts": {
+      "released": 126,
+      "seating_failed": 6
+    },
+    "sourceChangesDuringRun": [],
+    "lateUIOnlyMismatches": [
+      "mobile.css",
+      "index.html"
+    ],
+    "engineBatchMs": {
+      "samples": 350798,
+      "p95": 3.7218770000326913,
+      "max": 11.095291999983601,
+      "firstQuarterP95": 3.862582000059774,
+      "lastQuarterP95": 3.6959170000627637
+    },
+    "coordination": {
+      "roundTrips": 132,
+      "staleBlocks": 132,
+      "saveMsP95": 0.04216699999960838
+    },
+    "zeroRetainedWorlds": true
+  },
+  "lateUIAudit": {
+    "explanation": "After numerical checks, only the stylesheet cache key and a body overflow-anchor:none rule changed. Reconstructed pre-change files exactly match measured hashes. All simulation/interaction JavaScript hashes still match. Final pointer-release browser check passed; keyboard locator focus scrolling remains to isolate.",
+    "current": {
+      "index": "f36df0d81fa53b37a58fe3f3d7f925b387dde37e15d8fcfde7fd6cf2e1bae2a7",
+      "css": "3bd6f40bff2dbc7fa65e9b186211a3034b9283fe42fd3b7a69ef8ea48b639a44"
+    }
+  },
+  "browser": {
+    "rosterTabClosed": "1219045179",
+    "earnedTab": "1219045195",
+    "earned": {
+      "points": 3477,
+      "bells": 29,
+      "distanceShown": 318,
+      "bounces": 12,
+      "angle": 60.7,
+      "speed": 16.6,
+      "meter": 0.54,
+      "physicalFraction": 0.605
+    },
+    "latestTab": "1219045203",
+    "latestWallet": {
+      "points": 0,
+      "bells": 0
+    },
+    "savedProgressWrites": false,
+    "portraitPickupAll11": true,
+    "keyboardReleaseAll11": true,
+    "finalPointerReleaseStable": true,
+    "keyboardLocatorScrollUnresolved": true
+  }
+}

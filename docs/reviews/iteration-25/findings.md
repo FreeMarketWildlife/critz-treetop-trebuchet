@@ -44,6 +44,8 @@ Ground-phase timing/travel in this paired study begins when COM falls below2m, n
 
 The retained recovery24 tab1219045169 was inspected and preserved, including its1,724points/19bells. A fresh latest-source tab1219045172 preserves the new earned session; reloading the old memory-only page would have discarded its rewards. Existing failed-session tabs were untouched.
 
+Interpretation clarified in iteration26: manual .6/.9 winding labels below refer to raw slider values; physical fraction is .2+.75×value (.65/.875). The numerical paired studies use their explicitly stated physical fractions.
+
 At390×844, real UI winding, finite drag, supporting contact, nearby Unlatch, flight, bank, earned equipment purchase and retry were exercised:
 
 - Mouse, starter, .9 winding: physical poor result, approximately0m and12bounces shown; bank300points/29bells. It was not forced into a successful throw.

@@ -1,0 +1,3612 @@
+{
+  "protocol": "132 natural finite-force load attempts, all11 species, low/middle/high winding, head/torso grips, upgrades purchased only from earned in-memory rewards,duration-specified encounter flights after release; no user save writes.10integration ticks≈60Hz batches measure engine CPU only. All constructed and canonical cloned worlds are tracked by WeakRef. GC observer records2ms+step overlap (small intentional diagnostic retention affects heap). Audio uses deterministic WebAudio lifecycle double, not audible/browser mixing. ExplicitGC checkpoints after event-loop yields inspect old-world collection; persistent completedShot IDs are intentional ledger growth, not discarded for duplicate payment risk.",
+  "initialArm": -3,
+  "flightSeconds": 40,
+  "coordination": {
+    "roundTrips": 132,
+    "staleBlocks": 132,
+    "saveMsP95": 0.04216699999960838
+  },
+  "sourceSHA256": {
+    "mobile.css": "56c0da4d9dc17f5c4433f2a1829021e81dbf56bca236204f120563f2008ef4cc",
+    "src/grip-art.js": "ae546e8c6694b6b15cd3df1d7c279f2a04826077da89a949a99a19c02ca60f4c",
+    "src/view-recovery.js": "2dcccbe0bf5ffe52f12ec6e43f2a6718b2451274bc755ca3fa1f6c19efd856d6",
+    "src/lab.js": "453158d94265b4371a0656e60c377d0f2fdbcd3ba187b894d6e13bd48fa7af1c",
+    "index.html": "cc5297536c4caa419ce64d42de49ce82e97bff82079ee1e85682e8cca40bc42f",
+    "src/terrain.js": "f523e56bdccf384071b4055eda8e94d2c0c07367de638af55962b1be4a6276da",
+    "src/terrain-cues.js": "bdb6353574e4573b20e697244b266a3cfa25359035942f1f3ce36791e81870bf",
+    "src/articulated.js": "a45a2a76f68f5c17afbb9b21dada75298e88990fcaa53437ea78503ed25777d4",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/staging.js": "f47f8b77668ccfd5bbffe5c09f2ac7139a1b3a62c69525f058e552f54d0b4599",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/encounters.js": "4185f6a2b5cf8f922f4b4281ed9a8baf308faa2aa624150fe409a48f09f0291d",
+    "src/economy.js": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+    "src/audio.js": "d440a76ac15d7efd6ea38845d9fc104cab7d8648750a366718ce36fe16277f3c",
+    "src/approach-cues.js": "713d64cc65341fdeaa1c9b9fb67363de1dafe0e2274a3a76aa699ab953ec5ad7",
+    "src/progress-coordination.js": "4926306099c88d92ce315e8261b76783557f0387d7b0379e07c78c6b476c6c81",
+    "src/progress-choice.js": "c503b308f4243febf3d59a6c7a98746e603c935e7009284f12b6ee4b03f7402d",
+    "src/render.js": "28cd7a8ccc8278a244638c8251cb2ded1eb345e6cf41890ecce2a37b9937a43e",
+    "src/pickup.js": "8bd39193ca2639eaaa53fa31858358796d8da8e2384e849fd4ba1d5dd222da7e",
+    "src/surface-art.js": "5cdd9a0a320fade1d3f316c3502a2f1577b174895d2975b863ce0cd184e7ac4c",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b"
+  },
+  "sourcesChangedDuringRun": [],
+  "wallMs": 534051.3940419999,
+  "simulatedSeconds": 5846.645000283094,
+  "counts": {
+    "released": 126,
+    "seating_failed": 6
+  },
+  "heap": {
+    "gcAvailable": true,
+    "checkpoints": [
+      {
+        "cycles": 11,
+        "heap": 26914872,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 22,
+        "heap": 15868040,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 33,
+        "heap": 16570136,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 44,
+        "heap": 16393992,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 55,
+        "heap": 15136808,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 66,
+        "heap": 17311808,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 77,
+        "heap": 15875112,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 88,
+        "heap": 16079584,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 99,
+        "heap": 17778672,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 110,
+        "heap": 17371072,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 121,
+        "heap": 17619648,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 132,
+        "heap": 17830464,
+        "retainedWorlds": 0
+      }
+    ],
+    "postWarmGrowth": 1962424
+  },
+  "engineBatchMs": {
+    "samples": 350798,
+    "p95": 3.7218770000326913,
+    "max": 11.095291999983601,
+    "firstQuarterP95": 3.862582000059774,
+    "lastQuarterP95": 3.6959170000627637
+  },
+  "outliers": {
+    "thresholdStepMs": 2,
+    "gc": {
+      "count": 12969,
+      "totalMs": 2488.3761653900146,
+      "maxMs": 8.418083190917969
+    },
+    "steps": [
+      {
+        "cpuMs": 0.277,
+        "cycle": 97,
+        "species": "tiny-primate",
+        "phase": "loading",
+        "elapsed": 4.148333333333168,
+        "start": 395578.619042,
+        "end": 395583.686209,
+        "wallMs": 5.067167000030167,
+        "bodies": 11,
+        "contacts": 24,
+        "joints": 8
+      },
+      {
+        "cpuMs": 8.411,
+        "cycle": 0,
+        "species": "lizard",
+        "phase": "winding",
+        "elapsed": 0.0016666666666666668,
+        "start": 58.50175,
+        "end": 63.205709,
+        "wallMs": 4.703958999999998,
+        "bodies": 11,
+        "contacts": 7,
+        "joints": 8,
+        "overlappingGC": [
+          {
+            "start": 61.472,
+            "duration": 0.29945945739746094,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "cpuMs": 0.638,
+        "cycle": 114,
+        "species": "snake",
+        "phase": "flight",
+        "elapsed": 42.7583333333104,
+        "start": 466612.950167,
+        "end": 466617.577667,
+        "wallMs": 4.627500000002328,
+        "bodies": 21,
+        "contacts": 37,
+        "joints": 10
+      },
+      {
+        "cpuMs": 0.218,
+        "cycle": 97,
+        "species": "tiny-primate",
+        "phase": "flight",
+        "elapsed": 14.476666666668116,
+        "start": 395882.972625,
+        "end": 395885.926292,
+        "wallMs": 2.9536669999943115,
+        "bodies": 18,
+        "contacts": 8,
+        "joints": 8
+      },
+      {
+        "cpuMs": 1.276,
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 43.79166666664248,
+        "start": 344060.251875,
+        "end": 344062.751167,
+        "wallMs": 2.4992919999640435,
+        "bodies": 20,
+        "contacts": 29,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.937,
+        "cycle": 110,
+        "species": "lizard",
+        "phase": "flight",
+        "elapsed": 26.0033333333259,
+        "start": 446467.491584,
+        "end": 446469.813,
+        "wallMs": 2.3214160000206903,
+        "bodies": 16,
+        "contacts": 28,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.338,
+        "cycle": 97,
+        "species": "tiny-primate",
+        "phase": "flight",
+        "elapsed": 24.53666666666059,
+        "start": 396873.059917,
+        "end": 396875.371917,
+        "wallMs": 2.3119999999762513,
+        "bodies": 20,
+        "contacts": 20,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.526,
+        "cycle": 97,
+        "species": "tiny-primate",
+        "phase": "flight",
+        "elapsed": 22.849999999995458,
+        "start": 396571.655334,
+        "end": 396573.91625,
+        "wallMs": 2.26091599999927,
+        "bodies": 17,
+        "contacts": 19,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.515,
+        "cycle": 65,
+        "species": "frog",
+        "phase": "flight",
+        "elapsed": 41.641666666644966,
+        "start": 273959.411959,
+        "end": 273961.659917,
+        "wallMs": 2.24795799999265,
+        "bodies": 19,
+        "contacts": 24,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.852,
+        "cycle": 114,
+        "species": "snake",
+        "phase": "flight",
+        "elapsed": 30.126666666655215,
+        "start": 464230.187125,
+        "end": 464232.435042,
+        "wallMs": 2.2479170000297017,
+        "bodies": 21,
+        "contacts": 37,
+        "joints": 10
+      },
+      {
+        "cpuMs": 0.989,
+        "cycle": 44,
+        "species": "lizard",
+        "phase": "flight",
+        "elapsed": 17.503333333333543,
+        "start": 183562.733084,
+        "end": 183564.961125,
+        "wallMs": 2.228040999994846,
+        "bodies": 17,
+        "contacts": 26,
+        "joints": 8
+      },
+      {
+        "cpuMs": 1.29,
+        "cycle": 67,
+        "species": "salamander",
+        "phase": "flight",
+        "elapsed": 39.2816666666464,
+        "start": 282335.8075,
+        "end": 282338.034542,
+        "wallMs": 2.227041999984067,
+        "bodies": 20,
+        "contacts": 29,
+        "joints": 8
+      },
+      {
+        "cpuMs": 1.114,
+        "cycle": 26,
+        "species": "snake",
+        "phase": "flight",
+        "elapsed": 33.54999999998551,
+        "start": 112714.163667,
+        "end": 112716.370584,
+        "wallMs": 2.206917000003159,
+        "bodies": 19,
+        "contacts": 34,
+        "joints": 10
+      },
+      {
+        "cpuMs": 1.135,
+        "cycle": 122,
+        "species": "salamander",
+        "phase": "flight",
+        "elapsed": 25.29333333332657,
+        "start": 494920.759625,
+        "end": 494922.930834,
+        "wallMs": 2.171208999992814,
+        "bodies": 19,
+        "contacts": 22,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.162,
+        "cycle": 23,
+        "species": "salamander",
+        "phase": "flight",
+        "elapsed": 13.676666666667991,
+        "start": 98454.599792,
+        "end": 98456.766459,
+        "wallMs": 2.1666670000122394,
+        "bodies": 17,
+        "contacts": 4,
+        "joints": 8
+      },
+      {
+        "cpuMs": 0.663,
+        "cycle": 51,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 35.273333333316046,
+        "start": 211816.173417,
+        "end": 211818.320834,
+        "wallMs": 2.1474170000001322,
+        "bodies": 20,
+        "contacts": 24,
+        "joints": 8
+      },
+      {
+        "cpuMs": 1.291,
+        "cycle": 81,
+        "species": "snake",
+        "phase": "flight",
+        "elapsed": 29.101666666656147,
+        "start": 330820.855875,
+        "end": 330822.979209,
+        "wallMs": 2.123334000003524,
+        "bodies": 20,
+        "contacts": 35,
+        "joints": 10
+      },
+      {
+        "cpuMs": 1.543,
+        "cycle": 26,
+        "species": "snake",
+        "phase": "flight",
+        "elapsed": 33.54666666665218,
+        "start": 112711.038417,
+        "end": 112713.130792,
+        "wallMs": 2.0923749999928987,
+        "bodies": 19,
+        "contacts": 34,
+        "joints": 10
+      },
+      {
+        "cpuMs": 0.984,
+        "cycle": 15,
+        "species": "snake",
+        "phase": "flight",
+        "elapsed": 35.07999999998405,
+        "start": 69105.8845,
+        "end": 69107.944334,
+        "wallMs": 2.0598339999996824,
+        "bodies": 21,
+        "contacts": 36,
+        "joints": 10
+      },
+      {
+        "cpuMs": 0.842,
+        "cycle": 6,
+        "species": "flying-squirrel",
+        "phase": "flight",
+        "elapsed": 41.35666666663392,
+        "start": 36376.021959,
+        "end": 36378.051042,
+        "wallMs": 2.0290830000012647,
+        "bodies": 18,
+        "contacts": 18,
+        "joints": 8
+      },
+      {
+        "cpuMs": 1.191,
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 43.79333333330914,
+        "start": 344062.776417,
+        "end": 344064.790417,
+        "wallMs": 2.01400000002468,
+        "bodies": 20,
+        "contacts": 29,
+        "joints": 8
+      }
+    ]
+  },
+  "audio": {
+    "factories": 1,
+    "maxVoices": 4,
+    "maxConnectedNodes": 30,
+    "finalVoices": 0,
+    "finalConnectedNodes": 0
+  },
+  "economy": {
+    "points": 264464,
+    "bells": 3505,
+    "owned": [
+      "counterweight-heavy",
+      "beam-long",
+      "beam-light",
+      "sling-long",
+      "frame-heavy",
+      "frame-grip"
+    ],
+    "completedShots": 126
+  },
+  "rows": [
+    {
+      "i": 0,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {},
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 10,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.0912221541497,
+        "endSpeed": 8.207241906200441e-10
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 1,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {},
+      "outcome": "released",
+      "distance": 24.379853600037517,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.681666666666692,
+        "endHeight": 0.12067837543849151,
+        "endSpeed": 6.243253313119512e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 2,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 574.5026124154782,
+      "impacts": 10,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.346666666666533,
+        "endHeight": 0.1275274836113033,
+        "endSpeed": 0.00004835230527960872
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 3,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 4,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 1.5256156592096421,
+      "impacts": 17,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.0895882041086,
+        "endSpeed": 4.339575219149635e-7
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 5,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 282.84249835231924,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy lower",
+          "ground"
+        ],
+        "canopySeconds": 3.499999999999867,
+        "endHeight": 0.1683986525956847,
+        "endSpeed": 0.0000022135815989434577
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 6,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.16118023713847,
+        "endSpeed": 0.0000012328065728615028
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 7,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 209,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 1.7200000000000262,
+        "endHeight": 0.24765961074434237,
+        "endSpeed": 0.000009669169164752036
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 8,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 9,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 141.01858396554928,
+      "impacts": 6,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6400000000000243,
+        "endHeight": 0.14503387016052752,
+        "endSpeed": 0.000055678901058381654
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 10,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 223.0829014346321,
+      "impacts": 16,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 5.134999999999989,
+        "endHeight": 0.1730189587282402,
+        "endSpeed": 0.00005254747438949613
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 11,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 265.54938659391587,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 4.808333333333271,
+        "endHeight": 0.09123168943954199,
+        "endSpeed": 3.2457886057964638e-9
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 12,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 148.24605967005658,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 6.963333333333608,
+        "endHeight": 0.12044261292785852,
+        "endSpeed": 5.992675685488442e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 13,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 195.1249441817929,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6233333333333573,
+        "endHeight": 0.17363386906257064,
+        "endSpeed": 0.000010974201442144558
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 14,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 58.4692632385982,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6433333333333577,
+        "endHeight": 0.2657301580179623,
+        "endSpeed": 0.00009316161487703186
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 334.4087291706452,
+      "impacts": 19,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "canopy outer fork",
+          "canopy outer lower",
+          "ground"
+        ],
+        "canopySeconds": 6.493333333333535,
+        "endHeight": 0.08940903436024106,
+        "endSpeed": 0.00001371325770625316
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 16,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 273.0664115460621,
+      "impacts": 23,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 4.724999999999925,
+        "endHeight": 0.19538113912703087,
+        "endSpeed": 0.002311836088396323
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 17,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 382.15037214259894,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 160.65914484134834,
+        "endSpeed": 10.664666633641273
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 18,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 92.33951325114647,
+      "impacts": 186,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 1.7183333333333595,
+        "endHeight": 0.2476226230524968,
+        "endSpeed": 0.00000965738620232923
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 19,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 102.4425354187142,
+      "impacts": 6,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6183333333333572,
+        "endHeight": 0.1522991048057531,
+        "endSpeed": 0.0007990295503923526
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 20,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 269.3180991085342,
+      "impacts": 14,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 5.038333333333307,
+        "endHeight": 0.14710968762866858,
+        "endSpeed": 8.415208439373492e-7
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 21,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 313.44083051255046,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.074999999999823,
+        "endHeight": 0.17327725398359112,
+        "endSpeed": 0.00018346331961461827
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 22,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 284.24244098677383,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 4.341666666666532,
+        "endHeight": 0.09127174525586766,
+        "endSpeed": 3.259382834143966e-9
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 23,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 88.55392699704771,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6183333333333572,
+        "endHeight": 0.12081185967004165,
+        "endSpeed": 6.173177455332193e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 24,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 73.08856933022507,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.491666666666555,
+        "endHeight": 0.1542357974318513,
+        "endSpeed": 0.0011747551285009252
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 25,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 52.04278085503972,
+      "impacts": 17,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.653333333333358,
+        "endHeight": 0.22691352692161906,
+        "endSpeed": 0.0004243783576255805
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 26,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 508.70426663086,
+      "impacts": 24,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 8.261666666667145,
+        "endHeight": 0.08953225830840704,
+        "endSpeed": 0.000008820216413552064
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 27,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 39.237571895386345,
+      "impacts": 6,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6333333333333575,
+        "endHeight": 0.168347510436001,
+        "endSpeed": 0.0000022145805250581576
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 28,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 381.3516564849575,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 161.15479250748965,
+        "endSpeed": 10.67710026229393
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 29,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 5.668210543331714,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.29574710777746,
+        "endSpeed": 0.0009832939622447761
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 30,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 53.08962511841847,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.1799999999999025,
+        "endHeight": 0.17841256898097943,
+        "endSpeed": 0.0006069400711358613
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 31,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 254.71871568482453,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 3.758333333333172,
+        "endHeight": 0.218132309282469,
+        "endSpeed": 0.006822236121829444
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 32,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 143.95386352796078,
+      "impacts": 19,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6116666666666903,
+        "endHeight": 0.16778825930305497,
+        "endSpeed": 0.0026484963278784876
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 33,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 67.25963770519138,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.736666666666508,
+        "endHeight": 0.10981791937100102,
+        "endSpeed": 2.0917287542363587e-7
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 34,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 638.2395098948103,
+      "impacts": 16,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 6.426666666666858,
+        "endHeight": 0.12074554547485394,
+        "endSpeed": 6.246701351126327e-8
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 35,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 111.45914080053609,
+      "impacts": 6,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.6016666666665227,
+        "endHeight": 0.1542340402166503,
+        "endSpeed": 0.0011769474539770335
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 36,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 36.85201188493163,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 1.7183333333333595,
+        "endHeight": 0.2421952895644942,
+        "endSpeed": 0.0012239619793352797
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 37,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "seating_failed",
+      "bodies": 13,
+      "joints": 10,
+      "enemies": 0
+    },
+    {
+      "i": 38,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 69.06319196930185,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 2.523333333333308,
+        "endHeight": 0.19538188995894934,
+        "endSpeed": 0.0022074135782151018
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 39,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 386.435963303541,
+      "impacts": 2,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 5.285000000000013,
+        "endHeight": 62.73216951371812,
+        "endSpeed": 17.8217703411181
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 40,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0.13961091070007203,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.2050580491599,
+        "endSpeed": 0.0000015887221510303379
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 41,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 224.9241380358015,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "canopy outer lower",
+          "ground"
+        ],
+        "canopySeconds": 5.1949999999999985,
+        "endHeight": 0.2538617401425215,
+        "endSpeed": 0.015742958051189585
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 42,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 268.17542196689834,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 4.503333333333224,
+        "endHeight": 0.25828608687330074,
+        "endSpeed": 0.0037013529177833586
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 43,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 283.86528363523587,
+      "impacts": 17,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.573333333333235,
+        "endHeight": 0.18871203651717386,
+        "endSpeed": 0.0005220768236835411
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 44,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 27.27858194414208,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6266666666666907,
+        "endHeight": 0.1097251417804243,
+        "endSpeed": 2.0876386301964927e-7
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 45,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 86.19559486314255,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.764999999999838,
+        "endHeight": 0.12082008378835131,
+        "endSpeed": 6.199695601466616e-8
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 46,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 312.0775874321185,
+      "impacts": 20,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.2783333333331885,
+        "endHeight": 0.1631631223784306,
+        "endSpeed": 9.382323513277955e-7
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 47,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 38.904475840976374,
+      "impacts": 19,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.9566666666664836,
+        "endHeight": 0.22664498285021606,
+        "endSpeed": 0.0008970902913234875
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 48,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 308.2525677891442,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 8.780000000000559,
+        "endHeight": 0.08943425275921692,
+        "endSpeed": 0.000007450094676792948
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 49,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.9649999999999626,
+        "endHeight": 0.1368534639944063,
+        "endSpeed": 0.000054164045844701826
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 50,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 380.12794232269755,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 159.17373672871545,
+        "endSpeed": 10.673073549622979
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 51,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 1.6889536133355494,
+      "impacts": 145,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 2.4383333333333175,
+        "endHeight": 0.2476480882121878,
+        "endSpeed": 0.000009669153524905967
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 52,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 94.56031185489036,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6166666666666905,
+        "endHeight": 0.12437503268275756,
+        "endSpeed": 0.0010497997608110144
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 53,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 83.07835400826004,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6333333333333575,
+        "endHeight": 0.14506845173882876,
+        "endSpeed": 0.00005571471583726956
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 54,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 106.31088665723016,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 2.6666666666666257,
+        "endHeight": 0.20370802084452264,
+        "endSpeed": 0.001805467763354317
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 55,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 292.8408305213166,
+      "impacts": 10,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.284999999999891,
+        "endHeight": 0.10978161062580123,
+        "endSpeed": 2.1233513577296303e-7
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 56,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 446.66344834403554,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 3.6349999999998523,
+        "endHeight": 0.12069691141179502,
+        "endSpeed": 6.165609666815507e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 57,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 65.38453180694829,
+      "impacts": 6,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.636666666666691,
+        "endHeight": 0.19644733370596248,
+        "endSpeed": 0.0021427308285536487
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 58,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 7.030120950305723,
+      "impacts": 4,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.23818103922537,
+        "endSpeed": 0.0006095516544316772
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 59,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 178.08574192626048,
+      "impacts": 19,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 5.003333333333302,
+        "endHeight": 0.08744873434284359,
+        "endSpeed": 0.000056104604490763486
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 60,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.828333333333362,
+        "endHeight": 0.1368498064847024,
+        "endSpeed": 0.00005513576783167069
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 61,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 378.84600239343587,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 157.3677296984278,
+        "endSpeed": 10.68734586699886
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 62,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 29,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.2476636404328,
+        "endSpeed": 0.000002417510773576999
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 63,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 12,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 3.5316666666665304,
+        "endHeight": 0.17844887480256916,
+        "endSpeed": 0.0026267900578747574
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 64,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.551666666666528,
+        "endHeight": 0.22383374984862867,
+        "endSpeed": 0.0018960941909552484
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 65,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 278.2417765977439,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.213333333333178,
+        "endHeight": 0.17716337753277062,
+        "endSpeed": 0.000014869455511019257
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 66,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6666666666666916,
+        "endHeight": 0.09116411493042313,
+        "endSpeed": 3.313538739076716e-9
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 67,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 327.6625812262385,
+      "impacts": 19,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 7.200000000000312,
+        "endHeight": 0.12080846840302191,
+        "endSpeed": 6.175391798348211e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 68,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 158.10774605064537,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 4.573333333333235,
+        "endHeight": 0.20863378268685936,
+        "endSpeed": 0.0012438532895224987
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 69,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 13.567819488773774,
+      "impacts": 17,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 1.7200000000000262,
+        "endHeight": 0.2271837615810848,
+        "endSpeed": 0.00034971763979696404
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 70,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "seating_failed",
+      "bodies": 13,
+      "joints": 10,
+      "enemies": 0
+    },
+    {
+      "i": 71,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 261.27416353476644,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 3.7949999999998347,
+        "endHeight": 0.16836172695740284,
+        "endSpeed": 0.000002207968625398765
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 72,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 385.4632611541237,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 160.30400516622322,
+        "endSpeed": 10.680616809192859
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 73,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 74,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 122.75184036762909,
+      "impacts": 10,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.653333333333358,
+        "endHeight": 0.15228651646148145,
+        "endSpeed": 0.0015595689549426119
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 75,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 108.81526630829892,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6516666666666913,
+        "endHeight": 0.22388308041024743,
+        "endSpeed": 0.0018965045808813084
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 76,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 76.93570803123507,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.688333333333253,
+        "endHeight": 0.21887070272970674,
+        "endSpeed": 0.024357153899785433
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 77,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 433.9560737068306,
+      "impacts": 13,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 2.6599999999999597,
+        "endHeight": 0.09127868426435949,
+        "endSpeed": 8.158357414418949e-10
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 78,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 6.025000000000128,
+        "endHeight": 0.12065805852897006,
+        "endSpeed": 6.182568264023683e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 79,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 227.9662747405143,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 3.5033333333332,
+        "endHeight": 0.1682753116647292,
+        "endSpeed": 0.000060326758274061764
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 80,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 95.21550473686322,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.636666666666691,
+        "endHeight": 0.2656634631900523,
+        "endSpeed": 0.00010241240338679686
+      },
+      "bodies": 19,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 81,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 327.8094966491299,
+      "impacts": 22,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "canopy outer fork",
+          "canopy outer lower",
+          "ground"
+        ],
+        "canopySeconds": 6.521666666666873,
+        "endHeight": 0.08958638025290827,
+        "endSpeed": 0.000009201623866783922
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 82,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 373.21353362718196,
+      "impacts": 18,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "canopy outer crossing",
+          "ground"
+        ],
+        "canopySeconds": 6.1350000000001454,
+        "endHeight": 0.1363210977999729,
+        "endSpeed": 0.00022805582446728149
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 83,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 372.9503451811969,
+      "impacts": 1,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 149.4822229925745,
+        "endSpeed": 18.499593638954636
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 84,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 175.53977289795822,
+      "impacts": 17,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 5.108333333333318,
+        "endHeight": 0.2050652679405372,
+        "endSpeed": 0.000006354326692830385
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 85,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 318.72569036188077,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 4.701666666666588,
+        "endHeight": 0.15862494252834827,
+        "endSpeed": 0.00000797806718449211
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 86,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.7566666666666937,
+        "endHeight": 0.14507104615057564,
+        "endSpeed": 0.00005571771060966671
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 87,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 447.06633223220723,
+      "impacts": 20,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 5.211666666666668,
+        "endHeight": 0.1740534888251396,
+        "endSpeed": 0.000025757108853587928
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 88,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 24.406277210168167,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.613333333333188,
+        "endHeight": 0.0912678977335138,
+        "endSpeed": 3.258381270150625e-9
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 89,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 221.92055113969857,
+      "impacts": 11,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 3.7149999999998435,
+        "endHeight": 0.10389709234724023,
+        "endSpeed": 9.21699892769178e-11
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 90,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 73.08838714710964,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.491666666666555,
+        "endHeight": 0.15423739287642382,
+        "endSpeed": 0.0011771231997221143
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 91,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 38.367153550044414,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6616666666666915,
+        "endHeight": 0.23817012818886302,
+        "endSpeed": 0.004525127781846932
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 92,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 469.5435171270196,
+      "impacts": 25,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 8.46500000000051,
+        "endHeight": 0.08956600017042769,
+        "endSpeed": 0.001637638695344835
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 93,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 5.781775174986947,
+      "impacts": 12,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 2.5149999999999757,
+        "endHeight": 0.13684377011218132,
+        "endSpeed": 0.00005479116885014778
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 94,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 352.7468182622567,
+      "impacts": 20,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 142.22462924584488,
+        "endSpeed": 10.67414181244364
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 95,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 20,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.24765455686736,
+        "endSpeed": 0.0000024167473283801253
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 96,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 148.6015112195159,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.406666666666544,
+        "endHeight": 0.17658178064475852,
+        "endSpeed": 0.0009536954189086073
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 97,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 280.8587619465085,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.133333333333166,
+        "endHeight": 0.14709331339875745,
+        "endSpeed": 8.675359262848363e-7
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 98,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 260.95109100947786,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.6216666666665756,
+        "endHeight": 0.19382518546613775,
+        "endSpeed": 0.00003955942238823289
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 99,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 294.1096358562524,
+        "endSpeed": 5.4169008679491646e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 100,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 181.49612406795623,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 2.6733333333332916,
+        "endHeight": 0.1208503447521081,
+        "endSpeed": 6.239176173327225e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 101,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 443.72810376605145,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.433333333333213,
+        "endHeight": 0.16311856588321935,
+        "endSpeed": 9.370658533018708e-7
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 102,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 280.1335046483982,
+      "impacts": 17,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 4.904999999999953,
+        "endHeight": 0.26545800193805535,
+        "endSpeed": 0.0001370571173899235
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 103,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "bodies": 13,
+      "joints": 10,
+      "enemies": 0
+    },
+    {
+      "i": 104,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 44.944355540243116,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6683333333333583,
+        "endHeight": 0.1684104231848971,
+        "endSpeed": 0.000002217271688682923
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 105,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 344.66451888485824,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "launch branch"
+        ],
+        "canopySeconds": 0,
+        "endHeight": 139.53598596481612,
+        "endSpeed": 10.67819156531511
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 106,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 29.511458215514672,
+      "impacts": 236,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.670000000000025,
+        "endHeight": 0.2476356982744111,
+        "endSpeed": 0.000009663155560314271
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 107,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 231.70111678073326,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 5.436666666666703,
+        "endHeight": 0.15225934649622344,
+        "endSpeed": 0.0015584514687085808
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 108,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.7966666666666946,
+        "endHeight": 0.1450458689320282,
+        "endSpeed": 0.00005565019321034765
+      },
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 109,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 140.29409362242765,
+      "impacts": 6,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6633333333333582,
+        "endHeight": 0.18837943910371094,
+        "endSpeed": 0.0007363690683355749
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 110,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 10,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.9083333333331556,
+        "endHeight": 0.1089687566468677,
+        "endSpeed": 0.00020379352344613213
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 111,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 344.8244498208777,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 4.616666666666575,
+        "endHeight": 0.12077997923360104,
+        "endSpeed": 6.196615384187657e-8
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 112,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 282.7906599679739,
+      "impacts": 15,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.249999999999851,
+        "endHeight": 0.12744875293334265,
+        "endSpeed": 0.000012409591820455194
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 113,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 28,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 2.7049999999999548,
+        "endHeight": 0.23071637892470406,
+        "endSpeed": 0.00025479711235521635
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 114,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 365.6644382622982,
+      "impacts": 24,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "canopy outer fork",
+          "canopy outer lower",
+          "ground"
+        ],
+        "canopySeconds": 6.5233333333335395,
+        "endHeight": 0.08959482421626072,
+        "endSpeed": 0.00001958626657020119
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 115,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.843333333333277,
+        "endHeight": 0.16839841645767467,
+        "endSpeed": 0.0000022171380922964713
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 116,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 380.7873007756821,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 161.59100176545027,
+        "endSpeed": 10.668981224088014
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 117,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 172,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 1.7200000000000262,
+        "endHeight": 0.2476550616609642,
+        "endSpeed": 0.0000024179040774319106
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 118,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 94.56329495893905,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6166666666666905,
+        "endHeight": 0.12436015032052428,
+        "endSpeed": 0.00007777285799463614
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 119,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 267.79900027602946,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "canopy lower",
+          "ground"
+        ],
+        "canopySeconds": 3.2533333333332277,
+        "endHeight": 0.21813451757236382,
+        "endSpeed": 0.006940963721960149
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 120,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 273.70493354983125,
+      "impacts": 16,
+      "route": {
+        "surfaces": [
+          "canopy fork",
+          "ground"
+        ],
+        "canopySeconds": 4.648333333333246,
+        "endHeight": 0.1723316781213498,
+        "endSpeed": 0.00021453043097298356
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 121,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 154.70994974916363,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 4.2099999999998445,
+        "endHeight": 0.10980498608318354,
+        "endSpeed": 2.1022185598847225e-7
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 122,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 509.8993636298633,
+      "impacts": 12,
+      "route": {
+        "surfaces": [
+          "canopy crossing",
+          "ground"
+        ],
+        "canopySeconds": 4.771666666666599,
+        "endHeight": 0.12078813683013799,
+        "endSpeed": 1.5658906193540247e-8
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 123,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 137.2814620755599,
+      "impacts": 9,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.684999999999847,
+        "endHeight": 0.1626179827205618,
+        "endSpeed": 0.0020122476272189673
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 124,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 10,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 1.6450000000000244,
+        "endHeight": 0.2633685759406148,
+        "endSpeed": 0.00015946111953662448
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 125,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 134.40203478963608,
+      "impacts": 18,
+      "route": {
+        "surfaces": [
+          "ground",
+          "canopy lower"
+        ],
+        "canopySeconds": 4.41833333333321,
+        "endHeight": 0.08942503129819138,
+        "endSpeed": 8.939300245545876e-7
+      },
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 126,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 94.25693862664052,
+      "impacts": 5,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 2.5733333333333026,
+        "endHeight": 0.18202776416209726,
+        "endSpeed": 0.000007306656953715847
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 127,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 379.2907019265696,
+      "impacts": 0,
+      "route": {
+        "surfaces": [],
+        "canopySeconds": 0,
+        "endHeight": 160.2858520593955,
+        "endSpeed": 10.661407440614756
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 128,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 159.79425910983616,
+      "impacts": 16,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 2.9416666666665954,
+        "endHeight": 0.2050473381378927,
+        "endSpeed": 0.0000015877966093267878
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 129,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 164.77461389001186,
+      "impacts": 8,
+      "route": {
+        "surfaces": [
+          "ground"
+        ],
+        "canopySeconds": 3.236666666666563,
+        "endHeight": 0.12445154571619449,
+        "endSpeed": 0.00007703684317488602
+      },
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 130,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 8.892205590816985,
+      "impacts": 12,
+      "route": {
+        "surfaces": [
+          "launch branch",
+          "ground"
+        ],
+        "canopySeconds": 3.0833333333332464,
+        "endHeight": 0.22156668115394482,
+        "endSpeed": 0.006448955274135802
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 131,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 260.00701583610925,
+      "impacts": 7,
+      "route": {
+        "surfaces": [
+          "canopy approach",
+          "ground"
+        ],
+        "canopySeconds": 4.918333333333289,
+        "endHeight": 0.21614517272177075,
+        "endSpeed": 0.01869269669324908
+      },
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 5
+    }
+  ]
+}

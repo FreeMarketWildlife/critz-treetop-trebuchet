@@ -1,0 +1,1341 @@
+{
+  "protocol": "44actual motor-wound species/hardware/strength combinations; real UI pointer mapping/grip controller and finite-force targets.390portrait374pxcanvas. Torso/middle pickup,upbeside thenacross abovefloor,3s unheld settling. No teleports/autosnap/launch/save/rewardwrites. Visibility of pickup22pxrim and8px targetrim measured inside logical canvas,not wholebrowser scrollposition or human device usability.",
+  "sourceSHA256": {
+    "src/grip-art.js": "ae546e8c6694b6b15cd3df1d7c279f2a04826077da89a949a99a19c02ca60f4c",
+    "src/view-recovery.js": "2dcccbe0bf5ffe52f12ec6e43f2a6718b2451274bc755ca3fa1f6c19efd856d6",
+    "src/lab.js": "453158d94265b4371a0656e60c377d0f2fdbcd3ba187b894d6e13bd48fa7af1c",
+    "index.html": "cc5297536c4caa419ce64d42de49ce82e97bff82079ee1e85682e8cca40bc42f",
+    "mobile.css": "56c0da4d9dc17f5c4433f2a1829021e81dbf56bca236204f120563f2008ef4cc",
+    "src/articulated.js": "a45a2a76f68f5c17afbb9b21dada75298e88990fcaa53437ea78503ed25777d4",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/terrain.js": "f523e56bdccf384071b4055eda8e94d2c0c07367de638af55962b1be4a6276da",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/render.js": "28cd7a8ccc8278a244638c8251cb2ded1eb345e6cf41890ecce2a37b9937a43e",
+    "src/input.js": "3899c7b6db1529dd2387074114ac4557b07d24192053fd9601d470237326c748",
+    "src/pickup.js": "8bd39193ca2639eaaa53fa31858358796d8da8e2384e849fd4ba1d5dd222da7e",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "species": "lizard",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020515393815,
+          "visible": true
+        },
+        {
+          "x": -2.7802407659395705,
+          "y": 297.69944959231697,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.9614220342530646,
+        "y": 297.04178144817536,
+        "vx": 0.051330997456397846,
+        "vy": -0.012665454808066837,
+        "mass": 0.65
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "salamander",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020766572201,
+          "visible": true
+        },
+        {
+          "x": -2.7802585096774113,
+          "y": 297.6994894497584,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.931256866181163,
+        "y": 296.74056761888113,
+        "vx": 0.012062698497364925,
+        "vy": -0.005528601449891182,
+        "mass": 0.8
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "mouse",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020766572201,
+          "visible": true
+        },
+        {
+          "x": -2.7802585096774113,
+          "y": 297.6994894497584,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.9333113505039514,
+        "y": 296.73716202244617,
+        "vx": 0.09451998358054874,
+        "vy": -0.006007989388551876,
+        "mass": 0.75
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "turtle",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020515393815,
+          "visible": true
+        },
+        {
+          "x": -2.7802407659395705,
+          "y": 297.69944959231697,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.8016892228477333,
+        "y": 296.8262169489008,
+        "vx": 0.10097341153882732,
+        "vy": -0.019787220739295126,
+        "mass": 2.4
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "snake",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020515393815,
+          "visible": true
+        },
+        {
+          "x": -2.7802407659395705,
+          "y": 297.69944959231697,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.7886483145106764,
+        "y": 296.796152081028,
+        "vx": 0.11138790517126007,
+        "vy": -0.01851250875279983,
+        "mass": 1.1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "chipmunk",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020766572201,
+          "visible": true
+        },
+        {
+          "x": -2.7802585096774113,
+          "y": 297.6994894497584,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.873128306731079,
+        "y": 296.77387850635085,
+        "vx": 0.08647753704095287,
+        "vy": -0.011834155183143236,
+        "mass": 1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "flying-squirrel",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020515393815,
+          "visible": true
+        },
+        {
+          "x": -2.7802407659395705,
+          "y": 297.69944959231697,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.8591484360989257,
+        "y": 296.72510173070094,
+        "vx": 0.11373196521352648,
+        "vy": -0.012038873378742076,
+        "mass": 0.9
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "armadillo",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020515393815,
+          "visible": true
+        },
+        {
+          "x": -2.7802407659395705,
+          "y": 297.69944959231697,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.763369811521389,
+        "y": 296.854587107439,
+        "vx": 0.00918088676069447,
+        "vy": -0.0385102603013013,
+        "mass": 5
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "small-marsupial",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020766572201,
+          "visible": true
+        },
+        {
+          "x": -2.7802585096774113,
+          "y": 297.6994894497584,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.9057780313591746,
+        "y": 296.738781529314,
+        "vx": 0.09003041775930029,
+        "vy": -0.009486899743850565,
+        "mass": 0.7
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "tiny-primate",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020515393815,
+          "visible": true
+        },
+        {
+          "x": -2.7802407659395705,
+          "y": 297.69944959231697,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.7243169084175243,
+        "y": 296.80185178600107,
+        "vx": 0.023323438268288404,
+        "vy": -0.014927717582004578,
+        "mass": 0.8500000000000001
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "frog",
+      "hardware": "starter",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298.1020766572201,
+          "visible": true
+        },
+        {
+          "x": -2.7802585096774113,
+          "y": 297.6994894497584,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.9336556920261754,
+        "y": 296.78622980921836,
+        "vx": 0.09153308118405068,
+        "vy": -0.008080110856064802,
+        "mass": 1.05
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "lizard",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.668325666707556,
+          "y": 296.54952085786084,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.8183416449383656,
+        "y": 295.67900864691524,
+        "vx": 0.28543067725348986,
+        "vy": 0.03910815609457534,
+        "mass": 0.65
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "salamander",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.66770665816524,
+          "y": 296.54944078004405,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.989921036036492,
+        "y": 295.58488892643777,
+        "vx": 0.0007839136580584176,
+        "vy": -0.007174863866854363,
+        "mass": 0.8
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "mouse",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.66770665816524,
+          "y": 296.54944078004405,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.9888496977171706,
+        "y": 295.596032913753,
+        "vx": -0.1341865161624807,
+        "vy": -0.024767172535093324,
+        "mass": 0.75
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "turtle",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.668325666707556,
+          "y": 296.54952085786084,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.956274747370507,
+        "y": 295.674509194109,
+        "vx": -0.1136457612947929,
+        "vy": -0.054819879808303516,
+        "mass": 2.4
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "snake",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.668325666707556,
+          "y": 296.54952085786084,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.871399522472792,
+        "y": 295.7023288963498,
+        "vx": -0.12665413236805678,
+        "vy": -0.06953773898097275,
+        "mass": 1.1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "chipmunk",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.66770665816524,
+          "y": 296.54944078004405,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.1333829402969187,
+        "y": 295.6577070493071,
+        "vx": -0.10032519075031304,
+        "vy": -0.01575146704553841,
+        "mass": 1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "flying-squirrel",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.668325666707556,
+          "y": 296.54952085786084,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.998860248875676,
+        "y": 295.60907846984213,
+        "vx": 0.1520660558956524,
+        "vy": 0.05950707665808799,
+        "mass": 0.9
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "armadillo",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.668325666707556,
+          "y": 296.54952085786084,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.9391730724597251,
+        "y": 295.72121866396526,
+        "vx": 0.02603181231216749,
+        "vy": -0.00993210541011271,
+        "mass": 5
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "small-marsupial",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.66770665816524,
+          "y": 296.54944078004405,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -1.9524344387051213,
+        "y": 295.60484363097953,
+        "vx": 0.09489495759481846,
+        "vy": 0.024311684274199424,
+        "mass": 0.7
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "tiny-primate",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.668325666707556,
+          "y": 296.54952085786084,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.092498855603211,
+        "y": 295.6038956951898,
+        "vx": -0.03708930704980674,
+        "vy": -0.02306194432739228,
+        "mass": 0.8500000000000001
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "frog",
+      "hardware": "starter",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.66770665816524,
+          "y": 296.54944078004405,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.063128691568468,
+        "y": 295.6490101277876,
+        "vx": -0.15145588370181953,
+        "vy": -0.034295640672436574,
+        "mass": 1.05
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "lizard",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.258459145415179,
+          "y": 297.5033727950304,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.9593473461567927,
+        "y": 296.6106755120016,
+        "vx": -0.45709179777466263,
+        "vy": 0.07337900721494776,
+        "mass": 0.65
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "salamander",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.3249675563533794,
+          "y": 297.3479360498889,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.6720298724663403,
+        "y": 296.25861000788694,
+        "vx": 0.5490440896767752,
+        "vy": -0.05043744305973697,
+        "mass": 0.8
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "mouse",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.266129219242902,
+          "y": 297.19327016889315,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.718568067143719,
+        "y": 296.25835511606095,
+        "vx": 0.4414884202154992,
+        "vy": -0.04899911797819795,
+        "mass": 0.75
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "turtle",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.274243526514683,
+          "y": 296.78239832174535,
+          "visible": true
+        }
+      ],
+      "contact": false,
+      "withinEnvelope": false,
+      "isLoaded": false,
+      "end": {
+        "x": -7.42415972374018,
+        "y": 294.2404452915826,
+        "vx": -2.0422183744961493,
+        "vy": -0.1651308651981873,
+        "mass": 2.4
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "snake",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.2027226983758728,
+          "y": 296.78612608161205,
+          "visible": true
+        }
+      ],
+      "contact": false,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.0952266212872583,
+        "y": 295.9450678885515,
+        "vx": -5.346031240215847,
+        "vy": -4.481890364972786,
+        "mass": 1.1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "chipmunk",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.197352572271683,
+          "y": 297.6341560920453,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.936472642273909,
+        "y": 296.6102393548773,
+        "vx": -1.8508121227442156,
+        "vy": 0.3033447348162943,
+        "mass": 1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "flying-squirrel",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.199613662126718,
+          "y": 297.5558279745458,
+          "visible": true
+        }
+      ],
+      "contact": false,
+      "withinEnvelope": false,
+      "isLoaded": false,
+      "end": {
+        "x": -3.4645905301688513,
+        "y": 294.27304909899084,
+        "vx": -0.8875256553445711,
+        "vy": -0.0002960700476424009,
+        "mass": 0.9
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "armadillo",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.0835318669383405,
+          "y": 296.79879452176726,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": false,
+      "isLoaded": false,
+      "end": {
+        "x": -3.7941138273461057,
+        "y": 296.685902963904,
+        "vx": 3.1519608414580746,
+        "vy": -0.4786369879027349,
+        "mass": 5
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "small-marsupial",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.343689939387117,
+          "y": 297.7942889643233,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.646184350001068,
+        "y": 296.2432181857044,
+        "vx": 0.7902668623416316,
+        "vy": -0.064717080757822,
+        "mass": 0.7
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "tiny-primate",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.4117894527544412,
+          "y": 297.350916013606,
+          "visible": true
+        }
+      ],
+      "contact": false,
+      "withinEnvelope": false,
+      "isLoaded": false,
+      "end": {
+        "x": -2.908677486915694,
+        "y": 294.15828947972847,
+        "vx": -0.6117997743253578,
+        "vy": -0.01675281690151466,
+        "mass": 0.8500000000000001
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "frog",
+      "hardware": "long",
+      "fraction": 0.2,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.1714870892982248,
+          "y": 297.19927734443877,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.778629448564989,
+        "y": 296.3015598358644,
+        "vx": 0.3545633999211925,
+        "vy": -0.05177538438653875,
+        "mass": 1.05
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "lizard",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.045116715104542,
+          "y": 295.78440686899927,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.803352922011133,
+        "y": 294.80572242932374,
+        "vx": 0.9709775999771177,
+        "vy": -0.008429733859028262,
+        "mass": 0.65
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "salamander",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.8418709147118046,
+          "y": 295.778017060739,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.9637661231421975,
+        "y": 294.8207249963039,
+        "vx": 0.6323034604125245,
+        "vy": -0.037131426322419156,
+        "mass": 0.8
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "mouse",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.7607873414505173,
+          "y": 295.77868967137914,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.988076417250342,
+        "y": 294.80707781036375,
+        "vx": 0.4499445184816353,
+        "vy": -0.03081282517500584,
+        "mass": 0.75
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "turtle",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.0106163682849667,
+          "y": 295.7826215428425,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.745623509808504,
+        "y": 294.9541399387143,
+        "vx": 0.9872282304425469,
+        "vy": -0.009218212076444634,
+        "mass": 2.4
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "snake",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.2935737056226237,
+          "y": 295.8141920199641,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.3481501055955074,
+        "y": 294.91316438991834,
+        "vx": 1.2627861377224565,
+        "vy": 0.15808636895154327,
+        "mass": 1.1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "chipmunk",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.8526590409512114,
+          "y": 295.77648811457834,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.8190366141548524,
+        "y": 294.9510835107901,
+        "vx": 0.7181662650828983,
+        "vy": -0.02527713819138836,
+        "mass": 1
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "flying-squirrel",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.8230396022931084,
+          "y": 295.7782522627576,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.0048517848450365,
+        "y": 294.8108526663221,
+        "vx": 0.7522165355907127,
+        "vy": -0.058190181041011625,
+        "mass": 0.9
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "armadillo",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.106014812001452,
+          "y": 295.791010961839,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.7680429334478402,
+        "y": 294.93061376933866,
+        "vx": 1.2820597583655093,
+        "vy": -0.025171584905434148,
+        "mass": 5
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "small-marsupial",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.7403438689169817,
+          "y": 295.77938214039193,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -3.209451872952338,
+        "y": 294.83484771175745,
+        "vx": 0.7312727125084906,
+        "vy": -0.09634624905116318,
+        "mass": 0.7
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "tiny-primate",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -3.1532612584026114,
+          "y": 295.79520887333285,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.722111764546437,
+        "y": 294.8396589604618,
+        "vx": 0.9604334679850852,
+        "vy": 0.021112480095748593,
+        "mass": 0.8500000000000001
+      },
+      "activeGrip": false
+    },
+    {
+      "species": "frog",
+      "hardware": "long",
+      "fraction": 0.6,
+      "picked": true,
+      "pickupVisible": true,
+      "targets": [
+        {
+          "x": -4.3,
+          "y": 298,
+          "visible": true
+        },
+        {
+          "x": -2.839332072579165,
+          "y": 295.7780268322232,
+          "visible": true
+        }
+      ],
+      "contact": true,
+      "withinEnvelope": true,
+      "isLoaded": true,
+      "end": {
+        "x": -2.875018847703923,
+        "y": 294.8589772822731,
+        "vx": 0.39508499488867277,
+        "vy": -0.013437564129072089,
+        "mass": 1.05
+      },
+      "activeGrip": false
+    }
+  ]
+}

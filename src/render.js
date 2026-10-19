@@ -1,3 +1,4 @@
+import {drawGripTether} from './grip-art.js';
 import {terrainApproaches} from './terrain-cues.js';
 import {surfaceY} from './terrain.js';
 import {drawSurfaceTrim} from './surface-art.js';
@@ -43,6 +44,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
   if(!flying){cameraScene=null;
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
    line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',7);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',4);
+   if(scene.hand)drawGripTether(ctx,{anchor:local(scene.hand.body.getWorldPoint(scene.hand.local)),target:local(scene.hand.target),pixelRatio:45/cssPixelsPerMetre,capped:scene.forceCapped});
    for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);for(const rope of scene.ropes)line(local(rope.getAnchorA()),local(rope.getAnchorB()),'#444',2);
    dot(local(scene.arm.getWorldPoint({x:0,y:0})),5,'#e6c475');
    if(scene.phase==='loading'&&!scene.hand&&scene.parts?.length){const root=scene.parts.find(b=>b.getUserData().id==='torso')??scene.parts[Math.floor(scene.parts.length/2)],p=local(root.getWorldCenter());ctx.setLineDash([3,3]);ctx.beginPath();ctx.strokeStyle='#f8eab8';ctx.lineWidth=2;ctx.arc(...p,PICKUP_RADIUS_CSS*45/cssPixelsPerMetre,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#273f35';ctx.font='12px system-ui';ctx.fillText('Grab here',Math.max(10,p[0]-27),p[1]-PICKUP_RADIUS_CSS*45/cssPixelsPerMetre-6);}

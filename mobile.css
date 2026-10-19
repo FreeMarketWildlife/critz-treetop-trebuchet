@@ -32,3 +32,11 @@ progress#power{max-width:100%;height:20px;vertical-align:middle}
  body>label{font-size:12px;margin:2px 4px}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+/* Held-grip feedback must not move the canvas or pointer target through scroll anchoring. */
+#gripStatus{height:2.8em;overflow-y:auto;overflow-anchor:none}
+#dropGrip[hidden]{display:inline-block;visibility:hidden;pointer-events:none}
+#launchNear[hidden]+#dropGrip[hidden]{display:none}
+
+/* Retry/coaching rows can change below the canvas; browser anchoring must not move the play view. Explicit bank/recovery scrolling remains. */
+body{overflow-anchor:none}

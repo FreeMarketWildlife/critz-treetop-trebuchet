@@ -1,0 +1,104 @@
+{
+  "protocol": "Actual maximum-error fixture poses read from the full regression. Bound is chord displacement of the single affected body about its authored local hinge, using farthest actual fixture point. Combined bound adds the independent whole-case maximum hinge-anchor gap.374CSSpx portraitcanvas. Not a measured pixel difference, not a downstream-chain bound, and no corrected pose is constructed. Static frozen visual review is not continuous-motion/video evidence.",
+  "rows": [
+    {
+      "id": "default-mouse-torso",
+      "phase": "descent_after_obstacle",
+      "affectedPart": "rear-leg",
+      "angleExcessRadians": 0.1538515456384204,
+      "leverMetres": 0.14284827305062597,
+      "angleOnlyCssPixelBound": 0.7185021969809661,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 1.3584468815537307,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "default-turtle-torso",
+      "phase": "flight",
+      "affectedPart": "head",
+      "angleExcessRadians": 0.09826679552210749,
+      "leverMetres": 0.24499999999999644,
+      "angleOnlyCssPixelBound": 0.7875493579075291,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 0.9288068669839286,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "default-snake-torso",
+      "phase": "ground_recovery",
+      "affectedPart": "segment-1",
+      "angleExcessRadians": 0.10687621033859496,
+      "leverMetres": 0.2249999999999987,
+      "angleOnlyCssPixelBound": 0.7865684132899656,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 1.0494304503998146,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "default-snake-head",
+      "phase": "ground_recovery",
+      "affectedPart": "segment-1",
+      "angleExcessRadians": 0.10687621033859496,
+      "leverMetres": 0.2249999999999987,
+      "angleOnlyCssPixelBound": 0.7865684132899656,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 1.0494304503998146,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "default-chipmunk-head",
+      "phase": "loading",
+      "affectedPart": "rear-leg",
+      "angleExcessRadians": 0.13462300572187247,
+      "leverMetres": 0.1672957480863565,
+      "angleOnlyCssPixelBound": 0.7890764137664893,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 1.4748115308438343,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "default-frog-head",
+      "phase": "loading",
+      "affectedPart": "rear-thigh",
+      "angleExcessRadians": 0.08501817726753069,
+      "leverMetres": 0.2668154169227002,
+      "angleOnlyCssPixelBound": 0.7951238562108335,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 1.4564287926972652,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "owned-beam-long",
+      "phase": "flight",
+      "affectedPart": "rear-leg",
+      "angleExcessRadians": 0.09094281567245877,
+      "leverMetres": 0.16093386622451164,
+      "angleOnlyCssPixelBound": 0.47879083049918,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 0.5313553877842393,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "owned-frame-grip",
+      "phase": "impact_recovery",
+      "affectedPart": "rear-leg",
+      "angleExcessRadians": 0.12703206361509278,
+      "leverMetres": 0.16093386622448733,
+      "angleOnlyCssPixelBound": 0.6685723360061105,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 0.9832033419768152,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    },
+    {
+      "id": "owned-long-beam-sling-heavy-counter",
+      "phase": "loading",
+      "affectedPart": "rear-leg",
+      "angleExcessRadians": 0.09301804618240905,
+      "leverMetres": 0.16093386622453332,
+      "angleOnlyCssPixelBound": 0.5246877871431359,
+      "withIndependentWholeCaseMaxAnchorGapCssPixelBound": 1.104905403883224,
+      "longestConsecutiveThresholdSeconds": 0.0016666666666666668,
+      "visuallyReviewedAt4x": true
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "protocol": "Actual browser390portrait,3.6/.9m beam and2.9m sling entered in visible lab and applied through Reset,normalized meter0=>physicalfraction.2. One diagonal native drag toward fixed above-cradle target,variable hold duration,keyboard Let go. This is pickup/release/coaching coverage,not the recommended slow two-stage recipe or a calibrated success-rate experiment. All11 trials precede the final generic CSS anchoring rule; JavaScript and collider geometry unchanged.",
+  "tab": "1219045179 (closed with0rewards after evidence collected)",
+  "rows": [
+    {
+      "species": "Lizard",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Salamander",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "fell below branch"
+    },
+    {
+      "species": "Mouse",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Turtle",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Snake",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Chipmunk",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Flying squirrel",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": true,
+      "coaching": "contact ready"
+    },
+    {
+      "species": "Armadillo",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Pygmy possum",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": true,
+      "coaching": "contact ready"
+    },
+    {
+      "species": "Pygmy marmoset",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    },
+    {
+      "species": "Frog",
+      "picked": true,
+      "keyboardReleased": true,
+      "launchEnabledAtObservation": false,
+      "coaching": "lost supporting contact; retry available"
+    }
+  ],
+  "rotation": {
+    "baseline": "Grip dropped correctly but scroll left most canvas above view.",
+    "fixed": "390x844\u2192844x390\u2192390x844 while held,real grip released,tether removed,canvas revealed,re-grip succeeded.",
+    "finalCSS320toLandscape": {
+      "heldAfterRotation": false,
+      "canvasTop": 0.171875,
+      "canvasBottom": 320.171875,
+      "status": "View resized; grip released. Re-grip the volunteer to continue."
+    }
+  },
+  "finalLayout": {
+    "390pickup": {
+      "beforeTop": -19.1328125,
+      "afterTop": -19.1328125,
+      "beforeScroll": 598,
+      "afterScroll": 598,
+      "held": true
+    },
+    "320pickup": {
+      "beforeTop": 72.3671875,
+      "afterTop": 72.3671875,
+      "beforeScroll": 506.5,
+      "afterScroll": 506.5,
+      "held": true
+    },
+    "lastCSSPointerReleaseSalamander": {
+      "beforeTop": 72.3671875,
+      "afterTop": 72.3671875,
+      "beforeScroll": 506.5,
+      "afterScroll": 506.5,
+      "released": true
+    },
+    "keyboardLocatorEnter": {
+      "beforeTop": 72.3671875,
+      "afterTop": -19.1328125,
+      "beforeScroll": 506.5,
+      "afterScroll": 598,
+      "released": true,
+      "limit": "Locator focus/scroll behavior remains to isolate; do not claim all keyboard release paths hold viewport position."
+    }
+  },
+  "earnedRun": {
+    "tab": "1219045195",
+    "species": "Chipmunk",
+    "hardware": "starter",
+    "meter": 0.54,
+    "physicalWindingFraction": 0.605,
+    "distanceShown": 318,
+    "bounces": 12,
+    "angleDegrees": 60.7,
+    "speed": 16.6,
+    "bankPoints": 3477,
+    "bankBells": 29,
+    "retryPreservedWallet": true,
+    "save": false
+  },
+  "handoff": {
+    "latestTab": "1219045203",
+    "latestWallet": [
+      0,
+      0
+    ],
+    "latestIdleSpecies": "Salamander",
+    "latestLabHardware": [
+      3.6,
+      0.9,
+      2.9
+    ],
+    "earnedTab": "1219045195",
+    "earnedWallet": [
+      3477,
+      29
+    ],
+    "prior25Wallet": [
+      4684,
+      32
+    ],
+    "prior24Wallet": [
+      1724,
+      19
+    ],
+    "allFourCanvasLogicalWidths": 960,
+    "allFourCanvasCSSWidths": 1096,
+    "allViewportsRestored": true,
+    "storedEarnedSavesUntouched": true
+  }
+}
