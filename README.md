@@ -1,2 +1,37 @@
-# critz-treetop-trebuchet
-Such a sick idea.
+# Critz: Treetop Trebuchet
+
+**We're going places.**
+
+Earliest game ideas approved by Phil, recorded October 19, 2026. This repository currently documents the concept; these notes do not establish an implementation plan.
+
+## Premise and setting
+
+The player is a **critter attending a school/academy at the Grandfather Tree**, hidden deep within **Grimroot Grove**. The institution's formal name is undecided. The game occurs in the **early Fourth Age, the Age of Arcane**.
+
+The player's academy project is to develop a trebuchet that launches objects as far as possible. Begin with the most basic trebuchet and progressively upgrade it.
+
+## Core loop
+
+1. **Launch a critter**, watch it bounce around, and earn **points**.
+2. See how many **bells** were earned and spend money in the **shop**.
+3. **Customize the trebuchet using owned equipment** and decide whether to use **special items** for the next launch.
+
+Points and bells are distinct. Their conversion or relationship is not specified. Equipment, special items, upgrade details, player species, scoring rules and other mechanics remain undecided.
+
+## The Grandfather Tree and its archive
+
+The massive Grandfather Tree was planted during the **Age of Creation**. During Fey rule, faithful good Fey converted it into an enormous archive of knowledge and recorded knowledge there. It is a museum, massive library and collection of extraordinary artifacts as well as the site of the school/academy.
+
+The archive was nearly destroyed; the cause and exact date remain unspecified. Its former Fey custodians departed under **Allohim's command**. All Fey were commanded to sail to **Zealand**. Rebel Fey stayed and built a very tall **Tower of Babel near Sapporo** to wage war against Allohim. Allohim destroyed and leveled the tower to rubble. Afterward, the Fey had trouble communicating with one another, fought for power, and this led toward the **Battle of Mount Yokai**. That battle devastated Fey civilization; it did **not** kill every Fey everywhere.
+
+Shortly after the battle, **Naboo**, a **first-generation owl who drank from the River of Blood**, took over the archive and runs the library. Whether the earlier phrase “first-generation fey owl” means Fey-blooded generation terminology remains an open question; it does not establish that Naboo is literally an original Fey. His relationship to the older Lady Wisdom character is also unresolved.
+
+## Creative references
+
+The Jedi archive on Coruscant inspires the immense knowledge archive. A Mirkwood-like confusing, strange forest that affects travelers' minds inspires Grimroot Grove. These are creative references, not literal crossover canon.
+
+## Continuity and open decisions
+
+The shared lore is maintained in [Critz–Dragex](https://github.com/FreeMarketWildlife/Critz-Dragex), especially its [Grandfather Tree record](https://github.com/FreeMarketWildlife/Critz-Dragex/blob/main/world/grandfather-tree.md).
+
+The school's formal name, Naboo's precise generation/species terminology, and the cause/date of the archive's near destruction remain open. Do not infer a cause or place that damage relative to the departure, tower or battle without further author direction. The earlier proposed acorn helmet and woodland crew are not approved canon.
