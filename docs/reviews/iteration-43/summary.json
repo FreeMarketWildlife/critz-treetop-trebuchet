@@ -729,5 +729,13 @@
     "No new natural encounter or device FPS/audio/human study; broad prediction comparison verifies full release records, not a newly shared research flight-hint kernel.",
     "Extra local subdivisions and changed hard-stop timing intentionally change post-release trajectories; energy passivity is not full accuracy proof.",
     "Uniform64 local refinement is a comparison, not a full-world converged solution; subsequent20ms uses the same coarser continuation for all variants."
-  ]
+  ],
+  "sync": {
+    "earlierRetry": "Succeeded; remote verified4722fba.",
+    "newCheckpointStatus": "denied",
+    "implementationCommit": "a88066e",
+    "action": "git push origin main",
+    "target": "existing public origin FreeMarketWildlife/critz-treetop-trebuchet",
+    "reason": "Automatic approval review treated authorization as limited to earlier4722fba retry and cited original no-push restriction for new53-file checkpoint. Command did not execute; no retry/workaround."
+  }
 }
