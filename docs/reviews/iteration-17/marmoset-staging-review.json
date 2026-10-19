@@ -1,0 +1,86 @@
+{
+  "protocol": "Independent exactoriginalconstruction snapshot vs freshcandidate usingidenticalparameters. Assert unchangedmass/inertia/velocity/angle/relativeanchors/reference/limits, uniformtranslation. Originalsavedrestorebypassesstagingandretainsoldoverlap. Callinghelperonvalidstagedstartisbit-identicalno-op. Oneactualwindstep checksconstraintinitialresponse.",
+  "oldClearance": 0,
+  "newClearance": 0.06999999999997499,
+  "initialStaging": {
+    "shift": {
+      "x": 0,
+      "y": -0.32499999999998863
+    },
+    "clearance": 0.06999999999997499
+  },
+  "rows": [
+    {
+      "id": "front-leg",
+      "mass": 0.1105,
+      "inertia": 0.0010293473913088093,
+      "shift": {
+        "x": 0,
+        "y": -0.32499999999998863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angularVelocity": 0
+    },
+    {
+      "id": "head",
+      "mass": 0.204,
+      "inertia": 0.0019992000000000005,
+      "shift": {
+        "x": 0,
+        "y": -0.32499999999998863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angularVelocity": 0
+    },
+    {
+      "id": "rear-leg",
+      "mass": 0.1105,
+      "inertia": 0.0008224521714536821,
+      "shift": {
+        "x": 0,
+        "y": -0.32499999999998863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angularVelocity": 0
+    },
+    {
+      "id": "tail",
+      "mass": 0.085,
+      "inertia": 0.0018829222093939173,
+      "shift": {
+        "x": 0,
+        "y": -0.32499999999998863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angularVelocity": 0
+    },
+    {
+      "id": "torso",
+      "mass": 0.34,
+      "inertia": 0.0033320000000000008,
+      "shift": {
+        "x": 0,
+        "y": -0.32499999999998863
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0
+      },
+      "angularVelocity": 0
+    }
+  ],
+  "firstStepMaxAnchor": 8.881784197001252e-16,
+  "checks": "all assertions passed"
+}

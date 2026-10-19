@@ -1,5 +1,16 @@
 # Active implementation task — consult before resuming
 
+## CURRENT implementation: iteration 17
+
+Read docs/reviews/iteration-17/findings.md. Source161tests pass; initial-staging.js is construction-only, fullfixtureGJKdistance≥.025m. ExactretainedmarmosetrootcausewasheadINSIDEpouchflooratconstruction, beforehand; firststepneckgap.151549m. Freshwhole-riglowering−.325m aboveexistingloadingshelf givesclearance.07m/firststepgap7.67e−8; masses/inertia/velocities/angles/jointsettings/forces/CCDunchanged. Savedcorruptfixturesbypassstagingandremainreproducible. Independentreviewpassed. All396species×36gearstarts clear,66moved/330unchanged,maxanchor.000136mover.5s. Source/helper current sourcehashes match final evidence.
+
+Formerexacti75script nowcontact.1567safterdrop→release.825svx5.073vy13.533; corrected132soak126release/6lowmiss/0retainedpayloadvs125/6/1before.44m56ssim,258worlds0retained12GCchecks,Nodep952.553ms/max8.296ms;actualwarmoutlierCPU<<wallindicatesschedulinginthosesamples, original46mscauseunproven.35regression32release/3lowmiss,11angularflagsmax.174853stillremain; maxanchor.025552m improvedfrom.033266,onlycombinedlongbeam+sling+heavycountercasechanges,parityexact.
+
+Finalcurrentbrowsermarmosetvisiblelab180kg/3.6/.9m/2.9msling (density/gripdefault, exactownedrecipecoverednumerically), lowheadattemptoffcenter→mediumretrypreservedqueue0wallet;actualclear-routeupbesidethenovercradle→62.1deg18.96m/s→179m4bounces→Collect/reset/reset1891points13bellsunchanged. Handwork6.85J,motor667.8J,arcade0. Tab1219045094idle/open,saveOFF,ownednone,stickyON,Sound35%,normalviewport,noconsolewarnings/errors. OtherQAandoriginalsaved127origin18117/89unchanged. Hidden-tabnativeaccessstilllocked,nounlock/blockedexportretry;ears/deviceFPSunverified.
+
+NEXT: clarifyloadinginstructions to liftbesidefirstthenover (directpullfrombelowhitssolidfloor; existingregrip/retrytruthful). Captureidenticalincominggroundfixtures forremaininglizardhead/ownedlightbeam/armadillohighwindtransients, avoidingconflatingchangednaturallandingwithsolveraccuracy. Do notdisableCCD basedonoldthreadedfixture: CCDoffjustpenetratedfullpanel. Preservefinitephysicalframe/work andlocaltestedcommits only;nopush/deploy/paidassets/unlock. Earlieriteration16criticalmarmosetdiagnosis below is HISTORY and is nowfixedatconstruction. NEVER substitute obsolete lore documentation for currentgamework.
+
+
 ## Current checkpoint: iteration 16
 
 Read docs/reviews/iteration-16/findings.md.157tests pass; immutable64entryencountercache~43%microbenchmarkimprovement,18607exactold/new outputs/snapshots,35caseregressionexactunchanged32release/3lowmiss/11angularflags,max.174853rad/.033266m. Production physics unchanged except skippingunusedgeometricanglecalculation. Runtime lab now240framesCPUphysics/hint/draw/RAFintervals, clearspausegaps. Currentbrowserpossum180kg experimental labrelease65.9deg17.7m/s→71m7bounces→Collect/reset/reset881points19bellsunchanged;saveOFF,ownednone,stickyON,Sound35%,normalviewport,idletab1219045091open,noconsolewarnings/errors. PreviouslocalhostQA2309/35andoriginalsaved127origin18117/89untouched.

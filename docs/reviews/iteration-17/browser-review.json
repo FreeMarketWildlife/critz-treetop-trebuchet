@@ -1,0 +1,18 @@
+{
+  "protocol": "Actual current-source Chrome UI. Separate save-off localhost session; visible hardware lab selects marmoset,180kg counterweight,3.6/.9m beam,2.9m sling. This matches the implicated geometry; lab retains default beam density/frame grip, so it is not the exact full owned-equipment numerical recipe. No injected physics, currency, unlock or save writes.",
+  "url": "http://localhost:8080/?review=iteration17",
+  "tab": "1219045094",
+  "observations": [
+    "Marmoset begins on existing shelf clear of long-beam/long-sling pouch.",
+    "Low-winding head load became off-center; truthful coach and same-volunteer medium retry preserved zero wallet/queue.",
+    "A direct path from below can hit the physical cradle floor; moving up beside it before moving over produced a gravity-seated load. Native straight-drag automation required re-gripping between the two legs of this route.",
+    "SliderArrowRight chose normalized.54 (physicalfraction.605) and the finite motor wound it.",
+    "Unlatch produced genuine separation62.1degrees/18.96m/s,179m/fourbounces and no arcade work.",
+    "Collect opened shop; Collect&retry then secondReset preserved1891points/13bells."
+  ],
+  "flightReadout": "Pygmy marmoset • In flight • 179 m • 4 bounces • 62.1° / 19.0 m/s",
+  "mechanicsReadout": "hand work6.85J • arcade work0.00J • motor net work667.8J • frame x−.040m",
+  "warmWindow": {"simulationSeconds":236.06,"bodies":18,"joints":8,"encounters":7,"voices":0,"cpuP95Ms":2.2,"cpuMaxMs":4.4,"engineP95Ms":2.0,"hintP95Ms":0,"drawP95Ms":0.4,"rafP95Ms":10.2,"rafMaxMs":10.3,"maxSteps":6},
+  "final": {"phase":"uncocked","points":1891,"bells":13,"owned":[],"saveConsent":false,"stickyGrip":true,"soundVolume":0.35,"normalViewport":true,"consoleWarningsErrors":[]},
+  "limits": ["Shared-host browser observations, not calibrated deviceFPS.","Actual hidden-tab/native access remains blocked; no unlock attempted.","Audible quality unverified; blocked exports not retried.","Original saved127-origin progress left untouched."]
+}

@@ -4,6 +4,7 @@ import {config} from './physics.js';
 import {createRig} from './species.js';
 import {createEncounterDirector} from './encounters.js';
 import {world as layout} from './world.js';
+import {stageInitialVolunteer} from './staging.js';
 const serializer=new P.Serializer({rootClass:P.World,
  postSerialize:(data,obj)=>{if(obj.getAngle&&obj.getMassData)data.angle=obj.getAngle();if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;}return data;},
  // Planck 1.5.1 constructs bodies through a wrapped rotation. Restore the
@@ -55,7 +56,7 @@ export class CritterScene {
    const data={center:V(0,0)};body.getMassData(data);const factor=part.mass/data.mass;body.setMassData({mass:part.mass,center:data.center,I:data.I*factor});
   }
   for(const j of this.rig.joints){const a=map.get(j.a),b=map.get(j.b);this.world.createJoint(new P.RevoluteJoint({bodyA:a,bodyB:b,localAnchorA:V(j.anchorA.x,j.anchorA.y),localAnchorB:V(j.anchorB.x,j.anchorB.y),referenceAngle:j.referenceAngle,enableLimit:true,lowerAngle:j.minAngle,upperAngle:j.maxAngle,collideConnected:false}));}
-  this.index();
+  this.index();if(new.target===CritterScene)this.initialStaging=stageInitialVolunteer(this);
  }
  index(){this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);if(d?.role==='enemy')this.enemies.set(d.id,b);}
   this.parts.sort((a,b)=>a.getUserData().id.localeCompare(b.getUserData().id));this.rope=null;this.ropes=[];

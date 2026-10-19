@@ -1,0 +1,580 @@
+{
+  "sourceSHA256": {
+    "src/staging.js": "f47f8b77668ccfd5bbffe5c09f2ac7139a1b3a62c69525f058e552f54d0b4599",
+    "src/articulated.js": "c9457fbd8314e51e48d54bd89669caa7add821dc7c737171efbe925179b745bd",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361"
+  },
+  "protocol": "Fresh valid construction, exact iteration16UI-start marmoset/head/.2 recipe and earned physical equipment. Constant outer timestep variants; nonbullet only for payload and split panels from construction, retaining channel-bead/static CCD. Pointer lift is fixed, lowering follows each current cradle (not identical pointer paths). Scan joints/contact penetration through every loading tick; continuation only if physically eligible. No repair, force/shape/mass/limit changes. Not a production proposal without broader fairness/tunneling tests.",
+  "equipment": {
+    "beam": "beam-long",
+    "sling": "sling-long",
+    "frame": "frame-grip",
+    "counterweight": "counterweight-heavy"
+  },
+  "rows": [
+    {
+      "id": "baseline600",
+      "hz": 600,
+      "wallMs": 218.80345899999998,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.15666666666666668,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.386733732574844,
+          "y": 296.6358558349982,
+          "vx": -0.43445742432569395,
+          "vy": -1.35963701849959,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.05771092984847388,
+          "cradleSpin": -0.1068702391499776,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.3700748877926623,
+          "maxPartRelativeSpeed": 1.986873195793501,
+          "maxRelativeSpin": 6.883443128899679
+        },
+        "maxAnchor": 0.00010437119070920789,
+        "maxAngular": 0.044358377479970845,
+        "minHeadPanelSeparation": -0.00017567523998277644,
+        "firstBad": null,
+        "worst": {
+          "time": 1.1600000000000132,
+          "stage": "lift",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "tail"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.825000000000129,
+          "vx": 5.073317311579608,
+          "vy": 13.53337745054029
+        },
+        "support": {
+          "cradleSpeed": 16.983469125260992,
+          "cradleSpin": -16.49756406528882,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 17.862921658561376,
+          "maxPartRelativeSpeed": 18.550770967144935,
+          "maxRelativeSpin": 11.563609371287383
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.820513448189633,
+      "motorWork": 78.71866348671263
+    },
+    {
+      "id": "baseline1200",
+      "hz": 1200,
+      "wallMs": 290.888375,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.15583333333333332,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.350356615598969,
+          "y": 296.6465221624513,
+          "vx": -0.45424004906220394,
+          "vy": -0.9745871079534864,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.11510591297861655,
+          "cradleSpin": -0.21837757066961122,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.014304892252102,
+          "maxPartRelativeSpeed": 1.6906067484297445,
+          "maxRelativeSpin": 4.8380923851533
+        },
+        "maxAnchor": 0.000026090907728071344,
+        "maxAngular": 0.013958302680522339,
+        "minHeadPanelSeparation": -0.0023814052634975554,
+        "firstBad": null,
+        "worst": {
+          "time": 1.1533333333333327,
+          "stage": "lift",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "tail"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.8275000000001294,
+          "vx": 5.450022917482609,
+          "vy": 13.307594179605955
+        },
+        "support": {
+          "cradleSpeed": 18.002666368409734,
+          "cradleSpin": -16.27166416900604,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 18.532523888623427,
+          "maxPartRelativeSpeed": 19.053686918078363,
+          "maxRelativeSpin": 8.149571326487571
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.380946359200966,
+      "motorWork": 78.45481297754095
+    },
+    {
+      "id": "baseline2400",
+      "hz": 2400,
+      "wallMs": 560.8555419999999,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.17166666666666666,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.4211510085666683,
+          "y": 296.59828337475045,
+          "vx": -0.6127778816835774,
+          "vy": -1.5895093412124033,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.09068686119667446,
+          "cradleSpin": -0.10464023469605167,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.6268734516978103,
+          "maxPartRelativeSpeed": 2.2710121708265314,
+          "maxRelativeSpin": 5.867196798877306
+        },
+        "maxAnchor": 0.000015948671338350285,
+        "maxAngular": 0.008079247213573781,
+        "minHeadPanelSeparation": -0.00006133601928568944,
+        "firstBad": null,
+        "worst": {
+          "time": 2.637500000000209,
+          "stage": "lower",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "rear-leg"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.8454166666658978,
+          "vx": 5.9680747873684155,
+          "vy": 13.59733666220152
+        },
+        "support": {
+          "cradleSpeed": 17.98614490268936,
+          "cradleSpin": -15.37116719594162,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 17.438841395433045,
+          "maxPartRelativeSpeed": 18.08683223406663,
+          "maxRelativeSpin": 9.500610137225966
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.78877632198072,
+      "motorWork": 78.32014006305074
+    },
+    {
+      "id": "baseline4800",
+      "hz": 4800,
+      "wallMs": 1038.4848749999999,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.13791666666666666,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.347281341304677,
+          "y": 296.67546414537736,
+          "vx": -0.5339404842391858,
+          "vy": -1.165575333408438,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.02809503094419505,
+          "cradleSpin": -0.1372041556566051,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.2146615840013397,
+          "maxPartRelativeSpeed": 1.9966212473164064,
+          "maxRelativeSpin": 7.477546414224393
+        },
+        "maxAnchor": 0.00000716910989616691,
+        "maxAngular": 0.002282112483112275,
+        "minHeadPanelSeparation": -0.00010097124973111428,
+        "firstBad": null,
+        "worst": {
+          "time": 2.653124999999617,
+          "stage": "lower",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "rear-leg"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.8174999999992565,
+          "vx": 4.95658767536675,
+          "vy": 13.321772145411494
+        },
+        "support": {
+          "cradleSpeed": 17.427705571112014,
+          "cradleSpin": -16.797081802212592,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 18.644961271612196,
+          "maxPartRelativeSpeed": 19.26396386645334,
+          "maxRelativeSpin": 11.88608235423434
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.551044961609634,
+      "motorWork": 78.25305127339898
+    },
+    {
+      "id": "no-dynamic-ccd600",
+      "discrete": true,
+      "hz": 600,
+      "wallMs": 115.18945800000029,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.15666666666666668,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.386733732574844,
+          "y": 296.6358558349982,
+          "vx": -0.43445742432569395,
+          "vy": -1.35963701849959,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.05771092984847388,
+          "cradleSpin": -0.1068702391499776,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.3700748877926623,
+          "maxPartRelativeSpeed": 1.986873195793501,
+          "maxRelativeSpin": 6.883443128899679
+        },
+        "maxAnchor": 0.00010437119070920789,
+        "maxAngular": 0.044358377479970845,
+        "minHeadPanelSeparation": -0.00017567523998277644,
+        "firstBad": null,
+        "worst": {
+          "time": 1.1600000000000132,
+          "stage": "lift",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "tail"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.825000000000129,
+          "vx": 5.073317311579608,
+          "vy": 13.53337745054029
+        },
+        "support": {
+          "cradleSpeed": 16.983469125260992,
+          "cradleSpin": -16.49756406528882,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 17.862921658561376,
+          "maxPartRelativeSpeed": 18.550770967144935,
+          "maxRelativeSpin": 11.563609371287383
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.820513448189633,
+      "motorWork": 78.71866348671263
+    },
+    {
+      "id": "no-dynamic-ccd1200",
+      "discrete": true,
+      "hz": 1200,
+      "wallMs": 226.4309159999998,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.15583333333333332,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.350356615598969,
+          "y": 296.6465221624513,
+          "vx": -0.45424004906220394,
+          "vy": -0.9745871079534864,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.11510591297861655,
+          "cradleSpin": -0.21837757066961122,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.014304892252102,
+          "maxPartRelativeSpeed": 1.6906067484297445,
+          "maxRelativeSpin": 4.8380923851533
+        },
+        "maxAnchor": 0.000026090907728071344,
+        "maxAngular": 0.013958302680522339,
+        "minHeadPanelSeparation": -0.0023814052634975554,
+        "firstBad": null,
+        "worst": {
+          "time": 1.1533333333333327,
+          "stage": "lift",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "tail"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.8275000000001294,
+          "vx": 5.450022917482609,
+          "vy": 13.307594179605955
+        },
+        "support": {
+          "cradleSpeed": 18.002666368409734,
+          "cradleSpin": -16.27166416900604,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 18.532523888623427,
+          "maxPartRelativeSpeed": 19.053686918078363,
+          "maxRelativeSpin": 8.149571326487571
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.380946359200966,
+      "motorWork": 78.45481297754095
+    },
+    {
+      "id": "no-dynamic-ccd2400",
+      "discrete": true,
+      "hz": 2400,
+      "wallMs": 459.2092080000002,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.17166666666666666,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.4211510085666683,
+          "y": 296.59828337475045,
+          "vx": -0.6127778816835774,
+          "vy": -1.5895093412124033,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.09068686119667446,
+          "cradleSpin": -0.10464023469605167,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.6268734516978103,
+          "maxPartRelativeSpeed": 2.2710121708265314,
+          "maxRelativeSpin": 5.867196798877306
+        },
+        "maxAnchor": 0.000015948671338350285,
+        "maxAngular": 0.008079247213573781,
+        "minHeadPanelSeparation": -0.00006133601928568944,
+        "firstBad": null,
+        "worst": {
+          "time": 2.637500000000209,
+          "stage": "lower",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "rear-leg"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.8454166666658978,
+          "vx": 5.9680747873684155,
+          "vy": 13.59733666220152
+        },
+        "support": {
+          "cradleSpeed": 17.98614490268936,
+          "cradleSpin": -15.37116719594162,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 17.438841395433045,
+          "maxPartRelativeSpeed": 18.08683223406663,
+          "maxRelativeSpin": 9.500610137225966
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.78877632198072,
+      "motorWork": 78.32014006305074
+    },
+    {
+      "id": "no-dynamic-ccd4800",
+      "discrete": true,
+      "hz": 4800,
+      "wallMs": 879.9440420000001,
+      "initialStaging": {
+        "shift": {
+          "x": 0,
+          "y": -0.32499999999998863
+        },
+        "clearance": 0.06999999999997499,
+        "originalClearance": 0
+      },
+      "readyAfterDrop": 0.13791666666666666,
+      "before": {
+        "phase": "loading",
+        "center": {
+          "x": -3.347281341304677,
+          "y": 296.67546414537736,
+          "vx": -0.5339404842391858,
+          "vy": -1.165575333408438,
+          "mass": 0.8500000000000001
+        },
+        "support": {
+          "cradleSpeed": 0.02809503094419505,
+          "cradleSpin": -0.1372041556566051,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.2146615840013397,
+          "maxPartRelativeSpeed": 1.9966212473164064,
+          "maxRelativeSpin": 7.477546414224393
+        },
+        "maxAnchor": 0.00000716910989616691,
+        "maxAngular": 0.002282112483112275,
+        "minHeadPanelSeparation": -0.00010097124973111428,
+        "firstBad": null,
+        "worst": {
+          "time": 2.653124999999617,
+          "stage": "lower",
+          "a": {
+            "role": "part",
+            "id": "torso"
+          },
+          "b": {
+            "role": "part",
+            "id": "rear-leg"
+          }
+        }
+      },
+      "continuation": {
+        "release": {
+          "time": 0.8174999999992565,
+          "vx": 4.95658767536675,
+          "vy": 13.321772145411494
+        },
+        "support": {
+          "cradleSpeed": 17.427705571112014,
+          "cradleSpin": -16.797081802212592,
+          "withinEnvelope": false,
+          "contacting": false,
+          "contactingParts": 0,
+          "relativeSpeed": 18.644961271612196,
+          "maxPartRelativeSpeed": 19.26396386645334,
+          "maxRelativeSpin": 11.88608235423434
+        }
+      },
+      "maxPositiveResidual": 0,
+      "handWork": 23.551044961609634,
+      "motorWork": 78.25305127339898
+    }
+  ]
+}

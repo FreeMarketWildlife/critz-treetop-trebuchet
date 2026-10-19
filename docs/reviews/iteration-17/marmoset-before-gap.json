@@ -1,0 +1,1892 @@
+{
+  "snapshot": {
+    "encounterSeed": null,
+    "encounterState": null,
+    "spawnEnergy": 0,
+    "despawnEnergy": 0,
+    "lastImpact": -1,
+    "lastEnemySound": null,
+    "dampingWork": 0,
+    "dragWork": 0,
+    "windingWork": 0,
+    "windingInput": 0,
+    "windingBraking": 0,
+    "windingTarget": null,
+    "windingStart": 0,
+    "assistWork": 0,
+    "control": 0,
+    "impactCount": 0,
+    "p": {
+      "longArm": 3.6,
+      "shortArm": 0.9,
+      "sling": 2.9,
+      "counterMass": 180,
+      "projectileMass": 1,
+      "beamLinearDensity": 2.2,
+      "releasePinAngle": 1.45,
+      "gravity": 9.81,
+      "frameMass": 30,
+      "frameFriction": 0.85,
+      "armDamping": 0,
+      "flightDrag": 0,
+      "pivotHeight": 300,
+      "initialArm": -3,
+      "initialSling": -1.5707963267948966,
+      "initialSlingSpeed": 0,
+      "hookAngle": 3.55,
+      "channelLength": 0.18,
+      "pouchPanelMass": 0.5,
+      "stoppedSplitPouch": true,
+      "releaseHardware": "channel",
+      "mechanicalWinding": true,
+      "collisionSubsteps": true,
+      "collisionStepHz": 2400,
+      "fastCollisionStepHz": 4800
+    },
+    "species": "tiny-primate",
+    "phase": "uncocked",
+    "elapsed": 0,
+    "release": null,
+    "handWork": 0,
+    "world": [
+      {
+        "gravity": {
+          "x": 0,
+          "y": -9.81
+        },
+        "bodies": [
+          {
+            "refIndex": 1,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 2,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 3,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 4,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 5,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 6,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 7,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 8,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 9,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 10,
+            "refType": "Body"
+          },
+          {
+            "refIndex": 11,
+            "refType": "Body"
+          }
+        ],
+        "joints": [
+          {
+            "refIndex": 12,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 13,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 14,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 15,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 16,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 17,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 18,
+            "refType": "Joint"
+          },
+          {
+            "refIndex": 19,
+            "refType": "Joint"
+          }
+        ]
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -3.4105185737908927,
+          "y": 299.586051672192
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 20,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "hooklink",
+          "id": "channel-bead",
+          "channelAlpha": 3.55,
+          "channelLength": 0.18,
+          "beadRadius": 0.025,
+          "pegLocal": {
+            "x": 3.4715143691647214,
+            "y": -0.055600743420034376
+          }
+        },
+        "labMass": {
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "mass": 0.04,
+          "I": 0.000012500000000000002
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -3.53282748082132,
+          "y": 296.37690081131586
+        },
+        "angle": 0.43535912869280385,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 21,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 22,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "pouchflap",
+          "id": "right-panel"
+        },
+        "labMass": {
+          "center": {
+            "x": 0.528813559322034,
+            "y": -0.12881355932203387
+          },
+          "mass": 0.5,
+          "I": 0.18974625706214696
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -4.109999999999999,
+          "y": 296.21999999999997
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 23,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 24,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 25,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "labMass": {
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "mass": 0.1105,
+          "I": 0.0010293473913088093
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -4.38,
+          "y": 296
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 26,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 27,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 28,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "labMass": {
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "mass": 0.1105,
+          "I": 0.0008224521714536821
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -4.59,
+          "y": 296.185
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 29,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 30,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 31,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "part",
+          "id": "tail"
+        },
+        "labMass": {
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "mass": 0.085,
+          "I": 0.0018829222093939173
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -4.18,
+          "y": 296.43
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 32,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "part",
+          "id": "head"
+        },
+        "labMass": {
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "mass": 0.204,
+          "I": 0.0019992000000000005
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -4.3,
+          "y": 296.2
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 33,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 34,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "part",
+          "id": "torso"
+        },
+        "labMass": {
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "mass": 0.34,
+          "I": 0.0033320000000000008
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": true,
+        "fixedRotation": false,
+        "position": {
+          "x": -3.403343430159401,
+          "y": 296.3881022322521
+        },
+        "angle": -0.26277257210492794,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 35,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 36,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "pouch",
+          "id": "cradle"
+        },
+        "labMass": {
+          "center": {
+            "x": -0.528813559322034,
+            "y": -0.12881355932203387
+          },
+          "mass": 0.5,
+          "I": 0.18974625706214696
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": false,
+        "fixedRotation": false,
+        "position": {
+          "x": 0,
+          "y": 300
+        },
+        "angle": -3,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 37,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 38,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 39,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 40,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 41,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "arm",
+          "id": "beam"
+        },
+        "labMass": {
+          "center": {
+            "x": -0.7826364427085905,
+            "y": -0.0000012428725738424375
+          },
+          "mass": 189.90294,
+          "I": 181.49329686767916
+        }
+      },
+      {
+        "type": "dynamic",
+        "bullet": false,
+        "fixedRotation": false,
+        "position": {
+          "x": 0,
+          "y": 294
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 42,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 43,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 44,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 45,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "frame",
+          "id": "support"
+        },
+        "labMass": {
+          "center": {
+            "x": 9.221504419827704e-17,
+            "y": 2.4454535764220555
+          },
+          "mass": 30,
+          "I": 320.7948001370489
+        }
+      },
+      {
+        "type": "static",
+        "bullet": false,
+        "fixedRotation": false,
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "angle": 0,
+        "linearVelocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "fixtures": [
+          {
+            "refIndex": 46,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 47,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 48,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 49,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 50,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 51,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 52,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 53,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 54,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 55,
+            "refType": "Fixture"
+          },
+          {
+            "refIndex": 56,
+            "refType": "Fixture"
+          }
+        ],
+        "labTag": {
+          "role": "static",
+          "id": "world"
+        }
+      },
+      {
+        "type": "rope-joint",
+        "bodyA": {
+          "refIndex": 1,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 2,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "localAnchorA": {
+          "x": 0,
+          "y": 0
+        },
+        "localAnchorB": {
+          "x": 0.65,
+          "y": 0
+        },
+        "maxLength": 2.971952220342716,
+        "labTag": {
+          "role": "rope",
+          "id": 1
+        }
+      },
+      {
+        "type": "rope-joint",
+        "bodyA": {
+          "refIndex": 9,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 8,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "localAnchorA": {
+          "x": 3.6,
+          "y": 0
+        },
+        "localAnchorB": {
+          "x": -0.65,
+          "y": 0
+        },
+        "maxLength": 2.971952220342716,
+        "labTag": {
+          "role": "rope",
+          "id": 0
+        }
+      },
+      {
+        "type": "revolute-joint",
+        "bodyA": {
+          "refIndex": 8,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 2,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "lowerAngle": -3.141592653589793,
+        "upperAngle": 0,
+        "maxMotorTorque": 0,
+        "motorSpeed": 0,
+        "enableLimit": true,
+        "enableMotor": false,
+        "localAnchorA": {
+          "x": 0,
+          "y": -0.19
+        },
+        "localAnchorB": {
+          "x": 0,
+          "y": -0.19
+        },
+        "referenceAngle": 0.6981317007977318,
+        "labTag": {
+          "role": "pouchhinge",
+          "id": "stopped-V",
+          "halfAngle": 0.3490658503988659
+        }
+      },
+      {
+        "type": "revolute-joint",
+        "bodyA": {
+          "refIndex": 7,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 3,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "lowerAngle": -0.95,
+        "upperAngle": 0.95,
+        "maxMotorTorque": 0,
+        "motorSpeed": 0,
+        "enableLimit": true,
+        "enableMotor": false,
+        "localAnchorA": {
+          "x": 0.095,
+          "y": 0.01
+        },
+        "localAnchorB": {
+          "x": -0.095,
+          "y": -0.01
+        },
+        "referenceAngle": 0
+      },
+      {
+        "type": "revolute-joint",
+        "bodyA": {
+          "refIndex": 7,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 4,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "lowerAngle": -0.95,
+        "upperAngle": 0.95,
+        "maxMotorTorque": 0,
+        "motorSpeed": 0,
+        "enableLimit": true,
+        "enableMotor": false,
+        "localAnchorA": {
+          "x": -0.04,
+          "y": -0.1
+        },
+        "localAnchorB": {
+          "x": 0.04,
+          "y": 0.1
+        },
+        "referenceAngle": 0
+      },
+      {
+        "type": "revolute-joint",
+        "bodyA": {
+          "refIndex": 7,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 5,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "lowerAngle": -1.3,
+        "upperAngle": 1.3,
+        "maxMotorTorque": 0,
+        "motorSpeed": 0,
+        "enableLimit": true,
+        "enableMotor": false,
+        "localAnchorA": {
+          "x": -0.145,
+          "y": -0.0075
+        },
+        "localAnchorB": {
+          "x": 0.145,
+          "y": 0.0075
+        },
+        "referenceAngle": 0
+      },
+      {
+        "type": "revolute-joint",
+        "bodyA": {
+          "refIndex": 7,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 6,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "lowerAngle": -0.5,
+        "upperAngle": 0.5,
+        "maxMotorTorque": 0,
+        "motorSpeed": 0,
+        "enableLimit": true,
+        "enableMotor": false,
+        "localAnchorA": {
+          "x": 0.06,
+          "y": 0.115
+        },
+        "localAnchorB": {
+          "x": -0.06,
+          "y": -0.115
+        },
+        "referenceAngle": 0
+      },
+      {
+        "type": "revolute-joint",
+        "bodyA": {
+          "refIndex": 10,
+          "refType": "Body"
+        },
+        "bodyB": {
+          "refIndex": 9,
+          "refType": "Body"
+        },
+        "collideConnected": false,
+        "lowerAngle": 0,
+        "upperAngle": 0,
+        "maxMotorTorque": 0,
+        "motorSpeed": 0,
+        "enableLimit": true,
+        "enableMotor": false,
+        "localAnchorA": {
+          "x": 0,
+          "y": 6
+        },
+        "localAnchorB": {
+          "x": 0,
+          "y": 0
+        },
+        "referenceAngle": -3,
+        "labTag": {
+          "role": "pivot"
+        }
+      },
+      {
+        "friction": 0.03,
+        "restitution": 0,
+        "density": 20.3718327157626,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 128,
+        "filterMaskBits": 64,
+        "shape": {
+          "refIndex": 57,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.15,
+        "restitution": 0.05,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 2,
+        "filterMaskBits": 21,
+        "shape": {
+          "refIndex": 58,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.15,
+        "restitution": 0.05,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 2,
+        "filterMaskBits": 21,
+        "shape": {
+          "refIndex": 59,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 60,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 61,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 62,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 63,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 64,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 65,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 66,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 67,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 68,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 69,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 70,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.3,
+        "restitution": 0.32,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": -1,
+        "filterCategoryBits": 4,
+        "filterMaskBits": 59,
+        "shape": {
+          "refIndex": 71,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.15,
+        "restitution": 0.05,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 2,
+        "filterMaskBits": 21,
+        "shape": {
+          "refIndex": 72,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.15,
+        "restitution": 0.05,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 2,
+        "filterMaskBits": 21,
+        "shape": {
+          "refIndex": 73,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.03,
+        "restitution": 0,
+        "density": 0.2,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 64,
+        "filterMaskBits": 128,
+        "shape": {
+          "refIndex": 74,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.03,
+        "restitution": 0,
+        "density": 0.2,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 64,
+        "filterMaskBits": 128,
+        "shape": {
+          "refIndex": 75,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.03,
+        "restitution": 0,
+        "density": 0.2,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 64,
+        "filterMaskBits": 128,
+        "shape": {
+          "refIndex": 76,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.2,
+        "restitution": 0,
+        "density": 5729.577951308232,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 8,
+        "filterMaskBits": 1,
+        "shape": {
+          "refIndex": 77,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.2,
+        "restitution": 0,
+        "density": 20,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 8,
+        "filterMaskBits": 1,
+        "shape": {
+          "refIndex": 78,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.85,
+        "restitution": 0,
+        "density": 3,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 16,
+        "filterMaskBits": 15,
+        "shape": {
+          "refIndex": 79,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.85,
+        "restitution": 0,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 16,
+        "filterMaskBits": 15,
+        "shape": {
+          "refIndex": 80,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.85,
+        "restitution": 0,
+        "density": 3,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 16,
+        "filterMaskBits": 15,
+        "shape": {
+          "refIndex": 81,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.85,
+        "restitution": 0,
+        "density": 1,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 16,
+        "filterMaskBits": 15,
+        "shape": {
+          "refIndex": 82,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.1,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 83,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 84,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 85,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 86,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 87,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 88,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 89,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.08,
+        "restitution": 0.85,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 90,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.12,
+        "restitution": 0.3,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 91,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.12,
+        "restitution": 0.3,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 92,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "friction": 0.12,
+        "restitution": 0.3,
+        "density": 0,
+        "isSensor": false,
+        "filterGroupIndex": 0,
+        "filterCategoryBits": 1,
+        "filterMaskBits": 65535,
+        "shape": {
+          "refIndex": 93,
+          "refType": "Shape"
+        },
+        "labTag": null
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0,
+          "y": 0
+        },
+        "radius": 0.025
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0.8350000000000001,
+            "y": -0.19
+          },
+          {
+            "x": 0.8350000000000001,
+            "y": 0.19
+          },
+          {
+            "x": 0.765,
+            "y": 0.19
+          },
+          {
+            "x": 0.765,
+            "y": -0.19
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0.8,
+            "y": -0.225
+          },
+          {
+            "x": 0.8,
+            "y": -0.155
+          },
+          {
+            "x": 0,
+            "y": -0.155
+          },
+          {
+            "x": 0,
+            "y": -0.225
+          }
+        ]
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0.125,
+          "y": 0
+        },
+        "radius": 0.04
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": -0.125,
+          "y": 0
+        },
+        "radius": 0.04
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0.125,
+            "y": -0.04
+          },
+          {
+            "x": 0.125,
+            "y": 0.04
+          },
+          {
+            "x": -0.125,
+            "y": 0.04
+          },
+          {
+            "x": -0.125,
+            "y": -0.04
+          }
+        ]
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0.105,
+          "y": 0
+        },
+        "radius": 0.045
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": -0.105,
+          "y": 0
+        },
+        "radius": 0.045
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0.105,
+            "y": -0.045
+          },
+          {
+            "x": 0.105,
+            "y": 0.045
+          },
+          {
+            "x": -0.105,
+            "y": 0.045
+          },
+          {
+            "x": -0.105,
+            "y": -0.045
+          }
+        ]
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0.22,
+          "y": 0
+        },
+        "radius": 0.03
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": -0.22,
+          "y": 0
+        },
+        "radius": 0.03
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0.22,
+            "y": -0.03
+          },
+          {
+            "x": 0.22,
+            "y": 0.03
+          },
+          {
+            "x": -0.22,
+            "y": 0.03
+          },
+          {
+            "x": -0.22,
+            "y": -0.03
+          }
+        ]
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0,
+          "y": 0
+        },
+        "radius": 0.14
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0,
+          "y": 0
+        },
+        "radius": 0.14
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 0,
+          "y": 0
+        },
+        "radius": 0.14
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": -0.765,
+            "y": -0.19
+          },
+          {
+            "x": -0.765,
+            "y": 0.19
+          },
+          {
+            "x": -0.8350000000000001,
+            "y": 0.19
+          },
+          {
+            "x": -0.8350000000000001,
+            "y": -0.19
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0,
+            "y": -0.225
+          },
+          {
+            "x": 0,
+            "y": -0.155
+          },
+          {
+            "x": -0.8,
+            "y": -0.155
+          },
+          {
+            "x": -0.8,
+            "y": -0.225
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 3.4456997382911343,
+            "y": 0.004053299467773566
+          },
+          {
+            "x": 3.497329000038309,
+            "y": -0.1152547863078423
+          },
+          {
+            "x": 3.524861635217297,
+            "y": -0.10334034128926352
+          },
+          {
+            "x": 3.4732323734701223,
+            "y": 0.015967744486352353
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 3.3202187439458,
+            "y": -0.15920882124032681
+          },
+          {
+            "x": 3.332133188964379,
+            "y": -0.18674145641931508
+          },
+          {
+            "x": 3.497329000038309,
+            "y": -0.11525478630784232
+          },
+          {
+            "x": 3.48541455501973,
+            "y": -0.08772215112885404
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 3.2805039272172043,
+            "y": -0.0674333706436992
+          },
+          {
+            "x": 3.292418372235783,
+            "y": -0.09496600582268747
+          },
+          {
+            "x": 3.457614183309713,
+            "y": -0.02347933571121471
+          },
+          {
+            "x": 3.4456997382911343,
+            "y": 0.004053299467773573
+          }
+        ]
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": -0.9,
+          "y": 0
+        },
+        "radius": 0.1
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 3.6,
+            "y": -0.055
+          },
+          {
+            "x": 3.6,
+            "y": 0.055
+          },
+          {
+            "x": -0.8999999999999999,
+            "y": 0.055
+          },
+          {
+            "x": -0.8999999999999999,
+            "y": -0.055
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 1.9,
+            "y": 0.01999999999999999
+          },
+          {
+            "x": 1.9,
+            "y": 0.22
+          },
+          {
+            "x": 1.1,
+            "y": 0.22
+          },
+          {
+            "x": 1.1,
+            "y": 0.01999999999999999
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 1.6,
+            "y": 0.15
+          },
+          {
+            "x": 0.16,
+            "y": 6
+          },
+          {
+            "x": -0.16,
+            "y": 6
+          },
+          {
+            "x": 1.3,
+            "y": 0.02
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": -1.1,
+            "y": 0.01999999999999999
+          },
+          {
+            "x": -1.1,
+            "y": 0.22
+          },
+          {
+            "x": -1.9,
+            "y": 0.22
+          },
+          {
+            "x": -1.9,
+            "y": 0.01999999999999999
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 0.16,
+            "y": 6
+          },
+          {
+            "x": -0.16,
+            "y": 6
+          },
+          {
+            "x": -1.6,
+            "y": 0.15
+          },
+          {
+            "x": -1.3,
+            "y": 0.02
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": -3.5,
+            "y": 295.46
+          },
+          {
+            "x": -3.5,
+            "y": 295.54
+          },
+          {
+            "x": -5.1,
+            "y": 295.54
+          },
+          {
+            "x": -5.1,
+            "y": 295.46
+          }
+        ]
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 230,
+          "y": 18
+        },
+        "radius": 1.3
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 180,
+          "y": 90
+        },
+        "radius": 1.2
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 145,
+          "y": 165
+        },
+        "radius": 1.4
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 110,
+          "y": 215
+        },
+        "radius": 1.5
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 75,
+          "y": 260
+        },
+        "radius": 1.2
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 48,
+          "y": 165
+        },
+        "radius": 1.1
+      },
+      {
+        "type": "circle",
+        "p": {
+          "x": 32,
+          "y": 255
+        },
+        "radius": 1.2
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 10000,
+            "y": -0.08
+          },
+          {
+            "x": 10000,
+            "y": 0
+          },
+          {
+            "x": -10000,
+            "y": 0
+          },
+          {
+            "x": -10000,
+            "y": -0.08
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 230,
+            "y": 104.91999999999999
+          },
+          {
+            "x": 230,
+            "y": 105
+          },
+          {
+            "x": 170,
+            "y": 105
+          },
+          {
+            "x": 170,
+            "y": 104.91999999999999
+          }
+        ]
+      },
+      {
+        "type": "polygon",
+        "vertices": [
+          {
+            "x": 5,
+            "y": 293.91999999999996
+          },
+          {
+            "x": 5,
+            "y": 294
+          },
+          {
+            "x": -8,
+            "y": 294
+          },
+          {
+            "x": -8,
+            "y": 293.91999999999996
+          }
+        ]
+      }
+    ],
+    "hookOpen": false,
+    "freeDuration": 0
+  },
+  "hand": null,
+  "stage": "construction",
+  "tick": 0
+}

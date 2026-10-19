@@ -1,0 +1,179 @@
+{
+  "protocol": "Read-only inspection BEFOREunlatch oranyintegration. Leftfloorpolygon localbounds x[−.8,0],y[−.225,−.155] (polygon skinradius adds.01). Headcircle .14; torsocapsule .27 length/.14radius is effectivelycircle.14. Capturedsnapshotalreadystraddlesfloorwithstretchedneck. SubsequentnoCCDtrials reducejointgapbyallowing deepcontactpenetration; cannotestablish admissibleretentionfromthiscorruptedstate.",
+  "parts": [
+    {
+      "id": "front-leg",
+      "world": {
+        "x": -4.24124929093408,
+        "y": 296.08164346583516
+      },
+      "panelLocal": {
+        "x": -0.3979584039735981,
+        "y": -0.33396001671431463
+      },
+      "shape": {
+        "type": "capsule",
+        "length": 0.33,
+        "radius": 0.04
+      }
+    },
+    {
+      "id": "head",
+      "world": {
+        "x": -4.356210659827839,
+        "y": 296.44007240081703
+      },
+      "panelLocal": {
+        "x": -0.5913324715760323,
+        "y": -0.01101437461791456
+      },
+      "shape": {
+        "type": "circle",
+        "radius": 0.14
+      }
+    },
+    {
+      "id": "rear-leg",
+      "world": {
+        "x": -4.387638278121839,
+        "y": 295.90013656615
+      },
+      "panelLocal": {
+        "x": -0.49929101604173814,
+        "y": -0.5439747588983204
+      },
+      "shape": {
+        "type": "capsule",
+        "length": 0.3,
+        "radius": 0.045
+      }
+    },
+    {
+      "id": "tail",
+      "world": {
+        "x": -4.537446618139466,
+        "y": 295.9183803681932
+      },
+      "panelLocal": {
+        "x": -0.6493273789160658,
+        "y": -0.5602371347170754
+      },
+      "shape": {
+        "type": "capsule",
+        "length": 0.5,
+        "radius": 0.03
+      }
+    },
+    {
+      "id": "torso",
+      "world": {
+        "x": -4.404720445909421,
+        "y": 296.08276567385565
+      },
+      "panelLocal": {
+        "x": -0.5574112210605506,
+        "y": -0.3699999526583186
+      },
+      "shape": {
+        "type": "capsule",
+        "length": 0.27,
+        "radius": 0.14
+      }
+    }
+  ],
+  "joints": [
+    {
+      "a": "torso",
+      "b": "front-leg",
+      "gap": 0.01744298404300165,
+      "panelLocalA": {
+        "x": -0.4787207060315595,
+        "y": -0.3158445942487349
+      },
+      "panelLocalB": {
+        "x": -0.48754176033567675,
+        "y": -0.30079644840653147
+      }
+    },
+    {
+      "a": "torso",
+      "b": "rear-leg",
+      "gap": 0.028129739766361676,
+      "panelLocalA": {
+        "x": -0.5447976003056706,
+        "y": -0.4769620794670636
+      },
+      "panelLocalB": {
+        "x": -0.5510885796999291,
+        "y": -0.4495448250898608
+      }
+    },
+    {
+      "a": "torso",
+      "b": "tail",
+      "gap": 0.026434486585202067,
+      "panelLocalA": {
+        "x": -0.6812252714691593,
+        "y": -0.4458374824269867
+      },
+      "panelLocalB": {
+        "x": -0.6878281748478529,
+        "y": -0.42024092508044364
+      }
+    },
+    {
+      "a": "torso",
+      "b": "head",
+      "gap": 0.1021058791010187,
+      "panelLocalA": {
+        "x": -0.5596165961433621,
+        "y": -0.24030748440844446
+      },
+      "panelLocalB": {
+        "x": -0.5797605795271468,
+        "y": -0.14020838111363138
+      }
+    }
+  ],
+  "noCCD": [
+    {
+      "id": "baseline",
+      "minSeparation": -0.017457355837741568,
+      "minHeadPanelSeparation": -0.015378564781126758,
+      "maxAnchor": 0.20623568398286676,
+      "release": null
+    },
+    {
+      "id": "discrete-noTOI",
+      "minSeparation": -0.07843790093469734,
+      "minHeadPanelSeparation": -0.07843790093469734,
+      "maxAnchor": 0.006905123504787554,
+      "release": null
+    },
+    {
+      "id": "discrete2400",
+      "minSeparation": -0.07715444108871124,
+      "minHeadPanelSeparation": -0.07715444108871124,
+      "maxAnchor": 0.006530470702560085,
+      "release": null
+    },
+    {
+      "id": "discrete9600",
+      "minSeparation": -0.07658833735727433,
+      "minHeadPanelSeparation": -0.07658833735727433,
+      "maxAnchor": 0.0065172863931364676,
+      "release": null
+    },
+    {
+      "id": "no-panel-head-contact",
+      "minSeparation": -0.0077192693501502785,
+      "minHeadPanelSeparation": 0,
+      "maxAnchor": 0.0002974537034223674,
+      "release": {
+        "seconds": 0.061666666666676306,
+        "vx": 1.1962655342560626,
+        "vy": -3.906909551634934
+      }
+    }
+  ]
+}

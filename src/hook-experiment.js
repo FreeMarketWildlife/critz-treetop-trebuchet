@@ -3,6 +3,7 @@
 // Both remain optional research modes, without calibrated-realism claims.
 import * as P from '../node_modules/planck/dist/planck.mjs';
 import {CritterScene} from './articulated.js';
+import {stageInitialVolunteer} from './staging.js';
 const V=P.Vec2;
 export function makeCLink(world,position,angle=0,options={}){
  const radius=options.radius??.075,wire=options.wire??.022,span=options.span??130,mass=options.mass??.04;
@@ -91,7 +92,7 @@ export class PhysicalHookScene extends CritterScene {
   const fixed=this.world.createJoint(new P.RopeJoint({bodyA:this.arm,bodyB:this.pouch,localAnchorA:V(this.p.longArm,0),localAnchorB:V(-.65,0),maxLength:strandLength,collideConnected:false}));fixed.setUserData({role:'rope',id:0});
   const anchor=freePanel.getWorldPoint(V(.65,0)),length=this.p.stoppedSplitPouch?strandLength:Math.hypot(linkAnchor.x-anchor.x,linkAnchor.y-anchor.y);
   const free=this.world.createJoint(new P.RopeJoint({bodyA:this.link,bodyB:freePanel,localAnchorA:attachment,localAnchorB:V(.65,0),maxLength:length,collideConnected:false}));free.setUserData({role:'rope',id:1});
-  this.ropes=[fixed,free];this.rope=fixed;
+  this.ropes=[fixed,free];this.rope=fixed;this.initialStaging=stageInitialVolunteer(this);
  }
  snapshot(){return {...super.snapshot(),hookOpen:this.hookOpen,freeDuration:this.freeDuration};}
  clone(){return new PhysicalHookScene(this.p,this.rig.id,this.snapshot());}
