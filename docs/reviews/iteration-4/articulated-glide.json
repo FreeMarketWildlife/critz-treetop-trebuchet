@@ -1,0 +1,104 @@
+{
+  "scope": "Canonical physically loaded articulated squirrel pin release, torso-equivalent passive membrane/tail, controls constant until first authored impact or20s; no enemies. Comparisons differ from ideal one-body glide tests and are not calibration.",
+  "rows": [
+    {
+      "hz": 300,
+      "input": -1,
+      "seconds": 20.000000000002416,
+      "distance": 168.112836924104,
+      "height": 246.17813998814898,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": 0.00023198707959860425,
+      "aerodynamicWorkJ": -734.5536150455201,
+      "firstImpact": false
+    },
+    {
+      "hz": 300,
+      "input": 0,
+      "seconds": 20.000000000002416,
+      "distance": 186.0893193391754,
+      "height": 237.3253436255249,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": -0.0072632685312854365,
+      "aerodynamicWorkJ": -802.8739987004948,
+      "firstImpact": false
+    },
+    {
+      "hz": 300,
+      "input": 1,
+      "seconds": 20.000000000002416,
+      "distance": 242.2773544669318,
+      "height": 184.22623792894947,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": 0.011867303106402393,
+      "aerodynamicWorkJ": -1223.1878643139596,
+      "firstImpact": false
+    },
+    {
+      "hz": 600,
+      "input": -1,
+      "seconds": 20.001666666659844,
+      "distance": 168.58954464639072,
+      "height": 246.24721457982514,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": 0.00010668177155815011,
+      "aerodynamicWorkJ": -734.5380301218713,
+      "firstImpact": false
+    },
+    {
+      "hz": 600,
+      "input": 0,
+      "seconds": 20.001666666659844,
+      "distance": 186.18511057670733,
+      "height": 237.91421143725887,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": -0.002978753936603066,
+      "aerodynamicWorkJ": -798.1879172822609,
+      "firstImpact": false
+    },
+    {
+      "hz": 600,
+      "input": 1,
+      "seconds": 20.001666666659844,
+      "distance": 242.0048191020464,
+      "height": 183.8734705181365,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": 0.012515232970707162,
+      "aerodynamicWorkJ": -1226.7804055635818,
+      "firstImpact": false
+    },
+    {
+      "hz": 1200,
+      "input": -1,
+      "seconds": 20.000833333317985,
+      "distance": 169.7769212569304,
+      "height": 247.30566041256634,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": 0.00014024266523924,
+      "aerodynamicWorkJ": -725.5733005620634,
+      "firstImpact": false
+    },
+    {
+      "hz": 1200,
+      "input": 0,
+      "seconds": 20.000833333317985,
+      "distance": 186.39714193638721,
+      "height": 240.42944313984643,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": -0.0007134455378759621,
+      "aerodynamicWorkJ": -776.7020819592078,
+      "firstImpact": false
+    },
+    {
+      "hz": 1200,
+      "input": 1,
+      "seconds": 20.000833333317985,
+      "distance": 241.82630951438915,
+      "height": 183.77711536425525,
+      "initialOmega": -8.896334996600128,
+      "finalOmega": 0.013001420665541327,
+      "aerodynamicWorkJ": -1227.8594424151622,
+      "firstImpact": false
+    }
+  ]
+}

@@ -8,6 +8,8 @@ const serializer=new P.Serializer({rootClass:P.World,
  postSerialize:(data,obj)=>{if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;}return data;},
  postDeserialize:(obj,data)=>{if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);return obj;}});
 const V=(x,y)=>P.Vec2(x,y);
+// External hand effort scales with total payload mass; all supplied work is tracked.
+export function gripParameters(mass){if(!Number.isFinite(mass)||mass<=0)throw new Error('Invalid grip mass');return {stiffness:120*mass,damping:18*mass,maxForce:Math.max(80,60*mass)};}
 const tag=(body,role,id)=>body.setUserData({role,id});
 // Cocking setup is a reachable initial pose, with clearance above the support branch.
 export function cockedConfig(overrides={},desiredFraction=.6){
@@ -99,15 +101,17 @@ export class CritterScene {
  energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic()){const m=b.getMass(),c=b.getWorldCenter(),v=b.getLinearVelocity(),local=b.getLocalCenter(),I=b.getInertia()-m*(local.x**2+local.y**2);e+=.5*m*(v.x**2+v.y**2)+.5*I*b.getAngularVelocity()**2+m*this.p.gravity*(c.y-this.p.pivotHeight);}return e;}
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
   const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
-  if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q);let fx=80*(this.hand.target.x-q.x)-12*v.x,fy=80*(this.hand.target.y-q.y)-12*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,80/(mag||1));this.forceCapped=mag>80;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
+  if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q),grip=gripParameters(this.rig.totalMass);let fx=grip.stiffness*(this.hand.target.x-q.x)-grip.damping*v.x,fy=grip.stiffness*(this.hand.target.y-q.y)-grip.damping*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,grip.maxForce/(mag||1));this.forceCapped=mag>grip.maxForce;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}
   const dampingTorque=-this.p.armDamping*this.pivot.getJointSpeed(),dampingAngle=this.pivot.getJointAngle(),drag=[];
   if(dampingTorque){this.arm.applyTorque(dampingTorque,true);this.frame.applyTorque(-dampingTorque,true);}
   if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y),F=V(-k*v.x,-k*v.y);drag.push({body:b,force:F,before:{...b.getWorldCenter()}});b.applyForceToCenter(F,true);}
   this.updateWinding();this.updateEncounters();const winding=this.phase==='winding',oldRelativeAngle=this.pivot.getJointAngle();const old=this.relative();const assist=[];
   if(this.phase==='flight' && (this.control || this.rig.id==='flying-squirrel')){
-   const c=this.center(),speed=Math.hypot(c.vx,c.vy),root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
-   if(this.rig.id==='flying-squirrel' && speed>0.1){const aero=aerodynamicForces({vx:c.vx,vy:c.vy,mass:c.mass,area:.22,pitch:root.getAngle(),input:this.control});
-    for(const b of this.parts){const share=b.getMass()/c.mass,F=V(aero.fx*share,aero.fy*share);assist.push({body:b,force:F,before:{...b.getWorldCenter()},angle:b.getAngle(),torque:0});b.applyForceToCenter(F,true);}
+   const root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
+   if(this.rig.id==='flying-squirrel'){const velocity=root.getLinearVelocity(),aero=aerodynamicForces({vx:velocity.x,vy:velocity.y,mass:root.getMass(),area:.22,pitch:root.getAngle(),angularVelocity:root.getAngularVelocity(),input:this.control});
+    // Equivalent membrane+tail loads act on the torso used to evaluate local airflow.
+    // F·v + torque*omega is passive for this same body, even while the rig tumbles.
+    const F=V(aero.fx,aero.fy);assist.push({body:root,force:F,before:{...root.getWorldCenter()},angle:root.getAngle(),torque:aero.torque});root.applyForceToCenter(F,true);root.applyTorque(aero.torque,true);
    } else if(this.rig.id!=='flying-squirrel'){const F=V(this.control*.25,0);assist.push({body:root,force:F,before:{...root.getWorldCenter()},angle:root.getAngle(),torque:0});root.applyForceToCenter(F,true);}
   }
   this.world.step(dt,20,12);this.elapsed+=dt;this.dampingWork+=dampingTorque*(this.pivot.getJointAngle()-dampingAngle);for(const a of drag){const q=a.body.getWorldCenter();this.dragWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y);}if(winding){const work=this.pivot.getMotorTorque(1/dt)*(this.pivot.getJointAngle()-oldRelativeAngle);this.windingWork+=work;if(work>=0)this.windingInput+=work;else this.windingBraking-=work;}for(const a of assist){const q=a.body.getWorldCenter();this.assistWork+=a.force.x*(q.x-a.before.x)+a.force.y*(q.y-a.before.y)+a.torque*(a.body.getAngle()-a.angle);}

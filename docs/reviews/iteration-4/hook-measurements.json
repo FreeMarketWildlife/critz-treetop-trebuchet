@@ -1,0 +1,644 @@
+{
+  "scope": "Finite open-ended channel and sliding bead: optional planar physical release experiment. Not a calibrated real ring-on-pin model.",
+  "protocol": {
+    "loadingStep": 0.0016666666666666668,
+    "loading": "600 gravity steps; grip torso COM; 600 steps target(-4.3,297); 1200 steps target(pouch.x,pouch.y+0.85); drop; 300 settling steps; require isLoaded; clone canonical snapshot; unlatch and observe at most 5 seconds.",
+    "units": "metres, seconds, kilograms; velocities are ragdoll center of mass at observed release. Each assembly changes its actual contact-loading history, so comparisons do not isolate release efficiency.",
+    "channel": "One shared geometry in every variant: angle3.4rad relative arm, length0.22m, inner width0.07m, bead diameter0.05m/mass0.04kg, friction0.03. Closed heel and two finite rails; open tip. No slot joint, motor, release force, body velocity assignment, release-time fixture disabling or joint deletion.",
+    "release": "Observe 0.01 seconds with no payload/cradle contact and center farther than0.7m from cradle. Hardware escape means bead center axial distance beyond channelLength+beadRadius; diagnostic only: rim ejection can occur before bead exit. Both straps and cradle persist.",
+    "timestep": "Loading always1/600; only launch timestep changes."
+  },
+  "sourceSHA256": {
+    "src/articulated.js": "fdce740ed84824f2c550ded7bf06a858d48d8155372e2d8ff4903e0609166575",
+    "src/hook-experiment.js": "613a3f2b81459eecf870a56738c5de16ade7252500017931158693a3a3889ca4",
+    "src/species.js": "156aaafe21f2b8203a9c1fce7dbda275c84266c73c4ed116d77a684934bbd35d"
+  },
+  "limitations": [
+    "Channel is a planar clevis abstraction rather than a closed3D ring.",
+    "Release hardware collides only with matching hardware; massless straps do not collide with bodies.",
+    "Rigid U cradle is retained; optional failed hinged-panel trials are recorded separately. Readiness uses the existing center-in-cradle envelope; it is not proof of settled load-bearing contact.",
+    "Weak and backward shots remain possible; no per-species or per-shot tuning.",
+    "Release detector observes later than exact last contact; it does not modify dynamics.",
+    "Finite solver timestep/contact loss remains; no calibrated-realism claim.",
+    "Baseline uses geometric ghost-cradle release and has different physical behavior."
+  ],
+  "variants": [
+    {
+      "species": "lizard",
+      "parameters": {},
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.0383333333334956,
+        "center": {
+          "x": 0.2656015996893908,
+          "y": 305.68642319196914,
+          "vx": 14.20980059176399,
+          "vy": 8.032902720958397,
+          "mass": 0.65
+        },
+        "speed": 16.32317245458361,
+        "energy": -938.3192170394627,
+        "hookOpen": false,
+        "forwardUpward": true
+      },
+      "cLink": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.9716666666669749,
+        "center": {
+          "x": 3.383717303458595,
+          "y": 305.596634773458,
+          "vx": 4.636554792739334,
+          "vy": 3.144546980215282,
+          "mass": 0.65
+        },
+        "speed": 5.602304530892187,
+        "energy": -1139.7085789285647,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8450000000001321,
+        "center": {
+          "x": -1.4950316939211232,
+          "y": 303.74846495658335,
+          "vx": 17.50336837254267,
+          "vy": 21.78257576582411,
+          "mass": 0.65
+        },
+        "speed": 27.943666748993316,
+        "energy": -790.6563338944184,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "turtle",
+      "parameters": {},
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8600000000001344,
+        "center": {
+          "x": -2.945406319043313,
+          "y": 301.0098563791692,
+          "vx": 0.3048840297448389,
+          "vy": 9.46335684711465,
+          "mass": 2.4
+        },
+        "speed": 9.468266847075297,
+        "energy": -850.7555206172165,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "cLink": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 4.243333333333997,
+        "center": {
+          "x": 1.283220181465625,
+          "y": 298.26594248582654,
+          "vx": 1.2544750503038673,
+          "vy": -3.212040680963357,
+          "mass": 2.4
+        },
+        "speed": 3.448320314007739,
+        "energy": -1595.824079125132,
+        "hookOpen": true,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.9966666666668225,
+        "center": {
+          "x": -1.729729694578536,
+          "y": 304.00882059405984,
+          "vx": 11.292071607068639,
+          "vy": 14.851672057364134,
+          "mass": 2.4
+        },
+        "speed": 18.65698378834736,
+        "energy": -872.7001499868675,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "armadillo",
+      "parameters": {},
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.9116666666668092,
+        "center": {
+          "x": -2.8970809745708683,
+          "y": 299.5419462766432,
+          "vx": -1.1194089209531182,
+          "vy": 4.987696669868614,
+          "mass": 5
+        },
+        "speed": 5.1117701829139275,
+        "energy": -909.0041013431952,
+        "hookOpen": true,
+        "forwardUpward": false
+      },
+      "cLink": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 4.998333333334115,
+        "center": {
+          "x": -0.4506807613560122,
+          "y": 300.49998322438944,
+          "vx": 1.1868116172768297,
+          "vy": 0.33424083710634345,
+          "mass": 5
+        },
+        "speed": 1.2329796235513357,
+        "energy": -1531.5535153131302,
+        "hookOpen": false,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.0716666666668342,
+        "center": {
+          "x": -2.7680519040327742,
+          "y": 302.3430055158174,
+          "vx": 3.967607411139445,
+          "vy": 12.254545378966613,
+          "mass": 5
+        },
+        "speed": 12.880830369742498,
+        "energy": -891.1461099153937,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "lizard",
+      "parameters": {
+        "counterMass": 150
+      },
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.7533333333334511,
+        "center": {
+          "x": -2.261345292780911,
+          "y": 302.7674368940113,
+          "vx": 4.085102812267246,
+          "vy": 18.22556517994266,
+          "mass": 0.65
+        },
+        "speed": 18.67777532564122,
+        "energy": -519.1659459131772,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "cLink": {
+        "loaded": true,
+        "released": false,
+        "launchTime": null,
+        "speed": null,
+        "energy": -7676.750294780773,
+        "hookOpen": true,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.7483333333334503,
+        "center": {
+          "x": -1.2490523233083608,
+          "y": 303.9437061899076,
+          "vx": 24.37156641364323,
+          "vy": 28.14914900181822,
+          "mass": 0.65
+        },
+        "speed": 37.23369225555245,
+        "energy": -521.7815302600335,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "lizard",
+      "parameters": {
+        "longArm": 2.6
+      },
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8383333333334644,
+        "center": {
+          "x": -1.3655928214905135,
+          "y": 302.363089420981,
+          "vx": 9.464720144750519,
+          "vy": 16.598233010718825,
+          "mass": 0.65
+        },
+        "speed": 19.107126065857273,
+        "energy": -704.9616547178264,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "cLink": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.8233333333336184,
+        "center": {
+          "x": -0.3286392501847031,
+          "y": 305.8032674144102,
+          "vx": 1.224922584839798,
+          "vy": 5.273938161330703,
+          "mass": 0.65
+        },
+        "speed": 5.414319815857841,
+        "energy": -1267.0180447324537,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8066666666667928,
+        "center": {
+          "x": -0.8610811307422924,
+          "y": 303.6627373228936,
+          "vx": 19.939196637877114,
+          "vy": 21.38937459797806,
+          "mass": 0.65
+        },
+        "speed": 29.241698108293217,
+        "energy": -691.7304198948029,
+        "forwardUpward": true
+      }
+    },
+    {
+      "species": "lizard",
+      "parameters": {
+        "longArm": 3.4
+      },
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8783333333334706,
+        "center": {
+          "x": -3.167621212284483,
+          "y": 301.89370494979545,
+          "vx": 0.027531219024415333,
+          "vy": 11.752645304597234,
+          "mass": 0.65
+        },
+        "speed": 11.752677551251562,
+        "energy": -817.9454246991071,
+        "hookOpen": true,
+        "forwardUpward": true
+      },
+      "cLink": {
+        "loaded": true,
+        "released": false,
+        "launchTime": null,
+        "speed": null,
+        "energy": -1091.7478555024388,
+        "hookOpen": false,
+        "forwardUpward": false
+      },
+      "baseline": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 0.8800000000001376,
+        "center": {
+          "x": -2.45808843921731,
+          "y": 303.5752371961752,
+          "vx": 13.668958919994546,
+          "vy": 22.612436663461544,
+          "mass": 0.65
+        },
+        "speed": 26.42276915494586,
+        "energy": -816.6728577713093,
+        "forwardUpward": true
+      }
+    }
+  ],
+  "timesteps": [
+    {
+      "dt": 0.0033333333333333335,
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.0399999999998855,
+        "center": {
+          "x": 0.3226909280319108,
+          "y": 305.64064703397514,
+          "vx": 14.630299771474437,
+          "vy": 7.35604517292947,
+          "mass": 0.65
+        },
+        "speed": 16.375502190448508,
+        "energy": -934.7030844061233,
+        "hookOpen": false,
+        "forwardUpward": true
+      }
+    },
+    {
+      "dt": 0.0016666666666666668,
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.0383333333334956,
+        "center": {
+          "x": 0.2656015996893908,
+          "y": 305.68642319196914,
+          "vx": 14.20980059176399,
+          "vy": 8.032902720958397,
+          "mass": 0.65
+        },
+        "speed": 16.32317245458361,
+        "energy": -938.3192170394627,
+        "hookOpen": false,
+        "forwardUpward": true
+      }
+    },
+    {
+      "dt": 0.0008333333333333334,
+      "channel": {
+        "loaded": true,
+        "released": true,
+        "launchTime": 1.0433333333334964,
+        "center": {
+          "x": 0.24600926544133372,
+          "y": 305.691023983538,
+          "vx": 13.971781894890796,
+          "vy": 8.422178835938599,
+          "mass": 0.65
+        },
+        "speed": 16.31391386709303,
+        "energy": -931.355487324449,
+        "hookOpen": false,
+        "forwardUpward": true
+      }
+    }
+  ],
+  "angleCheck": [
+    {
+      "hookAngle": 3.2,
+      "species": "lizard",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.8133333333334605,
+      "center": {
+        "x": -2.610814546768259,
+        "y": 301.8381709896248,
+        "vx": 2.0629150312014266,
+        "vy": 12.44063116495233,
+        "mass": 0.65
+      },
+      "speed": 12.61050840403907,
+      "energy": -769.7477767648984,
+      "hookOpen": true,
+      "forwardUpward": true
+    },
+    {
+      "hookAngle": 3.2,
+      "species": "turtle",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.7866666666667896,
+      "center": {
+        "x": -2.97408306833456,
+        "y": 299.8043708927708,
+        "vx": -0.524540497787051,
+        "vy": 7.040454134130922,
+        "mass": 2.4
+      },
+      "speed": 7.059967220081116,
+      "energy": -796.1122067276875,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "hookAngle": 3.2,
+      "species": "armadillo",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.7850000000001227,
+      "center": {
+        "x": -2.6734385217032104,
+        "y": 298.3109015455445,
+        "vx": -0.7981711920967693,
+        "vy": 3.31940072090337,
+        "mass": 5
+      },
+      "speed": 3.4140149967196964,
+      "energy": -873.6581754132708,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "hookAngle": 3.3,
+      "species": "lizard",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.8333333333334636,
+      "center": {
+        "x": -2.58973805869239,
+        "y": 302.1573621446021,
+        "vx": 1.8270177036932298,
+        "vy": 12.983269321037692,
+        "mass": 0.65
+      },
+      "speed": 13.111188960281483,
+      "energy": -780.8086009715918,
+      "hookOpen": true,
+      "forwardUpward": true
+    },
+    {
+      "hookAngle": 3.3,
+      "species": "turtle",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.8116666666667935,
+      "center": {
+        "x": -2.9863388793460572,
+        "y": 300.12685038828295,
+        "vx": -0.4330382510732305,
+        "vy": 7.478090319527452,
+        "mass": 2.4
+      },
+      "speed": 7.490617928709403,
+      "energy": -810.132508293175,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "hookAngle": 3.3,
+      "species": "armadillo",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.8366666666667975,
+      "center": {
+        "x": -2.7819300038796952,
+        "y": 298.78043248416105,
+        "vx": -0.9391150059470039,
+        "vy": 4.039898420730401,
+        "mass": 5
+      },
+      "speed": 4.1476157300568275,
+      "energy": -882.3532703790925,
+      "hookOpen": true,
+      "forwardUpward": false
+    },
+    {
+      "hookAngle": 3.4,
+      "species": "lizard",
+      "loaded": true,
+      "released": true,
+      "launchTime": 1.0383333333334956,
+      "center": {
+        "x": 0.2656015996893908,
+        "y": 305.68642319196914,
+        "vx": 14.20980059176399,
+        "vy": 8.032902720958397,
+        "mass": 0.65
+      },
+      "speed": 16.32317245458361,
+      "energy": -938.3192170394627,
+      "hookOpen": false,
+      "forwardUpward": true
+    },
+    {
+      "hookAngle": 3.4,
+      "species": "turtle",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.8600000000001344,
+      "center": {
+        "x": -2.945406319043313,
+        "y": 301.0098563791692,
+        "vx": 0.3048840297448389,
+        "vy": 9.46335684711465,
+        "mass": 2.4
+      },
+      "speed": 9.468266847075297,
+      "energy": -850.7555206172165,
+      "hookOpen": true,
+      "forwardUpward": true
+    },
+    {
+      "hookAngle": 3.4,
+      "species": "armadillo",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.9116666666668092,
+      "center": {
+        "x": -2.8970809745708683,
+        "y": 299.5419462766432,
+        "vx": -1.1194089209531182,
+        "vy": 4.987696669868614,
+        "mass": 5
+      },
+      "speed": 5.1117701829139275,
+      "energy": -909.0041013431952,
+      "hookOpen": true,
+      "forwardUpward": false
+    }
+  ],
+  "splitPouchCheck": [
+    {
+      "channelLength": 0.12,
+      "species": "lizard",
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.12,
+      "species": "turtle",
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.12,
+      "species": "armadillo",
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.22,
+      "species": "lizard",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.13000000000002032,
+      "center": {
+        "x": -2.3906046774755456,
+        "y": 295.5194391085512,
+        "vx": -2.249263737018509,
+        "vy": -2.1321606186655466,
+        "mass": 0.65
+      },
+      "speed": 3.0992412397963975,
+      "energy": -663.7730578158197,
+      "hookOpen": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.22,
+      "species": "turtle",
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.22,
+      "species": "armadillo",
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.3,
+      "species": "lizard",
+      "loaded": true,
+      "released": true,
+      "launchTime": 0.010000000000001563,
+      "center": {
+        "x": -1.4739005071160833,
+        "y": 295.7408479106691,
+        "vx": -0.06964477161314053,
+        "vy": -2.8699569568480827,
+        "mass": 0.65
+      },
+      "speed": 2.8708018615665125,
+      "energy": -661.0019542654579,
+      "hookOpen": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.3,
+      "species": "turtle",
+      "loaded": false,
+      "forwardUpward": false
+    },
+    {
+      "channelLength": 0.3,
+      "species": "armadillo",
+      "loaded": false,
+      "forwardUpward": false
+    }
+  ],
+  "failedHingedPouch": {
+    "loaded": true,
+    "released": true,
+    "launchTime": 2.2583333333336864,
+    "center": {
+      "x": -0.6992266221490052,
+      "y": 305.90403775406486,
+      "vx": -2.7721057528103468,
+      "vy": -0.4596096124780299,
+      "mass": 0.65
+    },
+    "speed": 2.8099486295387006,
+    "energy": -1404.4833748395754,
+    "hookOpen": true,
+    "forwardUpward": false
+  }
+}

@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {CritterScene,cockedConfig} from '../src/articulated.js';
+import {CritterScene,cockedConfig,gripParameters} from '../src/articulated.js';
 import {profiles} from '../src/species.js';
 function physicalLoad(s){for(let i=0;i<600;i++)s.step();const root=s.parts.find(b=>b.getUserData().id==='torso')??s.parts[0];
  assert.ok(s.grab(root.getWorldCenter()));for(let i=0;i<600;i++){s.move({x:-4.3,y:297});s.step();}
@@ -84,4 +84,23 @@ test('axle damping reacts on frame and uses relative angular motion',()=>{
  const s=new CritterScene({armDamping:3}),jointSpeed=.7;
  s.arm.setAngularVelocity(jointSpeed);s.frame.setAngularVelocity(jointSpeed);
  s.step();assert.ok(Math.abs(s.dampingWork)<1e-12,'rigid co-rotation should not incur axle work');
+});
+
+test('heavy armadillo physically loads and settles with mass-aware finite hand effort',()=>{
+ const s=physicalLoad(new CritterScene({},'armadillo'));assert.ok(s.isLoaded());assert.equal(gripParameters(s.center().mass).maxForce,300);
+ assert.ok(s.handWork>0);assert.equal(s.hand,null);
+ for(let i=0;i<600;i++)s.step();assert.ok(s.isLoaded());assert.ok(Math.hypot(s.center().vx,s.center().vy)<.2);
+ const predicted=s.predict();assert.ok(predicted.release);const actual=s.clone();actual.unlatch();for(let i=0;i<3000&&!actual.release;i++)actual.step();assert.deepEqual(actual.release,predicted.release);
+});
+test('heavy payload release converges from identical loaded snapshots across hardware',()=>{
+ for(const hardware of [{},{counterMass:150},{longArm:3.4}]){
+  const loaded=physicalLoad(new CritterScene(hardware,'armadillo'));for(let i=0;i<600;i++)loaded.step();const saved=loaded.snapshot(),releases=[];
+  for(const hz of [300,600,1200]){const s=new CritterScene(loaded.p,'armadillo',saved);s.unlatch();for(let i=0;i<hz*5&&!s.release;i++)s.step(1/hz);assert.ok(s.release);assert.ok(s.release.center.vx>0&&s.release.center.vy>0);releases.push(s.release.center);}
+  assert.ok(Math.hypot(releases[2].vx-releases[1].vx,releases[2].vy-releases[1].vy)<.25);
+ }
+});
+test('articulated squirrel recovers launch tumble through passive torso forces and torque',()=>{
+ const loaded=physicalLoad(new CritterScene({},'flying-squirrel')),s=loaded.clone();s.unlatch();for(let i=0;i<3000&&!s.release;i++)s.step();assert.ok(s.release);
+ const torso=s.parts.find(b=>b.getUserData().id==='torso'),initial=Math.abs(torso.getAngularVelocity());assert.ok(initial>1);
+ for(let i=0;i<6000;i++)s.step();assert.ok(Math.abs(torso.getAngularVelocity())<initial*.1);assert.ok(s.assistWork<0);assert.ok(s.center().y< s.release.center.y);
 });

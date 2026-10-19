@@ -36,7 +36,8 @@ test('C-link geometry has overlapping solid beads, initial peg clearance and a r
  assert.throws(()=>new PhysicalHookScene({hookAttachmentAngle:180}),/solid C-link/);
 });
 test('contact release tagging preserves solver velocities and all physical fixtures',()=>{
- const scene=forceLoad(new PhysicalHookScene());scene.unlatch();let previous=null;
+ for(const overrides of[{}, {releaseHardware:'channel'}]){
+ const scene=forceLoad(new PhysicalHookScene(overrides));scene.unlatch();let previous=null;
  for(let i=0;i<3000&&!scene.release;i++){previous=scene.snapshot();scene.step();}
  assert.ok(scene.release);const reference=new PhysicalHookScene(scene.p,scene.rig.id,previous);
  // Run identical dynamics with only the observational release detector omitted.
@@ -44,8 +45,37 @@ test('contact release tagging preserves solver velocities and all physical fixtu
  for(const key of Object.keys(scene.center()))assert.ok(Math.abs(scene.center()[key]-reference.center()[key])<1e-9);assert.equal(scene.ropes.length,2);
  for(let i=0;i<scene.parts.length;i++){const a=scene.parts[i].getLinearVelocity(),b=reference.parts[i].getLinearVelocity();assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<1e-9);assert.ok(Math.abs(scene.parts[i].getAngularVelocity()-reference.parts[i].getAngularVelocity())<1e-9);}
  for(let f=scene.pouch.getFixtureList();f;f=f.getNext())assert.notEqual(f.getFilterMaskBits(),0);
+ }
 });
 test('contact hook prediction clones the complete loaded state and matches equivalent launch',()=>{
  const live=forceLoad(new PhysicalHookScene()),before=live.snapshot(),hint=live.predict();assert.deepEqual(live.snapshot(),before);assert.ok(hint.release);assert.ok(hint.points.length>1);
  const actual=live.clone();actual.unlatch();for(let i=0;i<3000&&!actual.release;i++)actual.step();assert.deepEqual(actual.release,hint.release);
+});
+
+test('finite channel releases force-loaded masses without deleting its material or straps',()=>{
+ for(const species of['lizard','turtle','armadillo']){
+  const scene=forceLoad(new PhysicalHookScene({releaseHardware:'channel'},species));scene.unlatch();
+  for(let i=0;i<3000&&!scene.release;i++)scene.step();assert.ok(scene.release,`${species} release`);assert.equal(scene.ropes.length,2);
+  assert.equal(scene.link.getUserData().id,'channel-bead');assert.ok(Object.values(scene.release.center).every(Number.isFinite));
+  if(species==='lizard'){assert.ok(scene.release.center.vx>10);assert.ok(scene.release.center.vy>5);}
+  for(let f=scene.pouch.getFixtureList();f;f=f.getNext())assert.notEqual(f.getFilterMaskBits(),0);
+ }
+});
+test('channel launch converges across substeps and prediction preserves its exact loaded state',()=>{
+ const scene=forceLoad(new PhysicalHookScene({releaseHardware:'channel'})),saved=scene.snapshot(),hint=scene.predict();assert.deepEqual(scene.snapshot(),saved);assert.ok(hint.release);
+ const results=[];for(const dt of[1/600,1/1200]){const live=scene.clone();live.unlatch();for(let i=0;i<5/dt&&!live.release;i++)live.step(dt);assert.ok(live.release);results.push(live.release);}
+ assert.deepEqual(results[0],hint.release);const a=results[0].center,b=results[1].center;
+ assert.ok(Math.abs(results[0].time-results[1].time)<.01);assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.6);
+ assert.ok(Math.abs(Math.hypot(a.vx,a.vy)-Math.hypot(b.vx,b.vy))<.1);
+});
+
+test('channel exit diagnostic uses actual axial mouth position for each channel length',()=>{
+ for(const channelLength of[.12,.4]){
+  const scene=new PhysicalHookScene({releaseHardware:'channel',channelLength}),data=scene.link.getUserData();
+  const place=axial=>scene.link.setPosition(scene.arm.getWorldPoint({x:data.pegLocal.x+axial*Math.cos(data.channelAlpha),y:data.pegLocal.y+axial*Math.sin(data.channelAlpha)}));
+  place(channelLength-.01);assert.equal(scene.hardwareHasEscaped(),false);
+  place(channelLength+data.beadRadius+.001);assert.equal(scene.hardwareHasEscaped(),true);
+  place(-.4);assert.equal(scene.hardwareHasEscaped(),false);
+  const clone=scene.clone();assert.equal(clone.link.getUserData().channelLength,channelLength);
+ }
 });

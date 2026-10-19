@@ -1,0 +1,280 @@
+{
+  "canonicalLaunchFromIdenticalSnapshots": [
+    {
+      "hz": 300,
+      "longArm": 3,
+      "counterMass": 100,
+      "release": {
+        "x": -2.544691558498483,
+        "y": 302.56203079875695,
+        "vx": 4.7985479709421135,
+        "vy": 12.056900889652283,
+        "mass": 5
+      },
+      "energyChangeJ": -61.533983104530535
+    },
+    {
+      "hz": 600,
+      "longArm": 3,
+      "counterMass": 100,
+      "release": {
+        "x": -2.546401934462394,
+        "y": 302.56589092099233,
+        "vx": 4.929018702469608,
+        "vy": 12.171256281492486,
+        "mass": 5
+      },
+      "energyChangeJ": -54.91784700842152
+    },
+    {
+      "hz": 1200,
+      "longArm": 3,
+      "counterMass": 100,
+      "release": {
+        "x": -2.550902966223726,
+        "y": 302.5487773337367,
+        "vx": 4.957644475539304,
+        "vy": 12.307008529683644,
+        "mass": 5
+      },
+      "energyChangeJ": -50.585443707014406
+    },
+    {
+      "hz": 300,
+      "longArm": 3,
+      "counterMass": 150,
+      "release": {
+        "x": -2.541285401011692,
+        "y": 302.33635323612805,
+        "vx": 4.471822893540276,
+        "vy": 15.737638927254192,
+        "mass": 5
+      },
+      "energyChangeJ": -234.21085883680473
+    },
+    {
+      "hz": 600,
+      "longArm": 3,
+      "counterMass": 150,
+      "release": {
+        "x": -2.5490005936114484,
+        "y": 302.3348099605961,
+        "vx": 4.5234416874421655,
+        "vy": 15.85958756301648,
+        "mass": 5
+      },
+      "energyChangeJ": -223.73621647833818
+    },
+    {
+      "hz": 1200,
+      "longArm": 3,
+      "counterMass": 150,
+      "release": {
+        "x": -2.5585251738313035,
+        "y": 302.32674001182403,
+        "vx": 4.536591810149784,
+        "vy": 15.932213667298551,
+        "mass": 5
+      },
+      "energyChangeJ": -217.74450813184535
+    },
+    {
+      "hz": 300,
+      "longArm": 3.4,
+      "counterMass": 100,
+      "release": {
+        "x": -2.5040186361638868,
+        "y": 303.82699045896806,
+        "vx": 7.401953624174714,
+        "vy": 11.206300834260086,
+        "mass": 5
+      },
+      "energyChangeJ": -25.18540199589063
+    },
+    {
+      "hz": 600,
+      "longArm": 3.4,
+      "counterMass": 100,
+      "release": {
+        "x": -2.5187109833626034,
+        "y": 303.78979827703927,
+        "vx": 7.4773755632625765,
+        "vy": 11.494517720321703,
+        "mass": 5
+      },
+      "energyChangeJ": -17.141612151284903
+    },
+    {
+      "hz": 1200,
+      "longArm": 3.4,
+      "counterMass": 100,
+      "release": {
+        "x": -2.5339412939844754,
+        "y": 303.7716498876308,
+        "vx": 7.4737736232047975,
+        "vy": 11.615237327018937,
+        "mass": 5
+      },
+      "energyChangeJ": -13.586398983341383
+    }
+  ],
+  "scope": "Physical armadillo loading with identical timed finite-force target recipe, no pose assignment; hardware configs and timesteps varied. No claim of calibrated real-world forces.",
+  "rows": [
+    {
+      "hz": 300,
+      "hardware": {},
+      "loaded": true,
+      "settledSpeed": 0.165967567715345,
+      "handLimitN": 300,
+      "handWorkJ": 66.46372160051432,
+      "release": {
+        "x": -2.4358802538913435,
+        "y": 302.99286188720356,
+        "vx": 5.448975433439739,
+        "vy": 11.571706518597676,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -59.474814464900874
+    },
+    {
+      "hz": 300,
+      "hardware": {
+        "counterMass": 150
+      },
+      "loaded": true,
+      "settledSpeed": 0.16757891552134246,
+      "handLimitN": 300,
+      "handWorkJ": 66.51503274001175,
+      "release": {
+        "x": -2.4297247967191615,
+        "y": 302.7761774235966,
+        "vx": 5.231968488708338,
+        "vy": 15.764731672547995,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -221.63006393840146
+    },
+    {
+      "hz": 300,
+      "hardware": {
+        "longArm": 3.4
+      },
+      "loaded": true,
+      "settledSpeed": 0.15050413181170166,
+      "handLimitN": 300,
+      "handWorkJ": 53.675423219561274,
+      "release": {
+        "x": -2.700820078748657,
+        "y": 303.61694949516647,
+        "vx": 6.9347480689838505,
+        "vy": 11.634447732541261,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -21.69410825289333
+    },
+    {
+      "hz": 600,
+      "hardware": {},
+      "loaded": true,
+      "settledSpeed": 0.13182288786072285,
+      "handLimitN": 300,
+      "handWorkJ": 63.47837143267583,
+      "release": {
+        "x": -2.5466643666698636,
+        "y": 302.56507444592677,
+        "vx": 4.925634361055323,
+        "vy": 12.171053400278282,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -54.912493847020755
+    },
+    {
+      "hz": 600,
+      "hardware": {
+        "counterMass": 150
+      },
+      "loaded": true,
+      "settledSpeed": 0.1275441740053718,
+      "handLimitN": 300,
+      "handWorkJ": 63.535563566586234,
+      "release": {
+        "x": -2.549482573021142,
+        "y": 302.33311933964603,
+        "vx": 4.518317623425911,
+        "vy": 15.85806879701751,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -223.72180330935487
+    },
+    {
+      "hz": 600,
+      "hardware": {
+        "longArm": 3.4
+      },
+      "loaded": true,
+      "settledSpeed": 0.024122990019781243,
+      "handLimitN": 300,
+      "handWorkJ": 50.99584396136206,
+      "release": {
+        "x": -2.5189177086104806,
+        "y": 303.7895081888463,
+        "vx": 7.476735389981118,
+        "vy": 11.494555420519577,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -17.12428108383665
+    },
+    {
+      "hz": 1200,
+      "hardware": {},
+      "loaded": true,
+      "settledSpeed": 0.1732566747832928,
+      "handLimitN": 300,
+      "handWorkJ": 60.548513288308236,
+      "release": {
+        "x": -2.4100757385219422,
+        "y": 302.9753702647804,
+        "vx": 5.968479031307856,
+        "vy": 11.8936210846869,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -53.88990601790738
+    },
+    {
+      "hz": 1200,
+      "hardware": {
+        "counterMass": 150
+      },
+      "loaded": true,
+      "settledSpeed": 0.1848410901941848,
+      "handLimitN": 300,
+      "handWorkJ": 60.564416501185114,
+      "release": {
+        "x": -2.459910232844203,
+        "y": 302.762068654736,
+        "vx": 5.341559200489014,
+        "vy": 15.845134560867734,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -220.02477728673387
+    },
+    {
+      "hz": 1200,
+      "hardware": {
+        "longArm": 3.4
+      },
+      "loaded": true,
+      "settledSpeed": 0.07712634254358136,
+      "handLimitN": 300,
+      "handWorkJ": 48.46590370949671,
+      "release": {
+        "x": -2.9977939934318134,
+        "y": 303.2155846074842,
+        "vx": 5.881464385641779,
+        "vy": 12.305822740905606,
+        "mass": 5
+      },
+      "launchEnergyChangeJ": -8.459066201754354
+    }
+  ]
+}
