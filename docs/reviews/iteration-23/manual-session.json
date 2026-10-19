@@ -1,0 +1,100 @@
+{
+  "protocol": "Actual browser controls, fresh memory-only localhost:8080 sessions; no hidden state, economy, pose or velocity injection. Rounded distances and exact rewards read from visible UI. Main four-run page loaded pickup/render changes before final near-button/no-torso refinement; final latest-source action tested separately. Existing persistent saves untouched. Screenshots observed, not exported.",
+  "mainTab": "1219045149",
+  "saveEnabled": false,
+  "runs": [
+    {
+      "species": "salamander",
+      "counterKg": 140,
+      "slingM": 2.5,
+      "metresRounded": 137,
+      "bounces": 9,
+      "angleDeg": 59.8,
+      "launchSpeedMps": 14.9,
+      "points": 1594,
+      "bells": 23
+    },
+    {
+      "species": "chipmunk",
+      "counterKg": 140,
+      "slingM": 2.5,
+      "metresRounded": 112,
+      "bounces": 9,
+      "angleDeg": 62.8,
+      "launchSpeedMps": 16.4,
+      "points": 1345,
+      "bells": 23
+    },
+    {
+      "species": "snake",
+      "counterKg": 180,
+      "slingM": 2.5,
+      "metresRounded": 108,
+      "bounces": 8,
+      "angleDeg": 70.1,
+      "launchSpeedMps": 16.6,
+      "points": 1282,
+      "bells": 21
+    },
+    {
+      "species": "lizard",
+      "counterKg": 180,
+      "slingM": 2.9,
+      "metresRounded": 94,
+      "bounces": 7,
+      "angleDeg": 58.7,
+      "launchSpeedMps": 20.1,
+      "points": 1111,
+      "bells": 19
+    }
+  ],
+  "purchases": [
+    {
+      "item": "counterweight-heavy",
+      "bells": 30,
+      "afterRun": 2
+    },
+    {
+      "item": "sling-long",
+      "bells": 35,
+      "afterRun": 3
+    }
+  ],
+  "final": {
+    "points": 5332,
+    "bells": 21,
+    "owned": [
+      "counterweight-heavy",
+      "sling-long"
+    ],
+    "freeGearToggles": 4,
+    "repeatedResetsPreserveWalletAndQueue": true,
+    "idleSpecies": "lizard"
+  },
+  "latestSourceTab": "1219045156",
+  "latestSourceActionCheck": {
+    "species": "small-marsupial",
+    "displayName": "Pygmy possum",
+    "metresRounded": 102,
+    "bounces": 7,
+    "angleDeg": 56.4,
+    "launchSpeedMps": 15.9,
+    "points": 1199,
+    "bells": 19,
+    "nearPickupOutsideBodySucceeded": true,
+    "nearButtonDisabledWhileHeldAndEnabledAfterContact": true,
+    "nearButtonLaunchObserved": true,
+    "saveEnabled": false,
+    "finalIdle": true
+  },
+  "sampledBrowserRuntime": {
+    "scope": "Main chipmunk resting flight, rolling last240frames, not deviceFPS",
+    "frameCpuP95Ms": 2.8,
+    "frameCpuMaxMs": 3.5,
+    "engineP95Ms": 2.5,
+    "drawP95Ms": 0.3,
+    "rafP95Ms": 9.9,
+    "rafMaxMs": 10.4
+  },
+  "audio": "AudioContext active; wind/unlatch/shop playback scheduled. No supported listening/capture path; audible quality unverified."
+}

@@ -1,6 +1,14 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 22
+## CURRENT implementation: iteration 23
+
+Read docs/reviews/iteration-23/findings.md + manual-session.json. UI44CSSpx pickup fallback after normal part grabs, at real torso/middle center with pointer offset; forces/colliders/physics unchanged. Nearby Unlatch calls same gated action below canvas; steering shown only in flight. Original bounded soil/leaf trim clipped below true contact line, actors foreground, reduced motion suppresses rings.195tests pass; fresh35numerical parity22 and132soakfullrows parity21 (126release/6miss),258worlds0retained12GCchecks,p952.5973/max8.248ms,44m56s sim. Steppingexperimental.
+
+Actual new-art/pickup390portrait main4runs salamander137m9bounce1594/23,chipmunk112m9bounce1345/23→buycounter30,snake108m8bounce1282/21→buysling35,lizard94m7bounce1111/19. Final5332points21bellsownedcounter180+slinglong;4freeswaps/2resetsunchanged, idleLizard,nextSnake/Turtle/Possum,SaveOFF tab1219045149. Mainpage predates final nearbutton/segmentedhelper refinement; latestsource separately tinyPossum nearpickup+nearUnlatch→102m7bounce1199/19→bankresetSaveOFFidle tab1219045156. Initial22baseline2runs2435/32 idle tab1219045146. Allpreserved,storedsavesuntouched,normalviewportsrestored,consoleclean. Controlledactualground/canopyfixture1impact .132s pause confirms trim/ring/reduced (synthetic initialcanopytranslation, no rewards), notnaturalcanopylanding.
+
+WarmbrowserCPU2.8/3.5ms draw.3, noFPSclaim; audioContextactivebutno supportedlistening/capture, audible/human/device/screenreaderchecksUNVERIFIED. NEXT directhuman/deviceportraitplay, naturalcanopylandings/all-specieshandling and satisfaction; no unrelatedinfrastructure. Localonly/no push/deploy/unlock/exportretry. Earlier22andbelowhistory.
+
+## Historical implementation: iteration 22
 
 Read docs/reviews/iteration-22/findings.md. Production saves/choice/restore now use exclusive WebLocks + captured raw/revision token (ABA-safe), queued autosaves/cancel epochs/current-economy guards. Cross-tab event pauses local autosave and exposes Keep session/Use saved version; alternate retained, no branch merging. Blocked/quota/no-safe-lock environments keep play in memory. Existing v1 saves preserved. Browser two-tab synthetic conflict/choice/reload checked; actual earned1723points/8bells counter180 Remove→Equip→reload unchanged. Portrait shop descriptions now spell real tradeoffs/slot replacement and disabled text remains readable. Viewport reset, olderQA tabs preserved, consoleclean.
 

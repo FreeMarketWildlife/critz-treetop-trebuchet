@@ -223,3 +223,8 @@ See [continuous approach and recovery findings](reviews/iteration-21/findings.md
 ## Iteration 22 review
 
 See [coordinated saves and longer progression](reviews/iteration-22/findings.md): exclusive save coordination with explicit branch choices, failure-safe session play, readable equipment tradeoffs, 190 passing tests and a 264-attempt earned progression soak. Existing saves stay compatible; reload older builds before using multiple saving tabs.
+
+
+## Iteration 23 review
+
+See [portrait loading and contact readability](reviews/iteration-23/findings.md): larger CSS pickup targets, Unlatch beside the view, bounded original soil/leaf trim, a four-run earned-upgrade review and 195 passing tests. Existing stored saves remain untouched; actual-device and audible quality still need direct testing.
