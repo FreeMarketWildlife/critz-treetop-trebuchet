@@ -3,7 +3,7 @@ import {load,waitForContact} from './measure-hook.js';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
-const hash=x=>createHash('sha256').update(x).digest('hex'),sources=['src/articulated.js','src/hook-experiment.js','src/species.js','src/physics.js'],rows=[];
+const hash=x=>createHash('sha256').update(x).digest('hex'),sources=['src/articulated.js','src/hook-experiment.js','src/species.js','src/physics.js','src/world.js'],rows=[];
 const work=s=>s.handWork+s.windingWork+s.assistWork+s.dampingWork+s.dragWork+s.spawnEnergy-s.despawnEnergy;
 for(const species of ['mouse','salamander','tiny-primate']){
  let scene=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,mechanicalWinding:true,initialArm:-3},species);
@@ -24,5 +24,5 @@ for(const species of ['mouse','salamander','tiny-primate']){
   frameMs.sort((a,b)=>a-b);rows.push({frameBudgetMs:4,frameP95Ms:frameMs[Math.floor(frameMs.length*.95)],frameMaxMs:Math.max(...frameMs),frameBudgetOverruns:frameMs.filter(x=>x>4).length,frameSamples:frameMs.length,species,adaptive,collisionStepHz:collisionStepHz??1200,integrationSteps,snapshotSHA256,initialCenter:scene.center(),dt,velocity,position,firstImpact,maxAnchor,maxAngular,worstAnchor,worstAngular,maxEnergyResidual,nonfinite,wallMilliseconds:performance.now()-start});
  }
 }
-mkdirSync('docs/reviews/iteration-10',{recursive:true});writeFileSync('docs/reviews/iteration-10/impact.json',JSON.stringify({protocol:'Three naturally launched rigs; canonical identical snapshot per species at descending COM below3m; one second through ground contact; no encounters or controls. Only timestep and solver iterations vary. All world bodies contribute energy; joint maxima restrict to articulated part joints. Diagnostic rather than calibrated tolerance.',sourceSHA256:Object.fromEntries(sources.map(p=>[p,hash(readFileSync(p))])),rows},null,2)+'\n');
+mkdirSync('docs/reviews/iteration-11',{recursive:true});writeFileSync('docs/reviews/iteration-11/impact.json',JSON.stringify({protocol:'Three naturally launched rigs; canonical identical snapshot per species at descending COM below3m; one second through ground contact; no encounters or controls. Only outer timestep, collision-region refinement and solver iterations vary. All world bodies contribute energy; joint maxima restrict to articulated part joints. Diagnostic rather than calibrated tolerance.',sourceSHA256:Object.fromEntries(sources.map(p=>[p,hash(readFileSync(p))])),rows},null,2)+'\n');
 console.table(rows.map(({species,dt,velocity,position,adaptive,integrationSteps,maxAnchor,maxAngular,maxEnergyResidual,nonfinite})=>({species,hz:Math.round(1/dt),velocity,position,adaptive,integrationSteps,maxAnchor,maxAngular,maxEnergyResidual,nonfinite})));
