@@ -1,0 +1,74 @@
+{
+  "baseline": "4b73925",
+  "tests": {
+    "pass": 239,
+    "fail": 0
+  },
+  "publicSyncAuthorizationResolved": true,
+  "parity": {
+    "natural": {
+      "attempts": 33,
+      "releases": 24,
+      "allRowsExactBaseline": true,
+      "allRowsExactBeforeAllocationOptimization": true,
+      "sourcesChanged": false,
+      "meaningfulBackwardCases": [
+        1,
+        18,
+        29,
+        31
+      ]
+    },
+    "holdout": {
+      "attempts": 11,
+      "releases": 11,
+      "allRowsExactBaseline": true,
+      "allRowsExactBeforeAllocationOptimization": true,
+      "sourcesChanged": false,
+      "meaningfulBackwardCases": [
+        18,
+        19
+      ]
+    },
+    "sling": {
+      "attempts": 22,
+      "releases": 22,
+      "allRowsExactBaseline": true,
+      "allRowsExactBeforeAllocationOptimization": true,
+      "sourcesChanged": false,
+      "meaningfulBackwardCases": [
+        0,
+        2,
+        6,
+        7,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20
+      ]
+    }
+  },
+  "runtime": [
+    {
+      "name": "canopy",
+      "medianOldMs": 22.084666999999968,
+      "medianCurrentMs": 22.110415999999987,
+      "ratio": 1.0011659220399391
+    },
+    {
+      "name": "rig",
+      "medianOldMs": 13.429583000000093,
+      "medianCurrentMs": 13.182792000000063,
+      "ratio": 0.9816233311190654
+    },
+    {
+      "name": "vine",
+      "medianOldMs": 23.57441599999993,
+      "medianCurrentMs": 23.553499999999985,
+      "ratio": 0.9991127669928306
+    }
+  ],
+  "canonicalFinalCentersExact": true
+}

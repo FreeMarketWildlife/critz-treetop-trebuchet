@@ -151,3 +151,9 @@ test('fixed canopy fixtures are constructed after release without moving bodies,
  s.phase='flight';s.release={time:s.elapsed,center:s.center()};s.installRouteTerrain();assert.equal(JSON.stringify(s.parts.map(b=>({p:b.getPosition(),v:b.getLinearVelocity(),a:b.getAngle()}))),before);assert.equal(s.energy(),energy);const bodies=s.world.getBodyCount();s.installRouteTerrain();assert.equal(s.world.getBodyCount(),bodies);
  const clone=s.clone();assert.equal(clone.routeTerrainReady,true);clone.installRouteTerrain();assert.equal(clone.world.getBodyCount(),bodies);let fixtures=0;for(let b=clone.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.id==='canopy-route')for(let f=b.getFixtureList();f;f=f.getNext())fixtures++;assert.equal(fixtures,7);
 });
+
+test('a fast rotating long tail triggers refinement before its tip sweeps into the floor',()=>{
+ const s=new CritterScene({collisionSubsteps:true,collisionStepHz:2400,fastCollisionStepHz:4800},'tiny-primate');s.phase='flight';for(const b of s.parts){b.setPosition({x:500,y:50});b.setLinearVelocity({x:0,y:0});b.setAngularVelocity(0);}const tail=s.parts.find(b=>b.getUserData().id==='tail');tail.setTransform({x:500,y:.22},0);tail.setAngularVelocity(-900);
+ // Existing actual tail:0.50m capsule,0.03m radius. Its endcap sweeps below y=0 in1/600s.
+ assert.ok(.22-.22*Math.sin(900/600)-.03<0);const before=JSON.stringify(s.snapshot());assert.equal(s.collisionRegion(1/600),true);assert.equal(JSON.stringify(s.snapshot()),before);tail.setPosition({x:500,y:10});assert.equal(s.collisionRegion(1/600),false);s.phase='loading';assert.equal(s.collisionRegion(1/600),false);
+});

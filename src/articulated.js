@@ -131,8 +131,11 @@ export class CritterScene {
   if(this.phase!=='flight')return false;
   const obstacles=[...layout.bumpers,...[...this.enemies.values()].map(e=>({x:e.getPosition().x,y:e.getPosition().y,radius:e.getUserData()?.radius??e.getFixtureList().getShape().getRadius(),speed:e.getLinearVelocity().length()}))],enemySpeed=Math.max(0,...obstacles.map(o=>o.speed??0));
   for(const b of this.parts){const v=b.getLinearVelocity(),speed=Math.hypot(v.x,v.y),spin=Math.abs(b.getAngularVelocity());if(speed<3&&spin<10&&enemySpeed<3)continue;
-   const pad=.15+(speed+enemySpeed)*dt;
+   const center=b.getWorldCenter();
    for(let f=b.getFixtureList();f;f=f.getNext()){const a=f.getAABB(0),lo=a.lowerBound,hi=a.upperBound;
+    // The old0.15m safety margin already covers ordinary spin. Enlarge it only
+    // when a fixture's angular sweep can exceed that margin before the next step.
+    const radius=Math.hypot(Math.max(Math.abs(lo.x-center.x),Math.abs(hi.x-center.x)),Math.max(Math.abs(lo.y-center.y),Math.abs(hi.y-center.y))),rotation=radius*Math.min(2,spin*dt),pad=Math.max(.15,rotation)+(speed+enemySpeed)*dt;
     // The loading shelf is also a real arrival surface when a poor throw
     // returns toward the rig. Its centre/half-extents match construction above.
     if(hi.x+pad>=-5.1&&lo.x-pad<=-3.5&&hi.y+pad>=this.p.pivotHeight-4.54&&lo.y-pad<=this.p.pivotHeight-4.46)return true;

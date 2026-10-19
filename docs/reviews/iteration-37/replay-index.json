@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Natural canopy \u2014 live contact refinement",
+    "file": "../iteration-35/canopy-incoming.json",
+    "seconds": 0.5
+  },
+  {
+    "label": "Natural rig recollision",
+    "file": "../iteration-35/rig-incoming.json",
+    "seconds": 0.5
+  }
+]
