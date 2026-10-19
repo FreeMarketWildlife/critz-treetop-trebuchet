@@ -1,0 +1,303 @@
+{
+  "seedBase": 29000,
+  "mediumOnly": false,
+  "durationSeconds": 16,
+  "selectedCase": 17,
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;16seconds after actual release;seedBase+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "b7cbb91c717b7e2b9a0141b8e1f73cb0ea0626db4e4284ee9b5dfee070149e90",
+    "src/encounter-body.js": "e56c422a87760cdf147bc7a56dd6eb9c0c7b8992701d55948c40bd5bdc0a72ad",
+    "src/articulated.js": "5896235558bf9849bbb782f6521da8904963af4a719cdf3ddb6e5a81f5c0a59c",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58",
+    "src/fixed-obstacles.js": "25e43a1097736c7bc47f8090ee660a74aa7b6dc69242585ea02238dec170a101"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 17,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "seed": 29017,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 10.400000000000812,
+        "openSky": 5.600000000000062
+      },
+      "births": {
+        "leaf hopper": 31,
+        "round beetle": 17,
+        "puffy moth": 6,
+        "round bird": 9
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:3:3:14",
+          "kind": "leaf hopper",
+          "birthBiome": "grandfatherTree",
+          "time": 7.808333333333334,
+          "position": {
+            "x": 68.70271557517096,
+            "y": 272.2716296674242,
+            "vx": 5.831675814568881,
+            "vy": -6.295993263080888,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "grandfatherTree:4:3:15",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 9.646666666666667,
+          "position": {
+            "x": 79.98441091729266,
+            "y": 257.01776815918146,
+            "vx": 6.092897991446522,
+            "vy": -16.446807251868666,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "openSky:10:10:25",
+          "kind": "round bird",
+          "birthBiome": "openSky",
+          "time": 13.683333333333334,
+          "position": {
+            "x": 99.08090793029419,
+            "y": 199.9666487598388,
+            "vx": 11.347365922186775,
+            "vy": -14.550078377957428,
+            "mass": 0.9
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 0.8166666666666675,
+          "totalGap": 2.5166666666666626,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8166666666666682,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 3.1999999999999997,
+              "end": 3.4166666666666665
+            },
+            {
+              "start": 3.8666666666666663,
+              "end": 4.55
+            },
+            {
+              "start": 14.599999999999998,
+              "end": 15.416666666666666
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 0.9833333333333347,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 4.4,
+              "end": 4.516666666666667
+            },
+            {
+              "start": 15.733333333333334,
+              "end": 15.8
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.21166666666698,
+        "center": {
+          "x": -0.15534187092274104,
+          "y": 305.1805841813004,
+          "vx": 10.691630195572285,
+          "vy": 13.39830946838384,
+          "mass": 0.9
+        },
+        "parts": [
+          {
+            "id": "front-membrane",
+            "p": {
+              "x": -0.07119796659910303,
+              "y": 305.32830756052647
+            },
+            "v": {
+              "x": 12.684540933736784,
+              "y": 12.405576589529312
+            },
+            "w": -19.007645348707275
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.28441445641599244,
+              "y": 305.42058970148065
+            },
+            "v": {
+              "x": 13.1112508365183,
+              "y": 15.044957284578262
+            },
+            "w": -13.163267133064629
+          },
+          {
+            "id": "rear-membrane",
+            "p": {
+              "x": -0.02335952311732319,
+              "y": 305.07126644894123
+            },
+            "v": {
+              "x": 9.195911475115777,
+              "y": 11.6750970108631
+            },
+            "w": -16.241474765799932
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.19014229739604357,
+              "y": 304.7814462267171
+            },
+            "v": {
+              "x": 7.249669720745198,
+              "y": 13.66056922095755
+            },
+            "w": -6.855160779580893
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.16212415361913693,
+              "y": 305.17896220595804
+            },
+            "v": {
+              "x": 10.472336526833828,
+              "y": 13.522987015690262
+            },
+            "w": -9.335450966130992
+          }
+        ]
+      },
+      "captureAt": 13.1,
+      "activeEnd": 15.998333333333333,
+      "end": {
+        "x": 121.79344183893673,
+        "y": 170.3294391259753,
+        "vx": 14.331279068277626,
+        "vy": -10.562535887726971,
+        "mass": 0.9
+      },
+      "impacts": 4
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 960,
+    "warnings": 145,
+    "maxSpeed": 18.43514322204961,
+    "collisions": [
+      {
+        "key": "0:480:grandfatherTree:3:3:14",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 480,
+        "time": 15.021250000001423,
+        "speed": 8.581839777983946,
+        "warningLead": 0.6095833333333651,
+        "visibleLead": 0.6595833333333729,
+        "readableLead": 0.542916666666688,
+        "continuousNoticeLead": 0.6095833333333651,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:grandfatherTree:3:3:14",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 960,
+        "time": 15.021250000001423,
+        "speed": 8.581839777983946,
+        "warningLead": null,
+        "visibleLead": 0.7929166666667271,
+        "readableLead": 0.7929166666667271,
+        "continuousNoticeLead": 0.7929166666667271,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:grandfatherTree:4:3:15",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 16.858333333334073,
+        "speed": 17.539124114798117,
+        "warningLead": null,
+        "visibleLead": 0.629999999999427,
+        "readableLead": 0.4466666666662604,
+        "continuousNoticeLead": 0.4466666666662604,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:grandfatherTree:4:3:15",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 16.858333333334073,
+        "speed": 17.539124114798117,
+        "warningLead": 0.4299999999996089,
+        "visibleLead": 1.8633333333326263,
+        "readableLead": 1.6799999999993478,
+        "continuousNoticeLead": 0.4299999999996089,
+        "maxUncoveredAfterNotice": 0.8833333333333344
+      },
+      {
+        "key": "0:480:openSky:10:10:25",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 480,
+        "time": 20.89499999999707,
+        "speed": 18.4517612757349,
+        "warningLead": 0.4166666666662877,
+        "visibleLead": 0.46666666666624224,
+        "readableLead": 0.3499999999996817,
+        "continuousNoticeLead": 0.4166666666662877,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:openSky:10:10:25",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 960,
+        "time": 20.89499999999707,
+        "speed": 18.4517612757349,
+        "warningLead": null,
+        "visibleLead": 0.7166666666660149,
+        "readableLead": 0.6166666666661058,
+        "continuousNoticeLead": 0.6166666666661058,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  }
+}

@@ -51,7 +51,7 @@ export function createEncounterDirector(seed=0,saved=null){
   const recipes=new Map();
   function recipeFor(id,biome,c,row,s){let entry=recipes.get(id);if(entry)return entry;
     const rng=random(`${seed}:${id}`),start=s*.5+rng()*.15;
-    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*18+2+rng()*14,[low,high]=regions[biome],margin=recipe.radius+(biome==='forestFloor'?.2:1.5),baseY=Math.max(low+margin,Math.min(high-margin,low+row*8+1+rng()*6)),phase=rng()*Math.PI*2;
+    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=biome==='openSky'?c*10+1+rng()*8:c*18+2+rng()*14,[low,high]=regions[biome],margin=recipe.radius+(biome==='forestFloor'?.2:1.5),baseY=Math.max(low+margin,Math.min(high-margin,low+row*8+1+rng()*6)),phase=rng()*Math.PI*2;
     entry={start,recipe,baseX,baseY,phase};recipes.set(id,entry);if(recipes.size>64)recipes.delete(recipes.keys().next().value);return entry;
   }
   if(saved!==null){
@@ -64,8 +64,8 @@ export function createEncounterDirector(seed=0,saved=null){
   }
   return {update(time,player,region){
     if(!Number.isFinite(time)||time<0||!player||!Number.isFinite(player.x)||!Number.isFinite(player.y))throw new Error('Finite nonnegative time and player position required');
-    const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/18),slot=Math.floor(time/.5),[low,high]=regions[biome],lastRow=Math.ceil((high-low)/8)-1,row=Math.max(0,Math.min(lastRow,Math.floor((player.y-low)/8))),candidates=[];
-    // Seeded 18m x8m neighborhood; four live .5s slots. At most36 recipes, eight public observations/births.
+    const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/(biome==='openSky'?10:18)),slot=Math.floor(time/.5),[low,high]=regions[biome],lastRow=Math.ceil((high-low)/8)-1,row=Math.max(0,Math.min(lastRow,Math.floor((player.y-low)/8))),candidates=[];
+    // Seeded 10m(sky)/18m(other) x8m neighborhood; four live .5s slots. At most36 recipes, eight public observations/births.
     for(let c=cell-1;c<=cell+1;c++)for(let r=Math.max(0,row-1);r<=Math.min(lastRow,row+1);r++)for(let s=Math.max(0,slot-3);s<=slot;s++){
       const id=`${biome}:${c}:${r}:${s}`,{start,recipe,baseX,baseY,phase}=recipeFor(id,biome,c,r,s),age=time-start;
       if(age<0||age>=2)continue;

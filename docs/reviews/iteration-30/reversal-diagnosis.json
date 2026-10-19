@@ -1,0 +1,1090 @@
+{
+  "protocol": "Natural baseline case replays. Post-solve normal/tangent external impulses observed without changing forces. Normal A→B and tangent=(ny,-nx), sign reversed when payload is fixtureA. Recent50ms trace includes small contacts below reward threshold. Threshold crossing alone is not necessarily a >=.5s,>=1m episode; compare iteration29 complete60s episodes.",
+  "rows": [
+    {
+      "n": 1,
+      "species": "salamander",
+      "fraction": 0.2,
+      "group": "exploratory low/high starter",
+      "release": {
+        "x": 1.8344557725754473,
+        "y": 304.1968319211884,
+        "vx": 3.9588554433042593,
+        "vy": 0.8296551895017209,
+        "mass": 0.8
+      },
+      "onset": [
+        {
+          "time": 0.05,
+          "before": {
+            "x": 2.03239854474066,
+            "y": 304.22564343066347,
+            "vx": 3.958855443304262,
+            "vy": 0.3391551895017221,
+            "mass": 0.8
+          },
+          "after": {
+            "x": 2.028278308443137,
+            "y": 304.21891759272324,
+            "vx": -2.4721417785136994,
+            "vy": -4.035502764129933,
+            "mass": 0.8
+          },
+          "momentumChangeX": -5.144797777454369,
+          "stepImpulseX": -5.1481573020511355,
+          "recent": [
+            {
+              "time": 0.05,
+              "contacts": [
+                {
+                  "target": "pouch",
+                  "normalX": -5.454817947124775,
+                  "tangentX": 0.3066606450736395
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "species": "lizard",
+      "fraction": 0.6,
+      "group": "ordinary medium starter",
+      "release": {
+        "x": -1.54537070058576,
+        "y": 304.41347622813765,
+        "vx": 7.402692353019953,
+        "vy": 16.305807478020448,
+        "mass": 0.65
+      },
+      "onset": [
+        {
+          "time": 5.906666666666666,
+          "before": {
+            "x": 31.727341924976646,
+            "y": 256.61731185230667,
+            "vx": 1.5181685770960103,
+            "vy": -26.39488103667029,
+            "mass": 0.65
+          },
+          "after": {
+            "x": 31.725808069389174,
+            "y": 256.62634510588174,
+            "vx": -1.7331406623474706,
+            "vy": 16.022171538960315,
+            "mass": 0.65
+          },
+          "momentumChangeX": -2.113351005638263,
+          "stepImpulseX": -2.054164647741813,
+          "recent": [
+            {
+              "time": 5.906666666666666,
+              "contacts": [
+                {
+                  "target": "fixed bumper 32,255",
+                  "normalX": -4.240069016687805,
+                  "tangentX": 2.185904368945992
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "species": "turtle",
+      "fraction": 0.6,
+      "group": "ordinary medium starter",
+      "release": {
+        "x": -2.0966725752832938,
+        "y": 303.2801083287478,
+        "vx": 4.520192464071227,
+        "vy": 11.787260089232932,
+        "mass": 2.4
+      },
+      "onset": [
+        {
+          "time": 10.9,
+          "before": {
+            "x": 45.33953894992456,
+            "y": 1.2832329527207407,
+            "vx": 2.8306292420032286,
+            "vy": -10.634886576741776,
+            "mass": 2.4
+          },
+          "after": {
+            "x": 45.33960507578477,
+            "y": 1.2740189638992017,
+            "vx": -0.8906423925020052,
+            "vy": -3.828953864984049,
+            "mass": 2.4
+          },
+          "momentumChangeX": -8.93105192281256,
+          "stepImpulseX": -8.932583260310851,
+          "recent": [
+            {
+              "time": 10.9,
+              "contacts": [
+                {
+                  "target": "waxleaf skid",
+                  "normalX": -8.683680080834248,
+                  "tangentX": -0.2489031794766029
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "group": "ordinary medium starter",
+      "release": {
+        "x": -1.3665336437756128,
+        "y": 303.4882255241787,
+        "vx": 6.968616443673947,
+        "vy": 12.922939271883386,
+        "mass": 1.1
+      },
+      "onset": [
+        {
+          "time": 4.675,
+          "before": {
+            "x": 31.211748230400033,
+            "y": 256.66294874523527,
+            "vx": 6.968616443673951,
+            "vy": -32.93881072811551,
+            "mass": 1.1
+          },
+          "after": {
+            "x": 31.21594101709254,
+            "y": 256.6257780917316,
+            "vx": -1.9372724126651517,
+            "vy": -11.661885976324319,
+            "mass": 1.1
+          },
+          "momentumChangeX": -9.796477741973012,
+          "stepImpulseX": -11.697625149310182,
+          "recent": [
+            {
+              "time": 4.675,
+              "contacts": [
+                {
+                  "target": "fixed bumper 32,255",
+                  "normalX": -9.220380136465844,
+                  "tangentX": -2.4772450128443393
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "group": "ordinary medium starter",
+      "release": {
+        "x": -1.9047574176586948,
+        "y": 300.3296867196462,
+        "vx": 1.3332686805145741,
+        "vy": 6.290199795108383,
+        "mass": 5
+      },
+      "onset": [
+        {
+          "time": 9.981666666666667,
+          "before": {
+            "x": 33.587416106183056,
+            "y": 0.3489891370094768,
+            "vx": 1.0845701234461518,
+            "vy": -58.53585725498844,
+            "mass": 5
+          },
+          "after": {
+            "x": 33.57617656586447,
+            "y": 0.34343753469786725,
+            "vx": -9.353155629340069,
+            "vy": 15.066583069041542,
+            "mass": 5
+          },
+          "momentumChangeX": -52.188628763931106,
+          "stepImpulseX": -52.188628763931106,
+          "recent": [
+            {
+              "time": 9.976666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "normalX": 0,
+                  "tangentX": -15.387665121235406
+                }
+              ]
+            },
+            {
+              "time": 9.981666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "normalX": 0,
+                  "tangentX": -52.188628763931106
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "species": "salamander",
+      "fraction": 0.9,
+      "group": "exploratory low/high starter",
+      "release": {
+        "x": -0.7452308680999938,
+        "y": 304.0542304339126,
+        "vx": 9.927780769398383,
+        "vy": 17.400957877258197,
+        "mass": 0.8
+      },
+      "onset": [
+        {
+          "time": 13.27,
+          "before": {
+            "x": 228.82451623264814,
+            "y": 18.970679740210027,
+            "vx": 0.9662966851082002,
+            "vy": -5.0791133697639745,
+            "mass": 0.8
+          },
+          "after": {
+            "x": 228.8194392672166,
+            "y": 18.96827593753403,
+            "vx": -9.733639165611109,
+            "vy": 4.627279668020275,
+            "mass": 0.8
+          },
+          "momentumChangeX": -8.559948680575449,
+          "stepImpulseX": -8.676581167393712,
+          "recent": [
+            {
+              "time": 13.258333333333333,
+              "contacts": [
+                {
+                  "target": "fixed bumper 230,18",
+                  "normalX": -6.584965262084845,
+                  "tangentX": 0.2746255422729576
+                }
+              ]
+            },
+            {
+              "time": 13.26,
+              "contacts": [
+                {
+                  "target": "fixed bumper 230,18",
+                  "normalX": -17.416129171184874,
+                  "tangentX": 1.435122421686387
+                }
+              ]
+            },
+            {
+              "time": 13.27,
+              "contacts": [
+                {
+                  "target": "fixed bumper 230,18",
+                  "normalX": -8.356757617749851,
+                  "tangentX": -0.3198235496438607
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "group": "exploratory low/high starter",
+      "release": {
+        "x": -2.275811456937365,
+        "y": 300.622991692731,
+        "vx": 0.45516991023752007,
+        "vy": 8.704647004850205,
+        "mass": 5
+      },
+      "onset": [
+        {
+          "time": 1.8433333333333333,
+          "before": {
+            "x": -1.5272825749619852,
+            "y": 300.1030488360952,
+            "vx": -0.33139706016367365,
+            "vy": -7.433845182002612,
+            "mass": 5
+          },
+          "after": {
+            "x": -1.5288649403827048,
+            "y": 300.09614117087824,
+            "vx": -0.9494465195768766,
+            "vy": -4.149198104378134,
+            "mass": 5
+          },
+          "momentumChangeX": -3.090247297066015,
+          "stepImpulseX": -2.9838013990315453,
+          "recent": [
+            {
+              "time": 1.8266666666666667,
+              "contacts": [
+                {
+                  "target": "pouch",
+                  "normalX": -0.3594272560584366,
+                  "tangentX": 0.824720541069744
+                }
+              ]
+            },
+            {
+              "time": 1.8433333333333333,
+              "contacts": [
+                {
+                  "target": "pouch",
+                  "normalX": 0.09565603235832294,
+                  "tangentX": -3.0794574313898684
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 5.35,
+          "before": {
+            "x": -6.969438428550072,
+            "y": 294.2554088562629,
+            "vx": 0.19258532722990024,
+            "vy": -0.034547312365926286,
+            "mass": 5
+          },
+          "after": {
+            "x": -6.969513794996743,
+            "y": 294.25519132993804,
+            "vx": -0.7609706100493072,
+            "vy": -0.4177056596637538,
+            "mass": 5
+          },
+          "momentumChangeX": -4.767779686396038,
+          "stepImpulseX": -4.889823253206403,
+          "recent": [
+            {
+              "time": 5.3,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006578394852535419
+                }
+              ]
+            },
+            {
+              "time": 5.301666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.0066149573420069135
+                }
+              ]
+            },
+            {
+              "time": 5.303333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006651790375513662
+                }
+              ]
+            },
+            {
+              "time": 5.305,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006690153009331201
+                }
+              ]
+            },
+            {
+              "time": 5.306666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006726258755689831
+                }
+              ]
+            },
+            {
+              "time": 5.308333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.00676390485662975
+                }
+              ]
+            },
+            {
+              "time": 5.31,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006801822256516912
+                }
+              ]
+            },
+            {
+              "time": 5.3116666666666665,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.0068400110660532185
+                }
+              ]
+            },
+            {
+              "time": 5.3133333333333335,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006878471387967502
+                }
+              ]
+            },
+            {
+              "time": 5.315,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006917203298632797
+                }
+              ]
+            },
+            {
+              "time": 5.316666666666666,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006956206849661349
+                }
+              ]
+            },
+            {
+              "time": 5.318333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.006995482064432924
+                }
+              ]
+            },
+            {
+              "time": 5.32,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007035028939347435
+                }
+              ]
+            },
+            {
+              "time": 5.321666666666666,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007074847441857513
+                }
+              ]
+            },
+            {
+              "time": 5.323333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007114937509911063
+                }
+              ]
+            },
+            {
+              "time": 5.325,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007155299051152253
+                }
+              ]
+            },
+            {
+              "time": 5.326666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007195931941797292
+                }
+              ]
+            },
+            {
+              "time": 5.328333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.0072368360256194015
+                }
+              ]
+            },
+            {
+              "time": 5.33,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007278011113640408
+                }
+              ]
+            },
+            {
+              "time": 5.331666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007319456982270234
+                }
+              ]
+            },
+            {
+              "time": 5.333333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007361173373285819
+                }
+              ]
+            },
+            {
+              "time": 5.335,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.0074031599918845835
+                }
+              ]
+            },
+            {
+              "time": 5.336666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007445416506159194
+                }
+              ]
+            },
+            {
+              "time": 5.338333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007487942545735559
+                }
+              ]
+            },
+            {
+              "time": 5.34,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007530737701363304
+                }
+              ]
+            },
+            {
+              "time": 5.341666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007573801523252265
+                }
+              ]
+            },
+            {
+              "time": 5.343333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007617133519415646
+                }
+              ]
+            },
+            {
+              "time": 5.345,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007660733155702783
+                }
+              ]
+            },
+            {
+              "time": 5.346666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007704599854635854
+                }
+              ]
+            },
+            {
+              "time": 5.348333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 0.007748732992207638
+                }
+              ]
+            },
+            {
+              "time": 5.35,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": 2.5122463937991024
+                },
+                {
+                  "target": "round beetle",
+                  "normalX": -7.809022213233388,
+                  "tangentX": 0.40695256622788295
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 5.885,
+          "before": {
+            "x": -7.181284461518277,
+            "y": 294.3149412118758,
+            "vx": -0.4990752765815424,
+            "vy": -0.14670577816910443,
+            "mass": 5
+          },
+          "after": {
+            "x": -7.182117526909243,
+            "y": 294.3146949285353,
+            "vx": -0.5002967726717917,
+            "vy": -0.148411192494051,
+            "mass": 5
+          },
+          "momentumChangeX": -0.006107480451246761,
+          "stepImpulseX": -0.006107480451247698,
+          "recent": [
+            {
+              "time": 5.835,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006765611467513865
+                }
+              ]
+            },
+            {
+              "time": 5.836666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.0067544837245038175
+                }
+              ]
+            },
+            {
+              "time": 5.838333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006742666177971852
+                }
+              ]
+            },
+            {
+              "time": 5.84,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.00673015046122164
+                }
+              ]
+            },
+            {
+              "time": 5.841666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006716928432543016
+                }
+              ]
+            },
+            {
+              "time": 5.843333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006702992198570112
+                }
+              ]
+            },
+            {
+              "time": 5.845,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.00668833413396421
+                }
+              ]
+            },
+            {
+              "time": 5.846666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006672946906618831
+                }
+              ]
+            },
+            {
+              "time": 5.848333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006656823500241017
+                }
+              ]
+            },
+            {
+              "time": 5.85,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006639957238143534
+                }
+              ]
+            },
+            {
+              "time": 5.851666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006622341811308228
+                }
+              ]
+            },
+            {
+              "time": 5.8533333333333335,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006603971302348042
+                }
+              ]
+            },
+            {
+              "time": 5.855,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006584840214466531
+                }
+              ]
+            },
+            {
+              "time": 5.8566666666666665,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006564943498507295
+                }
+              ]
+            },
+            {
+              "time": 5.858333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006544276584402736
+                }
+              ]
+            },
+            {
+              "time": 5.86,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006522835407718617
+                }
+              ]
+            },
+            {
+              "time": 5.861666666666666,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006500616444946565
+                }
+              ]
+            },
+            {
+              "time": 5.863333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006477616740913367
+                }
+              ]
+            },
+            {
+              "time": 5.865,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006453833945698561
+                }
+              ]
+            },
+            {
+              "time": 5.866666666666666,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006429266345737242
+                }
+              ]
+            },
+            {
+              "time": 5.868333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006403912897992595
+                }
+              ]
+            },
+            {
+              "time": 5.87,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006377773268096163
+                }
+              ]
+            },
+            {
+              "time": 5.871666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.00635084786249375
+                }
+              ]
+            },
+            {
+              "time": 5.873333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006323137868353507
+                }
+              ]
+            },
+            {
+              "time": 5.875,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006294645289829262
+                }
+              ]
+            },
+            {
+              "time": 5.876666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006265372985478203
+                }
+              ]
+            },
+            {
+              "time": 5.878333333333333,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006235324709024329
+                }
+              ]
+            },
+            {
+              "time": 5.88,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006204505146920094
+                }
+              ]
+            },
+            {
+              "time": 5.881666666666667,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006172919958391417
+                }
+              ]
+            },
+            {
+              "time": 5.883333333333334,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.0061405758174401465
+                }
+              ]
+            },
+            {
+              "time": 5.885,
+              "contacts": [
+                {
+                  "target": "launch branch",
+                  "normalX": 0,
+                  "tangentX": -0.006107480451247698
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "group": "exploratory low/high starter",
+      "release": {
+        "x": -2.050634907583585,
+        "y": 302.18989792756446,
+        "vx": 2.9684830484751688,
+        "vy": 15.263961884119219,
+        "mass": 0.8500000000000001
+      },
+      "onset": [
+        {
+          "time": 9.553333333333333,
+          "before": {
+            "x": 26.31065570086379,
+            "y": 0.28551005673392366,
+            "vx": 8.686607883881114,
+            "vy": -48.27923216464482,
+            "mass": 0.8500000000000001
+          },
+          "after": {
+            "x": 26.31341221470767,
+            "y": 0.2683072890095701,
+            "vx": -1.1536523786000683,
+            "vy": 5.367269735087779,
+            "mass": 0.8500000000000001
+          },
+          "momentumChangeX": -8.364221223109006,
+          "stepImpulseX": -8.364221223109007,
+          "recent": [
+            {
+              "time": 9.551666666666666,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "normalX": 0,
+                  "tangentX": 4.860406110095084
+                }
+              ]
+            },
+            {
+              "time": 9.553333333333333,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "normalX": 0,
+                  "tangentX": -8.364221223109007
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

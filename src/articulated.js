@@ -1,3 +1,4 @@
+import {fixedObstacleVertices} from './fixed-obstacles.js';
 import {createEncounterBody} from './encounter-body.js';
 import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js';
 import * as P from '../node_modules/planck/dist/planck.mjs';
@@ -31,7 +32,7 @@ export class CritterScene {
   const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
   for(const s of layout.surfaces.filter(s=>!s.flightOnly))ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
-  for(const pin of layout.bumpers)ground.createFixture(P.Circle(V(pin.x,pin.y),pin.radius),{friction:.08,restitution:.85,filterCategoryBits:1});
+  for(const pin of layout.bumpers){const fixture=ground.createFixture(pin.shape==='deflector'?P.Polygon(fixedObstacleVertices(pin).map(p=>V(p.x,p.y))):P.Circle(V(pin.x,pin.y),pin.radius),{friction:pin.friction??.08,restitution:pin.restitution??.85,filterCategoryBits:1});if(pin.shape==='deflector')fixture.setUserData({role:'deflector',id:`deflector ${pin.x},${pin.y}`,x:pin.x,y:pin.y,radius:pin.radius,slope:pin.slope});}
   // The loading shelf ends before the hanging cradle; no kinematic seating force.
   ground.createFixture(P.Box(.8,.04,V(-4.3,p.pivotHeight-4.5)),{friction:.08,restitution:.1,filterCategoryBits:1});
   this.frame=this.world.createDynamicBody({position:V(0,p.pivotHeight-6)});tag(this.frame,'frame','support');
@@ -66,7 +67,7 @@ export class CritterScene {
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight' || this.elapsed-this.lastImpact<.08)return;
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
-   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'||d.shape==='skid'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>surfaceNear(s,point,.25))?.id:null;if(d?.role==='enemy')d.lastContact=this.elapsed;this.events.push({type:'impact',encounter:d?.role==='enemy'?d.kind:null,strength,position:point?{x:point.x,y:point.y}:this.center(),material,surface:surface??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
+   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'||d.shape==='skid'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>surfaceNear(s,point,.25))?.id:null;if(d?.role==='enemy')d.lastContact=this.elapsed;this.events.push({type:'impact',encounter:d?.role==='enemy'?d.kind:null,strength,position:point?{x:point.x,y:point.y}:this.center(),material,surface:surface??fixture.getUserData()?.id??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
  }
  startWinding(fraction){
   if(this.hand || !['uncocked','loading','wind-stalled'].includes(this.phase))throw new Error('Winding requires an unloaded grip and idle mechanism');

@@ -1,0 +1,274 @@
+{
+  "baseline": "1f03ed732fdfbeca0862f46f00339f4b19fa7139",
+  "definitions": {
+    "ordinary": "Balanced11-species medium-winding starter reference, fraction.6; all species retained, not frequency-weighted live volunteer queue.",
+    "exploratory": "Valid low.2/high.9 stock starter configurations, not deleted or claimed defective.",
+    "backward": "Same iteration29 definition:COM vx<-.5m/s continuously>=.5s and>=1m leftward; all released denominator.",
+    "activity": "Original60Hz passing-enemy/impulse metric retained; original active-end=lastspeed>.15. Trace separately reports actual fixture visibility and speed; stationary plateaus are not relabelled as target successes."
+  },
+  "original": {
+    "all": {
+      "attempts": 33,
+      "released": 24,
+      "seatingMisses": 9,
+      "backwardCases": [
+        1,
+        11,
+        14,
+        15,
+        18,
+        23,
+        29,
+        31
+      ],
+      "backwardRate": 0.3333333333333333,
+      "meaningfulLeftwardMetres": 272.3713646661039
+    },
+    "ordinary": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        11,
+        14,
+        15,
+        18
+      ],
+      "backwardRate": 0.36363636363636365,
+      "meaningfulLeftwardMetres": 176.64526328049504
+    },
+    "low": {
+      "attempts": 11,
+      "released": 2,
+      "seatingMisses": 9,
+      "backwardCases": [
+        1
+      ],
+      "backwardRate": 0.5,
+      "meaningfulLeftwardMetres": 16.481837583363664
+    },
+    "high": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        23,
+        29,
+        31
+      ],
+      "backwardRate": 0.2727272727272727,
+      "meaningfulLeftwardMetres": 79.24426380224513
+    }
+  },
+  "final": {
+    "all": {
+      "attempts": 33,
+      "released": 24,
+      "seatingMisses": 9,
+      "backwardCases": [
+        1,
+        14,
+        18,
+        23,
+        29,
+        31
+      ],
+      "backwardRate": 0.25,
+      "meaningfulLeftwardMetres": 86.36436199373657
+    },
+    "ordinary": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        14,
+        18
+      ],
+      "backwardRate": 0.18181818181818182,
+      "meaningfulLeftwardMetres": 56.27342075439902
+    },
+    "low": {
+      "attempts": 11,
+      "released": 2,
+      "seatingMisses": 9,
+      "backwardCases": [
+        1
+      ],
+      "backwardRate": 0.5,
+      "meaningfulLeftwardMetres": 16.481837583363664
+    },
+    "high": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        23,
+        29,
+        31
+      ],
+      "backwardRate": 0.2727272727272727,
+      "meaningfulLeftwardMetres": 13.609103655973879
+    }
+  },
+  "holdout": {
+    "seedBase": 39000,
+    "before": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        11,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "backwardRate": 0.7272727272727273,
+      "meaningfulLeftwardMetres": 298.2663988564829
+    },
+    "after": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        11,
+        16,
+        18,
+        19
+      ],
+      "backwardRate": 0.36363636363636365,
+      "meaningfulLeftwardMetres": 60.843003923341406
+    }
+  },
+  "all33OutcomesAnd24ReleaseObjectsExactlyEqual": true,
+  "holdout11ReleaseObjectsExactlyEqual": true,
+  "studies30SecondMediumReference": {
+    "softer-bumpers": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        11,
+        14,
+        15,
+        18
+      ],
+      "backwardRate": 0.36363636363636365,
+      "meaningfulLeftwardMetres": 104.45109994608525
+    },
+    "smoother-ground": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        11,
+        13,
+        15,
+        20
+      ],
+      "backwardRate": 0.36363636363636365,
+      "meaningfulLeftwardMetres": 209.96288947655214
+    },
+    "combined": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        11,
+        13,
+        15,
+        20
+      ],
+      "backwardRate": 0.36363636363636365,
+      "meaningfulLeftwardMetres": 57.539861384024285
+    },
+    "wooden-deflectors": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        14,
+        18
+      ],
+      "backwardRate": 0.18181818181818182,
+      "meaningfulLeftwardMetres": 56.27342075439902
+    },
+    "narrow-grid": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        13,
+        14,
+        19
+      ],
+      "backwardRate": 0.2727272727272727,
+      "meaningfulLeftwardMetres": 21.83624335855432
+    },
+    "sky-grid": {
+      "attempts": 11,
+      "released": 11,
+      "seatingMisses": 0,
+      "backwardCases": [
+        14,
+        18
+      ],
+      "backwardRate": 0.18181818181818182,
+      "meaningfulLeftwardMetres": 56.27342075439902
+    }
+  },
+  "targets": {
+    "backwardUnder5PercentMet": false,
+    "passingGapAtMost1SecondMet": false
+  },
+  "activityFinal": {
+    "480": {
+      "medianMaximumActiveGap": 1.291666666666667,
+      "worstMaximumActiveGap": 8.816666666666684
+    },
+    "960": {
+      "medianMaximumActiveGap": 0.8916666666666666,
+      "worstMaximumActiveGap": 5.383333333333319
+    }
+  },
+  "maxBodies": 8,
+  "tests": {
+    "pass": 223,
+    "fail": 0,
+    "log": "/tmp/critz30-tests-final.log"
+  },
+  "browser": {
+    "matchedCircleVx": -1.99,
+    "matchedWoodVx": 16.54,
+    "approxReplayTimes": [
+      0.5,
+      0.51
+    ],
+    "skySquirrelBirdContactReplaySeconds": 0.6,
+    "viewport": [
+      390,
+      844
+    ],
+    "beforeAfterWindowSeconds": 0.8,
+    "noSkyBoundaryReachedDuringMatchedWindow": true,
+    "minimumYInMatchedWindow": [
+      256.2288161680239,
+      254.00140128764465
+    ],
+    "reducedMotionChecked": true,
+    "warningsErrors": [],
+    "viewportReset": true,
+    "oneOwnedSaveFreeQATab": true,
+    "gameSaveAccess": false
+  },
+  "limitations": [
+    "Neither numeric target is met.",
+    "Balanced reference cohorts and two seed families are not a population estimate.",
+    "Force-drag preparation is numerical real physics, not new native human drag launches.",
+    "Normal/tangent traces identify contact sources but do not fully reconcile TOI/joint momentum in all cases.",
+    "No deviceFPS/audio/human fairness claim."
+  ]
+}

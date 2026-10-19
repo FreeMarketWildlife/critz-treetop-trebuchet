@@ -1,0 +1,15 @@
+[
+  {
+    "label": "Before \u2014 original fixed circle",
+    "file": "circle-baseline-natural-incoming.json"
+  },
+  {
+    "label": "After \u2014 descending wooden face",
+    "file": "deflector-natural-incoming.json"
+  },
+  {
+    "label": "Current sky \u2014 natural squirrel/bird contact",
+    "file": "sky-natural-incoming.json",
+    "seconds": 2
+  }
+]

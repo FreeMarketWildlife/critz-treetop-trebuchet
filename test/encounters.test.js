@@ -78,8 +78,8 @@ test('revised encounter catalog remains deterministic across cache eviction and 
  const {createHash}=await import('node:crypto'),h=createHash('sha256'),d=createEncounterDirector('eviction-baseline');
  for(let i=0;i<2500;i++){const t=i/15;h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));}
  for(const t of [0,1,2,100,100,200])h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));
- // Iteration 29 bounded 2D density baseline; includes births/events and cache eviction.
- assert.equal(h.digest('hex'),'dacb1ae7b47e014f01ebd82acb727dd8a6d2d609115b54aed373d760d505456d');
+ // Iteration 30 sky-specific spacing baseline; includes births/events and cache eviction.
+ assert.equal(h.digest('hex'),'8d79f91500b2385e9c90f8c4c9b38de0d73c9c71d2b0ecd5cb2e8b3653f7fe28');
 });
 
 test('scheduled silhouettes and motion stay inside their birth biome; skid kinds are regional',()=>{

@@ -95,7 +95,7 @@ test('each visible channel setup works after actual torque-limited winding and c
  const {physicalMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
  for(const entry of physicalMatrix){const scene=new PhysicalHookScene({...entry.parameters,mechanicalWinding:true,initialArm:-3},entry.species);scene.startWinding(.6);
   for(let i=0;i<7200&&scene.phase==='winding';i++)scene.step();assert.equal(scene.phase,'loading');assert.ok(scene.windingWork>100);assert.ok(load(scene));const settled=waitForContact(scene);assert.ok(settled.status.contacting&&settled.quiet>=.1);
-  const result=measureSnapshot(scene.snapshot(),scene.p,entry.species,1/600);assert.ok(result.center.vx>0&&result.center.vy>0);assert.ok(['ground','bumper',...layout.surfaces.filter(s=>s.y<120).map(s=>s.id)].includes(result.firstWorldImpact?.surface),'clear the launch branch and reach an authored obstacle');assert.ok(result.maximumEnergyGain<1);assert.equal(result.explicitWork,0);
+  const result=measureSnapshot(scene.snapshot(),scene.p,entry.species,1/600);assert.ok(result.center.vx>0&&result.center.vy>0);assert.ok(['ground','bumper',...layout.bumpers.map(p=>`deflector ${p.x},${p.y}`),...layout.surfaces.filter(s=>s.y<120).map(s=>s.id)].includes(result.firstWorldImpact?.surface),'clear the launch branch and reach an authored obstacle');assert.ok(result.maximumEnergyGain<1);assert.equal(result.explicitWork,0);
  }
 });
 

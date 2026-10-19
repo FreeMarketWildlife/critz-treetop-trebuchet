@@ -1,6 +1,20 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 29 checkpoint
+## CURRENT implementation: iteration 30 checkpoint
+
+Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Baseline1f03ed7; recoverycopy untouched. Physics-first user priorities and exact-X/backward camera remain. Read docs/reviews/iteration-30/findings.md and summary.json; original denominators/definitions retained.
+
+Original8 reversal traces:2exploratory pouch recollisions,3fixedcircle contacts,2ground-friction/rotation,1waxleaf. All4ordinary medium first-family cases began at later world contacts. Normal/tangent traces are diagnostic; TOI/joint momentum not fully reconciled in all cases. Material-only softercircle/groundfriction/combined trials each4/11reversals, rejected.
+
+Accepted:7descending wooden faces at SAME authored centers and inside old radius envelopes; slope-.65,w=.8r,thickness.08,friction.08,restitution.3. Actual polygons shared with render/advice, oldsaved circles remain actualcircles. Static geography locations/otherbranches and launchmechanics unchanged.223tests pass. All33outcomes/24complete releases EXACT baseline;11holdout releases EXACT pairedoldcircle model.
+
+Ordinary balanced11species medium stockfraction.6:4/11→2/11backward originalseeds; matched39000holdout8/11→4/11. Not queue-frequency-weighted/population estimate. Fulloriginal33attempts/24releases/9seatingmisses:8/24→6/24backward; allvalidlow/high explorations retained. Meaningfuldistance272.37→86.36m full,298.27→60.84mholdout. Under5% NOTMET. Remaining ordinary14waxleaf/18ground; holdout4cases needtraces.
+
+Density:global10m cells improvedgaps butadded3vs2/11back, rejected. Sky-only10m horizontal/rest18m accepted afterfull33+11holdout, no extra medium reversal cases;8bodycap/arrivalclearance retained. Portrait median/worstmaxactivegap1.292/8.817s;landscape.892/5.383s. Goal<=1s NOTMET. Actualfixture trace showsworst8.82s wasstationary with8visibleenemies; realairbornearmadillogap2.30→1.983s,holdout4.15→3.217. Originalpassing/impulse andrest-inclusivemetrics preserved; do nothidebyredefiningactive.
+
+One save-free QA tab reused, pausednormalviewport. Matchedbefore/after natural snakeprefix.8s verified390:circlevx-1.99vswood+16.54,centeringretained; snapshots identicalpayload/release/time. Currentnatural squirrel/birdcontact checked. Numerical motor/force-drag prep,notnewhuman native loading. Reducedchecked/consoleclean. Savedprogress/user/clienttabs untouched; no force/deploy/install/unlock/exportretry. Next ground/skidspin/contact diagnosis and visibleairgap refinement; keep all failures and exact backwarddistance telemetry.
+
+## Historical implementation: iteration 29 checkpoint
 
 Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet; recovery task-5 copy untouched. Baseline d02a2c4. USER PRIORITY: mechanics/hitboxes/masses, sling/counterweight clarity and encounter ideas/density; defer final critter/enemy artwork and playable-loop polish. FINAL camera instruction is X-centered after physical release, including backward, preserving prelaunch left framing; vertical movement/dead zone allowed. Earlier Mario one-way analogy superseded.
 

@@ -1,3 +1,4 @@
+import {drawFixedObstacles} from './fixed-obstacles.js';
 import {encounterAnimationState} from './encounter-state.js';
 import {drawMechanismDetails} from './mechanism-art.js';
 import {drawGripTether} from './grip-art.js';
@@ -61,15 +62,16 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    const view=p=>[panel.x+panel.w/2+(p.x-cam.x)*scale,panel.y+panel.h/2-(p.y-cam.y)*scale];
    ctx.save();ctx.translate(panel.x,panel.y);drawScenery(ctx,{width:panel.w,height:panel.h,region:biome.id,camera:cam,scale,reducedMotion:reduced,time});ctx.restore();
    ctx.save();ctx.beginPath();ctx.rect(panel.x,panel.y,panel.w,panel.h);ctx.clip();
+   let fixedObstacles=[];
    if(flying){for(const s of layout.surfaces){const a=view({x:s.minX,y:s.y}),b=view({x:s.maxX,y:surfaceY(s,s.maxX)});ctx.save();ctx.translate(panel.x,panel.y);drawSurfaceTrim(ctx,{x1:a[0]-panel.x,x2:b[0]-panel.x,y:a[1]-panel.y,y2:b[1]-panel.y,width:panel.w,height:panel.h,ground:s.id==='ground'});ctx.restore();line(a,b,'#675337',5);}
-    for(const pin of layout.bumpers){const p=view(pin);dot(p,pin.radius*scale,'#ab7041');dot(p,pin.radius*scale*.83,'#f3cf76');dot(p,pin.radius*scale*.44,'#d9914c');}
+    fixedObstacles=drawFixedObstacles(ctx,scene,view,scale);
    }else dot([panel.x+panel.w/2,panel.y+panel.h/2],110,'rgba(255,248,222,.45)');
    if(preview)preview.points.forEach((p,i)=>dot(view(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
    for(const e of reduced?[]:effects){const p=view(e),t=1-e.life/.4,r=4+t*(8+14*(e.strength??.4));ctx.save();ctx.globalAlpha=Math.max(0,e.life/.4)*.8;ctx.strokeStyle=e.material==='leaf'?'#e9f4af':e.material==='bumper'?'#f9bd55':'#fff0ba';ctx.lineWidth=1.5;ctx.beginPath();if(e.material==='ground')ctx.ellipse(...p,r,r*.4,0,0,Math.PI*2);else ctx.arc(...p,r,0,Math.PI*2);ctx.stroke();if((e.strength??0)>.25)for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;line([p[0]+Math.cos(a)*(r+2),p[1]+Math.sin(a)*(r+2)],[p[0]+Math.cos(a)*(r+5),p[1]+Math.sin(a)*(r+5)],ctx.strokeStyle,1.5);}ctx.restore();}
    // Feedback sits behind actual articulated bodies and collision silhouettes.
    if(flying){const encounters=[...scene.enemies.values()].map(b=>{const p=b.getWorldCenter(),v=b.getLinearVelocity(),tag=b.getUserData();return {id:tag.id,kind:tag.kind,shape:tag.shape,x:p.x,y:p.y,vx:v.x,vy:v.y,radius:tag.radius??b.getFixtureList().getShape().getRadius()};});
     const bounds=[];for(const part of scene.parts)for(let f=part.getFixtureList();f;f=f.getNext())bounds.push(f.getAABB(0));
-    const payloadRadius=payloadWarningRadius(c,bounds),terrain=terrainApproaches(c,layout,{payloadRadius});
+    const payloadRadius=payloadWarningRadius(c,bounds),terrain=terrainApproaches(c,{...layout,bumpers:fixedObstacles},{payloadRadius});
     const cues=approachCues(c,[...encounters,...terrain],{camera:cam,width:panel.w,height:panel.h,scale,payloadRadius});approachNotice=cues.length?'Nearby: '+cues.map(q=>`${q.count>1?q.count+' nearby obstacles':q.kind} (${Math.abs(Math.sin(q.angle))>.707?(Math.sin(q.angle)>0?'below':'above'):(Math.cos(q.angle)>0?'right':'left')})`).join(', ')+'.':'';
     for(const cue of cues){ctx.save();ctx.translate(cue.x,cue.y);ctx.scale(cueScale,cueScale);ctx.rotate(cue.angle);ctx.fillStyle='#f8d58c';ctx.strokeStyle='#5c4b2a';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(-7,-7);ctx.lineTo(-7,7);ctx.closePath();ctx.fill();ctx.stroke();ctx.rotate(-cue.angle);if(cue.count>1){ctx.fillStyle='#263b31';ctx.font='bold 11px system-ui';ctx.textAlign='center';ctx.fillText(String(cue.count),-Math.cos(cue.angle)*14,-Math.sin(cue.angle)*14+4);}else if(cue.interaction==='slide'){const bx=-Math.cos(cue.angle)*18,by=-Math.sin(cue.angle)*18;dot([bx,by],9,'#263b31');ctx.fillStyle='#f8d58c';ctx.font='bold 12px system-ui';ctx.textAlign='center';ctx.fillText('↔',bx,by+4);}ctx.restore();}
    }

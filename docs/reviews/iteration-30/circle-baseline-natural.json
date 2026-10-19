@@ -1,0 +1,262 @@
+{
+  "seedBase": 29000,
+  "mediumOnly": false,
+  "durationSeconds": 8,
+  "selectedCase": 15,
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;8seconds after actual release;seedBase+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "37f3e6dd2fbd10a1003968beb429972122be4bdd66c84474efea4536c784d206",
+    "src/encounter-body.js": "e56c422a87760cdf147bc7a56dd6eb9c0c7b8992701d55948c40bd5bdc0a72ad",
+    "src/articulated.js": "e7f25ac80419af35a322a063dd6e90b25242b428070e3fc72ebef6820a335984",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58",
+    "src/fixed-obstacles.js": "25e43a1097736c7bc47f8090ee660a74aa7b6dc69242585ea02238dec170a101"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "seed": 29015,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 6.5000000000002025,
+        "openSky": 1.500000000000021
+      },
+      "births": {
+        "round beetle": 14,
+        "leaf hopper": 15,
+        "puffy moth": 5,
+        "round bird": 6
+      },
+      "contacts": [
+        {
+          "id": "openSky:-1:14:13",
+          "kind": "puffy moth",
+          "birthBiome": "openSky",
+          "time": 7.031666666666666,
+          "position": {
+            "x": -6.645450952935066,
+            "y": 235.61438815026762,
+            "vx": -12.104665823130237,
+            "vy": -18.421259127024506,
+            "mass": 1.1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 1.7166666666666655,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 1.9833333333333334,
+              "end": 2.1
+            },
+            {
+              "start": 2.333333333333333,
+              "end": 2.783333333333333
+            },
+            {
+              "start": 6.383333333333334,
+              "end": 6.65
+            },
+            {
+              "start": 7.916666666666667,
+              "end": 8
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 0.8333333333333343,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 4.483333333333333,
+              "end": 4.516666666666667
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 4.675,
+            "end": 8,
+            "distance": 49.57167869265144
+          }
+        ],
+        "distance": 49.57167869265144,
+        "lastOnset": {
+          "time": 4.675,
+          "center": {
+            "x": 31.21594101709254,
+            "y": 256.6257780917316,
+            "vx": -1.9372724126651517,
+            "vy": -11.661885976324319,
+            "mass": 1.1
+          },
+          "lastHit": null
+        }
+      },
+      "release": {
+        "time": 6.873333333333594,
+        "center": {
+          "x": -1.3665336437756128,
+          "y": 303.4882255241787,
+          "vx": 6.968616443673947,
+          "vy": 12.922939271883386,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.8827358756754342,
+              "y": 303.4588731068191
+            },
+            "v": {
+              "x": 7.4617792979803514,
+              "y": 20.242019305533905
+            },
+            "w": -24.52221039362888
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.702532296306867,
+              "y": 303.38290125861386
+            },
+            "v": {
+              "x": 5.950628228480921,
+              "y": 17.07437876233974
+            },
+            "w": -11.18799788687619
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.5041706348285737,
+              "y": 303.3666688441648
+            },
+            "v": {
+              "x": 5.959836431009488,
+              "y": 13.171216397539826
+            },
+            "w": -28.07272450121892
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.3455237160081437,
+              "y": 303.4502818793553
+            },
+            "v": {
+              "x": 7.511911190719976,
+              "y": 9.453022792003145
+            },
+            "w": -16.36281914258466
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.2032326120535268,
+              "y": 303.5861185589352
+            },
+            "v": {
+              "x": 8.062841239739548,
+              "y": 9.843018694456084
+            },
+            "w": 15.350574501919168
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.0216407092474313,
+              "y": 303.6191246345496
+            },
+            "v": {
+              "x": 7.13839588367152,
+              "y": 10.5783751191717
+            },
+            "w": -5.851169836734682
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -0.8321564863236234,
+              "y": 303.5578035892928
+            },
+            "v": {
+              "x": 6.624470997786339,
+              "y": 9.05296097018923
+            },
+            "w": -10.308136817394285
+          }
+        ]
+      },
+      "captureAt": 4.2,
+      "activeEnd": 7.998333333333333,
+      "end": {
+        "x": -18.35167152605391,
+        "y": 213.20514036013265,
+        "vx": -12.104665823130226,
+        "vy": -27.908346627024304,
+        "mass": 1.1
+      },
+      "impacts": 2
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 480,
+    "warnings": 80,
+    "maxSpeed": 33.587915309380485,
+    "collisions": [
+      {
+        "key": "0:480:openSky:-1:14:13",
+        "species": "snake",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 480,
+        "time": 13.905833333334481,
+        "speed": 22.04236199944645,
+        "warningLead": 0.5158333333333882,
+        "visibleLead": 0.3491666666666955,
+        "readableLead": 0.24916666666667986,
+        "continuousNoticeLead": 0.5158333333333882,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:openSky:-1:14:13",
+        "species": "snake",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 960,
+        "time": 13.905833333334481,
+        "speed": 22.04236199944645,
+        "warningLead": 0.5158333333333882,
+        "visibleLead": 0.36583333333336476,
+        "readableLead": 0.26583333333334913,
+        "continuousNoticeLead": 0.5158333333333882,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  }
+}
