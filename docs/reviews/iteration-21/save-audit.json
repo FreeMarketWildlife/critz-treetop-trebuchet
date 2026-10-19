@@ -1,0 +1,54 @@
+{
+  "protocol": "Source and real helper/reducer in-memory audit; no browser, real storage or production edits. Startup sequence emulates current lab source.",
+  "sources": {
+    "src/progress-choice.js": "c503b308f4243febf3d59a6c7a98746e603c935e7009284f12b6ee4b03f7402d",
+    "src/economy.js": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+    "src/progress-preferences.js": "362e836d1d25c57b61c486ac6dd707e24a5930cc88bc5a150903678c63637cc5",
+    "src/lab.js": "ea91f44a18d303ead2ee5e53aa4f639d8e17090fdce78439ef3f83fc22506a80"
+  },
+  "cases": [
+    {
+      "name": "corrupt-primary-hides-valid-backup",
+      "repaired": true,
+      "backupValid": true,
+      "normalRecoveryBlocked": false
+    },
+    {
+      "name": "startup-invalid-primary-autosave-overwrites",
+      "repaired": true,
+      "unsupportedVersion": false,
+      "consentStillEnabled": false,
+      "originalRetained": true,
+      "newWallet": 7
+    },
+    {
+      "name": "startup-invalid-primary-autosave-overwrites",
+      "repaired": true,
+      "unsupportedVersion": true,
+      "consentStillEnabled": false,
+      "originalRetained": true,
+      "newWallet": 7
+    },
+    {
+      "name": "both-explicit-conflict-choices-and-swap-back",
+      "pass": true
+    },
+    {
+      "name": "interrupted-primary-write-reload-restores-active",
+      "pass": true
+    },
+    {
+      "name": "bank-before-failed-save-retry-idempotent-in-session-only",
+      "pass": true,
+      "sessionWallet": 20,
+      "reloadWallet": 11,
+      "unsavedRewardLostOnReload": true
+    },
+    {
+      "name": "restore-choice-during-live-shot-can-remove-banked-shot-id",
+      "finding": false,
+      "restoredHasCurrentShotId": false,
+      "note": "UI banked flag remains true and prevents re-award in same scene; fresh shot uses a new ID. Do not reset banked flag on restore."
+    }
+  ]
+}

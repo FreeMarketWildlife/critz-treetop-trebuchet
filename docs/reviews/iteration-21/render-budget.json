@@ -1,0 +1,37 @@
+{
+  "protocol": "Worst authored8encounter variants and20impacteffects, actual articulated scene,500warm frames after50warmup, both viewport geometries/reducedmotion. No-op canvas context measures bounded JS work only, not GPU/rasterization or browser FPS. Mixed-biome fixture stressesdraw variants, notspawnprotocol.",
+  "rows": [
+    {
+      "width": 390,
+      "height": 844,
+      "reduced": false,
+      "noOpContextFrameP95Ms": 0.09945799999999849,
+      "maxMs": 0.254249999999999,
+      "maxCalls": 1682
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "reduced": true,
+      "noOpContextFrameP95Ms": 0.06079099999999471,
+      "maxMs": 0.13770799999998928,
+      "maxCalls": 1042
+    },
+    {
+      "width": 1000,
+      "height": 875,
+      "reduced": false,
+      "noOpContextFrameP95Ms": 0.0813749999999942,
+      "maxMs": 0.4932499999999891,
+      "maxCalls": 1701
+    },
+    {
+      "width": 1000,
+      "height": 875,
+      "reduced": true,
+      "noOpContextFrameP95Ms": 0.05491700000000321,
+      "maxMs": 0.1175839999999937,
+      "maxCalls": 1061
+    }
+  ]
+}

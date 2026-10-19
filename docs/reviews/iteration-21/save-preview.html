@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Synthetic save recovery QA</title>
+<style>body{font:16px system-ui;max-width:850px;margin:2rem auto;padding:1rem;background:#18231e;color:#ecf3e8}button,a{display:inline-block;margin:.4rem;padding:.7rem}pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #61766a;padding:1rem}a{color:#aef2ba}</style>
+<h1>Synthetic save recovery QA</h1><p>This isolated-origin fixture uses artificial reducer examples, not earned gameplay. It never writes on load. Use only on the designated empty QA origin (for example localhost:8081). Existing primary saves without this fixture's ownership marker are protected.</p>
+<button id="malformed">Seed malformed primary + valid A/B recovery</button><button id="future">Seed unsupported future primary + valid A/B recovery</button><button id="refresh">Refresh diagnostics (read only)</button><a href="../../../index.html" target="_blank" rel="noopener">Open main app on this origin</a><p id="status" role="status"></p><pre id="diagnostics"></pre>
+<script type="module">
+import {createEconomyState,economyReducer} from '../../../src/economy.js';
+const keys={primary:'critz-prototype-economy-v1',backup:'critz-prototype-economy-backup-v1',unreadable:'critz-prototype-economy-unreadable-v1',unreadableBackup:'critz-prototype-economy-unreadable-backup-v1',displaced:'critz-prototype-economy-displaced-backups-v1',consent:'critz-prototype-progress-enabled'},marker='critz-save-qa-fixture-owner-v1',owner='iteration21-synthetic-explicit-seed';
+const earned=(id,distance,impacts)=>economyReducer(createEconomyState(),{type:'record-shot',shotId:id,distance,impacts});
+const A=earned('SYNTHETIC-QA-A',12,3),B=earned('SYNTHETIC-QA-B',7,1);
+function refresh(){try{const fields={origin:location.origin,synthetic:true,fixtureOwned:localStorage.getItem(marker)===owner,expectedA:A,expectedB:B};for(const [name,key]of Object.entries(keys))fields[name]={key,raw:localStorage.getItem(key)};document.querySelector('#diagnostics').textContent=JSON.stringify(fields,null,2);}catch(e){document.querySelector('#diagnostics').textContent='Storage unavailable: '+e.message;}}
+function seed(kind){try{const existing=localStorage.getItem(keys.primary),owned=localStorage.getItem(marker)===owner;if(existing!==null&&!owned)throw Error('Refused: an existing primary save is not owned by this fixture. Use an empty isolated QA origin.');
+ // Marker written before any seed; failures stop. These writes occur only after
+ // an explicit fixture button click and target this document's own origin.
+ localStorage.setItem(marker,owner);localStorage.setItem(keys.backup,JSON.stringify({version:1,active:A,backup:B}));
+ localStorage.setItem(keys.primary,kind==='malformed'?'SYNTHETIC malformed JSON — preserve these exact bytes':JSON.stringify({...A,version:99,syntheticFixture:true}));
+ localStorage.setItem(keys.consent,'1');document.querySelector('#status').textContent='Synthetic '+kind+' case seeded. Open/reload the main app on this same origin. Archive keys were kept intact.';refresh();
+}catch(e){document.querySelector('#status').textContent=e.message;refresh();}}
+document.querySelector('#malformed').onclick=()=>seed('malformed');document.querySelector('#future').onclick=()=>seed('future');document.querySelector('#refresh').onclick=refresh;refresh();
+</script></html>

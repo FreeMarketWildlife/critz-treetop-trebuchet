@@ -1,6 +1,12 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 20
+## CURRENT implementation: iteration 21
+
+Read docs/reviews/iteration-21/findings.md. Cue coverage now uses full silhouette/rim/HUD clearance, actual pose bounds, grouped counts and CSS-readable arrows. 2,880 synthetic cases no post-notice gaps; actual seventeen-contact continuous minima portrait .342917s/landscape .292917s, NOT guarantee or comparable to old first-notice metric. Save recovery disables unreadable startup persistence, preserves exact invalid/displaced bytes before explicit replacement, names backup candidate, keeps failures visible through reset. Twelve helper tests; 183 total pass. Full35 numeric parity20; 132soak126release/6miss/0retained, 258worlds0retained; stepping experimental.
+
+Actual portrait HUD-hidden moth retains cue; synthetic recovery browser checks are explicitly synthetic. Real earned save unchanged1723points/8bells ownedcounter180 afterreload, browserconsoleclean, viewportreset; priorQA tabs preserved. Localonly/no push/deploy/unlock/exportretry. NEXT human reaction/screen-reader/audio/device tests, cross-tab save concurrency and bounded history design; no universal fairness/durability/FPS claims. Earlier20andbelowhistory.
+
+## Historical implementation: iteration 20
 
 Read docs/reviews/iteration-20/findings.md. Added render-only amber edge approach cues (1.2s relative trajectory, max3, conservative1.5m payload), kind/direction in polite guidance; no body/geography/spawn/physics changes. Explicit enemy-circle outlines; moth flap clipped inside invariant circle, fixed pose reduced motion; effects behind enemies then critter and immediately suppressed when reduced.173tests pass; full35numerical rows EXACT19 excludingtimings32release/3lowmiss/10angularflags. Joint stepping remains research-only.
 

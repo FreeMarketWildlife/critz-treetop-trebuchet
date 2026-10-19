@@ -213,3 +213,8 @@ The existing loading shelf now triggers the same bounded collision refinement as
 ## Iteration 20: approach visibility and recoverable progress
 
 Approaching off-screen physical enemies have quiet bounded edge arrows and kind/direction guidance; circular outlines show their real bounds. Cosmetic moth wings are clipped inside that circle, and impact feedback stays behind the volunteer. Reduced motion suppresses existing effects immediately. Save opt-in now offers an explicit recoverable choice instead of silently discarding current earnings. Shop ownership/actions/prices and beam mass are clearer.173tests pass;35physics rows unchanged;132soak126release/6low misses/0retained payloads.17natural enemy contacts across all four biomes show first portrait warning-or-visible notice≥0.41s in this sample, compared with visibility-only minimum0.077s. Actual two-flight earned purchase and backup/swap/reload UI verified. See [iteration20 findings](reviews/iteration-20/findings.md) for limits and performance evidence. Joint stepping remains experimental; local only.
+
+
+## Iteration 21 review
+
+See [continuous approach and recovery findings](reviews/iteration-21/findings.md): full-silhouette edge warnings, deliberate preserved-byte recovery, 183 passing tests and unchanged physics regression. Natural sampled notice is not a fairness guarantee; device/audio and cross-tab durability remain open.
