@@ -1,5 +1,5 @@
 /** Original test-bed rigs. Metres/kg are arbitrary calibration units, NOT biological data.
- * Profiles describe gameplay proportions; glide is a design coefficient, not an applied force.
+ * Profiles describe gameplay proportions; the squirrel uses the passive flight-only glide model.
  * Bodies use local rig x/y; capsules run along their local x axis (length includes endcaps).
  */
 const circle=(id,x,y,r,f)=>({id,x,y,angle:0,shape:{type:'circle',radius:r},massFraction:f});
@@ -19,7 +19,7 @@ export const profiles=[
  definition('turtle','Turtle',2.4,.20,'#78965d',quadruped(circle('torso',0,0,.25,.74),capsule('head',.30,0,.19,.075,.08),capsule('tail',-.29,-.02,.12,.025,.06),legs(.15,-.19,.055,.06)),standardJoints(.35),{massNote:'74% of mass in the carapace body; 6% in the tail maintains finite contact inertia.'}),
  definition('snake','Snake',1.1,.14,'#86bca2',Array.from({length:7},(_,i)=>capsule(i===0?'head':`segment-${i}`, .6-i*.2,0,.25,i===0?.085:.065,i===0?.16:.14)),Array.from({length:6},(_,i)=>hinge(i===0?'head':`segment-${i}`,`segment-${i+1}`,1.05)),{quirk:'Flexible articulated chain; no propulsion or steering force is implied.'}),
  definition('chipmunk','Chipmunk',1,.22,'#be8055',quadruped(capsule('torso',0,0,.44,.14,.43),circle('head',.27,.075,.13,.20),capsule('tail',-.36,.09,.32,.09,.13),legs(.14,-.16,.045,.12)),standardJoints(1.2)),
- definition('flying-squirrel','Flying squirrel',.9,.16,'#b9a394',[capsule('torso',0,0,.43,.13,.42),circle('head',.27,.06,.12,.18),capsule('tail',-.40,.01,.40,.08,.12),box('rear-membrane',-.13,-.12,.22,.04,.14),box('front-membrane',.13,-.12,.26,.04,.14)],[hinge('torso','head',.5),hinge('torso','tail',1.1),hinge('torso','rear-membrane',.65),hinge('torso','front-membrane',.65)],{queueWeight:.15,glideCoefficient:1,quirk:'Very rare; long-glide coefficient reserved pending control/force design.'}),
+ definition('flying-squirrel','Flying squirrel',.9,.16,'#b9a394',[capsule('torso',0,0,.43,.13,.42),circle('head',.27,.06,.12,.18),capsule('tail',-.40,.01,.40,.08,.12),box('rear-membrane',-.13,-.12,.22,.04,.14),box('front-membrane',.13,-.12,.26,.04,.14)],[hinge('torso','head',.5),hinge('torso','tail',1.1),hinge('torso','rear-membrane',.65),hinge('torso','front-membrane',.65)],{queueWeight:.15,glideCoefficient:1,quirk:'Very rare; passive membrane and tail aerodynamics apply only after release; left flares and right dives.'}),
  definition('armadillo','Armadillo',5,.24,'#9c8a7b',quadruped(capsule('torso',0,0,.61,.23,.68),capsule('head',.40,-.015,.25,.09,.12),capsule('tail',-.47,-.025,.32,.045,.06),legs(.20,-.23,.055,.07)),standardJoints(.6)),
  definition('small-marsupial','Pygmy possum',.7,.26,'#cea99d',quadruped(capsule('torso',0,0,.34,.13,.43),circle('head',.22,.07,.13,.23),capsule('tail',-.36,.03,.42,.025,.10),legs(.11,-.15,.035,.12)),standardJoints(1.5),{provisional:false}),
  definition('tiny-primate','Pygmy marmoset',.85,.30,'#c4a374',[capsule('torso',0,0,.27,.14,.40),circle('head',.12,.23,.14,.24),capsule('tail',-.29,-.015,.50,.03,.10),capsule('rear-leg',-.08,-.20,.30,.045,.13),capsule('front-leg',.19,.02,.33,.04,.13)],standardJoints(1.3),{provisional:false}),

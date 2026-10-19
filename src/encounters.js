@@ -20,6 +20,16 @@ const aliases={'Grandfather Tree':'grandfatherTree','Grandfather Tree branches/l
 function hash(value){let h=2166136261;for(const c of String(value)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;}
 function random(key){let a=hash(key);return ()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
 function resolveRegion(region,y){if(regions[region])return region;if(aliases[region])return aliases[region];return y>245?'grandfatherTree':y>120?'openSky':y>5?'jungleCanopy':'forestFloor';}
+/** Reject materialization on the player's short relative-motion corridor. This
+ * only chooses whether a fresh encounter is born; it never moves an existing body.
+ * The full solver separately checks every fixture for actual overlap. */
+export function hasArrivalClearance(enemy,player){
+ const values=[enemy.x,enemy.y,enemy.radius,enemy.vx??0,enemy.vy??0,player.x,player.y,player.vx??0,player.vy??0];
+ if(!values.every(Number.isFinite)||enemy.radius<=0)return false;
+ const vx=(player.vx??0)-(enemy.vx??0),vy=(player.vy??0)-(enemy.vy??0),dx=enemy.x-player.x,dy=enemy.y-player.y,speed2=vx*vx+vy*vy;
+ const t=speed2?Math.max(0,Math.min(.4,(dx*vx+dy*vy)/speed2)):0;
+ return Math.hypot(dx-vx*t,dy-vy*t)>enemy.radius+1.5;
+}
 /** update(timeSeconds, {x,y}, optionalRegion) -> {active,events}.
  * Active bodies use SI-like world coordinates (y up). Motion is authored kinematic
  * scheduling, NOT a dynamic collision solver. An integrator must replace descriptor
@@ -64,7 +74,7 @@ export function createEncounterDirector(seed=0,saved=null){
     for(const [id,expiry] of observed)if(expiry<time && forward)observed.delete(id);
     if(forward)for(const enemy of active)if(!observed.has(enemy.id)){
       observed.set(enemy.id,enemy.expiresAt);
-      if(time-enemy.spawnTime<=.25 && Math.hypot(enemy.x-player.x,enemy.y-player.y)>enemy.radius+1.5)spawns.push(enemy);
+      if(time-enemy.spawnTime<=.25 && hasArrivalClearance(enemy,player))spawns.push(enemy);
     }
     const audible=new Set();
     if(spawns.length && time-lastSound>=.4){audible.add(spawns[0].id);lastSound=time;}

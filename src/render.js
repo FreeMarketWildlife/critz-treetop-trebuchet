@@ -1,3 +1,4 @@
+import {drawSpeciesMarkings} from './species-art.js';
 import {biomeAt} from './journey.js';
 import {createFlightCamera} from './camera.js';
 import {world as layout} from './world.js';
@@ -15,6 +16,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    if(s.getType()==='circle'){dot(transform(b.getWorldPoint(s.getCenter())),s.getRadius()*scale,color);if(role==='part'){ctx.strokeStyle='#344b38';ctx.lineWidth=1.1;ctx.stroke();}}
    else if(s.getType()==='polygon'){const points=s.m_vertices.map(v=>transform(b.getWorldPoint(v)));ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.closePath();ctx.fill();ctx.strokeStyle='#344b38';ctx.lineWidth=1.1;ctx.stroke();}
   }
+  if(role==='part'){const profile=scene.rig.bodies.find(p=>p.id===b.getUserData().id),p=transform(b.getPosition());drawSpeciesMarkings(ctx,{species:scene.rig.id,part:profile.id,shape:profile.shape,x:p[0],y:p[1],angle:-b.getAngle(),scale});}
   if(role==='enemy'){const p=transform(b.getWorldCenter()),f=b.getFixtureList();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:f.getShape().getRadius()*scale,shape:b.getUserData().shape,kind:b.getUserData().kind,color:b.getUserData().color,angle:-b.getAngle()});}
   if(role==='part'&&b.getUserData().id==='head'){const p=transform(b.getPosition()),profile=scene.rig.bodies.find(p=>p.id==='head');drawFace(ctx,{x:p[0],y:p[1],angle:-b.getAngle(),size:Math.max(3,(profile.shape.radius??.1)*scale),species:scene.rig.id,color:scene.rig.color});}
  }
@@ -53,7 +55,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    }else dot([panel.x+panel.w/2,panel.y+panel.h/2],110,'rgba(255,248,222,.45)');
    for(let b=scene.world.getBodyList();b;b=b.getNext())if(['part','enemy'].includes(b.getUserData()?.role))body(scene,b,view,scale);
    if(preview)preview.points.forEach((p,i)=>dot(view(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
-   for(const e of effects)dot(view(e),(1-e.life/.4)*(8+10*(e.strength??.4)),`rgba(240,182,79,${e.life})`);ctx.restore();
+   for(const e of effects){const p=view(e),t=1-e.life/.4,r=4+t*(8+14*(e.strength??.4));ctx.save();ctx.globalAlpha=Math.max(0,e.life/.4)*.8;ctx.strokeStyle=e.material==='leaf'?'#e9f4af':e.material==='bumper'?'#f9bd55':'#fff0ba';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(...p,r,0,Math.PI*2);ctx.stroke();if((e.strength??0)>.25)for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;line([p[0]+Math.cos(a)*(r+2),p[1]+Math.sin(a)*(r+2)],[p[0]+Math.cos(a)*(r+5),p[1]+Math.sin(a)*(r+5)],ctx.strokeStyle,1.5);}ctx.restore();}ctx.restore();
    if(flying)drawFlightHud(scene,c,panel,biome);else{ctx.fillStyle='#273f35';ctx.font='bold 17px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${(scene.rig?.totalMass??0).toFixed(2)} kg`,512,25);ctx.font='12px system-ui';ctx.fillText('Live close-up • drag in the left view',512,44);}
   }
   if(!portrait&&!flying)line([480,0],[480,480],'#8c9f95',1);wasFlying=flying;lastTime=time;

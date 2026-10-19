@@ -20,3 +20,8 @@ test('queue is reproducible, exposes current and only next three, consumes one a
  const a=createVolunteerQueue(123),b=createVolunteerQueue(123);assert.equal(a.peek().length,3);assert.equal(a.state,undefined);assert.throws(()=>a.peek(4),RangeError);const copy=a.peek();copy[0]='unknown';assert.notDeepEqual(a.peek(),copy);
  for(let i=0;i<100;i++){assert.equal(a.current,b.current);assert.deepEqual(a.peek(),b.peek());const next=a.peek()[0],old=a.current;assert.equal(a.consume(),old);b.consume();assert.equal(a.current,next);}assert.notDeepEqual(createVolunteerQueue(3).peek(),createVolunteerQueue(4).peek());
 });
+test('seeded next-three samples preserve weighted rarity and permit repeats',()=>{
+ const counts=Object.fromEntries(profiles.map(p=>[p.id,0]));let repeats=0;const n=100000;
+ for(let seed=1;seed<=100;seed++){const q=createVolunteerQueue(seed);for(let i=0;i<n/100;i++){const next=q.peek();assert.equal(next.length,3);counts[q.current]++;if(next[0]===q.current)repeats++;q.consume();assert.equal(q.current,next[0]);assert.deepEqual(q.peek().slice(0,2),next.slice(1));}}
+ const rare=counts['flying-squirrel'];assert.ok(rare>90&&rare<220,JSON.stringify(counts));for(const p of profiles.filter(p=>p.id!=='flying-squirrel'))assert.ok(counts[p.id]>9500&&counts[p.id]<10500,JSON.stringify(counts));assert.ok(repeats>5000,'repeated volunteers are valid weighted draws');
+});

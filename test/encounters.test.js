@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createEncounterDirector,encounterPools} from '../src/encounters.js';
+import {createEncounterDirector,encounterPools,hasArrivalClearance} from '../src/encounters.js';
 test('seeded active schedule is reproducible and independent of update history',()=>{
  const a=createEncounterDirector('abc'),b=createEncounterDirector('abc'),p={x:30,y:200};
  a.update(1,p);a.update(40,p);assert.deepEqual(a.update(8,p).active,b.update(8,p).active);
@@ -63,4 +63,13 @@ test('initial snapshots are JSON-safe detached state and reject invalid restorat
  assert.deepEqual(createEncounterDirector(2,saved).snapshot(),a.snapshot());
  for(const bad of [{...saved,seed:3},{...saved,version:2},{...saved,latestTime:NaN},{...saved,lastSound:Infinity},{...saved,observed:[['id',NaN]]},{...saved,previous:['x',2]}])assert.throws(()=>createEncounterDirector(2,bad));
  a.update(3,{x:0,y:200});a.reset();assert.deepEqual(a.snapshot(),saved);
+});
+test('seeded long canopy and floor travel reveal every regional kind with clear births',()=>{
+ const seen=Object.fromEntries(Object.keys(encounterPools).map(k=>[k,new Set()]));
+ for(let seed=0;seed<12;seed++)for(const [biome,y]of [['grandfatherTree',280],['openSky',180],['jungleCanopy',65],['forestFloor',1]]){const d=createEncounterDirector(seed);for(let i=0;i<1800;i++){const t=i/30,p={x:t*9,y,vx:9,vy:0},r=d.update(t,p,biome);assert.ok(r.active.length<=8);for(const e of r.spawns){seen[biome].add(e.kind);assert.ok(Math.hypot(e.x-p.x,e.y-p.y)>e.radius+1.5);}}}
+ for(const [biome,pool]of Object.entries(encounterPools))assert.deepEqual([...seen[biome]].sort(),pool.map(e=>e.kind).sort());
+});
+
+test('fresh encounters leave a short reaction corridor for fast, descending and reverse travel',()=>{
+ const e={x:6,y:0,radius:.6,vx:0,vy:0};assert.equal(hasArrivalClearance(e,{x:0,y:0,vx:20,vy:0}),false);assert.equal(hasArrivalClearance(e,{x:0,y:0,vx:-20,vy:0}),true);assert.equal(hasArrivalClearance({...e,x:0,y:-6},{x:0,y:0,vx:0,vy:-20}),false);assert.equal(hasArrivalClearance({...e,y:4},{x:0,y:0,vx:20,vy:0}),true);assert.equal(hasArrivalClearance({...e,vx:20},{x:0,y:0,vx:20,vy:0}),true);assert.equal(hasArrivalClearance(e,{x:0,y:0,vx:NaN}),false);
 });

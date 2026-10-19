@@ -1,0 +1,308 @@
+{
+  "protocol": "100 seeds ×1000 current volunteers, repeats allowed. Eleven explicitly initialized ground-drop test rigs: COM(50,4),velocity(8,-12),zero spin,one second600Hz adaptive2400Hz, no encounters/control. This is synthetic setup before integration, not a production teleport or launch result. Differences reflect authored mass distribution/articulation/friction/passive glide; all species retain restitution .32. Energy includes all mechanism bodies and recorded work. Not biological calibration.",
+  "sourceSHA256": {
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/species-art.js": "8de42ddab2098ed56bc60396527420bc4784b717d0506bcf748348b788561e5b",
+    "src/articulated.js": "af4db123400067f0194623b25fad821bcee98fde8938e91ea48349ac94276309",
+    "src/glide.js": "9f15a8eefa77be700dd2c1b2e571ccd4cd28af8c56010b0bea745e2d21693024",
+    "src/encounters.js": "475ef459aa725f55d0526302b10c83ab737abf7ca513ca7c15945796491df058",
+    "src/world.js": "e3a1c4a34f0a33cad01478051616f1bbf1e9e9c05ff3178f22956a348485fb65"
+  },
+  "queue": {
+    "samples": 100000,
+    "counts": {
+      "lizard": 10118,
+      "salamander": 9886,
+      "mouse": 10039,
+      "turtle": 9980,
+      "snake": 9868,
+      "chipmunk": 10055,
+      "flying-squirrel": 147,
+      "armadillo": 9837,
+      "small-marsupial": 10132,
+      "tiny-primate": 9934,
+      "frog": 10004
+    },
+    "repeats": 10027,
+    "rareProbability": 0.0014977533699450823
+  },
+  "rows": [
+    {
+      "species": "lizard",
+      "mass": 0.65,
+      "friction": 0.38,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.09100000000000001,
+        "head": 0.10400000000000001,
+        "rear-leg": 0.09100000000000001,
+        "tail": 0.10400000000000001,
+        "torso": 0.26
+      },
+      "firstImpact": 0.28833333333333394,
+      "postImpactPeak": 0.26739239102580215,
+      "finalCenter": {
+        "x": 56.961633106978866,
+        "y": 0.22680211899041874,
+        "vx": 5.8375711453146435,
+        "vy": -0.05713068953832832,
+        "mass": 0.65
+      },
+      "maxAngle": 0.03150608766959573,
+      "maxAnchor": 0.0000412725199901795,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "salamander",
+      "mass": 0.8,
+      "friction": 0.075,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.096,
+        "head": 0.144,
+        "rear-leg": 0.096,
+        "tail": 0.11200000000000002,
+        "torso": 0.35200000000000004
+      },
+      "firstImpact": 0.28833333333333394,
+      "postImpactPeak": 0.6035626942643376,
+      "finalCenter": {
+        "x": 57.384288113366836,
+        "y": 0.2664856845604328,
+        "vx": 6.944351287284611,
+        "vy": -1.289117615273058,
+        "mass": 0.8
+      },
+      "maxAngle": 0.015838617923588538,
+      "maxAnchor": 0.00006732658445027444,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "mouse",
+      "mass": 0.75,
+      "friction": 0.19,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.09,
+        "head": 0.165,
+        "rear-leg": 0.09,
+        "tail": 0.037500000000000006,
+        "torso": 0.3675
+      },
+      "firstImpact": 0.28666666666666735,
+      "postImpactPeak": 0.41462525772497577,
+      "finalCenter": {
+        "x": 57.38484380540812,
+        "y": 0.21046915212582504,
+        "vx": 6.631818921631229,
+        "vy": -0.09834438919102813,
+        "mass": 0.75
+      },
+      "maxAngle": 0.032735542121496986,
+      "maxAnchor": 0.000026091760908382375,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "turtle",
+      "mass": 2.4,
+      "friction": 0.2,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.144,
+        "head": 0.192,
+        "rear-leg": 0.144,
+        "tail": 0.144,
+        "torso": 1.776
+      },
+      "firstImpact": 0.28166666666666734,
+      "postImpactPeak": 0.2969692138577529,
+      "finalCenter": {
+        "x": 57.25468563563723,
+        "y": 0.22784966745880972,
+        "vx": 6.418744832122013,
+        "vy": 0.008094251782352428,
+        "mass": 2.4
+      },
+      "maxAngle": 0.03664534048369528,
+      "maxAnchor": 0.000009340084551687976,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "snake",
+      "mass": 1.1,
+      "friction": 0.14,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "head": 0.17600000000000002,
+        "segment-1": 0.15400000000000003,
+        "segment-2": 0.15400000000000003,
+        "segment-3": 0.15400000000000003,
+        "segment-4": 0.15400000000000003,
+        "segment-5": 0.15400000000000003,
+        "segment-6": 0.15400000000000003
+      },
+      "firstImpact": 0.29166666666666724,
+      "postImpactPeak": 1.0335584671849836,
+      "finalCenter": {
+        "x": 56.23845076068243,
+        "y": 0.6783529468196726,
+        "vx": 5.5143324895238095,
+        "vy": -2.6321661861440138,
+        "mass": 1.1
+      },
+      "maxAngle": 0.013955276519381332,
+      "maxAnchor": 0.00016370509567477596,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "chipmunk",
+      "mass": 1,
+      "friction": 0.22,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.12,
+        "head": 0.2,
+        "rear-leg": 0.12,
+        "tail": 0.13,
+        "torso": 0.43
+      },
+      "firstImpact": 0.283333333333334,
+      "postImpactPeak": 0.20962527748611748,
+      "finalCenter": {
+        "x": 57.06262150828597,
+        "y": 0.13677100371312897,
+        "vx": 6.105568228974207,
+        "vy": -0.0033840993722508896,
+        "mass": 1
+      },
+      "maxAngle": 0.031522227813553294,
+      "maxAnchor": 0.00004092144912820071,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "flying-squirrel",
+      "mass": 0.9,
+      "friction": 0.16,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-membrane": 0.12600000000000003,
+        "head": 0.162,
+        "rear-membrane": 0.12600000000000003,
+        "tail": 0.108,
+        "torso": 0.378
+      },
+      "firstImpact": 0.32833333333333364,
+      "postImpactPeak": 0.4809165560210798,
+      "finalCenter": {
+        "x": 54.48164321482592,
+        "y": 0.3114900276481525,
+        "vx": 2.5062291972823205,
+        "vy": -0.2328546918928246,
+        "mass": 0.9
+      },
+      "maxAngle": 0.016597202504107567,
+      "maxAnchor": 0.00001807981982064055,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "armadillo",
+      "mass": 5,
+      "friction": 0.24,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.35000000000000003,
+        "head": 0.6,
+        "rear-leg": 0.35000000000000003,
+        "tail": 0.3,
+        "torso": 3.4000000000000004
+      },
+      "firstImpact": 0.2800000000000007,
+      "postImpactPeak": 0.49918159149873526,
+      "finalCenter": {
+        "x": 57.08072900031432,
+        "y": 0.29672998780971305,
+        "vx": 6.065609664297017,
+        "vy": 0.39794918366383136,
+        "mass": 5
+      },
+      "maxAngle": 0.02766996136458244,
+      "maxAnchor": 0.00001754781484996028,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "small-marsupial",
+      "mass": 0.7,
+      "friction": 0.26,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.08399999999999999,
+        "head": 0.161,
+        "rear-leg": 0.08399999999999999,
+        "tail": 0.06999999999999999,
+        "torso": 0.301
+      },
+      "firstImpact": 0.28500000000000064,
+      "postImpactPeak": 0.512302322847492,
+      "finalCenter": {
+        "x": 57.170085618625926,
+        "y": 0.16203995530113324,
+        "vx": 6.173550909573748,
+        "vy": 0.2838698225691567,
+        "mass": 0.7
+      },
+      "maxAngle": 0.027578980277055187,
+      "maxAnchor": 0.00007338699740713816,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "tiny-primate",
+      "mass": 0.85,
+      "friction": 0.3,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.1105,
+        "head": 0.204,
+        "rear-leg": 0.1105,
+        "tail": 0.085,
+        "torso": 0.34
+      },
+      "firstImpact": 0.27833333333333404,
+      "postImpactPeak": 0.43227583775038464,
+      "finalCenter": {
+        "x": 57.3220318849022,
+        "y": 0.22595996610729424,
+        "vx": 6.515160063220278,
+        "vy": -0.714691014158467,
+        "mass": 0.8500000000000001
+      },
+      "maxAngle": 0.03669286345099487,
+      "maxAnchor": 0.000027814708735210173,
+      "maxPositiveEnergyResidual": 0
+    },
+    {
+      "species": "frog",
+      "mass": 1.05,
+      "friction": 0.18,
+      "restitution": 0.32,
+      "bodyMasses": {
+        "front-leg": 0.10500000000000001,
+        "head": 0.231,
+        "rear-shin": 0.10500000000000001,
+        "rear-thigh": 0.168,
+        "torso": 0.441
+      },
+      "firstImpact": 0.2800000000000007,
+      "postImpactPeak": 0.6542707602181368,
+      "finalCenter": {
+        "x": 57.398076712098764,
+        "y": 0.2629491965181714,
+        "vx": 6.586641479111609,
+        "vy": 0.48082427062672367,
+        "mass": 1.05
+      },
+      "maxAngle": 0.02309351270698745,
+      "maxAnchor": 0.00024702899779246133,
+      "maxPositiveEnergyResidual": 0
+    }
+  ]
+}

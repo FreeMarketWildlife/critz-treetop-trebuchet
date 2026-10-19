@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import P from 'planck';import {profiles} from '../src/species.js';import {CritterScene} from '../src/articulated.js';import {STARTER_HARDWARE} from '../src/starter.js';
+const work=s=>s.handWork+s.windingWork+s.assistWork+s.dragWork+s.dampingWork+s.spawnEnergy-s.despawnEnergy;
+test('all eleven authored rigs survive the same finite ground arrival without energy rescue',()=>{
+ for(const p of profiles){const s=new CritterScene({...STARTER_HARDWARE,mechanicalWinding:true,collisionSubsteps:true,collisionStepHz:2400},p.id),c=s.center();for(const b of s.parts){const q=b.getPosition();b.setPosition(P.Vec2(q.x+50-c.x,q.y+4-c.y));b.setLinearVelocity(P.Vec2(8,-12));}s.phase='flight';s.release={time:0,center:{x:50,y:4,vx:8,vy:-12}};const e0=s.energy(),w0=work(s);let impact=false;
+ for(let i=0;i<600;i++){s.step();impact ||= s.events.some(e=>e.type==='impact');s.events.length=0;assert.ok(s.energy()-e0-(work(s)-w0)<.01,p.id);for(const b of s.parts)assert.ok([b.getPosition().x,b.getPosition().y,b.getAngle(),b.getAngularVelocity()].every(Number.isFinite),p.id);for(let j=s.world.getJointList();j;j=j.getNext())if(j.getType()==='revolute-joint'&&[j.getBodyA(),j.getBodyB()].every(b=>b.getUserData()?.role==='part')){const a=j.getAnchorA(),b=j.getAnchorB();assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<.005,p.id);assert.ok(Math.max(0,j.getJointAngle()-j.getUpperLimit(),j.getLowerLimit()-j.getJointAngle())<.05,p.id);}}
+ assert.ok(impact,p.id);assert.ok(s.assistWork<=1e-9,p.id);
+ }
+});

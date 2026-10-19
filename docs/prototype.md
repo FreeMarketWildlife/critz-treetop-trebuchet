@@ -173,3 +173,8 @@ Longer diagnostics now follow contact recovery and ground when reached. They dis
 ## Iteration 12 — controlled tail impact and flight readability
 
 The turtle uses a total-mass-preserving 74% shell / 6% tail profile. A saved legacy incoming-state regression isolates the reduction from 0.765 to 0.031 rad tail overshoot without changing geometry or limits. Full flight now occupies the canvas with bounded camera lookahead, while desktop loading has a live close-up and pickup affordance. Effective owned hardware and audio engine state are visible. See [measured findings and remaining limits](reviews/iteration-12/findings.md): 135 tests pass; 32/35 diagnostic releases, three low-winding seating failures, and other transient angular violations remain. Local only; audible quality and real-device FPS are unverified.
+
+
+## Iteration 13 — volunteer identity and fair arrivals
+
+All11 rigs now have original markings clipped to their real body shapes, same-geometry next-three portraits and current handling hints. The lab exposes actual part masses and contact values. Seeded100000-draw checks produce147rare squirrels and allow valid repeats; no run-uniqueness claim. Fresh encounters leave a0.4second relative-motion reaction corridor. Impacts use contact-point rings, with reduced-motion suppression. [Findings and evidence](reviews/iteration-13/findings.md) record142passing tests, same-state all-species drops without added energy, unchanged32/35natural releases and remaining joint warnings. Live squirrel tree→sky→canopy→floor and final-runtime lizard launch/bank/retry were observed; audible quality and real-device FPS remain unverified.

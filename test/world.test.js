@@ -35,3 +35,7 @@ test('quadratic drag reduces vacuum horizontal momentum; world timestep converge
  assert.ok(Math.abs(a.frames.at(-1).x-b.frames.at(-1).x)<.1);
  assert.ok(Math.abs(a.frames.at(-1).y-b.frames.at(-1).y)<.1);
 });
+test('fixed map leaves the launch corridor open and a long canopy route around branch',()=>{
+ assert.ok(world.bumpers.every(p=>p.x-p.radius>25&&p.radius<2));
+ const canopy=world.surfaces.find(s=>s.id==='canopy branch');assert.equal(canopy.y,105);assert.ok(canopy.maxX-canopy.minX<=60);assert.ok(canopy.minX>100);assert.ok(world.canopyTop>100);assert.equal(world.surfaces.filter(s=>s.id==='ground').length,1);
+});

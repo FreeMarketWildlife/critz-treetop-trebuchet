@@ -1,3 +1,4 @@
+import {drawVolunteerPortrait,speciesTraits} from './species-art.js';
 import {loadProgressConsent,saveProgressConsent} from './progress-preferences.js';
 import {createJourneyTracker} from './journey.js';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
@@ -8,7 +9,7 @@ import {createGripController,isFlightControlKey} from './input.js';
 import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent,predictionAdvice} from './prediction.js';
 import {createRenderer} from './render.js';
 import {installReviewExports} from './review.js';
-import {profiles,createVolunteerQueue} from './species.js';
+import {profiles,createRig,createVolunteerQueue} from './species.js';
 import {createAudio} from './audio.js';
 import {catalog,createEconomyState,economyReducer,derivePhysicalConfig,createEconomyPersistence} from './economy.js';
 import {world as layout} from './world.js';
@@ -32,7 +33,9 @@ restoreStarterValues();
 $('starter').onclick=()=>{restoreStarterValues();reset();};
 $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</option>`).join('');$('species').value=queue.current;
 function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
-function reset(){try{bank();grip.reset();runObstacle=null;journey=createJourneyTracker();zoneNotice='';zoneNoticeUntil=0;sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;economyUI();}catch(e){error=e.message;}}
+let rosterKey='';
+function updateRoster(){const ids=queue.peek(),key=ids.join(',');if(key===rosterKey)return;rosterKey=key;$('roster').replaceChildren(...ids.map((id,i)=>{const p=profiles.find(p=>p.id===id),card=document.createElement('div'),canvas=document.createElement('canvas'),label=document.createElement('span');card.className='volunteer-card';canvas.width=160;canvas.height=72;canvas.setAttribute('aria-hidden','true');label.textContent=`${i+1}. ${p.label}${id==='flying-squirrel'?' • rare':''}`;card.append(canvas,label);drawVolunteerPortrait(canvas.getContext('2d'),createRig(id),160,72);return card;}));}
+function reset(){try{bank();grip.reset();runObstacle=null;journey=createJourneyTracker();zoneNotice='';zoneNoticeUntil=0;sliderRunning=true;sliderStart=performance.now();shotId=null;banked=false;launchStarted=null;scene=new (SceneType())(settings(),$('species').value);clearPreview();nextPreview=clock+.15;error='';accumulator=0;economyUI();updateRoster();setText('speciesTrait',speciesTraits[scene.rig.id]);setText('rigFacts',`${scene.rig.label}: ${scene.rig.bodies.map(b=>`${b.id} ${(b.mass*1000).toFixed(0)} g`).join(' • ')}. Contact friction ${scene.rig.friction}; restitution ${scene.rig.restitution}. Prototype units, not biological measurements.`);}catch(e){error=e.message;}}
 $('hook').onchange=reset;$('split').onchange=reset;
 for(const id of ['species','mass','long','short','friction','drag','sling','railAngle','railLength','panelMass'])$(id).onchange=reset;
 $('reset').onclick=reset;
@@ -103,7 +106,7 @@ function render(now){const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now
  }
  if(held&&scene.forceCapped)hints.push('Grip force limit reached. Move more gently.');
  setText('guidance',hints.join(' '));
- for(const event of scene.events.splice(0)){if(event.type==='impact'){runObstacle??=event.surface??null;sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4,strength:Math.min(1,event.strength/Math.max(.1,scene.rig.totalMass*10))});}else if(event.type==='launch')sound.play('launch');else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
+ for(const event of scene.events.splice(0)){if(event.type==='impact'){runObstacle??=event.surface??null;sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4,material:event.material,strength:Math.min(1,event.strength/Math.max(.1,scene.rig.totalMass*10))});}else if(event.type==='launch')sound.play('launch');else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
  effects=effects.map(e=>({...e,life:e.life-dt})).filter(e=>e.life>0).slice(-20);
  if(clock>=nextStatus||statusPhase!==scene.phase){const audio=sound.getStatus();setText('audioEngine',audio.muted?'Audio muted; no cues are being scheduled.':audio.contextState==='running'?`Audio active • recent cue: ${audio.lastCue??'none'}`:'Audio waiting for an interaction.');nextStatus=clock+.25;statusPhase=scene.phase;
  setText('readout',error||`${scene.rig.label} • ${({uncocked:'Ready to wind',winding:'Winding',loading:'Load the cradle',launching:'Arm moving',flight:'In flight','wind-stalled':'Winding stalled'})[scene.phase]??scene.phase} • ${release?Math.max(0,c.x-release.x).toFixed(0)+' m • '+scene.impactCount+' bounces • '+(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(1)+' m/s':'Counterweight '+(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)+' m above axle'}`);

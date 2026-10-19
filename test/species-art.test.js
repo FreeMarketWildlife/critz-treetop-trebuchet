@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {profiles,createRig} from '../src/species.js';import {drawVolunteerPortrait,drawSpeciesMarkings,speciesTraits} from '../src/species-art.js';
+function context(){const calls=[];return {calls,ctx:new Proxy({},{get:(_,k)=>(...a)=>{assert.ok(a.filter(v=>typeof v==='number').every(Number.isFinite));calls.push([k,...a]);},set:(_,k,v)=>{calls.push(['set',k,v]);return true;}})};}
+test('eleven roster silhouettes share authored geometry with bounded distinct markings',()=>{
+ const signatures=new Set();for(const p of profiles){const r=createRig(p.id),before=structuredClone(r),{ctx,calls}=context();drawVolunteerPortrait(ctx,r);assert.deepEqual(r,before);assert.ok(calls.length<600);assert.equal(calls.filter(c=>c[0]==='save').length,calls.filter(c=>c[0]==='restore').length);assert.equal(calls.filter(c=>c[0]==='clip').length,r.bodies.length);assert.ok(speciesTraits[p.id]);signatures.add(JSON.stringify(calls));}assert.equal(signatures.size,11);
+});
+test('markings reject invalid transforms and stay inside a body clip',()=>{const {ctx,calls}=context();drawSpeciesMarkings(ctx,{species:'snake',part:'segment-2',shape:{type:'capsule',length:.25,radius:.065},scale:NaN});assert.equal(calls.length,0);});
