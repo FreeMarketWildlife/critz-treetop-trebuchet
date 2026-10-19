@@ -1,0 +1,2558 @@
+{
+  "protocol": "Replay recorded earned rewards through current reducers and original purchase schedule; no physics rerun, no wallet grants, no browser or user storage access.",
+  "ledger": "iteration-19/soak-shelf-only.json",
+  "ledgerSHA256": "f14663e435b4a2e874a804eae672f1fdd1f8c9c983ebace85987de0b1e531d82",
+  "economySHA256": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+  "purchases": [
+    {
+      "beforeLaunch": 3,
+      "id": "counterweight-heavy",
+      "price": 30,
+      "earnedWalletBefore": 40,
+      "walletAfter": 10
+    },
+    {
+      "beforeLaunch": 6,
+      "id": "beam-long",
+      "price": 45,
+      "earnedWalletBefore": 64,
+      "walletAfter": 19
+    },
+    {
+      "beforeLaunch": 8,
+      "id": "beam-light",
+      "price": 55,
+      "earnedWalletBefore": 63,
+      "walletAfter": 8
+    },
+    {
+      "beforeLaunch": 10,
+      "id": "sling-long",
+      "price": 35,
+      "earnedWalletBefore": 81,
+      "walletAfter": 46
+    },
+    {
+      "beforeLaunch": 13,
+      "id": "frame-heavy",
+      "price": 40,
+      "earnedWalletBefore": 99,
+      "walletAfter": 59
+    },
+    {
+      "beforeLaunch": 16,
+      "id": "frame-grip",
+      "price": 40,
+      "earnedWalletBefore": 104,
+      "walletAfter": 64
+    }
+  ],
+  "duplicateChecks": 126,
+  "saveChecks": 132,
+  "alternativeChecks": 742,
+  "final": {
+    "points": 130485,
+    "bells": 2379,
+    "owned": [
+      "counterweight-heavy",
+      "beam-long",
+      "beam-light",
+      "sling-long",
+      "frame-heavy",
+      "frame-grip"
+    ],
+    "completedShots": 126
+  },
+  "firstAllOwnedLaunch": 16,
+  "rows": [
+    {
+      "i": 0,
+      "released": true,
+      "bells": 25,
+      "points": 250,
+      "owned": [],
+      "equipped": {}
+    },
+    {
+      "i": 1,
+      "released": true,
+      "bells": 40,
+      "points": 618,
+      "owned": [],
+      "equipped": {}
+    },
+    {
+      "i": 2,
+      "released": true,
+      "bells": 25,
+      "points": 3006,
+      "owned": [
+        "counterweight-heavy"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 3,
+      "released": false,
+      "bells": 25,
+      "points": 3006,
+      "owned": [
+        "counterweight-heavy"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 4,
+      "released": true,
+      "bells": 64,
+      "points": 3446,
+      "owned": [
+        "counterweight-heavy"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 5,
+      "released": true,
+      "bells": 40,
+      "points": 4937,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      }
+    },
+    {
+      "i": 6,
+      "released": true,
+      "bells": 63,
+      "points": 5162,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      }
+    },
+    {
+      "i": 7,
+      "released": true,
+      "bells": 81,
+      "points": 6012,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 8,
+      "released": false,
+      "bells": 81,
+      "points": 6012,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 9,
+      "released": true,
+      "bells": 63,
+      "points": 7547,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 10,
+      "released": true,
+      "bells": 80,
+      "points": 9487,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 11,
+      "released": true,
+      "bells": 99,
+      "points": 10328,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 12,
+      "released": true,
+      "bells": 66,
+      "points": 11256,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-heavy"
+      }
+    },
+    {
+      "i": 13,
+      "released": true,
+      "bells": 81,
+      "points": 13101,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-heavy"
+      }
+    },
+    {
+      "i": 14,
+      "released": true,
+      "bells": 104,
+      "points": 13910,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 15,
+      "released": true,
+      "bells": 71,
+      "points": 15484,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 16,
+      "released": true,
+      "bells": 92,
+      "points": 16698,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 17,
+      "released": true,
+      "bells": 97,
+      "points": 18007,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 18,
+      "released": true,
+      "bells": 138,
+      "points": 19192,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 19,
+      "released": true,
+      "bells": 155,
+      "points": 20366,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 20,
+      "released": true,
+      "bells": 172,
+      "points": 21188,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 21,
+      "released": true,
+      "bells": 191,
+      "points": 22528,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 22,
+      "released": true,
+      "bells": 200,
+      "points": 23439,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      }
+    },
+    {
+      "i": 23,
+      "released": true,
+      "bells": 221,
+      "points": 24509,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      }
+    },
+    {
+      "i": 24,
+      "released": true,
+      "bells": 242,
+      "points": 25418,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 25,
+      "released": true,
+      "bells": 279,
+      "points": 26338,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 26,
+      "released": true,
+      "bells": 288,
+      "points": 26952,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 27,
+      "released": true,
+      "bells": 305,
+      "points": 27494,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 28,
+      "released": true,
+      "bells": 310,
+      "points": 28792,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 29,
+      "released": true,
+      "bells": 329,
+      "points": 29023,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 30,
+      "released": true,
+      "bells": 352,
+      "points": 29780,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 31,
+      "released": true,
+      "bells": 367,
+      "points": 31469,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 32,
+      "released": true,
+      "bells": 400,
+      "points": 33258,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 33,
+      "released": true,
+      "bells": 415,
+      "points": 34055,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 34,
+      "released": true,
+      "bells": 438,
+      "points": 35649,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 35,
+      "released": true,
+      "bells": 455,
+      "points": 36913,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 36,
+      "released": true,
+      "bells": 482,
+      "points": 37556,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 37,
+      "released": false,
+      "bells": 482,
+      "points": 37556,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 38,
+      "released": true,
+      "bells": 503,
+      "points": 38446,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 39,
+      "released": true,
+      "bells": 510,
+      "points": 39665,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 40,
+      "released": true,
+      "bells": 545,
+      "points": 40041,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 41,
+      "released": true,
+      "bells": 560,
+      "points": 41270,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 42,
+      "released": true,
+      "bells": 577,
+      "points": 41952,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 43,
+      "released": true,
+      "bells": 610,
+      "points": 43776,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 44,
+      "released": true,
+      "bells": 625,
+      "points": 44173,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 45,
+      "released": true,
+      "bells": 648,
+      "points": 45116,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 46,
+      "released": true,
+      "bells": 671,
+      "points": 46498,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 47,
+      "released": true,
+      "bells": 710,
+      "points": 47312,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 48,
+      "released": true,
+      "bells": 719,
+      "points": 47858,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      }
+    },
+    {
+      "i": 49,
+      "released": true,
+      "bells": 730,
+      "points": 47933,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 50,
+      "released": true,
+      "bells": 735,
+      "points": 49220,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      }
+    },
+    {
+      "i": 51,
+      "released": true,
+      "bells": 780,
+      "points": 49720,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 52,
+      "released": true,
+      "bells": 799,
+      "points": 50840,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 53,
+      "released": true,
+      "bells": 818,
+      "points": 51802,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 54,
+      "released": true,
+      "bells": 841,
+      "points": 53088,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 55,
+      "released": true,
+      "bells": 862,
+      "points": 55463,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 56,
+      "released": true,
+      "bells": 881,
+      "points": 56709,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 57,
+      "released": true,
+      "bells": 896,
+      "points": 57634,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 58,
+      "released": true,
+      "bells": 909,
+      "points": 57804,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 59,
+      "released": true,
+      "bells": 934,
+      "points": 58314,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 60,
+      "released": true,
+      "bells": 943,
+      "points": 58364,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 61,
+      "released": true,
+      "bells": 948,
+      "points": 59635,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 62,
+      "released": true,
+      "bells": 1011,
+      "points": 60360,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 63,
+      "released": true,
+      "bells": 1036,
+      "points": 60610,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 64,
+      "released": true,
+      "bells": 1055,
+      "points": 60785,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 65,
+      "released": true,
+      "bells": 1064,
+      "points": 61841,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 66,
+      "released": true,
+      "bells": 1077,
+      "points": 61941,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 67,
+      "released": true,
+      "bells": 1106,
+      "points": 63064,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 68,
+      "released": true,
+      "bells": 1123,
+      "points": 64382,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 69,
+      "released": true,
+      "bells": 1156,
+      "points": 64878,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 70,
+      "released": false,
+      "bells": 1156,
+      "points": 64878,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "sling": "sling-long"
+      }
+    },
+    {
+      "i": 71,
+      "released": true,
+      "bells": 1185,
+      "points": 65930,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 72,
+      "released": true,
+      "bells": 1190,
+      "points": 67269,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 73,
+      "released": false,
+      "bells": 1190,
+      "points": 67269,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 74,
+      "released": true,
+      "bells": 1209,
+      "points": 68692,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 75,
+      "released": true,
+      "bells": 1226,
+      "points": 69874,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 76,
+      "released": true,
+      "bells": 1245,
+      "points": 70819,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 77,
+      "released": true,
+      "bells": 1258,
+      "points": 73679,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 78,
+      "released": true,
+      "bells": 1275,
+      "points": 74252,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 79,
+      "released": true,
+      "bells": 1292,
+      "points": 75394,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 80,
+      "released": true,
+      "bells": 1319,
+      "points": 76568,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 81,
+      "released": true,
+      "bells": 1326,
+      "points": 78142,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 82,
+      "released": true,
+      "bells": 1347,
+      "points": 79356,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 83,
+      "released": true,
+      "bells": 1352,
+      "points": 80665,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 84,
+      "released": true,
+      "bells": 1383,
+      "points": 81605,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 85,
+      "released": true,
+      "bells": 1414,
+      "points": 83321,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      }
+    },
+    {
+      "i": 86,
+      "released": true,
+      "bells": 1433,
+      "points": 83496,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      }
+    },
+    {
+      "i": 87,
+      "released": true,
+      "bells": 1446,
+      "points": 84765,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 88,
+      "released": true,
+      "bells": 1461,
+      "points": 85180,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 89,
+      "released": true,
+      "bells": 1476,
+      "points": 86403,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 90,
+      "released": true,
+      "bells": 1497,
+      "points": 87312,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 91,
+      "released": true,
+      "bells": 1516,
+      "points": 87884,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 92,
+      "released": true,
+      "bells": 1525,
+      "points": 88489,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 93,
+      "released": true,
+      "bells": 1554,
+      "points": 88880,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 94,
+      "released": true,
+      "bells": 1599,
+      "points": 90385,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 95,
+      "released": true,
+      "bells": 1644,
+      "points": 90885,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 96,
+      "released": true,
+      "bells": 1661,
+      "points": 92104,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 97,
+      "released": true,
+      "bells": 1676,
+      "points": 93057,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 98,
+      "released": true,
+      "bells": 1693,
+      "points": 95184,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 99,
+      "released": true,
+      "bells": 1708,
+      "points": 95309,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 100,
+      "released": true,
+      "bells": 1723,
+      "points": 96957,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 101,
+      "released": true,
+      "bells": 1746,
+      "points": 98871,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 102,
+      "released": true,
+      "bells": 1795,
+      "points": 100096,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 103,
+      "released": false,
+      "bells": 1795,
+      "points": 100096,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 104,
+      "released": true,
+      "bells": 1814,
+      "points": 100720,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 105,
+      "released": true,
+      "bells": 1837,
+      "points": 101879,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 106,
+      "released": true,
+      "bells": 1880,
+      "points": 102648,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 107,
+      "released": true,
+      "bells": 1897,
+      "points": 104636,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 108,
+      "released": true,
+      "bells": 1916,
+      "points": 104811,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 109,
+      "released": true,
+      "bells": 1933,
+      "points": 106363,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 110,
+      "released": true,
+      "bells": 1952,
+      "points": 106538,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 111,
+      "released": true,
+      "bells": 1975,
+      "points": 107741,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      }
+    },
+    {
+      "i": 112,
+      "released": true,
+      "bells": 2006,
+      "points": 109311,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      }
+    },
+    {
+      "i": 113,
+      "released": true,
+      "bells": 2041,
+      "points": 109686,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      }
+    },
+    {
+      "i": 114,
+      "released": true,
+      "bells": 2048,
+      "points": 111260,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 115,
+      "released": true,
+      "bells": 2069,
+      "points": 111460,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 116,
+      "released": true,
+      "bells": 2074,
+      "points": 112754,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 117,
+      "released": true,
+      "bells": 2117,
+      "points": 113229,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 118,
+      "released": true,
+      "bells": 2136,
+      "points": 114349,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 119,
+      "released": true,
+      "bells": 2163,
+      "points": 116478,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 120,
+      "released": true,
+      "bells": 2182,
+      "points": 117507,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 121,
+      "released": true,
+      "bells": 2201,
+      "points": 119220,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 122,
+      "released": true,
+      "bells": 2212,
+      "points": 120595,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 123,
+      "released": true,
+      "bells": 2231,
+      "points": 122134,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 124,
+      "released": true,
+      "bells": 2256,
+      "points": 122397,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 125,
+      "released": true,
+      "bells": 2263,
+      "points": 124196,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 126,
+      "released": true,
+      "bells": 2276,
+      "points": 125120,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      }
+    },
+    {
+      "i": 127,
+      "released": true,
+      "bells": 2281,
+      "points": 126401,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 128,
+      "released": true,
+      "bells": 2316,
+      "points": 127783,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 129,
+      "released": true,
+      "bells": 2337,
+      "points": 129338,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 130,
+      "released": true,
+      "bells": 2358,
+      "points": 129651,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      }
+    },
+    {
+      "i": 131,
+      "released": true,
+      "bells": 2379,
+      "points": 130485,
+      "owned": [
+        "counterweight-heavy",
+        "beam-long",
+        "beam-light",
+        "sling-long",
+        "frame-heavy",
+        "frame-grip"
+      ],
+      "equipped": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      }
+    }
+  ]
+}

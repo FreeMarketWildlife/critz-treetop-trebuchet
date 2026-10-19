@@ -1,6 +1,18 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 19
+## CURRENT implementation: iteration 20
+
+Read docs/reviews/iteration-20/findings.md. Added render-only amber edge approach cues (1.2s relative trajectory, max3, conservative1.5m payload), kind/direction in polite guidance; no body/geography/spawn/physics changes. Explicit enemy-circle outlines; moth flap clipped inside invariant circle, fixed pose reduced motion; effects behind enemies then critter and immediately suppressed when reduced.173tests pass; full35numerical rows EXACT19 excludingtimings32release/3lowmiss/10angularflags. Joint stepping remains research-only.
+
+Natural132soak126release/6miss/0retainedpayload,44m56s sim,258worlds0retained12GCchecks,p952.525/max7.454ms enginebatch,sourceStable. 60Hz approach observer113410frames,max80.72m/s,17distinctenemycontacts across4biomes/7kinds. Portrait visibility-onlymin.0767s; firstwarning-or-visiblemin.4096s, improved11/17; landscape.3596s,improved6/17. FIRST observations, notguaranteedcontinuousnotice/fairness. Controlledactualphysicsfixture sky50/canopy100m/s quarter-speed playback verifies arrowsbeforeview/contact silhouettes; no game/saveinjection. No-op draw p95.057–.095ms max1653calls, notrasterization/FPS.
+
+Saveopt-in bug fixed: nonemptycurrent vsolder save promptsinlinechoice, BOTHversions recoverable inonebackupenvelope beforeprimaryreplacement. Restore swapsback; interruptedprimaryfailure recoverable throughnormalAPI afterreload;6tests. Shop Buy&Equip/Owned&Equip/EquippedRemove, pricehistoricalwhenowned, beamactualmasspreview. Independentearnedledger all6purchasedbylaunch16,126dupechecks/132roundtrips/742freeswaps. Finite6itemceiling andunboundedshotledger intentionalprototype limits; pointsstillcurrentdistanceatbank.
+
+ActualnewcurrentUI loopback127.0.0.1:8081 tab1219045114, firstfrog88m7bounces→1058points19bells; Saveconflict19vs0→Keep→Restore0→swapback→reload19verified. Secondfrog visiblelabdefault140kg, MUTED+REDUCED→49m7bounces→665points19bells; total1723/38→buycounter18030→1723/8,Remove/Equipfree,reset/reloadretained. FinalTurtleidle,owned/equippedcounter180,saveONisolatedorigin,backup0,Soundon35%,reducedOFF,stickyOFF,normalviewport,consoleclean. OlderQA/userorigins untouched. Warmbrowser CPU2.7/3.1ms,draw.3ms,RAF9.8/10.4ms; noFPS/earsclaim. Newserver8081loopbackapproved, notdeployed. No unlock/exportretry/push.
+
+NEXT: controlledcloseapproach/extendedposture andactualreaction/readability playtesting, screen-readerlistening, realdeviceGPU/audio; progressionbeyond6itemsrequiresgameplaydecisions. Keepglobaljointmotionexperimental, physicalpooroutcomesandlocaltestedcommits. Earlier19andbelowhistory. Neverreportobsolete lore task.
+
+## Historical implementation: iteration 19
 
 Read docs/reviews/iteration-19/findings.md. Selected production adds the real loading shelf AABB to collisionRegion with existing speed/spin eligibility/2400–4800Hz bounds. Same armadillo incoming: .169084→.021529rad, anchor19.6915→.01895mm, touching penetration7.194→.789mm, residual0,801integrations/1s. Backward release preserved. Research always-refined shelf has1926integrations/.346mm penetration: different protocol.162tests pass;35cases32release/3lowmiss/10angularflags; only armadillo highwind physically changes, all releases/prediction parity unchanged. Selected132soak126release/6miss/0retainedpayload,44m56s simulated,258worlds0retained12GCchecks,p952.556ms/max8.165ms,stable source hashes. Strict4ms/deviceFPS not proven.
 
