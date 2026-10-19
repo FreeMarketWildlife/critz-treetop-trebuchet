@@ -1,3 +1,4 @@
+import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js';
 import * as P from '../node_modules/planck/dist/planck.mjs';
 import {aerodynamicForces} from './glide.js';
 import {config} from './physics.js';
@@ -64,7 +65,7 @@ export class CritterScene {
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight' || this.elapsed-this.lastImpact<.08)return;
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
-   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>Math.abs(point.y-s.y)<.15&&point.x>=s.minX-.25&&point.x<=s.maxX+.25)?.id:null;this.events.push({type:'impact',strength,position:point?{x:point.x,y:point.y}:this.center(),material,surface:surface??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
+   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';const point=contact.getWorldManifold()?.points[0],surface=d?.role==='static'&&point?layout.surfaces.find(s=>surfaceNear(s,point,.25))?.id:null;this.events.push({type:'impact',strength,position:point?{x:point.x,y:point.y}:this.center(),material,surface:surface??null,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
  }
  startWinding(fraction){
   if(this.hand || !['uncocked','loading','wind-stalled'].includes(this.phase))throw new Error('Winding requires an unloaded grip and idle mechanism');
@@ -126,7 +127,7 @@ export class CritterScene {
     // The loading shelf is also a real arrival surface when a poor throw
     // returns toward the rig. Its centre/half-extents match construction above.
     if(hi.x+pad>=-5.1&&lo.x-pad<=-3.5&&hi.y+pad>=this.p.pivotHeight-4.54&&lo.y-pad<=this.p.pivotHeight-4.46)return true;
-    if(layout.surfaces.some(s=>hi.x+pad>=s.minX&&lo.x-pad<=s.maxX&&hi.y+pad>=s.y-.08&&lo.y-pad<=s.y))return true;
+    if(layout.surfaces.some(s=>hi.x+pad>=s.minX&&lo.x-pad<=s.maxX&&hi.y+pad>=Math.min(s.y,surfaceY(s,s.maxX))-.08&&lo.y-pad<=Math.max(s.y,surfaceY(s,s.maxX))))return true;
     for(const obstacle of obstacles)if(hi.x+pad>=obstacle.x-obstacle.radius&&lo.x-pad<=obstacle.x+obstacle.radius&&hi.y+pad>=obstacle.y-obstacle.radius&&lo.y-pad<=obstacle.y+obstacle.radius)return true;
    }
   }return false;
@@ -136,7 +137,7 @@ export class CritterScene {
   // extra broadphase proxies out of loading preserves the existing contact order.
   if(this.routeTerrainReady)return;
   const terrain=this.world.createBody();tag(terrain,'static','canopy-route');
-  for(const s of layout.surfaces.filter(s=>s.flightOnly))terrain.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
+  for(const s of layout.surfaces.filter(s=>s.flightOnly))terrain.createFixture(P.Polygon(surfaceVertices(s).map(p=>V(p.x,p.y))),{friction:.12,restitution:.3,filterCategoryBits:1});
   this.routeTerrainReady=true;
  }
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');if(this.phase==='flight'&&!this.routeTerrainReady)this.installRouteTerrain();
@@ -180,7 +181,7 @@ export class CritterScene {
   for(let i=0;i<3000 && !clone.release;i++)clone.step();if(!clone.release)return {points,reason:'no pin release'};
   points.push(clone.center());for(let i=0;i<480;i++){const before=clone.center();clone.step();const after=clone.center();if(clone.events.some(e=>e.type==='impact'))break;
    // Stop before any authored surface, without exposing bounce outcomes.
-   if(layout.surfaces.some(s=>Math.min(before.y,after.y)<=s.y+.5 && Math.max(before.y,after.y)>=s.y+.5 && after.x>=s.minX-.5 && after.x<=s.maxX+.5))break;
+   if(layout.surfaces.some(s=>surfaceCrossing(before,after,s,{clearance:.5,bothDirections:true})))break;
    if(i%30===0)points.push(after);}
   return {points,release:clone.release,reason:'same articulated solver'};
  }

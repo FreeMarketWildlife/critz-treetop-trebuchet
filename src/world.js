@@ -1,3 +1,4 @@
+import {surfaceY,surfaceCrossing} from './terrain.js';
 import {flightStep} from './physics.js';
 // One authored layout. Test dimensions/material coefficients are not lore.
 const surfaces=[
@@ -6,33 +7,32 @@ const surfaces=[
   {id:'ground',y:0,minX:-10000,maxX:10000,restitution:.3,tangentRetention:.8},
   // Fixed short landing opportunities, not a continuous floor. Ordinary and
   // faster trajectories meet different gaps; no launch-corridor geometry moves.
-  {id:'canopy approach',flightOnly:true,y:112,minX:42,maxX:51,restitution:.3,tangentRetention:.8},
-  {id:'canopy fork',flightOnly:true,y:88,minX:65,maxX:75,restitution:.3,tangentRetention:.8},
-  {id:'canopy crossing',flightOnly:true,y:61,minX:88,maxX:99,restitution:.3,tangentRetention:.8},
-  {id:'canopy lower',flightOnly:true,y:32,minX:112,maxX:124,restitution:.3,tangentRetention:.8},
-  {id:'canopy outer fork',flightOnly:true,y:92,minX:110,maxX:121,restitution:.3,tangentRetention:.8},
-  {id:'canopy outer crossing',flightOnly:true,y:58,minX:145,maxX:157,restitution:.3,tangentRetention:.8},
-  {id:'canopy outer lower',flightOnly:true,y:26,minX:180,maxX:193,restitution:.3,tangentRetention:.8}
+  {id:'canopy approach',flightOnly:true,slope:-.35,y:112,minX:42,maxX:51,restitution:.3,tangentRetention:.8},
+  {id:'canopy fork',flightOnly:true,slope:-.35,y:88,minX:65,maxX:75,restitution:.3,tangentRetention:.8},
+  {id:'canopy crossing',flightOnly:true,slope:-.35,y:61,minX:88,maxX:99,restitution:.3,tangentRetention:.8},
+  {id:'canopy lower',flightOnly:true,slope:-.35,y:32,minX:112,maxX:124,restitution:.3,tangentRetention:.8},
+  {id:'canopy outer fork',flightOnly:true,slope:-.35,y:92,minX:110,maxX:121,restitution:.3,tangentRetention:.8},
+  {id:'canopy outer crossing',flightOnly:true,slope:-.35,y:58,minX:145,maxX:157,restitution:.3,tangentRetention:.8},
+  {id:'canopy outer lower',flightOnly:true,slope:-.35,y:26,minX:180,maxX:193,restitution:.3,tangentRetention:.8}
 ];
 export const world=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(Object.freeze)),launchHeight:300,canopyTop:120,ground:0,
   groundDeceleration:2, surfaces:Object.freeze(surfaces.map(Object.freeze)),
   regions:Object.freeze(['Grandfather Tree branches/leaves → open-air freefall','Long jungle-canopy descent','Ground travel while horizontal momentum remains'])});
 export function regionAt(y){return y>world.canopyTop?'Branches / open air':y>world.ground?'Jungle canopy':'Ground';}
-// Point projectile against authored, one-way horizontal surfaces; swept crossing avoids tunneling.
+// Point reference against authored one-way contact segments; swept crossing avoids tunneling.
 export function firstCollision(a,b,layout=world) {
-  if(b.y>=a.y)return null;
   const hits=[];
   for(const surface of layout.surfaces){
-    if(a.y<surface.y || b.y>surface.y)continue;
-    const fraction=(a.y-surface.y)/(a.y-b.y),x=a.x+(b.x-a.x)*fraction;
-    if(x>=surface.minX && x<=surface.maxX)hits.push({surface,fraction,x});
+    const hit=surfaceCrossing(a,b,surface);if(hit)hits.push(hit);
   }
   return hits.sort((a,b)=>a.fraction-b.fraction)[0]??null;
 }
 export function impact(shot,surface) {
   if(surface.restitution<0 || surface.restitution>1 || surface.tangentRetention<0 || surface.tangentRetention>1)
     throw new Error('Passive collision coefficients must lie in [0,1]');
-  return {...shot,y:surface.y,vx:shot.vx*surface.tangentRetention,vy:Math.abs(shot.vy)*surface.restitution};
+  const slope=surface.slope??0,norm=Math.hypot(1,slope),tx=1/norm,ty=slope/norm,nx=-ty,ny=tx;
+  const tangent=(shot.vx*tx+shot.vy*ty)*surface.tangentRetention,normal=Math.abs(shot.vx*nx+shot.vy*ny)*surface.restitution;
+  return {...shot,y:surfaceY(surface,shot.x),vx:tangent*tx+normal*nx,vy:tangent*ty+normal*ny};
 }
 export function worldStep(shot,p,dt,layout=world) {
   if(!(dt>0 && dt<=.02))throw new Error('World timestep must be <= 0.02 s');
@@ -44,7 +44,7 @@ export function worldStep(shot,p,dt,layout=world) {
   const next=flightStep(shot,p,dt),hit=firstCollision(shot,next,layout);
   if(!hit)return {shot:next,collision:null};
   // Refine time on ballistic/drag path rather than use the chord's approximate crossing time.
-  let lo=0,hi=dt;for(let i=0;i<30;i++){const mid=(lo+hi)/2;if(flightStep(shot,p,mid||Number.EPSILON).y>=hit.surface.y)lo=mid;else hi=mid;}
+  let lo=0,hi=dt;for(let i=0;i<30;i++){const mid=(lo+hi)/2;if(flightStep(shot,p,mid||Number.EPSILON).y>=surfaceY(hit.surface,flightStep(shot,p,mid||Number.EPSILON).x))lo=mid;else hi=mid;}
   const at=flightStep(shot,p,hi),x=at.x;
   if(x<hit.surface.minX || x>hit.surface.maxX)return {shot:next,collision:null};
   const bounced=impact(at,hit.surface),remaining=dt-hi;

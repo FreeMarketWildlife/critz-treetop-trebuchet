@@ -1,0 +1,176 @@
+{
+  "groundPhaseCriterion": "Paired33 study: COM<2m; entry time/travel are near-floor measures,not exact touchdown.",
+  "tests": {
+    "pass": 201,
+    "fail": 0
+  },
+  "sourceHashChecksPassed": true,
+  "releaseParity35": true,
+  "releaseParity33": true,
+  "predictionCases": 32,
+  "allPredictionDifferenceZero": true,
+  "angularFlagCases": 9,
+  "maxAngularLimitError": 0.1538515456384204,
+  "maxPositiveEnergyResidual": 0,
+  "baseline33": {
+    "attempts": 33,
+    "releases": 24,
+    "groundArrivals": 20,
+    "canopyStallsOver3s": [
+      {
+        "species": "mouse",
+        "fraction": 0.9,
+        "duration": 29.88499999998906
+      }
+    ],
+    "maxCanopyContactEvents": 4,
+    "medianGroundTravel": 20.87120744190188,
+    "ungrounded": [
+      {
+        "species": "flying-squirrel",
+        "fraction": 0.6,
+        "end": {
+          "x": 391.1704465928751,
+          "y": 155.4160841146909,
+          "speed": 10.673652985199231
+        }
+      },
+      {
+        "species": "mouse",
+        "fraction": 0.9,
+        "end": {
+          "x": 44.15669616421153,
+          "y": 112.16302067228253,
+          "speed": 9.291158705785689e-7
+        }
+      },
+      {
+        "species": "flying-squirrel",
+        "fraction": 0.9,
+        "end": {
+          "x": 377.0065409495875,
+          "y": 156.0855973255054,
+          "speed": 10.666880976214461
+        }
+      },
+      {
+        "species": "armadillo",
+        "fraction": 0.9,
+        "end": {
+          "x": -7.866861919727322,
+          "y": 294.19958431891735,
+          "speed": 2.660238256469369e-7
+        }
+      }
+    ]
+  },
+  "final33": {
+    "attempts": 33,
+    "releases": 24,
+    "groundArrivals": 21,
+    "canopyStallsOver3s": [],
+    "maxCanopyContactEvents": 2,
+    "medianGroundTravel": 35.4029022282381,
+    "ungrounded": [
+      {
+        "species": "flying-squirrel",
+        "fraction": 0.6,
+        "end": {
+          "x": 391.1704465928751,
+          "y": 155.4160841146909,
+          "speed": 10.673652985199231
+        }
+      },
+      {
+        "species": "flying-squirrel",
+        "fraction": 0.9,
+        "end": {
+          "x": 377.0065409495875,
+          "y": 156.0855973255054,
+          "speed": 10.666880976214461
+        }
+      },
+      {
+        "species": "armadillo",
+        "fraction": 0.9,
+        "end": {
+          "x": -7.866861919727322,
+          "y": 294.19958431891735,
+          "speed": 2.660238256469369e-7
+        }
+      }
+    ]
+  },
+  "soak15": {
+    "counts": {
+      "released": 126,
+      "seating_failed": 6
+    },
+    "flightSeconds": 15,
+    "stationaryCanopyEndpoints": [],
+    "canopyContactAttempts": 43,
+    "groundContactAttempts": 101,
+    "engineBatchMs": {
+      "samples": 161797,
+      "p95": 2.581456000028993,
+      "max": 8.599583000000003,
+      "firstQuarterP95": 2.8208749999994325,
+      "lastQuarterP95": 2.4637950000033015
+    },
+    "coordination": {
+      "roundTrips": 132,
+      "staleBlocks": 132,
+      "saveMsP95": 0.03220800000417512
+    },
+    "zeroRetainedWorlds": true,
+    "sourcesStable": true
+  },
+  "soak40": {
+    "counts": {
+      "released": 126,
+      "seating_failed": 6
+    },
+    "flightSeconds": 40,
+    "stationaryCanopyEndpoints": [],
+    "canopyContactAttempts": 43,
+    "groundContactAttempts": 106,
+    "engineBatchMs": {
+      "samples": 350798,
+      "p95": 3.5050000001792796,
+      "max": 50.63187499999981,
+      "firstQuarterP95": 3.613749000011012,
+      "lastQuarterP95": 3.5728740000049584
+    },
+    "coordination": {
+      "roundTrips": 132,
+      "staleBlocks": 132,
+      "saveMsP95": 0.038833999999042135
+    },
+    "zeroRetainedWorlds": true,
+    "sourcesStable": true
+  },
+  "browser": {
+    "mainTab": "1219045172",
+    "preservedRecoveryTab": "1219045169",
+    "qaReplayTab": "1219045175",
+    "qaReplayClosed": true,
+    "mainViewport": "normal",
+    "preservedRecoveryViewport": "390x844",
+    "wallet": {
+      "points": 4684,
+      "bells": 32,
+      "owned": [
+        "beam-long"
+      ]
+    },
+    "save": false,
+    "events": [
+      "actual mouse .9 wind poor outcome 0m /300points29bells",
+      "actual frog .6 wind 352m/11bounces/3794points27bells",
+      "earned long beam45bells then chipmunk .6 wind shown39m/7bounces before final bank590points21bells",
+      "retry retained final wallet/current chipmunk/nextSalamanderFrogSalamander",
+      "natural incoming mouse QA portrait branch arrow before visibility, physicalcontact .627s, x103m/y94.8m at2.785s, reduced motion checked"
+    ],
+    "warningsErrors": []
+  }
+}

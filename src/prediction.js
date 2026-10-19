@@ -1,3 +1,4 @@
+import {surfaceCrossing} from './terrain.js';
 import {world as layout} from './world.js';
 export function capturePredictionPose(scene){return {elapsed:scene.elapsed,parts:scene.parts.map(b=>({id:b.getUserData().id,x:b.getPosition().x,y:b.getPosition().y,angle:b.getAngle()}))};}
 export function predictionPoseIsCurrent(scene,capture){
@@ -19,7 +20,7 @@ export function createPredictionJob(scene,{now=()=>performance.now()}={}){
     if(i&&now()-start>=budgetMs)break;
     if(!clone.release){clone.step();launchTicks++;if(clone.release)points.push(clone.center());else if(launchTicks>=3000)finish('No separation within five seconds');}
     else {const before=clone.center();clone.step();flightTicks++;const after=clone.center();
-     const impact=clone.events.find(e=>e.type==='impact'),surface=layout.surfaces.find(s=>Math.min(before.y,after.y)<=s.y+.5&&Math.max(before.y,after.y)>=s.y+.5&&after.x>=s.minX-.5&&after.x<=s.maxX+.5);
+     const impact=clone.events.find(e=>e.type==='impact'),surface=layout.surfaces.find(s=>surfaceCrossing(before,after,s,{clearance:.5,bothDirections:true}));
      if(impact||surface)finish('Same physical snapshot; clipped before obstacle',surface?.id??impact?.surface??'obstacle');else {if((flightTicks-1)%30===0)points.push(after);if(flightTicks>=480)finish('Same physical snapshot; short hint');}
     }
    }

@@ -1,6 +1,16 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 24
+## CURRENT implementation: iteration 25
+
+Read docs/reviews/iteration-25/findings.md + summary.json. Seven new canopy shelves now fixed downhill slopes-.35, exact shared endpoint/convex/swept geometry across physics/refinement/render/preview. Passive contact redirects fall forward; no boosts/posefix. Fixed branches/bumper/ground now share existing max4groupededgecues with movingencounters, contact-section targets and realposebounds.
+
+201tests pass; fresh35reg32release/3lowmiss, ALLreleaseobjectsEXACT24,32predictiondiff0/liveunchanged.9angularflags(max.15385rad,oneoutertickconsecutive,finalbelowthreshold),energyresidual0. Natural33×40s starter pairedreleaseEXACT: flatmouse stuck29.885s→slopeCOM<2m13.163s +203.074mnear-floortravel,canopylongstalls1→0,maxcanopyevents4→2,groundarrivals20→21/24releases.2squirrelsstillglide;onepoorarmadillorestslaunchbranch;9lowseatmissesunchanged. Exploratoryslopedfilechangedsourceflagged; finalauthoritative.
+
+Final132×15s and132×40s earnedgearsoaks126release6miss,43canopytouches,no stationarycanopyendpoints(vs6in24),long106groundcontacts.Each132reload/staleblocks,0oldworldsat12GCchecks;sourcehashesstable. Long97m26.645ssim/506swall,enginep953.505/max50.632ms;largeststepGCoverlap47.766ms/sharedhost,NOFPSclaim. Longmovingcontactnotice68perviewportmin.167portrait/.117landscape/nozero butnotfairnessguarantee. AudioDoubleonly. Seeevidence.
+
+Actual390portrait main25 tab1219045172: mousepoor0m→300/29;frog352m11bounce→3794/27;buybeamlong45→chipmunkshown39m7bouncefinalbank590/21. Final4684points32bells,owned/equippedbeamlong,retryidleChipmunk,nextSalamanderFrogSalamander. SaveOFF/stickyOFF/sound35/reducedOFF,normalviewport,consoleclean,handoff. Retainedrecovery24tab1219045169still1724/19,390portraitoverridepreserved(availableviewportcontroltargetsmostrecentliveautomationtab);no storedsavewrites. Nativeuseractive tabrestored. NaturalincomingmouseQA slowreplay showedbrancharrowbeforeview/contact.627s/slopealigned→x103y94.8at2.785s,noextra contact,reducedchecked;temporarytabclosed,savedHTML/JSONretained. No exportretry/unlock/push/deploy/install/permissionschanges. Next all-species actualportrait grip/lowwind/hardware handling and human/device/audiojudgment; preservepooroutcomes. Earlier24andbelowhistory.
+
+## Historical implementation: iteration 24
 
 Read docs/reviews/iteration-24/findings.md and recovery-summary.json. Recovered partial work from failed implementation turns, preserved all files. Seven fixed passive canopy branches with fall-through gaps; fixtures built once after release to preserve loading contact order, restored from serialized terrain id. No force/angle/pose boost. Fresh196tests pass and full35 regression rerun; prior132soak hashes match current source,126release/6miss,43canopy-contact attempts,0retained at12GCchecks. Earlier eager files historical only. Existing angular warnings/low-seat failures remain.
 

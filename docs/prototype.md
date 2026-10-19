@@ -228,3 +228,8 @@ See [coordinated saves and longer progression](reviews/iteration-22/findings.md)
 ## Iteration 23 review
 
 See [portrait loading and contact readability](reviews/iteration-23/findings.md): larger CSS pickup targets, Unlatch beside the view, bounded original soil/leaf trim, a four-run earned-upgrade review and 195 passing tests. Existing stored saves remain untouched; actual-device and audible quality still need direct testing.
+
+
+## Iteration 25 — continuing the canopy into ground travel
+
+The seven short canopy routes are now fixed downhill passive contact segments rather than trapping flat shelves. Shared slope geometry drives collision, conservative refinement, art and preview clipping; existing edge cues also warn about fixed branches, bumpers and ground. No extra launch force or guaranteed throw. See [iteration25 findings](reviews/iteration-25/findings.md) for201tests, exact35-case release/prediction parity, paired natural40-second traversal, two132-attempt progression/collection/save soaks, actual portrait play and remaining human/device limits.
