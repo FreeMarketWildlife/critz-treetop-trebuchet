@@ -65,6 +65,8 @@ export class CritterScene {
   this.parts.sort((a,b)=>a.getUserData().id.localeCompare(b.getUserData().id));this.rope=null;this.ropes=[];
   for(let j=this.world.getJointList();j;j=j.getNext()){if(j.getUserData()?.role==='pivot')this.pivot=j;if(j.getUserData()?.role==='rope')this.ropes.push(j);}
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
+  // Visual contact starts follow actual touching, independently of reward thresholds.
+  this.world.on('begin-contact',contact=>{if(this.phase!=='flight')return;const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody(),other=a.getUserData()?.role==='part'?b:b.getUserData()?.role==='part'?a:null;if(other?.getUserData()?.role==='enemy')other.getUserData().lastContact=this.elapsed;});
   const approaching=new WeakMap();this.world.on('pre-solve',contact=>{if(this.phase!=='flight')return;const bodyA=contact.getFixtureA().getBody(),bodyB=contact.getFixtureB().getBody();if(bodyA.getUserData()?.role!=='part'&&bodyB.getUserData()?.role!=='part')return;const m=contact.getWorldManifold(),p=m?.points[0];if(!p){approaching.set(contact,0);return;}const a=bodyA.getLinearVelocityFromWorldPoint(p),b=bodyB.getLinearVelocityFromWorldPoint(p);approaching.set(contact,-((b.x-a.x)*m.normal.x+(b.y-a.y)*m.normal.y));});
   this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight')return;
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;

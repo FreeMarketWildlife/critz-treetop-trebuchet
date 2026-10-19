@@ -48,7 +48,7 @@ test('lighter waxleaf yields under a heavy tilted contact while conserving momen
  assert.ok(contact(recipe.mass)>contact(4)+.8);
 });
 test('a supported heavy payload does not score resting gravity load as repeated impacts',()=>{
- const s=new CritterScene();s.phase='flight';for(const b of s.parts)b.setType('static');const target=createEncounterBody(s.world,{id:'support',kind:'test',shape:'circle',radius:.2,mass:100,x:500,y:.2,vx:0,vy:0,expiresAt:99,material:{friction:.2,restitution:0}});s.enemies.set('support',target);const payload=s.world.createDynamicBody({position:P.Vec2(500,.6)});payload.setUserData({role:'part',id:'test-weight'});payload.createFixture(P.Circle(.2),{density:5/(Math.PI*.2**2),friction:.2,restitution:0,filterCategoryBits:4,filterMaskBits:33});for(let i=0;i<1200;i++)s.step();assert.equal(s.impactCount,0);assert.equal(target.getUserData().lastContact,undefined);let supported=false;for(let e=payload.getContactList();e;e=e.next)if(e.other===target&&e.contact.isTouching())supported=true;assert.ok(supported);assert.ok(payload.getLinearVelocity().length()<.01);
+ const s=new CritterScene();s.phase='flight';for(const b of s.parts)b.setType('static');const target=createEncounterBody(s.world,{id:'support',kind:'test',shape:'circle',radius:.2,mass:100,x:500,y:.2,vx:0,vy:0,expiresAt:99,material:{friction:.2,restitution:0}});s.enemies.set('support',target);const payload=s.world.createDynamicBody({position:P.Vec2(500,.6)});payload.setUserData({role:'part',id:'test-weight'});payload.createFixture(P.Circle(.2),{density:5/(Math.PI*.2**2),friction:.2,restitution:0,filterCategoryBits:4,filterMaskBits:33});for(let i=0;i<1200;i++)s.step();assert.equal(s.impactCount,0);assert.equal(target.getUserData().lastContact,0);let supported=false;for(let e=payload.getContactList();e;e=e.next)if(e.other===target&&e.contact.isTouching())supported=true;assert.ok(supported);assert.ok(payload.getLinearVelocity().length()<.01);
 });
 
 test('collision refinement covers rotated multi-fixture encounters beyond the first fixture skin',()=>{
@@ -58,5 +58,15 @@ test('collision refinement covers rotated multi-fixture encounters beyond the fi
   const b=createEncounterBody(s.world,descriptor(r,{x:500,y:66.1}));b.setAngle(Math.PI/2);s.enemies.set('contact',b);
   assert.ok(b.getFixtureList().getShape().getRadius()<r.radius);assert.equal(s.collisionRegion(1/600),true);
   b.setPosition(P.Vec2(500,70));assert.equal(s.collisionRegion(1/600),false);
+ }
+});
+
+test('a genuine light encounter touch animates without inventing a scored impact',()=>{
+ const s=new CritterScene({},'lizard');s.phase='flight';const c=s.center();for(const b of s.parts){const p=b.getPosition();b.setPosition(P.Vec2(p.x-c.x+500,p.y-c.y+65));b.setLinearVelocity(P.Vec2(1,0));}
+ const target=createEncounterBody(s.world,descriptor(encounterPools.grandfatherTree[0],{x:501,y:65,mass:.001}));s.enemies.set('contact',target);for(let i=0;i<300&&target.getUserData().lastContact===undefined;i++)s.step();assert.ok(Number.isFinite(target.getUserData().lastContact));assert.equal(s.impactCount,0);assert.ok(!s.events.some(e=>e.type==='impact'));
+});
+test('biome selection does not replace or teleport nearby real colliders',()=>{
+ for(const boundary of [245,120,5]){const s=new CritterScene();s.phase='flight';s.elapsed=1;s.release={time:0};s.enableEncounters(35000);const target=createEncounterBody(s.world,descriptor(encounterPools.grandfatherTree[0],{x:505,y:boundary,expiresAt:2}));s.enemies.set('contact',target);target.getUserData().lastContact=.9;const position={...target.getPosition()},angle=target.getAngle(),velocity={...target.getLinearVelocity()};
+  for(const y of [boundary+.01,boundary-.01]){s.center=()=>({x:500,y,vx:0,vy:-2,mass:.65});s.updateEncounters();assert.equal(s.enemies.get('contact'),target);assert.deepEqual({...target.getPosition()},position);assert.deepEqual({...target.getLinearVelocity()},velocity);assert.equal(target.getAngle(),angle);assert.equal(target.getUserData().lastContact,.9);}
  }
 });

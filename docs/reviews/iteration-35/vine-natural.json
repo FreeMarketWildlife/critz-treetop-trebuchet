@@ -1,0 +1,749 @@
+{
+  "trace": null,
+  "equipment": "sling",
+  "placementOffsets": [
+    -0.15,
+    0.15
+  ],
+  "seedBase": 49000,
+  "mediumOnly": false,
+  "durationSeconds": 46,
+  "selectedCase": 6,
+  "activityBasis": "Legacy impulse-only global80ms gate observed separately; moving-qualified scoring is row.impacts, old semantics row.legacyImpacts.",
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x2 off-center placements at winding fraction.6;46seconds after actual release;seedBase+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "3da658776cb474ba5d5bbf615d08810e7210d5e36f11ee5deae0026d0352423e",
+    "src/encounter-body.js": "c129dd43c4c41d3a5021d502a52199739888e0e5ef624ab6fd059ae0c64d85fa",
+    "src/articulated.js": "f218ad0235cfbe443ce05fb8ecf4a401403332fa38ca66d0afa61f92719f6aa7",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/approach-cues.js": "3da57833fc95bcc3578c5addc0ca8859cb0df6499bed9249df3bf60936e22c80",
+    "src/fixed-obstacles.js": "25e43a1097736c7bc47f8090ee660a74aa7b6dc69242585ea02238dec170a101",
+    "src/mushroom-geometry.js": "c0e36ef200dd453b42e68a043fb7c69c62a5fd23b7ca64ed3311398fd692a62c"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 6,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "equipment": "sling",
+      "seed": 49006,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 15.438333333334933,
+        "openSky": 22.621666666662332,
+        "jungleCanopy": 7.940000000000428
+      },
+      "births": {
+        "leaf hopper": 32,
+        "round beetle": 32,
+        "puffy moth": 51,
+        "round bird": 41,
+        "waxleaf skid": 13,
+        "vine bug": 13,
+        "springy pod": 14
+      },
+      "contacts": [
+        {
+          "id": "openSky:27:9:57",
+          "kind": "round bird",
+          "birthBiome": "openSky",
+          "time": 29.365,
+          "position": {
+            "x": 271.8961892014504,
+            "y": 195.07806390052053,
+            "vx": 2.700382010069484,
+            "vy": -6.1471401313181975,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "openSky:30:5:66",
+          "kind": "round bird",
+          "birthBiome": "openSky",
+          "time": 34.07,
+          "position": {
+            "x": 305.30611015760957,
+            "y": 157.14111255503965,
+            "vx": 5.275050168932,
+            "vy": -0.5922986368315255,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:20:13:81",
+          "kind": "springy pod",
+          "birthBiome": "jungleCanopy",
+          "time": 41.875,
+          "position": {
+            "x": 366.17147559224424,
+            "y": 105.15235036604975,
+            "vx": -0.9852045672478222,
+            "vy": -7.976532401328128,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:20:13:84",
+          "kind": "vine bug",
+          "birthBiome": "jungleCanopy",
+          "time": 44.81166666666667,
+          "position": {
+            "x": 365.6534553549442,
+            "y": 77.60559238123479,
+            "vx": -1.1682627903810887,
+            "vy": -19.106882433774366,
+            "mass": 0.9
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.4999999999999996,
+          "totalGap": 13.133333333333566,
+          "overOneSeconds": 0.966666666666668,
+          "maxActiveGap": 1.5,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 1.6666666666666667,
+              "end": 1.6833333333333333
+            },
+            {
+              "start": 3.6833333333333327,
+              "end": 4.433333333333334
+            },
+            {
+              "start": 4.8,
+              "end": 5.05
+            },
+            {
+              "start": 5.916666666666666,
+              "end": 6.516666666666667
+            },
+            {
+              "start": 8.633333333333335,
+              "end": 9.05
+            },
+            {
+              "start": 9.083333333333332,
+              "end": 9.866666666666667
+            },
+            {
+              "start": 10.033333333333333,
+              "end": 10.3
+            },
+            {
+              "start": 12.9,
+              "end": 13.15
+            },
+            {
+              "start": 14.416666666666666,
+              "end": 15.3
+            },
+            {
+              "start": 16.983333333333334,
+              "end": 17.1
+            },
+            {
+              "start": 17.316666666666666,
+              "end": 18.066666666666666
+            },
+            {
+              "start": 18.35,
+              "end": 18.533333333333335
+            },
+            {
+              "start": 21.35,
+              "end": 21.533333333333335
+            },
+            {
+              "start": 22.4,
+              "end": 22.516666666666666
+            },
+            {
+              "start": 22.6,
+              "end": 23.916666666666668
+            },
+            {
+              "start": 25.03333333333333,
+              "end": 26.133333333333333
+            },
+            {
+              "start": 26.35,
+              "end": 26.75
+            },
+            {
+              "start": 28.21666666666667,
+              "end": 28.616666666666667
+            },
+            {
+              "start": 30.849999999999998,
+              "end": 31.016666666666666
+            },
+            {
+              "start": 31.216666666666665,
+              "end": 31.4
+            },
+            {
+              "start": 32.9,
+              "end": 33.05
+            },
+            {
+              "start": 34.63333333333333,
+              "end": 36.13333333333333
+            },
+            {
+              "start": 37.483333333333334,
+              "end": 37.63333333333333
+            },
+            {
+              "start": 37.86666666666666,
+              "end": 38.18333333333333
+            },
+            {
+              "start": 38.733333333333334,
+              "end": 38.766666666666666
+            },
+            {
+              "start": 38.95,
+              "end": 39.733333333333334
+            },
+            {
+              "start": 42.81666666666667,
+              "end": 42.86666666666667
+            },
+            {
+              "start": 44.11666666666667,
+              "end": 44.333333333333336
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 5.733333333333318,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 3.6,
+              "end": 3.9833333333333334
+            },
+            {
+              "start": 5,
+              "end": 5.216666666666667
+            },
+            {
+              "start": 5.966666666666667,
+              "end": 6.516666666666667
+            },
+            {
+              "start": 8.516666666666666,
+              "end": 9.316666666666666
+            },
+            {
+              "start": 14.333333333333334,
+              "end": 14.833333333333334
+            },
+            {
+              "start": 14.899999999999999,
+              "end": 14.916666666666666
+            },
+            {
+              "start": 14.933333333333334,
+              "end": 15.033333333333333
+            },
+            {
+              "start": 16.9,
+              "end": 17.016666666666666
+            },
+            {
+              "start": 17.983333333333334,
+              "end": 18.533333333333335
+            },
+            {
+              "start": 22.75,
+              "end": 23.516666666666666
+            },
+            {
+              "start": 23.85,
+              "end": 24.05
+            },
+            {
+              "start": 25.549999999999997,
+              "end": 25.65
+            },
+            {
+              "start": 26,
+              "end": 26.133333333333333
+            },
+            {
+              "start": 38.31666666666667,
+              "end": 38.333333333333336
+            },
+            {
+              "start": 39.13333333333333,
+              "end": 39.516666666666666
+            },
+            {
+              "start": 41.21666666666667,
+              "end": 41.31666666666667
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 44.81166666666667,
+            "end": 45.58166666666666,
+            "distance": 1.1705748717927391
+          }
+        ],
+        "distance": 2.80467729683306,
+        "lastOnset": {
+          "time": 44.81166666666667,
+          "center": {
+            "x": 365.6534553549442,
+            "y": 77.60559238123479,
+            "vx": -1.1682627903810887,
+            "vy": -19.106882433774366,
+            "mass": 0.9
+          },
+          "lastHit": {
+            "time": 41.875,
+            "type": "impact",
+            "encounter": "springy pod",
+            "strength": 10.43599390448918,
+            "closingSpeed": 13.690769599537845,
+            "position": {
+              "x": 366.51464637820993,
+              "y": 105.27225965301776
+            },
+            "material": "shell",
+            "surface": null,
+            "mass": 0.9
+          }
+        }
+      },
+      "release": {
+        "time": 6.873333333333594,
+        "center": {
+          "x": -1.8801802389504205,
+          "y": 303.5740020996117,
+          "vx": 5.519924587496207,
+          "vy": 14.794619966218121,
+          "mass": 0.9
+        },
+        "parts": [
+          {
+            "id": "front-membrane",
+            "p": {
+              "x": -1.7798411588248781,
+              "y": 303.7101943698055
+            },
+            "v": {
+              "x": 7.790691672371565,
+              "y": 13.842612847211829
+            },
+            "w": -7.862651120959979
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.016358216312071,
+              "y": 303.8240626685311
+            },
+            "v": {
+              "x": 8.704550070116218,
+              "y": 16.381951054466686
+            },
+            "w": -5.310984719162081
+          },
+          {
+            "id": "rear-membrane",
+            "p": {
+              "x": -1.789335201229106,
+              "y": 303.4438834868804
+            },
+            "v": {
+              "x": 4.32904736625715,
+              "y": 13.473880839761996
+            },
+            "w": -12.300959615929562
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.8575996600257092,
+              "y": 303.1810398378721
+            },
+            "v": {
+              "x": -2.569844753174564,
+              "y": 14.218000175466907
+            },
+            "w": -27.935755327620335
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.8919978819133447,
+              "y": 303.57708366379865
+            },
+            "v": {
+              "x": 6.106484475829082,
+              "y": 15.036665807575602
+            },
+            "w": -15.846118396018307
+          }
+        ]
+      },
+      "travel": {
+        "lastX": 364.4088485949971,
+        "forward": 369.568211345449,
+        "backward": 3.2791825115017446,
+        "net": 366.2890288339475
+      },
+      "captureAt": 44.7,
+      "activeEnd": 45.998333333333335,
+      "movingActivity": {
+        "480": {
+          "maxGap": 1.4999999999999996,
+          "maxActiveGap": 1.5,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 1.6666666666666667,
+              "end": 1.6833333333333333
+            },
+            {
+              "start": 3.6833333333333327,
+              "end": 4.433333333333334
+            },
+            {
+              "start": 4.8,
+              "end": 5.05
+            },
+            {
+              "start": 5.916666666666666,
+              "end": 6.516666666666667
+            },
+            {
+              "start": 8.633333333333335,
+              "end": 9.05
+            },
+            {
+              "start": 9.083333333333332,
+              "end": 9.866666666666667
+            },
+            {
+              "start": 10.033333333333333,
+              "end": 10.3
+            },
+            {
+              "start": 12.9,
+              "end": 13.15
+            },
+            {
+              "start": 14.416666666666666,
+              "end": 15.3
+            },
+            {
+              "start": 16.983333333333334,
+              "end": 17.1
+            },
+            {
+              "start": 17.316666666666666,
+              "end": 18.066666666666666
+            },
+            {
+              "start": 18.35,
+              "end": 18.533333333333335
+            },
+            {
+              "start": 21.35,
+              "end": 21.533333333333335
+            },
+            {
+              "start": 22.4,
+              "end": 22.516666666666666
+            },
+            {
+              "start": 22.6,
+              "end": 23.916666666666668
+            },
+            {
+              "start": 25.03333333333333,
+              "end": 26.133333333333333
+            },
+            {
+              "start": 26.35,
+              "end": 26.75
+            },
+            {
+              "start": 28.21666666666667,
+              "end": 28.616666666666667
+            },
+            {
+              "start": 30.849999999999998,
+              "end": 31.016666666666666
+            },
+            {
+              "start": 31.216666666666665,
+              "end": 31.4
+            },
+            {
+              "start": 32.9,
+              "end": 33.05
+            },
+            {
+              "start": 34.63333333333333,
+              "end": 36.13333333333333
+            },
+            {
+              "start": 37.483333333333334,
+              "end": 37.63333333333333
+            },
+            {
+              "start": 37.86666666666666,
+              "end": 38.18333333333333
+            },
+            {
+              "start": 38.733333333333334,
+              "end": 38.766666666666666
+            },
+            {
+              "start": 38.95,
+              "end": 39.733333333333334
+            },
+            {
+              "start": 42.81666666666667,
+              "end": 42.86666666666667
+            },
+            {
+              "start": 44.11666666666667,
+              "end": 44.333333333333336
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 3.6,
+              "end": 3.9833333333333334
+            },
+            {
+              "start": 5,
+              "end": 5.216666666666667
+            },
+            {
+              "start": 5.966666666666667,
+              "end": 6.516666666666667
+            },
+            {
+              "start": 8.516666666666666,
+              "end": 9.316666666666666
+            },
+            {
+              "start": 14.333333333333334,
+              "end": 14.833333333333334
+            },
+            {
+              "start": 14.899999999999999,
+              "end": 14.916666666666666
+            },
+            {
+              "start": 14.933333333333334,
+              "end": 15.033333333333333
+            },
+            {
+              "start": 16.9,
+              "end": 17.016666666666666
+            },
+            {
+              "start": 17.983333333333334,
+              "end": 18.533333333333335
+            },
+            {
+              "start": 22.75,
+              "end": 23.516666666666666
+            },
+            {
+              "start": 23.85,
+              "end": 24.05
+            },
+            {
+              "start": 25.549999999999997,
+              "end": 25.65
+            },
+            {
+              "start": 26,
+              "end": 26.133333333333333
+            },
+            {
+              "start": 38.31666666666667,
+              "end": 38.333333333333336
+            },
+            {
+              "start": 39.13333333333333,
+              "end": 39.516666666666666
+            },
+            {
+              "start": 41.21666666666667,
+              "end": 41.31666666666667
+            }
+          ]
+        }
+      },
+      "end": {
+        "x": 364.4088485949971,
+        "y": 56.0466559777076,
+        "vx": -0.11951265422848432,
+        "vy": -16.45603117079552,
+        "mass": 0.9
+      },
+      "impacts": 4,
+      "legacyImpacts": 4
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 2760,
+    "warnings": 668,
+    "maxSpeed": 19.281393788468872,
+    "collisions": [
+      {
+        "key": "0:480:openSky:27:9:57",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 480,
+        "time": 36.239583333316354,
+        "speed": 6.71411906316604,
+        "warningLead": 0.566249999999485,
+        "visibleLead": 0.44958333333292444,
+        "readableLead": 0.3495833333330154,
+        "continuousNoticeLead": 0.566249999999485,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:openSky:27:9:57",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 960,
+        "time": 36.239583333316354,
+        "speed": 6.71411906316604,
+        "warningLead": null,
+        "visibleLead": 0.7829166666659546,
+        "readableLead": 0.7829166666659546,
+        "continuousNoticeLead": 0.7829166666659546,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:openSky:30:5:66",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 480,
+        "time": 40.944583333312075,
+        "speed": 5.308198560711722,
+        "warningLead": 0.5545833333328289,
+        "visibleLead": 0.35458333333301084,
+        "readableLead": 0.2712499999997533,
+        "continuousNoticeLead": 0.5545833333328289,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:openSky:30:5:66",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 960,
+        "time": 40.944583333312075,
+        "speed": 5.308198560711722,
+        "warningLead": null,
+        "visibleLead": 0.721249999999344,
+        "readableLead": 0.6379166666660865,
+        "continuousNoticeLead": 0.6379166666660865,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:jungleCanopy:20:13:81",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 480,
+        "time": 48.74916666663831,
+        "speed": 8.03714484059877,
+        "warningLead": 0.6924999999993702,
+        "visibleLead": 0.5924999999994611,
+        "readableLead": 0.44249999999959755,
+        "continuousNoticeLead": 0.6924999999993702,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:jungleCanopy:20:13:81",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 960,
+        "time": 48.74916666663831,
+        "speed": 8.03714484059877,
+        "warningLead": 0.6924999999993702,
+        "visibleLead": 0.9091666666658398,
+        "readableLead": 0.3758333333329915,
+        "continuousNoticeLead": 0.6924999999993702,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:jungleCanopy:20:13:84",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 480,
+        "time": 51.68624999996897,
+        "speed": 19.14256498710307,
+        "warningLead": 0.8295833333325788,
+        "visibleLead": 2.796249999997457,
+        "readableLead": 0.3962499999996396,
+        "continuousNoticeLead": 0.8295833333325788,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:jungleCanopy:20:13:84",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 960,
+        "time": 51.68624999996897,
+        "speed": 19.14256498710307,
+        "warningLead": 0.8295833333325788,
+        "visibleLead": 0.47958333333289715,
+        "readableLead": 0.26291666666642755,
+        "continuousNoticeLead": 0.8295833333325788,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "trace": null,
+  "equipment": "sling",
+  "placementOffsets": [
+    -0.15,
+    0.15
+  ],
+  "seedBase": 49000,
+  "mediumOnly": false,
+  "durationSeconds": 4,
+  "selectedCase": 7,
+  "activityBasis": "Legacy impulse-only global80ms gate observed separately; moving-qualified scoring is row.impacts, old semantics row.legacyImpacts.",
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x2 off-center placements at winding fraction.6;4seconds after actual release;seedBase+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "3da658776cb474ba5d5bbf615d08810e7210d5e36f11ee5deae0026d0352423e",
+    "src/encounter-body.js": "c129dd43c4c41d3a5021d502a52199739888e0e5ef624ab6fd059ae0c64d85fa",
+    "src/articulated.js": "f218ad0235cfbe443ce05fb8ecf4a401403332fa38ca66d0afa61f92719f6aa7",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/approach-cues.js": "3da57833fc95bcc3578c5addc0ca8859cb0df6499bed9249df3bf60936e22c80",
+    "src/fixed-obstacles.js": "25e43a1097736c7bc47f8090ee660a74aa7b6dc69242585ea02238dec170a101",
+    "src/mushroom-geometry.js": "c0e36ef200dd453b42e68a043fb7c69c62a5fd23b7ca64ed3311398fd692a62c"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 7,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "equipment": "sling",
+      "seed": 49007,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 3.999999999999812
+      },
+      "births": {
+        "round beetle": 9,
+        "leaf hopper": 8
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:-1:6:2",
+          "kind": "leaf hopper",
+          "birthBiome": "grandfatherTree",
+          "time": 3.3066666666666666,
+          "position": {
+            "x": -2.1252690377458516,
+            "y": 295.37821735955856,
+            "vx": -2.260835965750163,
+            "vy": -6.977315852538804,
+            "mass": 5
+          }
+        },
+        {
+          "id": "grandfatherTree:-1:6:2",
+          "kind": "leaf hopper",
+          "birthBiome": "grandfatherTree",
+          "time": 3.4133333333333336,
+          "position": {
+            "x": -2.4742829634421315,
+            "y": 294.89660532849877,
+            "vx": -3.7223607125041758,
+            "vy": -2.37365216524748,
+            "mass": 5
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.0333333333333345,
+          "totalGap": 1.0333333333333345,
+          "overOneSeconds": 0.05,
+          "maxActiveGap": 1.0333333333333345,
+          "gaps": [
+            {
+              "start": -1.1102230246251565e-15,
+              "end": 1.0333333333333334
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 1.016666666666668,
+          "totalGap": 1.016666666666668,
+          "overOneSeconds": 0.03333333333333333,
+          "maxActiveGap": 1.016666666666668,
+          "gaps": [
+            {
+              "start": -1.3322676295501878e-15,
+              "end": 1.0166666666666666
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 1.9433333333333334,
+            "end": 4,
+            "distance": 3.8920309471124708
+          }
+        ],
+        "distance": 3.8920309471124708,
+        "lastOnset": {
+          "time": 1.9433333333333334,
+          "center": {
+            "x": -0.3624627773730108,
+            "y": 300.46482012354016,
+            "vx": -0.5842310262607341,
+            "vy": -0.9621629194617288,
+            "mass": 5
+          },
+          "lastHit": {
+            "time": 1.8833333333333333,
+            "type": "impact",
+            "encounter": null,
+            "strength": 0.8971145184643827,
+            "closingSpeed": 1.1980321304450285,
+            "position": {
+              "x": -0.2356587386914776,
+              "y": 300.2978801529324
+            },
+            "material": "wood",
+            "surface": null,
+            "mass": 5
+          }
+        }
+      },
+      "release": {
+        "time": 6.986666666666945,
+        "center": {
+          "x": -2.7624173781728145,
+          "y": 301.74994972001815,
+          "vx": 1.277188613996686,
+          "vy": 8.720242081660507,
+          "mass": 5
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.9056754372566935,
+              "y": 301.9583610390982
+            },
+            "v": {
+              "x": 4.180984030273566,
+              "y": 10.547092152353102
+            },
+            "w": -15.49359933161536
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -3.120071540508442,
+              "y": 301.8220267419768
+            },
+            "v": {
+              "x": 1.8151176918729985,
+              "y": 12.196352120772207
+            },
+            "w": -8.839972483412483
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -2.505401921207289,
+              "y": 301.8673986449804
+            },
+            "v": {
+              "x": 2.5026717898384354,
+              "y": 6.165953206697876
+            },
+            "w": -8.76108793673753
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -2.3056921755776836,
+              "y": 301.8061854454886
+            },
+            "v": {
+              "x": 1.3278562726519492,
+              "y": 4.961051437132984
+            },
+            "w": -4.74184731489813
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.751311540712738,
+              "y": 301.69872383289123
+            },
+            "v": {
+              "x": 0.752716481183778,
+              "y": 8.513387596773962
+            },
+            "w": -10.878553374294226
+          }
+        ]
+      },
+      "travel": {
+        "lastX": -4.251589022669466,
+        "forward": 2.416597716519325,
+        "backward": 3.905769361015981,
+        "net": -1.4891716444966518
+      },
+      "captureAt": 1.75,
+      "activeEnd": 3.9983333333333335,
+      "movingActivity": {
+        "480": {
+          "maxGap": 1.0333333333333345,
+          "maxActiveGap": 1.0333333333333345,
+          "gaps": [
+            {
+              "start": -1.1102230246251565e-15,
+              "end": 1.0333333333333334
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 1.016666666666668,
+          "maxActiveGap": 1.016666666666668,
+          "gaps": [
+            {
+              "start": -1.3322676295501878e-15,
+              "end": 1.0166666666666666
+            }
+          ]
+        }
+      },
+      "end": {
+        "x": -4.251589022669466,
+        "y": 294.32095416363944,
+        "vx": -2.3973129443151575,
+        "vy": -0.03591449485181011,
+        "mass": 5
+      },
+      "impacts": 10,
+      "legacyImpacts": 14
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 240,
+    "warnings": 18,
+    "maxSpeed": 9.838509430246317,
+    "collisions": [
+      {
+        "key": "0:480:grandfatherTree:-1:6:2",
+        "species": "armadillo",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 480,
+        "time": 10.293750000000768,
+        "speed": 7.334460837043086,
+        "warningLead": 1.273750000000172,
+        "visibleLead": 2.2737500000003283,
+        "readableLead": 1.4404166666668647,
+        "continuousNoticeLead": 1.273750000000172,
+        "maxUncoveredAfterNotice": 0.08333333333333333
+      },
+      {
+        "key": "0:960:grandfatherTree:-1:6:2",
+        "species": "armadillo",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 960,
+        "time": 10.293750000000768,
+        "speed": 7.334460837043086,
+        "warningLead": 1.273750000000172,
+        "visibleLead": 1.1404166666668178,
+        "readableLead": 0.8904166666667788,
+        "continuousNoticeLead": 0.8904166666667788,
+        "maxUncoveredAfterNotice": 0.16666666666666666
+      }
+    ]
+  }
+}

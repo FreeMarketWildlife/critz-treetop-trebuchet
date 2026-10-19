@@ -1,0 +1,278 @@
+{
+  "protocol": "Same canonical precontact snapshot reconstructed for each600/1200/2400Hz external timestep, existing collision-local substeps retained.0.3s real dynamics with scheduled births retained. Snapshot contact caches are reconstructed; not proof of exact uninterrupted natural continuation or solver accuracy. Energy residual includes contact loss and numerical effects, with observed external work and signed spawn/despawn energy removed.",
+  "rows": [
+    {
+      "name": "canopy",
+      "hz": 600,
+      "duration": 0.3,
+      "before": {
+        "x": 41.96399249342015,
+        "y": 117.10895787555188,
+        "vx": 0.8380960576123627,
+        "vy": -54.64164920129288,
+        "mass": 0.8500000000000001
+      },
+      "after": {
+        "x": 39.60737839472484,
+        "y": 111.74193027555815,
+        "vx": -11.616089992268552,
+        "vy": -3.0225882662547354,
+        "mass": 0.8500000000000001
+      },
+      "energyResidual": -1232.4863811240539,
+      "impacts": 2,
+      "enemyIds": [
+        "openSky:4:2:17",
+        "openSky:4:0:17",
+        "openSky:5:0:17",
+        "openSky:4:1:16",
+        "jungleCanopy:2:12:17",
+        "jungleCanopy:1:13:18",
+        "jungleCanopy:3:14:18",
+        "jungleCanopy:3:12:18"
+      ]
+    },
+    {
+      "name": "canopy",
+      "hz": 1200,
+      "duration": 0.3,
+      "before": {
+        "x": 41.96399249342015,
+        "y": 117.10895787555188,
+        "vx": 0.8380960576123627,
+        "vy": -54.64164920129288,
+        "mass": 0.8500000000000001
+      },
+      "after": {
+        "x": 39.59267331052128,
+        "y": 111.71994170497655,
+        "vx": -11.689289654090217,
+        "vy": -3.127123961200538,
+        "mass": 0.8500000000000001
+      },
+      "energyResidual": -1227.1594081225012,
+      "impacts": 2,
+      "enemyIds": [
+        "openSky:4:2:17",
+        "openSky:4:0:17",
+        "openSky:5:0:17",
+        "openSky:4:1:16",
+        "jungleCanopy:2:12:17",
+        "jungleCanopy:1:13:18",
+        "jungleCanopy:3:14:18",
+        "jungleCanopy:3:12:18"
+      ]
+    },
+    {
+      "name": "canopy",
+      "hz": 2400,
+      "duration": 0.3,
+      "before": {
+        "x": 41.96399249342015,
+        "y": 117.10895787555188,
+        "vx": 0.8380960576123627,
+        "vy": -54.64164920129288,
+        "mass": 0.8500000000000001
+      },
+      "after": {
+        "x": 39.536794447511745,
+        "y": 111.6954533545393,
+        "vx": -11.980422877380526,
+        "vy": -3.257932282784254,
+        "mass": 0.8500000000000001
+      },
+      "energyResidual": -1223.7057182987228,
+      "impacts": 2,
+      "enemyIds": [
+        "openSky:4:2:17",
+        "openSky:4:0:17",
+        "openSky:5:0:17",
+        "openSky:4:1:16",
+        "jungleCanopy:2:12:17",
+        "jungleCanopy:1:13:18",
+        "jungleCanopy:3:14:18",
+        "jungleCanopy:3:12:18"
+      ]
+    },
+    {
+      "name": "rig",
+      "hz": 600,
+      "duration": 0.3,
+      "before": {
+        "x": -0.5273373036786245,
+        "y": 301.9745046129227,
+        "vx": 1.2771886139966666,
+        "vy": -8.447257918339433,
+        "mass": 5
+      },
+      "after": {
+        "x": -0.8104645701419224,
+        "y": 300.0981751409774,
+        "vx": -3.2943624127508047,
+        "vy": -3.8473561741975373,
+        "mass": 5
+      },
+      "energyResidual": -263.1461087665503,
+      "impacts": 1,
+      "enemyIds": [
+        "grandfatherTree:0:7:3",
+        "grandfatherTree:-1:7:2",
+        "grandfatherTree:-1:6:2",
+        "grandfatherTree:0:8:2",
+        "grandfatherTree:0:7:2",
+        "grandfatherTree:-1:8:2",
+        "grandfatherTree:0:6:1",
+        "grandfatherTree:0:5:4"
+      ]
+    },
+    {
+      "name": "rig",
+      "hz": 1200,
+      "duration": 0.3,
+      "before": {
+        "x": -0.5273373036786245,
+        "y": 301.9745046129227,
+        "vx": 1.2771886139966666,
+        "vy": -8.447257918339433,
+        "mass": 5
+      },
+      "after": {
+        "x": -0.8182716402457568,
+        "y": 300.10377311599785,
+        "vx": -3.3360213729673505,
+        "vy": -3.8422641291401995,
+        "mass": 5
+      },
+      "energyResidual": -263.2571521938415,
+      "impacts": 1,
+      "enemyIds": [
+        "grandfatherTree:0:7:3",
+        "grandfatherTree:-1:7:2",
+        "grandfatherTree:-1:6:2",
+        "grandfatherTree:0:8:2",
+        "grandfatherTree:0:7:2",
+        "grandfatherTree:-1:8:2",
+        "grandfatherTree:0:6:1",
+        "grandfatherTree:0:5:4"
+      ]
+    },
+    {
+      "name": "rig",
+      "hz": 2400,
+      "duration": 0.3,
+      "before": {
+        "x": -0.5273373036786245,
+        "y": 301.9745046129227,
+        "vx": 1.2771886139966666,
+        "vy": -8.447257918339433,
+        "mass": 5
+      },
+      "after": {
+        "x": -0.8203590643759424,
+        "y": 300.1108321337683,
+        "vx": -3.345653793604612,
+        "vy": -3.7961885403770084,
+        "mass": 5
+      },
+      "energyResidual": -263.73121460363166,
+      "impacts": 1,
+      "enemyIds": [
+        "grandfatherTree:0:7:3",
+        "grandfatherTree:-1:7:2",
+        "grandfatherTree:-1:6:2",
+        "grandfatherTree:0:8:2",
+        "grandfatherTree:0:7:2",
+        "grandfatherTree:-1:8:2",
+        "grandfatherTree:0:6:1",
+        "grandfatherTree:0:5:4"
+      ]
+    },
+    {
+      "name": "vine",
+      "hz": 600,
+      "duration": 0.3,
+      "before": {
+        "x": 365.5279507643105,
+        "y": 78.69479437484989,
+        "vx": 1.2132130754805568,
+        "vy": -9.843213430727836,
+        "mass": 0.9
+      },
+      "after": {
+        "x": 365.4045838331497,
+        "y": 74.10260524827198,
+        "vx": -2.1032469545556194,
+        "vy": -18.779341085391994,
+        "mass": 0.9
+      },
+      "energyResidual": -38.82659132461231,
+      "impacts": 4,
+      "enemyIds": [
+        "jungleCanopy:20:9:89",
+        "jungleCanopy:21:11:84",
+        "jungleCanopy:20:12:84",
+        "jungleCanopy:20:13:84",
+        "jungleCanopy:19:12:84",
+        "jungleCanopy:20:7:89"
+      ]
+    },
+    {
+      "name": "vine",
+      "hz": 1200,
+      "duration": 0.3,
+      "before": {
+        "x": 365.5279507643105,
+        "y": 78.69479437484989,
+        "vx": 1.2132130754805568,
+        "vy": -9.843213430727836,
+        "mass": 0.9
+      },
+      "after": {
+        "x": 365.4047112413107,
+        "y": 74.1016565452425,
+        "vx": -2.109983624103455,
+        "vy": -18.786709971380244,
+        "mass": 0.9
+      },
+      "energyResidual": -38.69203741177171,
+      "impacts": 4,
+      "enemyIds": [
+        "jungleCanopy:20:9:89",
+        "jungleCanopy:21:11:84",
+        "jungleCanopy:20:12:84",
+        "jungleCanopy:20:13:84",
+        "jungleCanopy:19:12:84",
+        "jungleCanopy:20:7:89"
+      ]
+    },
+    {
+      "name": "vine",
+      "hz": 2400,
+      "duration": 0.3,
+      "before": {
+        "x": 365.5279507643105,
+        "y": 78.69479437484989,
+        "vx": 1.2132130754805568,
+        "vy": -9.843213430727836,
+        "mass": 0.9
+      },
+      "after": {
+        "x": 365.4045128188564,
+        "y": 74.10102709289085,
+        "vx": -2.1165048246538443,
+        "vy": -18.791981499158187,
+        "mass": 0.9
+      },
+      "energyResidual": -38.609497371557154,
+      "impacts": 4,
+      "enemyIds": [
+        "jungleCanopy:20:9:89",
+        "jungleCanopy:21:11:84",
+        "jungleCanopy:20:12:84",
+        "jungleCanopy:20:13:84",
+        "jungleCanopy:19:12:84",
+        "jungleCanopy:20:7:89"
+      ]
+    }
+  ]
+}

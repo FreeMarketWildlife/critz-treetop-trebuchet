@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Natural vine bug \u2014 real contact",
+    "file": "vine-incoming.json",
+    "seconds": 1.3
+  },
+  {
+    "label": "Natural canopy corner \u2014 marmoset",
+    "file": "canopy-incoming.json",
+    "seconds": 1.5
+  },
+  {
+    "label": "Natural rig recollision \u2014 armadillo",
+    "file": "rig-incoming.json",
+    "seconds": 2
+  }
+]

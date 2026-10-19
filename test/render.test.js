@@ -36,3 +36,9 @@ test('held-target feedback and responsive drawing preserve every real body and h
 test('actual fixed counterweight remains rendered after the flight transition',async()=>{
  const {PhysicalHookScene}=await import('../src/hook-experiment.js'),{createRenderer}=await import('../src/render.js');const calls=[],ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??((...args)=>calls.push([k,...args]))}),canvas={width:480,height:600,style:{},getContext:()=>ctx,getBoundingClientRect:()=>({width:390})},s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true}),r=createRenderer(canvas);s.phase='flight';const before=JSON.stringify(s.snapshot());r.draw(s,null,[],1,true,390,844);assert.ok(calls.some(c=>c[0]==='arc'&&c[3]===4.5));assert.equal(JSON.stringify(s.snapshot()),before);
 });
+
+test('camera and biome crossings cannot change existing world fixtures or bodies',async()=>{
+ const {PhysicalHookScene}=await import('../src/hook-experiment.js'),{createRenderer}=await import('../src/render.js');const ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??(()=>{})}),canvas={width:480,height:600,style:{},getContext:()=>ctx,getBoundingClientRect:()=>({width:390})},s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true}),r=createRenderer(canvas);s.phase='flight';s.installRouteTerrain();const original=s.center(),before=JSON.stringify(s.snapshot());
+ // Read-only camera input fixture: no body is reposed or stepped in this render test.
+ for(const y of [245.01,244.99,120.01,119.99,5.01,4.99]){s.center=()=>({...original,y});for(const [w,h]of [[390,844],[844,390]])r.draw(s,null,[],1,true,w,h);assert.equal(JSON.stringify(s.snapshot()),before);}
+});

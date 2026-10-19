@@ -1,0 +1,51 @@
+{
+  "baseline": "0688c7c",
+  "tests": {
+    "pass": 237,
+    "fail": 0
+  },
+  "parity": {
+    "natural": {
+      "attempts": 33,
+      "releases": 24,
+      "allRowsExact": true,
+      "sourcesChanged": false,
+      "backwardCases": [
+        1,
+        18,
+        29,
+        31
+      ]
+    },
+    "holdout": {
+      "attempts": 11,
+      "releases": 11,
+      "allRowsExact": true,
+      "sourcesChanged": false,
+      "backwardCases": [
+        18,
+        19
+      ]
+    },
+    "sling": {
+      "attempts": 22,
+      "releases": 22,
+      "allRowsExact": true,
+      "sourcesChanged": false,
+      "backwardCases": [
+        0,
+        2,
+        6,
+        7,
+        9,
+        13,
+        14,
+        15,
+        19,
+        20
+      ]
+    }
+  },
+  "matchedWindowFile": "matched-window-summary.json",
+  "contactConvergenceFile": "contact-convergence.json"
+}

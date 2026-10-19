@@ -1,0 +1,410 @@
+{
+  "trace": null,
+  "equipment": "sling",
+  "placementOffsets": [
+    -0.15,
+    0.15
+  ],
+  "seedBase": 49000,
+  "mediumOnly": false,
+  "durationSeconds": 10,
+  "selectedCase": 9,
+  "activityBasis": "Legacy impulse-only global80ms gate observed separately; moving-qualified scoring is row.impacts, old semantics row.legacyImpacts.",
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x2 off-center placements at winding fraction.6;10seconds after actual release;seedBase+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "3da658776cb474ba5d5bbf615d08810e7210d5e36f11ee5deae0026d0352423e",
+    "src/encounter-body.js": "c129dd43c4c41d3a5021d502a52199739888e0e5ef624ab6fd059ae0c64d85fa",
+    "src/articulated.js": "f218ad0235cfbe443ce05fb8ecf4a401403332fa38ca66d0afa61f92719f6aa7",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/approach-cues.js": "3da57833fc95bcc3578c5addc0ca8859cb0df6499bed9249df3bf60936e22c80",
+    "src/fixed-obstacles.js": "25e43a1097736c7bc47f8090ee660a74aa7b6dc69242585ea02238dec170a101",
+    "src/mushroom-geometry.js": "c0e36ef200dd453b42e68a043fb7c69c62a5fd23b7ca64ed3311398fd692a62c"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 9,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "equipment": "sling",
+      "seed": 49009,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.505000000000047,
+        "openSky": 3.291666666666557,
+        "jungleCanopy": 1.2033333333333476
+      },
+      "births": {
+        "leaf hopper": 13,
+        "round beetle": 7,
+        "round bird": 20,
+        "puffy moth": 14,
+        "vine bug": 1,
+        "springy pod": 5,
+        "waxleaf skid": 2
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:1:9:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 4.808333333333334,
+          "position": {
+            "x": 38.57703680059399,
+            "y": 257.85538578839294,
+            "vx": 0.83809605761237,
+            "vy": -14.996986701290114,
+            "mass": 0.8500000000000001
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.0833333333333344,
+          "totalGap": 3.5333333333333257,
+          "overOneSeconds": 0.09999999999999999,
+          "maxActiveGap": 1.0833333333333344,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 2.299999999999999,
+              "end": 3.3833333333333333
+            },
+            {
+              "start": 5.233333333333333,
+              "end": 5.533333333333333
+            },
+            {
+              "start": 6.616666666666667,
+              "end": 6.983333333333333
+            },
+            {
+              "start": 7.383333333333333,
+              "end": 7.55
+            },
+            {
+              "start": 7.7,
+              "end": 7.916666666666667
+            },
+            {
+              "start": 8.35,
+              "end": 8.566666666666666
+            },
+            {
+              "start": 8.833333333333332,
+              "end": 8.95
+            },
+            {
+              "start": 9.733333333333333,
+              "end": 10
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 3.2499999999999933,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 0.8166666666666667,
+              "end": 0.9833333333333333
+            },
+            {
+              "start": 2.15,
+              "end": 2.683333333333333
+            },
+            {
+              "start": 5.266666666666667,
+              "end": 5.483333333333333
+            },
+            {
+              "start": 6.566666666666666,
+              "end": 7.016666666666667
+            },
+            {
+              "start": 7.333333333333333,
+              "end": 7.516666666666667
+            },
+            {
+              "start": 7.933333333333334,
+              "end": 7.95
+            },
+            {
+              "start": 8.316666666666666,
+              "end": 8.5
+            },
+            {
+              "start": 8.799999999999999,
+              "end": 8.95
+            },
+            {
+              "start": 8.966666666666667,
+              "end": 9.516666666666667
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 8.936666666666667,
+            "end": 10,
+            "distance": 12.317245732069846
+          }
+        ],
+        "distance": 12.317245732069846,
+        "lastOnset": {
+          "time": 8.936666666666667,
+          "center": {
+            "x": 42.03661275317779,
+            "y": 112.24433443975107,
+            "vx": -1.4203978060561926,
+            "vy": -53.884901033226036,
+            "mass": 0.8500000000000001
+          },
+          "lastHit": {
+            "time": 4.808333333333334,
+            "type": "impact",
+            "encounter": "round beetle",
+            "strength": 16.24557184560452,
+            "closingSpeed": 38.57412516359704,
+            "position": {
+              "x": 38.78358626435735,
+              "y": 257.5942867589407
+            },
+            "material": "shell",
+            "surface": null,
+            "mass": 0.85
+          }
+        }
+      },
+      "release": {
+        "time": 7.143333333333636,
+        "center": {
+          "x": -1.0168686902526705,
+          "y": 304.3785815302009,
+          "vx": 8.234361792198795,
+          "vy": 13.918806421694686,
+          "mass": 0.8500000000000001
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.0277431670449908,
+              "y": 304.55189715827515
+            },
+            "v": {
+              "x": 10.25612583286849,
+              "y": 14.377646020426464
+            },
+            "w": -18.02920615067902
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.2216661472615096,
+              "y": 304.4757282127683
+            },
+            "v": {
+              "x": 8.911934461478902,
+              "y": 15.566804738407772
+            },
+            "w": -10.268046992168673
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.7908557434938215,
+              "y": 304.27933127187475
+            },
+            "v": {
+              "x": 7.510497886492555,
+              "y": 12.222866290146207
+            },
+            "w": -8.766711027241254
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.9235498088235052,
+              "y": 304.09220239842307
+            },
+            "v": {
+              "x": 5.334528819827805,
+              "y": 12.624491229019398
+            },
+            "w": -15.257190630109696
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.9872399391437804,
+              "y": 304.36781705843697
+            },
+            "v": {
+              "x": 8.130958889860358,
+              "y": 13.655643903001083
+            },
+            "w": -5.731156971482275
+          }
+        ]
+      },
+      "travel": {
+        "lastX": 29.733701901296516,
+        "forward": 43.05349617533264,
+        "backward": 12.302925583783367,
+        "net": 30.750570591549188
+      },
+      "captureAt": 8.85,
+      "activeEnd": 9.998333333333333,
+      "movingActivity": {
+        "480": {
+          "maxGap": 1.0833333333333344,
+          "maxActiveGap": 1.0833333333333344,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 2.299999999999999,
+              "end": 3.3833333333333333
+            },
+            {
+              "start": 5.233333333333333,
+              "end": 5.533333333333333
+            },
+            {
+              "start": 6.616666666666667,
+              "end": 6.983333333333333
+            },
+            {
+              "start": 7.383333333333333,
+              "end": 7.55
+            },
+            {
+              "start": 7.7,
+              "end": 7.916666666666667
+            },
+            {
+              "start": 8.35,
+              "end": 8.566666666666666
+            },
+            {
+              "start": 8.833333333333332,
+              "end": 8.95
+            },
+            {
+              "start": 9.733333333333333,
+              "end": 10
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 0.8166666666666667,
+              "end": 0.9833333333333333
+            },
+            {
+              "start": 2.15,
+              "end": 2.683333333333333
+            },
+            {
+              "start": 5.266666666666667,
+              "end": 5.483333333333333
+            },
+            {
+              "start": 6.566666666666666,
+              "end": 7.016666666666667
+            },
+            {
+              "start": 7.333333333333333,
+              "end": 7.516666666666667
+            },
+            {
+              "start": 7.933333333333334,
+              "end": 7.95
+            },
+            {
+              "start": 8.316666666666666,
+              "end": 8.5
+            },
+            {
+              "start": 8.799999999999999,
+              "end": 8.95
+            },
+            {
+              "start": 8.966666666666667,
+              "end": 9.516666666666667
+            }
+          ]
+        }
+      },
+      "end": {
+        "x": 29.733701901296516,
+        "y": 105.62191899924164,
+        "vx": -11.616089992268519,
+        "vy": -11.36108826625458,
+        "mass": 0.8500000000000001
+      },
+      "impacts": 2,
+      "legacyImpacts": 2
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 600,
+    "warnings": 54,
+    "maxSpeed": 55.4654814739137,
+    "collisions": [
+      {
+        "key": "0:480:grandfatherTree:1:9:1",
+        "species": "tiny-primate",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 11.951666666667714,
+        "speed": 15.0203866501651,
+        "warningLead": 0.2583333333333666,
+        "visibleLead": 1.4250000000002156,
+        "readableLead": 0.10833333333334316,
+        "continuousNoticeLead": 0.2583333333333666,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:grandfatherTree:1:9:1",
+        "species": "tiny-primate",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 11.951666666667714,
+        "speed": 15.0203866501651,
+        "warningLead": 0.2583333333333666,
+        "visibleLead": 2.125000000000325,
+        "readableLead": 1.9750000000003016,
+        "continuousNoticeLead": 0.2583333333333666,
+        "maxUncoveredAfterNotice": 1.5333333333333328
+      }
+    ]
+  }
+}
