@@ -1,0 +1,2058 @@
+{
+  "seedBase": 49000,
+  "protocol": "Natural589ade8 expanded long-sling qualifying reversal replays with payload part/fixture shape. Post-solve normal/tangent external impulses observed without changing forces. Normal A→B and tangent=(ny,-nx), sign reversed when payload is fixtureA. Recent50ms trace includes small contacts below reward threshold. Threshold crossing alone is not necessarily a >=.5s,>=1m episode; compare iteration33 expanded-sling complete60s episodes; travel is signed COM displacement over the explicitly bounded diagnostic window.",
+  "rows": [
+    {
+      "n": 0,
+      "species": "lizard",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "observedDuration": 13,
+      "travel": {
+        "forward": 40.84756425674014,
+        "backward": 6.73576860526742
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -1.6256339713022399,
+        "y": 303.86914711143373,
+        "vx": 6.487452353844441,
+        "vy": 15.112954384100453,
+        "mass": 0.65
+      },
+      "onset": [
+        {
+          "time": 5.035,
+          "before": {
+            "x": 31.03017161041514,
+            "y": 255.83860483477835,
+            "vx": 3.336842726554756,
+            "vy": -1.8012776217988211,
+            "mass": 0.65
+          },
+          "after": {
+            "x": 31.030458041993583,
+            "y": 255.83963492387747,
+            "vx": -0.867229541391299,
+            "vy": 1.3474508519628652,
+            "mass": 0.65
+          },
+          "momentumChangeX": -2.7326469741649357,
+          "stepImpulseX": -2.7326935313001726,
+          "recent": [
+            {
+              "time": 5.023333333333333,
+              "contacts": [
+                {
+                  "target": "deflector 32,255",
+                  "pre": {
+                    "pointVx": 3.7414568362786804,
+                    "pointVy": -35.24132534263408,
+                    "centerVx": 4.298072392809836,
+                    "centerVy": -35.76129227593515,
+                    "omega": -7.51593961554621,
+                    "inertia": 0.0004419619763312296,
+                    "mass": 0.10400000000000001,
+                    "angle": -63.81946516040026
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.22,
+                    "radius": 0.09
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.107345300300487,
+                    "y": 255.59370144430875
+                  },
+                  "normalX": 3.757502423661602,
+                  "tangentX": -1.0078848119129789,
+                  "normal": {
+                    "x": 0.5449883505954107,
+                    "y": 0.8384436163006391
+                  },
+                  "N": 6.8946472333884845,
+                  "T": -1.2020901493173077
+                }
+              ]
+            },
+            {
+              "time": 5.026666666666666,
+              "contacts": [
+                {
+                  "target": "deflector 32,255",
+                  "pre": {
+                    "pointVx": 5.054977756748664,
+                    "pointVy": -29.488391446312107,
+                    "centerVx": 6.340184444602681,
+                    "centerVy": -22.905511877692298,
+                    "omega": -110.84167497375094,
+                    "inertia": 0.00009748148072667981,
+                    "mass": 0.09100000000000001,
+                    "angle": -64.08278091735643
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.12,
+                    "radius": 0.04
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.0372773595341,
+                    "y": 255.63269009838064
+                  },
+                  "normalX": -4.449658608355715,
+                  "tangentX": -0.06155964922110785,
+                  "normal": {
+                    "x": -0.2989736689873486,
+                    "y": 0.9542613610810422
+                  },
+                  "N": 12.516244536078112,
+                  "T": -0.005482731956061682
+                }
+              ]
+            },
+            {
+              "time": 5.033333333333333,
+              "contacts": [
+                {
+                  "target": "deflector 32,255",
+                  "pre": {
+                    "pointVx": 11.877889102896036,
+                    "pointVy": -0.6059304789161404,
+                    "centerVx": 9.995374926289488,
+                    "centerVy": -3.4301424181863513,
+                    "omega": 53.31792936135178,
+                    "inertia": 0.00009748148072667981,
+                    "mass": 0.09100000000000001,
+                    "angle": -64.5156397324653
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.12,
+                    "radius": 0.04
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.040877748075914,
+                    "y": 255.63284446053046
+                  },
+                  "normalX": 0.10363721597243028,
+                  "tangentX": -0.18348029459898912,
+                  "normal": {
+                    "x": 0.09875754697072932,
+                    "y": 0.9951115248635825
+                  },
+                  "N": 0.6910677118787091,
+                  "T": -0.11618674551697944
+                }
+              ]
+            },
+            {
+              "time": 5.035,
+              "contacts": [
+                {
+                  "target": "deflector 32,255",
+                  "pre": {
+                    "pointVx": 8.502687825332604,
+                    "pointVy": -0.9502000300111717,
+                    "centerVx": 7.439835322478401,
+                    "centerVy": -2.4443692363786056,
+                    "omega": 32.22013742635651,
+                    "inertia": 0.00009748148072667981,
+                    "mass": 0.09100000000000001,
+                    "angle": -64.49067220439541
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.12,
+                    "radius": 0.04
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.040688391889756,
+                    "y": 255.63270731639318
+                  },
+                  "normalX": 0.04802785136923737,
+                  "tangentX": 0.03608275919278543,
+                  "normal": {
+                    "x": 0.07881309851917633,
+                    "y": 0.9968894098654106
+                  },
+                  "N": 0.19976403787309413,
+                  "T": -0.03389794359266661
+                },
+                {
+                  "target": "deflector 32,255",
+                  "pre": {
+                    "pointVx": 8.124908484901265,
+                    "pointVy": -1.0095514805597068,
+                    "centerVx": 7.223928402621133,
+                    "centerVy": -1.841215307981929,
+                    "omega": 24.4232425118023,
+                    "inertia": 0.00009748148072667981,
+                    "mass": 0.09100000000000001,
+                    "angle": -64.48154431733825
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.12,
+                    "radius": 0.04
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.030878258897882,
+                    "y": 255.6281200562326
+                  },
+                  "normalX": -2.870638105238153,
+                  "tangentX": 0.05383396337595749,
+                  "normal": {
+                    "x": -0.90299254209998,
+                    "y": 0.4296562217771508
+                  },
+                  "N": 3.1790274796315137,
+                  "T": 0.12529543539085414
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "species": "mouse",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "observedDuration": 13,
+      "travel": {
+        "forward": 34.10006980507188,
+        "backward": 3.357494451490947
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -1.6292918232236373,
+        "y": 303.82956102963027,
+        "vx": 6.775749066018544,
+        "vy": 14.498859788014565,
+        "mass": 0.75
+      },
+      "onset": [
+        {
+          "time": 9.433333333333334,
+          "before": {
+            "x": 32.44397617290996,
+            "y": 0.3069647610154332,
+            "vx": 2.7921536656975214,
+            "vy": -78.53962145228915,
+            "mass": 0.75
+          },
+          "after": {
+            "x": 32.442993434476314,
+            "y": 0.21337791915958393,
+            "vx": -3.9714397860649044,
+            "vy": -33.762545024729846,
+            "mass": 0.75
+          },
+          "momentumChangeX": -5.07269508882182,
+          "stepImpulseX": -5.0726950888218205,
+          "recent": [
+            {
+              "time": 9.433333333333334,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 0.7682937101711715,
+                    "pointVy": -80.24425013242167,
+                    "centerVx": 1.7769239455067998,
+                    "centerVy": -80.24425013242167,
+                    "omega": -8.73874276134486,
+                    "inertia": 0.001188,
+                    "mass": 0.165,
+                    "angle": -107.62734704302827
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "circle",
+                    "radius": 0.12
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 32.65787398492503,
+                    "y": 0.008212787574580514
+                  },
+                  "normalX": 0,
+                  "tangentX": -5.0726950888218205,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 33.59506982066952,
+                  "T": -5.0726950888218205
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 9.451666666666666,
+          "before": {
+            "x": 32.44514376637175,
+            "y": 0.32931867041864327,
+            "vx": -0.22437531045396852,
+            "vy": 10.07897794199598,
+            "mass": 0.75
+          },
+          "after": {
+            "x": 32.44424877499267,
+            "y": 0.34958526897868314,
+            "vx": -0.9153200149380885,
+            "vy": 14.69329755691268,
+            "mass": 0.75
+          },
+          "momentumChangeX": -0.51820852836309,
+          "stepImpulseX": -0.5182085283630933,
+          "recent": [
+            {
+              "time": 9.433333333333334,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 0.7682937101711715,
+                    "pointVy": -80.24425013242167,
+                    "centerVx": 1.7769239455067998,
+                    "centerVy": -80.24425013242167,
+                    "omega": -8.73874276134486,
+                    "inertia": 0.001188,
+                    "mass": 0.165,
+                    "angle": -107.62734704302827
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "circle",
+                    "radius": 0.12
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 32.65787398492503,
+                    "y": 0.008212787574580514
+                  },
+                  "normalX": 0,
+                  "tangentX": -5.0726950888218205,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 33.59506982066952,
+                  "T": -5.0726950888218205
+                }
+              ]
+            },
+            {
+              "time": 9.435,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 25.755620752541724,
+                    "pointVy": -56.97541782532589,
+                    "centerVx": 17.988915536373245,
+                    "centerVy": -57.91915791741871,
+                    "omega": 167.93633174688287,
+                    "inertia": 0.00007381410199255803,
+                    "mass": 0.09,
+                    "angle": -108.05803283824011
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.10500000000000001,
+                    "radius": 0.035
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 32.3632886487523,
+                    "y": 0.006892482826401796
+                  },
+                  "normalX": 0,
+                  "tangentX": 3.8893283212088936,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 25.827366780556286,
+                  "T": 3.8893283212088936
+                }
+              ]
+            },
+            {
+              "time": 9.436666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 28.72492078987023,
+                    "pointVy": -7.746515425012525,
+                    "centerVx": 20.092133271443178,
+                    "centerVy": -8.142006818983337,
+                    "omega": 167.1440026188604,
+                    "inertia": 0.00007381410199255803,
+                    "mass": 0.09,
+                    "angle": -108.24932133857753
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.10500000000000001,
+                    "radius": 0.035
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 32.38349660425566,
+                    "y": 0.009521103508491315
+                  },
+                  "normalX": 0,
+                  "tangentX": -0.7915579609712091,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 5.272562566243793,
+                  "T": -0.7915579609712091
+                }
+              ]
+            },
+            {
+              "time": 9.446666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 42.03314382625725,
+                    "pointVy": -111.60714139053422,
+                    "centerVx": 26.455118281203216,
+                    "centerVy": -57.926360720679256,
+                    "omega": 277.76437105483706,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -106.61898648027132
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.9310546221343,
+                    "y": 0.01361753500508373
+                  },
+                  "normalX": 0,
+                  "tangentX": -0.2832934849343957,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 1.8750563829014697,
+                  "T": -0.2832934849343957
+                },
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 43.374507793960206,
+                    "pointVy": -110.63755233494823,
+                    "centerVx": 26.455118281203216,
+                    "centerVy": -57.926360720679256,
+                    "omega": 277.76437105483706,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -106.61898648027132
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.93411590718739,
+                    "y": 0.008748649310931774
+                  },
+                  "normalX": 0,
+                  "tangentX": -0.004178518595068227,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 0.02878149534279006,
+                  "T": -0.004178518595068227
+                }
+              ]
+            },
+            {
+              "time": 9.451666666666666,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 40.19127435431694,
+                    "pointVy": -40.222482452788384,
+                    "centerVx": 31.468059590123215,
+                    "centerVy": -14.391875846281316,
+                    "omega": 136.484478638252,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -106.60994689353804
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 32.08460172513121,
+                    "y": 0.007669079744661758
+                  },
+                  "normalX": 0,
+                  "tangentX": -0.5182085283630933,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 0.7075727211810239,
+                  "T": -0.10684113791661447
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "observedDuration": 46,
+      "travel": {
+        "forward": 369.568211345449,
+        "backward": 3.2791825115017446
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -1.8801802389504205,
+        "y": 303.5740020996117,
+        "vx": 5.519924587496207,
+        "vy": 14.794619966218121,
+        "mass": 0.9
+      },
+      "onset": [
+        {
+          "time": 35.61,
+          "before": {
+            "x": 309.9558812943821,
+            "y": 147.83642653733756,
+            "vx": -0.4937903573200173,
+            "vy": -11.093830789948155,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 309.9550418653096,
+            "y": 147.81792663685073,
+            "vx": -0.503657443474649,
+            "vy": -11.099940292093764,
+            "mass": 0.9
+          },
+          "momentumChangeX": -0.00888037753916855,
+          "stepImpulseX": 0,
+          "recent": []
+        },
+        {
+          "time": 36.06333333333333,
+          "before": {
+            "x": 309.75375799972466,
+            "y": 142.89940823125434,
+            "vx": -0.4920502778656916,
+            "vy": -11.443355690729046,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 309.75291793488213,
+            "y": 142.880318505298,
+            "vx": -0.5040389054753357,
+            "vy": -11.453835573839733,
+            "mass": 0.9
+          },
+          "momentumChangeX": -0.010789764848679679,
+          "stepImpulseX": 0,
+          "recent": []
+        },
+        {
+          "time": 41.875,
+          "before": {
+            "x": 366.1646248429376,
+            "y": 105.1567747334132,
+            "vx": 8.714334750210758,
+            "vy": -1.3191382044955076,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 366.17106513376524,
+            "y": 105.14902661524204,
+            "vx": -0.9851003496116438,
+            "vy": -7.9770019385155795,
+            "mass": 0.9
+          },
+          "momentumChangeX": -8.729491589840162,
+          "stepImpulseX": -8.723760458823156,
+          "recent": [
+            {
+              "time": 41.875,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 8.751528723980536,
+                    "pointVy": -1.4442036207169864,
+                    "centerVx": 8.722310153668143,
+                    "centerVy": -1.414026600384885,
+                    "omega": -0.35661148646069385,
+                    "inertia": 0.0011664,
+                    "mass": 0.162,
+                    "angle": -25.69403477134964
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "circle",
+                    "radius": 0.12
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": 0.0015069362761085021,
+                  "point": {
+                    "x": 366.51464637820993,
+                    "y": 105.27225965301776
+                  },
+                  "normalX": -7.492221513165823,
+                  "tangentX": -1.2315389456573327,
+                  "normal": {
+                    "x": 0.7179212235782301,
+                    "y": 0.6961243543620182
+                  },
+                  "N": 10.43599390448918,
+                  "T": 1.7691364164180257
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 42.58,
+          "before": {
+            "x": 365.61813777359487,
+            "y": 99.21171476166742,
+            "vx": -0.4976173822286092,
+            "vy": -9.161800809449032,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 365.61728718088654,
+            "y": 99.19642964866668,
+            "vx": -0.5103556250419181,
+            "vy": -9.171067800444126,
+            "mass": 0.9
+          },
+          "momentumChangeX": -0.011464418531978039,
+          "stepImpulseX": 0,
+          "recent": []
+        },
+        {
+          "time": 42.873333333333335,
+          "before": {
+            "x": 365.47847635799184,
+            "y": 96.4408756394551,
+            "vx": -0.49535753151576956,
+            "vy": -10.066824553114516,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 365.47762742185745,
+            "y": 96.42408373803607,
+            "vx": -0.5093616806139077,
+            "vy": -10.0751408514051,
+            "mass": 0.9
+          },
+          "momentumChangeX": -0.012603734188324367,
+          "stepImpulseX": 0,
+          "recent": []
+        },
+        {
+          "time": 44.141666666666666,
+          "before": {
+            "x": 364.9870945102009,
+            "y": 84.44817558889598,
+            "vx": -0.49603505707141954,
+            "vy": -9.326466862631106,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 364.98624563581626,
+            "y": 84.43261389334647,
+            "vx": -0.5093246307682939,
+            "vy": -9.337017329705928,
+            "mass": 0.9
+          },
+          "momentumChangeX": -0.011960616327186951,
+          "stepImpulseX": 0,
+          "recent": []
+        },
+        {
+          "time": 44.81166666666667,
+          "before": {
+            "x": 365.652663160024,
+            "y": 77.62522879162334,
+            "vx": 1.0245162807523789,
+            "vy": -9.343120454068663,
+            "mass": 0.9
+          },
+          "after": {
+            "x": 365.6534553549442,
+            "y": 77.60559238123479,
+            "vx": -1.1682627903810887,
+            "vy": -19.106882433774366,
+            "mass": 0.9
+          },
+          "momentumChangeX": -1.973501164020121,
+          "stepImpulseX": -1.904525563685486,
+          "recent": [
+            {
+              "time": 44.81166666666667,
+              "contacts": [
+                {
+                  "target": "vine bug",
+                  "pre": {
+                    "pointVx": 1.2275176510691939,
+                    "pointVy": -9.300997592067276,
+                    "centerVx": 1.0999441212801533,
+                    "centerVy": -9.307840392688808,
+                    "omega": -0.837311477583015,
+                    "inertia": 0.005077100163352068,
+                    "mass": 0.378,
+                    "angle": -38.063246730899316
+                  },
+                  "partId": "torso",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.13
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0034075136391593765,
+                  "point": {
+                    "x": 365.64841212337774,
+                    "y": 77.81706822226762
+                  },
+                  "normalX": -3.11299623622131,
+                  "tangentX": 1.2084706725358239,
+                  "normal": {
+                    "x": 0.3490626452813361,
+                    "y": 0.9370993915637744
+                  },
+                  "N": 8.918159185186687,
+                  "T": -1.2895864445277267
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "observedDuration": 6,
+      "travel": {
+        "forward": 2.9223034227247453,
+        "backward": 5.6556415903612836
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -2.7624173781728145,
+        "y": 301.74994972001815,
+        "vx": 1.277188613996686,
+        "vy": 8.720242081660507,
+        "mass": 5
+      },
+      "onset": [
+        {
+          "time": 1.9433333333333334,
+          "before": {
+            "x": -0.36148905899590955,
+            "y": 300.46642372840597,
+            "vx": -0.44209657713258005,
+            "vy": -1.3294293691895178,
+            "mass": 5
+          },
+          "after": {
+            "x": -0.3624627773730108,
+            "y": 300.46482012354016,
+            "vx": -0.5842310262607341,
+            "vy": -0.9621629194617288,
+            "mass": 5
+          },
+          "momentumChangeX": -0.7106722456407701,
+          "stepImpulseX": -0.6783492180867308,
+          "recent": [
+            {
+              "time": 1.8933333333333333,
+              "contacts": [
+                {
+                  "target": "pouch",
+                  "pre": {
+                    "pointVx": -0.49817304313013544,
+                    "pointVy": -11.388318818722063,
+                    "centerVx": 1.262602774888264,
+                    "centerVy": -9.87624873579281,
+                    "omega": -8.877255587040127,
+                    "inertia": 0.10170999948352569,
+                    "mass": 3.4000000000000004,
+                    "angle": -20.671767371527576
+                  },
+                  "partId": "torso",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.61,
+                    "radius": 0.23
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "pouch",
+                  "otherAngle": -6.694777647214687,
+                  "point": {
+                    "x": -0.1573552893723431,
+                    "y": 300.4550819107335
+                  },
+                  "normalX": -6.829563945322339,
+                  "tangentX": 0.907536889830002,
+                  "normal": {
+                    "x": -0.8189097832663635,
+                    "y": 0.5739222655296081
+                  },
+                  "N": 8.339824587369613,
+                  "T": 1.5812888684368058
+                }
+              ]
+            },
+            {
+              "time": 1.9116666666666666,
+              "contacts": [
+                {
+                  "target": "pouch",
+                  "pre": {
+                    "pointVx": -1.9564093680759413,
+                    "pointVy": -10.490823246583822,
+                    "centerVx": -0.3057727930167673,
+                    "centerVy": -8.685326229358674,
+                    "omega": -9.732113113377194,
+                    "inertia": 0.10170999948352569,
+                    "mass": 3.4000000000000004,
+                    "angle": -20.848293167579918
+                  },
+                  "partId": "torso",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.61,
+                    "radius": 0.23
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "pouch",
+                  "otherAngle": -6.977606926602167,
+                  "point": {
+                    "x": -0.1544715485064571,
+                    "y": 300.33397161248143
+                  },
+                  "normalX": -2.8844335680611652,
+                  "tangentX": 0.48534881923102974,
+                  "normal": {
+                    "x": -0.7684239598054747,
+                    "y": 0.639941105100207
+                  },
+                  "N": 3.753700715932068,
+                  "T": 0.7584273230190925
+                },
+                {
+                  "target": "frame",
+                  "pre": {
+                    "pointVx": -4.538606906223996,
+                    "pointVy": -7.849860724469824,
+                    "centerVx": -3.5884613571983532,
+                    "centerVy": -7.843404312423746,
+                    "omega": -7.635233147845151,
+                    "inertia": 0.00290702205971169,
+                    "mass": 0.6,
+                    "angle": -20.39311357697924
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.25,
+                    "radius": 0.09
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "frame",
+                  "otherAngle": -0.0012122608959336928,
+                  "point": {
+                    "x": -0.4236885805643689,
+                    "y": 300.0125765969248
+                  },
+                  "normalX": 0.043292018936141576,
+                  "tangentX": 0.6561974997308747,
+                  "normal": {
+                    "x": 0.0012122605990153646,
+                    "y": 0.9999992652118501
+                  },
+                  "N": 35.71180897185365,
+                  "T": 0.6561979818973758
+                }
+              ]
+            },
+            {
+              "time": 1.9433333333333334,
+              "contacts": [
+                {
+                  "target": "pouch",
+                  "pre": {
+                    "pointVx": 2.178653135700068,
+                    "pointVy": -8.72195834936476,
+                    "centerVx": 2.6928902884497616,
+                    "centerVy": -7.216870907499895,
+                    "omega": -12.317281809586193,
+                    "inertia": 0.002570426937753854,
+                    "mass": 0.3,
+                    "angle": -21.908348871401735
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.32,
+                    "radius": 0.045
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "pouch",
+                  "otherAngle": -7.328449984247852,
+                  "point": {
+                    "x": 0.19601436823826068,
+                    "y": 300.6241337607289
+                  },
+                  "normalX": -1.0081892706607223,
+                  "tangentX": 0.32984005257399157,
+                  "normal": {
+                    "x": -0.5016729830548516,
+                    "y": 0.8650573495860528
+                  },
+                  "N": 2.0096543061209444,
+                  "T": 0.381292700110376
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "placement": -0.15,
+      "observedDuration": 19,
+      "travel": {
+        "forward": 43.053496770135474,
+        "backward": 79.32543771844533
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -1.0168686902526705,
+        "y": 304.3785815302009,
+        "vx": 8.234361792198795,
+        "vy": 13.918806421694686,
+        "mass": 0.8500000000000001
+      },
+      "onset": [
+        {
+          "time": 8.936666666666667,
+          "before": {
+            "x": 42.03662748507988,
+            "y": 112.33582162185652,
+            "vx": 0.838096057612364,
+            "vy": -55.49184920129297,
+            "mass": 0.8500000000000001
+          },
+          "after": {
+            "x": 42.03661275317779,
+            "y": 112.24433443975107,
+            "vx": -1.4203978060561926,
+            "vy": -53.884901033226036,
+            "mass": 0.8500000000000001
+          },
+          "momentumChangeX": -1.9197197841182734,
+          "stepImpulseX": -1.8657898658813186,
+          "recent": [
+            {
+              "time": 8.936666666666667,
+              "contacts": [
+                {
+                  "target": "canopy approach",
+                  "pre": {
+                    "pointVx": 4.064129205776044,
+                    "pointVy": -56.06400718260063,
+                    "centerVx": 2.8559092094672165,
+                    "centerVy": -56.13879420342335,
+                    "omega": 12.056785065869084,
+                    "inertia": 0.0010293473913088093,
+                    "mass": 0.1105,
+                    "angle": 16.84306636886688
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.33,
+                    "radius": 0.04
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 41.99233858845138,
+                    "y": 112.00392822645276
+                  },
+                  "normalX": -2.066861265302333,
+                  "tangentX": 0.2010713994210143,
+                  "normal": {
+                    "x": 0.8898505926947611,
+                    "y": -0.45625203854972796
+                  },
+                  "N": 2.322705948920251,
+                  "T": 0.44070246800464224
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "species": "mouse",
+      "fraction": 0.6,
+      "placement": 0.15,
+      "observedDuration": 16,
+      "travel": {
+        "forward": 39.97694180566235,
+        "backward": 11.474930722487965
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -1.0291310182863518,
+        "y": 304.5197304783277,
+        "vx": 8.66238149019126,
+        "vy": 14.506100183852269,
+        "mass": 0.75
+      },
+      "onset": [
+        {
+          "time": 13.131666666666666,
+          "before": {
+            "x": 38.947417012322084,
+            "y": 0.36092271804049997,
+            "vx": 2.1624022070488267,
+            "vy": -19.656761020336173,
+            "mass": 0.75
+          },
+          "after": {
+            "x": 38.947795977005846,
+            "y": 0.35303626056102133,
+            "vx": -2.1974386134003474,
+            "vy": -2.139476366750672,
+            "mass": 0.75
+          },
+          "momentumChangeX": -3.2698806153368802,
+          "stepImpulseX": -2.966693579460217,
+          "recent": [
+            {
+              "time": 13.111666666666666,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.3881483792309215,
+                    "pointVy": -19.243160498275664,
+                    "centerVx": 2.6416043052426037,
+                    "centerVy": -18.90608601218581,
+                    "omega": -3.606595088527246,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.96575204983512
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0028314967655752813,
+                  "point": {
+                    "x": 38.94574243629832,
+                    "y": 1.0178055607906658
+                  },
+                  "normalX": -0.03334071916779545,
+                  "tangentX": -0.004981144193138651,
+                  "normal": {
+                    "x": 0.7752821100851888,
+                    "y": 0.6316151120594387
+                  },
+                  "N": 0.04049031651509603,
+                  "T": 0.0074260186359765635
+                }
+              ]
+            },
+            {
+              "time": 13.113333333333333,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0861003128481164,
+                    "pointVy": -19.282515620321185,
+                    "centerVx": 2.2532978489136455,
+                    "centerVy": -19.058888442852112,
+                    "omega": -2.43457542048695,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.96780677921265
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0027699089151478366,
+                  "point": {
+                    "x": 38.9460388159369,
+                    "y": 1.003505553130407
+                  },
+                  "normalX": -0.0017382475803869547,
+                  "tangentX": -0.0002582242312190096,
+                  "normal": {
+                    "x": 0.7765551063980597,
+                    "y": 0.6300493367404637
+                  },
+                  "N": 0.000641717061316913,
+                  "T": 0.00011777782458422938
+                }
+              ]
+            },
+            {
+              "time": 13.115,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0785183579440414,
+                    "pointVy": -19.29474275866839,
+                    "centerVx": 2.233679809084188,
+                    "centerVy": -19.08459735220323,
+                    "omega": -2.3681380672253054,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.97179089467218
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0026456973864215382,
+                  "point": {
+                    "x": 38.94667041941703,
+                    "y": 0.9748517378542432
+                  },
+                  "normalX": -0.0015368174137060477,
+                  "tangentX": -0.00022674949514846053,
+                  "normal": {
+                    "x": 0.7790433497748797,
+                    "y": 0.6269700624204753
+                  },
+                  "N": 0.0005082447169262195,
+                  "T": 0.0000934076977326328
+                }
+              ]
+            },
+            {
+              "time": 13.116666666666667,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.071632450195997,
+                    "pointVy": -19.307812455574,
+                    "centerVx": 2.2156311344586737,
+                    "centerVy": -19.11001295512366,
+                    "omega": -2.3079358944044515,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.9756746883272
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.002520234094898338,
+                  "point": {
+                    "x": 38.947352461335996,
+                    "y": 0.9461272214262066
+                  },
+                  "normalX": -0.0014170527825717997,
+                  "tangentX": -0.00020768983178292032,
+                  "normal": {
+                    "x": 0.7814569329069238,
+                    "y": 0.6239591829692898
+                  },
+                  "N": 0.00046723645922291246,
+                  "T": 0.00008597621660375624
+                }
+              ]
+            },
+            {
+              "time": 13.118333333333334,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0651916801622203,
+                    "pointVy": -19.321334727987608,
+                    "centerVx": 2.198518015473435,
+                    "centerVy": -19.13526941287649,
+                    "omega": -2.248573403108959,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.97945925432262
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0023936187222502593,
+                  "point": {
+                    "x": 38.94808373034094,
+                    "y": 0.917332047750993
+                  },
+                  "normalX": -0.0013065900950380328,
+                  "tangentX": -0.0001902348739784301,
+                  "normal": {
+                    "x": 0.7837974917857342,
+                    "y": 0.6210164988713198
+                  },
+                  "N": 0.00042950439689641557,
+                  "T": 0.00007911838607558029
+                }
+              ]
+            },
+            {
+              "time": 13.12,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.059163010178686,
+                    "pointVy": -19.335271019537593,
+                    "centerVx": 2.1823134521713645,
+                    "centerVy": -19.160329148171922,
+                    "omega": -2.1903868089267458,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.98314628879692
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.002265943127268016,
+                  "point": {
+                    "x": 38.94886280873342,
+                    "y": 0.888466594578952
+                  },
+                  "normalX": -0.001205156430201079,
+                  "tangentX": -0.00017431239859043465,
+                  "normal": {
+                    "x": 0.7860669967460475,
+                    "y": 0.6181413079762986
+                  },
+                  "N": 0.0003949466546186939,
+                  "T": 0.00007281975578585772
+                }
+              ]
+            },
+            {
+              "time": 13.121666666666666,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0535144945165094,
+                    "pointVy": -19.349584052405238,
+                    "centerVx": 2.1669823573436124,
+                    "centerVy": -19.1851656624573,
+                    "omega": -2.133623095923481,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.98673796492292
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.002137291607140068,
+                  "point": {
+                    "x": 38.94968813798016,
+                    "y": 0.8595314991469142
+                  },
+                  "normalX": -0.0011123110219336168,
+                  "tangentX": -0.00015982942888282176,
+                  "normal": {
+                    "x": 0.7882676514747287,
+                    "y": 0.6153325195684978
+                  },
+                  "N": 0.00036340178276879023,
+                  "T": 0.00006705502242418595
+                }
+              ]
+            },
+            {
+              "time": 13.123333333333333,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0482158025839485,
+                    "pointVy": -19.364238517660954,
+                    "centerVx": 2.152484506213836,
+                    "centerVy": -19.20976141406857,
+                    "omega": -2.0784563544690395,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.9902368005906
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0020077412665703166,
+                  "point": {
+                    "x": 38.95055807167873,
+                    "y": 0.8305275950890258
+                  },
+                  "normalX": -0.0028131420880878892,
+                  "tangentX": -0.0004006747917168332,
+                  "normal": {
+                    "x": 0.7904018107634164,
+                    "y": 0.6125887507471162
+                  },
+                  "N": 0.000334673533923951,
+                  "T": 0.00006179231862525584
+                }
+              ]
+            },
+            {
+              "time": 13.125,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0530545039259063,
+                    "pointVy": -19.389965924751788,
+                    "centerVx": 2.1381858698139475,
+                    "centerVy": -19.26070758997719,
+                    "omega": -1.8030254185998744,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.99355260735402
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.001876653629457305,
+                  "point": {
+                    "x": 38.95154573045291,
+                    "y": 0.801360649733647
+                  },
+                  "normalX": -0.0008627783529532248,
+                  "tangentX": -0.0001223897172351856,
+                  "normal": {
+                    "x": 0.79235849242913,
+                    "y": 0.6100557511206959
+                  },
+                  "N": 0.00029544878019000203,
+                  "T": 0.00005454463121965173
+                }
+              ]
+            },
+            {
+              "time": 13.126666666666667,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.048963091772501,
+                    "pointVy": -19.40546922497015,
+                    "centerVx": 2.1267987926928984,
+                    "centerVy": -19.28410994747749,
+                    "omega": -1.7529888180208324,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.99650446137187
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0017441481298532515,
+                  "point": {
+                    "x": 38.952646895761575,
+                    "y": 0.7720328978730482
+                  },
+                  "normalX": -0.0007811689269314367,
+                  "tangentX": -0.00011019429992749401,
+                  "normal": {
+                    "x": 0.7941438193421876,
+                    "y": 0.6077298694326311
+                  },
+                  "N": 0.00025333098527922167,
+                  "T": 0.000046792866742691584
+                }
+              ]
+            },
+            {
+              "time": 13.128333333333334,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.0451059610260374,
+                    "pointVy": -19.421204571924843,
+                    "centerVx": 2.116145171011172,
+                    "centerVy": -19.30712469934961,
+                    "omega": -1.7071593987943758,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -157.9993786132509
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0016110153520305262,
+                  "point": {
+                    "x": 38.9537836878355,
+                    "y": 0.742642047732083
+                  },
+                  "normalX": -0.0007219831631666395,
+                  "tangentX": -0.00010128373592262503,
+                  "normal": {
+                    "x": 0.7958758259602235,
+                    "y": 0.6054598827768294
+                  },
+                  "N": 0.00023346394078602232,
+                  "T": 0.000043139468527759634
+                }
+              ]
+            },
+            {
+              "time": 13.13,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.04143714887247,
+                    "pointVy": -19.437097704849794,
+                    "centerVx": 2.106057867937489,
+                    "centerVy": -19.329854119806264,
+                    "omega": -1.6634576623094097,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -158.00217864799095
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0014773040155547552,
+                  "point": {
+                    "x": 38.95495430978089,
+                    "y": 0.7131896285390342
+                  },
+                  "normalX": -0.000668548293430154,
+                  "tangentX": -0.00009327487588047545,
+                  "normal": {
+                    "x": 0.7975571628897219,
+                    "y": 0.6032433770239817
+                  },
+                  "N": 0.0002155786655645791,
+                  "T": 0.00003984568296081358
+                }
+              ]
+            },
+            {
+              "time": 13.131666666666666,
+              "contacts": [
+                {
+                  "target": "springy pod",
+                  "pre": {
+                    "pointVx": 2.037941689159974,
+                    "pointVy": -19.45313186443698,
+                    "centerVx": 2.0964961698140776,
+                    "centerVy": -19.35231314627207,
+                    "omega": -1.6217925497911287,
+                    "inertia": 0.0006111902545307748,
+                    "mass": 0.037500000000000006,
+                    "angle": -158.00490800691054
+                  },
+                  "partId": "tail",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.43,
+                    "radius": 0.018
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "circle",
+                  "otherRole": "enemy",
+                  "otherAngle": -0.0013430580573742818,
+                  "point": {
+                    "x": 38.956157056676275,
+                    "y": 0.683677121322693
+                  },
+                  "normalX": -3.721167522204593,
+                  "tangentX": 0.679081894421149,
+                  "normal": {
+                    "x": 0.7991903501487342,
+                    "y": 0.6010780184211895
+                  },
+                  "N": 0.00019945307102425783,
+                  "T": 0.000036872411676143115
+                },
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 2.6120815550453695,
+                    "pointVy": -19.601139596925385,
+                    "centerVx": 2.4496667270321426,
+                    "centerVy": -19.601139596925385,
+                    "omega": 1.365733287045497,
+                    "inertia": 0.001188,
+                    "mass": 0.165,
+                    "angle": -159.26121873729858
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "circle",
+                    "radius": 0.12
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 38.96609506810187,
+                    "y": 0.010185224639527195
+                  },
+                  "normalX": 0,
+                  "tangentX": 0.07539204832322702,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 17.35497938769246,
+                  "T": 0.07539204832322702
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "species": "turtle",
+      "fraction": 0.6,
+      "placement": 0.15,
+      "observedDuration": 12,
+      "travel": {
+        "forward": 26.13048940874003,
+        "backward": 11.725183153881975
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -2.4391780629503335,
+        "y": 303.6214392046435,
+        "vx": 2.8278453111426227,
+        "vy": 12.519511596949998,
+        "mass": 2.4
+      },
+      "onset": [
+        {
+          "time": 9.24,
+          "before": {
+            "x": 23.690112612007262,
+            "y": 0.4490732823206073,
+            "vx": 2.8278453111425783,
+            "vy": -78.12488840305829,
+            "mass": 2.4
+          },
+          "after": {
+            "x": 23.68525339841582,
+            "y": 0.38181476104368395,
+            "vx": -8.65890162087427,
+            "vy": -2.583293379249646,
+            "mass": 2.4
+          },
+          "momentumChangeX": -27.568192636840433,
+          "stepImpulseX": -27.568192636840408,
+          "recent": [
+            {
+              "time": 9.24,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": -0.6660647697309088,
+                    "pointVy": -78.78796613520214,
+                    "centerVx": 0.16002759729374202,
+                    "centerVy": -78.74380264822112,
+                    "omega": -9.142206906411348,
+                    "inertia": 0.0005832464897781775,
+                    "mass": 0.192,
+                    "angle": -108.14099788818746
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.19,
+                    "radius": 0.075
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 23.765623291017764,
+                    "y": 0.006998930967422948
+                  },
+                  "normalX": 0,
+                  "tangentX": -27.568192636840408,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 181.33906805714068,
+                  "T": -27.568192636840408
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "placement": 0.15,
+      "observedDuration": 11,
+      "travel": {
+        "forward": 9.739820397212721,
+        "backward": 13.23485219384168
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -1.7961624011492876,
+        "y": 303.38746071574036,
+        "vx": 4.305531975228427,
+        "vy": 13.723617083886191,
+        "mass": 1.1
+      },
+      "onset": [
+        {
+          "time": 9.071666666666667,
+          "before": {
+            "x": 7.697530125226,
+            "y": 0.30173619807014607,
+            "vx": -0.02337901869339879,
+            "vy": -78.76166691070586,
+            "mass": 1.1
+          },
+          "after": {
+            "x": 7.691202736075827,
+            "y": 0.22358193445400615,
+            "vx": -6.247175068980928,
+            "vy": -25.48337949372004,
+            "mass": 1.1
+          },
+          "momentumChangeX": -6.846175655316283,
+          "stepImpulseX": -6.846175655316286,
+          "recent": [
+            {
+              "time": 9.071666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": -0.008391702778344674,
+                    "pointVy": -78.71526804939661,
+                    "centerVx": -0.03972656423523692,
+                    "centerVy": -78.68849069170064,
+                    "omega": 0.4492731384600834,
+                    "inertia": 0.0007027836775843918,
+                    "mass": 0.15400000000000003,
+                    "angle": -28.159018179449596
+                  },
+                  "partId": "segment-6",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.25,
+                    "radius": 0.065
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 7.615378756734439,
+                    "y": 0.01035115585862248
+                  },
+                  "normalX": 0,
+                  "tangentX": -6.11595969416237,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 45.618355423239684,
+                  "T": -5.7546374768972965
+                },
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": -0.006242312000673517,
+                    "pointVy": -78.71190797175346,
+                    "centerVx": -0.03972656423523692,
+                    "centerVy": -78.68849069170064,
+                    "omega": 0.4492731384600834,
+                    "inertia": 0.0007027836775843918,
+                    "mass": 0.15400000000000003,
+                    "angle": -28.159018179449596
+                  },
+                  "partId": "segment-6",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.25,
+                    "radius": 0.065
+                  },
+                  "fixtureType": "polygon",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 7.6252404469936055,
+                    "y": 0.00572738325470705
+                  },
+                  "normalX": 0,
+                  "tangentX": -0.7302159611539156,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 1.2565756571778413,
+                  "T": -0.1907540484651728
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "placement": 0.15,
+      "observedDuration": 13,
+      "travel": {
+        "forward": 24.43976604759096,
+        "backward": 7.680013225393967
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -0.7214805387825406,
+        "y": 304.7616624079539,
+        "vx": 9.149005716504751,
+        "vy": 14.167219776195846,
+        "mass": 0.7
+      },
+      "onset": [
+        {
+          "time": 9.306666666666667,
+          "before": {
+            "x": 23.71730949633365,
+            "y": 0.3907746473190922,
+            "vx": 1.3986415694984644,
+            "vy": -78.57425863671092,
+            "mass": 0.7
+          },
+          "after": {
+            "x": 23.717302649396476,
+            "y": 0.27531760637352964,
+            "vx": -9.916213675139037,
+            "vy": -14.51486329903578,
+            "mass": 0.7
+          },
+          "momentumChangeX": -7.92039867124625,
+          "stepImpulseX": -7.920398671246254,
+          "recent": [
+            {
+              "time": 9.306666666666667,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": -0.9208370917559763,
+                    "pointVy": -80.02570673676921,
+                    "centerVx": 0.11836800473104718,
+                    "centerVy": -80.02570673676921,
+                    "omega": -8.477785907795631,
+                    "inertia": 0.0013604500000000002,
+                    "mass": 0.161,
+                    "angle": -114.24672796516589
+                  },
+                  "partId": "head",
+                  "partShape": {
+                    "type": "circle",
+                    "radius": 0.13
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 23.893087357235512,
+                    "y": 0.005601318739104251
+                  },
+                  "normalX": 0,
+                  "tangentX": -7.920398671246254,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 44.853021736372646,
+                  "T": -7.920398671246254
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "placement": 0.15,
+      "observedDuration": 11,
+      "travel": {
+        "forward": 34.0717023032892,
+        "backward": 1.9506450739486247
+      },
+      "group": "expanded long-sling medium; qualifying reversal cases only",
+      "release": {
+        "x": -2.2382693621636682,
+        "y": 303.4314332342041,
+        "vx": 3.5319715072102653,
+        "vy": 15.484960242456562,
+        "mass": 0.8500000000000001
+      },
+      "onset": [
+        {
+          "time": 9.595,
+          "before": {
+            "x": 31.650997249518845,
+            "y": 0.3571569324419643,
+            "vx": 3.5319715072102773,
+            "vy": -78.6419897575511,
+            "mass": 0.8500000000000001
+          },
+          "after": {
+            "x": 31.64658645787132,
+            "y": 0.28050514410241767,
+            "vx": -6.353542885955494,
+            "vy": -26.4140606139721,
+            "mass": 0.8500000000000001
+          },
+          "momentumChangeX": -8.402687234190905,
+          "stepImpulseX": -8.402687234190907,
+          "recent": [
+            {
+              "time": 9.595,
+              "contacts": [
+                {
+                  "target": "ground",
+                  "pre": {
+                    "pointVx": 0.816346258993778,
+                    "pointVy": -79.72713846971983,
+                    "centerVx": 2.23918260730989,
+                    "centerVy": -79.44999470011757,
+                    "omega": -9.133385309098621,
+                    "inertia": 0.0010293473913088093,
+                    "mass": 0.1105,
+                    "angle": -126.98930047267768
+                  },
+                  "partId": "front-leg",
+                  "partShape": {
+                    "type": "capsule",
+                    "length": 0.33,
+                    "radius": 0.04
+                  },
+                  "fixtureType": "circle",
+                  "otherType": "polygon",
+                  "otherRole": "static",
+                  "otherAngle": 0,
+                  "point": {
+                    "x": 31.784872193766194,
+                    "y": 0.00725843408407429
+                  },
+                  "normalX": 0,
+                  "tangentX": -8.402687234190907,
+                  "normal": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "N": 44.407637272042166,
+                  "T": -8.402687234190907
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

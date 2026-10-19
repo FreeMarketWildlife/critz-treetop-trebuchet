@@ -1,0 +1,162 @@
+{
+  "baseline": "589ade8",
+  "tests": {
+    "pass": 234,
+    "fail": 0
+  },
+  "sling": {
+    "attempts": 22,
+    "releases": 22,
+    "allPositiveReleaseVx": true,
+    "meaningfulReversalCases": [
+      0,
+      2,
+      6,
+      7,
+      9,
+      13,
+      14,
+      15,
+      19,
+      20
+    ],
+    "allPreviousPhysicalRowsExact": true,
+    "fullForwardDisplacement": 2769.2888491437257,
+    "fullBackwardDisplacement": 147.9202633602993,
+    "sourceStable": true,
+    "onsetContacts": [
+      {
+        "n": 0,
+        "species": "lizard",
+        "time": 5.035,
+        "height": 255.83963492387747,
+        "targets": [
+          "deflector 32,255"
+        ]
+      },
+      {
+        "n": 2,
+        "species": "mouse",
+        "time": 9.451666666666666,
+        "height": 0.34958526897868314,
+        "targets": [
+          "ground"
+        ]
+      },
+      {
+        "n": 6,
+        "species": "flying-squirrel",
+        "time": 44.81166666666667,
+        "height": 77.60559238123479,
+        "targets": [
+          "vine bug"
+        ]
+      },
+      {
+        "n": 7,
+        "species": "armadillo",
+        "time": 1.9433333333333334,
+        "height": 300.46482012354016,
+        "targets": [
+          "frame",
+          "pouch"
+        ]
+      },
+      {
+        "n": 9,
+        "species": "tiny-primate",
+        "time": 8.936666666666667,
+        "height": 112.24433443975107,
+        "targets": [
+          "canopy approach"
+        ]
+      },
+      {
+        "n": 13,
+        "species": "mouse",
+        "time": 13.131666666666666,
+        "height": 0.35303626056102133,
+        "targets": [
+          "ground",
+          "springy pod"
+        ]
+      },
+      {
+        "n": 14,
+        "species": "turtle",
+        "time": 9.24,
+        "height": 0.38181476104368395,
+        "targets": [
+          "ground"
+        ]
+      },
+      {
+        "n": 15,
+        "species": "snake",
+        "time": 9.071666666666667,
+        "height": 0.22358193445400615,
+        "targets": [
+          "ground"
+        ]
+      },
+      {
+        "n": 19,
+        "species": "small-marsupial",
+        "time": 9.306666666666667,
+        "height": 0.27531760637352964,
+        "targets": [
+          "ground"
+        ]
+      },
+      {
+        "n": 20,
+        "species": "tiny-primate",
+        "time": 9.595,
+        "height": 0.28050514410241767,
+        "targets": [
+          "ground"
+        ]
+      }
+    ]
+  },
+  "loading": {
+    "attempts": 44,
+    "picked": 44,
+    "loaded": 40,
+    "allVisible": true,
+    "misses": [
+      {
+        "species": "turtle",
+        "hardware": "long",
+        "fraction": 0.2
+      },
+      {
+        "species": "flying-squirrel",
+        "hardware": "long",
+        "fraction": 0.2
+      },
+      {
+        "species": "armadillo",
+        "hardware": "long",
+        "fraction": 0.2
+      },
+      {
+        "species": "tiny-primate",
+        "hardware": "long",
+        "fraction": 0.2
+      }
+    ],
+    "sourcesChanged": false
+  },
+  "baselineModelHashesMatch": {
+    "src/encounters.js": true,
+    "src/encounter-body.js": true,
+    "src/articulated.js": true,
+    "src/hook-experiment.js": true,
+    "src/species.js": true,
+    "src/world.js": true,
+    "src/approach-cues.js": true,
+    "src/fixed-obstacles.js": true,
+    "src/mushroom-geometry.js": true
+  }
+}

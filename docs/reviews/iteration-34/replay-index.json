@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Loaded \u2014 real sling supports",
+    "file": "loaded.json",
+    "seconds": 8
+  },
+  {
+    "label": "Launch and recovery \u2014 actual physics",
+    "file": "launching.json",
+    "seconds": 8
+  }
+]
