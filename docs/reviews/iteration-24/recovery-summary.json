@@ -1,0 +1,98 @@
+{
+  "checkpointBefore": "ef57c6f",
+  "tests": {
+    "passed": 196,
+    "failed": 0
+  },
+  "freshRegression": {
+    "cases": 35,
+    "counts": {
+      "launched": 32,
+      "seating_failed": 3
+    },
+    "sourceMismatches": [],
+    "releaseObjectsExactlyEqualIteration23": true,
+    "predictionCases": 32,
+    "allPredictionDifferencesZero": true,
+    "allPredictionLiveMutationFalse": true,
+    "canopyFirstContacts": [
+      {
+        "id": "default-small-marsupial-torso",
+        "surface": "canopy crossing"
+      },
+      {
+        "id": "default-tiny-primate-torso",
+        "surface": "canopy crossing"
+      },
+      {
+        "id": "default-lizard-head",
+        "surface": "canopy approach"
+      },
+      {
+        "id": "default-salamander-head",
+        "surface": "canopy crossing"
+      },
+      {
+        "id": "default-mouse-head",
+        "surface": "canopy fork"
+      },
+      {
+        "id": "default-chipmunk-head",
+        "surface": "canopy approach"
+      },
+      {
+        "id": "owned-counterweight-heavy",
+        "surface": "canopy fork"
+      },
+      {
+        "id": "owned-beam-light",
+        "surface": "canopy fork"
+      },
+      {
+        "id": "owned-frame-grip",
+        "surface": "canopy fork"
+      }
+    ],
+    "angularFlagCases": 11
+  },
+  "recoveredSoak": {
+    "attempts": 132,
+    "counts": {
+      "released": 126,
+      "seating_failed": 6
+    },
+    "sourceMismatches": [],
+    "canopyContactAttempts": 43,
+    "retainedWorldsAtGC": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coordination": {
+      "roundTrips": 132,
+      "staleBlocks": 132,
+      "saveMsP95": 0.036334000003989786
+    }
+  },
+  "browser": {
+    "tab": "1219045169",
+    "species": "Pygmy possum",
+    "distance": 155,
+    "bounces": 7,
+    "points": 1724,
+    "bells": 19,
+    "saving": false,
+    "actualSurfaceIdentity": "not instrumented",
+    "warningsErrors": [],
+    "retryPreservedWallet": true
+  }
+}

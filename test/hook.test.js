@@ -1,3 +1,4 @@
+import {world as layout} from '../src/world.js';
 import test from 'node:test';import assert from 'node:assert/strict';
 import * as P from '../node_modules/planck/dist/planck.mjs';
 import {makeCLink,PhysicalHookScene} from '../src/hook-experiment.js';
@@ -86,7 +87,7 @@ test('visible light/medium/heavy hardware matrix clears launch branch from conta
   const scene=new PhysicalHookScene(entry.parameters,entry.species);assert.ok(load(scene));const settled=waitForContact(scene);
   assert.ok(settled.status.contacting&&settled.status.withinEnvelope&&settled.status.relativeSpeed<.35);assert.ok(settled.quiet>=.1);
   const saved=scene.snapshot(),samples=[1/300,1/600,1/1200].map(dt=>measureSnapshot(saved,scene.p,entry.species,dt));
-  for(const r of samples){assert.ok(r.released);assert.ok(r.center.vx>0&&r.center.vy>0);assert.ok(r.speed>10);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.maximumEnergyGain<1);assert.ok(r.energyChange<0);assert.equal(r.explicitWork,0);}
+  for(const r of samples){assert.ok(r.released);assert.ok(r.center.vx>0&&r.center.vy>0);assert.ok(r.speed>10);assert.ok(layout.surfaces.some(s=>s.id===r.firstWorldImpact?.surface&&s.y<120),'first contact is a real canopy/ground surface');assert.ok(r.maximumEnergyGain<1);assert.ok(r.energyChange<0);assert.equal(r.explicitWork,0);}
   const a=samples[1].center,b=samples[2].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.65,entry.class);
  }
 });
@@ -94,7 +95,7 @@ test('each visible channel setup works after actual torque-limited winding and c
  const {physicalMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
  for(const entry of physicalMatrix){const scene=new PhysicalHookScene({...entry.parameters,mechanicalWinding:true,initialArm:-3},entry.species);scene.startWinding(.6);
   for(let i=0;i<7200&&scene.phase==='winding';i++)scene.step();assert.equal(scene.phase,'loading');assert.ok(scene.windingWork>100);assert.ok(load(scene));const settled=waitForContact(scene);assert.ok(settled.status.contacting&&settled.quiet>=.1);
-  const result=measureSnapshot(scene.snapshot(),scene.p,entry.species,1/600);assert.ok(result.center.vx>0&&result.center.vy>0);assert.ok(['ground','bumper'].includes(result.firstWorldImpact?.surface),'clear the launch branch and reach an authored obstacle');assert.ok(result.maximumEnergyGain<1);assert.equal(result.explicitWork,0);
+  const result=measureSnapshot(scene.snapshot(),scene.p,entry.species,1/600);assert.ok(result.center.vx>0&&result.center.vy>0);assert.ok(['ground','bumper',...layout.surfaces.filter(s=>s.y<120).map(s=>s.id)].includes(result.firstWorldImpact?.surface),'clear the launch branch and reach an authored obstacle');assert.ok(result.maximumEnergyGain<1);assert.equal(result.explicitWork,0);
  }
 });
 
@@ -116,7 +117,7 @@ test('stopped light pouch opens physically after bead exit and preserves permane
  const {stoppedMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js'),entry=stoppedMatrix[0];
  const source=new PhysicalHookScene({...entry.parameters,mechanicalWinding:true,initialArm:-3},entry.species);source.startWinding(.6);for(let i=0;i<7200&&source.phase==='winding';i++)source.step();assert.ok(load(source));waitForContact(source);
  const saved=source.snapshot(),results=[1/300,1/600,1/1200].map(dt=>measureSnapshot(saved,source.p,entry.species,dt));
- for(const r of results){assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.panelOpeningAtDeparture>.2);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.maximumEnergyGain<.01);assert.equal(r.explicitWork,0);}
+ for(const r of results){assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.panelOpeningAtDeparture>.2);assert.ok(layout.surfaces.some(s=>s.id===r.firstWorldImpact?.surface&&s.y<120),'first contact is a real canopy/ground surface');assert.ok(r.maximumEnergyGain<.01);assert.equal(r.explicitWork,0);}
  const a=results[1].center,b=results[2].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.1);
  const s=source.clone(),fixtures=body=>{let n=0;for(let f=body.getFixtureList();f;f=f.getNext())n++;return n;};const before=[fixtures(s.pouch),fixtures(s.flap)];s.unlatch();for(let i=0;i<3000&&!s.release;i++)s.step();assert.ok(s.release);assert.equal(s.ropes.length,2);assert.deepEqual([fixtures(s.pouch),fixtures(s.flap)],before);assert.equal(s.pouchHinge.getUpperLimit(),0);assert.equal(s.pouchHinge.getLowerLimit(),-Math.PI);
 });
@@ -133,7 +134,7 @@ test('half-kilogram heavy panels have a bounded causal reference throw at two la
  const {stoppedMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js'),entry=stoppedMatrix[2];
  const source=new PhysicalHookScene({...entry.parameters,pouchPanelMass:.5,mechanicalWinding:true,initialArm:-3,solverVelocityIterations:20,solverPositionIterations:12},entry.species);source.startWinding(.6);for(let i=0;i<7200&&source.phase==='winding';i++)source.step();assert.ok(load(source));waitForContact(source);
  const saved=source.snapshot(),results=[1/600,1/1200].map(dt=>measureSnapshot(saved,source.p,entry.species,dt));
- for(const r of results){assert.ok(r.center.vx>0&&r.center.vy>0);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.maximumEnergyGain<.01);assert.equal(r.explicitWork,0);}
+ for(const r of results){assert.ok(r.center.vx>0&&r.center.vy>0);assert.ok(layout.surfaces.some(s=>s.id===r.firstWorldImpact?.surface&&s.y<120),'first contact is a real canopy/ground surface');assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.maximumEnergyGain<.01);assert.equal(r.explicitWork,0);}
  const a=results[0].center,b=results[1].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.5);
 });
 
@@ -141,7 +142,7 @@ test('explicit half-kilogram panel matrix retains causal release and passive ene
  const {stoppedMatrix,load,waitForContact,measureSnapshot}=await import('../scripts/measure-hook.js');
  for(const entry of stoppedMatrix){const source=new PhysicalHookScene({...entry.parameters,pouchPanelMass:.5,mechanicalWinding:true,initialArm:-3},entry.species);source.startWinding(.6);for(let i=0;i<7200&&source.phase==='winding';i++)source.step();assert.ok(load(source));waitForContact(source);
   const saved=source.snapshot(),samples=[1/300,1/600,1/1200].map(dt=>measureSnapshot(saved,source.p,entry.species,dt));
-  for(const r of samples){assert.ok(r.center.vx>0&&r.center.vy>0,entry.class);assert.equal(r.firstWorldImpact?.surface,'ground');assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.maximumEnergyGain<.01);assert.ok(r.maximumStepEnergyGain<.01);assert.equal(r.explicitWork,0);}
+  for(const r of samples){assert.ok(r.center.vx>0&&r.center.vy>0,entry.class);assert.ok(layout.surfaces.some(s=>s.id===r.firstWorldImpact?.surface&&s.y<120),'first contact is a real canopy/ground surface');assert.ok(r.firstHardwareExit<r.firstPanelOpening);assert.equal(r.escapedAtPanelOpening,true);assert.ok(r.maximumEnergyGain<.01);assert.ok(r.maximumStepEnergyGain<.01);assert.equal(r.explicitWork,0);}
   const a=samples[1].center,b=samples[2].center;assert.ok(Math.hypot(a.vx-b.vx,a.vy-b.vy)<.5);
  }
 });

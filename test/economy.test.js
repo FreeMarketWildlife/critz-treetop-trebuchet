@@ -1,3 +1,4 @@
+import {world as layout} from '../src/world.js';
 import {STARTER_HARDWARE} from '../src/starter.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -33,7 +34,7 @@ test('physical winding/loading/launch bank and purchase cycle remains reproducib
   for(let i=0;i<7200&&scene.phase==='winding';i++)scene.step();
   assert.equal(scene.phase,'loading');assert.ok(load(scene));assert.ok(waitForContact(scene).quiet>=.1);
   const result=measureSnapshot(scene.snapshot(),scene.p,'lizard',1/600);
-  assert.ok(result.released);assert.equal(result.firstWorldImpact?.surface,'ground');
+  assert.ok(result.released);assert.ok(layout.surfaces.some(s=>s.id===result.firstWorldImpact?.surface&&s.y<120),'first contact is a real canopy/ground surface');
   const distance=Math.max(0,result.firstWorldImpact.x),impacts=1;
   // Stop at first measured world impact: intentionally excludes later bounce rewards.
   const action={type:'record-shot',shotId:`physical-cycle-${shot}`,distance,impacts};

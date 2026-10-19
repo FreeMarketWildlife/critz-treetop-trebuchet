@@ -3,7 +3,16 @@ import {flightStep} from './physics.js';
 const surfaces=[
   {id:'launch branch',y:294,minX:-8,maxX:5,restitution:.2,tangentRetention:.7},
   {id:'canopy branch',y:105,minX:170,maxX:230,restitution:.35,tangentRetention:.8},
-  {id:'ground',y:0,minX:-10000,maxX:10000,restitution:.3,tangentRetention:.8}
+  {id:'ground',y:0,minX:-10000,maxX:10000,restitution:.3,tangentRetention:.8},
+  // Fixed short landing opportunities, not a continuous floor. Ordinary and
+  // faster trajectories meet different gaps; no launch-corridor geometry moves.
+  {id:'canopy approach',flightOnly:true,y:112,minX:42,maxX:51,restitution:.3,tangentRetention:.8},
+  {id:'canopy fork',flightOnly:true,y:88,minX:65,maxX:75,restitution:.3,tangentRetention:.8},
+  {id:'canopy crossing',flightOnly:true,y:61,minX:88,maxX:99,restitution:.3,tangentRetention:.8},
+  {id:'canopy lower',flightOnly:true,y:32,minX:112,maxX:124,restitution:.3,tangentRetention:.8},
+  {id:'canopy outer fork',flightOnly:true,y:92,minX:110,maxX:121,restitution:.3,tangentRetention:.8},
+  {id:'canopy outer crossing',flightOnly:true,y:58,minX:145,maxX:157,restitution:.3,tangentRetention:.8},
+  {id:'canopy outer lower',flightOnly:true,y:26,minX:180,maxX:193,restitution:.3,tangentRetention:.8}
 ];
 export const world=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(Object.freeze)),launchHeight:300,canopyTop:120,ground:0,
   groundDeceleration:2, surfaces:Object.freeze(surfaces.map(Object.freeze)),

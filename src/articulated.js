@@ -24,11 +24,11 @@ export function cockedConfig(overrides={},desiredFraction=.6){
 }
 export class CritterScene {
  constructor(overrides={},species='lizard',saved=null){
-  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.despawnEnergy=0;this.encounterSeed=null;this.lastEnemySound=-Infinity;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;this.dampingWork=0;this.dragWork=0;
+  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.despawnEnergy=0;this.encounterSeed=null;this.lastEnemySound=-Infinity;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;this.dampingWork=0;this.dragWork=0;this.routeTerrainReady=false;
   if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0,spawnEnergy:saved.spawnEnergy??0,despawnEnergy:saved.despawnEnergy??0,lastImpact:saved.lastImpact??-1,lastEnemySound:saved.lastEnemySound??-Infinity,encounterSeed:saved.encounterSeed??null,dampingWork:saved.dampingWork??0,dragWork:saved.dragWork??0});this.index();if(saved.encounterState)this.encounters=createEncounterDirector(this.encounterSeed,saved.encounterState);return;}
   const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
-  for(const s of layout.surfaces)ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
+  for(const s of layout.surfaces.filter(s=>!s.flightOnly))ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
   for(const pin of layout.bumpers)ground.createFixture(P.Circle(V(pin.x,pin.y),pin.radius),{friction:.08,restitution:.85,filterCategoryBits:1});
   // The loading shelf ends before the hanging cradle; no kinematic seating force.
   ground.createFixture(P.Box(.8,.04,V(-4.3,p.pivotHeight-4.5)),{friction:.08,restitution:.1,filterCategoryBits:1});
@@ -58,7 +58,7 @@ export class CritterScene {
   for(const j of this.rig.joints){const a=map.get(j.a),b=map.get(j.b);this.world.createJoint(new P.RevoluteJoint({bodyA:a,bodyB:b,localAnchorA:V(j.anchorA.x,j.anchorA.y),localAnchorB:V(j.anchorB.x,j.anchorB.y),referenceAngle:j.referenceAngle,enableLimit:true,lowerAngle:j.minAngle,upperAngle:j.maxAngle,collideConnected:false}));}
   this.index();if(new.target===CritterScene)this.initialStaging=stageInitialVolunteer(this);
  }
- index(){this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);if(d?.role==='enemy')this.enemies.set(d.id,b);}
+ index(){this.routeTerrainReady=false;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.id==='canopy-route')this.routeTerrainReady=true;this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);if(d?.role==='enemy')this.enemies.set(d.id,b);}
   this.parts.sort((a,b)=>a.getUserData().id.localeCompare(b.getUserData().id));this.rope=null;this.ropes=[];
   for(let j=this.world.getJointList();j;j=j.getNext()){if(j.getUserData()?.role==='pivot')this.pivot=j;if(j.getUserData()?.role==='rope')this.ropes.push(j);}
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
@@ -131,7 +131,15 @@ export class CritterScene {
    }
   }return false;
  }
- step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
+ installRouteTerrain(){
+  // Fixed distant geography is constructed only after physical release. Keeping
+  // extra broadphase proxies out of loading preserves the existing contact order.
+  if(this.routeTerrainReady)return;
+  const terrain=this.world.createBody();tag(terrain,'static','canopy-route');
+  for(const s of layout.surfaces.filter(s=>s.flightOnly))terrain.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
+  this.routeTerrainReady=true;
+ }
+ step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');if(this.phase==='flight'&&!this.routeTerrainReady)this.installRouteTerrain();
   const near=this.p.collisionSubsteps&&this.collisionRegion(dt);
   // Pinned Planck TOI solves contacts without connected joints. Resolve a fast
   // arrival more finely before that contact-only pass can rotate a small limb.

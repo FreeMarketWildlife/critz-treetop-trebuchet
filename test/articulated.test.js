@@ -45,7 +45,7 @@ test('tension-only straps do not push on compressed anchors',()=>{
  for(const r of s.ropes){const a=r.getAnchorA(),b=r.getAnchorB(),f=r.getReactionForce(600);assert.ok(f.x*(b.x-a.x)+f.y*(b.y-a.y)<=1e-6);}
 });
 test('encounters remain dynamically bounded and do not randomize terrain',()=>{
- const s=new CritterScene();s.phase='flight';s.release={time:0,center:s.center()};s.enableEncounters(42);
+ const s=new CritterScene();s.phase='flight';s.release={time:0,center:s.center()};s.enableEncounters(42);s.installRouteTerrain();
  const before=[];for(let b=s.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role==='static')before.push({...b.getPosition()});
  for(let i=0;i<3600;i++)s.step();assert.ok(s.enemies.size<=12);assert.ok(Number.isFinite(s.spawnEnergy));
  const after=[];for(let b=s.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role==='static')after.push({...b.getPosition()});assert.deepEqual(before,after);
@@ -145,4 +145,9 @@ test('collision-region substeps refine fast flight only, preserve time and canon
 
 test('fast refinement is opt-in, collision-local, and bounded without altering launch integration',()=>{
  const s=new CritterScene({collisionSubsteps:true,collisionStepHz:2400,fastCollisionStepHz:4800});let calls=0;const integrate=s.integrate.bind(s);s.integrate=dt=>{calls++;integrate(dt);};s.step();assert.equal(calls,1);s.phase='flight';s.parts.forEach(b=>b.setLinearVelocity({x:0,y:-60}));calls=0;s.step();assert.equal(calls,1);const c=s.center();for(const b of s.parts){const p=b.getPosition();b.setPosition({x:p.x+20-c.x,y:p.y+.3-c.y});}calls=0;s.step();assert.equal(calls,8);assert.throws(()=>new CritterScene({fastCollisionStepHz:9600}));
+});
+test('fixed canopy fixtures are constructed after release without moving bodies, and serialize exactly once',()=>{
+ const s=new CritterScene(),before=JSON.stringify(s.parts.map(b=>({p:b.getPosition(),v:b.getLinearVelocity(),a:b.getAngle()}))),energy=s.energy();let count=0;for(let b=s.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.id==='canopy-route')count++;assert.equal(count,0);
+ s.phase='flight';s.release={time:s.elapsed,center:s.center()};s.installRouteTerrain();assert.equal(JSON.stringify(s.parts.map(b=>({p:b.getPosition(),v:b.getLinearVelocity(),a:b.getAngle()}))),before);assert.equal(s.energy(),energy);const bodies=s.world.getBodyCount();s.installRouteTerrain();assert.equal(s.world.getBodyCount(),bodies);
+ const clone=s.clone();assert.equal(clone.routeTerrainReady,true);clone.installRouteTerrain();assert.equal(clone.world.getBodyCount(),bodies);let fixtures=0;for(let b=clone.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.id==='canopy-route')for(let f=b.getFixtureList();f;f=f.getNext())fixtures++;assert.equal(fixtures,7);
 });

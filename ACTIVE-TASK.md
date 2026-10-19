@@ -1,6 +1,12 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 23
+## CURRENT implementation: iteration 24
+
+Read docs/reviews/iteration-24/findings.md and recovery-summary.json. Recovered partial work from failed implementation turns, preserved all files. Seven fixed passive canopy branches with fall-through gaps; fixtures built once after release to preserve loading contact order, restored from serialized terrain id. No force/angle/pose boost. Fresh196tests pass and full35 regression rerun; prior132soak hashes match current source,126release/6miss,43canopy-contact attempts,0retained at12GCchecks. Earlier eager files historical only. Existing angular warnings/low-seat failures remain.
+
+Fresh real browser possum starter .6 wind→finite drag/contact→unlatch→155m/7bounce,61.1deg17.4m/s→bank1724points19bells→retry retainedwallet/queue. SaveOFF verified; browserwarn/errors empty, normalviewport. Tab1219045169 idle/handoff localhost8080 recovery24. Old failed-session tab cannot claim, untouched. Approved process inspection found old8080/8081 servers absent; restarted ONLY loopback8080. No old measurement running. No stored earned saves modified; no push/deploy/unlock/exportretry/install. Next meaningful directhuman/device/portrait/all-species canopy review and assess rests/gaps before more terrain or balance work. Actualdevice/audio/human reaction unverified.
+
+## Historical implementation: iteration 23
 
 Read docs/reviews/iteration-23/findings.md + manual-session.json. UI44CSSpx pickup fallback after normal part grabs, at real torso/middle center with pointer offset; forces/colliders/physics unchanged. Nearby Unlatch calls same gated action below canvas; steering shown only in flight. Original bounded soil/leaf trim clipped below true contact line, actors foreground, reduced motion suppresses rings.195tests pass; fresh35numerical parity22 and132soakfullrows parity21 (126release/6miss),258worlds0retained12GCchecks,p952.5973/max8.248ms,44m56s sim. Steppingexperimental.
 
