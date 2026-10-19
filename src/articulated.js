@@ -143,7 +143,7 @@ export class CritterScene {
   const dampingTorque=-this.p.armDamping*this.pivot.getJointSpeed(),dampingAngle=this.pivot.getJointAngle(),drag=[];
   if(dampingTorque){this.arm.applyTorque(dampingTorque,true);this.frame.applyTorque(-dampingTorque,true);}
   if(this.p.flightDrag)for(const b of this.parts){const v=b.getLinearVelocity(),k=this.p.flightDrag*b.getMass()/this.rig.totalMass*Math.hypot(v.x,v.y),F=V(-k*v.x,-k*v.y);drag.push({body:b,force:F,before:{...b.getWorldCenter()}});b.applyForceToCenter(F,true);}
-  this.updateWinding();this.updateEncounters();const winding=this.phase==='winding',oldRelativeAngle=this.pivot.getJointAngle();const old=this.relative();const assist=[];
+  this.updateWinding();this.updateEncounters();const winding=this.phase==='winding',oldRelativeAngle=this.pivot.getJointAngle();const old=this.phase==='launching'&&this.releaseMode!=='physical-hook'?this.relative():null;const assist=[];
   if(this.phase==='flight' && (this.control || this.rig.id==='flying-squirrel')){
    const root=this.parts.find(b=>b.getUserData().id==='torso')??this.parts[0];
    if(this.rig.id==='flying-squirrel'){const velocity=root.getLinearVelocity(),aero=aerodynamicForces({vx:velocity.x,vy:velocity.y,mass:root.getMass(),area:.22,pitch:root.getAngle(),angularVelocity:root.getAngularVelocity(),input:this.control});

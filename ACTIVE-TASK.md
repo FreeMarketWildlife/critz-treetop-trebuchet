@@ -1,5 +1,14 @@
 # Active implementation task — consult before resuming
 
+## Current checkpoint: iteration 16
+
+Read docs/reviews/iteration-16/findings.md.157tests pass; immutable64entryencountercache~43%microbenchmarkimprovement,18607exactold/new outputs/snapshots,35caseregressionexactunchanged32release/3lowmiss/11angularflags,max.174853rad/.033266m. Production physics unchanged except skippingunusedgeometricanglecalculation. Runtime lab now240framesCPUphysics/hint/draw/RAFintervals, clearspausegaps. Currentbrowserpossum180kg experimental labrelease65.9deg17.7m/s→71m7bounces→Collect/reset/reset881points19bellsunchanged;saveOFF,ownednone,stickyON,Sound35%,normalviewport,idletab1219045091open,noconsolewarnings/errors. PreviouslocalhostQA2309/35andoriginalsaved127origin18117/89untouched.
+
+Critical protocol correction: historicalsoak initialArm−2.5 constructordefault;UI uses−3. Historical16evidencepreserved. NewUI-start132soak125release/6seatmiss/1retainedpayload,44m47ssim,258worlds0retained12GCchecks,Nodep952.533ms/max8.356ms;onlycoldfirststep>2ms(4.902wall/7.223processCPU/0.227GC). Historical33msarmadillocluster mostlynoGC,8exactnaturalreplays≤4.399ms;some wall>CPU demonstrates scheduling but original46mscauseunproven. Browserflightp953.7–4.3ms/RAFintervalp959.3–10.2ms sharedhost,notdeviceFPS. No hidden-tab/nativeunlock/audiblequalityclaim.
+
+NEXT SERIOUS ISSUE: docs/reviews/iteration-16/retained-payload.json is realphysicalhead-loadedmarmoset/lowwinding/longbeam+longsling+counter180+grippyfeet. Remainssupported10s; head/torsoanchorstretches0.206m600Hz/0.189m1200/0.177m2400. Angularmax.277/.199/.239rad; positiveenergyresidual0. Mediumretryregainscontactbutstilldoesnotseparatewithin5s. Need controlled joint/contact diagnosis, not callthisharmless. First study convergedpoorpossumrimslipislegit (~1.25m/s at600/1200/2400), separatefrommarmosetjam.9600fastcontactimprovesonecasebutworsensheadgripcase,notselected. Preserve masses/limits/force/work, no posefix/concealment. Continue localtestedcommits;no push/deploy/paidassets/unlock/blockedexportretry. Never substitute obsolete lore completion for current game work. Iteration15andolder below are history.
+
+
 ## Current checkpoint: iteration 15
 
 Current implementation is iteration15, continuing from fdc3435. Read docs/reviews/iteration-15/findings.md, not the obsolete lore delegation.154tests pass. Fast flight collision region opts into4800Hz above40m/s or100rad/s, max8steps; masses/inertia/limits/forces unchanged. Savedleg.272689→.037841rad; natural35cases32release/3lowwindmiss, angularflags18→11,max.174853rad,anchor.033266m; predictionexact/no mutation. Syntheticspinning3species stillwarn. Allfive132soakmisses recover contact atmedium,one snake miss is delayed-searchartifact. Coach handlesnevercontactfall/offcenter/actualpartmotion; windingfocus/middlemarker; Collect opensshop/freezescompletedrun, purchaseconfirmsnextsetup.

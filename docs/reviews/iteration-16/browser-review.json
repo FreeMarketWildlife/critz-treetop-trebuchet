@@ -1,0 +1,17 @@
+{
+  "protocol": "Observed current local build through actual Chrome UI and DOM-rendered lab readouts. Native input only; no injected physics, currency, saves or hidden state. Separate localhost save-off session; visible lab sets possum/180kg for this controlled experiment. Rolling240frame summaries, not raw frame traces. Other local tabs and Node research also ran on this Mac, so these are shared-host observations, not isolated hardware benchmarks. Canvas CPU excludes compositor/GPU paint and metrics summary overhead.",
+  "url": "http://localhost:8080/?review=iteration16",
+  "tab": "1219045091",
+  "windows": [
+    {"phase":"loading","simulationSeconds":34.16,"bodies":11,"encounters":0,"cpuP95Ms":2.2,"cpuMaxMs":3.0,"engineP95Ms":1.2,"hintP95Ms":0,"drawP95Ms":0.9,"rafP95Ms":9.9,"rafMaxMs":10.3,"maxSteps":7},
+    {"phase":"seated loading","simulationSeconds":113.54,"bodies":11,"encounters":0,"cpuP95Ms":3.2,"cpuMaxMs":4.8,"engineP95Ms":1.2,"hintP95Ms":2.5,"drawP95Ms":0.4,"rafP95Ms":9.6,"rafMaxMs":10.3,"maxSteps":6,"guidance":"Contact ready. Unlatch when you want to test this pose. Release hint: 8.2 m/s forward, 16.4 m/s up."},
+    {"phase":"flight","simulationSeconds":158.68,"bodies":17,"encounters":6,"cpuP95Ms":3.7,"cpuMaxMs":5.0,"engineP95Ms":3.6,"hintP95Ms":0,"drawP95Ms":0.3,"rafP95Ms":9.9,"rafMaxMs":10.3,"maxSteps":6},
+    {"phase":"warm flight2","simulationSeconds":223.97,"bodies":19,"encounters":8,"cpuP95Ms":4.3,"cpuMaxMs":4.7,"engineP95Ms":4.0,"hintP95Ms":0,"drawP95Ms":0.3,"rafP95Ms":10.2,"rafMaxMs":10.4,"maxSteps":6},
+    {"phase":"after long manual pause","simulationSeconds":223.97,"bodies":19,"encounters":8,"cpuP95Ms":4.3,"cpuMaxMs":4.7,"rafP95Ms":10.2,"rafMaxMs":10.4},
+    {"phase":"warm post-resume flight","simulationSeconds":337.62,"bodies":17,"encounters":6,"cpuP95Ms":3.8,"cpuMaxMs":4.9,"engineP95Ms":3.7,"hintP95Ms":0,"drawP95Ms":0.3,"rafP95Ms":9.3,"rafMaxMs":9.4,"maxSteps":6}
+  ],
+  "release": {"angleDegrees":65.9,"speedMetersPerSecond":17.7,"finalDistanceMeters":71,"impacts":7},
+  "rewards": {"points":881,"bells":19,"unchangedAfterCollectRetryAndSecondReset":true},
+  "final": {"phase":"uncocked","species":"small-marsupial","labCounterweightKg":180,"owned":[],"saveConsent":false,"stickyGrip":true,"soundVolume":0.35,"normalViewport":true,"consoleWarningsErrors":[]},
+  "limits": ["Actual hidden-tab end-to-end remains unavailable; native Mac locked, no unlock attempted.","Audible quality and real-device FPS unverified.","No persisted screenshot/export was produced; blocked exports were not retried.","Earlier127.0.0.1 saved wallet18117points89bells left untouched; priorlocalhost QA wallet2309points35bells remains in its separate open session."]
+}

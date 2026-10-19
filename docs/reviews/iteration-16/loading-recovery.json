@@ -1,0 +1,658 @@
+{
+  "protocol": "Replay all seven UI-start(-3rad) soak nonreleases with unchanged already-earned physical equipment. Track contact immediately from drop and separately after the soak61tick eligibility delay. Repeat at medium winding; actual subsequent canonical launch included, no snaps or force changes.",
+  "rows": [
+    {
+      "i": 3,
+      "species": "turtle",
+      "grip": "head",
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "head",
+        "firstReadyTick": null,
+        "eligibleTick": null,
+        "release": null,
+        "after": null,
+        "finalCenter": {
+          "x": -2.735938759408841,
+          "y": 294.22758232573005,
+          "vx": -0.002268042403536889,
+          "vy": -0.00013978475189511163,
+          "mass": 2.4
+        },
+        "finalCup": {
+          "x": -2.174785126561229,
+          "y": 296.5985872005952
+        },
+        "escaped": true
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "head",
+        "firstReadyTick": 103,
+        "eligibleTick": 103,
+        "sourceStatus": {
+          "cradleSpeed": 0.9977288977071455,
+          "cradleSpin": 0.04009694009183632,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.7259510501881699,
+          "maxPartRelativeSpeed": 2.8397939480015824,
+          "maxRelativeSpin": 21.39181108386766
+        },
+        "release": {
+          "vx": 3.9752096513780555,
+          "vy": 11.16152108794695
+        },
+        "after": {
+          "phase": "flight",
+          "center": {
+            "x": -1.6293789865946544,
+            "y": 301.2431984641211,
+            "vx": 3.9752096513780555,
+            "vy": 11.16152108794695,
+            "mass": 2.4
+          },
+          "cup": {
+            "x": -1.7689650833162864,
+            "y": 302.10096490213215
+          },
+          "support": {
+            "cradleSpeed": 21.884366019419325,
+            "cradleSpin": -20.49523442566377,
+            "withinEnvelope": false,
+            "contacting": false,
+            "contactingParts": 0,
+            "relativeSpeed": 23.226098495356574,
+            "maxPartRelativeSpeed": 25.48416539621676,
+            "maxRelativeSpin": 15.84403503928139
+          },
+          "hardwareEscaped": true,
+          "opening": 1.3780473731869423
+        },
+        "finalCenter": {
+          "x": -1.6293789865946544,
+          "y": 301.2431984641211,
+          "vx": 3.9752096513780555,
+          "vy": 11.16152108794695,
+          "mass": 2.4
+        },
+        "finalCup": {
+          "x": -1.7689650833162864,
+          "y": 302.10096490213215
+        },
+        "escaped": true
+      }
+    },
+    {
+      "i": 8,
+      "species": "small-marsupial",
+      "grip": "torso",
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "seating_failed",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "torso",
+        "firstReadyTick": 0,
+        "eligibleTick": null,
+        "release": null,
+        "after": null,
+        "finalCenter": {
+          "x": -4.47420528641584,
+          "y": 295.6984689477663,
+          "vx": -0.000004626927282473416,
+          "vy": -2.8218530990816865e-7,
+          "mass": 0.7
+        },
+        "finalCup": {
+          "x": -1.8459438759450235,
+          "y": 296.44746859510593
+        },
+        "escaped": true
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "torso",
+        "firstReadyTick": 124,
+        "eligibleTick": 124,
+        "sourceStatus": {
+          "cradleSpeed": 0.13792762667143182,
+          "cradleSpin": 0.034561272149712566,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 2.079873249999644,
+          "maxPartRelativeSpeed": 2.446725087467473,
+          "maxRelativeSpin": 6.264317551411989
+        },
+        "release": {
+          "vx": 9.243533441636819,
+          "vy": 18.446352802460098
+        },
+        "after": {
+          "phase": "flight",
+          "center": {
+            "x": -1.6313733908808548,
+            "y": 303.28099867337824,
+            "vx": 9.243533441636819,
+            "vy": 18.446352802460098,
+            "mass": 0.7
+          },
+          "cup": {
+            "x": -1.4544253566095455,
+            "y": 304.13487621105276
+          },
+          "support": {
+            "cradleSpeed": 32.86396080168073,
+            "cradleSpin": -16.440437226076448,
+            "withinEnvelope": false,
+            "contacting": false,
+            "contactingParts": 0,
+            "relativeSpeed": 18.418858646570726,
+            "maxPartRelativeSpeed": 19.831259346032386,
+            "maxRelativeSpin": 26.99533927054778
+          },
+          "hardwareEscaped": true,
+          "opening": 0.9574354749616977
+        },
+        "finalCenter": {
+          "x": -1.6313733908808548,
+          "y": 303.28099867337824,
+          "vx": 9.243533441636819,
+          "vy": 18.446352802460098,
+          "mass": 0.7
+        },
+        "finalCup": {
+          "x": -1.4544253566095455,
+          "y": 304.13487621105276
+        },
+        "escaped": true
+      }
+    },
+    {
+      "i": 37,
+      "species": "snake",
+      "grip": "head",
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "seating_failed",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "head",
+        "firstReadyTick": null,
+        "eligibleTick": null,
+        "release": null,
+        "after": null,
+        "finalCenter": {
+          "x": -6.10188762315003,
+          "y": 294.2232499325055,
+          "vx": -0.005847376635507339,
+          "vy": -0.022160901732008492,
+          "mass": 1.1
+        },
+        "finalCup": {
+          "x": -3.7944965719981467,
+          "y": 296.01536975700844
+        },
+        "escaped": false
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "head",
+        "firstReadyTick": 0,
+        "eligibleTick": 61,
+        "sourceStatus": {
+          "cradleSpeed": 0.39639897533302765,
+          "cradleSpin": -0.1315229962120523,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.3044419902570034,
+          "maxPartRelativeSpeed": 0.5934406083463198,
+          "maxRelativeSpin": 4.126200744449875
+        },
+        "release": {
+          "vx": 8.720086035237946,
+          "vy": 17.877281205811475
+        },
+        "after": {
+          "phase": "flight",
+          "center": {
+            "x": -1.540935146672999,
+            "y": 303.2690180098308,
+            "vx": 8.720086035237946,
+            "vy": 17.877281205811475,
+            "mass": 1.1
+          },
+          "cup": {
+            "x": -1.3964134110571436,
+            "y": 304.0881415231787
+          },
+          "support": {
+            "cradleSpeed": 28.505200566060516,
+            "cradleSpin": -15.573435365266988,
+            "withinEnvelope": false,
+            "contacting": false,
+            "contactingParts": 0,
+            "relativeSpeed": 14.755796676179083,
+            "maxPartRelativeSpeed": 18.189431395972342,
+            "maxRelativeSpin": 32.252160035279616
+          },
+          "hardwareEscaped": true,
+          "opening": 1.072179491593189
+        },
+        "finalCenter": {
+          "x": -1.540935146672999,
+          "y": 303.2690180098308,
+          "vx": 8.720086035237946,
+          "vy": 17.877281205811475,
+          "mass": 1.1
+        },
+        "finalCup": {
+          "x": -1.3964134110571436,
+          "y": 304.0881415231787
+        },
+        "escaped": true
+      }
+    },
+    {
+      "i": 70,
+      "species": "snake",
+      "grip": "torso",
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "seating_failed",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "head",
+        "firstReadyTick": null,
+        "eligibleTick": null,
+        "release": null,
+        "after": null,
+        "finalCenter": {
+          "x": -5.860653734798466,
+          "y": 294.08940436131553,
+          "vx": 0.000009291862727781216,
+          "vy": -6.531549179449421e-7,
+          "mass": 1.1
+        },
+        "finalCup": {
+          "x": -3.8112785965686324,
+          "y": 296.0179845792425
+        },
+        "escaped": false
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "head",
+        "firstReadyTick": 0,
+        "eligibleTick": 61,
+        "sourceStatus": {
+          "cradleSpeed": 0.3496021360372617,
+          "cradleSpin": -0.11778669836221736,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.4552177342578637,
+          "maxPartRelativeSpeed": 0.9662676872748849,
+          "maxRelativeSpin": 6.381021410692131
+        },
+        "release": {
+          "vx": 4.426730755592431,
+          "vy": 16.15845874117652
+        },
+        "after": {
+          "phase": "flight",
+          "center": {
+            "x": -2.132427100504612,
+            "y": 303.31480149739076,
+            "vx": 4.426730755592431,
+            "vy": 16.15845874117652,
+            "mass": 1.1
+          },
+          "cup": {
+            "x": -1.5345635006971117,
+            "y": 303.87273992473433
+          },
+          "support": {
+            "cradleSpeed": 20.081652597785812,
+            "cradleSpin": -14.711707712799095,
+            "withinEnvelope": false,
+            "contacting": false,
+            "contactingParts": 0,
+            "relativeSpeed": 15.787230136064622,
+            "maxPartRelativeSpeed": 18.334742875213614,
+            "maxRelativeSpin": 19.636806862802707
+          },
+          "hardwareEscaped": true,
+          "opening": 0.8151484681970528
+        },
+        "finalCenter": {
+          "x": -2.132427100504612,
+          "y": 303.31480149739076,
+          "vx": 4.426730755592431,
+          "vy": 16.15845874117652,
+          "mass": 1.1
+        },
+        "finalCup": {
+          "x": -1.5345635006971117,
+          "y": 303.87273992473433
+        },
+        "escaped": true
+      }
+    },
+    {
+      "i": 73,
+      "species": "armadillo",
+      "grip": "head",
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "head",
+        "firstReadyTick": null,
+        "eligibleTick": null,
+        "release": null,
+        "after": null,
+        "finalCenter": {
+          "x": 32.322845133904735,
+          "y": 247.25217882529742,
+          "vx": 10.139259954965059,
+          "vy": -33.30317380651786,
+          "mass": 5
+        },
+        "finalCup": {
+          "x": 0.32429735463585985,
+          "y": 300.2366096994706
+        },
+        "escaped": true
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "head",
+        "firstReadyTick": 0,
+        "eligibleTick": 61,
+        "sourceStatus": {
+          "cradleSpeed": 0.25962120302469616,
+          "cradleSpin": 0.4062420576720229,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 1.0881641007703426,
+          "maxPartRelativeSpeed": 1.765931405117151,
+          "maxRelativeSpin": 1.9735242304332976
+        },
+        "release": {
+          "vx": 0.8769087000741461,
+          "vy": 11.299403416129175
+        },
+        "after": {
+          "phase": "flight",
+          "center": {
+            "x": -2.8067067295157004,
+            "y": 300.95399008552283,
+            "vx": 0.8769087000741461,
+            "vy": 11.299403416129175,
+            "mass": 5
+          },
+          "cup": {
+            "x": -2.7380532797353916,
+            "y": 301.8354954779945
+          },
+          "support": {
+            "cradleSpeed": 21.484064867684292,
+            "cradleSpin": -21.870589244651004,
+            "withinEnvelope": false,
+            "contacting": false,
+            "contactingParts": 0,
+            "relativeSpeed": 26.702057853867068,
+            "maxPartRelativeSpeed": 29.76319000856513,
+            "maxRelativeSpin": 17.271597727777866
+          },
+          "hardwareEscaped": true,
+          "opening": 1.378165181078395
+        },
+        "finalCenter": {
+          "x": -2.8067067295157004,
+          "y": 300.95399008552283,
+          "vx": 0.8769087000741461,
+          "vy": 11.299403416129175,
+          "mass": 5
+        },
+        "finalCup": {
+          "x": -2.7380532797353916,
+          "y": 301.8354954779945
+        },
+        "escaped": true
+      }
+    },
+    {
+      "i": 75,
+      "species": "tiny-primate",
+      "grip": "head",
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "no_release",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "head",
+        "firstReadyTick": 872,
+        "eligibleTick": 872,
+        "sourceStatus": {
+          "cradleSpeed": 5.805254305525577,
+          "cradleSpin": -20.045864135190154,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.8737171701738333,
+          "maxPartRelativeSpeed": 1.5809797800839225,
+          "maxRelativeSpin": 6.330751435939263
+        },
+        "release": null,
+        "after": {
+          "phase": "launching",
+          "center": {
+            "x": -9.817604906658186,
+            "y": 292.2760527673515,
+            "vx": -2.762031970233524,
+            "vy": -7.611735718956882,
+            "mass": 0.8500000000000001
+          },
+          "cup": {
+            "x": -9.957434786173367,
+            "y": 292.57301658896927
+          },
+          "support": {
+            "cradleSpeed": 6.515175080410347,
+            "cradleSpin": -2.117250024924209,
+            "withinEnvelope": false,
+            "contacting": true,
+            "contactingParts": 3,
+            "relativeSpeed": 0.8145981114451217,
+            "maxPartRelativeSpeed": 1.481117925604435,
+            "maxRelativeSpin": 4.957396072761414
+          },
+          "hardwareEscaped": true,
+          "opening": 0.44075280822862195
+        },
+        "finalCenter": {
+          "x": -9.817604906658186,
+          "y": 292.2760527673515,
+          "vx": -2.762031970233524,
+          "vy": -7.611735718956882,
+          "mass": 0.8500000000000001
+        },
+        "finalCup": {
+          "x": -9.957434786173367,
+          "y": 292.57301658896927
+        },
+        "escaped": true
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "head",
+        "firstReadyTick": 0,
+        "eligibleTick": 61,
+        "sourceStatus": {
+          "cradleSpeed": 0.6722756673746026,
+          "cradleSpin": 0.7275871957362098,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.29918902174911177,
+          "maxPartRelativeSpeed": 0.5017592697849217,
+          "maxRelativeSpin": 3.1062059608683183
+        },
+        "release": null,
+        "after": {
+          "phase": "launching",
+          "center": {
+            "x": -5.279489580932765,
+            "y": 295.55363755047944,
+            "vx": 0.553099386138745,
+            "vy": -0.3610495440527538,
+            "mass": 0.8500000000000001
+          },
+          "cup": {
+            "x": -4.8439780809707615,
+            "y": 295.097956570919
+          },
+          "support": {
+            "cradleSpeed": 0.22476930075786258,
+            "cradleSpin": -0.007799428362481517,
+            "withinEnvelope": true,
+            "contacting": true,
+            "contactingParts": 3,
+            "relativeSpeed": 0.8432303559114784,
+            "maxPartRelativeSpeed": 4.7649915186337575,
+            "maxRelativeSpin": 42.26522716116649
+          },
+          "hardwareEscaped": false,
+          "opening": -0.17602283038735445
+        },
+        "finalCenter": {
+          "x": -5.279489580932765,
+          "y": 295.55363755047944,
+          "vx": 0.553099386138745,
+          "vy": -0.3610495440527538,
+          "mass": 0.8500000000000001
+        },
+        "finalCup": {
+          "x": -4.8439780809707615,
+          "y": 295.097956570919
+        },
+        "escaped": false
+      }
+    },
+    {
+      "i": 103,
+      "species": "snake",
+      "grip": "head",
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "low": {
+        "fraction": 0.2,
+        "actualGrip": "head",
+        "firstReadyTick": null,
+        "eligibleTick": null,
+        "release": null,
+        "after": null,
+        "finalCenter": {
+          "x": -5.609201207867606,
+          "y": 294.21357410216336,
+          "vx": 0.0056903022358254,
+          "vy": -0.015127862278098037,
+          "mass": 1.1
+        },
+        "finalCup": {
+          "x": -3.849343370344969,
+          "y": 296.0236960402369
+        },
+        "escaped": false
+      },
+      "medium": {
+        "fraction": 0.6,
+        "actualGrip": "head",
+        "firstReadyTick": 0,
+        "eligibleTick": 61,
+        "sourceStatus": {
+          "cradleSpeed": 0.4762648263368427,
+          "cradleSpin": -0.153297655638746,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.3181180463247087,
+          "maxPartRelativeSpeed": 0.7993518975380397,
+          "maxRelativeSpin": 4.972981553579558
+        },
+        "release": {
+          "vx": 4.906230152317157,
+          "vy": 16.614167003530444
+        },
+        "after": {
+          "phase": "flight",
+          "center": {
+            "x": -2.039337239913782,
+            "y": 303.1921003707822,
+            "vx": 4.906230152317157,
+            "vy": 16.614167003530444,
+            "mass": 1.1
+          },
+          "cup": {
+            "x": -1.4483411448992038,
+            "y": 303.7612072733238
+          },
+          "support": {
+            "cradleSpeed": 21.606933830187828,
+            "cradleSpin": -16.12335650614805,
+            "withinEnvelope": false,
+            "contacting": false,
+            "contactingParts": 0,
+            "relativeSpeed": 17.467940657103963,
+            "maxPartRelativeSpeed": 19.049253820021157,
+            "maxRelativeSpin": 13.236904148300297
+          },
+          "hardwareEscaped": true,
+          "opening": 0.8709022955426214
+        },
+        "finalCenter": {
+          "x": -2.039337239913782,
+          "y": 303.1921003707822,
+          "vx": 4.906230152317157,
+          "vy": 16.614167003530444,
+          "mass": 1.1
+        },
+        "finalCup": {
+          "x": -1.4483411448992038,
+          "y": 303.7612072733238
+        },
+        "escaped": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,2399 @@
+{
+  "protocol": "132 natural finite-force load attempts, all11 species, low/middle/high winding, head/torso grips, upgrades purchased only from earned in-memory rewards,15second encounter flights after release; no user save writes.10integration ticks≈60Hz batches measure engine CPU only. All constructed and canonical cloned worlds are tracked by WeakRef. GC observer records2ms+step overlap (small intentional diagnostic retention affects heap). Audio uses deterministic WebAudio lifecycle double, not audible/browser mixing. ExplicitGC checkpoints after event-loop yields inspect old-world collection; persistent completedShot IDs are intentional ledger growth, not discarded for duplicate payment risk.",
+  "sourceSHA256": {
+    "src/articulated.js": "8eaa87a59d3ba3f59b8da446742b57e752e05ff1be7582788bae6cf3b3d06b67",
+    "src/hook-experiment.js": "a5289b746b0bb61eaa513b61d9089ebd50dddf17e70abdff3ab39b8fc95e05b1",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/encounters.js": "4185f6a2b5cf8f922f4b4281ed9a8baf308faa2aa624150fe409a48f09f0291d",
+    "src/economy.js": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+    "src/audio.js": "d440a76ac15d7efd6ea38845d9fc104cab7d8648750a366718ce36fe16277f3c"
+  },
+  "wallMs": 132768.95520899998,
+  "simulatedSeconds": 2629.336666694486,
+  "counts": {
+    "released": 127,
+    "seating_failed": 5
+  },
+  "heap": {
+    "gcAvailable": true,
+    "checkpoints": [
+      {
+        "cycles": 11,
+        "heap": 20602208,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 22,
+        "heap": 12123560,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 33,
+        "heap": 11682712,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 44,
+        "heap": 12246680,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 55,
+        "heap": 11079512,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 66,
+        "heap": 11413944,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 77,
+        "heap": 11754520,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 88,
+        "heap": 11456864,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 99,
+        "heap": 11972960,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 110,
+        "heap": 12340976,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 121,
+        "heap": 12266600,
+        "retainedWorlds": 0
+      },
+      {
+        "cycles": 132,
+        "heap": 11968320,
+        "retainedWorlds": 0
+      }
+    ],
+    "postWarmGrowth": -155240
+  },
+  "engineBatchMs": {
+    "samples": 157760,
+    "p95": 2.5702520000013465,
+    "max": 35.56083299998136,
+    "firstQuarterP95": 2.463292000000365,
+    "lastQuarterP95": 2.5586249999760184
+  },
+  "outliers": {
+    "thresholdStepMs": 2,
+    "gc": {
+      "count": 5373,
+      "totalMs": 720.7747793197632,
+      "maxMs": 6.011334419250488
+    },
+    "steps": [
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 11.31166666666344,
+        "start": 85575.171333,
+        "end": 85608.290291,
+        "wallMs": 33.118957999991835,
+        "bodies": 16,
+        "contacts": 22,
+        "joints": 8
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.046666666662771,
+        "start": 85740.545666,
+        "end": 85768.384583,
+        "wallMs": 27.838917000000947,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.109999999996047,
+        "start": 85776.556125,
+        "end": 85794.056333,
+        "wallMs": 17.500207999997656,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8,
+        "overlappingGC": [
+          {
+            "start": 85776.56075,
+            "duration": 5.695624351501465,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 11.623333333329823,
+        "start": 85659.520875,
+        "end": 85675.010041,
+        "wallMs": 15.489165999999386,
+        "bodies": 16,
+        "contacts": 22,
+        "joints": 8
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.164999999995997,
+        "start": 85800.859,
+        "end": 85813.450208,
+        "wallMs": 12.591207999998005,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.389999999995792,
+        "start": 85844.887708,
+        "end": 85850.493833,
+        "wallMs": 5.606125000005704,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8
+      },
+      {
+        "cycle": 0,
+        "species": "lizard",
+        "phase": "winding",
+        "elapsed": 0.0016666666666666668,
+        "start": 46.153708,
+        "end": 51.55825,
+        "wallMs": 5.404541999999999,
+        "bodies": 11,
+        "contacts": 9,
+        "joints": 8,
+        "overlappingGC": [
+          {
+            "start": 49.128625,
+            "duration": 0.36100006103515625,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.506666666662353,
+        "start": 85866.324083,
+        "end": 85869.221166,
+        "wallMs": 2.8970830000034766,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.388333333329127,
+        "start": 85842.025416,
+        "end": 85844.879208,
+        "wallMs": 2.853791999994428,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8,
+        "overlappingGC": [
+          {
+            "start": 85842.192958,
+            "duration": 2.4398746490478516,
+            "kind": 1
+          }
+        ]
+      },
+      {
+        "cycle": 84,
+        "species": "armadillo",
+        "phase": "flight",
+        "elapsed": 12.658333333328882,
+        "start": 85895.218208,
+        "end": 85897.845666,
+        "wallMs": 2.62745799998811,
+        "bodies": 16,
+        "contacts": 20,
+        "joints": 8
+      }
+    ]
+  },
+  "audio": {
+    "factories": 1,
+    "maxVoices": 4,
+    "maxConnectedNodes": 30,
+    "finalVoices": 0,
+    "finalConnectedNodes": 0
+  },
+  "economy": {
+    "points": 122663,
+    "bells": 2138,
+    "owned": [
+      "counterweight-heavy",
+      "beam-long",
+      "beam-light",
+      "sling-long",
+      "frame-heavy",
+      "frame-grip"
+    ],
+    "completedShots": 127
+  },
+  "rows": [
+    {
+      "i": 0,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {},
+      "outcome": "released",
+      "distance": 1.041783044279593,
+      "impacts": 5,
+      "bodies": 19,
+      "joints": 8,
+      "enemies": 8
+    },
+    {
+      "i": 1,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {},
+      "outcome": "released",
+      "distance": 50.64109043118172,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 2,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0.19956814558335623,
+      "impacts": 6,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 3,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 1.64985712769383,
+      "impacts": 8,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 4,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 5,
+      "bodies": 18,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 5,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 6,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 115.11923839522271,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 7,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 12,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 8,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 6,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 9,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 8,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 10,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 96.05910992401566,
+      "impacts": 11,
+      "bodies": 15,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 11,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 91.38977246474879,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 12,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 110.44645373148512,
+      "impacts": 1,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 13,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 113.94938143902938,
+      "impacts": 6,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 14,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 47.27358471582086,
+      "impacts": 8,
+      "bodies": 15,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 68.30455379685235,
+      "impacts": 1,
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 6
+    },
+    {
+      "i": 16,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 112.41576636337182,
+      "impacts": 3,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 17,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 130.33133469873678,
+      "impacts": 0,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 18,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 11,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 19,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 152.21966214672392,
+      "impacts": 8,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 20,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 137.1686201474429,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 21,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 2,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 22,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 136.7495529412417,
+      "impacts": 8,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 23,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 69.89595013040355,
+      "impacts": 6,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 24,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 98.72443094577876,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 25,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 40.37599988932491,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 26,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 180.32796967592537,
+      "impacts": 2,
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 6
+    },
+    {
+      "i": 27,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 119.83650394146763,
+      "impacts": 8,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 28,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 128.78042620635438,
+      "impacts": 0,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 29,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 34.4142403344465,
+      "impacts": 24,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 30,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 5,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 31,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 81.00102865969903,
+      "impacts": 5,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 32,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 128.6703345381978,
+      "impacts": 9,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 33,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 170.00367670037906,
+      "impacts": 4,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 34,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 166.3127048163071,
+      "impacts": 6,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 35,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 35.626324490817325,
+      "impacts": 7,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 36,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0.7444689835699565,
+      "impacts": 3,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 37,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "seating_failed",
+      "bodies": 13,
+      "joints": 10,
+      "enemies": 0
+    },
+    {
+      "i": 38,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 56.99794823541384,
+      "impacts": 7,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 39,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 1.2164105036739343,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 40,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 41,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 4,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 42,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 86.92767855983381,
+      "impacts": 5,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 43,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 93.1519368682552,
+      "impacts": 4,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 44,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 98.99464532707219,
+      "impacts": 4,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 45,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 87.44320625766123,
+      "impacts": 7,
+      "bodies": 19,
+      "joints": 8,
+      "enemies": 8
+    },
+    {
+      "i": 46,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 109.73073232782193,
+      "impacts": 7,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 47,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 32.8226691565944,
+      "impacts": 12,
+      "bodies": 15,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 48,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 83.00694578180911,
+      "impacts": 7,
+      "bodies": 18,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 49,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 90.25942256410374,
+      "impacts": 10,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 50,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 153.34746644630573,
+      "impacts": 1,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 51,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 7.010656313859056,
+      "impacts": 18,
+      "bodies": 19,
+      "joints": 8,
+      "enemies": 8
+    },
+    {
+      "i": 52,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 203.1330422398167,
+      "impacts": 4,
+      "bodies": 15,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 53,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 182.12817953686783,
+      "impacts": 9,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 54,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 102.57232240390525,
+      "impacts": 8,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 55,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 194.05596413502656,
+      "impacts": 8,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 56,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 122.13235597608254,
+      "impacts": 2,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 57,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 77.14180578077342,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 58,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 41.14857513258219,
+      "impacts": 11,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 59,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 13,
+      "bodies": 20,
+      "joints": 10,
+      "enemies": 7
+    },
+    {
+      "i": 60,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 123.20457116368463,
+      "impacts": 17,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 61,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 127.06734634527812,
+      "impacts": 0,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 62,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 29,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 63,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 64,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 62.84937941545206,
+      "impacts": 4,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 65,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 2,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 66,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 40.542460342626086,
+      "impacts": 5,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 67,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 80.63227828053168,
+      "impacts": 7,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 68,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-heavy",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 57.649363435410784,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 69,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 137.79294784189167,
+      "impacts": 9,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 70,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "outcome": "released",
+      "distance": 0.8689377804815619,
+      "impacts": 11,
+      "bodies": 17,
+      "joints": 10,
+      "enemies": 4
+    },
+    {
+      "i": 71,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 26.222576804462427,
+      "impacts": 6,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 72,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 140.57819189607696,
+      "impacts": 0,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 73,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 74,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 105.20844258904111,
+      "impacts": 6,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 75,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 76,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "seating_failed",
+      "bodies": 11,
+      "joints": 8,
+      "enemies": 0
+    },
+    {
+      "i": 77,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 121.92272753582358,
+      "impacts": 12,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 78,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 121.64436975127279,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 79,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 109.11009332672943,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 80,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 95.51885603956504,
+      "impacts": 9,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 81,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 68.30455379685235,
+      "impacts": 1,
+      "bodies": 18,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 82,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 112.4157908146838,
+      "impacts": 3,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 83,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 130.33133469873678,
+      "impacts": 0,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 84,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 9,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 85,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 119.04902483256234,
+      "impacts": 5,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 86,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-heavy"
+      },
+      "outcome": "released",
+      "distance": 123.81809874447092,
+      "impacts": 6,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 87,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 8,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 88,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 30.9080608006464,
+      "impacts": 7,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 89,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 118.56168294595925,
+      "impacts": 2,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 90,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 98.72443094577876,
+      "impacts": 5,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 91,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 24.562906682197905,
+      "impacts": 9,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 92,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 180.3183205364796,
+      "impacts": 2,
+      "bodies": 21,
+      "joints": 10,
+      "enemies": 8
+    },
+    {
+      "i": 93,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 109.83093740497715,
+      "impacts": 11,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 94,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 129.00627856753894,
+      "impacts": 0,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 95,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0.4354384347242055,
+      "impacts": 20,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 96,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 12.148688703947615,
+      "impacts": 7,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 97,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "beam": "beam-light",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 166.124666874915,
+      "impacts": 12,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 98,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 190.02629161819436,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 99,
+      "species": "lizard",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 68.83068683846516,
+      "impacts": 9,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 100,
+      "species": "salamander",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 209.52144611521177,
+      "impacts": 15,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 101,
+      "species": "mouse",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 60.05460852184749,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 102,
+      "species": "turtle",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 90.65382342522565,
+      "impacts": 9,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 103,
+      "species": "snake",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 17,
+      "bodies": 20,
+      "joints": 10,
+      "enemies": 7
+    },
+    {
+      "i": 104,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "frame": "frame-heavy",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 54.710233665391144,
+      "impacts": 9,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 105,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 116.22927470499476,
+      "impacts": 9,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 106,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 1.939873618059548,
+      "impacts": 23,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 107,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 75.23800138684167,
+      "impacts": 6,
+      "bodies": 15,
+      "joints": 8,
+      "enemies": 4
+    },
+    {
+      "i": 108,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 102.45867304977286,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 109,
+      "species": "frog",
+      "fraction": 0.2,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 72.98495367320957,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 110,
+      "species": "lizard",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 26.263259651685537,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 111,
+      "species": "salamander",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 5,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 112,
+      "species": "mouse",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip"
+      },
+      "outcome": "released",
+      "distance": 84.35638228226172,
+      "impacts": 5,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 113,
+      "species": "turtle",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-long"
+      },
+      "outcome": "released",
+      "distance": 85.23894992587617,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 114,
+      "species": "snake",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 68.30455379685235,
+      "impacts": 1,
+      "bodies": 19,
+      "joints": 10,
+      "enemies": 6
+    },
+    {
+      "i": 115,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 100.49823926402442,
+      "impacts": 4,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 116,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 129.251686080275,
+      "impacts": 0,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 117,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 6.9890000980519185,
+      "impacts": 20,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 118,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "equipment": {
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 203.1289889197542,
+      "impacts": 4,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 119,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 92.11085459729756,
+      "impacts": 8,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 120,
+      "species": "frog",
+      "fraction": 0.6,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 30.68684483424807,
+      "impacts": 7,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 121,
+      "species": "lizard",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 211.62517413149348,
+      "impacts": 6,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 122,
+      "species": "salamander",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-heavy",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 125.46418741796434,
+      "impacts": 1,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 123,
+      "species": "mouse",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 111.77671564603385,
+      "impacts": 5,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 124,
+      "species": "turtle",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 44.86379847435642,
+      "impacts": 15,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 125,
+      "species": "snake",
+      "fraction": 0.9,
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 92.72912405218693,
+      "impacts": 1,
+      "bodies": 18,
+      "joints": 10,
+      "enemies": 5
+    },
+    {
+      "i": 126,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-light"
+      },
+      "outcome": "released",
+      "distance": 47.8055678152055,
+      "impacts": 11,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 127,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 128.38592888410105,
+      "impacts": 0,
+      "bodies": 17,
+      "joints": 8,
+      "enemies": 6
+    },
+    {
+      "i": 128,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-light",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 0,
+      "impacts": 8,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 129,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 94.30068839578503,
+      "impacts": 7,
+      "bodies": 16,
+      "joints": 8,
+      "enemies": 5
+    },
+    {
+      "i": 130,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 80.39890748589286,
+      "impacts": 7,
+      "bodies": 18,
+      "joints": 8,
+      "enemies": 7
+    },
+    {
+      "i": 131,
+      "species": "frog",
+      "fraction": 0.9,
+      "equipment": {
+        "frame": "frame-grip",
+        "beam": "beam-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "outcome": "released",
+      "distance": 60.835326474470236,
+      "impacts": 6,
+      "bodies": 15,
+      "joints": 8,
+      "enemies": 4
+    }
+  ],
+  "initialArm": -2.5,
+  "startPoseNote": "Historical soak used the constructor default -2.5 rad; production UI opts into -3 rad. The next iteration16 soak records the UI pose explicitly. No historical outcomes changed."
+}

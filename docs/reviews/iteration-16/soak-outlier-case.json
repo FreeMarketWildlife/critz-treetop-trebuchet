@@ -1,0 +1,151 @@
+{
+  "protocol": "Exact historical constructor-start(-2.5rad) soak cycle84 equipment already earned in the recorded run, applied as physical experiment parameters. Eight full natural loading/canonical launch replays, same encounter seed4084 and15sflight; no UI/account/save/unlock writes. Per-step process CPU includes all process threads; wall/CPU divergence can suggest scheduling but cannot identify a specific host cause. CPU-timing overhead excluded from step wall. GC timestamp overlap retained. Outcomes must equal recorded cycle84.",
+  "equipment": {
+    "sling": "sling-long",
+    "counterweight": "counterweight-heavy",
+    "beam": "beam-light"
+  },
+  "rows": [
+    {
+      "round": 0,
+      "p95": 2.8456209999999373,
+      "max": 3.610082999999804,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": [
+        {
+          "start": 270.299209,
+          "end": 271.871709,
+          "wallMs": 1.572499999999991,
+          "cpuMs": 2.033,
+          "elapsed": 5.316666666666684,
+          "bodies": 11,
+          "contacts": 6,
+          "overlappingGC": []
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "p95": 2.83216800000082,
+      "max": 3.107583999999406,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": []
+    },
+    {
+      "round": 2,
+      "p95": 2.918959000000541,
+      "max": 3.1842500000002474,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": []
+    },
+    {
+      "round": 3,
+      "p95": 2.9627489999993486,
+      "max": 3.5119580000018686,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": []
+    },
+    {
+      "round": 4,
+      "p95": 2.932917999998608,
+      "max": 3.3948770000006334,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": [
+        {
+          "start": 8319.947042,
+          "end": 8321.217042,
+          "wallMs": 1.2700000000004366,
+          "cpuMs": 0.336,
+          "elapsed": 7.9716666666664775,
+          "bodies": 13,
+          "contacts": 20,
+          "overlappingGC": []
+        },
+        {
+          "start": 8403.32375,
+          "end": 8404.7825,
+          "wallMs": 1.4587499999997817,
+          "cpuMs": 0.281,
+          "elapsed": 8.633333333332542,
+          "bodies": 13,
+          "contacts": 19,
+          "overlappingGC": []
+        },
+        {
+          "start": 8503.453625,
+          "end": 8504.465292,
+          "wallMs": 1.0116670000006707,
+          "cpuMs": 0.408,
+          "elapsed": 9.363333333331878,
+          "bodies": 15,
+          "contacts": 22,
+          "overlappingGC": []
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "p95": 2.87266599999748,
+      "max": 3.07100100000207,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": []
+    },
+    {
+      "round": 6,
+      "p95": 2.853627000000415,
+      "max": 3.411670999999842,
+      "over4ms": 0,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": []
+    },
+    {
+      "round": 7,
+      "p95": 2.9313319999964733,
+      "max": 4.398541000000478,
+      "over4ms": 2,
+      "distance": 0,
+      "impacts": 9,
+      "slowSteps": [
+        {
+          "start": 14928.347,
+          "end": 14929.994459,
+          "wallMs": 1.6474589999997988,
+          "cpuMs": 0.787,
+          "elapsed": 13.034999999995206,
+          "bodies": 17,
+          "contacts": 22,
+          "overlappingGC": [
+            {
+              "start": 14928.42425,
+              "duration": 0.12200069427490234,
+              "kind": 1
+            }
+          ]
+        },
+        {
+          "start": 14937.207584,
+          "end": 14938.406792,
+          "wallMs": 1.1992079999999987,
+          "cpuMs": 0.695,
+          "elapsed": 13.071666666661839,
+          "bodies": 17,
+          "contacts": 22,
+          "overlappingGC": []
+        }
+      ]
+    }
+  ]
+}

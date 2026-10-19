@@ -43,6 +43,15 @@ export function hasArrivalClearance(enemy,player){
 export function createEncounterDirector(seed=0,saved=null){
   if(!['number','string'].includes(typeof seed)||typeof seed==='number'&&!Number.isFinite(seed))throw new Error('Seed must be finite number or string');
   let previous=new Set(),observed=new Map(),latestTime=-1,lastSound=-Infinity;
+  // Seed/cell/slot recipes are immutable. Cache only derived constants, never
+  // player clearance, motion, births or public descriptors. FIFO bound survives
+  // arbitrarily long travel/rewinds without retaining the visited world.
+  const recipes=new Map();
+  function recipeFor(id,biome,c,s){let entry=recipes.get(id);if(entry)return entry;
+    const rng=random(`${seed}:${id}`),start=s*4+rng()*1.5;
+    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*80+10+rng()*60,[low,high]=regions[biome],baseY=low+rng()*(high-low),phase=rng()*Math.PI*2;
+    entry={start,recipe,baseX,baseY,phase};recipes.set(id,entry);if(recipes.size>64)recipes.delete(recipes.keys().next().value);return entry;
+  }
   if(saved!==null){
     if(!saved || saved.version!==1 || saved.seed!==seed || !Array.isArray(saved.previous) || !Array.isArray(saved.observed)
       || saved.previous.length>8 || saved.observed.length>10000 || !saved.previous.every(id=>typeof id==='string')
@@ -56,9 +65,8 @@ export function createEncounterDirector(seed=0,saved=null){
     const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/80),slot=Math.floor(time/4),candidates=[];
     // Three nearby authored spatial cells, three still-living temporal slots: O(9).
     for(let c=cell-1;c<=cell+1;c++)for(let s=Math.max(0,slot-2);s<=slot;s++){
-      const id=`${biome}:${c}:${s}`,rng=random(`${seed}:${id}`),start=s*4+rng()*1.5,age=time-start;
+      const id=`${biome}:${c}:${s}`,{start,recipe,baseX,baseY,phase}=recipeFor(id,biome,c,s),age=time-start;
       if(age<0||age>=10)continue;
-      const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*80+10+rng()*60,[low,high]=regions[biome],baseY=low+rng()*(high-low),phase=rng()*Math.PI*2;
       const amplitude=biome==='forestFloor'?.2:1.5,omega=1.2;
       const horizontal=recipe.motion==='roll'||recipe.motion==='wave',offset=amplitude*Math.sin(age*omega+phase),velocity=amplitude*omega*Math.cos(age*omega+phase);
       candidates.push({id,biome,kind:recipe.kind,shape:recipe.shape,color:recipe.color,motion:recipe.motion,
@@ -82,5 +90,5 @@ export function createEncounterDirector(seed=0,saved=null){
     for(const enemy of active)if(!previous.has(enemy.id))events.push({type:'encounter-enter',id:enemy.id,biome,time,sound:audible.has(enemy.id)?'encounter-arrive':null});
     for(const id of previous)if(!current.has(id))events.push({type:'encounter-exit',id,time});
     previous=current;return {active,spawns,events};
-  },snapshot(){return {version:1,seed,previous:[...previous],observed:[...observed].map(([id,expiry])=>[id,expiry]),latestTime,lastSound:Number.isFinite(lastSound)?lastSound:null};},reset(){previous=new Set();observed=new Map();latestTime=-1;lastSound=-Infinity;}};
+  },snapshot(){return {version:1,seed,previous:[...previous],observed:[...observed].map(([id,expiry])=>[id,expiry]),latestTime,lastSound:Number.isFinite(lastSound)?lastSound:null};},reset(){previous=new Set();observed=new Map();latestTime=-1;lastSound=-Infinity;recipes.clear();}};
 }

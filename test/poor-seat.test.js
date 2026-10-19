@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {PhysicalHookScene} from '../src/hook-experiment.js';
+test('a rim-loaded possum can genuinely slip before bead escape at converging timesteps',()=>{
+ const saved=JSON.parse(readFileSync(new URL('../docs/reviews/iteration-16/possum-poor-seat.json',import.meta.url)));const speeds=[];
+ for(const hz of [600,1200,2400]){const s=new PhysicalHookScene(saved.p,saved.species,structuredClone(saved)),angle=s.arm.getAngle(),e0=s.energy(),work=()=>s.handWork+s.windingWork+s.assistWork+s.dragWork+s.dampingWork+s.spawnEnergy-s.despawnEnergy,w0=work();assert.ok(s.isLoaded());/* Contact cache is rebuilt after canonical restore; the source study records live support. */s.unlatch();for(let i=0;i<hz/5&&!s.release;i++){s.step(1/hz);assert.ok(s.energy()-e0-(work()-w0)<.01);}assert.ok(s.release);assert.equal(s.hardwareHasEscaped(),false);assert.ok(s.release.center.vy<0);assert.ok(Math.abs(s.arm.getAngle()-angle)<.03);assert.ok(s.release.time-saved.elapsed<.06);speeds.push(Math.hypot(s.release.center.vx,s.release.center.vy));}
+ assert.ok(Math.max(...speeds)-Math.min(...speeds)<.02,'slipping remains a physical outcome under refinement');
+});

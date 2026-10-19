@@ -1,0 +1,835 @@
+{
+  "protocol": "Six natural finite-force loading recipes repeated in order; same600Hz outer/2400–4800Hz collision production engine and canonical clone; encounter seed4000. No injected poses, force changes, user saves or rewards. Each step timed separately. Ten-step batches also record contiguous wall and process CPU; CPU includes diagnostics/events between timed steps and is not directly equal to summed step wall. GC entries matched by actual timestamps. This instrumented Node workload is not browser FPS. Round0 is warmup; every round is retained.",
+  "node": "v24.21.0",
+  "wallMs": 22035.681417,
+  "sourceSHA256": {
+    "src/articulated.js": "e2a4585812f6e6b82058d0aadecc3fd076b24cc622278306dc9676d9c615c798",
+    "src/hook-experiment.js": "a5289b746b0bb61eaa513b61d9089ebd50dddf17e70abdff3ab39b8fc95e05b1",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/encounters.js": "475ef459aa725f55d0526302b10c83ab737abf7ca513ca7c15945796491df058"
+  },
+  "rounds": [
+    {
+      "round": 0,
+      "engineBatchMs": {
+        "samples": 7590,
+        "p50": 0.45641800000157673,
+        "p95": 2.734542000000147,
+        "p99": 3.0690829999985,
+        "max": 10.146626999999995
+      },
+      "over4ms": 6
+    },
+    {
+      "round": 1,
+      "engineBatchMs": {
+        "samples": 7590,
+        "p50": 0.4406239999971149,
+        "p95": 2.746041000000332,
+        "p99": 3.0958749999990687,
+        "max": 3.922041999998328
+      },
+      "over4ms": 0
+    },
+    {
+      "round": 2,
+      "engineBatchMs": {
+        "samples": 7590,
+        "p50": 0.4426240000029793,
+        "p95": 2.8206700000009732,
+        "p99": 3.1613319999960368,
+        "max": 4.028041999998095
+      },
+      "over4ms": 1
+    }
+  ],
+  "gc": {
+    "count": 1955,
+    "totalMs": 132.90581512451172,
+    "maxMs": 1.1806249618530273
+  },
+  "outlierBatches": [
+    {
+      "case": "r0-lizard",
+      "start": 49.327958,
+      "end": 59.53675,
+      "stepWallMs": 10.146626999999995,
+      "batchWallMs": 10.208791999999995,
+      "cpuMs": 17.08,
+      "phase": "winding",
+      "overlappingGC": [
+        {
+          "start": 52.612083,
+          "duration": 0.21987438201904297,
+          "kind": 1
+        },
+        {
+          "start": 56.254708,
+          "duration": 0.1489572525024414,
+          "kind": 1
+        },
+        {
+          "start": 58.272583,
+          "duration": 0.09687519073486328,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 283.298125,
+      "end": 294.61375,
+      "stepWallMs": 9.545917000000145,
+      "batchWallMs": 11.315624999999955,
+      "cpuMs": 33.83,
+      "phase": "loading",
+      "overlappingGC": [
+        {
+          "start": 286.815708,
+          "duration": 0.24512481689453125,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 180.354125,
+      "end": 184.854458,
+      "stepWallMs": 4.474038999999976,
+      "batchWallMs": 4.5003329999999835,
+      "cpuMs": 12.463,
+      "phase": "loading",
+      "overlappingGC": [
+        {
+          "start": 183.373666,
+          "duration": 0.0796670913696289,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 615.435166,
+      "end": 619.77675,
+      "stepWallMs": 4.339666999999849,
+      "batchWallMs": 4.341584000000012,
+      "cpuMs": 5.908,
+      "phase": "flight",
+      "overlappingGC": [
+        {
+          "start": 615.707666,
+          "duration": 0.056624412536621094,
+          "kind": 1
+        },
+        {
+          "start": 618.413125,
+          "duration": 0.05341625213623047,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 366.295,
+      "end": 370.486083,
+      "stepWallMs": 4.180666000000031,
+      "batchWallMs": 4.191082999999992,
+      "cpuMs": 11.938,
+      "phase": "flight",
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 86.047791,
+      "end": 90.082041,
+      "stepWallMs": 4.030331000000032,
+      "batchWallMs": 4.03425,
+      "cpuMs": 12.189,
+      "phase": "winding",
+      "overlappingGC": [
+        {
+          "start": 87.395958,
+          "duration": 0.08450031280517578,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r2-snake",
+      "start": 18857.505791,
+      "end": 18861.538666,
+      "stepWallMs": 4.028041999998095,
+      "batchWallMs": 4.032875000000786,
+      "cpuMs": 4.06,
+      "phase": "flight",
+      "overlappingGC": [
+        {
+          "start": 18859.545083,
+          "duration": 0.08558273315429688,
+          "kind": 1
+        }
+      ]
+    }
+  ],
+  "slowSteps": [
+    {
+      "case": "r0-lizard",
+      "start": 286.647833,
+      "end": 294.084041,
+      "wallMs": 7.436208000000022,
+      "phase": "launching",
+      "elapsed": 5.039999999999974,
+      "bodies": 11,
+      "contacts": 31,
+      "joints": 8,
+      "near": false,
+      "speed": 1.8112660829123417,
+      "spin": 8.123857785997616,
+      "overlappingGC": [
+        {
+          "start": 286.815708,
+          "duration": 0.24512481689453125,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 49.337708,
+      "end": 55.028208,
+      "wallMs": 5.6905,
+      "phase": "winding",
+      "elapsed": 0.0016666666666666668,
+      "bodies": 11,
+      "contacts": 7,
+      "joints": 8,
+      "near": false,
+      "speed": 0.016350000000000003,
+      "spin": 0,
+      "overlappingGC": [
+        {
+          "start": 52.612083,
+          "duration": 0.21987438201904297,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 366.91625,
+      "end": 370.390041,
+      "wallMs": 3.4737910000000056,
+      "phase": "flight",
+      "elapsed": 6.698333333333567,
+      "bodies": 14,
+      "contacts": 4,
+      "joints": 8,
+      "near": false,
+      "speed": 12.21854073169608,
+      "spin": 26.14897279354086,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 180.749666,
+      "end": 183.072791,
+      "wallMs": 2.3231250000000045,
+      "phase": "loading",
+      "elapsed": 1.8700000000000296,
+      "bodies": 11,
+      "contacts": 24,
+      "joints": 8,
+      "near": false,
+      "speed": 1.1644955125605805,
+      "spin": 10.92803767420212,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 407.399666,
+      "end": 409.584708,
+      "wallMs": 2.185041999999953,
+      "phase": "flight",
+      "elapsed": 8.035000000000442,
+      "bodies": 14,
+      "contacts": 4,
+      "joints": 8,
+      "near": false,
+      "speed": 9.10191933912103,
+      "spin": 14.934386316471128,
+      "overlappingGC": [
+        {
+          "start": 408.001708,
+          "duration": 0.10987472534179688,
+          "kind": 8
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 213.851708,
+      "end": 215.624833,
+      "wallMs": 1.7731249999999932,
+      "phase": "loading",
+      "elapsed": 2.649999999999961,
+      "bodies": 11,
+      "contacts": 9,
+      "joints": 8,
+      "near": false,
+      "speed": 1.3676333997499148,
+      "spin": 8.775574555934524,
+      "overlappingGC": [
+        {
+          "start": 213.883041,
+          "duration": 0.869624137878418,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 363.455125,
+      "end": 365.099583,
+      "wallMs": 1.644457999999986,
+      "phase": "flight",
+      "elapsed": 6.676666666666897,
+      "bodies": 14,
+      "contacts": 4,
+      "joints": 8,
+      "near": false,
+      "speed": 12.215786640795946,
+      "spin": 24.27377637494357,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 319.5125,
+      "end": 321.146458,
+      "wallMs": 1.633958000000007,
+      "phase": "launching",
+      "elapsed": 5.453333333333372,
+      "bodies": 11,
+      "contacts": 46,
+      "joints": 8,
+      "near": false,
+      "speed": 8.688501250862876,
+      "spin": 10.044684996580637,
+      "overlappingGC": [
+        {
+          "start": 319.545875,
+          "duration": 0.3855409622192383,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 352.540333,
+      "end": 354.02525,
+      "wallMs": 1.4849170000000527,
+      "phase": "flight",
+      "elapsed": 6.418333333333523,
+      "bodies": 11,
+      "contacts": 12,
+      "joints": 8,
+      "near": false,
+      "speed": 17.648892851143707,
+      "spin": 31.932777319848107,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 115.573291,
+      "end": 117.053875,
+      "wallMs": 1.4805840000000074,
+      "phase": "winding",
+      "elapsed": 0.6150000000000007,
+      "bodies": 11,
+      "contacts": 22,
+      "joints": 8,
+      "near": false,
+      "speed": 0.22378129089545856,
+      "spin": 1.0408433340547825,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 132.200291,
+      "end": 133.615208,
+      "wallMs": 1.4149170000000026,
+      "phase": "winding",
+      "elapsed": 0.9000000000000072,
+      "bodies": 11,
+      "contacts": 24,
+      "joints": 8,
+      "near": false,
+      "speed": 8.89506355899721e-9,
+      "spin": 2.6585646398863267e-7,
+      "overlappingGC": [
+        {
+          "start": 132.22275,
+          "duration": 0.37241649627685547,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 405.51125,
+      "end": 406.876541,
+      "wallMs": 1.3652909999999565,
+      "phase": "flight",
+      "elapsed": 8.008333333333772,
+      "bodies": 14,
+      "contacts": 4,
+      "joints": 8,
+      "near": false,
+      "speed": 7.967584283767406,
+      "spin": 15.022293486745822,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 610.158333,
+      "end": 611.507708,
+      "wallMs": 1.349375000000009,
+      "phase": "flight",
+      "elapsed": 15.633333333334956,
+      "bodies": 19,
+      "contacts": 9,
+      "joints": 8,
+      "near": true,
+      "speed": 49.046627666448906,
+      "spin": 124.11325303504928,
+      "overlappingGC": [
+        {
+          "start": 610.350208,
+          "duration": 0.05787467956542969,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 88.771,
+      "end": 90.082041,
+      "wallMs": 1.311041000000003,
+      "phase": "winding",
+      "elapsed": 0.3166666666666666,
+      "bodies": 11,
+      "contacts": 22,
+      "joints": 8,
+      "near": false,
+      "speed": 2.59984428962636,
+      "spin": 17.88938792270918,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 372.365875,
+      "end": 373.669458,
+      "wallMs": 1.3035830000000033,
+      "phase": "flight",
+      "elapsed": 6.760000000000243,
+      "bodies": 14,
+      "contacts": 4,
+      "joints": 8,
+      "near": false,
+      "speed": 14.095355715248248,
+      "spin": 25.736233487124807,
+      "overlappingGC": [
+        {
+          "start": 372.418125,
+          "duration": 0.10012435913085938,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r2-turtle",
+      "start": 17218.66625,
+      "end": 17219.905208,
+      "wallMs": 1.2389580000017304,
+      "phase": "winding",
+      "elapsed": 0.04166666666666665,
+      "bodies": 11,
+      "contacts": 7,
+      "joints": 8,
+      "near": false,
+      "speed": 0.40874999999999984,
+      "spin": 0,
+      "overlappingGC": [
+        {
+          "start": 17218.692291,
+          "duration": 1.1806249618530273,
+          "kind": 4
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 72.501666,
+      "end": 73.731041,
+      "wallMs": 1.2293750000000045,
+      "phase": "winding",
+      "elapsed": 0.12499999999999983,
+      "bodies": 11,
+      "contacts": 7,
+      "joints": 8,
+      "near": false,
+      "speed": 1.22625,
+      "spin": 0,
+      "overlappingGC": []
+    },
+    {
+      "case": "r1-lizard",
+      "start": 7503.1565,
+      "end": 7504.331833,
+      "wallMs": 1.175333000000137,
+      "phase": "winding",
+      "elapsed": 0.015000000000000001,
+      "bodies": 11,
+      "contacts": 7,
+      "joints": 8,
+      "near": false,
+      "speed": 0.14715000000000003,
+      "spin": 0,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-turtle",
+      "start": 3133.221916,
+      "end": 3134.351708,
+      "wallMs": 1.1297920000001795,
+      "phase": "flight",
+      "elapsed": 15.2066666666681,
+      "bodies": 16,
+      "contacts": 10,
+      "joints": 8,
+      "near": false,
+      "speed": 11.069833604896461,
+      "spin": 51.58277604332472,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 70.85225,
+      "end": 71.980375,
+      "wallMs": 1.1281249999999972,
+      "phase": "winding",
+      "elapsed": 0.11499999999999985,
+      "bodies": 11,
+      "contacts": 7,
+      "joints": 8,
+      "near": false,
+      "speed": 1.1281499999999995,
+      "spin": 0,
+      "overlappingGC": []
+    },
+    {
+      "case": "r1-snake",
+      "start": 11224.945041,
+      "end": 11226.066041,
+      "wallMs": 1.120999999999185,
+      "phase": "loading",
+      "elapsed": 3.748333333333173,
+      "bodies": 13,
+      "contacts": 50,
+      "joints": 10,
+      "near": false,
+      "speed": 5.174725072126824,
+      "spin": 16.649679353559414,
+      "overlappingGC": []
+    },
+    {
+      "case": "r1-lizard",
+      "start": 7521.604291,
+      "end": 7522.723041,
+      "wallMs": 1.1187500000005457,
+      "phase": "winding",
+      "elapsed": 0.7400000000000035,
+      "bodies": 11,
+      "contacts": 23,
+      "joints": 8,
+      "near": false,
+      "speed": 8.895063467634393e-9,
+      "spin": 2.6585645798834323e-7,
+      "overlappingGC": [
+        {
+          "start": 7521.636333,
+          "duration": 1.052250862121582,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r0-lizard",
+      "start": 308.222291,
+      "end": 309.311833,
+      "wallMs": 1.0895419999999945,
+      "phase": "launching",
+      "elapsed": 5.275000000000011,
+      "bodies": 11,
+      "contacts": 41,
+      "joints": 8,
+      "near": false,
+      "speed": 4.160555729552647,
+      "spin": 4.334572700488855,
+      "overlappingGC": []
+    },
+    {
+      "case": "r0-lizard",
+      "start": 64.75575,
+      "end": 65.824333,
+      "wallMs": 1.0685829999999896,
+      "phase": "winding",
+      "elapsed": 0.05666666666666662,
+      "bodies": 11,
+      "contacts": 7,
+      "joints": 8,
+      "near": false,
+      "speed": 0.5558999999999996,
+      "spin": 0,
+      "overlappingGC": [
+        {
+          "start": 65.660166,
+          "duration": 0.09883403778076172,
+          "kind": 1
+        }
+      ]
+    },
+    {
+      "case": "r2-armadillo",
+      "start": 21765.967708,
+      "end": 21767.009208,
+      "wallMs": 1.0414999999993597,
+      "phase": "flight",
+      "elapsed": 20.23999999998913,
+      "bodies": 19,
+      "contacts": 25,
+      "joints": 8,
+      "near": true,
+      "speed": 0.0000024823483405481874,
+      "spin": 0.000019829580847073292,
+      "overlappingGC": []
+    }
+  ],
+  "rows": [
+    {
+      "case": "r0-lizard",
+      "ready": true,
+      "release": {
+        "vx": 3.09945319653458,
+        "vy": 16.81199480294419,
+        "speed": 17.095314544392885,
+        "time": 5.875000000000105
+      },
+      "distance": 94.6400804992018,
+      "impacts": 9
+    },
+    {
+      "case": "r0-small-marsupial",
+      "ready": true,
+      "release": {
+        "vx": 10.101229324840292,
+        "vy": 17.046706159834777,
+        "speed": 19.81476784554294,
+        "time": 5.8816666666667725
+      },
+      "distance": 98.77855457092032,
+      "impacts": 6
+    },
+    {
+      "case": "r0-frog",
+      "ready": true,
+      "release": {
+        "vx": 5.539287664666488,
+        "vy": 15.623152651375115,
+        "speed": 16.576085382263678,
+        "time": 6.040000000000131
+      },
+      "distance": 36.76628743312918,
+      "impacts": 4
+    },
+    {
+      "case": "r0-turtle",
+      "ready": true,
+      "release": {
+        "vx": 3.9752096513780555,
+        "vy": 11.16152108794695,
+        "speed": 11.848284465233508,
+        "time": 5.885000000000106
+      },
+      "distance": 40.07346343884878,
+      "impacts": 15
+    },
+    {
+      "case": "r0-snake",
+      "ready": true,
+      "release": {
+        "vx": 9.640739001775216,
+        "vy": 16.084716723809844,
+        "speed": 18.75265209471871,
+        "time": 5.848333333333434
+      },
+      "distance": 95.06450994511727,
+      "impacts": 10
+    },
+    {
+      "case": "r0-armadillo",
+      "ready": true,
+      "release": {
+        "vx": -2.160055950671615,
+        "vy": -11.795853746748145,
+        "speed": 11.99199763695374,
+        "time": 7.021666666666951
+      },
+      "distance": 0,
+      "impacts": 12
+    },
+    {
+      "case": "r1-lizard",
+      "ready": true,
+      "release": {
+        "vx": 3.09945319653458,
+        "vy": 16.81199480294419,
+        "speed": 17.095314544392885,
+        "time": 5.875000000000105
+      },
+      "distance": 94.6400804992018,
+      "impacts": 9
+    },
+    {
+      "case": "r1-small-marsupial",
+      "ready": true,
+      "release": {
+        "vx": 10.101229324840292,
+        "vy": 17.046706159834777,
+        "speed": 19.81476784554294,
+        "time": 5.8816666666667725
+      },
+      "distance": 98.77855457092032,
+      "impacts": 6
+    },
+    {
+      "case": "r1-frog",
+      "ready": true,
+      "release": {
+        "vx": 5.539287664666488,
+        "vy": 15.623152651375115,
+        "speed": 16.576085382263678,
+        "time": 6.040000000000131
+      },
+      "distance": 36.76628743312918,
+      "impacts": 4
+    },
+    {
+      "case": "r1-turtle",
+      "ready": true,
+      "release": {
+        "vx": 3.9752096513780555,
+        "vy": 11.16152108794695,
+        "speed": 11.848284465233508,
+        "time": 5.885000000000106
+      },
+      "distance": 40.07346343884878,
+      "impacts": 15
+    },
+    {
+      "case": "r1-snake",
+      "ready": true,
+      "release": {
+        "vx": 9.640739001775216,
+        "vy": 16.084716723809844,
+        "speed": 18.75265209471871,
+        "time": 5.848333333333434
+      },
+      "distance": 95.06450994511727,
+      "impacts": 10
+    },
+    {
+      "case": "r1-armadillo",
+      "ready": true,
+      "release": {
+        "vx": -2.160055950671615,
+        "vy": -11.795853746748145,
+        "speed": 11.99199763695374,
+        "time": 7.021666666666951
+      },
+      "distance": 0,
+      "impacts": 12
+    },
+    {
+      "case": "r2-lizard",
+      "ready": true,
+      "release": {
+        "vx": 3.09945319653458,
+        "vy": 16.81199480294419,
+        "speed": 17.095314544392885,
+        "time": 5.875000000000105
+      },
+      "distance": 94.6400804992018,
+      "impacts": 9
+    },
+    {
+      "case": "r2-small-marsupial",
+      "ready": true,
+      "release": {
+        "vx": 10.101229324840292,
+        "vy": 17.046706159834777,
+        "speed": 19.81476784554294,
+        "time": 5.8816666666667725
+      },
+      "distance": 98.77855457092032,
+      "impacts": 6
+    },
+    {
+      "case": "r2-frog",
+      "ready": true,
+      "release": {
+        "vx": 5.539287664666488,
+        "vy": 15.623152651375115,
+        "speed": 16.576085382263678,
+        "time": 6.040000000000131
+      },
+      "distance": 36.76628743312918,
+      "impacts": 4
+    },
+    {
+      "case": "r2-turtle",
+      "ready": true,
+      "release": {
+        "vx": 3.9752096513780555,
+        "vy": 11.16152108794695,
+        "speed": 11.848284465233508,
+        "time": 5.885000000000106
+      },
+      "distance": 40.07346343884878,
+      "impacts": 15
+    },
+    {
+      "case": "r2-snake",
+      "ready": true,
+      "release": {
+        "vx": 9.640739001775216,
+        "vy": 16.084716723809844,
+        "speed": 18.75265209471871,
+        "time": 5.848333333333434
+      },
+      "distance": 95.06450994511727,
+      "impacts": 10
+    },
+    {
+      "case": "r2-armadillo",
+      "ready": true,
+      "release": {
+        "vx": -2.160055950671615,
+        "vy": -11.795853746748145,
+        "speed": 11.99199763695374,
+        "time": 7.021666666666951
+      },
+      "distance": 0,
+      "impacts": 12
+    }
+  ]
+}

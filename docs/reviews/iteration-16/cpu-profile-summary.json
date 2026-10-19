@@ -1,0 +1,263 @@
+{
+  "protocol": "Node --cpu-prof sampled self time during three repeated six-species natural trajectories. Sampling and GC observer add overhead; raw profiles remain in /tmp. Fractions are sampled stack location frequency, not exact timing attribution.",
+  "baseline": {
+    "samples": 14862,
+    "topSelfSamples": [
+      {
+        "location": "Contact2.solveVelocityConstraint|dist/planck.mjs",
+        "selfSamples": 2786,
+        "percent": 18.745794644058673
+      },
+      {
+        "location": "RevoluteJoint2.solveVelocityConstraints|dist/planck.mjs",
+        "selfSamples": 911,
+        "percent": 6.1297268200780515
+      },
+      {
+        "location": "Distance|dist/planck.mjs",
+        "selfSamples": 790,
+        "percent": 5.315569909837168
+      },
+      {
+        "location": "update|src/encounters.js",
+        "selfSamples": 475,
+        "percent": 3.196070515408424
+      },
+      {
+        "location": "Solver2.solveIsland|dist/planck.mjs",
+        "selfSamples": 469,
+        "percent": 3.155699098371686
+      },
+      {
+        "location": "findMaxSeparation|dist/planck.mjs",
+        "selfSamples": 403,
+        "percent": 2.711613510967568
+      },
+      {
+        "location": "Solver2.solveWorldTOI|dist/planck.mjs",
+        "selfSamples": 335,
+        "percent": 2.2540707845512045
+      },
+      {
+        "location": "setRotAngle|dist/planck.mjs",
+        "selfSamples": 313,
+        "percent": 2.1060422554164986
+      },
+      {
+        "location": "Sweep2.getTransform|dist/planck.mjs",
+        "selfSamples": 305,
+        "percent": 2.0522136993675146
+      },
+      {
+        "location": "Fixture2.synchronize|dist/planck.mjs",
+        "selfSamples": 271,
+        "percent": 1.8234423361593326
+      },
+      {
+        "location": "crossNumVec2|dist/planck.mjs",
+        "selfSamples": 254,
+        "percent": 1.7090566545552415
+      },
+      {
+        "location": "PolygonShape2.computeAABB|dist/planck.mjs",
+        "selfSamples": 249,
+        "percent": 1.6754138070246265
+      },
+      {
+        "location": "Solver2.solveWorld|dist/planck.mjs",
+        "selfSamples": 240,
+        "percent": 1.6148566814695196
+      },
+      {
+        "location": "Contact2.update|dist/planck.mjs",
+        "selfSamples": 220,
+        "percent": 1.4802852913470597
+      },
+      {
+        "location": "updateEncounters|src/articulated.js",
+        "selfSamples": 212,
+        "percent": 1.4264567352980757
+      },
+      {
+        "location": "TimeOfImpact|dist/planck.mjs",
+        "selfSamples": 211,
+        "percent": 1.4197281657919527
+      },
+      {
+        "location": "World2.step|dist/planck.mjs",
+        "selfSamples": 178,
+        "percent": 1.1976853720898937
+      },
+      {
+        "location": "Contact2._solvePositionConstraint|dist/planck.mjs",
+        "selfSamples": 178,
+        "percent": 1.1976853720898937
+      },
+      {
+        "location": "SimplexCache2.recycle|dist/planck.mjs",
+        "selfSamples": 177,
+        "percent": 1.1909568025837707
+      },
+      {
+        "location": "RevoluteJoint2.solvePositionConstraints|dist/planck.mjs",
+        "selfSamples": 175,
+        "percent": 1.1774996635715247
+      },
+      {
+        "location": "collisionRegion|src/articulated.js",
+        "selfSamples": 172,
+        "percent": 1.1573139550531557
+      },
+      {
+        "location": "Rot2.setAngle|dist/planck.mjs",
+        "selfSamples": 167,
+        "percent": 1.1236711075225407
+      },
+      {
+        "location": "SeparationFunction2.compute|dist/planck.mjs",
+        "selfSamples": 166,
+        "percent": 1.1169425380164177
+      },
+      {
+        "location": "PolygonShape2.computeDistanceProxy|dist/planck.mjs",
+        "selfSamples": 164,
+        "percent": 1.1034853990041718
+      },
+      {
+        "location": "diff|dist/planck.mjs",
+        "selfSamples": 158,
+        "percent": 1.0631139819674338
+      }
+    ]
+  },
+  "candidate": {
+    "samples": 14553,
+    "topSelfSamples": [
+      {
+        "location": "Contact2.solveVelocityConstraint|dist/planck.mjs",
+        "selfSamples": 2771,
+        "percent": 19.040747612176183
+      },
+      {
+        "location": "RevoluteJoint2.solveVelocityConstraints|dist/planck.mjs",
+        "selfSamples": 914,
+        "percent": 6.280491994777709
+      },
+      {
+        "location": "Distance|dist/planck.mjs",
+        "selfSamples": 806,
+        "percent": 5.5383769669483955
+      },
+      {
+        "location": "Solver2.solveIsland|dist/planck.mjs",
+        "selfSamples": 447,
+        "percent": 3.071531642960214
+      },
+      {
+        "location": "findMaxSeparation|dist/planck.mjs",
+        "selfSamples": 424,
+        "percent": 2.913488627774342
+      },
+      {
+        "location": "Solver2.solveWorldTOI|dist/planck.mjs",
+        "selfSamples": 358,
+        "percent": 2.459973888545317
+      },
+      {
+        "location": "Sweep2.getTransform|dist/planck.mjs",
+        "selfSamples": 304,
+        "percent": 2.0889163746306605
+      },
+      {
+        "location": "setRotAngle|dist/planck.mjs",
+        "selfSamples": 297,
+        "percent": 2.0408163265306123
+      },
+      {
+        "location": "crossNumVec2|dist/planck.mjs",
+        "selfSamples": 266,
+        "percent": 1.8278018278018278
+      },
+      {
+        "location": "PolygonShape2.computeAABB|dist/planck.mjs",
+        "selfSamples": 265,
+        "percent": 1.8209303923589637
+      },
+      {
+        "location": "Solver2.solveWorld|dist/planck.mjs",
+        "selfSamples": 260,
+        "percent": 1.7865732151446436
+      },
+      {
+        "location": "Fixture2.synchronize|dist/planck.mjs",
+        "selfSamples": 250,
+        "percent": 1.7178588607160035
+      },
+      {
+        "location": "update|src/encounters.js",
+        "selfSamples": 221,
+        "percent": 1.518587232872947
+      },
+      {
+        "location": "TimeOfImpact|dist/planck.mjs",
+        "selfSamples": 215,
+        "percent": 1.4773586202157631
+      },
+      {
+        "location": "Rot2.setAngle|dist/planck.mjs",
+        "selfSamples": 213,
+        "percent": 1.463615749330035
+      },
+      {
+        "location": "SimplexCache2.recycle|dist/planck.mjs",
+        "selfSamples": 201,
+        "percent": 1.381158524015667
+      },
+      {
+        "location": "Contact2.update|dist/planck.mjs",
+        "selfSamples": 193,
+        "percent": 1.3261870404727547
+      },
+      {
+        "location": "recipeFor|src/encounters.js",
+        "selfSamples": 192,
+        "percent": 1.3193156050298906
+      },
+      {
+        "location": "World2.step|dist/planck.mjs",
+        "selfSamples": 187,
+        "percent": 1.2849584278155706
+      },
+      {
+        "location": "RevoluteJoint2.solvePositionConstraints|dist/planck.mjs",
+        "selfSamples": 180,
+        "percent": 1.2368583797155226
+      },
+      {
+        "location": "Contact2._solvePositionConstraint|dist/planck.mjs",
+        "selfSamples": 174,
+        "percent": 1.1956297670583385
+      },
+      {
+        "location": "diff|dist/planck.mjs",
+        "selfSamples": 166,
+        "percent": 1.1406582835154264
+      },
+      {
+        "location": "DynamicTree2.query|dist/planck.mjs",
+        "selfSamples": 165,
+        "percent": 1.1337868480725624
+      },
+      {
+        "location": "collisionRegion|src/articulated.js",
+        "selfSamples": 164,
+        "percent": 1.1269154126296983
+      },
+      {
+        "location": "RopeJoint2.solveVelocityConstraints|dist/planck.mjs",
+        "selfSamples": 158,
+        "percent": 1.0856867999725142
+      }
+    ]
+  }
+}

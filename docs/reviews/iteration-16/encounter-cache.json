@@ -1,0 +1,82 @@
+{
+  "protocol": "Exact old/new director outputs and snapshots across travel, all four regions, cells, slots, expiration, cache eviction, rewind, reset and JSON restore. Six alternating-order60000update microbenchmarks; round0 warmup. No physics changes or user saves.",
+  "baselineCommit": "a074bd2b6b533dd2e99dd5a6f73cf31a13a04460",
+  "baselineSHA256": "475ef459aa725f55d0526302b10c83ab737abf7ca513ca7c15945796491df058",
+  "candidateSHA256": "4185f6a2b5cf8f922f4b4281ed9a8baf308faa2aa624150fe409a48f09f0291d",
+  "checks": 18607,
+  "outputSHA256": "9c7591357b2249c1854ecdb95b11d9ef5d728044aa17d371430fa1bbcfdef287",
+  "rows": [
+    {
+      "round": 0,
+      "name": "baseline",
+      "ms": 194.69137500000005,
+      "active": 415027
+    },
+    {
+      "round": 0,
+      "name": "cached",
+      "ms": 110.65029100000004,
+      "active": 415027
+    },
+    {
+      "round": 1,
+      "name": "cached",
+      "ms": 108.78579200000001,
+      "active": 415027
+    },
+    {
+      "round": 1,
+      "name": "baseline",
+      "ms": 190.15091599999994,
+      "active": 415027
+    },
+    {
+      "round": 2,
+      "name": "baseline",
+      "ms": 189.26199999999994,
+      "active": 415027
+    },
+    {
+      "round": 2,
+      "name": "cached",
+      "ms": 106.48325,
+      "active": 415027
+    },
+    {
+      "round": 3,
+      "name": "cached",
+      "ms": 108.651208,
+      "active": 415027
+    },
+    {
+      "round": 3,
+      "name": "baseline",
+      "ms": 187.83441700000003,
+      "active": 415027
+    },
+    {
+      "round": 4,
+      "name": "baseline",
+      "ms": 189.61887500000012,
+      "active": 415027
+    },
+    {
+      "round": 4,
+      "name": "cached",
+      "ms": 106.73966599999994,
+      "active": 415027
+    },
+    {
+      "round": 5,
+      "name": "cached",
+      "ms": 106.31166699999994,
+      "active": 415027
+    },
+    {
+      "round": 5,
+      "name": "baseline",
+      "ms": 189.8917080000001,
+      "active": 415027
+    }
+  ]
+}

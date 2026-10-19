@@ -1,0 +1,183 @@
+{
+  "protocol": "Same recorded low-winding marmoset head-loaded canonical state, three outer resolutions,10seconds or physical separation. No force, mass, geometry, limits, contact or body changes. Measures support retention, work residual and joint behavior; absence/presence of a release alone is not proof of numerical correctness.",
+  "rows": [
+    {
+      "hz": 600,
+      "release": null,
+      "contactSeconds": 10,
+      "maxAngular": 0.27731633465366734,
+      "maxAnchor": 0.20623568398286676,
+      "maxPositiveResidual": 0,
+      "worstAnchor": {
+        "time": 5.341666666667502,
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "head"
+        },
+        "joint": null
+      },
+      "worstAngular": {
+        "time": 4.953333333334108,
+        "bodyA": {
+          "role": "pouch",
+          "id": "cradle"
+        },
+        "bodyB": {
+          "role": "pouchflap",
+          "id": "right-panel"
+        },
+        "joint": {
+          "role": "pouchhinge",
+          "id": "stopped-V",
+          "halfAngle": 0.3490658503988659
+        }
+      },
+      "final": {
+        "elapsed": 10.000000000001563,
+        "center": {
+          "x": -6.692823937881354,
+          "y": 182.21220500380718,
+          "vx": -0.46451844039415435,
+          "vy": -34.78406680608175,
+          "mass": 0.8500000000000001
+        },
+        "cup": {
+          "x": -6.632291956115995,
+          "y": 182.53006605079923
+        },
+        "support": {
+          "cradleSpeed": 33.714658630643825,
+          "cradleSpin": -2.8047911441789672,
+          "withinEnvelope": false,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 1.7832386802783438,
+          "maxPartRelativeSpeed": 3.2207130560671815,
+          "maxRelativeSpin": 17.578644970895553
+        },
+        "escaped": false,
+        "opening": 1.1708640490126596
+      }
+    },
+    {
+      "hz": 1200,
+      "release": null,
+      "contactSeconds": 10,
+      "maxAngular": 0.19943108049835123,
+      "maxAnchor": 0.18876001935427786,
+      "maxPositiveResidual": 0,
+      "worstAnchor": {
+        "time": 5.255833333331163,
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "head"
+        },
+        "joint": null
+      },
+      "worstAngular": {
+        "time": 2.5025000000003335,
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "joint": null
+      },
+      "final": {
+        "elapsed": 9.999999999993515,
+        "center": {
+          "x": -10.731671940466017,
+          "y": 177.92939290793822,
+          "vx": 2.51221172696114,
+          "vy": -41.832871195956585,
+          "mass": 0.8500000000000001
+        },
+        "cup": {
+          "x": -10.434818166712093,
+          "y": 178.08244402980168
+        },
+        "support": {
+          "cradleSpeed": 40.441863506997166,
+          "cradleSpin": -5.755130753271968,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 1.363430656655627,
+          "maxPartRelativeSpeed": 4.342113249517844,
+          "maxRelativeSpin": 34.728963612459815
+        },
+        "escaped": false,
+        "opening": 1.2521031553183173
+      }
+    },
+    {
+      "hz": 2400,
+      "release": null,
+      "contactSeconds": 10,
+      "maxAngular": 0.23913437844053198,
+      "maxAnchor": 0.17694429613475954,
+      "maxPositiveResidual": 0,
+      "worstAnchor": {
+        "time": 5.1216666666620085,
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "head"
+        },
+        "joint": null
+      },
+      "worstAngular": {
+        "time": 2.7899999999974625,
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "joint": null
+      },
+      "final": {
+        "elapsed": 9.999999999990905,
+        "center": {
+          "x": -7.699599559014256,
+          "y": 190.26119100384346,
+          "vx": -1.2790843745187364,
+          "vy": -43.05296992754738,
+          "mass": 0.8500000000000001
+        },
+        "cup": {
+          "x": -7.27442052510404,
+          "y": 190.4608817981041
+        },
+        "support": {
+          "cradleSpeed": 41.862674760755525,
+          "cradleSpin": -7.24132879410621,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 1.7600357762020031,
+          "maxPartRelativeSpeed": 3.161783484035834,
+          "maxRelativeSpin": 19.765561636632484
+        },
+        "escaped": false,
+        "opening": 1.8500886446329199
+      }
+    }
+  ]
+}

@@ -1,0 +1,556 @@
+{
+  "protocol": "18 physically loaded180kg possum poses at0.5675winding; torso/head grip, moving-cradle offsets−.45/0/.45m, unheld .05/.3/1s waits. No pose repairs. First reproduced poor canonical release replayed at600/1200/2400Hz outer timestep to check convergence. This is a controlled reproduction, not the missing original browser snapshot.",
+  "sourceSHA256": {
+    "src/articulated.js": "8eaa87a59d3ba3f59b8da446742b57e752e05ff1be7582788bae6cf3b3d06b67",
+    "src/hook-experiment.js": "a5289b746b0bb61eaa513b61d9089ebd50dddf17e70abdff3ab39b8fc95e05b1",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6"
+  },
+  "rows": [
+    {
+      "grip": "torso",
+      "offset": -0.45,
+      "settle": 0.05,
+      "status": {
+        "cradleSpeed": 0.8531418774341846,
+        "cradleSpin": 0.27780773519048474,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 0.3314015372084284,
+        "maxPartRelativeSpeed": 0.4225725086314801,
+        "maxRelativeSpin": 6.063017058659333
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 11.16186262636625,
+          "vy": 13.903304312510238,
+          "speed": 17.82944329181754,
+          "afterSeconds": 0.8866666666668053,
+          "armAdvance": -2.855194586546256,
+          "hardwareEscaped": false,
+          "opening": 1.332490120389604
+        },
+        "maxAngular": 0.03913128622441797,
+        "maxAnchor": 0.0010461436685852057,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "torso",
+      "offset": -0.45,
+      "settle": 0.3,
+      "status": {
+        "cradleSpeed": 0.731138383318803,
+        "cradleSpin": 0.14987978079047445,
+        "withinEnvelope": true,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 2.1479572805761786,
+        "maxPartRelativeSpeed": 2.4780575649576813,
+        "maxRelativeSpin": 3.722172539558126
+      },
+      "ready": false
+    },
+    {
+      "grip": "torso",
+      "offset": -0.45,
+      "settle": 1,
+      "status": {
+        "cradleSpeed": 0.2536269472915327,
+        "cradleSpin": -0.09634271772960176,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 1.0302098404636382,
+        "maxPartRelativeSpeed": 1.134982820550887,
+        "maxRelativeSpin": 2.224530749209921
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 10.526926291354144,
+          "vy": 17.54299411190095,
+          "speed": 20.459052264310646,
+          "afterSeconds": 0.7833333333334558,
+          "armAdvance": -2.48683387471133,
+          "hardwareEscaped": false,
+          "opening": 0.8892701679623299
+        },
+        "maxAngular": 0.03838808791119974,
+        "maxAnchor": 0.0009874093096652302,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "torso",
+      "offset": 0,
+      "settle": 0.05,
+      "status": {
+        "cradleSpeed": 0.7812392406795694,
+        "cradleSpin": 0.2463604341052719,
+        "withinEnvelope": true,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 0.6367068595026424,
+        "maxPartRelativeSpeed": 1.0596620474212635,
+        "maxRelativeSpin": 4.456880591619112
+      },
+      "ready": false
+    },
+    {
+      "grip": "torso",
+      "offset": 0,
+      "settle": 0.3,
+      "status": {
+        "cradleSpeed": 0.5464277365835796,
+        "cradleSpin": 0.16846511428691402,
+        "withinEnvelope": true,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 2.978875218622861,
+        "maxPartRelativeSpeed": 3.655955936960408,
+        "maxRelativeSpin": 5.041366791915202
+      },
+      "ready": false
+    },
+    {
+      "grip": "torso",
+      "offset": 0,
+      "settle": 1,
+      "status": {
+        "cradleSpeed": 0.5952739473095128,
+        "cradleSpin": -0.20925178531353114,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 4,
+        "relativeSpeed": 0.0016757276001837225,
+        "maxPartRelativeSpeed": 0.006101762922399944,
+        "maxRelativeSpin": 0.037101483007742464
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 10.776005590532574,
+          "vy": 18.174747050650122,
+          "speed": 21.12921500771632,
+          "afterSeconds": 0.8200000000001282,
+          "armAdvance": -2.573484180772585,
+          "hardwareEscaped": false,
+          "opening": 1.0130438267821935
+        },
+        "maxAngular": 0.03877330253085742,
+        "maxAnchor": 0.0009944677140288532,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "torso",
+      "offset": 0.45,
+      "settle": 0.05,
+      "status": {
+        "cradleSpeed": 0.9554173563456158,
+        "cradleSpin": 0.3074796796319157,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 0.6352838461151673,
+        "maxPartRelativeSpeed": 0.9618220037531867,
+        "maxRelativeSpin": 2.0887341018358576
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 0.6771206939004618,
+          "vy": -1.0597350419562606,
+          "speed": 1.2575892784443896,
+          "afterSeconds": 0.0550000000000086,
+          "armAdvance": -0.014501144367617513,
+          "hardwareEscaped": false,
+          "opening": -0.0036902520007910944
+        },
+        "maxAngular": 0.026560660066224706,
+        "maxAnchor": 0.000002277388233248507,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      },
+      "refined": [
+        {
+          "hz": 1200,
+          "released": true,
+          "release": {
+            "vx": 0.6759757629760842,
+            "vy": -1.0586275392257656,
+            "speed": 1.256039608825414,
+            "afterSeconds": 0.0550000000000086,
+            "armAdvance": -0.0143622369537737,
+            "hardwareEscaped": false,
+            "opening": -0.0037062956734010832
+          },
+          "maxAngular": 0.02713069151587799,
+          "maxAnchor": 0.000002121301050368668,
+          "maxPositiveResidual": 0,
+          "branchBeforeRelease": null
+        },
+        {
+          "hz": 2400,
+          "released": true,
+          "release": {
+            "vx": 0.6756450279586343,
+            "vy": -1.0540825300683292,
+            "speed": 1.2520328206562612,
+            "afterSeconds": 0.05458333333328369,
+            "armAdvance": -0.014115697112866421,
+            "hardwareEscaped": false,
+            "opening": -0.003561001744090242
+          },
+          "maxAngular": 0.02817585104741216,
+          "maxAnchor": 0.000002086118210163461,
+          "maxPositiveResidual": 0,
+          "branchBeforeRelease": null
+        }
+      ],
+      "savedFixture": "possum-poor-seat.json"
+    },
+    {
+      "grip": "torso",
+      "offset": 0.45,
+      "settle": 0.3,
+      "status": {
+        "cradleSpeed": 1.075001314782941,
+        "cradleSpin": 0.3360176768782963,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 1.2012386304313,
+        "maxPartRelativeSpeed": 1.5692507169418102,
+        "maxRelativeSpin": 9.16455683477303
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 8.232377709512368,
+          "vy": 16.79832104273274,
+          "speed": 18.707101127828267,
+          "afterSeconds": 0.7650000000001196,
+          "armAdvance": -2.4581596019617304,
+          "hardwareEscaped": true,
+          "opening": 0.9601290152106613
+        },
+        "maxAngular": 0.05392794064107531,
+        "maxAnchor": 0.000853398612552694,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "torso",
+      "offset": 0.45,
+      "settle": 1,
+      "status": {
+        "cradleSpeed": 0.4507612034759186,
+        "cradleSpin": -0.16574166060519688,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.0017478322528991011,
+        "maxPartRelativeSpeed": 0.002864351268795414,
+        "maxRelativeSpin": 0.010076926714450957
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 6.596320569005707,
+          "vy": 19.086205781596117,
+          "speed": 20.193927210587862,
+          "afterSeconds": 0.7916666666667904,
+          "armAdvance": -2.525884930673377,
+          "hardwareEscaped": true,
+          "opening": 1.0101485041615628
+        },
+        "maxAngular": 0.037284666863284466,
+        "maxAnchor": 0.0008940045011452814,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": -0.45,
+      "settle": 0.05,
+      "status": {
+        "cradleSpeed": 0.49201503159029,
+        "cradleSpin": 0.238478796074519,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 0.4005524885337663,
+        "maxPartRelativeSpeed": 0.5532134641899682,
+        "maxRelativeSpin": 2.5340177028585957
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 8.656112863712586,
+          "vy": 16.26316971892379,
+          "speed": 18.423327039811518,
+          "afterSeconds": 0.8066666666667928,
+          "armAdvance": -2.662238684965876,
+          "hardwareEscaped": true,
+          "opening": 0.8459171708350047
+        },
+        "maxAngular": 0.039051339750883374,
+        "maxAnchor": 0.0008145728180506299,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": -0.45,
+      "settle": 0.3,
+      "status": {
+        "cradleSpeed": 0.5307781410906884,
+        "cradleSpin": 0.16469074592316274,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 1.6984510685995768,
+        "maxPartRelativeSpeed": 2.0214857553698744,
+        "maxRelativeSpin": 7.201940545387522
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 8.585580225508206,
+          "vy": 16.38467193238419,
+          "speed": 18.497828579065594,
+          "afterSeconds": 0.7983333333334581,
+          "armAdvance": -2.6121887338319607,
+          "hardwareEscaped": true,
+          "opening": 0.8749349585779366
+        },
+        "maxAngular": 0.038360643144358386,
+        "maxAnchor": 0.000891671784000683,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": -0.45,
+      "settle": 1,
+      "status": {
+        "cradleSpeed": 0.2651854918162291,
+        "cradleSpin": 0.07391039248722794,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 0.16247344773869474,
+        "maxPartRelativeSpeed": 0.31077295818773415,
+        "maxRelativeSpin": 0.8446303147610158
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 9.874169993212353,
+          "vy": 14.923878711047415,
+          "speed": 17.894730756200538,
+          "afterSeconds": 0.7816666666667889,
+          "armAdvance": -2.483985699038477,
+          "hardwareEscaped": true,
+          "opening": 0.7885577650918599
+        },
+        "maxAngular": 0.04043008605209164,
+        "maxAnchor": 0.0007564003938109527,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": 0,
+      "settle": 0.05,
+      "status": {
+        "cradleSpeed": 0.8260796093703825,
+        "cradleSpin": 0.2634745002114659,
+        "withinEnvelope": true,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 0.5034686099087929,
+        "maxPartRelativeSpeed": 0.6264056786865491,
+        "maxRelativeSpin": 3.3588120409989113
+      },
+      "ready": false
+    },
+    {
+      "grip": "head",
+      "offset": 0,
+      "settle": 0.3,
+      "status": {
+        "cradleSpeed": 0.3810596924176678,
+        "cradleSpin": 0.11444547734528822,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 1.4989972097238349,
+        "maxPartRelativeSpeed": 1.709550418645688,
+        "maxRelativeSpin": 5.116985465424133
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 1.4335027262148885,
+          "vy": 13.72329948655234,
+          "speed": 13.797966475668552,
+          "afterSeconds": 0.7283333333334472,
+          "armAdvance": -2.336206345628887,
+          "hardwareEscaped": true,
+          "opening": 1.111659804346686
+        },
+        "maxAngular": 0.03898816982648334,
+        "maxAnchor": 0.00098036422499758,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": 0,
+      "settle": 1,
+      "status": {
+        "cradleSpeed": 0.27446201282348426,
+        "cradleSpin": -0.10814254803883822,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.005770350601670736,
+        "maxPartRelativeSpeed": 0.008539883387423782,
+        "maxRelativeSpin": 0.03772152334208892
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 3.6076597252692952,
+          "vy": 18.3218641565297,
+          "speed": 18.673669025225273,
+          "afterSeconds": 0.7666666666667865,
+          "armAdvance": -2.4577274115687215,
+          "hardwareEscaped": true,
+          "opening": 1.0720215084089264
+        },
+        "maxAngular": 0.039407764823827574,
+        "maxAnchor": 0.001077164882545702,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": 0.45,
+      "settle": 0.05,
+      "status": {
+        "cradleSpeed": 1.9869351188015256,
+        "cradleSpin": 0.6659150937895696,
+        "withinEnvelope": true,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 1.0119744077036197,
+        "maxPartRelativeSpeed": 1.888130698447955,
+        "maxRelativeSpin": 5.410540224355491
+      },
+      "ready": false
+    },
+    {
+      "grip": "head",
+      "offset": 0.45,
+      "settle": 0.3,
+      "status": {
+        "cradleSpeed": 2.0460904545458054,
+        "cradleSpin": 0.658495038377422,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 1,
+        "relativeSpeed": 0.341660850294088,
+        "maxPartRelativeSpeed": 1.7303830933034066,
+        "maxRelativeSpin": 15.417384894470421
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": 0.6103993001066645,
+          "vy": 10.677291648879928,
+          "speed": 10.694725067097881,
+          "afterSeconds": 0.7200000000001125,
+          "armAdvance": -2.37023132483043,
+          "hardwareEscaped": true,
+          "opening": 1.2927728258134015
+        },
+        "maxAngular": 0.03576032272959084,
+        "maxAnchor": 0.0010432689192753724,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    },
+    {
+      "grip": "head",
+      "offset": 0.45,
+      "settle": 1,
+      "status": {
+        "cradleSpeed": 0.4452546554823068,
+        "cradleSpin": -0.16272150778933792,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.3719147651103842,
+        "maxPartRelativeSpeed": 0.6797783298530704,
+        "maxRelativeSpin": 3.7005972845087887
+      },
+      "ready": true,
+      "production": {
+        "hz": 600,
+        "released": true,
+        "release": {
+          "vx": -8.05661744241533,
+          "vy": -21.39516947181452,
+          "speed": 22.86181010640004,
+          "afterSeconds": 1.1350000000001774,
+          "armAdvance": -2.8882384255528,
+          "hardwareEscaped": true,
+          "opening": 1.4056319243488256
+        },
+        "maxAngular": 0.055550520790129676,
+        "maxAnchor": 0.002282145240699457,
+        "maxPositiveResidual": 0,
+        "branchBeforeRelease": null
+      }
+    }
+  ]
+}

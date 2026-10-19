@@ -73,3 +73,11 @@ test('seeded long canopy and floor travel reveal every regional kind with clear 
 test('fresh encounters leave a short reaction corridor for fast, descending and reverse travel',()=>{
  const e={x:6,y:0,radius:.6,vx:0,vy:0};assert.equal(hasArrivalClearance(e,{x:0,y:0,vx:20,vy:0}),false);assert.equal(hasArrivalClearance(e,{x:0,y:0,vx:-20,vy:0}),true);assert.equal(hasArrivalClearance({...e,x:0,y:-6},{x:0,y:0,vx:0,vy:-20}),false);assert.equal(hasArrivalClearance({...e,y:4},{x:0,y:0,vx:20,vy:0}),true);assert.equal(hasArrivalClearance({...e,vx:20},{x:0,y:0,vx:20,vy:0}),true);assert.equal(hasArrivalClearance(e,{x:0,y:0,vx:NaN}),false);
 });
+
+test('bounded recipe cache preserves the pre-cache schedule across eviction and rewind',async()=>{
+ const {createHash}=await import('node:crypto'),h=createHash('sha256'),d=createEncounterDirector('eviction-baseline');
+ for(let i=0;i<2500;i++){const t=i/15;h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));}
+ for(const t of [0,1,2,100,100,200])h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));
+ // Golden output from a074bd2, before caching; includes births/events, not just counts.
+ assert.equal(h.digest('hex'),'4d7921ae9c51148bff0a9726dad973d3050ff2b53fb8178a841013c052990225');
+});

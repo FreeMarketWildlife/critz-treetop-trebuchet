@@ -39,7 +39,7 @@ $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</opti
 function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
 let rosterKey='';
 function updateRoster(){const ids=queue.peek(),key=ids.join(',');if(key===rosterKey)return;rosterKey=key;$('roster').replaceChildren(...ids.map((id,i)=>{const p=profiles.find(p=>p.id===id),card=document.createElement('div'),canvas=document.createElement('canvas'),label=document.createElement('span');card.className='volunteer-card';canvas.width=160;canvas.height=72;canvas.setAttribute('aria-hidden','true');label.textContent=`${i+1}. ${p.label}${id==='flying-squirrel'?' • rare':''}`;card.append(canvas,label);drawVolunteerPortrait(canvas.getContext('2d'),createRig(id),160,72);return card;}));}
-function installScene(candidate){bank();winding.cancel();grip.reset();held=false;effects=[];runObstacle=null;journey=createJourneyTracker();loadingCoach=createLoadingCoach();zoneNotice='';zoneNoticeUntil=0;sliderRunning=false;shotId=null;banked=false;launchStarted=null;scene=candidate;fraction=.6;$('power').value=(fraction-.2)/.75;clearPreview();nextPreview=clock+.15;error='';accumulator=0;nextStatus=0;nextRuntime=0;frameClock.reset();economyUI();updateRoster();setText('speciesTrait',speciesTraits[scene.rig.id]);setText('rigFacts',`${scene.rig.label}: ${scene.rig.bodies.map(b=>`${b.id} ${(b.mass*1000).toFixed(0)} g`).join(' • ')}. Contact friction ${scene.rig.friction}; restitution ${scene.rig.restitution}. Prototype units, not biological measurements.`);}
+function installScene(candidate){bank();winding.cancel();grip.reset();held=false;effects=[];runObstacle=null;journey=createJourneyTracker();loadingCoach=createLoadingCoach();zoneNotice='';zoneNoticeUntil=0;sliderRunning=false;shotId=null;banked=false;launchStarted=null;scene=candidate;fraction=.6;$('power').value=(fraction-.2)/.75;clearPreview();nextPreview=clock+.15;error='';accumulator=0;nextStatus=0;nextRuntime=0;frameClock.reset();runtimeMetrics.reset();economyUI();updateRoster();setText('speciesTrait',speciesTraits[scene.rig.id]);setText('rigFacts',`${scene.rig.label}: ${scene.rig.bodies.map(b=>`${b.id} ${(b.mass*1000).toFixed(0)} g`).join(' • ')}. Contact friction ${scene.rig.friction}; restitution ${scene.rig.restitution}. Prototype units, not biological measurements.`);}
 function reset(){try{const candidate=new (SceneType())(settings(),$('species').value);installScene(candidate);return true;}catch(e){error=e.message;return false;}}
 $('hook').onchange=reset;$('split').onchange=reset;
 for(const id of ['species','mass','long','short','friction','drag','sling','railAngle','railLength','panelMass'])$(id).onchange=reset;
@@ -76,17 +76,17 @@ setText('audioStatus',`${audioPreferences.muted?'Muted':'Sound on'} • ${Math.r
 $('save').onchange=()=>{saveProgressConsent(storageBackend,$('save').checked);persistence=createEconomyPersistence(storageBackend,{enabled:$('save').checked});if($('save').checked){try{economy=persistence.load()??economy;saveProgress();economyUI();}catch{error='Saved progress could not be read; this session is still available.';}}};
 for(const [id,direction]of [['left',-1],['right',1]]){$(id).onpointerdown=e=>{if(isPaused()||scene?.phase!=='flight')return;e.preventDefault();$(id).setPointerCapture(e.pointerId);scene.control=direction;};$(id).onpointerup=$(id).onpointercancel=$(id).onlostpointercapture=()=>scene.control=0;}
 economyUI();
-function render(now){const frameBegan=performance.now(),paused=isPaused(),dt=frameClock.advance(now,paused);clock+=dt;accumulator+=dt;
+function render(now){const frameBegan=performance.now(),samplePhase=scene?.phase,paused=isPaused(),dt=frameClock.advance(now,paused);clock+=dt;accumulator+=dt;
  if(sliderRunning&&!paused)$('power').value=windingMeter(now,sliderStart);
- try{if(scene){while(accumulator>=1/600){scene.step();accumulator-=1/600;}
+ try{if(scene){let steps=0;const engineBegan=performance.now();while(accumulator>=1/600){scene.step();accumulator-=1/600;steps++;}const engineMs=performance.now()-engineBegan;let predictionMs=0;
  const loading=scene.loadingStatus(),inContact=loading.contacting;
  const eligible=!paused&&scene.phase==='loading'&&!held&&!scene.control&&scene.isLoaded()&&inContact;
  if(!eligible){clearPreview();nextPreview=clock+.15;}
  else {
   if(preview&&!predictionPoseIsCurrent(scene,previewBasis)){preview=null;previewBasis=null;}
   if(previewJob&&previewSource!==scene)clearPreview();
-  if(!previewJob&&clock>nextPreview){previewJob=createPredictionJob(scene);previewSource=scene;previewCapture=capturePredictionPose(scene);}
-  if(previewJob){previewJob.advance({maxSteps:300,budgetMs:2.5});
+  if(!previewJob&&clock>nextPreview){const cloneBegan=performance.now();previewJob=createPredictionJob(scene);previewSource=scene;previewCapture=capturePredictionPose(scene);predictionMs+=performance.now()-cloneBegan;}
+  if(previewJob){const predictionBegan=performance.now();previewJob.advance({maxSteps:300,budgetMs:2.5});predictionMs+=performance.now()-predictionBegan;
    if(previewJob.done){lastPredictionMs=previewJob.stats.cpuMs;
     preview=predictionPoseIsCurrent(scene,previewCapture)?previewJob.result:null;previewBasis=preview?previewCapture:null;previewJob=null;nextPreview=clock+Math.max(.6,lastPredictionMs/1000*8);
    }
@@ -116,8 +116,8 @@ function render(now){const frameBegan=performance.now(),paused=isPaused(),dt=fra
  setText('mechanicsReadout',`${scene.rig.label} • ${scene.phase} • ${release?(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(2)+' m/s • ':''}hand work ${scene.handWork.toFixed(2)} J • arcade work ${scene.assistWork.toFixed(2)} J${scene.forceCapped?' ('+gripParameters(scene.rig.totalMass).maxForce.toFixed(0)+' N cap)':''} • motor net work ${scene.windingWork.toFixed(1)} J • counterweight lift ${(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)} m above pivot • frame x ${scene.frame.getPosition().x.toFixed(3)} m • queue seed ${seed}`);
  setText('queue',`Next 3: ${queue.peek().map(id=>profiles.find(p=>p.id===id).label).join(' → ')}`);
  }
- renderer.draw(scene,preview,effects,clock,$('reduced').checked,window.innerWidth);
- if(!paused)runtimeMetrics.record(performance.now()-frameBegan);if(clock>=nextRuntime){nextRuntime=clock+1;const stats=runtimeMetrics.snapshot();setText('runtimeReadout',`Simulation ${scene.elapsed.toFixed(2)} s • ${scene.world.getBodyCount()} bodies / ${scene.world.getJointCount()} joints • ${scene.enemies.size} encounters • ${sound.getStatus().voices} audio voices • frame CPU p95 ${stats.p95.toFixed(2)} ms (last ${stats.samples} frames)${performance.memory?` • JS heap ${(performance.memory.usedJSHeapSize/1048576).toFixed(1)} MB (browser estimate)`:''}`);}
+ const drawBegan=performance.now();renderer.draw(scene,preview,effects,clock,$('reduced').checked,window.innerWidth);const drawMs=performance.now()-drawBegan;
+ if(paused)runtimeMetrics.pause();else runtimeMetrics.record(performance.now()-frameBegan,{frameTime:now,phase:samplePhase,engineMs,predictionMs,drawMs,steps});if(clock>=nextRuntime){nextRuntime=clock+1;const stats=runtimeMetrics.snapshot();setText('runtimeReadout',`Simulation ${scene.elapsed.toFixed(2)} s • ${scene.world.getBodyCount()} bodies / ${scene.world.getJointCount()} joints • ${scene.enemies.size} encounters • ${sound.getStatus().voices} audio voices • frame CPU p95/max ${stats.p95.toFixed(2)}/${stats.max.toFixed(2)} ms • engine ${stats.engine.p95.toFixed(2)} / hint ${stats.prediction.p95.toFixed(2)} / draw ${stats.draw.p95.toFixed(2)} ms p95 • RAF interval p95/max ${stats.interval.p95.toFixed(2)}/${stats.interval.max.toFixed(2)} ms • max ${stats.maxSteps} steps/frame (last ${stats.samples} frames)${performance.memory?` • JS heap ${(performance.memory.usedJSHeapSize/1048576).toFixed(1)} MB (browser estimate)`:''}`);}
  }}catch(e){error=e.message;$('readout').textContent=error;}
  requestAnimationFrame(render);
 }
