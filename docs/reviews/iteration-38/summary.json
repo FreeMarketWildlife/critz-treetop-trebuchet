@@ -1,0 +1,249 @@
+{
+  "baseline": "4ec7645",
+  "tests": {
+    "pass": 243,
+    "fail": 0
+  },
+  "attempts": 264,
+  "outcomes": {
+    "launched": 262,
+    "seating_failed": 2
+  },
+  "flags": {
+    "backward_or_vertical_launch": 18,
+    "downward_launch": 10,
+    "launch_branch_impact": 60,
+    "angular_limit_error": 51,
+    "explosive_speed": 3
+  },
+  "groups": [
+    {
+      "group": 0,
+      "fraction": 0.45,
+      "attempts": 88,
+      "outcomes": {
+        "launched": 88
+      },
+      "flags": {
+        "backward_or_vertical_launch": 8,
+        "downward_launch": 8,
+        "launch_branch_impact": 18,
+        "angular_limit_error": 14
+      },
+      "sourceChangesDuringRun": []
+    },
+    {
+      "group": 1,
+      "fraction": 0.6,
+      "attempts": 88,
+      "outcomes": {
+        "launched": 88
+      },
+      "flags": {
+        "launch_branch_impact": 18,
+        "angular_limit_error": 19,
+        "backward_or_vertical_launch": 3,
+        "downward_launch": 2,
+        "explosive_speed": 2
+      },
+      "sourceChangesDuringRun": []
+    },
+    {
+      "group": 2,
+      "fraction": 0.75,
+      "attempts": 88,
+      "outcomes": {
+        "launched": 86,
+        "seating_failed": 2
+      },
+      "flags": {
+        "launch_branch_impact": 24,
+        "backward_or_vertical_launch": 7,
+        "angular_limit_error": 18,
+        "explosive_speed": 1
+      },
+      "sourceChangesDuringRun": []
+    }
+  ],
+  "hardware": [
+    {
+      "hardware": "stock",
+      "attempts": 33,
+      "released": 33,
+      "nonForwardReleases": 3,
+      "downwardReleases": 1,
+      "launchBranchImpacts": 9,
+      "angularFlags": 2
+    },
+    {
+      "hardware": "counterweight-heavy",
+      "attempts": 33,
+      "released": 33,
+      "nonForwardReleases": 2,
+      "downwardReleases": 1,
+      "launchBranchImpacts": 6,
+      "angularFlags": 9
+    },
+    {
+      "hardware": "beam-long",
+      "attempts": 33,
+      "released": 33,
+      "nonForwardReleases": 6,
+      "downwardReleases": 4,
+      "launchBranchImpacts": 8,
+      "angularFlags": 11
+    },
+    {
+      "hardware": "beam-light",
+      "attempts": 33,
+      "released": 33,
+      "nonForwardReleases": 1,
+      "downwardReleases": 1,
+      "launchBranchImpacts": 7,
+      "angularFlags": 2
+    },
+    {
+      "hardware": "sling-long",
+      "attempts": 33,
+      "released": 33,
+      "nonForwardReleases": 0,
+      "downwardReleases": 0,
+      "launchBranchImpacts": 6,
+      "angularFlags": 6
+    },
+    {
+      "hardware": "frame-heavy",
+      "attempts": 33,
+      "released": 32,
+      "nonForwardReleases": 2,
+      "downwardReleases": 1,
+      "launchBranchImpacts": 10,
+      "angularFlags": 7
+    },
+    {
+      "hardware": "frame-grip",
+      "attempts": 33,
+      "released": 33,
+      "nonForwardReleases": 3,
+      "downwardReleases": 1,
+      "launchBranchImpacts": 6,
+      "angularFlags": 8
+    },
+    {
+      "hardware": "combined",
+      "attempts": 33,
+      "released": 32,
+      "nonForwardReleases": 1,
+      "downwardReleases": 1,
+      "launchBranchImpacts": 8,
+      "angularFlags": 6
+    }
+  ],
+  "misses": [
+    {
+      "id": "frame-heavy-snake-0.75",
+      "outcome": "seating_failed",
+      "loading": {
+        "cradleSpeed": 0.0017122615295814532,
+        "cradleSpin": -0.005336146390224034,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 0.005901163459848426,
+        "maxPartRelativeSpeed": 0.007239066420847234,
+        "maxRelativeSpin": 0.005336146390224031,
+        "waited": 2.9999999999999223,
+        "quiet": 0
+      }
+    },
+    {
+      "id": "combined-frog-0.75",
+      "outcome": "seating_failed",
+      "loading": {
+        "cradleSpeed": 0.008396090835452967,
+        "cradleSpin": 0.0011634568714426557,
+        "withinEnvelope": false,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.0009951452680705766,
+        "maxPartRelativeSpeed": 0.002397296587012358,
+        "maxRelativeSpin": 0.004104627782799233,
+        "waited": 2.9999999999999223,
+        "quiet": 0
+      }
+    }
+  ],
+  "maximums": {
+    "maxRopeStretch": 0.04822965348884933,
+    "maxHingeAnchorError": 0.029036746441488386,
+    "maxAngularLimitError": 0.38985725079305245,
+    "maxBodySpeed": 122.43736170827209,
+    "maxBodySpin": 1105.7274368455423,
+    "maxEnergyResidual": 0
+  },
+  "worstSpinCases": [
+    {
+      "id": "sling-long-mouse-0.6",
+      "worstSpin": {
+        "phase": "flight",
+        "time": 16.500000000001233,
+        "tag": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "mass": 0.09,
+        "inertia": 7.381410199255803e-05,
+        "angularVelocity": 1105.7274368455423,
+        "rotationalEnergy": 45.12378455537632
+      },
+      "physicalFieldsExact": true
+    },
+    {
+      "id": "frame-heavy-mouse-0.6",
+      "worstSpin": {
+        "phase": "flight",
+        "time": 16.43166666666796,
+        "tag": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "mass": 0.09,
+        "inertia": 7.381410199255803e-05,
+        "angularVelocity": 1008.2555096827931,
+        "rotationalEnergy": 37.51893937249543
+      },
+      "physicalFieldsExact": true
+    },
+    {
+      "id": "combined-small-marsupial-0.75",
+      "worstSpin": {
+        "phase": "flight",
+        "time": 17.451666666667034,
+        "tag": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "mass": 0.08399999999999999,
+        "inertia": 6.889316185972082e-05,
+        "angularVelocity": 1053.935659314359,
+        "rotationalEnergy": 38.262586047409535
+      },
+      "physicalFieldsExact": true
+    }
+  ],
+  "maxPredictionReleaseDifference": 0,
+  "noObservedGroundWithinBoundedSearch": 59,
+  "physicalSourcesExactBaseline": {
+    "src/articulated.js": true,
+    "src/hook-experiment.js": true,
+    "src/species.js": true,
+    "src/world.js": true,
+    "src/encounters.js": true,
+    "src/encounter-body.js": true,
+    "src/physics.js": true,
+    "src/prediction.js": true,
+    "src/input.js": true,
+    "src/pickup.js": true,
+    "src/staging.js": true
+  }
+}

@@ -1,3 +1,4 @@
+import{drawLoadingContacts}from'./loading-contact-art.js';
 import {drawFixedObstacles} from './fixed-obstacles.js';
 import {encounterAnimationState} from './encounter-state.js';
 import {drawMechanismDetails} from './mechanism-art.js';
@@ -20,9 +21,9 @@ export function pointerWorld(point,bounds,viewport){
 export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000),camera=createFlightCamera(),cameraScene=null,lastTime=0,wasFlying=false,approachNotice='',lastCssWidth=0,lastCssHeight=0,cueScale=1,cssPixelsPerMetre=45;
  const line=(a,b,color,width=3)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();};
  const dot=(p,r,color)=>{ctx.beginPath();ctx.fillStyle=color;ctx.arc(...p,r,0,Math.PI*2);ctx.fill();};
- function body(scene,b,transform,scale,motion=0){const tag=b.getUserData(),role=tag?.role,position=b.getWorldCenter(),velocity=b.getLinearVelocity(),state=role==='enemy'?encounterAnimationState({time:scene.elapsed,lastContact:tag.lastContact,player:scene.center(),enemy:{x:position.x,y:position.y,vx:velocity.x,vy:velocity.y},radius:tag.radius??b.getFixtureList().getShape().getRadius()}):'idle';if(role==='static')return;
+ function body(scene,b,transform,scale,motion=0,includeStatic=false){const tag=b.getUserData(),role=tag?.role,position=b.getWorldCenter(),velocity=b.getLinearVelocity(),state=role==='enemy'?encounterAnimationState({time:scene.elapsed,lastContact:tag.lastContact,player:scene.center(),enemy:{x:position.x,y:position.y,vx:velocity.x,vy:velocity.y},radius:tag.radius??b.getFixtureList().getShape().getRadius()}):'idle';if(role==='static'&&!includeStatic)return;
   if(role==='enemy'&&b.getUserData().shape==='skid'){const p=transform(b.getWorldCenter()),d=b.getUserData();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:d.radius*scale,shape:d.shape,kind:d.kind,color:d.color,angle:-b.getAngle(),state});return;}
-  for(let f=b.getFixtureList();f;f=f.getNext()){const s=f.getShape(),color=role==='arm'&&(f.getFilterCategoryBits()&64)?'#bca45d':role==='part'?scene.rig.color:role==='pouch'?'#71988b':role==='pouchflap'?'#78a3b6':role==='frame'?'#92724a':role==='hooklink'?'#d0b35e':role==='enemy'?b.getUserData().color:'#594936';ctx.fillStyle=tag?.geometry==='dome'&&f.getUserData()?.part==='stem'?'#dcc8a0':color;
+  for(let f=b.getFixtureList();f;f=f.getNext()){const s=f.getShape(),color=role==='static'?'#675337':role==='arm'&&(f.getFilterCategoryBits()&64)?'#bca45d':role==='part'?scene.rig.color:role==='pouch'?'#71988b':role==='pouchflap'?'#78a3b6':role==='frame'?'#92724a':role==='hooklink'?'#d0b35e':role==='enemy'?b.getUserData().color:'#594936';ctx.fillStyle=tag?.geometry==='dome'&&f.getUserData()?.part==='stem'?'#dcc8a0':color;
    if(s.getType()==='circle'){dot(transform(b.getWorldPoint(s.getCenter())),s.getRadius()*scale,color);if(role==='part'||role==='enemy'){ctx.strokeStyle='#344b38';ctx.lineWidth=role==='enemy'?1.5:1.1;ctx.stroke();}}
    else if(s.getType()==='polygon'){const points=s.m_vertices.map(v=>transform(b.getWorldPoint(v)));ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.closePath();ctx.fill();ctx.strokeStyle='#344b38';ctx.lineWidth=1.1;ctx.stroke();}
   }
@@ -50,11 +51,11 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
    line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',7);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',4);
    if(scene.hand)drawGripTether(ctx,{anchor:local(scene.hand.body.getWorldPoint(scene.hand.local)),target:local(scene.hand.target),pixelRatio:45/cssPixelsPerMetre,capped:scene.forceCapped});
-   for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);drawMechanismDetails(ctx,scene,local);
+   for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);drawMechanismDetails(ctx,scene,local);drawLoadingContacts(ctx,scene,local,cueScale);
    dot(local(scene.arm.getWorldPoint({x:0,y:0})),5,'#e6c475');
    if(scene.phase==='loading'&&!scene.hand&&scene.parts?.length){const root=scene.parts.find(b=>b.getUserData().id==='torso')??scene.parts[Math.floor(scene.parts.length/2)],p=local(root.getWorldCenter());ctx.setLineDash([3,3]);ctx.beginPath();ctx.strokeStyle='#f8eab8';ctx.lineWidth=2;ctx.arc(...p,PICKUP_RADIUS_CSS*45/cssPixelsPerMetre,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#273f35';ctx.font='12px system-ui';ctx.fillText('Grab here',Math.max(10,p[0]-27),p[1]-PICKUP_RADIUS_CSS*45/cssPixelsPerMetre-6);}
    if(portrait&&preview)preview.points.forEach((p,i)=>dot(local(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
-   ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':scene.phase==='launching'?'Arm moving under gravity':'Lift beside cradle → across above → release',12,24);ctx.restore();
+   ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':scene.phase==='launching'?'Arm moving under gravity':'Lift beside cradle → across above → release',12,24);if(scene.phase==='loading'){ctx.font=`${12*cueScale}px system-ui`;ctx.fillText('Amber dots: actual pouch contact',12,45);}ctx.restore();
   }
   if(!portrait||flying){
    const panel=flying?{x:0,y:0,w:canvas.width,h:canvas.height}:{x:500,y:56,w:460,h:424},biome=biomeAt(c.y),scale=flying?42:100;
@@ -76,12 +77,14 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
     const cues=approachCues(c,[...encounters,...terrain],{camera:cam,width:panel.w,height:panel.h,scale,payloadRadius});approachNotice=cues.length?'Nearby: '+cues.map(q=>`${q.count>1?q.count+' nearby obstacles':q.kind} (${Math.abs(Math.sin(q.angle))>.707?(Math.sin(q.angle)>0?'below':'above'):(Math.cos(q.angle)>0?'right':'left')})`).join(', ')+'.':'';
     for(const cue of cues){ctx.save();ctx.translate(cue.x,cue.y);ctx.scale(cueScale,cueScale);ctx.rotate(cue.angle);ctx.fillStyle='#f8d58c';ctx.strokeStyle='#5c4b2a';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(-7,-7);ctx.lineTo(-7,7);ctx.closePath();ctx.fill();ctx.stroke();ctx.rotate(-cue.angle);if(cue.count>1){ctx.fillStyle='#263b31';ctx.font='bold 11px system-ui';ctx.textAlign='center';ctx.fillText(String(cue.count),-Math.cos(cue.angle)*14,-Math.sin(cue.angle)*14+4);}else if(cue.interaction==='slide'||cue.interaction==='bounce'){const bx=-Math.cos(cue.angle)*18,by=-Math.sin(cue.angle)*18;dot([bx,by],9,'#263b31');ctx.fillStyle='#f8d58c';ctx.font='bold 12px system-ui';ctx.textAlign='center';ctx.fillText(cue.interaction==='bounce'?'↑':'↔',bx,by+4);}ctx.restore();}
    }
-   // Actual rig persists through release; clip it naturally as the physical COM departs.
-   if(flying){for(let b=scene.world.getBodyList();b;b=b.getNext())if(['frame','arm','pouch','pouchflap','hooklink'].includes(b.getUserData()?.role))body(scene,b,view,scale);drawMechanismDetails(ctx,scene,view,{labels:false});}
+   // Show actual hardware context in the contact close-up and through physical departure.
+   if(!flying)for(let b=scene.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role==='static')body(scene,b,view,scale,0,true);
+   for(let b=scene.world.getBodyList();b;b=b.getNext())if(['frame','arm','pouch','pouchflap','hooklink'].includes(b.getUserData()?.role))body(scene,b,view,scale);drawMechanismDetails(ctx,scene,view,{labels:false});
    // Encounters first: a foreground collision cannot hide the volunteer's body.
    for(const role of ['enemy','part'])for(let b=scene.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role===role)body(scene,b,view,scale,reduced?0:Math.sin(time*8));
+   if(!flying)drawLoadingContacts(ctx,scene,view,cueScale);
    ctx.restore();
-   if(flying)drawFlightHud(scene,c,panel,biome,typeof contactLabel==='string'?contactLabel.slice(0,64):'');else{ctx.fillStyle='#273f35';ctx.font='bold 17px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${(scene.rig?.totalMass??0).toFixed(2)} kg`,512,25);ctx.font='12px system-ui';ctx.fillText('Live close-up • drag in the left view',512,44);}
+   if(flying)drawFlightHud(scene,c,panel,biome,typeof contactLabel==='string'?contactLabel.slice(0,64):'');else{ctx.fillStyle='#273f35';ctx.font='bold 17px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${(scene.rig?.totalMass??0).toFixed(2)} kg`,512,25);ctx.font='12px system-ui';ctx.fillText('Contact close-up • dots = pouch contact • drag left',512,44);}
   }
   if(!portrait&&!flying)line([480,0],[480,480],'#8c9f95',1);wasFlying=flying;lastTime=time;
  }};

@@ -1,0 +1,291 @@
+{
+  "protocol": "All11stockmedium.6 real motor and original torso force-loading recipe; contact-settle observation, no reposing or save writes.",
+  "rows": [
+    {
+      "species": "lizard",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.16666666666666677,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.8017467497841615,
+          "cradleSpin": -0.2816647823233294,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.04119645083284297,
+          "maxPartRelativeSpeed": 0.2506066355360582,
+          "maxRelativeSpin": 1.1608267335887372
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.280505622660642,
+        "y": 295.6026483263221,
+        "vx": -0.7652635920579433,
+        "vy": -0.06667439057370242,
+        "mass": 0.65
+      }
+    },
+    {
+      "species": "salamander",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.4416666666666653,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.9028208077662772,
+          "cradleSpin": -0.3161057985665075,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 5,
+          "relativeSpeed": 0.2889450742473698,
+          "maxPartRelativeSpeed": 0.3237937926723713,
+          "maxRelativeSpin": 1.3645333723970228
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.6389195693484995,
+        "y": 295.59241655934073,
+        "vx": -0.5852334400923105,
+        "vy": 0.039343073808678984,
+        "mass": 0.8
+      }
+    },
+    {
+      "species": "mouse",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.34833333333333294,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.6688991397150662,
+          "cradleSpin": -0.24321305390084347,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.003670900320933407,
+          "maxPartRelativeSpeed": 0.06696985780077766,
+          "maxRelativeSpin": 0.38153457083250386
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.539704795327947,
+        "y": 295.6010834773372,
+        "vx": -0.6452445466239283,
+        "vy": 0.040032015744068165,
+        "mass": 0.75
+      }
+    },
+    {
+      "species": "turtle",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.32833333333333314,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.9879256008071793,
+          "cradleSpin": -0.375684591106431,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.060879360708486256,
+          "maxPartRelativeSpeed": 0.14337416156877028,
+          "maxRelativeSpin": 0.6483451214578271
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.387458998549561,
+        "y": 295.65159732158827,
+        "vx": -0.9673968711434848,
+        "vy": -0.057129644394048704,
+        "mass": 2.4
+      }
+    },
+    {
+      "species": "snake",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.1083333333333332,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.17641807527564704,
+          "cradleSpin": -0.07547990220127287,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 4,
+          "relativeSpeed": 0.19939325169450053,
+          "maxPartRelativeSpeed": 0.5593240444823607,
+          "maxRelativeSpin": 6.952724216651486
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.610329234247192,
+        "y": 295.6637084133677,
+        "vx": -0.3478670846857435,
+        "vy": -0.07178786394982256,
+        "mass": 1.1
+      }
+    },
+    {
+      "species": "chipmunk",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.9158747504097702,
+          "cradleSpin": -0.32790487752215686,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.09321265841222846,
+          "maxPartRelativeSpeed": 0.17273529456553513,
+          "maxRelativeSpin": 0.7222295287680831
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.1900891795779036,
+        "y": 295.7441889887261,
+        "vx": -0.7412175061914174,
+        "vy": -0.07943771945340411,
+        "mass": 1
+      }
+    },
+    {
+      "species": "flying-squirrel",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.37166666666666603,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.9277213842385429,
+          "cradleSpin": -0.3245860123179892,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.3317585550984908,
+          "maxPartRelativeSpeed": 0.36137224602916646,
+          "maxRelativeSpin": 1.4210647921893198
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.6144849345923644,
+        "y": 295.597181618568,
+        "vx": -0.5762603825013141,
+        "vy": -0.018637284686658494,
+        "mass": 0.9
+      }
+    },
+    {
+      "species": "armadillo",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.22000000000000045,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 1.1640748784726034,
+          "cradleSpin": 0.3117452964378075,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.09932642639084473,
+          "maxPartRelativeSpeed": 1.4644305411789453,
+          "maxRelativeSpin": 6.14534984549023
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.8793626947180893,
+        "y": 295.7539683529493,
+        "vx": 1.0444249643605228,
+        "vy": -0.37741805026082315,
+        "mass": 5
+      }
+    },
+    {
+      "species": "small-marsupial",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.21833333333333377,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.830768217413814,
+          "cradleSpin": -0.2863225730389613,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.11300147675470094,
+          "maxPartRelativeSpeed": 0.541445099209619,
+          "maxRelativeSpin": 2.871028903733697
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.4631033065068184,
+        "y": 295.61431207474095,
+        "vx": -0.9076911548411729,
+        "vy": 0.027554967179578668,
+        "mass": 0.7
+      }
+    },
+    {
+      "species": "tiny-primate",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.3266666666666665,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.845945152786794,
+          "cradleSpin": -0.2940065113418795,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.19118751127986752,
+          "maxPartRelativeSpeed": 0.48077663623536476,
+          "maxRelativeSpin": 1.404001108117314
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.498388408864713,
+        "y": 295.7253142550804,
+        "vx": -0.9550353056248013,
+        "vy": -0.031969610045998964,
+        "mass": 0.8500000000000001
+      }
+    },
+    {
+      "species": "frog",
+      "loaded": true,
+      "quiet": {
+        "waited": 0.18833333333333357,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.8435045885616009,
+          "cradleSpin": -0.2932288422698584,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.008205615220242874,
+          "maxPartRelativeSpeed": 0.016358575636428296,
+          "maxRelativeSpin": 0.05622992853756953
+        }
+      },
+      "releaseEligible": true,
+      "center": {
+        "x": -2.3384896897117224,
+        "y": 295.59154767883086,
+        "vx": -0.8065254214968585,
+        "vy": -0.01701467743994054,
+        "mass": 1.05
+      }
+    }
+  ]
+}

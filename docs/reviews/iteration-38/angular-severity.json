@@ -1,0 +1,464 @@
+{
+  "protocol": "Read-only single affected body chord bound from actual maximum-error frozen poses and authored local hinge anchor. Polygon skin0.01m included.374CSSpx portrait canvas. Combined bound adds independent whole-case maximum hinge-anchor gap; not a measured image difference, downstream-chain bound or continuous human perception test. No corrected pose constructed.",
+  "rows": [
+    {
+      "id": "stock-chipmunk-0.45",
+      "part": "front-leg",
+      "angleExcessRadians": 0.10480669859255731,
+      "leverMetres": 0.16729574808634348,
+      "angleOnlyCssPixelBound": 0.5735282453692815,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9678659405699168,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-lizard-0.45",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.13186633295516903,
+      "leverMetres": 0.16093386622447856,
+      "angleOnlyCssPixelBound": 0.6939789923061513,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0246831302069037,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-salamander-0.45",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.0805400786374435,
+      "leverMetres": 0.160224797863682,
+      "angleOnlyCssPixelBound": 0.422186215840606,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9326675143064357,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-turtle-0.45",
+      "part": "front-leg",
+      "angleExcessRadians": 0.08535105036726809,
+      "leverMetres": 0.19475424859373963,
+      "angleOnlyCssPixelBound": 0.5438055493294437,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0818815379285502,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-chipmunk-0.45",
+      "part": "tail",
+      "angleExcessRadians": 0.08611909995305145,
+      "leverMetres": 0.3440177159176483,
+      "angleOnlyCssPixelBound": 1.0384580436264705,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.6998869619201282,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-mouse-0.45",
+      "part": "front-leg",
+      "angleExcessRadians": 0.16872676591990943,
+      "leverMetres": 0.14455946640800782,
+      "angleOnlyCssPixelBound": 0.7972506701850935,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.4950950436088424,
+      "longestAngularThresholdSeconds": 0.0033333333333333335
+    },
+    {
+      "id": "beam-long-frog-0.45",
+      "part": "rear-shin",
+      "angleExcessRadians": 0.12382156350428275,
+      "leverMetres": 0.20152475842498513,
+      "angleOnlyCssPixelBound": 0.8160689889776684,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.8836591959458829,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "sling-long-snake-0.45",
+      "part": "segment-1",
+      "angleExcessRadians": 0.11428954743631148,
+      "leverMetres": 0.22499999999998915,
+      "angleOnlyCssPixelBound": 0.8410702934773573,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0523100823009282,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "sling-long-chipmunk-0.45",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.08074277256047346,
+      "leverMetres": 0.1672957480863746,
+      "angleOnlyCssPixelBound": 0.47349288922466615,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9688953657896802,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.45",
+      "part": "tail",
+      "angleExcessRadians": 0.08499567065513891,
+      "leverMetres": 0.34401771591762753,
+      "angleOnlyCssPixelBound": 1.0249195008250829,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.4487281545835915,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-frog-0.45",
+      "part": "rear-shin",
+      "angleExcessRadians": 0.1712664437695821,
+      "leverMetres": 0.2015247584249863,
+      "angleOnlyCssPixelBound": 1.1281047577929018,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.2644410722648565,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-lizard-0.45",
+      "part": "front-leg",
+      "angleExcessRadians": 0.38985725079305245,
+      "leverMetres": 0.16093386622446348,
+      "angleOnlyCssPixelBound": 2.040228909735332,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 2.1019784700455664,
+      "longestAngularThresholdSeconds": 0.0033333333333333335
+    },
+    {
+      "id": "frame-grip-snake-0.45",
+      "part": "segment-1",
+      "angleExcessRadians": 0.0871165050528162,
+      "leverMetres": 0.22500000000000572,
+      "angleOnlyCssPixelBound": 0.641246896133728,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9373990145043056,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-armadillo-0.45",
+      "part": "front-leg",
+      "angleExcessRadians": 0.09644793877334945,
+      "leverMetres": 0.22670104833688093,
+      "angleOnlyCssPixelBound": 0.7152498776852458,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9893398048040996,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "stock-chipmunk-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.13462300572187247,
+      "leverMetres": 0.1672957480863565,
+      "angleOnlyCssPixelBound": 0.7890764137664893,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.4748115308438343,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-snake-0.6",
+      "part": "segment-1",
+      "angleExcessRadians": 0.08816245348679241,
+      "leverMetres": 0.22499999999999784,
+      "angleOnlyCssPixelBound": 0.6489409522479088,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.199744216002193,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-chipmunk-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.138867746238317,
+      "leverMetres": 0.1672957480863554,
+      "angleOnlyCssPixelBound": 0.8139170622894949,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0169399879970975,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-lizard-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.09094281567245877,
+      "leverMetres": 0.16093386622451164,
+      "angleOnlyCssPixelBound": 0.47879083049918,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.5313553877842393,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-salamander-0.6",
+      "part": "front-leg",
+      "angleExcessRadians": 0.10468990652878118,
+      "leverMetres": 0.1602247978636878,
+      "angleOnlyCssPixelBound": 0.5878669943347312,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.8749167074513565,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-snake-0.6",
+      "part": "segment-6",
+      "angleExcessRadians": 0.10902495719645056,
+      "leverMetres": 0.22500000000000014,
+      "angleOnlyCssPixelBound": 0.802366863202458,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.060097912498055,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-small-marsupial-0.6",
+      "part": "front-leg",
+      "angleExcessRadians": 0.10110043028410876,
+      "leverMetres": 0.14174312126256586,
+      "angleOnlyCssPixelBound": 0.4687590601327936,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.5284787870226193,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-frog-0.6",
+      "part": "rear-shin",
+      "angleExcessRadians": 0.13420096429570805,
+      "leverMetres": 0.20152475842498302,
+      "angleOnlyCssPixelBound": 0.8843776366207128,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9329121765985078,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-light-chipmunk-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.13484478861395144,
+      "leverMetres": 0.167295748086347,
+      "angleOnlyCssPixelBound": 0.7903743985380374,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9084497281821563,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-light-small-marsupial-0.6",
+      "part": "front-leg",
+      "angleExcessRadians": 0.0991099419155177,
+      "leverMetres": 0.14174312126255337,
+      "angleOnlyCssPixelBound": 0.4595376564309836,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.7276673175191788,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "sling-long-snake-0.6",
+      "part": "segment-5",
+      "angleExcessRadians": 0.09505832769502542,
+      "leverMetres": 0.22500000000000323,
+      "angleOnlyCssPixelBound": 0.6996628541045328,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.5110737932934744,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "sling-long-frog-0.6",
+      "part": "rear-shin",
+      "angleExcessRadians": 0.09969132968156202,
+      "leverMetres": 0.20152475842497858,
+      "angleOnlyCssPixelBound": 0.657181905896454,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0034672192473812,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-turtle-0.6",
+      "part": "tail",
+      "angleExcessRadians": 0.08935657271453012,
+      "leverMetres": 0.20527756377319228,
+      "angleOnlyCssPixelBound": 0.6000717026188496,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9550964886502256,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.14322235494845637,
+      "leverMetres": 0.1672957480863551,
+      "angleOnlyCssPixelBound": 0.8393968597092989,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0955262391854839,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-frog-0.6",
+      "part": "front-leg",
+      "angleExcessRadians": 0.1569830533988522,
+      "leverMetres": 0.2167766952966461,
+      "angleOnlyCssPixelBound": 1.1124973489318426,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.1990557935119917,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-lizard-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.12703206361509278,
+      "leverMetres": 0.16093386622448733,
+      "angleOnlyCssPixelBound": 0.6685723360061105,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9832033419768152,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-turtle-0.6",
+      "part": "tail",
+      "angleExcessRadians": 0.11293976432151143,
+      "leverMetres": 0.20527756377319992,
+      "angleOnlyCssPixelBound": 0.7582932257280187,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.2426569140180508,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-chipmunk-0.6",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.1350279959009948,
+      "leverMetres": 0.16729574808635406,
+      "angleOnlyCssPixelBound": 0.7914466121826232,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.8509845716300246,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "combined-snake-0.6",
+      "part": "segment-1",
+      "angleExcessRadians": 0.08782419162245425,
+      "leverMetres": 0.22500000000000744,
+      "angleOnlyCssPixelBound": 0.6926278907887251,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.284150162015919,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-lizard-0.75",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.15669845883769828,
+      "leverMetres": 0.16093386622447758,
+      "angleOnlyCssPixelBound": 0.8244178897409541,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.2595994095289416,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-snake-0.75",
+      "part": "segment-6",
+      "angleExcessRadians": 0.08026380071503714,
+      "leverMetres": 0.22499999999999826,
+      "angleOnlyCssPixelBound": 0.6330361836070397,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.6511371057117263,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "counterweight-heavy-frog-0.75",
+      "part": "rear-thigh",
+      "angleExcessRadians": 0.09876745848802093,
+      "leverMetres": 0.26681541692269417,
+      "angleOnlyCssPixelBound": 0.8620409892707845,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.2669012628112932,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-salamander-0.75",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.08595437767620706,
+      "leverMetres": 0.1602247978637043,
+      "angleOnlyCssPixelBound": 0.48273291259900386,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.7046994249504959,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-mouse-0.75",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.09185257659710033,
+      "leverMetres": 0.14455946640797646,
+      "angleOnlyCssPixelBound": 0.46540181972412464,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.8995824488885488,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-turtle-0.75",
+      "part": "front-leg",
+      "angleExcessRadians": 0.11840238233327516,
+      "leverMetres": 0.19475424859375387,
+      "angleOnlyCssPixelBound": 0.7541770673950313,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.233829223493812,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "beam-long-snake-0.75",
+      "part": "segment-1",
+      "angleExcessRadians": 0.21164654724077958,
+      "leverMetres": 0.2250000000000005,
+      "angleOnlyCssPixelBound": 1.5554730080090253,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.9610384178320612,
+      "longestAngularThresholdSeconds": 0.0033333333333333335
+    },
+    {
+      "id": "sling-long-mouse-0.75",
+      "part": "front-leg",
+      "angleExcessRadians": 0.12887762014063076,
+      "leverMetres": 0.1445594664079748,
+      "angleOnlyCssPixelBound": 0.6092606087087454,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.8469357736047272,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "sling-long-frog-0.75",
+      "part": "rear-shin",
+      "angleExcessRadians": 0.08077039332254654,
+      "leverMetres": 0.20152475842499473,
+      "angleOnlyCssPixelBound": 0.5705653924067846,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.0214947598213293,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.75",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.10618108488425126,
+      "leverMetres": 0.16729574808635767,
+      "angleOnlyCssPixelBound": 0.5810422062306507,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.7831689053640953,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-heavy-tiny-primate-0.75",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.11982359437543555,
+      "leverMetres": 0.22113914953808095,
+      "angleOnlyCssPixelBound": 0.8666181713232489,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.2440564667519107,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-turtle-0.75",
+      "part": "front-leg",
+      "angleExcessRadians": 0.1032674638776172,
+      "leverMetres": 0.19475424859373816,
+      "angleOnlyCssPixelBound": 0.6578655060234188,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.3698930430934868,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "frame-grip-small-marsupial-0.75",
+      "part": "tail",
+      "angleExcessRadians": 0.08592936626527603,
+      "leverMetres": 0.39030808915215626,
+      "angleOnlyCssPixelBound": 1.097223732563791,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.3295353341093885,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "combined-lizard-0.75",
+      "part": "rear-leg",
+      "angleExcessRadians": 0.20840904456148057,
+      "leverMetres": 0.16093386622447942,
+      "angleOnlyCssPixelBound": 1.0956135821589035,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.8045237633036684,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "combined-turtle-0.75",
+      "part": "tail",
+      "angleExcessRadians": 0.13258761474247083,
+      "leverMetres": 0.2052775637731989,
+      "angleOnlyCssPixelBound": 0.89003265275665,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 0.9973330367039749,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "combined-snake-0.75",
+      "part": "segment-4",
+      "angleExcessRadians": 0.11577003900117178,
+      "leverMetres": 0.22500000000001527,
+      "angleOnlyCssPixelBound": 0.9128071205619901,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.7167660632112178,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "part": "front-leg",
+      "angleExcessRadians": 0.1666861182877375,
+      "leverMetres": 0.167295748086373,
+      "angleOnlyCssPixelBound": 0.9766171027225203,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.6710560599459976,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    },
+    {
+      "id": "combined-small-marsupial-0.75",
+      "part": "front-leg",
+      "angleExcessRadians": 0.08327478806629718,
+      "leverMetres": 0.14174312126250516,
+      "angleOnlyCssPixelBound": 0.4137451462245192,
+      "withIndependentWholeCaseAnchorGapCssPixelBound": 1.3904822361524665,
+      "longestAngularThresholdSeconds": 0.0016666666666666668
+    }
+  ]
+}

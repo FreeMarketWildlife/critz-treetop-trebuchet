@@ -1,0 +1,468 @@
+{
+  "experimentalPreload": false,
+  "nodeExecArgv": [],
+  "scope": "Bounded stratified diagnostic of the explicit stopped-pouch0.5kg physical prototype. One force-driven loading recipe cannot establish universal input validity; seating failures and poor throws are preserved separately from numeric faults.",
+  "protocol": {
+    "cases": 1,
+    "dt": 0.0016666666666666668,
+    "limits": {
+      "ropeStretch": 0.05,
+      "hingeAnchorError": 0.05,
+      "angularLimitError": 0.08,
+      "explosiveEnergyResidual": 250,
+      "bodySpeed": 300,
+      "bodySpin": 1000,
+      "surfaceDepth": 0.08,
+      "releaseSeconds": 5
+    },
+    "phases": "Actual bounded motor; torso/head/offset physical grip; unheld gravity settling; canonical same-solver prediction/live launch; first world impact plus0.5s recovery; continue to ground plus0.5s recovery within15s flight when possible.",
+    "matrix": "8actual catalog equipment sets x11species x3winding fractions(.45,.6,.75)=264cases; head pickup for odd-index species, torso for even; each group88cases is one winding fraction.",
+    "equipment": "Acquired and equipped in isolated in-memory economy state through actual reducers. No user save or account writes.",
+    "surfaceDetection": "Suspected surface penetration means a part COM crossed through authored material depth with no matching recent per-part surface impulse. Candidates require review; this is not proof of continuous-collision failure.",
+    "finiteChecks": "Every diagnostic step inspects every dynamic body and rope/revolute joint. Energy residual is mechanical-energy change minus recorded hand/motor/control/damping/drag/spawn work.",
+    "runtime": "Node wall time includes prediction and diagnostic scanning; not browser FPS."
+  },
+  "runtime": {
+    "node": "v24.21.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "planck": "1.5.1"
+  },
+  "sourceSHA256": {
+    "mobile.css": "555cb15119e2a26b0157ed9ca887fd641e005044b6df9ad9d459d0f39ad47981",
+    "src/render.js": "230e3c9d53188434a0c2ba1b6aa246c87e5a3c4326166b4ce6e2aa42d474fa4d",
+    "src/grip-art.js": "ae546e8c6694b6b15cd3df1d7c279f2a04826077da89a949a99a19c02ca60f4c",
+    "src/view-recovery.js": "2dcccbe0bf5ffe52f12ec6e43f2a6718b2451274bc755ca3fa1f6c19efd856d6",
+    "src/lab.js": "dcabebc18cdff20114d7c0309a413f8f64cb3d664af1bdf91edba8fb1e068069",
+    "index.html": "603270cd00be2b9198b4be7176f83a591d594f073851bc15fa65c5aadc69355c",
+    "src/terrain.js": "f523e56bdccf384071b4055eda8e94d2c0c07367de638af55962b1be4a6276da",
+    "src/articulated.js": "220039ad26d336fec6851e62d92af8619743e262ca3c2d0df0fbd118c97f1aab",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/staging.js": "f47f8b77668ccfd5bbffe5c09f2ac7139a1b3a62c69525f058e552f54d0b4599",
+    "src/physics.js": "c85adf5a38dbabf7b3ba8d8cd769799f2fcb85769c6fec32e46507b585426960",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/economy.js": "37c937f5d8cab0dbb668cc6af03f04b1f87b45a3ec131cedaaea91a40c3bf131",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/prediction.js": "80287225a49557583e137007cd6a6a6e576aae01f5619c12fc7b1642362e275f",
+    "src/starter.js": "327a060f9bee7e2511452e416a45b7fa92f3bea349480e63c7184ece28ae97ab",
+    "src/audio.js": "d440a76ac15d7efd6ea38845d9fc104cab7d8648750a366718ce36fe16277f3c",
+    "src/journey.js": "f01728b32d3b16cf77ac95ab9e7103d44af1eef434063a2603a9e284c43e1255"
+  },
+  "sourcesChangedDuringRun": [],
+  "totalWallMilliseconds": 821.683334,
+  "counts": {
+    "launched": 1
+  },
+  "rows": [
+    {
+      "id": "combined-small-marsupial-0.75",
+      "hardware": "combined",
+      "species": "small-marsupial",
+      "grip": "torso",
+      "fraction": 0.75,
+      "equipment": [
+        "beam-long",
+        "sling-long",
+        "counterweight-heavy"
+      ],
+      "parameters": {
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "collisionStepHz": 2400,
+        "fastCollisionStepHz": 4800,
+        "initialArm": -3,
+        "counterMass": 180,
+        "longArm": 3.6,
+        "shortArm": 0.9,
+        "sling": 2.9,
+        "hookAngle": 3.55,
+        "channelLength": 0.18,
+        "beamLinearDensity": 2.2
+      },
+      "equipped": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "counterweight": "counterweight-heavy"
+      },
+      "flags": [
+        "angular_limit_error",
+        "explosive_speed"
+      ],
+      "winding": {
+        "phase": "loading",
+        "target": -2.293530574608312,
+        "actualAngle": -2.297506400321528,
+        "work": 873.687625788404
+      },
+      "actualGrabbedPart": "torso",
+      "loading": {
+        "cradleSpeed": 0.03888115769477721,
+        "cradleSpin": -0.0042217981651569364,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.11034567653604738,
+        "maxPartRelativeSpeed": 0.24652694731809038,
+        "maxRelativeSpin": 1.6429158535146242,
+        "waited": 0.14333333333333328,
+        "quiet": 0.10166666666666654
+      },
+      "prediction": {
+        "wallMilliseconds": 89.43866700000001,
+        "mutatedLive": false,
+        "reason": "contact hook experiment",
+        "maximumDifference": 0
+      },
+      "loadingDiagnostics": {
+        "samples": 3874,
+        "maxRopeStretch": 0.000010517732099923904,
+        "maxHingeAnchorError": 0.0000711356990255956,
+        "maxAngularLimitError": 0.08327478806629718,
+        "maxBodySpeed": 13.933411124660344,
+        "maxBodySpin": 63.73437500326846,
+        "maxEnergyResidual": 0,
+        "nonfinite": null,
+        "surfaceCandidates": [],
+        "phaseStats": {
+          "winding": {
+            "samples": 1088,
+            "anchorBadSteps": 0,
+            "angularBadSteps": 0,
+            "anchorRun": 0,
+            "angularRun": 0,
+            "longestAnchorSeconds": 0,
+            "longestAngularSeconds": 0,
+            "finalAnchor": 0.000001987306956405333,
+            "finalAngular": 0.004014713321616292
+          },
+          "loading": {
+            "samples": 2786,
+            "anchorBadSteps": 0,
+            "angularBadSteps": 1,
+            "anchorRun": 0,
+            "angularRun": 0,
+            "longestAnchorSeconds": 0,
+            "longestAngularSeconds": 0.0016666666666666668,
+            "finalAnchor": 4.352472882778207e-7,
+            "finalAngular": 0.029970548894915128
+          }
+        },
+        "worstSpin": {
+          "phase": "loading",
+          "time": 4.111666666666496,
+          "tag": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "mass": 0.08399999999999999,
+          "inertia": 0.00006889316185972082,
+          "angularVelocity": -63.73437500326846,
+          "rotationalEnergy": 0.13992444218647576
+        },
+        "worstRope": {
+          "phase": "loading",
+          "time": 6.170000000000151,
+          "joint": {
+            "role": "rope",
+            "id": 1
+          },
+          "bodyA": {
+            "role": "hooklink",
+            "id": "channel-bead",
+            "channelAlpha": 3.55,
+            "channelLength": 0.18,
+            "beadRadius": 0.025,
+            "pegLocal": {
+              "x": 3.4715143691647214,
+              "y": -0.055600743420034376
+            }
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.000010517732099923904
+        },
+        "worstHinge": {
+          "phase": "loading",
+          "time": 4.116666666666497,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "torso"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "value": 0.0000711356990255956
+        },
+        "worstAngular": {
+          "phase": "loading",
+          "time": 4.1183333333331635,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "torso"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "value": 0.08327478806629718,
+          "angle": -1.0332747880662971,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        }
+      },
+      "canonicalJointAngleDiscontinuities": [],
+      "release": {
+        "time": 7.383333333333674,
+        "center": {
+          "x": -2.570751267778694,
+          "y": 303.19214379267504,
+          "vx": 7.05438232929748,
+          "vy": 19.308916718445282,
+          "mass": 0.7
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.716413509819153,
+              "y": 303.1053488025963
+            },
+            "v": {
+              "x": 3.8421950610003677,
+              "y": 25.451670142479255
+            },
+            "w": -59.308825379141524
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.400365887018383,
+              "y": 303.05546808938897
+            },
+            "v": {
+              "x": 4.124772712809362,
+              "y": 14.836885057774206
+            },
+            "w": -23.60778411514937
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -2.7487420275796324,
+              "y": 303.2087826227574
+            },
+            "v": {
+              "x": 7.5476218245262885,
+              "y": 22.786027543079328
+            },
+            "w": -18.986797057274597
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -2.576144405259248,
+              "y": 303.55446653207576
+            },
+            "v": {
+              "x": 15.613850609349152,
+              "y": 19.46046380292131
+            },
+            "w": -22.960133073922787
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.5703116482574107,
+              "y": 303.20056676247805
+            },
+            "v": {
+              "x": 7.389584925937707,
+              "y": 18.981076866507102
+            },
+            "w": -23.60778411514937
+          }
+        ]
+      },
+      "firstImpact": {
+        "surface": "ground",
+        "x": 68.35201116116502,
+        "y": 0.012459283055053977,
+        "time": 17.451041666667034
+      },
+      "groundImpact": {
+        "surface": "ground",
+        "x": 68.35201116116502,
+        "y": 0.012459283055053977,
+        "time": 17.451041666667034
+      },
+      "outcome": "launched",
+      "wallMilliseconds": 820.8815840000001,
+      "diagnostics": {
+        "samples": 10772,
+        "surfaceCandidates": [],
+        "nonfinite": null,
+        "maxRopeStretch": 0.004585098655519815,
+        "maxHingeAnchorError": 0.027857029302757855,
+        "maxAngularLimitError": 0.08327478806629718,
+        "maxBodySpeed": 118.81892996431351,
+        "maxBodySpin": 1053.935659314359,
+        "maxEnergyResidual": 0,
+        "worstRope": {
+          "phase": "flight",
+          "time": 7.856666666667081,
+          "joint": {
+            "role": "rope",
+            "id": 1
+          },
+          "bodyA": {
+            "role": "hooklink",
+            "id": "channel-bead",
+            "channelAlpha": 3.55,
+            "channelLength": 0.18,
+            "beadRadius": 0.025,
+            "pegLocal": {
+              "x": 3.4715143691647214,
+              "y": -0.055600743420034376
+            }
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.004585098655519815
+        },
+        "worstHinge": {
+          "phase": "flight",
+          "time": 9.141666666667282,
+          "joint": {
+            "role": "pouchhinge",
+            "id": "stopped-V",
+            "halfAngle": 0.3490658503988659
+          },
+          "bodyA": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "bodyB": {
+            "role": "pouchflap",
+            "id": "right-panel"
+          },
+          "value": 0.027857029302757855
+        },
+        "worstAngular": {
+          "phase": "loading",
+          "time": 4.1183333333331635,
+          "joint": "revolute-joint",
+          "bodyA": {
+            "role": "part",
+            "id": "torso"
+          },
+          "bodyB": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "value": 0.08327478806629718,
+          "angle": -1.0332747880662971,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "worstSpin": {
+          "phase": "flight",
+          "time": 17.451666666667034,
+          "tag": {
+            "role": "part",
+            "id": "front-leg"
+          },
+          "mass": 0.08399999999999999,
+          "inertia": 0.00006889316185972082,
+          "angularVelocity": 1053.935659314359,
+          "rotationalEnergy": 38.262586047409535
+        },
+        "phases": [
+          {
+            "winding": {
+              "samples": 1088,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.000001987306956405333,
+              "finalAngular": 0.004014713321616292
+            },
+            "loading": {
+              "samples": 2786,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 1,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0.0016666666666666668,
+              "finalAnchor": 4.352472882778207e-7,
+              "finalAngular": 0.029970548894915128
+            }
+          },
+          {
+            "canonical_restore": {
+              "samples": 1,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 4.352472882778207e-7,
+              "finalAngular": 0.029970548894915128
+            },
+            "launch": {
+              "samples": 556,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00031665191245825705,
+              "finalAngular": 0.007956895294380928
+            },
+            "flight": {
+              "samples": 6041,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00023684983601820916,
+              "finalAngular": 0.05411910160296429
+            },
+            "impact_recovery": {
+              "samples": 300,
+              "anchorBadSteps": 0,
+              "angularBadSteps": 0,
+              "anchorRun": 0,
+              "angularRun": 0,
+              "longestAnchorSeconds": 0,
+              "longestAngularSeconds": 0,
+              "finalAnchor": 0.00006411355289039728,
+              "finalAngular": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

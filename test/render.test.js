@@ -42,3 +42,7 @@ test('camera and biome crossings cannot change existing world fixtures or bodies
  // Read-only camera input fixture: no body is reposed or stepped in this render test.
  for(const y of [245.01,244.99,120.01,119.99,5.01,4.99]){s.center=()=>({...original,y});for(const [w,h]of [[390,844],[844,390]])r.draw(s,null,[],1,true,w,h);assert.equal(JSON.stringify(s.snapshot()),before);}
 });
+
+test('loading close-up draws the actual pouch fixture at its contact-view coordinates',async()=>{
+ const {readFileSync}=await import('node:fs'),{PhysicalHookScene}=await import('../src/hook-experiment.js'),{createRenderer}=await import('../src/render.js');const saved=JSON.parse(readFileSync(new URL('../docs/reviews/iteration-34/loaded.json',import.meta.url))),s=new PhysicalHookScene(saved.p,saved.species,saved);s.step();const calls=[],ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??((...a)=>calls.push([k,...a]))}),canvas={width:960,height:480,style:{},getContext:()=>ctx,getBoundingClientRect:()=>({width:960})},center=s.center(),f=s.pouch.getFixtureList(),p=s.pouch.getWorldPoint(f.getShape().m_vertices[0]),expected=[730+(p.x-center.x)*100,268-(p.y-center.y)*100],before=JSON.stringify(s.snapshot());createRenderer(canvas).draw(s,null,[],1,true,1200,900);assert.ok(calls.some(c=>c[0]==='moveTo'&&Math.abs(c[1]-expected[0])<1e-9&&Math.abs(c[2]-expected[1])<1e-9));assert.ok(calls.some(c=>c[0]==='fillText'&&String(c[1]).includes('dots = pouch contact')));assert.equal(JSON.stringify(s.snapshot()),before);
+});

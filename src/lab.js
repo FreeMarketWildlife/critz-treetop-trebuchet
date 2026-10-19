@@ -15,7 +15,7 @@ import {CritterScene,gripParameters} from './articulated.js';
 import {PhysicalHookScene} from './hook-experiment.js';
 import {createGripController,isFlightControlKey} from './input.js';
 import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent,predictionAdvice} from './prediction.js';
-import {createRenderer} from './render.js';
+import {createRenderer} from './render.js?v=38-final';
 import {installReviewExports} from './review.js';
 import {profiles,createRig,createVolunteerQueue} from './species.js';
 import {createAudio} from './audio.js';

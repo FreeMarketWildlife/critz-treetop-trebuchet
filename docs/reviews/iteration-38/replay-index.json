@@ -1,0 +1,57 @@
+[
+  {
+    "label": "Lizard — actual loading contacts",
+    "file": "loaded-lizard.json",
+    "seconds": 2
+  },
+  {
+    "label": "Salamander — actual loading contacts",
+    "file": "loaded-salamander.json",
+    "seconds": 2
+  },
+  {
+    "label": "Mouse — actual loading contacts",
+    "file": "loaded-mouse.json",
+    "seconds": 2
+  },
+  {
+    "label": "Turtle — actual loading contacts",
+    "file": "loaded-turtle.json",
+    "seconds": 2
+  },
+  {
+    "label": "Snake — actual loading contacts",
+    "file": "loaded-snake.json",
+    "seconds": 2
+  },
+  {
+    "label": "Chipmunk — actual loading contacts",
+    "file": "loaded-chipmunk.json",
+    "seconds": 2
+  },
+  {
+    "label": "Flying squirrel — actual loading contacts",
+    "file": "loaded-flying-squirrel.json",
+    "seconds": 2
+  },
+  {
+    "label": "Armadillo — actual loading contacts",
+    "file": "loaded-armadillo.json",
+    "seconds": 2
+  },
+  {
+    "label": "Pygmy possum — actual loading contacts",
+    "file": "loaded-small-marsupial.json",
+    "seconds": 2
+  },
+  {
+    "label": "Pygmy marmoset — actual loading contacts",
+    "file": "loaded-tiny-primate.json",
+    "seconds": 2
+  },
+  {
+    "label": "Frog — actual loading contacts",
+    "file": "loaded-frog.json",
+    "seconds": 2
+  }
+]
