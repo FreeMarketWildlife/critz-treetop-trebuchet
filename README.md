@@ -24,7 +24,7 @@ The massive Grandfather Tree was planted during the **Age of Creation**. During 
 
 The archive was nearly destroyed; the cause and exact date remain unspecified. Its former Fey custodians departed under **Allohim's command**. All Fey were commanded to sail to **Zealand**. Rebel Fey stayed and built a very tall **Tower of Babel near Sapporo** to wage war against Allohim. Allohim destroyed and leveled the tower to rubble. Afterward, the Fey had trouble communicating with one another, fought for power, and this led toward the **Battle of Mount Yokai**. That battle devastated Fey civilization; it did **not** kill every Fey everywhere.
 
-Shortly after the battle, **Naboo**, a **first-generation owl who drank from the River of Blood**, took over the archive and runs the library. Whether the earlier phrase “first-generation fey owl” means Fey-blooded generation terminology remains an open question; it does not establish that Naboo is literally an original Fey. His relationship to the older Lady Wisdom character is also unresolved.
+Shortly after the battle, **Naboo**, a **first-generation owl who drank from the River of Blood**, took over the archive and runs the library. **Author clarification, October 19, 2026:** A **fey animal** is an animal/critter with humanlike qualities because of the **fey blood inside it**. This describes a Fey-blooded critter, not an original Fey being. The spellings **feysian / feyjian** remain unsettled; neither is selected as canonical. Calling Naboo a **fey owl** is therefore consistent with his being a first-generation owl who drank from the River of Blood. His relationship to the older Lady Wisdom character remains unresolved.
 
 ## Creative references
 
@@ -34,4 +34,4 @@ The Jedi archive on Coruscant inspires the immense knowledge archive. A Mirkwood
 
 The shared lore is maintained in [Critz–Dragex](https://github.com/FreeMarketWildlife/Critz-Dragex), especially its [Grandfather Tree record](https://github.com/FreeMarketWildlife/Critz-Dragex/blob/main/world/grandfather-tree.md).
 
-The school's formal name, Naboo's precise generation/species terminology, and the cause/date of the archive's near destruction remain open. Do not infer a cause or place that damage relative to the departure, tower or battle without further author direction. The earlier proposed acorn helmet and woodland crew are not approved canon.
+The school's formal name, the spelling feysian / feyjian, Naboo's relationship to Lady Wisdom, and the cause/date of the archive's near destruction remain open. Do not infer a cause or place that damage relative to the departure, tower or battle without further author direction. The earlier proposed acorn helmet and woodland crew are not approved canon.
