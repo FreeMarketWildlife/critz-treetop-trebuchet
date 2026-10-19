@@ -1,6 +1,10 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 43 checkpoint
+## CURRENT implementation: iteration 44 local research checkpoint
+
+Canonical checkout only. Public sync PAUSED by parent pending Phil clarification; do not retry denied push or use another route. HEAD be35146, remote last verified4722fba. Iteration44 research complete locally; commit unpushed. Ordinary source unchanged; corrections disabled. Read docs/reviews/iteration-44/contact-live-eleven-final.json:11 preselected exact fresh-loaded cases, full release records preserved; baseline5angular flags, contact reserve1/2 zero flags, max.0792924rad, actual cap16/15, zero contact budget misses and cumulative energy residual. Reserve0 missescountermouse. Core witness recompute required for pinned Planck1.5.1 overlap Distance bug; translated point-motion and pooled Contact reuse tests added. Stable fixture/child cache replaces pooled contact identity control, old control retained. Prefix experiments are scheduled causal trials and can exceed cap; never production policy. Clean benchmark complete: reserve1 falling235.80ms/rig164.03/canopy65.73 per simulated second versus43 192.49/149.64/64.19.276 tests pass. See findings.md and summary.json. No broad264 matrix or production/prediction promotion yet. No save/browser/server changes. ps read denied by sandbox, do not claim process inventory verified.
+
+## Historical implementation: iteration 43 checkpoint
 
 SYNC BLOCKED for NEW checkpoint: implementationa88066e complete locally. Initial authorized retry to4722fba SUCCEEDED. Later normal push of43DENIED by automatic approval review, which treated authorization as limited to the earlier retry and cited original no-push restriction. New command did not execute. No retry/workaround. Need fresh direct authorization/review resolution for this checkpoint. No validation jobs remain running.
 

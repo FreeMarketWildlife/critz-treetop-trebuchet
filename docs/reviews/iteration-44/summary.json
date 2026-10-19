@@ -1,0 +1,34 @@
+{
+  "boundary43": {
+    "cases": 11,
+    "angularFlagCases": 5,
+    "maxAngular": 0.1804111562097035,
+    "maxActualIntegrations": 16,
+    "contactBudgetMisses": 0,
+    "maxCumulativeEnergyResidual": 0
+  },
+  "contact0": {
+    "cases": 11,
+    "angularFlagCases": 1,
+    "maxAngular": 0.09153392542745853,
+    "maxActualIntegrations": 16,
+    "contactBudgetMisses": 1,
+    "maxCumulativeEnergyResidual": 0
+  },
+  "contact1": {
+    "cases": 11,
+    "angularFlagCases": 0,
+    "maxAngular": 0.0792923936022476,
+    "maxActualIntegrations": 16,
+    "contactBudgetMisses": 0,
+    "maxCumulativeEnergyResidual": 0
+  },
+  "contact2": {
+    "cases": 11,
+    "angularFlagCases": 0,
+    "maxAngular": 0.0792923936022476,
+    "maxActualIntegrations": 15,
+    "contactBudgetMisses": 0,
+    "maxCumulativeEnergyResidual": 0
+  }
+}
