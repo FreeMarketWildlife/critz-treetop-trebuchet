@@ -33,3 +33,35 @@ test('voices, chatter, mute, and gesture resume are bounded with a WebAudio doub
   audio.setMuted(false); audio.setVolume(0); assert.equal(audio.play('impact'),false);
   await audio.dispose();
 });
+test('harmless impact materials and gameplay mass are bounded original timbre variations',()=>{
+ const signatures=new Set();
+ for(const material of ['wood','ground','leaf','shell','bumper']){
+  const cue=soundSpec('impact',.8,{material,mass:1});
+  signatures.add(`${cue.frequency}/${cue.harmony}/${cue.noise}`);
+  assert.ok(cue.frequency>=20&&cue.frequency<1000);assert.ok(cue.endFrequency>=20);
+  assert.ok(cue.duration<=.3);assert.ok(cue.noise>=0&&cue.noise<=1);assert.ok(cue.gain<=.2);
+ }
+ assert.equal(signatures.size,5);
+ assert.ok(soundSpec('impact',1,{mass:8}).frequency<soundSpec('impact',1,{mass:.15}).frequency);
+ assert.deepEqual(soundSpec('impact',1,{material:'unknown'}),soundSpec('impact'));
+ assert.equal(soundSpec('__proto__'),null);assert.equal(soundSpec('toString'),null);
+});
+test('impact WebAudio scheduling has bounded nodes, positive ramps and quiet-tail envelope',async()=>{
+ const traces=[],gains=[];let factories=0,starts=0,disconnected=0;
+ const param=kind=>({value:0,setValueAtTime(v,t){traces.push([kind,'set',v,t]);},linearRampToValueAtTime(v,t){traces.push([kind,'linear',v,t]);},exponentialRampToValueAtTime(v,t){assert.ok(v>0);traces.push([kind,'exp',v,t]);},setTargetAtTime(v,t,c){traces.push([kind,'target',v,t,c]);}});
+ const node=()=>({gain:param('gain'),frequency:param('frequency'),Q:param('q'),connect(){},disconnect(){disconnected++;},start(){starts++;},stop(){}});
+ const context={state:'suspended',currentTime:4,sampleRate:100,destination:{},createGain(){const n=node();gains.push(n);return n;},createOscillator:node,createBufferSource:node,createBiquadFilter:node,createBuffer:()=>({getChannelData:()=>new Float32Array(100)}),async resume(){this.state='running';},async close(){this.state='closed';}};
+ const audio=createAudio({contextFactory:()=>{factories++;return context;},maxVoices:2});
+ audio.setVolume(10);assert.equal(factories,0);assert.equal(audio.play('impact'),false);
+ assert.equal(await audio.unlock(),true);assert.equal(starts,0);assert.ok(Math.abs(gains[0].gain.value-1/Math.sqrt(2))<1e-12);
+ assert.ok(audio.play('impact',{intensity:1e-8,material:'bumper'}));
+ const ramps=traces.filter(t=>t[0]==='gain'&&t[1]==='exp');assert.ok(ramps[0][2]<soundSpec('impact',1e-8,{material:'bumper'}).gain);
+ for(let i=0;i<100;i++)audio.play('impact');assert.equal(starts,3); // chatter rejected
+ for(let i=0;i<8;i++){context.currentTime+=.04;audio.play('impact',{material:'shell'});}
+ assert.ok(disconnected>0);assert.ok(starts<=27);
+ assert.ok(traces.every(t=>Number.isFinite(t[2])&&Number.isFinite(t[3])&&t[3]>=4));
+ audio.setMuted(true);assert.equal(audio.play('impact'),false);
+ const last=traces.at(-1);assert.equal(last[0],'gain');assert.equal(last[1],'target');assert.equal(last[2],0);
+ audio.setMuted(false);audio.setVolume(-1);assert.equal(audio.play('impact'),false);
+ await audio.dispose();
+});

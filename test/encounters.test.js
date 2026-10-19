@@ -27,3 +27,40 @@ test('invalid input is rejected and region inference covers fixed height bands',
  for(const t of [NaN,-1,Infinity])assert.throws(()=>d.update(t,{x:0,y:0}));assert.throws(()=>d.update(0,{x:NaN,y:0}));
  for(const [y,biome] of [[300,'grandfatherTree'],[200,'openSky'],[80,'jungleCanopy'],[0,'forestFloor']])assert.ok(d.update(8,{x:0,y}).active.every(e=>e.biome===biome));
 });
+test('fresh spawn stream never replays stale observations or rewinds',()=>{
+ const d=createEncounterDirector(11),p={x:20,y:200},seen=new Set();let count=0;
+ for(let i=0;i<1800;i++){
+  const time=i/60,r=d.update(time,p);assert.ok(r.spawns.length<=8);
+  for(const e of r.spawns){assert.ok(time-e.spawnTime<=.25);assert.ok(Math.hypot(e.x-p.x,e.y-p.y)>e.radius+1.5);assert.ok(!seen.has(e.id));seen.add(e.id);count++;}
+  assert.deepEqual(d.update(time,p).spawns,[]);
+ }
+ assert.ok(count>0);assert.deepEqual(d.update(.2,p).spawns,[]);
+ assert.deepEqual(createEncounterDirector(11).update(3.9,p).spawns,[]);
+});
+test('spawns respect overlap clearance and arrival sound rate limit',()=>{
+ const d=createEncounterDirector(8);let last=-Infinity;
+ for(let i=0;i<1200;i++){
+  const t=i/120,r=d.update(t,{x:0,y:280});const audible=r.events.filter(e=>e.sound);assert.ok(audible.length<=1);
+  if(audible.length){assert.ok(t-last>=.4-1e-12);last=t;}
+ }
+ const probe=createEncounterDirector(5);let found;
+ for(let t=0;t<6&&!found;t+=.01){const r=probe.update(t,{x:0,y:200});if(r.spawns.length)found={time:t,enemy:r.spawns[0]};}
+ assert.ok(found);const {time,enemy}=found,r=createEncounterDirector(5).update(time,{x:enemy.x,y:enemy.y},enemy.biome);
+ assert.ok(!r.spawns.some(e=>e.id===enemy.id));
+});
+test('JSON snapshot restores exact mid-run spawns/events through travel and rewind',()=>{
+ const seed='continued',a=createEncounterDirector(seed),position=t=>({x:t*12,y:300-t*6});
+ for(let i=0;i<600;i++)a.update(i/60,position(i/60));
+ const saved=JSON.parse(JSON.stringify(a.snapshot())),copy=structuredClone(saved),b=createEncounterDirector(seed,saved);
+ assert.deepEqual(a.snapshot(),b.snapshot());assert.deepEqual(saved,copy);
+ // Include biome/cell crossings, expiry, a rewind, and repeated identical time.
+ for(const t of [...Array.from({length:1800},(_,i)=>10+i/60),5,5,41,41,42])assert.deepEqual(a.update(t,position(t)),b.update(t,position(t)));
+ assert.deepEqual(a.snapshot(),b.snapshot());
+ saved.previous.length=0;saved.observed.length=0;assert.deepEqual(a.snapshot(),b.snapshot());
+});
+test('initial snapshots are JSON-safe detached state and reject invalid restoration',()=>{
+ const a=createEncounterDirector(2),saved=JSON.parse(JSON.stringify(a.snapshot()));assert.equal(saved.lastSound,null);
+ assert.deepEqual(createEncounterDirector(2,saved).snapshot(),a.snapshot());
+ for(const bad of [{...saved,seed:3},{...saved,version:2},{...saved,latestTime:NaN},{...saved,lastSound:Infinity},{...saved,observed:[['id',NaN]]},{...saved,previous:['x',2]}])assert.throws(()=>createEncounterDirector(2,bad));
+ a.update(3,{x:0,y:200});a.reset();assert.deepEqual(a.snapshot(),saved);
+});

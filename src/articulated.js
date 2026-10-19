@@ -5,8 +5,10 @@ import {createRig} from './species.js';
 import {createEncounterDirector} from './encounters.js';
 import {world as layout} from './world.js';
 const serializer=new P.Serializer({rootClass:P.World,
- postSerialize:(data,obj)=>{if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;}return data;},
- postDeserialize:(obj,data)=>{if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);return obj;}});
+ postSerialize:(data,obj)=>{if(obj.getAngle&&obj.getMassData)data.angle=obj.getAngle();if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;}return data;},
+ // Planck 1.5.1 constructs bodies through a wrapped rotation. Restore the
+ // unwrapped sweep before joints are reconstructed; public setAngle wraps again.
+ postDeserialize:(obj,data)=>{if(obj.getMassData&&obj.m_sweep&&Number.isFinite(data.angle)){obj.m_sweep.a=data.angle;obj.m_sweep.a0=data.angle;}if(data.labTag && obj.setUserData)obj.setUserData(data.labTag);if(data.labMass && obj.setMassData)obj.setMassData(data.labMass);return obj;}});
 const V=(x,y)=>P.Vec2(x,y);
 // External hand effort scales with total payload mass; all supplied work is tracked.
 export function gripParameters(mass){if(!Number.isFinite(mass)||mass<=0)throw new Error('Invalid grip mass');return {stiffness:120*mass,damping:18*mass,maxForce:Math.max(80,60*mass)};}
@@ -21,8 +23,8 @@ export function cockedConfig(overrides={},desiredFraction=.6){
 }
 export class CritterScene {
  constructor(overrides={},species='lizard',saved=null){
-  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;this.dampingWork=0;this.dragWork=0;
-  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0,dampingWork:saved.dampingWork??0,dragWork:saved.dragWork??0});this.index();return;}
+  this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.despawnEnergy=0;this.encounterSeed=null;this.lastEnemySound=-Infinity;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;this.dampingWork=0;this.dragWork=0;
+  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0,spawnEnergy:saved.spawnEnergy??0,despawnEnergy:saved.despawnEnergy??0,lastImpact:saved.lastImpact??-1,lastEnemySound:saved.lastEnemySound??-Infinity,encounterSeed:saved.encounterSeed??null,dampingWork:saved.dampingWork??0,dragWork:saved.dragWork??0});this.index();if(saved.encounterState)this.encounters=createEncounterDirector(this.encounterSeed,saved.encounterState);return;}
   const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
   for(const s of layout.surfaces)ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
@@ -55,13 +57,13 @@ export class CritterScene {
   for(const j of this.rig.joints){const a=map.get(j.a),b=map.get(j.b);this.world.createJoint(new P.RevoluteJoint({bodyA:a,bodyB:b,localAnchorA:V(j.anchorA.x,j.anchorA.y),localAnchorB:V(j.anchorB.x,j.anchorB.y),referenceAngle:j.referenceAngle,enableLimit:true,lowerAngle:j.minAngle,upperAngle:j.maxAngle,collideConnected:false}));}
   this.index();
  }
- index(){this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);}
+ index(){this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);if(d?.role==='enemy')this.enemies.set(d.id,b);}
   this.parts.sort((a,b)=>a.getUserData().id.localeCompare(b.getUserData().id));this.rope=null;this.ropes=[];
   for(let j=this.world.getJointList();j;j=j.getNext()){if(j.getUserData()?.role==='pivot')this.pivot=j;if(j.getUserData()?.role==='rope')this.ropes.push(j);}
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   this.world.on('post-solve',(contact,impulse)=>{if(this.phase!=='flight' || this.elapsed-this.lastImpact<.08)return;
    const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();if(a.getUserData()?.role!=='part' && b.getUserData()?.role!=='part')return;
-   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;this.events.push({type:'impact',strength,position:this.center()});if(this.events.length>16)this.events.shift();}});
+   const strength=impulse.normalImpulses.reduce((n,x)=>n+x,0);if(strength>.08){this.lastImpact=this.elapsed;this.impactCount++;const other=a.getUserData()?.role==='part'?b:a,fixture=a.getUserData()?.role==='part'?contact.getFixtureB():contact.getFixtureA(),d=other.getUserData();const material=d?.role==='enemy'?(d.shape==='leaf'||d.shape==='wings'?'leaf':d.shape==='cap'?'ground':'shell'):d?.role==='static'?(fixture.getShape().getType()==='circle'?'bumper':this.center().y<2?'ground':'wood'):'wood';this.events.push({type:'impact',strength,position:this.center(),material,mass:this.rig.totalMass});if(this.events.length>16)this.events.shift();}});
  }
  startWinding(fraction){
   if(this.hand || !['uncocked','loading','wind-stalled'].includes(this.phase))throw new Error('Winding requires an unloaded grip and idle mechanism');
@@ -75,18 +77,25 @@ export class CritterScene {
   const speed=Math.max(-.6,Math.min(.6,error*5))-frameSpeed;this.pivot.setMotorSpeed(speed);
   if(this.elapsed-this.windingStart>12){this.pivot.enableMotor(false);this.phase='wind-stalled';this.events.push({type:'wind-stalled'});}
  }
- enableEncounters(seed){this.encounters=createEncounterDirector(seed);}
- updateEncounters(){if(!this.encounters || this.phase!=='flight' || this.elapsed-this.release.time<.8)return;
-  const active=this.encounters.update(this.elapsed,this.center()).active;
-  for(const e of active)if(!this.enemies.has(e.id) && this.enemies.size<12){
-   const c=this.center();if(Math.hypot(e.x-c.x,e.y-c.y)<3)continue;
-   const b=this.world.createDynamicBody({position:V(e.x,e.y),linearVelocity:V(e.vx,e.vy),bullet:true});tag(b,'enemy',e.id);b.setUserData({role:'enemy',id:e.id,color:e.color,expiresAt:e.expiresAt});
-   b.createFixture(P.Circle(e.radius),{density:e.mass/(Math.PI*e.radius**2),friction:e.material.friction,restitution:e.material.restitution,filterCategoryBits:32,filterMaskBits:5});
-   this.enemies.set(e.id,b);this.spawnEnergy+=.5*e.mass*(e.vx**2+e.vy**2)+e.mass*this.p.gravity*e.y;this.events.push({type:'enemy'});
-  }
-  for(const [id,b]of this.enemies)if(b && this.elapsed>b.getUserData().expiresAt && Math.hypot(b.getPosition().x-this.center().x,b.getPosition().y-this.center().y)>4){this.world.destroyBody(b);this.enemies.delete(id);}
+ canSpawnEncounter(e){const shape=P.Circle(e.radius+.05),transform=P.Transform(V(e.x,e.y),0);
+  for(let body=this.world.getBodyList();body;body=body.getNext())for(let fixture=body.getFixtureList();fixture;fixture=fixture.getNext())if(fixture.getFilterMaskBits()!==0){const other=fixture.getShape();for(let i=0;i<(other.getChildCount?.()??1);i++)if(P.testOverlap(shape,0,other,i,transform,body.getTransform()))return false;}
+  return true;
  }
- snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {dampingWork:this.dampingWork,dragWork:this.dragWork,windingWork:this.windingWork,windingInput:this.windingInput,windingBraking:this.windingBraking,windingTarget:this.windingTarget,windingStart:this.windingStart,assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
+ enableEncounters(seed){this.encounterSeed=seed;this.encounters=createEncounterDirector(seed);}
+ updateEncounters(){if(!this.encounters||this.phase!=='flight'||this.elapsed-this.release.time<.8)return;
+  const time=this.elapsed-this.release.time,c=this.center();
+  // Remove old distant bodies before evaluating capacity; account for signed energy removal.
+  for(const[id,body]of this.enemies)if(time>body.getUserData().expiresAt&&Math.hypot(body.getPosition().x-c.x,body.getPosition().y-c.y)>4){this.despawnEnergy+=this.bodyEnergy(body);this.world.destroyBody(body);this.enemies.delete(id);}
+  const births=this.encounters.update(time,c).spawns;let added=false;
+  for(const e of births)if(!this.enemies.has(e.id)&&this.enemies.size<8){
+   if(Math.hypot(e.x-c.x,e.y-c.y)<e.radius+1.5||!this.canSpawnEncounter(e))continue;
+   const body=this.world.createDynamicBody({position:V(e.x,e.y),linearVelocity:V(e.vx,e.vy),bullet:true});body.setUserData({role:'enemy',id:e.id,color:e.color,shape:e.shape,expiresAt:e.expiresAt});
+   body.createFixture(P.Circle(e.radius),{density:e.mass/(Math.PI*e.radius**2),friction:e.material.friction,restitution:e.material.restitution,filterCategoryBits:32,filterMaskBits:5});
+   this.enemies.set(e.id,body);this.spawnEnergy+=this.bodyEnergy(body);added=true;
+  }
+  if(added&&time-this.lastEnemySound>=.4){this.lastEnemySound=time;this.events.push({type:'enemy'});if(this.events.length>16)this.events.shift();}
+ }
+ snapshot(){if(this.hand)throw new Error('Drop grip before taking a launch snapshot');return {encounterSeed:this.encounterSeed,encounterState:this.encounters?.snapshot()??null,spawnEnergy:this.spawnEnergy,despawnEnergy:this.despawnEnergy,lastImpact:this.lastImpact,lastEnemySound:this.lastEnemySound,dampingWork:this.dampingWork,dragWork:this.dragWork,windingWork:this.windingWork,windingInput:this.windingInput,windingBraking:this.windingBraking,windingTarget:this.windingTarget,windingStart:this.windingStart,assistWork:this.assistWork,control:this.control,impactCount:this.impactCount,p:{...this.p},species:this.rig.id,phase:this.phase,elapsed:this.elapsed,release:this.release?structuredClone(this.release):null,handWork:this.handWork,world:serializer.toJson(this.world)};}
  clone(){return new CritterScene(this.p,this.rig.id,this.snapshot());}
  center(){let x=0,y=0,vx=0,vy=0,m=0;for(const b of this.parts){const w=b.getMass(),q=b.getWorldCenter(),v=b.getLinearVelocity();m+=w;x+=q.x*w;y+=q.y*w;vx+=v.x*w;vy+=v.y*w;}return {x:x/m,y:y/m,vx:vx/m,vy:vy/m,mass:m};}
  loadingStatus(){const c=this.center(),cup=this.pouch.getPosition(),v=this.pouch.getLinearVelocityFromWorldPoint(c);let contacting=false,contactingParts=0,maxPartRelativeSpeed=0,maxRelativeSpin=0;
@@ -105,7 +114,8 @@ export class CritterScene {
  move(point){if(this.hand && Number.isFinite(point.x)&&Number.isFinite(point.y))this.hand.target=V(point.x,point.y);}
  drop(){this.hand=null;}
  unlatch(){if(this.phase!=='loading')throw new Error('Finish physical winding before unlatching');if(this.hand)throw new Error('Release your grip first');if(!this.isLoaded())throw new Error('Place critter in cradle first');this.pivot.enableLimit(false);this.phase='launching';}
- energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic()){const m=b.getMass(),c=b.getWorldCenter(),v=b.getLinearVelocity(),local=b.getLocalCenter(),I=b.getInertia()-m*(local.x**2+local.y**2);e+=.5*m*(v.x**2+v.y**2)+.5*I*b.getAngularVelocity()**2+m*this.p.gravity*(c.y-this.p.pivotHeight);}return e;}
+ bodyEnergy(b){const m=b.getMass(),c=b.getWorldCenter(),v=b.getLinearVelocity(),local=b.getLocalCenter(),I=b.getInertia()-m*(local.x**2+local.y**2);return .5*m*(v.x**2+v.y**2)+.5*I*b.getAngularVelocity()**2+m*this.p.gravity*(c.y-this.p.pivotHeight);}
+ energy(){let e=0;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.isDynamic())e+=this.bodyEnergy(b);return e;}
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
   const before=this.hand?this.hand.body.getWorldPoint(this.hand.local):null;let force=null;
   if(this.hand){const b=this.hand.body,q=before,v=b.getLinearVelocityFromWorldPoint(q),grip=gripParameters(this.rig.totalMass);let fx=grip.stiffness*(this.hand.target.x-q.x)-grip.damping*v.x,fy=grip.stiffness*(this.hand.target.y-q.y)-grip.damping*v.y;const mag=Math.hypot(fx,fy),scale=Math.min(1,grip.maxForce/(mag||1));this.forceCapped=mag>grip.maxForce;force=V(fx*scale,fy*scale);b.applyForce(force,q,true);}

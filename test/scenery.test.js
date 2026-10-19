@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {drawScenery,drawFace} from '../src/scenery.js';
+import {drawScenery,drawFace,drawEncounterDetails} from '../src/scenery.js';
 function context(){const calls=[];const ctx=new Proxy({}, {get(_,key){if(key==='createLinearGradient')return(...args)=>{calls.push([key,...args]);return {addColorStop(){}};};return(...args)=>calls.push([key,...args]);},set(_,key,value){calls.push(['set',key,typeof value==='object'?'gradient':value]);return true;}});return {ctx,calls};}
 test('all scenery biomes are deterministic, bounded and restore context',()=>{
  for(const region of ['Grandfather Tree','open sky','jungle canopy','forest floor']){
@@ -11,4 +11,9 @@ test('reduced-motion scenery does not depend on time',()=>{const a=context(),b=c
 test('all eleven original face variants are bounded and guard invalid input',()=>{
  for(const species of ['lizard','salamander','mouse','turtle','snake','chipmunk','flying-squirrel','armadillo','small-marsupial','tiny-primate','frog']){const {ctx,calls}=context();drawFace(ctx,{x:10,y:20,size:8,species});assert.ok(calls.length<65);assert.equal(calls.at(-1)[0],'restore');}
  const {ctx,calls}=context();drawFace(ctx,{x:NaN,y:0});drawScenery(ctx,{width:-1,height:480});assert.equal(calls.length,0);
+});
+
+test('encounter shape markings stay bounded and restore canvas state',()=>{
+ for(const shape of ['wings','leaf','cap','pod','oval','circle']){const {ctx,calls}=context();drawEncounterDetails(ctx,{x:5,y:10,size:12,shape});assert.ok(calls.length<100);assert.equal(calls[0][0],'save');assert.equal(calls.at(-1)[0],'restore');}
+ const {ctx,calls}=context();drawEncounterDetails(ctx,{x:NaN,y:0});assert.equal(calls.length,0);
 });

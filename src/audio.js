@@ -1,18 +1,33 @@
 /** Original synthesized cues. No assets, autoplay, persistent loops, or physics side effects. */
 export const AUDIO_EVENTS = Object.freeze(['launch', 'impact', 'coin', 'shop', 'enemy', 'wind']);
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, Number.isFinite(v) ? v : lo));
-export function soundSpec(event, intensity = 1) {
+export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1 } = {}) {
   const strength = clamp(intensity, 0, 1);
   const cues = {
     launch: { frequency: 150, endFrequency: 420, duration: .28, gain: .15, type: 'triangle', noise: .35 },
-    impact: { frequency: 95 + strength * 120, endFrequency: 48, duration: .09 + strength * .12, gain: .18, type: 'sine', noise: .25 },
+    impact: { frequency: 190 + strength * 100, endFrequency: 76, duration: .12 + strength * .12, gain: .14, type: 'sine', noise: .12, harmony: 1.9, bend: 1.18, noiseFrequency: 900 },
     coin: { frequency: 880, endFrequency: 1320, duration: .19, gain: .09, type: 'sine', harmony: 1.5 },
     shop: { frequency: 440, endFrequency: 660, duration: .3, gain: .08, type: 'triangle', harmony: 1.25 },
     enemy: { frequency: 280, endFrequency: 110, duration: .23, gain: .11, type: 'triangle', harmony: 1.03 },
     wind: { frequency: 350, endFrequency: 800, duration: .45, gain: .035, type: 'sine', noise: 1 },
   };
-  const cue = cues[event];
-  return cue ? { ...cue, gain: cue.gain * Math.sqrt(strength) } : null;
+  let cue = Object.hasOwn(cues, event) ? cues[event] : null;
+  if (!cue) return null;
+  if (event === 'impact') {
+    // These are original contact timbres, not species cries or injury cues.
+    const materials = {
+      wood: {},
+      ground: { frequency: 130 + strength * 65, endFrequency: 52, harmony: 1.5, noise: .2, noiseFrequency: 650 },
+      leaf: { frequency: 350, endFrequency: 220, duration: .11, gain: .065, harmony: 0, noise: .65, noiseFrequency: 1800, bend: 1 },
+      shell: { frequency: 280 + strength * 90, endFrequency: 180, harmony: 2.7, noise: .045, type: 'triangle', bend: 1.06 },
+      bumper: { frequency: 330 + strength * 80, endFrequency: 140, harmony: 1.5, noise: .035, duration: .23, bend: 1.5 },
+    };
+    cue = { ...cue, ...(Object.hasOwn(materials, material) ? materials[material] : materials.wood) };
+    // Optional gameplay mass changes timbre, never sound amplitude/physics.
+    const pitchScale = Math.pow(clamp(mass, .15, 8), -.16);
+    cue.frequency *= pitchScale; cue.endFrequency *= pitchScale;
+  }
+  return { ...cue, gain: cue.gain * Math.sqrt(strength) };
 }
 
 /** Call unlock directly from a click/touch/key gesture. Unsupported/blocked audio fails silently. */
@@ -51,8 +66,8 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
   function updateGain() {
     if (master) master.gain.setTargetAtTime((muted ? 0 : volume) / Math.sqrt(limit), context.currentTime, .015);
   }
-  function play(event, { intensity = 1 } = {}) {
-    const cue = soundSpec(event, intensity);
+  function play(event, { intensity = 1, material, mass } = {}) {
+    const cue = soundSpec(event, intensity, { material, mass });
     if (!cue || cue.gain === 0 || muted || volume === 0 || !context || context.state !== 'running') return false;
     const now = context.currentTime;
     // Contact chatter cannot fill the voice pool or create hundreds of nodes per frame.
@@ -63,13 +78,14 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
     const envelope = context.createGain(); voice.nodes.push(envelope);
     envelope.gain.setValueAtTime(0, now);
     envelope.gain.linearRampToValueAtTime(cue.gain, now + .008);
-    envelope.gain.exponentialRampToValueAtTime(.0001, now + cue.duration);
+    envelope.gain.exponentialRampToValueAtTime(Math.max(1e-12, cue.gain * .001), now + cue.duration);
     envelope.gain.linearRampToValueAtTime(0, now + cue.duration + .012);
     envelope.connect(master);
     function tone(ratio, level) {
       const osc = context.createOscillator(), gain = context.createGain();
       voice.sources.push(osc); voice.nodes.push(osc, gain);
       osc.type = cue.type; osc.frequency.setValueAtTime(cue.frequency * ratio, now);
+      if (cue.bend) osc.frequency.exponentialRampToValueAtTime(cue.frequency * cue.bend * ratio, now + .018);
       osc.frequency.exponentialRampToValueAtTime(cue.endFrequency * ratio, now + cue.duration);
       gain.gain.value = level; osc.connect(gain); gain.connect(envelope);
       osc.start(now); osc.stop(now + cue.duration + .02);
@@ -81,7 +97,7 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
       const noise = context.createBufferSource(), filter = context.createBiquadFilter(), gain = context.createGain();
       voice.sources.push(noise); voice.nodes.push(noise, filter, gain);
       noise.buffer = noiseBuffer; filter.type = 'bandpass'; filter.Q.value = .6;
-      filter.frequency.setValueAtTime(event === 'wind' ? 500 : 1100, now);
+      filter.frequency.setValueAtTime(cue.noiseFrequency || (event === 'wind' ? 500 : 1100), now);
       gain.gain.value = cue.noise; noise.connect(filter); filter.connect(gain); gain.connect(envelope);
       noise.start(now); noise.stop(now + cue.duration + .02);
     }

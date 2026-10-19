@@ -65,3 +65,24 @@ export function drawFace(ctx,{x,y,angle=0,size=7,species='mouse',color='#b6b0a9'
  }
  ctx.restore();
 }
+/** Optional encounter markings within the caller's circular collision silhouette.
+ * x/y,size are screen coordinates/radius; shapes are readable original visual cues,
+ * not extra collision geometry. No animation, health or injury state.
+ */
+export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',color='#ad8059',angle=0}={}){
+ if(!ctx||![x,y,size,angle].every(Number.isFinite)||size<=0)return;
+ ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size;
+ ctx.strokeStyle='#394d43';ctx.lineWidth=Math.max(.7,s*.07);ctx.lineCap='round';
+ if(shape==='wings'){
+  ellipse(ctx,-s*.35,0,s*.35,s*.65,'#f4e8e6',-.35);ellipse(ctx,s*.35,0,s*.35,s*.65,'#f4e8e6',.35);ellipse(ctx,0,0,s*.12,s*.6,color);
+ }else if(shape==='leaf'){
+  ctx.beginPath();ctx.moveTo(-s*.7,s*.4);ctx.quadraticCurveTo(-s*.7,-s*.7,s*.65,-s*.5);ctx.quadraticCurveTo(s*.6,s*.55,-s*.7,s*.4);ctx.fillStyle='#c9dda0';ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(-s*.6,s*.35);ctx.lineTo(s*.5,-s*.4);ctx.stroke();
+ }else if(shape==='cap'){
+  ellipse(ctx,0,-s*.15,s*.8,s*.45,'#f5d9c4');for(const dx of [-.4,.15,.5])ellipse(ctx,s*dx,-s*.25,s*.09,s*.08,color);ctx.fillStyle='#f1e0b9';ctx.fillRect(-s*.15,s*.1,s*.3,s*.55);
+ }else if(shape==='pod'){
+  for(const dx of [-.35,0,.35]){ctx.beginPath();ctx.moveTo(dx*s,-s*.65);ctx.quadraticCurveTo((dx+.25)*s,0,dx*s,s*.65);ctx.stroke();}
+ }else {
+  ctx.beginPath();ctx.moveTo(0,-s*.7);ctx.lineTo(0,s*.7);ctx.stroke();ellipse(ctx,-s*.38,-s*.08,s*.12,s*.18,'#e5c894');ellipse(ctx,s*.38,-s*.08,s*.12,s*.18,'#e5c894');
+ }
+ ellipse(ctx,-s*.22,-s*.32,s*.09,s*.12,'#2e4438');ellipse(ctx,s*.22,-s*.32,s*.09,s*.12,'#2e4438');ctx.beginPath();ctx.arc(0,-s*.08,s*.17,.15,Math.PI-.15);ctx.stroke();ctx.restore();
+}

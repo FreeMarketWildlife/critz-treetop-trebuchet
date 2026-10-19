@@ -25,11 +25,22 @@ function resolveRegion(region,y){if(regions[region])return region;if(aliases[reg
  * scheduling, NOT a dynamic collision solver. An integrator must replace descriptor
  * motion with dynamic bodies on activation and account for moving-obstacle work.
  * Same seed/time/position yields identical active descriptors, including after rewind.
+ * spawns contains only newly observed fresh births with player clearance; consume once
+ * into dynamic bodies. It is intentionally stateful. Rewinds emit no duplicate births.
+ * Use time since release and do not call until the launch preview quiet period ends.
  * Events describe visibility transitions only; collision sounds belong to the solver.
  */
-export function createEncounterDirector(seed=0){
+export function createEncounterDirector(seed=0,saved=null){
   if(!['number','string'].includes(typeof seed)||typeof seed==='number'&&!Number.isFinite(seed))throw new Error('Seed must be finite number or string');
-  let previous=new Set();
+  let previous=new Set(),observed=new Map(),latestTime=-1,lastSound=-Infinity;
+  if(saved!==null){
+    if(!saved || saved.version!==1 || saved.seed!==seed || !Array.isArray(saved.previous) || !Array.isArray(saved.observed)
+      || saved.previous.length>8 || saved.observed.length>10000 || !saved.previous.every(id=>typeof id==='string')
+      || !saved.observed.every(e=>Array.isArray(e)&&e.length===2&&typeof e[0]==='string'&&Number.isFinite(e[1])&&e[1]>=0)
+      || !Number.isFinite(saved.latestTime) || saved.latestTime< -1
+      || !(saved.lastSound===null || Number.isFinite(saved.lastSound)&&saved.lastSound>=0&&saved.lastSound<=saved.latestTime))throw new Error('Invalid encounter snapshot or seed mismatch');
+    previous=new Set(saved.previous);observed=new Map(saved.observed);latestTime=saved.latestTime;lastSound=saved.lastSound??-Infinity;
+  }
   return {update(time,player,region){
     if(!Number.isFinite(time)||time<0||!player||!Number.isFinite(player.x)||!Number.isFinite(player.y))throw new Error('Finite nonnegative time and player position required');
     const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/80),slot=Math.floor(time/4),candidates=[];
@@ -45,9 +56,21 @@ export function createEncounterDirector(seed=0){
         radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+10,harmless:true});
     }
     candidates.sort((a,b)=>Math.abs(a.x-player.x)-Math.abs(b.x-player.x)||a.id.localeCompare(b.id));
-    const active=candidates.slice(0,8),current=new Set(active.map(e=>e.id)),events=[];
-    for(const enemy of active)if(!previous.has(enemy.id))events.push({type:'encounter-enter',id:enemy.id,biome,time,sound:'encounter-arrive'});
+    const active=candidates.slice(0,8),current=new Set(active.map(e=>e.id)),events=[],spawns=[];
+    // Dynamic solvers consume spawns, NOT the historical active observations.
+    // A birth is available for 0.25 s, never replayed after a rewind or revisit.
+    // Reject overlapping materialization, rather than push the player out of it.
+    const forward=time>=latestTime;
+    for(const [id,expiry] of observed)if(expiry<time && forward)observed.delete(id);
+    if(forward)for(const enemy of active)if(!observed.has(enemy.id)){
+      observed.set(enemy.id,enemy.expiresAt);
+      if(time-enemy.spawnTime<=.25 && Math.hypot(enemy.x-player.x,enemy.y-player.y)>enemy.radius+1.5)spawns.push(enemy);
+    }
+    const audible=new Set();
+    if(spawns.length && time-lastSound>=.4){audible.add(spawns[0].id);lastSound=time;}
+    latestTime=Math.max(latestTime,time);
+    for(const enemy of active)if(!previous.has(enemy.id))events.push({type:'encounter-enter',id:enemy.id,biome,time,sound:audible.has(enemy.id)?'encounter-arrive':null});
     for(const id of previous)if(!current.has(id))events.push({type:'encounter-exit',id,time});
-    previous=current;return {active,events};
-  },reset(){previous=new Set();}};
+    previous=current;return {active,spawns,events};
+  },snapshot(){return {version:1,seed,previous:[...previous],observed:[...observed].map(([id,expiry])=>[id,expiry]),latestTime,lastSound:Number.isFinite(lastSound)?lastSound:null};},reset(){previous=new Set();observed=new Map();latestTime=-1;lastSound=-Infinity;}};
 }

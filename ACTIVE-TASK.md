@@ -1,0 +1,9 @@
+# Active implementation task — consult before resuming
+
+The active task is ongoing LOCAL GAME DEVELOPMENT of Critz: Treetop Trebuchet. Earlier lore documentation is complete; do not report that as current progress. User authorized continued overnight mechanics/game-feel work until stopped. Preserve local code. No push, deployment, paid assets, unlock bypass or retry of blocked exports.
+
+Repository: this directory. Baseline before iteration 7: 5e817d4ae1d0abae0e30d4097e6e89f9b59378ab (109 tests). Read docs/prototype.md iteration 7 and docs/reviews/iteration-7/regression-findings.md for current measured results. Iteration 7 has 124 passing tests and 35-case regression (32 launches, three low-winding seating failures). Exact source hashes are recorded in JSON.
+
+Next: refine contact loading/branch-return usability without pose snaps or velocity boosts; investigate ground-impact joint deformation with controlled identical-state experiments, then repeat appropriate regression. Validate prediction freshness while the loaded rig keeps moving and browser portrait/landscape when accessible. Run full tests after core changes and commit useful tested local checkpoints. Do not claim calibrated realism, browser FPS, audible QA or complete human play based on numerical tests.
+
+Physics uses real finite frame/beam/counterweight, tension-only straps and physical stopped split pouch with 0.5 kg panels. Preserve mass/work accounting. Snapshot bug fixed unwrapped angles via pinned Planck 1.5.1 adapter; earlier panel-instability conclusions were confounded. Default solver 600 Hz, 20/12 iterations. Geometric release remains rollback. Canonical snapshot continuation is intentional because Planck contact caches are not serialized.

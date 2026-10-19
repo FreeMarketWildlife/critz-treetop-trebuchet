@@ -112,3 +112,21 @@ test('solver research iteration options reject unsafe values without changing pr
  for(const key of ['solverVelocityIterations','solverPositionIterations'])for(const value of[0,-1,1.5,101,NaN,Infinity])assert.throws(()=>new CritterScene({[key]:value}));
  const scene=new CritterScene({solverVelocityIterations:40,solverPositionIterations:30});for(let i=0;i<30;i++)scene.step();assert.ok(Number.isFinite(scene.energy()));
 });
+test('snapshots preserve naturally integrated unwrapped angles and limited joint coordinates',async()=>{
+ const {PhysicalHookScene}=await import('../src/hook-experiment.js'),{load,waitForContact}=await import('../scripts/measure-hook.js');
+ const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,mechanicalWinding:true,initialArm:-3},'snake');s.startWinding(.6);for(let i=0;i<7200&&s.phase==='winding';i++)s.step();assert.ok(load(s));waitForContact(s);
+ assert.ok(s.parts.some(b=>Math.abs(b.getAngle())>Math.PI),'natural loading must exercise an unwrapped angle');
+ const copy=s.clone();for(let i=0;i<s.parts.length;i++)assert.equal(copy.parts[i].getAngle(),s.parts[i].getAngle());
+ const angles=scene=>{const rows=[];for(let j=scene.world.getJointList();j;j=j.getNext())if(j.getType()==='revolute-joint')rows.push({a:j.getBodyA().getUserData()?.id,b:j.getBodyB().getUserData()?.id,angle:j.getJointAngle()});return rows.sort((a,b)=>(a.a+':'+a.b).localeCompare(b.a+':'+b.b));};
+ assert.deepEqual(angles(copy),angles(s));
+});
+test('encounter births and removals use matching energy reference and survive canonical snapshots',()=>{
+ const s=new CritterScene();s.phase='flight';s.release={time:0,center:s.center()};s.enableEncounters(42);let spawned=false;
+ for(let i=8;i<240;i++){s.elapsed=i/10;const before=s.energy(),known=s.spawnEnergy-s.despawnEnergy;s.updateEncounters();assert.ok(s.enemies.size<=8);assert.ok(s.events.length<=16);assert.ok(Math.abs((s.energy()-before)-((s.spawnEnergy-s.despawnEnergy)-known))<1e-8);if(s.enemies.size)spawned=true;}
+ assert.ok(spawned);assert.notEqual(s.despawnEnergy,0);
+ const a=s.clone(),b=s.clone();assert.equal(a.enemies.size,s.enemies.size);assert.equal(a.spawnEnergy,s.spawnEnergy);assert.equal(a.despawnEnergy,s.despawnEnergy);
+ for(let i=0;i<300;i++){a.step();b.step();}assert.deepEqual(a.encounters.snapshot(),b.encounters.snapshot());assert.deepEqual([...a.enemies.keys()],[...b.enemies.keys()]);assert.deepEqual(a.center(),b.center());
+});
+test('encounters cannot materialize inside authored terrain or existing bodies',()=>{
+ const s=new CritterScene();assert.equal(s.canSpawnEncounter({x:100,y:.3,radius:.8}),false);assert.equal(s.canSpawnEncounter({x:-4.3,y:295.6,radius:.5}),false);assert.equal(s.canSpawnEncounter({x:100,y:10,radius:.8}),true);
+});

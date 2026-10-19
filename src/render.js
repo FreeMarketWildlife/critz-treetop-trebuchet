@@ -1,5 +1,5 @@
 import {world as layout} from './world.js';
-import {drawScenery,drawFace} from './scenery.js';
+import {drawScenery,drawFace,drawEncounterDetails} from './scenery.js';
 export function viewportFor(width,height=Infinity){return width<=650&&height>=width?{width:480,height:600,portrait:true,originX:240,originY:560}:{width:960,height:480,portrait:false,originX:260,originY:440};}
 export function pointerWorld(point,bounds,viewport){
  if(![point.clientX,point.clientY,bounds.left,bounds.top,bounds.width,bounds.height].every(Number.isFinite)||bounds.width<=0||bounds.height<=0)return null;
@@ -13,6 +13,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
   if(s.getType()==='circle')dot(transform(b.getWorldPoint(s.getCenter())),s.getRadius()*scale,color);
   else if(s.getType()==='polygon'){const points=s.m_vertices.map(v=>transform(b.getWorldPoint(v)));ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.closePath();ctx.fill();ctx.strokeStyle='#45554a';ctx.lineWidth=1;ctx.stroke();}
  }
+ if(role==='enemy'){const p=transform(b.getWorldCenter()),f=b.getFixtureList();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:f.getShape().getRadius()*scale,shape:b.getUserData().shape,color:b.getUserData().color,angle:-b.getAngle()});}
  if(role==='part' && b.getUserData().id==='head'){const p=transform(b.getPosition()),profile=scene.rig.bodies.find(p=>p.id==='head');drawFace(ctx,{x:p[0],y:p[1],angle:-b.getAngle(),size:Math.max(3,(profile.shape.radius??.1)*scale),species:scene.rig.id,color:scene.rig.color});}
  }
  return {get viewport(){return viewport;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
