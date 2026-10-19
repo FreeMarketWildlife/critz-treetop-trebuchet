@@ -5,7 +5,7 @@ import {createProgressCoordinator,ProgressConflict,PROGRESS_KEY} from './progres
 import {readProgressBackup} from './progress-choice.js';
 import {createWindingInput,windingMeter} from './winding-input.js';
 import {createFrameClock,createRuntimeMetrics} from './runtime.js';
-import {createLoadingCoach} from './loading-coach.js';
+import {createLoadingCoach} from './loading-coach.js?v=39';
 import {drawVolunteerPortrait,speciesTraits} from './species-art.js';
 import {loadProgressConsent,saveProgressConsent} from './progress-preferences.js';
 import {createJourneyTracker} from './journey.js';

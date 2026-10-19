@@ -1,0 +1,1390 @@
+{
+  "protocol": "Retained264matrix; classifications separate real placement/contact outcomes, numerical hard-constraint error and unproven high-spin instability. Diagnostics sampled outer600Hz steps, not every internal substep. A small single-body pixel bound does not prove invisibility, downstream accuracy or population fairness.",
+  "angularFlags": [
+    {
+      "id": "stock-chipmunk-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.10480669859255731,
+      "worst": {
+        "phase": "ground_recovery",
+        "time": 18.81333333333221,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.10480669859255731,
+        "angle": -1.0548066985925573,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "counterweight-heavy-lizard-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.13186633295516903,
+      "worst": {
+        "phase": "flight",
+        "time": 7.013333333333616,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.13186633295516903,
+        "angle": -1.081866332955169,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 3
+    },
+    {
+      "id": "counterweight-heavy-salamander-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.0805400786374435,
+      "worst": {
+        "phase": "ground_recovery",
+        "time": 18.85666666666555,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.0805400786374435,
+        "angle": 1.0305400786374435,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "counterweight-heavy-turtle-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08535105036726809,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 15.700000000001614,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.08535105036726809,
+        "angle": -1.035351050367268,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "counterweight-heavy-chipmunk-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08611909995305145,
+      "worst": {
+        "phase": "loading",
+        "time": 3.3383333333332184,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "tail"
+        },
+        "value": 0.08611909995305145,
+        "angle": 1.2861190999530514,
+        "limits": [
+          -1.2,
+          1.2
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-mouse-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.16872676591990943,
+      "worst": {
+        "phase": "flight",
+        "time": 7.481666666667023,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.16872676591990943,
+        "angle": 1.1187267659199094,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0033333333333333335,
+      "aboveThresholdOuterSamples": 4
+    },
+    {
+      "id": "beam-long-frog-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.12382156350428275,
+      "worst": {
+        "phase": "flight",
+        "time": 7.52666666666703,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-shin"
+        },
+        "value": 0.12382156350428275,
+        "angle": -1.6238215635042828,
+        "limits": [
+          -1.5,
+          1.5
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "sling-long-snake-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.11428954743631148,
+      "worst": {
+        "phase": "descent_after_obstacle",
+        "time": 19.644999999998298,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "head"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "value": 0.11428954743631148,
+        "angle": -1.1642895474363115,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "sling-long-chipmunk-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08074277256047346,
+      "worst": {
+        "phase": "loading",
+        "time": 3.358333333333216,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.08074277256047346,
+        "angle": 1.0307427725604734,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08499567065513891,
+      "worst": {
+        "phase": "loading",
+        "time": 3.2799999999998914,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "tail"
+        },
+        "value": 0.08499567065513891,
+        "angle": 1.2849956706551389,
+        "limits": [
+          -1.2,
+          1.2
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-frog-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.1712664437695821,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 15.821666666668312,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-shin"
+        },
+        "value": 0.1712664437695821,
+        "angle": -1.671266443769582,
+        "limits": [
+          -1.5,
+          1.5
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-grip-lizard-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.38985725079305245,
+      "worst": {
+        "phase": "flight",
+        "time": 7.018333333333617,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.38985725079305245,
+        "angle": 1.3398572507930524,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0033333333333333335,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "frame-grip-snake-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.0871165050528162,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 15.043333333334548,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "head"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "value": 0.0871165050528162,
+        "angle": -1.1371165050528163,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-grip-armadillo-0.45",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.09644793877334945,
+      "worst": {
+        "phase": "flight",
+        "time": 8.825000000000566,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.09644793877334945,
+        "angle": 1.0464479387733494,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "stock-chipmunk-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.13462300572187247,
+      "worst": {
+        "phase": "loading",
+        "time": 3.603333333333189,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.13462300572187247,
+        "angle": -1.0846230057218724,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "counterweight-heavy-snake-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08816245348679241,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.678333333334404,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "head"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "value": 0.08816245348679241,
+        "angle": -1.1381624534867925,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "counterweight-heavy-chipmunk-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.138867746238317,
+      "worst": {
+        "phase": "loading",
+        "time": 3.6533333333331837,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.138867746238317,
+        "angle": -1.088867746238317,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-lizard-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.09094281567245877,
+      "worst": {
+        "phase": "flight",
+        "time": 9.756666666667378,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.09094281567245877,
+        "angle": -1.0409428156724587,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-salamander-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.10468990652878118,
+      "worst": {
+        "phase": "loading",
+        "time": 3.436666666666541,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.10468990652878118,
+        "angle": -1.0546899065287811,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-snake-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.10902495719645056,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.286666666668026,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "segment-5"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-6"
+        },
+        "value": 0.10902495719645056,
+        "angle": -1.1590249571964506,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "beam-long-small-marsupial-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.10110043028410876,
+      "worst": {
+        "phase": "descent_after_obstacle",
+        "time": 16.906666666667405,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.10110043028410876,
+        "angle": -1.0511004302841087,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-frog-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.13420096429570805,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 12.480000000001025,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-shin"
+        },
+        "value": 0.13420096429570805,
+        "angle": -1.634200964295708,
+        "limits": [
+          -1.5,
+          1.5
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-light-chipmunk-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.13484478861395144,
+      "worst": {
+        "phase": "loading",
+        "time": 3.606666666666522,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.13484478861395144,
+        "angle": -1.0848447886139514,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 3
+    },
+    {
+      "id": "beam-light-small-marsupial-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.0991099419155177,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.746666666667675,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.0991099419155177,
+        "angle": 1.0491099419155177,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "sling-long-snake-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.09505832769502542,
+      "worst": {
+        "phase": "descent_after_obstacle",
+        "time": 18.701666666665634,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "segment-4"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-5"
+        },
+        "value": 0.09505832769502542,
+        "angle": -1.1450583276950255,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "sling-long-frog-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.09969132968156202,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.65166666666771,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-shin"
+        },
+        "value": 0.09969132968156202,
+        "angle": -1.599691329681562,
+        "limits": [
+          -1.5,
+          1.5
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-turtle-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08935657271453012,
+      "worst": {
+        "phase": "flight",
+        "time": 8.938333333333917,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "tail"
+        },
+        "value": 0.08935657271453012,
+        "angle": -0.4393565727145301,
+        "limits": [
+          -0.35,
+          0.35
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.14322235494845637,
+      "worst": {
+        "phase": "loading",
+        "time": 3.599999999999856,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.14322235494845637,
+        "angle": -1.0932223549484563,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-frog-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.1569830533988522,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.47000000000126,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.1569830533988522,
+        "angle": 1.0569830533988522,
+        "limits": [
+          -0.9,
+          0.9
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-grip-lizard-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.12703206361509278,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 15.613333333334904,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.12703206361509278,
+        "angle": -1.0770320636150927,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-grip-turtle-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.11293976432151143,
+      "worst": {
+        "phase": "flight",
+        "time": 9.716666666667372,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "tail"
+        },
+        "value": 0.11293976432151143,
+        "angle": -0.4629397643215114,
+        "limits": [
+          -0.35,
+          0.35
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-grip-chipmunk-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.1350279959009948,
+      "worst": {
+        "phase": "loading",
+        "time": 3.603333333333189,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.1350279959009948,
+        "angle": -1.0850279959009947,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "combined-snake-0.6",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08782419162245425,
+      "worst": {
+        "phase": "loading",
+        "time": 3.4966666666665343,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "head"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "value": 0.08782419162245425,
+        "angle": 1.1378241916224543,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "counterweight-heavy-lizard-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.15669845883769828,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.778333333334313,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.15669845883769828,
+        "angle": 1.1066984588376982,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "counterweight-heavy-snake-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08026380071503714,
+      "worst": {
+        "phase": "loading",
+        "time": 3.899999999999823,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "segment-5"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-6"
+        },
+        "value": 0.08026380071503714,
+        "angle": 1.1302638007150372,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "counterweight-heavy-frog-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.09876745848802093,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 17.161666666667298,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "value": 0.09876745848802093,
+        "angle": 1.198767458488021,
+        "limits": [
+          -1.1,
+          1.1
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-salamander-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08595437767620706,
+      "worst": {
+        "phase": "loading",
+        "time": 3.7799999999998364,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.08595437767620706,
+        "angle": -1.035954377676207,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-mouse-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.09185257659710033,
+      "worst": {
+        "phase": "loading",
+        "time": 3.7699999999998375,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.09185257659710033,
+        "angle": -1.0418525765971003,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "beam-long-turtle-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.11840238233327516,
+      "worst": {
+        "phase": "flight",
+        "time": 10.271666666667459,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.11840238233327516,
+        "angle": 1.0684023823332751,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "beam-long-snake-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.21164654724077958,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 15.448333333334842,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "head"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "value": 0.21164654724077958,
+        "angle": 1.2616465472407796,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0033333333333333335,
+      "aboveThresholdOuterSamples": 4
+    },
+    {
+      "id": "sling-long-mouse-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.12887762014063076,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 17.053333333334063,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.12887762014063076,
+        "angle": -1.0788776201406307,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "sling-long-frog-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08077039332254654,
+      "worst": {
+        "phase": "loading",
+        "time": 3.8666666666664935,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-shin"
+        },
+        "value": 0.08077039332254654,
+        "angle": -1.5807703933225465,
+        "limits": [
+          -1.5,
+          1.5
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.10618108488425126,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.04666666666824,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.10618108488425126,
+        "angle": 1.0561810848842512,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-heavy-tiny-primate-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.11982359437543555,
+      "worst": {
+        "phase": "flight",
+        "time": 10.263333333334124,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.11982359437543555,
+        "angle": -1.0698235943754355,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "frame-grip-turtle-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.1032674638776172,
+      "worst": {
+        "phase": "flight",
+        "time": 16.713333333334372,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.1032674638776172,
+        "angle": 1.0532674638776172,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "frame-grip-small-marsupial-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08592936626527603,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 16.895000000000874,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "tail"
+        },
+        "value": 0.08592936626527603,
+        "angle": 1.585929366265276,
+        "limits": [
+          -1.5,
+          1.5
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "combined-lizard-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.20840904456148057,
+      "worst": {
+        "phase": "impact_recovery",
+        "time": 17.33666666666714,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "value": 0.20840904456148057,
+        "angle": -1.1584090445614805,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "combined-turtle-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.13258761474247083,
+      "worst": {
+        "phase": "descent_after_obstacle",
+        "time": 18.674999999999056,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "tail"
+        },
+        "value": 0.13258761474247083,
+        "angle": -0.4825876147424708,
+        "limits": [
+          -0.35,
+          0.35
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "combined-snake-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.11577003900117178,
+      "worst": {
+        "phase": "loading",
+        "time": 3.978333333333148,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "segment-3"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "segment-4"
+        },
+        "value": 0.11577003900117178,
+        "angle": 1.1657700390011718,
+        "limits": [
+          -1.05,
+          1.05
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.1666861182877375,
+      "worst": {
+        "phase": "loading",
+        "time": 4.0266666666664825,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.1666861182877375,
+        "angle": -1.1166861182877375,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 2
+    },
+    {
+      "id": "combined-small-marsupial-0.75",
+      "classification": "sampled finite-step numerical hard-limit overrun; not modeled physical elasticity",
+      "maximumRadians": 0.08327478806629718,
+      "worst": {
+        "phase": "loading",
+        "time": 4.1183333333331635,
+        "joint": "revolute-joint",
+        "bodyA": {
+          "role": "part",
+          "id": "torso"
+        },
+        "bodyB": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "value": 0.08327478806629718,
+        "angle": -1.0332747880662971,
+        "limits": [
+          -0.95,
+          0.95
+        ]
+      },
+      "longestAnyJointThresholdSeconds": 0.0016666666666666668,
+      "aboveThresholdOuterSamples": 1
+    }
+  ],
+  "highSpinFlags": [
+    {
+      "id": "sling-long-mouse-0.6",
+      "classification": "finite impact spin flag; magnitude alone does not prove instability or physical validity",
+      "phase": "flight",
+      "time": 16.500000000001233,
+      "tag": {
+        "role": "part",
+        "id": "front-leg"
+      },
+      "mass": 0.09,
+      "inertia": 0.00007381410199255803,
+      "angularVelocity": 1105.7274368455423,
+      "rotationalEnergy": 45.12378455537632,
+      "timeAfterRelease": 9.563333333334295,
+      "cumulativePositiveEnergyResidual": 0,
+      "bodySpeedMaximum": 86.52008621587383,
+      "physicalReplayFieldsExact": true
+    },
+    {
+      "id": "frame-heavy-mouse-0.6",
+      "classification": "finite impact spin flag; magnitude alone does not prove instability or physical validity",
+      "phase": "flight",
+      "time": 16.43166666666796,
+      "tag": {
+        "role": "part",
+        "id": "front-leg"
+      },
+      "mass": 0.09,
+      "inertia": 0.00007381410199255803,
+      "angularVelocity": 1008.2555096827931,
+      "rotationalEnergy": 37.51893937249543,
+      "timeAfterRelease": 9.398333333334342,
+      "cumulativePositiveEnergyResidual": 0,
+      "bodySpeedMaximum": 86.092986699102,
+      "physicalReplayFieldsExact": true
+    },
+    {
+      "id": "combined-small-marsupial-0.75",
+      "classification": "finite impact spin flag; magnitude alone does not prove instability or physical validity",
+      "phase": "flight",
+      "time": 17.451666666667034,
+      "tag": {
+        "role": "part",
+        "id": "front-leg"
+      },
+      "mass": 0.08399999999999999,
+      "inertia": 0.00006889316185972082,
+      "angularVelocity": 1053.935659314359,
+      "rotationalEnergy": 38.262586047409535,
+      "timeAfterRelease": 10.06833333333336,
+      "cumulativePositiveEnergyResidual": 0,
+      "bodySpeedMaximum": 118.81892996431351,
+      "physicalReplayFieldsExact": true
+    }
+  ],
+  "maximumRopeExcess": 0.04822965348884933,
+  "maximumAnchorGap": 0.029036746441488386,
+  "totalAngularThresholdOuterSamples": 71
+}

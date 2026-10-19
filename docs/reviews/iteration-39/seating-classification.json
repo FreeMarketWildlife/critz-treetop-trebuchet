@@ -1,0 +1,155 @@
+{
+  "protocol": "Exact failed load snapshots from264matrix; one real step rebuilds contacts. Guide clearance uses actual rail/bead fixture distance. Contact normal dot points into each modeled pouch face; edge/corner directions are not containment tests. All observations read-only.",
+  "rows": [
+    {
+      "name": "frame-heavy-snake-0.75",
+      "center": {
+        "x": -3.1671160766000734,
+        "y": 294.08951822992685,
+        "vx": 0.0000032448192607078365,
+        "vy": -0.000001067499543984924,
+        "mass": 1.1
+      },
+      "loading": {
+        "cradleSpeed": 0.0009347844452571334,
+        "cradleSpin": -0.0064733818681388345,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 0.006663638656726485,
+        "maxPartRelativeSpeed": 0.009043913110239903,
+        "maxRelativeSpin": 0.0064733818681389005
+      },
+      "isLoaded": false,
+      "pouchOpening": -0.018499619414755863,
+      "guide": {
+        "distance": 0,
+        "axial": 0.029418259574792383,
+        "lateral": -0.005284921529823208,
+        "channelLength": 0.18
+      },
+      "contacts": [
+        {
+          "part": "head",
+          "other": "static",
+          "point": {
+            "x": -3.7942852956059787,
+            "y": 294.00995468537576
+          },
+          "fixtureKind": null,
+          "interiorNormalDot": null
+        },
+        {
+          "part": "segment-2",
+          "other": "static",
+          "point": {
+            "x": -3.415345860875646,
+            "y": 294.00999831467243
+          },
+          "fixtureKind": null,
+          "interiorNormalDot": null
+        },
+        {
+          "part": "segment-3",
+          "other": "static",
+          "point": {
+            "x": -3.215421682816711,
+            "y": 294.0099761299988
+          },
+          "fixtureKind": null,
+          "interiorNormalDot": null
+        },
+        {
+          "part": "segment-4",
+          "other": "static",
+          "point": {
+            "x": -3.0152754559683137,
+            "y": 294.00990569033763
+          },
+          "fixtureKind": null,
+          "interiorNormalDot": null
+        },
+        {
+          "part": "segment-6",
+          "other": "static",
+          "point": {
+            "x": -2.6156303681582203,
+            "y": 294.00997073893814
+          },
+          "fixtureKind": null,
+          "interiorNormalDot": null
+        }
+      ],
+      "coach": {
+        "reason": "The volunteer is below the cradle. Re-grip from the branch or retry at medium winding.",
+        "retry": true
+      },
+      "snapshotUnchanged": true
+    },
+    {
+      "name": "combined-frog-0.75",
+      "center": {
+        "x": -1.5860221029355983,
+        "y": 295.328735728735,
+        "vx": -0.001976556233002473,
+        "vy": -0.010244064058410055,
+        "mass": 1.05
+      },
+      "loading": {
+        "cradleSpeed": 0.009706383885344809,
+        "cradleSpin": 0.0009896819598019537,
+        "withinEnvelope": false,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.0012745394087431926,
+        "maxPartRelativeSpeed": 0.002518486628564149,
+        "maxRelativeSpin": 0.004163849211346516
+      },
+      "isLoaded": false,
+      "pouchOpening": 3.036044251238663,
+      "guide": {
+        "distance": 0,
+        "axial": 0.02999082859195047,
+        "lateral": -0.0050021712678558,
+        "channelLength": 0.18
+      },
+      "contacts": [
+        {
+          "part": "head",
+          "other": "pouch",
+          "point": {
+            "x": -1.7512131222885952,
+            "y": 295.09931524421233
+          },
+          "fixtureKind": "side wall",
+          "interiorNormalDot": -0.9992064935633767
+        },
+        {
+          "part": "torso",
+          "other": "pouch",
+          "point": {
+            "x": -1.5476498088283206,
+            "y": 295.12611197477185
+          },
+          "fixtureKind": "side wall",
+          "interiorNormalDot": -0.9999999999999999
+        },
+        {
+          "part": "torso",
+          "other": "pouch",
+          "point": {
+            "x": -1.5476498088283206,
+            "y": 295.12611197477185
+          },
+          "fixtureKind": "side wall",
+          "interiorNormalDot": -0.9999999999999999
+        }
+      ],
+      "coach": {
+        "reason": "The cradle has folded open. Retry this volunteer at medium winding, or adjust the hardware before loading again.",
+        "retry": true
+      },
+      "snapshotUnchanged": true
+    }
+  ]
+}

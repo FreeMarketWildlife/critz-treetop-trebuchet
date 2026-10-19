@@ -1,0 +1,129 @@
+{
+  "protocol": "Same canonical failed end-loading state; one real step rebuilds contact caches. Read-only current geometry and actual touch points; not a re-seating intervention.",
+  "rows": [
+    {
+      "name": "frame-heavy-snake-0.75",
+      "beadEscaped": false,
+      "pouchOpening": -0.018499619414755863,
+      "coach": {
+        "reason": "The volunteer is below the cradle. Re-grip from the branch or retry at medium winding.",
+        "retry": true
+      },
+      "center": {
+        "x": -3.1671160766000734,
+        "y": 294.08951822992685,
+        "vx": 0.0000032448192607078365,
+        "vy": -0.000001067499543984924,
+        "mass": 1.1
+      },
+      "contacts": [
+        {
+          "part": "head",
+          "other": {
+            "role": "static",
+            "id": "world"
+          },
+          "point": {
+            "x": -3.7942852956059787,
+            "y": 294.00995468537576
+          }
+        },
+        {
+          "part": "segment-2",
+          "other": {
+            "role": "static",
+            "id": "world"
+          },
+          "point": {
+            "x": -3.415345860875646,
+            "y": 294.00999831467243
+          }
+        },
+        {
+          "part": "segment-3",
+          "other": {
+            "role": "static",
+            "id": "world"
+          },
+          "point": {
+            "x": -3.215421682816711,
+            "y": 294.0099761299988
+          }
+        },
+        {
+          "part": "segment-4",
+          "other": {
+            "role": "static",
+            "id": "world"
+          },
+          "point": {
+            "x": -3.0152754559683137,
+            "y": 294.00990569033763
+          }
+        },
+        {
+          "part": "segment-6",
+          "other": {
+            "role": "static",
+            "id": "world"
+          },
+          "point": {
+            "x": -2.6156303681582203,
+            "y": 294.00997073893814
+          }
+        }
+      ]
+    },
+    {
+      "name": "combined-frog-0.75",
+      "beadEscaped": false,
+      "pouchOpening": 3.036044251238663,
+      "coach": {
+        "reason": "A body part touched the cradle, but the load is off-center. Re-grip and center the volunteer before unlatching.",
+        "retry": true
+      },
+      "center": {
+        "x": -1.5860221029355983,
+        "y": 295.328735728735,
+        "vx": -0.001976556233002473,
+        "vy": -0.010244064058410055,
+        "mass": 1.05
+      },
+      "contacts": [
+        {
+          "part": "head",
+          "other": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "point": {
+            "x": -1.7512131222885952,
+            "y": 295.09931524421233
+          }
+        },
+        {
+          "part": "torso",
+          "other": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "point": {
+            "x": -1.5476498088283206,
+            "y": 295.12611197477185
+          }
+        },
+        {
+          "part": "torso",
+          "other": {
+            "role": "pouch",
+            "id": "cradle"
+          },
+          "point": {
+            "x": -1.5476498088283206,
+            "y": 295.12611197477185
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "baseline": "6068d3d",
+  "tests": {
+    "pass": 246,
+    "fail": 0
+  },
+  "sync38Resolved": true,
+  "seatingFailuresPreserved": 2,
+  "angularFlagClassification": {
+    "numericHardLimitOverruns": 51,
+    "aboveThresholdOuterSamples": 71,
+    "highSpinFlagsNotProofOfInstability": 3,
+    "worstPhaseCounts": {
+      "ground_recovery": 2,
+      "flight": 11,
+      "impact_recovery": 17,
+      "loading": 17,
+      "descent_after_obstacle": 4
+    }
+  },
+  "seating": [
+    {
+      "name": "frame-heavy-snake-0.75",
+      "isLoaded": false,
+      "pouchOpening": -0.018499619414755863,
+      "guide": {
+        "distance": 0,
+        "axial": 0.029418259574792383,
+        "lateral": -0.005284921529823208,
+        "channelLength": 0.18
+      },
+      "coach": {
+        "reason": "The volunteer is below the cradle. Re-grip from the branch or retry at medium winding.",
+        "retry": true
+      },
+      "readOnly": true,
+      "capturedOutcomeFieldsExact38": true
+    },
+    {
+      "name": "combined-frog-0.75",
+      "isLoaded": false,
+      "pouchOpening": 3.036044251238663,
+      "guide": {
+        "distance": 0,
+        "axial": 0.02999082859195047,
+        "lateral": -0.0050021712678558,
+        "channelLength": 0.18
+      },
+      "coach": {
+        "reason": "The cradle has folded open. Retry this volunteer at medium winding, or adjust the hardware before loading again.",
+        "retry": true
+      },
+      "readOnly": true,
+      "capturedOutcomeFieldsExact38": true
+    }
+  ],
+  "modelAndContactViewSourcesExactBaseline": {
+    "src/articulated.js": true,
+    "src/hook-experiment.js": true,
+    "src/species.js": true,
+    "src/world.js": true,
+    "src/encounters.js": true,
+    "src/physics.js": true,
+    "src/prediction.js": true,
+    "src/input.js": true,
+    "src/pickup.js": true,
+    "src/loading-contact-art.js": true,
+    "src/render.js": true
+  }
+}

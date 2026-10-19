@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Actual failed snake \u2014 below cradle",
+    "file": "loading-frame-heavy-snake-0.75.json",
+    "seconds": 2
+  },
+  {
+    "label": "Actual failed frog \u2014 folded cradle",
+    "file": "loading-combined-frog-0.75.json",
+    "seconds": 2
+  },
+  {
+    "label": "Normal stock frog \u2014 comparison",
+    "file": "../iteration-38/loaded-frog.json",
+    "seconds": 2
+  }
+]
