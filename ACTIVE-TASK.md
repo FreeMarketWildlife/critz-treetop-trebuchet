@@ -1,6 +1,16 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 18
+## CURRENT implementation: iteration 19
+
+Read docs/reviews/iteration-19/findings.md. Selected production adds the real loading shelf AABB to collisionRegion with existing speed/spin eligibility/2400–4800Hz bounds. Same armadillo incoming: .169084→.021529rad, anchor19.6915→.01895mm, touching penetration7.194→.789mm, residual0,801integrations/1s. Backward release preserved. Research always-refined shelf has1926integrations/.346mm penetration: different protocol.162tests pass;35cases32release/3lowmiss/10angularflags; only armadillo highwind physically changes, all releases/prediction parity unchanged. Selected132soak126release/6miss/0retainedpayload,44m56s simulated,258worlds0retained12GCchecks,p952.556ms/max8.165ms,stable source hashes. Strict4ms/deviceFPS not proven.
+
+JointMotion8 research-only preload improves combined full35angularflags10→4, no newflags/all release states same, but paired impact batch p95 rises head1.538→1.731ms/lightbeam.643→.889; maxlightbeam4.459ms. Remains EXPERIMENTAL, not browser imported. Early researchsoak SHA capturedafter sourceedit; evidence explicitly flags provenance, selectedsoak/pairedtiming supersede runtime claim.
+
+Portrait actual unpaused flying-squirrel UI flight through tree/sky/canopy/floor, real63.4deg15.9m/s→805m3bounces→Collect8127points11bells→retryunchanged. Tab1219045104idle,saveOFF,stickyON,Sound35%,ownednone,viewport restored,consoleclean. Motion observed via sequential screenshots, not video/everyframe/bounce. Readout wrap shifted canvas: mobile.css nowthree-line reserved height, versioned stylesheet (stale browserCSS found), fresh DOM confirms54.594px/readout documenttop474.680/canvas578.867 unchanged fresh→loading. Initialapparent53pxshift was autoscroll (use documenttop+scrollY). Sound analyticcomponentbound.161/voice,.644max16voicesfullvolume,.178at35%default10; cooldowns90msimpact/2szone etc unchanged; no ears claim.
+
+NEXT: controlled visible encounter approach/telegraphing at portrait speed (current .4s birthcorridor is not guaranteed visualwarning); sampled screenshots had no closeapproach. Broader internal joint/contact sampling and runtimebudget beforeselectingglobaljointrefinement. No nativeunlock/hidden-tabE2E/exportretry/push/deploy. Preserve physical poor outcomes and localtestedcommits. Earlier18andbelow are history; neverreportobsolete lore task.
+
+## Historical implementation: iteration 18
 
 Read docs/reviews/iteration-18/findings.md. 161 tests pass; all35 numerical regression rows exactly match17 excluding timings (32release/3low-seatmiss/11angular warnings). No production physics changed. Loading copy nowexplicit upbeside→acrossabovefloor→release; original distant gianttrunk/worldheight bark and separatecanopy/floor silhouettes replace screenfixedsmalltrees. Actualbrowser18salamander clearroute→61.4deg17.37m/s→119m8bounces→Collect1385points21bells→retryunchanged. SaveOFF,stickyON,Sound35%,ownednone,normalviewport,tab1219045097idleopen. WarmbrowserCPU p95/max1.8/2.6ms,draw.6,RAF9.8/10.4ms; later2.6/2.9ms,draw.4; sharedhost notFPS. Hidden nativeMac stilllocked,no unlock/exportretry/audibleQAclaim.
 

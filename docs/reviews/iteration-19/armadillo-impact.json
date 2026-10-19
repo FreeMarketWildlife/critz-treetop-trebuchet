@@ -1,0 +1,4936 @@
+{
+  "protocol": "Each unchangedcanonical incomingfixture replayed1s at600Hzouter. Armadillosavedwrapperinput; firstactualimpactloadingShelf. shelfRegion adds the realexistingloadingShelfAABB x[-5.1,-3.5],y[pivotHeight-4.54,pivotHeight-4.46] toexistingcollisionRegion usingexisting.15+speed*dtpadding. jointMotion8Shelf combinesitwithmotionrefinement. Pinned9d490a7baseline step/collisionRegion (compiledread-onlyfromgit, avoidsconcurrentproductionchanges) versusresearch-only allcollisionregion9600/19200Hz orrelativepartjointmotion: jointMotion8 addsintegrationceil(max|relativeOmega|*dt/.05),cap8; jointMotion16 target.025rad,cap16; bothretainexistingcollisionrefinement; noforces/material/mass/inertia/geometry/limit/CCDchanges. Allpartjoint and touching-enabled partcontact measurements AFTEREACHinternalintegration. Contactseparation usescurrentworldmanifold inclshape skins; notabsoluteproofagainstmissedcontacts/tunneling. Durationssuminternaldt whileanypartangular>.08; exactwithinobservedinternalcadence, notcontinuousanalyticduration. Energyallworldminusrecordedwork. Tracecaptureswarnings,largeanchors,first.1scontact. Noperformanceclaim.",
+  "sourceSHA256": {
+    "src/articulated.js": "c3801f9efd9d532e088ad4d5d8aa6a6550872ac3b69e347e11da1d981648ef33",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6"
+  },
+  "sourcesChangedDuringRun": [],
+  "provenanceWarning": "Earlier exploratory output was superseded after concurrent production shelf edit. This finalrun explicitly pins step/collisionRegion to9d490a7 for allbaseline trials; otherbody/forceintegration uses recordedworkingtree hashes. Correctedactual shelfbounds andcombinedcap8label beforefinalrun.",
+  "baselineIntegrationRef": "9d490a7",
+  "baselineIntegrationSourceSHA256": "c9457fbd8314e51e48d54bd89669caa7add821dc7c737171efbe925179b745bd",
+  "missingFixtures": [],
+  "rows": [
+    {
+      "name": "armadillo-first-obstacle",
+      "variant": "current",
+      "snapshotSHA256": "3c56325915408487a58e0eef97d973b286b3683d7ce5df8787f641cd213596a2",
+      "initialCenter": {
+        "x": -2.7607634922173343,
+        "y": 300.6611944674777,
+        "vx": -0.5626807279776743,
+        "vy": 8.927971070123025,
+        "mass": 5
+      },
+      "firstImpact": 0.0016666666666669272,
+      "integrations": 600,
+      "maxAngular": 0.16908380776324639,
+      "maxAnchor": 0.0196915421379215,
+      "maxContactPenetration": 0.007193962661356929,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0.0016666666666666668,
+      "totalBadSeconds": 0.0016666666666666668,
+      "anchorAbove5mm": {
+        "longestSeconds": 0.0033333333333333335,
+        "totalSeconds": 0.0033333333333333335
+      },
+      "worstAngular": {
+        "time": 0.010000000000001563,
+        "dt": 0.0016666666666666668,
+        "angular": 0.16908380776324639,
+        "anchor": 0.0002342533925532191,
+        "minContactSeparation": -0.0037570344226764973,
+        "worstJoint": {
+          "speed": -111.20426256763888,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.00010769206974005626,
+          "angle": -1.1190838077632463,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "anchorJoint": {
+          "a": "torso",
+          "b": "front-leg",
+          "gap": 0.0002342533925532191,
+          "angular": 0,
+          "speed": 31.74610333467257
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0037570344226764973,
+            "points": [
+              {
+                "x": -3.506490041755296,
+                "y": 295.5481214827887
+              }
+            ]
+          }
+        ]
+      },
+      "worstAnchor": {
+        "time": 0.0033333333333338544,
+        "dt": 0.0016666666666666668,
+        "angular": 0,
+        "anchor": 0.0196915421379215,
+        "minContactSeparation": -0.004086308519049453,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "tail",
+          "gap": 0.0196915421379215,
+          "angular": 0,
+          "speed": 44.401969166184415
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "torso",
+            "separation": -0.004086308519049453,
+            "points": [
+              {
+                "x": -3.961631162173004,
+                "y": 295.5479568457405
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0035549687093521243,
+            "points": [
+              {
+                "x": -3.492968369686574,
+                "y": 295.5482225156453
+              }
+            ]
+          }
+        ]
+      },
+      "worstPenetration": {
+        "time": 0.005000000000000782,
+        "dt": 0.0016666666666666668,
+        "angular": 0,
+        "anchor": 0.000014371572392776514,
+        "minContactSeparation": -0.007193962661356929,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "rear-leg",
+          "gap": 0.000014371572392776514,
+          "angular": 0,
+          "speed": -122.38902851780746
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "torso",
+            "separation": -0.002440803133879399,
+            "points": [
+              {
+                "x": -3.9613293146430975,
+                "y": 295.54877959843304
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.007193962661356929,
+            "points": [
+              {
+                "x": -3.497718653519999,
+                "y": 295.54598281759024
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0.005095920797288045,
+        "anchor": 3.4130302946499e-8,
+        "center": {
+          "x": -5.020058306698383,
+          "y": 295.7942727242772,
+          "vx": -0.3455290986603227,
+          "vy": -0.0037249319698398494,
+          "mass": 5
+        }
+      },
+      "samples": [
+        {
+          "time": 0.0016666666666669272,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.016100961383523175,
+          "minContactSeparation": -0.0024582991842407864,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.016100961383523175,
+            "angular": 0,
+            "speed": 121.7128715310669
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0024582991842407864,
+              "points": [
+                {
+                  "x": -3.5028135034815717,
+                  "y": 295.5487708504079
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.006252089612528809,
+              "points": [
+                {
+                  "x": -3.498060678727599,
+                  "y": 295.55300384296083
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0033333333333338544,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.0196915421379215,
+          "minContactSeparation": -0.004086308519049453,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0196915421379215,
+            "angular": 0,
+            "speed": 44.401969166184415
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.004086308519049453,
+              "points": [
+                {
+                  "x": -3.961631162173004,
+                  "y": 295.5479568457405
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0035549687093521243,
+              "points": [
+                {
+                  "x": -3.492968369686574,
+                  "y": 295.5482225156453
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.005000000000000782,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.000014371572392776514,
+          "minContactSeparation": -0.007193962661356929,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000014371572392776514,
+            "angular": 0,
+            "speed": -122.38902851780746
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.002440803133879399,
+              "points": [
+                {
+                  "x": -3.9613293146430975,
+                  "y": 295.54877959843304
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.007193962661356929,
+              "points": [
+                {
+                  "x": -3.497718653519999,
+                  "y": 295.54598281759024
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.006666666666667709,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.0002279373419390014,
+          "minContactSeparation": -0.005258546906475203,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0002279373419390014,
+            "angular": 0,
+            "speed": 29.49340080907359
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0008966431438466316,
+              "points": [
+                {
+                  "x": -3.96213983125289,
+                  "y": 295.55044832157193
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005258546906475203,
+              "points": [
+                {
+                  "x": -3.5027864618324385,
+                  "y": 295.5473707265468
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.008333333333334636,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.0002456016957923489,
+          "minContactSeparation": -0.004526323060304094,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0002456016957923489,
+            "angular": 0,
+            "speed": 30.763358233661233
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004526323060304094,
+              "points": [
+                {
+                  "x": -3.5047390997250005,
+                  "y": 295.54773683846986
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.010000000000001563,
+          "dt": 0.0016666666666666668,
+          "angular": 0.16908380776324639,
+          "anchor": 0.0002342533925532191,
+          "minContactSeparation": -0.0037570344226764973,
+          "worstJoint": {
+            "speed": -111.20426256763888,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00010769206974005626,
+            "angle": -1.1190838077632463,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0002342533925532191,
+            "angular": 0,
+            "speed": 31.74610333467257
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0037570344226764973,
+              "points": [
+                {
+                  "x": -3.506490041755296,
+                  "y": 295.5481214827887
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.01166666666666849,
+          "dt": 0.0016666666666666668,
+          "angular": 0.07250906075051167,
+          "anchor": 0.00010874576548150974,
+          "minContactSeparation": -0.00047128703113230586,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00010874576548150974,
+            "angle": -1.0225090607505116,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.00010874576548150974,
+            "angular": 0.07250906075051167,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.00047128703113230586,
+              "points": [
+                {
+                  "x": -3.508107068143889,
+                  "y": 295.54976435648445
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.013333333333335418,
+          "dt": 0.0016666666666666668,
+          "angular": 0.04545765418303849,
+          "anchor": 0.000010698233357222892,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000008741713698539986,
+            "angle": -0.9954576541830384,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000010698233357222892,
+            "angular": 0.007141007428091983,
+            "speed": 39.510468396415035
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0022199646277840657,
+              "points": [
+                {
+                  "x": -3.5099276156965864,
+                  "y": 295.5511099823139
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.028333333333337762,
+          "dt": 0.0016666666666666668,
+          "angular": 0.034209931342704225,
+          "anchor": 0.0000020121642405488217,
+          "minContactSeparation": -0.000453739218642113,
+          "worstJoint": {
+            "speed": -2.4158453015843406e-12,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001862684259830218,
+            "angle": -0.9842099313427042,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000020121642405488217,
+            "angular": 0,
+            "speed": -5.258329296864726
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.000453739218642113,
+              "points": [
+                {
+                  "x": -3.9925845068922903,
+                  "y": 295.5497731303907
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03000000000000469,
+          "dt": 0.0016666666666666668,
+          "angular": 0.034184089738111156,
+          "anchor": 0.0000020549613781012404,
+          "minContactSeparation": -0.00045252276783003254,
+          "worstJoint": {
+            "speed": -2.7533531010703882e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018581787239684277,
+            "angle": -0.9841840897381111,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000020549613781012404,
+            "angular": 0,
+            "speed": -5.381327145073063
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00045252276783003254,
+              "points": [
+                {
+                  "x": -3.9948436922566524,
+                  "y": 295.54977373861607
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03166666666667162,
+          "dt": 0.0016666666666666668,
+          "angular": 0.034157812420733125,
+          "anchor": 0.000002072841969055781,
+          "minContactSeparation": -0.00045132498667044274,
+          "worstJoint": {
+            "speed": -2.930988785010413e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018584291636598354,
+            "angle": -0.9841578124207331,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002072841969055781,
+            "angular": 0,
+            "speed": -5.504372296925161
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00045132498667044274,
+              "points": [
+                {
+                  "x": -3.9971036568804355,
+                  "y": 295.5497743375067
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.033333333333338544,
+          "dt": 0.0016666666666666668,
+          "angular": 0.034131018950407155,
+          "anchor": 0.000002092100410534103,
+          "minContactSeparation": -0.00045015127886927075,
+          "worstJoint": {
+            "speed": -3.019806626980426e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001861994236563737,
+            "angle": -0.9841310189504071,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002092100410534103,
+            "angular": 0,
+            "speed": -5.6274490136333535
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00045015127886927075,
+              "points": [
+                {
+                  "x": -3.999364532086908,
+                  "y": 295.5497749243606
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.03500000000000547,
+          "dt": 0.0016666666666666668,
+          "angular": 0.034103689082161326,
+          "anchor": 0.000002111633933161375,
+          "minContactSeparation": -0.00044900355538857184,
+          "worstJoint": {
+            "speed": -3.197442310920451e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018650945085258168,
+            "angle": -0.9841036890821613,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002111633933161375,
+            "angular": 0,
+            "speed": -5.750539989830991
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00044900355538857184,
+              "points": [
+                {
+                  "x": -4.001626452455406,
+                  "y": 295.5497754982223
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0366666666666724,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03407581086297928,
+          "anchor": 0.0000021313062072263624,
+          "minContactSeparation": -0.0004478832807421895,
+          "worstJoint": {
+            "speed": -3.375077994860476e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018675716406847808,
+            "angle": -0.9840758108629792,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000021313062072263624,
+            "angular": 0,
+            "speed": -5.873626974199933
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004478832807421895,
+              "points": [
+                {
+                  "x": -4.003889553456203,
+                  "y": 295.5497760583596
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.038333333333339326,
+          "dt": 0.0016666666666666668,
+          "angular": 0.034047372048319646,
+          "anchor": 0.000002151120562128813,
+          "minContactSeparation": -0.00044679195440266994,
+          "worstJoint": {
+            "speed": -3.4638958368304884e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018694449889780624,
+            "angle": -0.9840473720483196,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002151120562128813,
+            "angular": 0,
+            "speed": -5.99669075440319
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00044679195440266994,
+              "points": [
+                {
+                  "x": -4.006153971000483,
+                  "y": 295.5497766040228
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.04000000000000625,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03401835990123492,
+          "anchor": 0.000002171081741080764,
+          "minContactSeparation": -0.0004457311188730273,
+          "worstJoint": {
+            "speed": -3.6415315207705135e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018707291951449679,
+            "angle": -0.9840183599012349,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002171081741080764,
+            "angular": 0,
+            "speed": -6.11971113802835
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004457311188730273,
+              "points": [
+                {
+                  "x": -4.008419841457637,
+                  "y": 295.54977713444055
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.04166666666667318,
+          "dt": 0.0016666666666666668,
+          "angular": 0.0339887612161498,
+          "anchor": 0.000002191193960758591,
+          "minContactSeparation": -0.0004447023575835374,
+          "worstJoint": {
+            "speed": -3.8191672047105385e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018714415682387824,
+            "angle": -0.9839887612161498,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002191193960758591,
+            "angular": 0,
+            "speed": -6.242666936760582
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004447023575835374,
+              "points": [
+                {
+                  "x": -4.010687301682814,
+                  "y": 295.5497776488212
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.04333333333334011,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03395856232175665,
+          "anchor": 0.0000022114613875074237,
+          "minContactSeparation": -0.0004437072960286059,
+          "worstJoint": {
+            "speed": -3.907985046680551e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018716032632569297,
+            "angle": -0.9839585623217566,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000022114613875074237,
+            "angular": 0,
+            "speed": -6.365535951941716
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004437072960286059,
+              "points": [
+                {
+                  "x": -4.01295648904358,
+                  "y": 295.54977814635197
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.045000000000007034,
+          "dt": 0.0016666666666666668,
+          "angular": 0.0339277490811043,
+          "anchor": 0.0000022318881727558626,
+          "minContactSeparation": -0.0004427476017099252,
+          "worstJoint": {
+            "speed": -4.085620730620576e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00000187123977969233,
+            "angle": -0.9839277490811043,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000022318881727558626,
+            "angular": 0,
+            "speed": -6.48829496152955
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004427476017099252,
+              "points": [
+                {
+                  "x": -4.015227541447231,
+                  "y": 295.54977862619916
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.04666666666667396,
+          "dt": 0.0016666666666666668,
+          "angular": 0.033896306895648154,
+          "anchor": 0.0000022524782835329054,
+          "minContactSeparation": -0.00044182498487543853,
+          "worstJoint": {
+            "speed": -4.263256414560601e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001870381152361351,
+            "angle": -0.9838963068956481,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000022524782835329054,
+            "angular": 0,
+            "speed": -6.610919708591896
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00044182498487543853,
+              "points": [
+                {
+                  "x": -4.01750059736889,
+                  "y": 295.54977908750755
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.04833333333334089,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03386422070973727,
+          "anchor": 0.000002273235757749621,
+          "minContactSeparation": -0.00044094119834880985,
+          "worstJoint": {
+            "speed": -4.3520742565306136e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001869062256919962,
+            "angle": -0.9838642207097372,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002273235757749621,
+            "angular": 0,
+            "speed": -6.733384891463488
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00044094119834880985,
+              "points": [
+                {
+                  "x": -4.019775795880335,
+                  "y": 295.54977952940084
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.050000000000007816,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03383147501629513,
+          "anchor": 0.000002294164699195142,
+          "minContactSeparation": -0.0004400980378704844,
+          "worstJoint": {
+            "speed": -4.529709940470639e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001867323367838581,
+            "angle": -0.9838314750162951,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002294164699195142,
+            "angular": 0,
+            "speed": -6.855664155701484
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004400980378704844,
+              "points": [
+                {
+                  "x": -4.022053276679563,
+                  "y": 295.5497799509811
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.05166666666667474,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03379805386832335,
+          "anchor": 0.000002315268745535473,
+          "minContactSeparation": -0.0004392973419271584,
+          "worstJoint": {
+            "speed": -4.707345624410664e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018652101442075685,
+            "angle": -0.9837980538683233,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002315268745535473,
+            "angular": 0,
+            "speed": -6.977730087974576
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004392973419271584,
+              "points": [
+                {
+                  "x": -4.024333180120982,
+                  "y": 295.54978035132905
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.05333333333334167,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03376394088748147,
+          "anchor": 0.0000023365517430879493,
+          "minContactSeparation": -0.0004385409915812488,
+          "worstJoint": {
+            "speed": -4.796163466380676e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018627741734053406,
+            "angle": -0.9837639408874814,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000023365517430879493,
+            "angular": 0,
+            "speed": -7.099554212018286
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004385409915812488,
+              "points": [
+                {
+                  "x": -4.026615647246303,
+                  "y": 295.5497807295042
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0550000000000086,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03372911928074207,
+          "anchor": 0.000002358017287204953,
+          "minContactSeparation": -0.0004378309099593025,
+          "worstJoint": {
+            "speed": -4.973799150320701e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018600730279352623,
+            "angle": -0.983729119280742,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002358017287204953,
+            "angular": 0,
+            "speed": -7.221106986796217
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004378309099593025,
+              "points": [
+                {
+                  "x": -4.028900819815984,
+                  "y": 295.54978108454503
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.056666666666675525,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03369357185411137,
+          "anchor": 0.000002379668847127636,
+          "minContactSeparation": -0.000437169061797249,
+          "worstJoint": {
+            "speed": -4.973799150320701e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001857170615002528,
+            "angle": -0.9836935718541113,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002379668847127636,
+            "angular": 0,
+            "speed": -7.342357807003159
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.000437169061797249,
+              "points": [
+                {
+                  "x": -4.031188840341255,
+                  "y": 295.5497814154691
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.05833333333334245,
+          "dt": 0.0016666666666666668,
+          "angular": 0.0336572810343434,
+          "anchor": 0.0000024015099033757254,
+          "minContactSeparation": -0.0004365574521898452,
+          "worstJoint": {
+            "speed": -5.1514348342607263e-14,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000018541372652565692,
+            "angle": -0.9836572810343434,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000024015099033757254,
+            "angular": 0,
+            "speed": -7.4632750060400825
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0004365574521898452,
+              "points": [
+                {
+                  "x": -4.033479852116622,
+                  "y": 295.5497817212739
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.06000000000000938,
+          "dt": 0.0016666666666666668,
+          "angular": 0.033625738167660346,
+          "anchor": 0.000003150635955775548,
+          "minContactSeparation": -0.00014884433238648853,
+          "worstJoint": {
+            "speed": -4.298783551348606e-13,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000025740891935073995,
+            "angle": -0.9836257381676603,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003150635955775548,
+            "angular": 0,
+            "speed": -8.915849649144654
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00014884433238648853,
+              "points": [
+                {
+                  "x": -4.101561034747745,
+                  "y": 295.54992557783385
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.00023208807090213668,
+              "points": [
+                {
+                  "x": -4.035741245679014,
+                  "y": 295.55011604403546
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.061666666666676306,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03358845462992055,
+          "anchor": 0.0000032574412380313066,
+          "minContactSeparation": -0.00013765928764541968,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002624610427021798,
+            "angle": -0.9835884546299205,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000032574412380313066,
+            "angular": 0,
+            "speed": -9.18776686759731
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00013765928764541968,
+              "points": [
+                {
+                  "x": -4.1016089985922415,
+                  "y": 295.5499311703562
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.06333333333334323,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03349320376530618,
+          "anchor": 0.00000325208459690898,
+          "minContactSeparation": -0.00012648434295670086,
+          "worstJoint": {
+            "speed": 0.03440288003569947,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000026014467215847794,
+            "angle": -0.9834932037653061,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.00000325208459690898,
+            "angular": 0,
+            "speed": -9.19699273652432
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00012648434295670086,
+              "points": [
+                {
+                  "x": -4.101659218453988,
+                  "y": 295.5499367578285
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.06500000000001016,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03334005441794763,
+          "anchor": 0.0000032439444418865442,
+          "minContactSeparation": -0.00011531526035923889,
+          "worstJoint": {
+            "speed": 0.06886642816728905,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002584385408349205,
+            "angle": -0.9833400544179476,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000032439444418865442,
+            "angular": 0,
+            "speed": -9.205231295530988
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00011531526035923889,
+              "points": [
+                {
+                  "x": -4.101711908054478,
+                  "y": 295.54994234236983
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.06666666666667709,
+          "dt": 0.0016666666666666668,
+          "angular": 0.033128919947748914,
+          "anchor": 0.000003236001839150009,
+          "minContactSeparation": -0.0001041538352524185,
+          "worstJoint": {
+            "speed": 0.10338252963346584,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002569285160702009,
+            "angle": -0.9831289199477489,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003236001839150009,
+            "angular": 0,
+            "speed": -9.212487582469606
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0001041538352524185,
+              "points": [
+                {
+                  "x": -4.101767277749776,
+                  "y": 295.5499479230824
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.06833333333334402,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03308787678328717,
+          "anchor": 0.0000031078241681504412,
+          "minContactSeparation": -0.00009258694717573235,
+          "worstJoint": {
+            "speed": -4.4498627005395974e-11,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000023528660635404085,
+            "angle": -0.9830878767832871,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000031078241681504412,
+            "angular": 0,
+            "speed": -9.40086057129221
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00009258694717573235,
+              "points": [
+                {
+                  "x": -4.101780114710219,
+                  "y": 295.5499537065264
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.07000000000001094,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03298255071010847,
+          "anchor": 0.000003093165508592668,
+          "minContactSeparation": -0.00008101631391355113,
+          "worstJoint": {
+            "speed": 0.0384993854913942,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000023378995471231347,
+            "angle": -0.9829825507101084,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003093165508592668,
+            "angular": 0,
+            "speed": -9.40436523514839
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00008101631391355113,
+              "points": [
+                {
+                  "x": -4.101795797510982,
+                  "y": 295.5499594918431
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.07166666666667787,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03281232975917381,
+          "anchor": 0.000003085935864948352,
+          "minContactSeparation": -0.00006945747531972302,
+          "worstJoint": {
+            "speed": 0.07715049714762667,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000023281825248436704,
+            "angle": -0.9828123297591738,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003085935864948352,
+            "angular": 0,
+            "speed": -9.406748425520785
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00006945747531972302,
+              "points": [
+                {
+                  "x": -4.101814577442287,
+                  "y": 295.54996527126235
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0733333333333448,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03257698607036308,
+          "anchor": 0.000003078583825973044,
+          "minContactSeparation": -0.000057912360546197306,
+          "worstJoint": {
+            "speed": 0.11593581950758658,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002319038681019772,
+            "angle": -0.982576986070363,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003078583825973044,
+            "angular": 0,
+            "speed": -9.408022103426395
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.000057912360546197306,
+              "points": [
+                {
+                  "x": -4.1018367069501736,
+                  "y": 295.5499710438197
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.07500000000001172,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03227633183154954,
+          "anchor": 0.000003071198965812356,
+          "minContactSeparation": -0.000046382759023799736,
+          "worstJoint": {
+            "speed": 0.15483829346684885,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002311260749396218,
+            "angle": -0.9822763318315495,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003071198965812356,
+            "angular": 0,
+            "speed": -9.408199434591966
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.000046382759023799736,
+              "points": [
+                {
+                  "x": -4.101862438929379,
+                  "y": 295.5499768086205
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.07666666666667865,
+          "dt": 0.0016666666666666668,
+          "angular": 0.0319102090308967,
+          "anchor": 0.0000030638243049759864,
+          "minContactSeparation": -0.00003487049031036804,
+          "worstJoint": {
+            "speed": 0.19384002217421514,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000023048766916942888,
+            "angle": -0.9819102090308967,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000030638243049759864,
+            "angular": 0,
+            "speed": -9.40729495602248
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00003487049031036804,
+              "points": [
+                {
+                  "x": -4.1018920260991685,
+                  "y": 295.5499825647548
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.07833333333334558,
+          "dt": 0.0016666666666666668,
+          "angular": 0.0314784910978283,
+          "anchor": 0.0000030564661759823995,
+          "minContactSeparation": -0.00002337734076718334,
+          "worstJoint": {
+            "speed": 0.23292239819372185,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000022998439240117306,
+            "angle": -0.9814784910978283,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000030564661759823995,
+            "angular": 0,
+            "speed": -9.405324465598904
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00002337734076718334,
+              "points": [
+                {
+                  "x": -4.101925720707467,
+                  "y": 295.5499883113296
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0800000000000125,
+          "dt": 0.0016666666666666668,
+          "angular": 0.03098108394258081,
+          "anchor": 0.0000030491296959620062,
+          "minContactSeparation": -0.000011905056283012527,
+          "worstJoint": {
+            "speed": 0.27206621626913563,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000022961149397245507,
+            "angle": -0.9809810839425808,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000030491296959620062,
+            "angular": 0,
+            "speed": -9.402304921890732
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.000011905056283012527,
+              "points": [
+                {
+                  "x": -4.101963774265698,
+                  "y": 295.54999404747184
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08166666666667943,
+          "dt": 0.0016666666666666668,
+          "angular": 0.030417926752213775,
+          "anchor": 0.000003041820089631625,
+          "minContactSeparation": -4.5533778347817133e-7,
+          "worstJoint": {
+            "speed": 0.31125178109067786,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002293637495358213,
+            "angle": -0.9804179267522137,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000003041820089631625,
+            "angular": 0,
+            "speed": -9.398254340181673
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -4.5533778347817133e-7,
+              "points": [
+                {
+                  "x": -4.102006437298461,
+                  "y": 295.54999977233115
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.08333333333334636,
+          "dt": 0.0016666666666666668,
+          "angular": 0.02978899260246881,
+          "anchor": 0.0000030345425104388717,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.3504590165899746,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00000229235509577567,
+            "angle": -0.9797889926024688,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000030345425104388717,
+            "angular": 0,
+            "speed": -9.393191683062673
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.000010970161781642673,
+              "points": [
+                {
+                  "x": -4.1020539591105045,
+                  "y": 295.5500054850809
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.09500000000001485,
+          "dt": 0.0016666666666666668,
+          "angular": 0.022999685520594726,
+          "anchor": 0.0000029843123178382963,
+          "minContactSeparation": -0.000004157385774306022,
+          "worstJoint": {
+            "speed": 0.6173459293431582,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000023099166224547513,
+            "angle": -0.9729996855205947,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000029843123178382963,
+            "angular": 0,
+            "speed": -9.337171115753659
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.000004157385774306022,
+              "points": [
+                {
+                  "x": -4.102536781963653,
+                  "y": 295.5499979213071
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.09666666666668178,
+          "dt": 0.0016666666666666668,
+          "angular": 0.021858165107114802,
+          "anchor": 0.000002978580384641738,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.656151923742061,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000002315821443243842,
+            "angle": -0.9718581651071148,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.000002978580384641738,
+            "angular": 0,
+            "speed": -9.324678922086374
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0000070383304091592436,
+              "points": [
+                {
+                  "x": -4.1026300732257015,
+                  "y": 295.5500035191652
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "armadillo-first-obstacle",
+      "variant": "jointMotion8",
+      "snapshotSHA256": "3c56325915408487a58e0eef97d973b286b3683d7ce5df8787f641cd213596a2",
+      "initialCenter": {
+        "x": -2.7607634922173343,
+        "y": 300.6611944674777,
+        "vx": -0.5626807279776743,
+        "vy": 8.927971070123025,
+        "mass": 5
+      },
+      "firstImpact": 0.0016666666666669272,
+      "integrations": 619,
+      "maxAngular": 0.02227658325290638,
+      "maxAnchor": 0.016100961383523175,
+      "maxContactPenetration": 0.00603616973910448,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "anchorAbove5mm": {
+        "longestSeconds": 0.0016666666666666668,
+        "totalSeconds": 0.0016666666666666668
+      },
+      "worstAngular": {
+        "time": 0.010000000000008669,
+        "dt": 0.0005555555555555556,
+        "angular": 0.02227658325290638,
+        "anchor": 0.000013514737578602412,
+        "minContactSeparation": -0.0017833288873703168,
+        "worstJoint": {
+          "speed": 54.293442261069444,
+          "a": "torso",
+          "b": "front-leg",
+          "anchorGap": 0.000013431565838831925,
+          "angle": 0.9722765832529063,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "anchorJoint": {
+          "a": "torso",
+          "b": "rear-leg",
+          "gap": 0.000013514737578602412,
+          "angular": 0.008926364795779351,
+          "speed": 0
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0017833288873703168,
+            "points": [
+              {
+                "x": -3.524624705763043,
+                "y": 295.5491083355563
+              }
+            ]
+          }
+        ]
+      },
+      "worstAnchor": {
+        "time": 0.0016666666666669272,
+        "dt": 0.0016666666666666668,
+        "angular": 0,
+        "anchor": 0.016100961383523175,
+        "minContactSeparation": -0.0024582991842407864,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "tail",
+          "gap": 0.016100961383523175,
+          "angular": 0,
+          "speed": 121.7128715310669
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0024582991842407864,
+            "points": [
+              {
+                "x": -3.5028135034815717,
+                "y": 295.5487708504079
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": 0.006252089612528809,
+            "points": [
+              {
+                "x": -3.498060678727599,
+                "y": 295.55300384296083
+              }
+            ]
+          }
+        ]
+      },
+      "worstPenetration": {
+        "time": 0.002000000000000668,
+        "dt": 0.0003333333333333334,
+        "angular": 0,
+        "anchor": 0.00004276172151899617,
+        "minContactSeparation": -0.00603616973910448,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "front-leg",
+          "gap": 0.00004276172151899617,
+          "angular": 0,
+          "speed": -3.5055191079876042
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.00603616973910448,
+            "points": [
+              {
+                "x": -3.4998598830640137,
+                "y": 295.54698191513046
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 1.5231412049968163e-7,
+        "center": {
+          "x": -5.863550967295348,
+          "y": 294.672120170054,
+          "vx": -1.6548589705907328,
+          "vy": -4.745414192927951,
+          "mass": 5
+        }
+      },
+      "samples": [
+        {
+          "time": 0.0016666666666669272,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.016100961383523175,
+          "minContactSeparation": -0.0024582991842407864,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.016100961383523175,
+            "angular": 0,
+            "speed": 121.7128715310669
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0024582991842407864,
+              "points": [
+                {
+                  "x": -3.5028135034815717,
+                  "y": 295.5487708504079
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.006252089612528809,
+              "points": [
+                {
+                  "x": -3.498060678727599,
+                  "y": 295.55300384296083
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.002000000000000668,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.00004276172151899617,
+          "minContactSeparation": -0.00603616973910448,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00004276172151899617,
+            "angular": 0,
+            "speed": -3.5055191079876042
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.00603616973910448,
+              "points": [
+                {
+                  "x": -3.4998598830640137,
+                  "y": 295.54698191513046
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0023333333333344086,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000011223648379366995,
+          "minContactSeparation": -0.005870252929128128,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000011223648379366995,
+            "angular": 0,
+            "speed": 40.32413304469062
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0006795488961870433,
+              "points": [
+                {
+                  "x": -3.9600467703772906,
+                  "y": 295.5503397744481
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005870252929128128,
+              "points": [
+                {
+                  "x": -3.5009027849501533,
+                  "y": 295.5470648735354
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0026666666666681493,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000011774287758064374,
+          "minContactSeparation": -0.005731555563556867,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000011774287758064374,
+            "angular": 0,
+            "speed": 40.698256193742864
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005731555563556867,
+              "points": [
+                {
+                  "x": -3.501951189310914,
+                  "y": 295.54713422221823
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.00300000000000189,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012006609096860942,
+          "minContactSeparation": -0.005614724807401217,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012006609096860942,
+            "angular": 0,
+            "speed": 41.072569787446575
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005614724807401217,
+              "points": [
+                {
+                  "x": -3.5030097522944255,
+                  "y": 295.5471926375963
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0033333333333356308,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012135414399719682,
+          "minContactSeparation": -0.005516321258141943,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012135414399719682,
+            "angular": 0,
+            "speed": 41.444737772987025
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005516321258141943,
+              "points": [
+                {
+                  "x": -3.5040766970399364,
+                  "y": 295.54724183937094
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0036666666666693715,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012253934032801125,
+          "minContactSeparation": -0.005433403412894222,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012253934032801125,
+            "angular": 0,
+            "speed": 41.81268605807539
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005433403412894222,
+              "points": [
+                {
+                  "x": -3.5051506895792524,
+                  "y": 295.54728329829356
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004000000000003112,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.00001236350811119671,
+          "minContactSeparation": -0.005363084349994551,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00001236350811119671,
+            "angular": 0,
+            "speed": 42.17454962899164
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005363084349994551,
+              "points": [
+                {
+                  "x": -3.5062303583205088,
+                  "y": 295.547318457825
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004333333333336853,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.00001246275290157034,
+          "minContactSeparation": -0.005302933732423298,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00001246275290157034,
+            "angular": 0,
+            "speed": 42.528394843359386
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005302933732423298,
+              "points": [
+                {
+                  "x": -3.5073144818247255,
+                  "y": 295.5473485331338
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004666666666670594,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012550724423226899,
+          "minContactSeparation": -0.005250932207786718,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012550724423226899,
+            "angular": 0,
+            "speed": 42.87236822303262
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005250932207786718,
+              "points": [
+                {
+                  "x": -3.5084019783651588,
+                  "y": 295.5473745338961
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.005000000000004334,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.00001262679291006499,
+          "minContactSeparation": -0.005205406076470354,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00001262679291006499,
+            "angular": 0,
+            "speed": 43.204720676479106
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005205406076470354,
+              "points": [
+                {
+                  "x": -3.5094918837794937,
+                  "y": 295.5473972969618
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.005333333333338075,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012690633926175701,
+          "minContactSeparation": -0.005164972323257189,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012690633926175701,
+            "angular": 0,
+            "speed": 43.52382093146819
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005164972323257189,
+              "points": [
+                {
+                  "x": -3.5105833330518177,
+                  "y": 295.54741751383835
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.005666666666671816,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.00001274221708349045,
+          "minContactSeparation": -0.005128492322455713,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00001274221708349045,
+            "angular": 0,
+            "speed": 43.82816724594973
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005128492322455713,
+              "points": [
+                {
+                  "x": -3.511675545063774,
+                  "y": 295.5474357538388
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0060000000000055564,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012781782403014845,
+          "minContactSeparation": -0.005095032815290779,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012781782403014845,
+            "angular": 0,
+            "speed": 44.11639720547887
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005095032815290779,
+              "points": [
+                {
+                  "x": -3.5127678099982584,
+                  "y": 295.54745248359234
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.006333333333339297,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012809808370138349,
+          "minContactSeparation": -0.005063832988582817,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012809808370138349,
+            "angular": 0,
+            "speed": 44.38729546688839
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005063832988582817,
+              "points": [
+                {
+                  "x": -3.5138594789644872,
+                  "y": 295.5474680835057
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.006666666666673038,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012826974438607063,
+          "minContactSeparation": -0.0050342766746211964,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012826974438607063,
+            "angular": 0,
+            "speed": 44.6397993632533
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0050342766746211964,
+              "points": [
+                {
+                  "x": -3.514949955487861,
+                  "y": 295.54748286166273
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007000000000006779,
+          "dt": 0.0003333333333333334,
+          "angular": 0,
+          "anchor": 0.000012834120232867107,
+          "minContactSeparation": -0.0050058688531748885,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012834120232867107,
+            "angular": 0,
+            "speed": 44.87300234157788
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0050058688531748885,
+              "points": [
+                {
+                  "x": -3.5160386885637234,
+                  "y": 295.54749706557345
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007333333333340519,
+          "dt": 0.0003333333333333334,
+          "angular": 0.00884094955990311,
+          "anchor": 0.000012808363394567623,
+          "minContactSeparation": -0.004974434549239959,
+          "worstJoint": {
+            "speed": -130.90740426101337,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000006865720699870524,
+            "angle": -0.9588409495599031,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000012808363394567623,
+            "angular": 0,
+            "speed": 45.086155259999394
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004974434549239959,
+              "points": [
+                {
+                  "x": -3.517122976559548,
+                  "y": 295.5475127827254
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.00766666666667426,
+          "dt": 0.0003333333333333334,
+          "angular": 0.008849546099095607,
+          "anchor": 0.000004488245863843986,
+          "minContactSeparation": -0.0045820851644293725,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004488245863843986,
+            "angle": -0.9588495460990956,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000004488245863843986,
+            "angular": 0.008849546099095607,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0045820851644293725,
+              "points": [
+                {
+                  "x": -3.518025819960753,
+                  "y": 295.5477089574178
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.008000000000008,
+          "dt": 0.0003333333333333334,
+          "angular": 0.008855329543098422,
+          "anchor": 0.00000486423298206599,
+          "minContactSeparation": -0.004187949414699688,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00000486423298206599,
+            "angle": -0.9588553295430984,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.00000486423298206599,
+            "angular": 0.008855329543098422,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004187949414699688,
+              "points": [
+                {
+                  "x": -3.5189374859266946,
+                  "y": 295.54790602529266
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.008333333333341741,
+          "dt": 0.0003333333333333334,
+          "angular": 0.00886054634990363,
+          "anchor": 0.000004889684550171021,
+          "minContactSeparation": -0.0037915968330253236,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004889684550171021,
+            "angle": -0.9588605463499036,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000004889684550171021,
+            "angular": 0.00886054634990363,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0037915968330253236,
+              "points": [
+                {
+                  "x": -3.519860022610176,
+                  "y": 295.5481042015835
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.008888888888897384,
+          "dt": 0.0005555555555555556,
+          "angular": 0.008892216934032193,
+          "anchor": 0.000013845458376221674,
+          "minContactSeparation": -0.003128743083379959,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000013675835120573745,
+            "angle": -0.9588922169340321,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000013845458376221674,
+            "angular": 0,
+            "speed": 55.01210886084943
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.003128743083379959,
+              "points": [
+                {
+                  "x": -3.5214159882842715,
+                  "y": 295.5484356284583
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.009444444444453026,
+          "dt": 0.0005555555555555556,
+          "angular": 0.008908475637766644,
+          "anchor": 0.000013611051253758442,
+          "minContactSeparation": -0.0024586579667129627,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000013611051253758442,
+            "angle": -0.9589084756377666,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000013611051253758442,
+            "angular": 0.008908475637766644,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0024586579667129627,
+              "points": [
+                {
+                  "x": -3.523006041046146,
+                  "y": 295.54877067101665
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.010000000000008669,
+          "dt": 0.0005555555555555556,
+          "angular": 0.02227658325290638,
+          "anchor": 0.000013514737578602412,
+          "minContactSeparation": -0.0017833288873703168,
+          "worstJoint": {
+            "speed": 54.293442261069444,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 0.000013431565838831925,
+            "angle": 0.9722765832529063,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000013514737578602412,
+            "angular": 0.008926364795779351,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0017833288873703168,
+              "points": [
+                {
+                  "x": -3.524624705763043,
+                  "y": 295.5491083355563
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.010833333333341244,
+          "dt": 0.0008333333333333334,
+          "angular": 0.02223779748550503,
+          "anchor": 0.0000016442766529243826,
+          "minContactSeparation": -0.0012918363527205656,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 0.0000016442766529243826,
+            "angle": 0.972237797485505,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000016442766529243826,
+            "angular": 0.02223779748550503,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0012918363527205656,
+              "points": [
+                {
+                  "x": -3.5268231714452045,
+                  "y": 295.54935408182365
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.01166666666667382,
+          "dt": 0.0008333333333333334,
+          "angular": 0.022210016535939348,
+          "anchor": 4.2482244583274074e-7,
+          "minContactSeparation": -0.0008037074971980473,
+          "worstJoint": {
+            "speed": -0.0207768759805953,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 2.801093670641682e-7,
+            "angle": 0.9722100165359393,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 4.2482244583274074e-7,
+            "angular": 0,
+            "speed": -10.515958062101474
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0008037074971980473,
+              "points": [
+                {
+                  "x": -3.52902531222411,
+                  "y": 295.5495981462514
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.013333333333340747,
+          "dt": 0.0016666666666666668,
+          "angular": 0.02211041809339709,
+          "anchor": 0.0000017446433987945098,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": -0.041557577205249885,
+            "a": "torso",
+            "b": "front-leg",
+            "anchorGap": 9.636524896706626e-7,
+            "angle": 0.972110418093397,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.0000017446433987945098,
+            "angular": 0,
+            "speed": -10.521805150857585
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0001620513613715957,
+              "points": [
+                {
+                  "x": -3.533459039574619,
+                  "y": 295.5500810256807
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "armadillo-first-obstacle",
+      "variant": "jointMotion16",
+      "snapshotSHA256": "3c56325915408487a58e0eef97d973b286b3683d7ce5df8787f641cd213596a2",
+      "initialCenter": {
+        "x": -2.7607634922173343,
+        "y": 300.6611944674777,
+        "vx": -0.5626807279776743,
+        "vy": 8.927971070123025,
+        "mass": 5
+      },
+      "firstImpact": 0.0016666666666669272,
+      "integrations": 702,
+      "maxAngular": 0.01593802424782287,
+      "maxAnchor": 0.016100961383523175,
+      "maxContactPenetration": 0.006248725081775319,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "anchorAbove5mm": {
+        "longestSeconds": 0.0016666666666666668,
+        "totalSeconds": 0.0016666666666666668
+      },
+      "worstAngular": {
+        "time": 0.009666666666648283,
+        "dt": 0.0003333333333333334,
+        "angular": 0.01593802424782287,
+        "anchor": 0.000004890991756070231,
+        "minContactSeparation": -0.0021694508032510385,
+        "worstJoint": {
+          "speed": 0,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.000004890991756070231,
+          "angle": -0.9659380242478228,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "anchorJoint": {
+          "a": "torso",
+          "b": "rear-leg",
+          "gap": 0.000004890991756070231,
+          "angular": 0.01593802424782287,
+          "speed": 0
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0021694508032510385,
+            "points": [
+              {
+                "x": -3.5232349076405414,
+                "y": 295.54891527459836
+              }
+            ]
+          }
+        ]
+      },
+      "worstAnchor": {
+        "time": 0.0016666666666669272,
+        "dt": 0.0016666666666666668,
+        "angular": 0,
+        "anchor": 0.016100961383523175,
+        "minContactSeparation": -0.0024582991842407864,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "tail",
+          "gap": 0.016100961383523175,
+          "angular": 0,
+          "speed": 121.7128715310669
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.0024582991842407864,
+            "points": [
+              {
+                "x": -3.5028135034815717,
+                "y": 295.5487708504079
+              }
+            ]
+          },
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": 0.006252089612528809,
+            "points": [
+              {
+                "x": -3.498060678727599,
+                "y": 295.55300384296083
+              }
+            ]
+          }
+        ]
+      },
+      "worstPenetration": {
+        "time": 0.0018518518518515492,
+        "dt": 0.0001851851851851852,
+        "angular": 0,
+        "anchor": 0.00004246241988370379,
+        "minContactSeparation": -0.006248725081775319,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "front-leg",
+          "gap": 0.00004246241988370379,
+          "angular": 0,
+          "speed": -3.5055191079876042
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "tail",
+            "separation": -0.006248725081775319,
+            "points": [
+              {
+                "x": -3.500728693006141,
+                "y": 295.54687563745915
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 1.966475639841316e-7,
+        "center": {
+          "x": -5.862054181980772,
+          "y": 294.6769638713526,
+          "vx": -1.6520250624491535,
+          "vy": -4.73057412347229,
+          "mass": 5
+        }
+      },
+      "samples": [
+        {
+          "time": 0.0016666666666669272,
+          "dt": 0.0016666666666666668,
+          "angular": 0,
+          "anchor": 0.016100961383523175,
+          "minContactSeparation": -0.0024582991842407864,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "tail",
+            "gap": 0.016100961383523175,
+            "angular": 0,
+            "speed": 121.7128715310669
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0024582991842407864,
+              "points": [
+                {
+                  "x": -3.5028135034815717,
+                  "y": 295.5487708504079
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.006252089612528809,
+              "points": [
+                {
+                  "x": -3.498060678727599,
+                  "y": 295.55300384296083
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0018518518518515492,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.00004246241988370379,
+          "minContactSeparation": -0.006248725081775319,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00004246241988370379,
+            "angular": 0,
+            "speed": -3.5055191079876042
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.006248725081775319,
+              "points": [
+                {
+                  "x": -3.500728693006141,
+                  "y": 295.54687563745915
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0020370370370361712,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004003459941644412,
+          "minContactSeparation": -0.005835892986510771,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000004003459941644412,
+            "angular": 0,
+            "speed": 4.541128628897656
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005835892986510771,
+              "points": [
+                {
+                  "x": -3.499588917402738,
+                  "y": 295.54708205350676
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0022222222222207932,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003825156606935699,
+          "minContactSeparation": -0.005702816277334932,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000003825156606935699,
+            "angular": 0,
+            "speed": -135.1890785008834
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.0005212350943679667,
+              "points": [
+                {
+                  "x": -3.9599576611205016,
+                  "y": 295.5497393824528
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005702816277334932,
+              "points": [
+                {
+                  "x": -3.500140892192077,
+                  "y": 295.54714859186134
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0024074074074054153,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000036389236036609192,
+          "minContactSeparation": -0.005590745122617591,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000036389236036609192,
+            "angular": 0,
+            "speed": 40.474497091315094
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.00032282499506663953,
+              "points": [
+                {
+                  "x": -3.960159715972276,
+                  "y": 295.5501614124976
+                }
+              ]
+            },
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005590745122617591,
+              "points": [
+                {
+                  "x": -3.500703650145437,
+                  "y": 295.5472046274387
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0025925925925900373,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003662692288411384,
+          "minContactSeparation": -0.005496528189326,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003662692288411384,
+            "angular": 0,
+            "speed": 40.68375959531156
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005496528189326,
+              "points": [
+                {
+                  "x": -3.5012746185526837,
+                  "y": 295.5472517359053
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0027777777777746593,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.00000368133020243875,
+          "minContactSeparation": -0.005417320952005866,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00000368133020243875,
+            "angular": 0,
+            "speed": 40.89319248695518
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005417320952005866,
+              "points": [
+                {
+                  "x": -3.5018524818617838,
+                  "y": 295.547291339524
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0029629629629592813,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000037026226211934133,
+          "minContactSeparation": -0.005350722873515679,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000037026226211934133,
+            "angular": 0,
+            "speed": 41.1024375937043
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005350722873515679,
+              "points": [
+                {
+                  "x": -3.5024361910159034,
+                  "y": 295.5473246385633
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0031481481481439033,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000037251729866546645,
+          "minContactSeparation": -0.005294718065101733,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000037251729866546645,
+            "angular": 0,
+            "speed": 41.311136496383305
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005294718065101733,
+              "points": [
+                {
+                  "x": -3.5030248537921596,
+                  "y": 295.54735264096746
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0033333333333285253,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000037483827392462047,
+          "minContactSeparation": -0.005247613340486623,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000037483827392462047,
+            "angular": 0,
+            "speed": 41.51893343783956
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005247613340486623,
+              "points": [
+                {
+                  "x": -3.5036177105206914,
+                  "y": 295.5473761933298
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0035185185185131473,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000037718053606164596,
+          "minContactSeparation": -0.005207986492848704,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000037718053606164596,
+            "angular": 0,
+            "speed": 41.725476521501896
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005207986492848704,
+              "points": [
+                {
+                  "x": -3.5042141132122673,
+                  "y": 295.5473960067536
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0037037037036977694,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000037950880220560603,
+          "minContactSeparation": -0.005174575736930365,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000037950880220560603,
+            "angular": 0,
+            "speed": 41.93045978418806
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005174575736930365,
+              "points": [
+                {
+                  "x": -3.504813473346709,
+                  "y": 295.5474127121315
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0038888888888823914,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003817951893129973,
+          "minContactSeparation": -0.005146311056989816,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003817951893129973,
+            "angular": 0,
+            "speed": 42.13354745649087
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005146311056989816,
+              "points": [
+                {
+                  "x": -3.5054152806718806,
+                  "y": 295.5474268444715
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004074074074067013,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003840175720879946,
+          "minContactSeparation": -0.005122296224385536,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003840175720879946,
+            "angular": 0,
+            "speed": 42.33440266877879
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005122296224385536,
+              "points": [
+                {
+                  "x": -3.506019097234198,
+                  "y": 295.5474388518878
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004259259259251635,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003861586671058814,
+          "minContactSeparation": -0.005101780874383621,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003861586671058814,
+            "angular": 0,
+            "speed": 42.53269625308651
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005101780874383621,
+              "points": [
+                {
+                  "x": -3.506624545910473,
+                  "y": 295.5474491095628
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004444444444436257,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003882053342251862,
+          "minContactSeparation": -0.005084137076551087,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003882053342251862,
+            "angular": 0,
+            "speed": 42.72810758532453
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005084137076551087,
+              "points": [
+                {
+                  "x": -3.5072313007582254,
+                  "y": 295.54745793146174
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.004629629629620879,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003901480093262505,
+          "minContactSeparation": -0.005068839674777337,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003901480093262505,
+            "angular": 0,
+            "speed": 42.920325392556194
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005068839674777337,
+              "points": [
+                {
+                  "x": -3.5078390788927116,
+                  "y": 295.5474655801626
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0048148148148055014,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003919802188875791,
+          "minContactSeparation": -0.005055449789836075,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003919802188875791,
+            "angular": 0,
+            "speed": 43.10904852036862
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005055449789836075,
+              "points": [
+                {
+                  "x": -3.508447633648389,
+                  "y": 295.54747227510506
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0049999999999901235,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003936981786847831,
+          "minContactSeparation": -0.005043600974147466,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003936981786847831,
+            "angular": 0,
+            "speed": 43.29398665608343
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005043600974147466,
+              "points": [
+                {
+                  "x": -3.5090567488202375,
+                  "y": 295.54747819951297
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0051851851851747455,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003953004164175088,
+          "minContactSeparation": -0.00503298759201698,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003953004164175088,
+            "angular": 0,
+            "speed": 43.474861003650254
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.00503298759201698,
+              "points": [
+                {
+                  "x": -3.5096662338151057,
+                  "y": 295.547483506204
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0053703703703593675,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003967874528591956,
+          "minContactSeparation": -0.005023355066441582,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003967874528591956,
+            "angular": 0,
+            "speed": 43.65140490660512
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005023355066441582,
+              "points": [
+                {
+                  "x": -3.5102759195715447,
+                  "y": 295.5474883224668
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0055555555555439895,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.00000398161506853117,
+          "minContactSeparation": -0.005014491691554213,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.00000398161506853117,
+            "angular": 0,
+            "speed": 43.82336441576602
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005014491691554213,
+              "points": [
+                {
+                  "x": -3.510885655126352,
+                  "y": 295.54749275415423
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0057407407407286115,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000003994262176289179,
+          "minContactSeparation": -0.005006221759003893,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000003994262176289179,
+            "angular": 0,
+            "speed": 43.990498798938454
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.005006221759003893,
+              "points": [
+                {
+                  "x": -3.5114953047277013,
+                  "y": 295.5474968891205
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0059259259259132335,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000040048036390185944,
+          "minContactSeparation": -0.004998153409928818,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000040048036390185944,
+            "angular": 0,
+            "speed": 44.15258099028701
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004998153409928818,
+              "points": [
+                {
+                  "x": -3.5121046104808844,
+                  "y": 295.54750092329505
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0061111111110978555,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004009053815975324,
+          "minContactSeparation": -0.004989007406436485,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004009053815975324,
+            "angular": 0,
+            "speed": 44.309398246479965
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004989007406436485,
+              "points": [
+                {
+                  "x": -3.512712817418841,
+                  "y": 295.5475054962968
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0062962962962824776,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004012154310648354,
+          "minContactSeparation": -0.004978732854908685,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004012154310648354,
+            "angular": 0,
+            "speed": 44.460752863524846
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004978732854908685,
+              "points": [
+                {
+                  "x": -3.513319829310562,
+                  "y": 295.54751063357253
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0064814814814671,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004013843869076347,
+          "minContactSeparation": -0.004967280490234316,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004013843869076347,
+            "angular": 0,
+            "speed": 44.60645921612211
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004967280490234316,
+              "points": [
+                {
+                  "x": -3.513925553106096,
+                  "y": 295.5475163597549
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.006666666666651722,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004014094326245428,
+          "minContactSeparation": -0.004954603630665133,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004014094326245428,
+            "angular": 0,
+            "speed": 44.74634815352461
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004954603630665133,
+              "points": [
+                {
+                  "x": -3.514529895648949,
+                  "y": 295.5475226981847
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.006851851851836344,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.0000040129371124467515,
+          "minContactSeparation": -0.004940658146267651,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.0000040129371124467515,
+            "angular": 0,
+            "speed": 44.880265493953274
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004940658146267651,
+              "points": [
+                {
+                  "x": -3.515132763906905,
+                  "y": 295.5475296709269
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007037037037020966,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004010410279029977,
+          "minContactSeparation": -0.004925402438402671,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004010410279029977,
+            "angular": 0,
+            "speed": 45.00807208623407
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004925402438402671,
+              "points": [
+                {
+                  "x": -3.5157340651434543,
+                  "y": 295.5475372987808
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007222222222205588,
+          "dt": 0.0001851851851851852,
+          "angular": 0,
+          "anchor": 0.000004006555091668869,
+          "minContactSeparation": -0.00490879741352046,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004006555091668869,
+            "angular": 0,
+            "speed": 45.12964381668377
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.00490879741352046,
+              "points": [
+                {
+                  "x": -3.5163337070783345,
+                  "y": 295.5475456012932
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.00740740740739021,
+          "dt": 0.0001851851851851852,
+          "angular": 0.01590151684739216,
+          "anchor": 0.000004001416340487415,
+          "minContactSeparation": -0.004890806449395768,
+          "worstJoint": {
+            "speed": -131.43740736489136,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000021321686755621915,
+            "angle": -0.9659015168473921,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004001416340487415,
+            "angular": 0,
+            "speed": 45.2448715558313
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004890806449395768,
+              "points": [
+                {
+                  "x": -3.516931598046868,
+                  "y": 295.5475545967753
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007592592592574832,
+          "dt": 0.0001851851851851852,
+          "angular": 0.01590400005469239,
+          "anchor": 0.0000013874760334339962,
+          "minContactSeparation": -0.0046711924224496215,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000013874760334339962,
+            "angle": -0.9659040000546923,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.0000013874760334339962,
+            "angular": 0.01590400005469239,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0046711924224496215,
+              "points": [
+                {
+                  "x": -3.517430332813684,
+                  "y": 295.54766440378876
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007777777777759454,
+          "dt": 0.0001851851851851852,
+          "angular": 0.015905615379593785,
+          "anchor": 0.0000015036686027597976,
+          "minContactSeparation": -0.004451019180010007,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000015036686027597976,
+            "angle": -0.9659056153795937,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.0000015036686027597976,
+            "angular": 0.015905615379593785,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004451019180010007,
+              "points": [
+                {
+                  "x": -3.517931817602146,
+                  "y": 295.54777449041
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.007962962962944076,
+          "dt": 0.0001851851851851852,
+          "angular": 0.015907015582967476,
+          "anchor": 0.0000015116339318059392,
+          "minContactSeparation": -0.004230143049369417,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000015116339318059392,
+            "angle": -0.9659070155829674,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.0000015116339318059392,
+            "angular": 0.015907015582967476,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004230143049369417,
+              "points": [
+                {
+                  "x": -3.518436712183538,
+                  "y": 295.54788492847536
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.008148148148128698,
+          "dt": 0.0001851851851851852,
+          "angular": 0.01590845774145966,
+          "anchor": 0.000001512341676669434,
+          "minContactSeparation": -0.004008582846381614,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000001512341676669434,
+            "angle": -0.9659084577414596,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000001512341676669434,
+            "angular": 0.01590845774145966,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.004008582846381614,
+              "points": [
+                {
+                  "x": -3.5189449904850916,
+                  "y": 295.5479957085768
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.00833333333331332,
+          "dt": 0.0001851851851851852,
+          "angular": 0.015909949095877396,
+          "anchor": 0.0000015129581593860949,
+          "minContactSeparation": -0.0037863525973875767,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000015129581593860949,
+            "angle": -0.9659099490958774,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.0000015129581593860949,
+            "angular": 0.015909949095877396,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0037863525973875767,
+              "points": [
+                {
+                  "x": -3.5194566235377605,
+                  "y": 295.54810682370135
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.00866666666664706,
+          "dt": 0.0003333333333333334,
+          "angular": 0.015921374291330226,
+          "anchor": 0.000004984863000935477,
+          "minContactSeparation": -0.0033856421160294303,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004940322512651513,
+            "angle": -0.9659213742913302,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004984863000935477,
+            "angular": 0,
+            "speed": 55.1427657081592
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0033856421160294303,
+              "points": [
+                {
+                  "x": -3.520383841368148,
+                  "y": 295.54830717894197
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.008999999999980801,
+          "dt": 0.0003333333333333334,
+          "angular": 0.015926514796898106,
+          "anchor": 0.0000049228163982959365,
+          "minContactSeparation": -0.0029822144931017647,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.0000049228163982959365,
+            "angle": -0.9659265147968981,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.0000049228163982959365,
+            "angular": 0.015926514796898106,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0029822144931017647,
+              "points": [
+                {
+                  "x": -3.5213236773680334,
+                  "y": 295.5485088927535
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.009333333333314542,
+          "dt": 0.0003333333333333334,
+          "angular": 0.01593212643727715,
+          "anchor": 0.000004900151908267292,
+          "minContactSeparation": -0.0025767804938254812,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004900151908267292,
+            "angle": -0.9659321264372771,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000004900151908267292,
+            "angular": 0.01593212643727715,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0025767804938254812,
+              "points": [
+                {
+                  "x": -3.5222741335838608,
+                  "y": 295.5487116097531
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.009666666666648283,
+          "dt": 0.0003333333333333334,
+          "angular": 0.01593802424782287,
+          "anchor": 0.000004890991756070231,
+          "minContactSeparation": -0.0021694508032510385,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.000004890991756070231,
+            "angle": -0.9659380242478228,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.000004890991756070231,
+            "angular": 0.01593802424782287,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0021694508032510385,
+              "points": [
+                {
+                  "x": -3.5232349076405414,
+                  "y": 295.54891527459836
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.009999999999982023,
+          "dt": 0.0003333333333333334,
+          "angular": 0.01593781721701437,
+          "anchor": 0.000004131180423017946,
+          "minContactSeparation": -0.001809119321308117,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 0.00000397107381488078,
+            "angle": -0.9659378172170143,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000004131180423017946,
+            "angular": 0.001877584213541228,
+            "speed": 0
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.001809119321308117,
+              "points": [
+                {
+                  "x": -3.5241808683468885,
+                  "y": 295.54909544033933
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.010416666666648311,
+          "dt": 0.0004166666666666667,
+          "angular": 0.015929335669848443,
+          "anchor": 5.622666676915332e-7,
+          "minContactSeparation": -0.0015648717965177639,
+          "worstJoint": {
+            "speed": 0,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 2.7496691606410083e-8,
+            "angle": -0.9659293356698484,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 5.622666676915332e-7,
+            "angular": 0,
+            "speed": -20.62957459946957
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0015648717965177639,
+              "points": [
+                {
+                  "x": -3.525270708514477,
+                  "y": 295.54921756410175
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.010833333333314599,
+          "dt": 0.0004166666666666667,
+          "angular": 0.015927645806221635,
+          "anchor": 1.529783364826389e-7,
+          "minContactSeparation": -0.001321327522532556,
+          "worstJoint": {
+            "speed": 0.0029661219157208762,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 8.706712774260592e-9,
+            "angle": -0.9659276458062216,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 1.529783364826389e-7,
+            "angular": 0,
+            "speed": -20.649147472332597
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.001321327522532556,
+              "points": [
+                {
+                  "x": -3.526362084166339,
+                  "y": 295.54933933623875
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.011249999999980886,
+          "dt": 0.0004166666666666667,
+          "angular": 0.015924565451743478,
+          "anchor": 1.2896393733495711e-7,
+          "minContactSeparation": -0.0010778794639918488,
+          "worstJoint": {
+            "speed": 0.005977376325501993,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 2.1480577890607846e-8,
+            "angle": -0.9659245654517434,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 1.2896393733495711e-7,
+            "angular": 0,
+            "speed": -20.668650604386755
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0010778794639918488,
+              "points": [
+                {
+                  "x": -3.5274568062666014,
+                  "y": 295.549461060268
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.011666666666647174,
+          "dt": 0.0004166666666666667,
+          "angular": 0.015920175962473637,
+          "anchor": 1.310113056313685e-7,
+          "minContactSeparation": -0.0008344740666643702,
+          "worstJoint": {
+            "speed": 0.00901775378770786,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 2.1228523157222088e-8,
+            "angle": -0.9659201759624736,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 1.310113056313685e-7,
+            "angular": 0,
+            "speed": -20.688077607450484
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.0008344740666643702,
+              "points": [
+                {
+                  "x": -3.52855503495072,
+                  "y": 295.5495827629667
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.01249999999997975,
+          "dt": 0.0008333333333333334,
+          "angular": 0.01590742645802412,
+          "anchor": 4.916332050158399e-7,
+          "minContactSeparation": -0.00034952289115608437,
+          "worstJoint": {
+            "speed": 0.012087743096421022,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 1.070216031566055e-7,
+            "angle": -0.9659074264580241,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 4.916332050158399e-7,
+            "angular": 0,
+            "speed": -20.707426064553573
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": -0.00034952289115608437,
+              "points": [
+                {
+                  "x": -3.5307616744210923,
+                  "y": 295.54982523855443
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.013333333333312325,
+          "dt": 0.0008333333333333334,
+          "angular": 0.015889536828250117,
+          "anchor": 5.415946894717595e-7,
+          "minContactSeparation": 0,
+          "worstJoint": {
+            "speed": 0.018297631792548508,
+            "a": "torso",
+            "b": "rear-leg",
+            "anchorGap": 7.225822869758673e-8,
+            "angle": -0.9658895368282501,
+            "limits": [
+              -0.95,
+              0.95
+            ]
+          },
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 5.415946894717595e-7,
+            "angular": 0,
+            "speed": -20.745208494724242
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0001355487473233552,
+              "points": [
+                {
+                  "x": -3.532982698018432,
+                  "y": 295.5500677743737
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "armadillo-first-obstacle",
+      "variant": "shelfRegion",
+      "snapshotSHA256": "3c56325915408487a58e0eef97d973b286b3683d7ce5df8787f641cd213596a2",
+      "initialCenter": {
+        "x": -2.7607634922173343,
+        "y": 300.6611944674777,
+        "vx": -0.5626807279776743,
+        "vy": 8.927971070123025,
+        "mass": 5
+      },
+      "firstImpact": 0.0008333333333325754,
+      "integrations": 1926,
+      "maxAngular": 0.021529242126930415,
+      "maxAnchor": 0.00001895285960305976,
+      "maxContactPenetration": 0.00034558950102336894,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "anchorAbove5mm": {
+        "longestSeconds": 0,
+        "totalSeconds": 0
+      },
+      "worstAngular": {
+        "time": 0.009999999999990905,
+        "dt": 0.0004166666666666667,
+        "angular": 0.021529242126930415,
+        "anchor": 0.000007448789869439393,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": 0,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.000007448789869439393,
+          "angle": -0.9715292421269304,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "anchorJoint": {
+          "a": "torso",
+          "b": "rear-leg",
+          "gap": 0.000007448789869439393,
+          "angular": 0.021529242126930415,
+          "speed": 0
+        },
+        "contacts": []
+      },
+      "worstAnchor": {
+        "time": 0.0033333333333303017,
+        "dt": 0.0004166666666666667,
+        "angular": 0,
+        "anchor": 0.00001895285960305976,
+        "minContactSeparation": 0,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "front-leg",
+          "gap": 0.00001895285960305976,
+          "angular": 0,
+          "speed": 40.22515794801866
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.24541666666649675,
+        "dt": 0.0004166666666666667,
+        "angular": 0,
+        "anchor": 4.309858005168982e-7,
+        "minContactSeparation": -0.00034558950102336894,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "tail",
+          "gap": 4.309858005168982e-7,
+          "angular": 0,
+          "speed": -0.5954453023534678
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.00034558950102336894,
+            "points": [
+              {
+                "x": -4.879414227332194,
+                "y": 295.54982720524947
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 2.426797833124308e-7,
+        "center": {
+          "x": -5.899679224219762,
+          "y": 294.67889896493455,
+          "vx": -1.6928013352854283,
+          "vy": -4.755367981455011,
+          "mass": 5
+        }
+      },
+      "samples": [
+        {
+          "time": 0.0008333333333325754,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.00000617674339866888,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.00000617674339866888,
+            "angular": 0,
+            "speed": 4.37516042821116
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0007627499330737919,
+              "points": [
+                {
+                  "x": -3.502995295953379,
+                  "y": 295.55038137496655
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0024999999999977263,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000016683776687269827,
+          "minContactSeparation": -0.00007427591276609746,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000016683776687269827,
+            "angular": 0,
+            "speed": 39.281338676504184
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00007427591276609746,
+              "points": [
+                {
+                  "x": -3.960686466498939,
+                  "y": 295.5499628620436
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.002916666666664014,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000018644623433988688,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000018644623433988688,
+            "angular": 0,
+            "speed": 39.75363593415845
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0018275141782169158,
+              "points": [
+                {
+                  "x": -3.961144158954844,
+                  "y": 295.5509137570891
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "armadillo-first-obstacle",
+      "variant": "jointMotion8Shelf",
+      "snapshotSHA256": "3c56325915408487a58e0eef97d973b286b3683d7ce5df8787f641cd213596a2",
+      "initialCenter": {
+        "x": -2.7607634922173343,
+        "y": 300.6611944674777,
+        "vx": -0.5626807279776743,
+        "vy": 8.927971070123025,
+        "mass": 5
+      },
+      "firstImpact": 0.0008333333333325754,
+      "integrations": 1926,
+      "maxAngular": 0.021529242126930415,
+      "maxAnchor": 0.00001895285960305976,
+      "maxContactPenetration": 0.00034558950102336894,
+      "maxPositiveEnergyResidual": 0,
+      "longestBadSeconds": 0,
+      "totalBadSeconds": 0,
+      "anchorAbove5mm": {
+        "longestSeconds": 0,
+        "totalSeconds": 0
+      },
+      "worstAngular": {
+        "time": 0.009999999999990905,
+        "dt": 0.0004166666666666667,
+        "angular": 0.021529242126930415,
+        "anchor": 0.000007448789869439393,
+        "minContactSeparation": 0,
+        "worstJoint": {
+          "speed": 0,
+          "a": "torso",
+          "b": "rear-leg",
+          "anchorGap": 0.000007448789869439393,
+          "angle": -0.9715292421269304,
+          "limits": [
+            -0.95,
+            0.95
+          ]
+        },
+        "anchorJoint": {
+          "a": "torso",
+          "b": "rear-leg",
+          "gap": 0.000007448789869439393,
+          "angular": 0.021529242126930415,
+          "speed": 0
+        },
+        "contacts": []
+      },
+      "worstAnchor": {
+        "time": 0.0033333333333303017,
+        "dt": 0.0004166666666666667,
+        "angular": 0,
+        "anchor": 0.00001895285960305976,
+        "minContactSeparation": 0,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "front-leg",
+          "gap": 0.00001895285960305976,
+          "angular": 0,
+          "speed": 40.22515794801866
+        },
+        "contacts": []
+      },
+      "worstPenetration": {
+        "time": 0.24541666666649675,
+        "dt": 0.0004166666666666667,
+        "angular": 0,
+        "anchor": 4.309858005168982e-7,
+        "minContactSeparation": -0.00034558950102336894,
+        "worstJoint": null,
+        "anchorJoint": {
+          "a": "torso",
+          "b": "tail",
+          "gap": 4.309858005168982e-7,
+          "angular": 0,
+          "speed": -0.5954453023534678
+        },
+        "contacts": [
+          {
+            "a": "world",
+            "b": "head",
+            "separation": -0.00034558950102336894,
+            "points": [
+              {
+                "x": -4.879414227332194,
+                "y": 295.54982720524947
+              }
+            ]
+          }
+        ]
+      },
+      "final": {
+        "angular": 0,
+        "anchor": 2.426797833124308e-7,
+        "center": {
+          "x": -5.899679224219762,
+          "y": 294.67889896493455,
+          "vx": -1.6928013352854283,
+          "vy": -4.755367981455011,
+          "mass": 5
+        }
+      },
+      "samples": [
+        {
+          "time": 0.0008333333333325754,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.00000617674339866888,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "rear-leg",
+            "gap": 0.00000617674339866888,
+            "angular": 0,
+            "speed": 4.37516042821116
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "tail",
+              "separation": 0.0007627499330737919,
+              "points": [
+                {
+                  "x": -3.502995295953379,
+                  "y": 295.55038137496655
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.0024999999999977263,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000016683776687269827,
+          "minContactSeparation": -0.00007427591276609746,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000016683776687269827,
+            "angular": 0,
+            "speed": 39.281338676504184
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": -0.00007427591276609746,
+              "points": [
+                {
+                  "x": -3.960686466498939,
+                  "y": 295.5499628620436
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "time": 0.002916666666664014,
+          "dt": 0.0004166666666666667,
+          "angular": 0,
+          "anchor": 0.000018644623433988688,
+          "minContactSeparation": 0,
+          "worstJoint": null,
+          "anchorJoint": {
+            "a": "torso",
+            "b": "front-leg",
+            "gap": 0.000018644623433988688,
+            "angular": 0,
+            "speed": 39.75363593415845
+          },
+          "contacts": [
+            {
+              "a": "world",
+              "b": "torso",
+              "separation": 0.0018275141782169158,
+              "points": [
+                {
+                  "x": -3.961144158954844,
+                  "y": 295.5509137570891
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

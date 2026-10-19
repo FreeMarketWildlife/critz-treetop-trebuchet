@@ -1,0 +1,92 @@
+{
+  "protocol": "Analytical sum of oscillator gain coefficients plus noise coefficient at full envelope peak for authored cues, all4pitchvariants and3massvalues. Does not render waveform or measure perceived loudness. Bandpass has unity peak; no resonance boost assumed. Master voice-count headroom is1/sqrt(limit),limit1..16; every simultaneous voice bounded by worst cue. Existing cooldowns impact90ms,wind350ms,zone2s,others60ms. Existing gesture/unlock/mute/pause/voice-lifecycle tests supply behavioral verification.",
+  "maxPerVoiceBound": 0.161,
+  "worstSixteenVoicesAtFullVolume": 0.644,
+  "tenVoicesAtUserVolume35": 0.17819434615048815,
+  "rows": [
+    {
+      "event": "unlatch",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.053200000000000004,
+      "minPrimaryHz": 98.69999999999999,
+      "maxPrimaryHz": 190.8
+    },
+    {
+      "event": "launch",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.15749999999999997,
+      "minPrimaryHz": 141,
+      "maxPrimaryHz": 445.20000000000005
+    },
+    {
+      "event": "impact",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.1498,
+      "minPrimaryHz": 51.22088145912535,
+      "maxPrimaryHz": 416.4177773055452
+    },
+    {
+      "event": "impact",
+      "material": "ground",
+      "fullStrengthPerVoiceLinearComponentBound": 0.161,
+      "minPrimaryHz": 35.045866261506816,
+      "maxPrimaryHz": 280.00505715372867
+    },
+    {
+      "event": "impact",
+      "material": "leaf",
+      "fullStrengthPerVoiceLinearComponentBound": 0.08775000000000001,
+      "minPrimaryHz": 148.27097264483655,
+      "maxPrimaryHz": 502.57317950669244
+    },
+    {
+      "event": "impact",
+      "material": "shell",
+      "fullStrengthPerVoiceLinearComponentBound": 0.1393,
+      "minPrimaryHz": 121.31261398213898,
+      "maxPrimaryHz": 531.2916469070749
+    },
+    {
+      "event": "impact",
+      "material": "bumper",
+      "fullStrengthPerVoiceLinearComponentBound": 0.13790000000000002,
+      "minPrimaryHz": 94.35425531944144,
+      "maxPrimaryHz": 588.7285817078397
+    },
+    {
+      "event": "coin",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.08549999999999999,
+      "minPrimaryHz": 827.1999999999999,
+      "maxPrimaryHz": 1399.2
+    },
+    {
+      "event": "shop",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.076,
+      "minPrimaryHz": 413.59999999999997,
+      "maxPrimaryHz": 699.6
+    },
+    {
+      "event": "enemy",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.1045,
+      "minPrimaryHz": 103.39999999999999,
+      "maxPrimaryHz": 296.8
+    },
+    {
+      "event": "wind",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.0364,
+      "minPrimaryHz": 329,
+      "maxPrimaryHz": 848
+    },
+    {
+      "event": "zone",
+      "material": "wood",
+      "fullStrengthPerVoiceLinearComponentBound": 0.042749999999999996,
+      "minPrimaryHz": 368.47999999999996,
+      "maxPrimaryHz": 554.38
+    }
+  ]
+}

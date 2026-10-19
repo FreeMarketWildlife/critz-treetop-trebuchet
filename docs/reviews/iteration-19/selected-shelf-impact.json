@@ -1,0 +1,23 @@
+{
+  "protocol": "Selected production shelf region with existing speed/spin eligibility; all internal integrations measured for1second from identical incoming. Different from deliberately always-refined researchShelf variant.",
+  "sourceSHA256": "c3801f9efd9d532e088ad4d5d8aa6a6550872ac3b69e347e11da1d981648ef33",
+  "angular": 0.021529242126930415,
+  "anchor": 0.00001895285960305976,
+  "penetration": 0.0007894678420825585,
+  "integrations": 801,
+  "maxPositiveEnergyResidual": 0,
+  "initialRelease": {
+    "x": -2.7607634922173343,
+    "y": 300.6611944674777,
+    "vx": -0.5626807279776743,
+    "vy": 8.927971070123025,
+    "mass": 5
+  },
+  "finalCenter": {
+    "x": -5.894248941759782,
+    "y": 294.71435726239065,
+    "vx": -1.6828188724441582,
+    "vy": -4.6830905251434265,
+    "mass": 5
+  }
+}
