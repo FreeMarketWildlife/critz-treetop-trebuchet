@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Midair waxleaf \u2014 natural snake flight at47m",
+    "file": "canopy-midair-natural-incoming.json",
+    "case": 26,
+    "captureAt": 13.4,
+    "seed": 29026
+  },
+  {
+    "label": "Floor skid \u2014 natural salamander flight",
+    "file": "floor-natural-incoming.json",
+    "case": 12,
+    "captureAt": 11.7,
+    "seed": 29012
+  },
+  {
+    "label": "Genuine turtle reversal \u2014 camera tracking",
+    "file": "backward-natural-incoming.json",
+    "case": 14,
+    "captureAt": 10.4,
+    "seed": 29014
+  }
+]

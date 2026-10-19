@@ -1,0 +1,456 @@
+{
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;20seconds after actual release;seed29000+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "37f3e6dd2fbd10a1003968beb429972122be4bdd66c84474efea4536c784d206",
+    "src/encounter-body.js": "e56c422a87760cdf147bc7a56dd6eb9c0c7b8992701d55948c40bd5bdc0a72ad",
+    "src/articulated.js": "e7f25ac80419af35a322a063dd6e90b25242b428070e3fc72ebef6820a335984",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "seed": 29015,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 6.5000000000002025,
+        "openSky": 3.8599999999998276,
+        "jungleCanopy": 5.260000000000009,
+        "forestFloor": 4.379999999999871
+      },
+      "births": {
+        "round beetle": 14,
+        "leaf hopper": 15,
+        "puffy moth": 24,
+        "round bird": 17,
+        "springy pod": 14,
+        "vine bug": 16,
+        "waxleaf skid": 14,
+        "rolling beetle": 2
+      },
+      "contacts": [
+        {
+          "id": "openSky:-1:14:13",
+          "kind": "puffy moth",
+          "birthBiome": "openSky",
+          "time": 7.031666666666666,
+          "position": {
+            "x": -6.645450952935066,
+            "y": 235.61438815026762,
+            "vx": -12.104665823130237,
+            "vy": -18.421259127024506,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:-5:2:24",
+          "kind": "vine bug",
+          "birthBiome": "jungleCanopy",
+          "time": 13.486666666666666,
+          "position": {
+            "x": -73.48259782835783,
+            "y": 18.760854608928973,
+            "vx": 0.7606783803792218,
+            "vy": 6.353162731661575,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:-4:1:28",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 17.531666666666666,
+          "position": {
+            "x": -66.00346846075199,
+            "y": 0.2557248187098045,
+            "vx": 2.749405553764945,
+            "vy": 0.9001992954756841,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:-4:1:28",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 17.631666666666668,
+          "position": {
+            "x": -65.82037353434801,
+            "y": 0.28153622973499876,
+            "vx": 0.5838656931241669,
+            "vy": -0.32179389566254374,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:-4:1:28",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 18.22833333333333,
+          "position": {
+            "x": -65.6351049623184,
+            "y": 0.13613525885002598,
+            "vx": 0.15689095217702895,
+            "vy": -0.4533615816790985,
+            "mass": 1.1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 0.9500000000000013,
+          "totalGap": 5.23333333333332,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.9500000000000011,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 1.9833333333333334,
+              "end": 2.1
+            },
+            {
+              "start": 2.333333333333333,
+              "end": 2.783333333333333
+            },
+            {
+              "start": 6.383333333333334,
+              "end": 6.65
+            },
+            {
+              "start": 7.916666666666667,
+              "end": 8.033333333333333
+            },
+            {
+              "start": 8.066666666666666,
+              "end": 8.166666666666666
+            },
+            {
+              "start": 8.833333333333332,
+              "end": 9.416666666666666
+            },
+            {
+              "start": 10,
+              "end": 10.133333333333333
+            },
+            {
+              "start": 10.3,
+              "end": 10.55
+            },
+            {
+              "start": 10.75,
+              "end": 11.05
+            },
+            {
+              "start": 11.183333333333334,
+              "end": 11.266666666666667
+            },
+            {
+              "start": 11.333333333333334,
+              "end": 11.55
+            },
+            {
+              "start": 11.75,
+              "end": 12.333333333333334
+            },
+            {
+              "start": 12.35,
+              "end": 13.3
+            },
+            {
+              "start": 14.283333333333333,
+              "end": 14.566666666666666
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 2.9833333333333276,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 4.483333333333333,
+              "end": 4.516666666666667
+            },
+            {
+              "start": 8.166666666666666,
+              "end": 8.216666666666667
+            },
+            {
+              "start": 8.783333333333333,
+              "end": 9.083333333333334
+            },
+            {
+              "start": 9.2,
+              "end": 9.45
+            },
+            {
+              "start": 9.950000000000001,
+              "end": 10.05
+            },
+            {
+              "start": 10.266666666666667,
+              "end": 10.55
+            },
+            {
+              "start": 10.833333333333334,
+              "end": 11.033333333333333
+            },
+            {
+              "start": 11.3,
+              "end": 11.533333333333333
+            },
+            {
+              "start": 11.716666666666667,
+              "end": 12.033333333333333
+            },
+            {
+              "start": 12.049999999999999,
+              "end": 12.066666666666666
+            },
+            {
+              "start": 12.15,
+              "end": 12.333333333333334
+            },
+            {
+              "start": 12.35,
+              "end": 12.566666666666666
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 4.675,
+            "end": 13.486666666666666,
+            "distance": 104.6984738029325
+          }
+        ],
+        "distance": 104.6984738029325,
+        "lastOnset": {
+          "time": 4.675,
+          "center": {
+            "x": 31.21594101709254,
+            "y": 256.6257780917316,
+            "vx": -1.9372724126651517,
+            "vy": -11.661885976324319,
+            "mass": 1.1
+          },
+          "lastHit": null
+        }
+      },
+      "release": {
+        "time": 6.873333333333594,
+        "center": {
+          "x": -1.3665336437756128,
+          "y": 303.4882255241787,
+          "vx": 6.968616443673947,
+          "vy": 12.922939271883386,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.8827358756754342,
+              "y": 303.4588731068191
+            },
+            "v": {
+              "x": 7.4617792979803514,
+              "y": 20.242019305533905
+            },
+            "w": -24.52221039362888
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.702532296306867,
+              "y": 303.38290125861386
+            },
+            "v": {
+              "x": 5.950628228480921,
+              "y": 17.07437876233974
+            },
+            "w": -11.18799788687619
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.5041706348285737,
+              "y": 303.3666688441648
+            },
+            "v": {
+              "x": 5.959836431009488,
+              "y": 13.171216397539826
+            },
+            "w": -28.07272450121892
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.3455237160081437,
+              "y": 303.4502818793553
+            },
+            "v": {
+              "x": 7.511911190719976,
+              "y": 9.453022792003145
+            },
+            "w": -16.36281914258466
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.2032326120535268,
+              "y": 303.5861185589352
+            },
+            "v": {
+              "x": 8.062841239739548,
+              "y": 9.843018694456084
+            },
+            "w": 15.350574501919168
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.0216407092474313,
+              "y": 303.6191246345496
+            },
+            "v": {
+              "x": 7.13839588367152,
+              "y": 10.5783751191717
+            },
+            "w": -5.851169836734682
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -0.8321564863236234,
+              "y": 303.5578035892928
+            },
+            "v": {
+              "x": 6.624470997786339,
+              "y": 9.05296097018923
+            },
+            "w": -10.308136817394285
+          }
+        ]
+      },
+      "captureAt": 17,
+      "activeEnd": 18.44,
+      "end": {
+        "x": -65.61251298711436,
+        "y": 0.08943809913936894,
+        "vx": 1.8325708083783328e-06,
+        "vy": -1.3346746808169807e-07,
+        "mass": 1.1
+      },
+      "impacts": 17
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 1200,
+    "warnings": 226,
+    "maxSpeed": 71.29001619635977,
+    "collisions": [
+      {
+        "key": "0:480:openSky:-1:14:13",
+        "species": "snake",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 480,
+        "time": 13.905833333334481,
+        "speed": 22.04236199944645,
+        "warningLead": 0.5158333333333882,
+        "visibleLead": 0.3491666666666955,
+        "readableLead": 0.24916666666667986,
+        "continuousNoticeLead": 0.5158333333333882,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:openSky:-1:14:13",
+        "species": "snake",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 960,
+        "time": 13.905833333334481,
+        "speed": 22.04236199944645,
+        "warningLead": 0.5158333333333882,
+        "visibleLead": 0.36583333333336476,
+        "readableLead": 0.26583333333334913,
+        "continuousNoticeLead": 0.5158333333333882,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:jungleCanopy:-5:2:24",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 480,
+        "time": 20.360416666664012,
+        "speed": 6.398539543782622,
+        "warningLead": 1.1370833333322992,
+        "visibleLead": 0.2537499999997692,
+        "readableLead": 0.13708333333320866,
+        "continuousNoticeLead": 1.1370833333322992,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:jungleCanopy:-5:2:24",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 960,
+        "time": 20.360416666664012,
+        "speed": 6.398539543782622,
+        "warningLead": 1.1370833333322992,
+        "visibleLead": 0.2037499999998147,
+        "readableLead": 0.08708333333325413,
+        "continuousNoticeLead": 1.1370833333322992,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:jungleCanopy:-4:1:28",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 24.405833333327,
+        "speed": 2.893024312142648,
+        "warningLead": 0.9658333333324549,
+        "visibleLead": 1.265833333332182,
+        "readableLead": 0.6991666666660308,
+        "continuousNoticeLead": 0.9658333333324549,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:jungleCanopy:-4:1:28",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 24.405833333327,
+        "speed": 2.893024312142648,
+        "warningLead": null,
+        "visibleLead": 3.4824999999968327,
+        "readableLead": 3.4824999999968327,
+        "continuousNoticeLead": 3.4824999999968327,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  },
+  "durationSeconds": 20
+}

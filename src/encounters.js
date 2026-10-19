@@ -49,9 +49,9 @@ export function createEncounterDirector(seed=0,saved=null){
   // player clearance, motion, births or public descriptors. FIFO bound survives
   // arbitrarily long travel/rewinds without retaining the visited world.
   const recipes=new Map();
-  function recipeFor(id,biome,c,s){let entry=recipes.get(id);if(entry)return entry;
-    const rng=random(`${seed}:${id}`),start=s*4+rng()*1.5;
-    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*80+10+rng()*60,[low,high]=regions[biome],margin=recipe.radius+(biome==='forestFloor'?.2:1.5),baseY=low+margin+rng()*Math.max(0,high-low-2*margin),phase=rng()*Math.PI*2;
+  function recipeFor(id,biome,c,row,s){let entry=recipes.get(id);if(entry)return entry;
+    const rng=random(`${seed}:${id}`),start=s*.5+rng()*.15;
+    const recipe=encounterPools[biome][Math.floor(rng()*encounterPools[biome].length)],baseX=c*18+2+rng()*14,[low,high]=regions[biome],margin=recipe.radius+(biome==='forestFloor'?.2:1.5),baseY=Math.max(low+margin,Math.min(high-margin,low+row*8+1+rng()*6)),phase=rng()*Math.PI*2;
     entry={start,recipe,baseX,baseY,phase};recipes.set(id,entry);if(recipes.size>64)recipes.delete(recipes.keys().next().value);return entry;
   }
   if(saved!==null){
@@ -64,27 +64,27 @@ export function createEncounterDirector(seed=0,saved=null){
   }
   return {update(time,player,region){
     if(!Number.isFinite(time)||time<0||!player||!Number.isFinite(player.x)||!Number.isFinite(player.y))throw new Error('Finite nonnegative time and player position required');
-    const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/80),slot=Math.floor(time/4),candidates=[];
-    // Three nearby authored spatial cells, three still-living temporal slots: O(9).
-    for(let c=cell-1;c<=cell+1;c++)for(let s=Math.max(0,slot-2);s<=slot;s++){
-      const id=`${biome}:${c}:${s}`,{start,recipe,baseX,baseY,phase}=recipeFor(id,biome,c,s),age=time-start;
-      if(age<0||age>=10)continue;
+    const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/18),slot=Math.floor(time/.5),[low,high]=regions[biome],lastRow=Math.ceil((high-low)/8)-1,row=Math.max(0,Math.min(lastRow,Math.floor((player.y-low)/8))),candidates=[];
+    // Seeded 18m x8m neighborhood; four live .5s slots. At most36 recipes, eight public observations/births.
+    for(let c=cell-1;c<=cell+1;c++)for(let r=Math.max(0,row-1);r<=Math.min(lastRow,row+1);r++)for(let s=Math.max(0,slot-3);s<=slot;s++){
+      const id=`${biome}:${c}:${r}:${s}`,{start,recipe,baseX,baseY,phase}=recipeFor(id,biome,c,r,s),age=time-start;
+      if(age<0||age>=2)continue;
       const amplitude=biome==='forestFloor'?.2:1.5,omega=1.2;
       const horizontal=recipe.motion==='roll'||recipe.motion==='wave',offset=amplitude*Math.sin(age*omega+phase),velocity=amplitude*omega*Math.cos(age*omega+phase);
       candidates.push({id,biome,kind:recipe.kind,shape:recipe.shape,color:recipe.color,motion:recipe.motion,
         x:baseX+(horizontal?offset:0),y:baseY+(horizontal?0:offset),vx:horizontal?velocity:0,vy:horizontal?0:velocity,
-        radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+10,harmless:true});
+        radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+2,harmless:true});
     }
-    candidates.sort((a,b)=>Math.abs(a.x-player.x)-Math.abs(b.x-player.x)||a.id.localeCompare(b.id));
+    candidates.sort((a,b)=>Math.hypot(a.x-player.x,a.y-player.y)-Math.hypot(b.x-player.x,b.y-player.y)||a.id.localeCompare(b.id));
     const active=candidates.slice(0,8),current=new Set(active.map(e=>e.id)),events=[],spawns=[];
     // Dynamic solvers consume spawns, NOT the historical active observations.
     // A birth is available for 0.25 s, never replayed after a rewind or revisit.
     // Reject overlapping materialization, rather than push the player out of it.
     const forward=time>=latestTime;
     for(const [id,expiry] of observed)if(expiry<time && forward)observed.delete(id);
-    if(forward)for(const enemy of active)if(!observed.has(enemy.id)){
+    if(forward)for(const enemy of candidates)if(!observed.has(enemy.id)){
       observed.set(enemy.id,enemy.expiresAt);
-      if(time-enemy.spawnTime<=.25 && hasArrivalClearance(enemy,player))spawns.push(enemy);
+      if(spawns.length<8&&time-enemy.spawnTime<=.25 && hasArrivalClearance(enemy,player))spawns.push(enemy);
     }
     const audible=new Set();
     if(spawns.length && time-lastSound>=.4){audible.add(spawns[0].id);lastSound=time;}

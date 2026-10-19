@@ -1,6 +1,18 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 28 checkpoint
+## CURRENT implementation: iteration 29 checkpoint
+
+Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet; recovery task-5 copy untouched. Baseline d02a2c4. USER PRIORITY: mechanics/hitboxes/masses, sling/counterweight clarity and encounter ideas/density; defer final critter/enemy artwork and playable-loop polish. FINAL camera instruction is X-centered after physical release, including backward, preserving prelaunch left framing; vertical movement/dead zone allowed. Earlier Mario one-way analogy superseded.
+
+Read docs/reviews/iteration-29/findings.md and summary.json. Exact physical-COM X camera +8%Ydeadzone implemented/tested. Read-only actual fixedweight mass/center and sling anchors/taut/slack annotations; panels colorcoded. No new hinge or mechanism collider/mass change. Simple provisional enemy pre/post eyes from real approach/contact, bounded contact-name HUD. Per-run forward/leftward actual displacement observer incl tiny reversals for future achievements; not persisted/rewarded.
+
+Dense physical encounters:18x8m seeded neighborhood, .5s slots/2slifetime, atmost36candidates/8bodies; real arrival+fixture clearance retained. Beyond20m receding/offscreen early retirement with signed energy, approaching protected. Fixed map and physical launch unchanged. All33 attempt outcomes/24complete releaseobjects EXACT baseline.219tests pass. Original33x60s sample34contacts(0waxleaf/16seedhusk); final120(23waxleaf/36seedhusk).8waxleafcontactsabove5m/15nearfloor. Natural midair case26 at47m verified; do not confuse birth biome with contact altitude.
+
+TARGETS NOT MET: meaningful backwards vx<-.5m/s >=.5s and>=1m in8/24releasedruns33.3%(baseline9/24). Portrait median/worst maxactive gap1.542/8.817s,6/24<=1s; landscape .925/5.383s,15/24<=1s. Full60s/rest-inclusive gaps retained separately. Active end=lastCOMspeed>.15m/s; passing=visiblebelowHUD+relativeSpeed>.5 or scoredimpactprevious1/60s. See definitions/limits; no universal fairness/deviceFPS/audio claims.
+
+One save-free natural-review.html tab retained paused, normal viewport. It replays exact snapshots with live solver; prep was numerical real motor+force-drag, NOT new human native loading. Mechanism winding, midair/floor skids and genuine backward turtle centered framing reviewed390; reducedchecked/consoleclean. Earned saves untouched; old contactQAclosed; user/unclearoldertabs untouched. No force/deploy/install/unlock/exportretry. Next diagnose reversal contact normals, explore honest fixed geometry/material response and sustained moving-flight density without forcing hits. Keep all weak/missed/backward outcomes visible in metrics.
+
+## Historical implementation: iteration 28 checkpoint
 
 Canonical only: /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Preserved task-5/treetop recovery copy stays untouched. Baseline217986c. Read docs/reviews/iteration-28/findings.md, verification.json, launch-parity.json; contact-review.html is save-free actual renderer/solver with LABELLED SYNTHETIC incoming poses, not normal throws.
 

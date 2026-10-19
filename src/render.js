@@ -1,3 +1,5 @@
+import {encounterAnimationState} from './encounter-state.js';
+import {drawMechanismDetails} from './mechanism-art.js';
 import {drawGripTether} from './grip-art.js';
 import {terrainApproaches} from './terrain-cues.js';
 import {surfaceY} from './terrain.js';
@@ -17,28 +19,28 @@ export function pointerWorld(point,bounds,viewport){
 export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000),camera=createFlightCamera(),cameraScene=null,lastTime=0,wasFlying=false,approachNotice='',lastCssWidth=0,lastCssHeight=0,cueScale=1,cssPixelsPerMetre=45;
  const line=(a,b,color,width=3)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();};
  const dot=(p,r,color)=>{ctx.beginPath();ctx.fillStyle=color;ctx.arc(...p,r,0,Math.PI*2);ctx.fill();};
- function body(scene,b,transform,scale,motion=0){const role=b.getUserData()?.role;if(role==='static')return;
-  if(role==='enemy'&&b.getUserData().shape==='skid'){const p=transform(b.getWorldCenter()),d=b.getUserData();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:d.radius*scale,shape:d.shape,kind:d.kind,color:d.color,angle:-b.getAngle()});return;}
-  for(let f=b.getFixtureList();f;f=f.getNext()){const s=f.getShape(),color=role==='part'?scene.rig.color:['pouch','pouchflap'].includes(role)?'#71988b':role==='frame'?'#92724a':role==='hooklink'?'#d0b35e':role==='enemy'?b.getUserData().color:'#594936';ctx.fillStyle=color;
+ function body(scene,b,transform,scale,motion=0){const tag=b.getUserData(),role=tag?.role,position=b.getWorldCenter(),velocity=b.getLinearVelocity(),state=role==='enemy'?encounterAnimationState({time:scene.elapsed,lastContact:tag.lastContact,player:scene.center(),enemy:{x:position.x,y:position.y,vx:velocity.x,vy:velocity.y},radius:tag.radius??b.getFixtureList().getShape().getRadius()}):'idle';if(role==='static')return;
+  if(role==='enemy'&&b.getUserData().shape==='skid'){const p=transform(b.getWorldCenter()),d=b.getUserData();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:d.radius*scale,shape:d.shape,kind:d.kind,color:d.color,angle:-b.getAngle(),state});return;}
+  for(let f=b.getFixtureList();f;f=f.getNext()){const s=f.getShape(),color=role==='part'?scene.rig.color:role==='pouch'?'#71988b':role==='pouchflap'?'#78a3b6':role==='frame'?'#92724a':role==='hooklink'?'#d0b35e':role==='enemy'?b.getUserData().color:'#594936';ctx.fillStyle=color;
    if(s.getType()==='circle'){dot(transform(b.getWorldPoint(s.getCenter())),s.getRadius()*scale,color);if(role==='part'||role==='enemy'){ctx.strokeStyle='#344b38';ctx.lineWidth=role==='enemy'?1.5:1.1;ctx.stroke();}}
    else if(s.getType()==='polygon'){const points=s.m_vertices.map(v=>transform(b.getWorldPoint(v)));ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.closePath();ctx.fill();ctx.strokeStyle='#344b38';ctx.lineWidth=1.1;ctx.stroke();}
   }
   if(role==='part'){const profile=scene.rig.bodies.find(p=>p.id===b.getUserData().id),p=transform(b.getPosition());drawSpeciesMarkings(ctx,{species:scene.rig.id,part:profile.id,shape:profile.shape,x:p[0],y:p[1],angle:-b.getAngle(),scale});}
-  if(role==='enemy'){const p=transform(b.getWorldCenter()),f=b.getFixtureList();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:(b.getUserData().radius??f.getShape().getRadius())*scale,shape:b.getUserData().shape,kind:b.getUserData().kind,color:b.getUserData().color,angle:-b.getAngle(),motion});}
+  if(role==='enemy'){const p=transform(b.getWorldCenter()),f=b.getFixtureList();drawEncounterDetails(ctx,{x:p[0],y:p[1],size:(b.getUserData().radius??f.getShape().getRadius())*scale,shape:b.getUserData().shape,kind:b.getUserData().kind,color:b.getUserData().color,angle:-b.getAngle(),motion,state});}
   if(role==='part'&&b.getUserData().id==='head'){const p=transform(b.getPosition()),profile=scene.rig.bodies.find(p=>p.id==='head');drawFace(ctx,{x:p[0],y:p[1],angle:-b.getAngle(),size:Math.max(3,(profile.shape.radius??.1)*scale),species:scene.rig.id,color:scene.rig.color});}
  }
- function drawFlightHud(scene,c,panel,biome){
+ function drawFlightHud(scene,c,panel,biome,contactLabel){
   ctx.save();ctx.fillStyle='rgba(250,245,219,.88)';ctx.fillRect(panel.x+8,panel.y+8,Math.min(panel.w-16,360),52);
   drawFace(ctx,{x:panel.x+27,y:panel.y+28,size:11,species:scene.rig?.id,color:scene.rig?.color});
   ctx.fillStyle='#273f35';ctx.font='bold 15px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${biome.label}`,panel.x+47,panel.y+29);
-  ctx.font='12px system-ui';ctx.fillText(`${Math.max(0,c.x-(scene.release?.center.x??0)).toFixed(0)} m forward • ${Math.max(0,c.y).toFixed(0)} m high`,panel.x+16,panel.y+49);
+  ctx.font='12px system-ui';ctx.fillText(contactLabel||`${Math.max(0,c.x-(scene.release?.center.x??0)).toFixed(0)} m forward • ${Math.max(0,c.y).toFixed(0)} m high`,panel.x+16,panel.y+49,Math.min(panel.w-32,336));
   if(panel.w>=800){const x=panel.x+panel.w-14,top=panel.y+70,h=panel.h-92,level=y=>top+(1-Math.max(0,Math.min(320,y))/320)*h;ctx.globalAlpha=.85;
    for(const [high,low,color]of [[320,245,'#52795d'],[245,120,'#7eb6d3'],[120,5,'#4f8b5b'],[5,0,'#9c7852']]){ctx.fillStyle=color;ctx.fillRect(x,level(high),6,Math.max(2,level(low)-level(high)));}
    dot([x+3,level(c.y)],5,'#fff7d7');ctx.globalAlpha=1;ctx.font='11px system-ui';for(const [y,label]of [[300,'Tree'],[185,'Sky'],[65,'Canopy'],[0,'Floor']])ctx.fillText(label,x-48,level(y)+4);
   }ctx.restore();
  }
  return {get approachNotice(){return approachNotice;},get viewport(){return viewport;},get cssPixelsPerMetre(){return cssPixelsPerMetre;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
- draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity){
+ draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity,contactLabel=''){
   approachNotice='';viewport=viewportFor(width,height);if(canvas.width!==viewport.width||canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
   if(width!==lastCssWidth||height!==lastCssHeight){lastCssWidth=width;lastCssHeight=height;const displayed=canvas.getBoundingClientRect?.().width??Math.max(240,width-16);cueScale=Math.max(1,Math.min(1.75,viewport.width/Math.max(1,displayed)));cssPixelsPerMetre=45*Math.max(1,displayed)/viewport.width;}
   const {portrait,originX,originY}=viewport,c=scene.center(),flying=scene.phase==='flight',local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -46,7 +48,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
    line(local({x:-8,y:294}),local({x:5,y:294}),'#534735',7);line(local({x:-5.1,y:295.5}),local({x:-3.5,y:295.5}),'#92724a',4);
    if(scene.hand)drawGripTether(ctx,{anchor:local(scene.hand.body.getWorldPoint(scene.hand.local)),target:local(scene.hand.target),pixelRatio:45/cssPixelsPerMetre,capped:scene.forceCapped});
-   for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);for(const rope of scene.ropes)line(local(rope.getAnchorA()),local(rope.getAnchorB()),'#444',2);
+   for(let b=scene.world.getBodyList();b;b=b.getNext())body(scene,b,local,45);drawMechanismDetails(ctx,scene,local);
    dot(local(scene.arm.getWorldPoint({x:0,y:0})),5,'#e6c475');
    if(scene.phase==='loading'&&!scene.hand&&scene.parts?.length){const root=scene.parts.find(b=>b.getUserData().id==='torso')??scene.parts[Math.floor(scene.parts.length/2)],p=local(root.getWorldCenter());ctx.setLineDash([3,3]);ctx.beginPath();ctx.strokeStyle='#f8eab8';ctx.lineWidth=2;ctx.arc(...p,PICKUP_RADIUS_CSS*45/cssPixelsPerMetre,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#273f35';ctx.font='12px system-ui';ctx.fillText('Grab here',Math.max(10,p[0]-27),p[1]-PICKUP_RADIUS_CSS*45/cssPixelsPerMetre-6);}
    if(portrait&&preview)preview.points.forEach((p,i)=>dot(local(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
@@ -74,7 +76,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    // Encounters first: a foreground collision cannot hide the volunteer's body.
    for(const role of ['enemy','part'])for(let b=scene.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role===role)body(scene,b,view,scale,reduced?0:Math.sin(time*8));
    ctx.restore();
-   if(flying)drawFlightHud(scene,c,panel,biome);else{ctx.fillStyle='#273f35';ctx.font='bold 17px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${(scene.rig?.totalMass??0).toFixed(2)} kg`,512,25);ctx.font='12px system-ui';ctx.fillText('Live close-up • drag in the left view',512,44);}
+   if(flying)drawFlightHud(scene,c,panel,biome,typeof contactLabel==='string'?contactLabel.slice(0,64):'');else{ctx.fillStyle='#273f35';ctx.font='bold 17px system-ui';ctx.fillText(`${scene.rig?.label??'Volunteer'} • ${(scene.rig?.totalMass??0).toFixed(2)} kg`,512,25);ctx.font='12px system-ui';ctx.fillText('Live close-up • drag in the left view',512,44);}
   }
   if(!portrait&&!flying)line([480,0],[480,480],'#8c9f95',1);wasFlying=flying;lastTime=time;
  }};

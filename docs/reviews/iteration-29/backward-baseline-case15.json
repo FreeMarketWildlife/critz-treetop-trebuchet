@@ -1,0 +1,178 @@
+{
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;8seconds after actual release;seed29000+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "6cd0f1772610d4a42c50558db474c2f514f824541690f2ff467d0015b80c6e12",
+    "src/encounter-body.js": "1af079d4ceb4d72937242da3de958a24de5bb9240a0690753a86764158b383c1",
+    "src/articulated.js": "d886b106de07807ed2bf053bbb715dd0194e52df8734c3d19bf4303f4054119d",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "seed": 29015,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 6.5000000000002025,
+        "openSky": 1.500000000000021
+      },
+      "births": {
+        "round beetle": 2,
+        "leaf hopper": 3
+      },
+      "contacts": [],
+      "maxBodies": 5,
+      "activity": {
+        "480": {
+          "maxGap": 3.299999999999993,
+          "totalGap": 7.233333333333313,
+          "overOneSeconds": 4.2833333333333234
+        },
+        "960": {
+          "maxGap": 3.299999999999993,
+          "totalGap": 7.333333333333313,
+          "overOneSeconds": 4.383333333333323
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 4.675,
+            "end": 8,
+            "distance": 53.62908516906242
+          }
+        ],
+        "distance": 53.62908516906242,
+        "lastOnset": {
+          "time": 4.675,
+          "center": {
+            "x": 31.21594101709254,
+            "y": 256.6257780917316,
+            "vx": -1.9372724126651517,
+            "vy": -11.661885976324319,
+            "mass": 1.1
+          },
+          "lastHit": null
+        }
+      },
+      "release": {
+        "time": 6.873333333333594,
+        "center": {
+          "x": -1.3665336437756128,
+          "y": 303.4882255241787,
+          "vx": 6.968616443673947,
+          "vy": 12.922939271883386,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.8827358756754342,
+              "y": 303.4588731068191
+            },
+            "v": {
+              "x": 7.4617792979803514,
+              "y": 20.242019305533905
+            },
+            "w": -24.52221039362888
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.702532296306867,
+              "y": 303.38290125861386
+            },
+            "v": {
+              "x": 5.950628228480921,
+              "y": 17.07437876233974
+            },
+            "w": -11.18799788687619
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.5041706348285737,
+              "y": 303.3666688441648
+            },
+            "v": {
+              "x": 5.959836431009488,
+              "y": 13.171216397539826
+            },
+            "w": -28.07272450121892
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.3455237160081437,
+              "y": 303.4502818793553
+            },
+            "v": {
+              "x": 7.511911190719976,
+              "y": 9.453022792003145
+            },
+            "w": -16.36281914258466
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.2032326120535268,
+              "y": 303.5861185589352
+            },
+            "v": {
+              "x": 8.062841239739548,
+              "y": 9.843018694456084
+            },
+            "w": 15.350574501919168
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.0216407092474313,
+              "y": 303.6191246345496
+            },
+            "v": {
+              "x": 7.13839588367152,
+              "y": 10.5783751191717
+            },
+            "w": -5.851169836734682
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -0.8321564863236234,
+              "y": 303.5578035892928
+            },
+            "v": {
+              "x": 6.624470997786339,
+              "y": 9.05296097018923
+            },
+            "w": -10.308136817394285
+          }
+        ]
+      },
+      "captureAt": 4,
+      "end": {
+        "x": -22.405586258508816,
+        "y": 211.4380773225439,
+        "vx": -16.294758569853578,
+        "vy": -29.73315238293007,
+        "mass": 1.1
+      },
+      "impacts": 1
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 480,
+    "warnings": 0,
+    "maxSpeed": 33.905449524764556,
+    "collisions": []
+  },
+  "durationSeconds": 8
+}

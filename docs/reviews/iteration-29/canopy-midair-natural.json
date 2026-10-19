@@ -1,0 +1,329 @@
+{
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;16seconds after actual release;seed29000+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "37f3e6dd2fbd10a1003968beb429972122be4bdd66c84474efea4536c784d206",
+    "src/encounter-body.js": "e56c422a87760cdf147bc7a56dd6eb9c0c7b8992701d55948c40bd5bdc0a72ad",
+    "src/articulated.js": "e7f25ac80419af35a322a063dd6e90b25242b428070e3fc72ebef6820a335984",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 26,
+      "species": "snake",
+      "fraction": 0.9,
+      "seed": 29026,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.391666666666696,
+        "openSky": 2.5666666666666367,
+        "jungleCanopy": 7.72166666666706,
+        "forestFloor": 0.3199999999999999
+      },
+      "births": {
+        "leaf hopper": 13,
+        "round beetle": 13,
+        "puffy moth": 17,
+        "round bird": 9,
+        "vine bug": 27,
+        "springy pod": 21,
+        "waxleaf skid": 15,
+        "seed-husk skid": 3
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:0:8:3",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 2.5,
+          "position": {
+            "x": 12.549128262502126,
+            "y": 308.40750310454035,
+            "vx": 5.161881542966186,
+            "vy": -8.909712662121153,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:5:5:26",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 13.906666666666666,
+          "position": {
+            "x": 97.0470748003417,
+            "y": 47.04575636082275,
+            "vx": 11.391701655221793,
+            "vy": -10.388283103312155,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:5:5:26",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 14.071666666666667,
+          "position": {
+            "x": 98.74711334431855,
+            "y": 45.22755890336429,
+            "vx": 10.215781592190769,
+            "vy": -12.709110930948299,
+            "mass": 1.1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 0.9333333333333346,
+          "totalGap": 4.016666666666658,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.9333333333333353,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 4.283333333333332,
+              "end": 5.216666666666667
+            },
+            {
+              "start": 9.583333333333332,
+              "end": 9.633333333333333
+            },
+            {
+              "start": 9.9,
+              "end": 10.05
+            },
+            {
+              "start": 10.583333333333332,
+              "end": 11.516666666666667
+            },
+            {
+              "start": 11.75,
+              "end": 12.05
+            },
+            {
+              "start": 12.600000000000001,
+              "end": 12.833333333333334
+            },
+            {
+              "start": 13.333333333333334,
+              "end": 13.5
+            },
+            {
+              "start": 15.533333333333333,
+              "end": 15.55
+            },
+            {
+              "start": 15.566666666666666,
+              "end": 16
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 1.8833333333333315,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 10.533333333333333,
+              "end": 10.833333333333334
+            },
+            {
+              "start": 11.15,
+              "end": 11.516666666666667
+            },
+            {
+              "start": 15.583333333333334,
+              "end": 16
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.935000000000427,
+        "center": {
+          "x": -1.7172406373818234,
+          "y": 302.3042754787642,
+          "vx": 5.704736456953591,
+          "vy": 14.71486189418813,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.4476928006520424,
+              "y": 302.4101711587955
+            },
+            "v": {
+              "x": 10.598674834605188,
+              "y": 10.42870692215313
+            },
+            "w": -45.39251980064501
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.555490023865245,
+              "y": 302.2446973946526
+            },
+            "v": {
+              "x": 5.118926064702468,
+              "y": 13.981589443447476
+            },
+            "w": -20.4573297304258
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.6866152212141616,
+              "y": 302.11035475359904
+            },
+            "v": {
+              "x": 3.0083552282823782,
+              "y": 15.190014623560172
+            },
+            "w": -4.916846765312796
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.858886848497997,
+              "y": 302.1252584573899
+            },
+            "v": {
+              "x": 3.0750071100600893,
+              "y": 16.037051285233833
+            },
+            "w": -4.9169004666896825
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.94411987242809,
+              "y": 302.2828831670414
+            },
+            "v": {
+              "x": 4.622639352956934,
+              "y": 16.512003452896817
+            },
+            "w": -12.694942587336882
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.8708626223310463,
+              "y": 302.4470049173883
+            },
+            "v": {
+              "x": 6.255800201220913,
+              "y": 16.153633905312326
+            },
+            "w": -5.638485379744321
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -1.6955239065027203,
+              "y": 302.4944305481925
+            },
+            "v": {
+              "x": 6.554618352896938,
+              "y": 15.313341479861004
+            },
+            "w": -4.1647129923919435
+          }
+        ]
+      },
+      "captureAt": 13.4,
+      "activeEnd": 15.998333333333333,
+      "end": {
+        "x": 118.43204694755164,
+        "y": 1.9785799841616725,
+        "vx": 10.212672285326079,
+        "vy": -31.884725390259607,
+        "mass": 1.1
+      },
+      "impacts": 4
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 960,
+    "warnings": 71,
+    "maxSpeed": 78.07204669797382,
+    "collisions": [
+      {
+        "key": "0:480:grandfatherTree:0:8:3",
+        "species": "snake",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 10.435416666667386,
+        "speed": 10.296989889534562,
+        "warningLead": 0.9837500000000556,
+        "visibleLead": 0.9837500000000556,
+        "readableLead": 0.7837500000000244,
+        "continuousNoticeLead": 0.9837500000000556,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:grandfatherTree:0:8:3",
+        "species": "snake",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 10.435416666667386,
+        "speed": 10.296989889534562,
+        "warningLead": null,
+        "visibleLead": 0.9837500000000556,
+        "readableLead": 0.9837500000000556,
+        "continuousNoticeLead": 0.9837500000000556,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:jungleCanopy:5:5:26",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 21.841666666662192,
+        "speed": 15.417110378931058,
+        "warningLead": 0.839999999999236,
+        "visibleLead": 0.3899999999996453,
+        "readableLead": 0.2233333333331302,
+        "continuousNoticeLead": 0.839999999999236,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:jungleCanopy:5:5:26",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 21.841666666662192,
+        "speed": 15.417110378931058,
+        "warningLead": 0.839999999999236,
+        "visibleLead": 0.806666666665933,
+        "readableLead": 0.6399999999994179,
+        "continuousNoticeLead": 0.839999999999236,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  },
+  "durationSeconds": 16
+}

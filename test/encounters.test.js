@@ -35,7 +35,7 @@ test('fresh spawn stream never replays stale observations or rewinds',()=>{
   assert.deepEqual(d.update(time,p).spawns,[]);
  }
  assert.ok(count>0);assert.deepEqual(d.update(.2,p).spawns,[]);
- assert.deepEqual(createEncounterDirector(11).update(3.9,p).spawns,[]);
+ assert.deepEqual(createEncounterDirector(11).update(3.4,p).spawns,[]);
 });
 test('spawns respect overlap clearance and arrival sound rate limit',()=>{
  const d=createEncounterDirector(8);let last=-Infinity;
@@ -78,8 +78,8 @@ test('revised encounter catalog remains deterministic across cache eviction and 
  const {createHash}=await import('node:crypto'),h=createHash('sha256'),d=createEncounterDirector('eviction-baseline');
  for(let i=0;i<2500;i++){const t=i/15;h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));}
  for(const t of [0,1,2,100,100,200])h.update(JSON.stringify(d.update(t,{x:t*23,y:320-t*3,vx:23,vy:-3})));
- // Iteration 28 catalog/birth-margin baseline; includes births/events and cache eviction.
- assert.equal(h.digest('hex'),'9cbd1755947030b5fbb8a155809dc3967cec30161790db2538f28bd3213c785a');
+ // Iteration 29 bounded 2D density baseline; includes births/events and cache eviction.
+ assert.equal(h.digest('hex'),'dacb1ae7b47e014f01ebd82acb727dd8a6d2d609115b54aed373d760d505456d');
 });
 
 test('scheduled silhouettes and motion stay inside their birth biome; skid kinds are regional',()=>{
@@ -87,3 +87,5 @@ test('scheduled silhouettes and motion stay inside their birth biome; skid kinds
  assert.equal(encounterPools.grandfatherTree.some(e=>e.shape==='skid'),false);assert.equal(encounterPools.openSky.some(e=>e.shape==='skid'),false);
  for(const [biome,[low,high]]of Object.entries(bands))for(let seed=0;seed<8;seed++){const d=createEncounterDirector(seed);for(let i=0;i<1000;i++){const r=d.update(i/30,{x:i,y:(low+high)/2},biome);for(const e of r.active){assert.ok(e.y-e.radius>=low-1e-10);assert.ok(e.y+e.radius<=high+1e-10);}}}
 });
+
+test('dense schedule observes a fixed seeded neighborhood rather than moving recipes with the player',()=>{const a=createEncounterDirector('dense'),b=createEncounterDirector('dense'),p={x:30,y:200};const first=a.update(8,p).active,second=b.update(8,{x:31,y:201}).active;let common=0;for(const e of first){const other=second.find(x=>x.id===e.id);if(other){common++;assert.deepEqual(e,other);}}assert.ok(common>0);});

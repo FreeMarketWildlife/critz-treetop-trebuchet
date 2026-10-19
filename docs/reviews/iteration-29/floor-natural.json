@@ -1,0 +1,362 @@
+{
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;14seconds after actual release;seed29000+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "37f3e6dd2fbd10a1003968beb429972122be4bdd66c84474efea4536c784d206",
+    "src/encounter-body.js": "e56c422a87760cdf147bc7a56dd6eb9c0c7b8992701d55948c40bd5bdc0a72ad",
+    "src/articulated.js": "e7f25ac80419af35a322a063dd6e90b25242b428070e3fc72ebef6820a335984",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 12,
+      "species": "salamander",
+      "fraction": 0.6,
+      "seed": 29012,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.196666666666665,
+        "openSky": 2.529999999999974,
+        "jungleCanopy": 1.941666666666698,
+        "forestFloor": 4.33166666666653
+      },
+      "births": {
+        "leaf hopper": 26,
+        "round beetle": 11,
+        "puffy moth": 20,
+        "round bird": 18,
+        "waxleaf skid": 7,
+        "vine bug": 12,
+        "springy pod": 8,
+        "rolling beetle": 3,
+        "seed-husk skid": 2,
+        "round fungus": 2
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:6:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 12.195,
+          "position": {
+            "x": 116.66295429864074,
+            "y": 0.1769139591948116,
+            "vx": 0.7455298834108166,
+            "vy": 0.9968307942994084,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:6:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 12.29,
+          "position": {
+            "x": 116.7330716409317,
+            "y": 0.2303634952585347,
+            "vx": 0.5251636708595949,
+            "vy": 0.11397287193603593,
+            "mass": 0.8
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.0500000000000012,
+          "totalGap": 4.7499999999999885,
+          "overOneSeconds": 0.06666666666666667,
+          "maxActiveGap": 1.0500000000000012,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 3.5499999999999985,
+              "end": 4.6
+            },
+            {
+              "start": 5.25,
+              "end": 5.283333333333333
+            },
+            {
+              "start": 5.383333333333333,
+              "end": 5.55
+            },
+            {
+              "start": 5.633333333333334,
+              "end": 5.7
+            },
+            {
+              "start": 5.816666666666666,
+              "end": 6.066666666666666
+            },
+            {
+              "start": 6.183333333333334,
+              "end": 6.45
+            },
+            {
+              "start": 6.916666666666666,
+              "end": 7.05
+            },
+            {
+              "start": 7.066666666666666,
+              "end": 7.283333333333333
+            },
+            {
+              "start": 7.533333333333333,
+              "end": 7.833333333333333
+            },
+            {
+              "start": 8.316666666666666,
+              "end": 8.35
+            },
+            {
+              "start": 8.45,
+              "end": 8.716666666666667
+            },
+            {
+              "start": 8.783333333333333,
+              "end": 8.816666666666666
+            },
+            {
+              "start": 9.016666666666666,
+              "end": 9.066666666666666
+            },
+            {
+              "start": 9.1,
+              "end": 9.133333333333333
+            },
+            {
+              "start": 9.166666666666666,
+              "end": 9.433333333333334
+            },
+            {
+              "start": 9.45,
+              "end": 10.116666666666667
+            },
+            {
+              "start": 12.633333333333333,
+              "end": 12.65
+            },
+            {
+              "start": 13.383333333333333,
+              "end": 13.483333333333333
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.9166666666666679,
+          "totalGap": 3.6999999999999917,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.9166666666666679,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 3.3833333333333333,
+              "end": 3.533333333333333
+            },
+            {
+              "start": 3.683333333333332,
+              "end": 4.6
+            },
+            {
+              "start": 5.166666666666667,
+              "end": 5.2
+            },
+            {
+              "start": 5.966666666666667,
+              "end": 6.033333333333333
+            },
+            {
+              "start": 6.15,
+              "end": 6.266666666666667
+            },
+            {
+              "start": 6.316666666666666,
+              "end": 6.466666666666667
+            },
+            {
+              "start": 6.8999999999999995,
+              "end": 7.1
+            },
+            {
+              "start": 7.5,
+              "end": 7.566666666666666
+            },
+            {
+              "start": 7.633333333333333,
+              "end": 7.866666666666666
+            },
+            {
+              "start": 8.3,
+              "end": 8.366666666666667
+            },
+            {
+              "start": 8.533333333333333,
+              "end": 8.616666666666667
+            },
+            {
+              "start": 8.766666666666667,
+              "end": 8.833333333333334
+            },
+            {
+              "start": 9,
+              "end": 9.066666666666666
+            },
+            {
+              "start": 9.383333333333333,
+              "end": 9.433333333333334
+            },
+            {
+              "start": 9.450000000000001,
+              "end": 9.616666666666667
+            },
+            {
+              "start": 9.75,
+              "end": 10.116666666666667
+            },
+            {
+              "start": 12.633333333333333,
+              "end": 12.65
+            },
+            {
+              "start": 13.399999999999999,
+              "end": 13.483333333333333
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.2566666666669875,
+        "center": {
+          "x": -0.4674220003777517,
+          "y": 304.96289913804145,
+          "vx": 10.047469503488415,
+          "vy": 13.97075052250384,
+          "mass": 0.8
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -0.4610270052418047,
+              "y": 305.16393871256895
+            },
+            "v": {
+              "x": 13.490340793075136,
+              "y": 14.089466940449269
+            },
+            "w": -20.80279000307555
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.5762674295314819,
+              "y": 305.2714521120314
+            },
+            "v": {
+              "x": 13.509555917192332,
+              "y": 15.272999738156079
+            },
+            "w": -9.539043964927204
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.3319557989016826,
+              "y": 304.80725864042944
+            },
+            "v": {
+              "x": 7.920513192839677,
+              "y": 12.05800808516244
+            },
+            "w": -13.916855425520062
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.37634612355509034,
+              "y": 304.5551999629992
+            },
+            "v": {
+              "x": 5.031383100936675,
+              "y": 12.871691778550437
+            },
+            "w": -10.86043909919617
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.4905624301526224,
+              "y": 304.95401381976393
+            },
+            "v": {
+              "x": 9.868303013529282,
+              "y": 14.276992539921089
+            },
+            "w": -13.413306787404474
+          }
+        ]
+      },
+      "captureAt": 11.7,
+      "activeEnd": 12.891666666666667,
+      "end": {
+        "x": 116.99014228886342,
+        "y": 0.10387617685894734,
+        "vx": -2.266347693152977e-11,
+        "vy": 3.796167228711553e-12,
+        "mass": 0.8
+      },
+      "impacts": 11
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 840,
+    "warnings": 43,
+    "maxSpeed": 79.04789691732003,
+    "collisions": [
+      {
+        "key": "0:480:forestFloor:6:0:19",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 19.452499999998548,
+        "speed": 1.244783691860612,
+        "warningLead": 0.779166666665958,
+        "visibleLead": 0.7291666666660035,
+        "readableLead": 0.3791666666663218,
+        "continuousNoticeLead": 0.779166666665958,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:forestFloor:6:0:19",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 19.452499999998548,
+        "speed": 1.244783691860612,
+        "warningLead": null,
+        "visibleLead": 1.4124999999987153,
+        "readableLead": 1.1124999999989882,
+        "continuousNoticeLead": 1.1124999999989882,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  },
+  "durationSeconds": 14
+}

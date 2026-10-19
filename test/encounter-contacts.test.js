@@ -34,3 +34,6 @@ test('capsule fixtures and warning metadata survive exact snapshot continuation'
  const s=new CritterScene(),r=encounterPools.forestFloor.find(e=>e.shape==='skid'),b=createEncounterBody(s.world,descriptor(r,{x:500,y:2}));s.enemies.set('contact',b);s.spawnEnergy+=s.bodyEnergy(b);const a=s.clone();assert.equal(a.enemies.size,1);assert.deepEqual(a.enemies.get('contact').getUserData(),b.getUserData());assert.ok(Math.abs(a.enemies.get('contact').getMass()-r.mass)<1e-12);
  for(let i=0;i<300;i++){s.step();a.step();}assert.deepEqual(a.enemies.get('contact').getPosition(),b.getPosition());assert.equal(a.energy(),s.energy());assert.equal(a.spawnEnergy,s.spawnEnergy);
 });
+test('dense recycling removes only distant receding births early and accounts for their signed energy',()=>{
+ for(const [dx,vx,removed]of [[21,10,true],[14,10,false],[21,-10,false]]){const s=new CritterScene();s.phase='flight';s.elapsed=1;s.release={time:0};s.encounters={update:()=>({spawns:[]})};const c=s.center(),r=encounterPools.forestFloor[0],b=createEncounterBody(s.world,descriptor(r,{x:c.x+dx,y:c.y,vx,spawnTime:0,expiresAt:2}));s.enemies.set('contact',b);const before=s.energy(),energy=s.bodyEnergy(b);s.updateEncounters();assert.equal(s.enemies.size,removed?0:1);assert.ok(Math.abs((before-s.energy())-(removed?energy:0))<1e-7);assert.equal(s.despawnEnergy,removed?energy:0);}
+});

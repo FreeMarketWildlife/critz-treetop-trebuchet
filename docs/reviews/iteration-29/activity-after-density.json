@@ -1,0 +1,6418 @@
+{
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;60seconds after actual release;seed29000+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "ac622fc84ccad46e25d4f6166651ac5aaba69cf292751d859119a827b91e55bf",
+    "src/encounter-body.js": "e56c422a87760cdf147bc7a56dd6eb9c0c7b8992701d55948c40bd5bdc0a72ad",
+    "src/articulated.js": "cabd7c2a08c55ffd82952df9c3e253de31a1b154cbd76160fde1fff872e3b9d9",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "a9018cb226a5857f7eeeb61513a4c6c4a6e4efc4fcfdbff0b054501a8421104b",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 0,
+      "species": "lizard",
+      "fraction": 0.2,
+      "seed": 29000,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 1,
+      "species": "salamander",
+      "fraction": 0.2,
+      "seed": 29001,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 4.823333333333274,
+        "openSky": 2.791666666666612,
+        "jungleCanopy": 5.471666666666708,
+        "forestFloor": 46.91333333330691
+      },
+      "births": {
+        "leaf hopper": 10,
+        "round beetle": 6,
+        "round bird": 11,
+        "puffy moth": 9,
+        "vine bug": 12,
+        "waxleaf skid": 6,
+        "springy pod": 4,
+        "rolling beetle": 4,
+        "round fungus": 3,
+        "seed-husk skid": 3
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:4:0:17",
+          "kind": "springy pod",
+          "birthBiome": "jungleCanopy",
+          "time": 15.771666666666667,
+          "position": {
+            "x": 79.83595493413395,
+            "y": 0.1403283914715623,
+            "vx": 3.5736777337054613,
+            "vy": -4.102661203318073,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:4:0:19",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 17.263333333333332,
+          "position": {
+            "x": 83.89175942892525,
+            "y": 0.10382585575746596,
+            "vx": -0.5189514369527218,
+            "vy": 0.037940787030277895,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:4:0:25",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 19.731666666666666,
+          "position": {
+            "x": 83.74350514884132,
+            "y": 0.10394480985867831,
+            "vx": -4.302658193702922,
+            "vy": 0.3328810684478487,
+            "mass": 0.8
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 22.40000000000001,
+          "totalGap": 42.06666666666556,
+          "overOneSeconds": 34.066666666666016
+        },
+        "960": {
+          "maxGap": 22.40000000000001,
+          "totalGap": 35.64999999999926,
+          "overOneSeconds": 27.233333333333068
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 0.05,
+            "end": 0.73,
+            "distance": 2.2741873206941725
+          },
+          {
+            "start": 19.731666666666666,
+            "end": 23.851666666666667,
+            "distance": 9.959948171897942
+          }
+        ],
+        "distance": 12.24857190415501,
+        "lastOnset": {
+          "time": 19.731666666666666,
+          "center": {
+            "x": 83.74171276107299,
+            "y": 0.10408588102561028,
+            "vx": -4.301730644015045,
+            "vy": 0.33857080063675316,
+            "mass": 0.8
+          },
+          "lastHit": {
+            "time": 17.263333333333332,
+            "type": "impact",
+            "encounter": "rolling beetle",
+            "strength": 8.87194409511829,
+            "position": {
+              "x": 84.26829823987913,
+              "y": 0.24067703789464018
+            },
+            "material": "shell",
+            "surface": null,
+            "mass": 0.8
+          }
+        }
+      },
+      "release": {
+        "time": 7.013333333333616,
+        "center": {
+          "x": 1.8344557725754473,
+          "y": 304.1968319211884,
+          "vx": 3.9588554433042593,
+          "vy": 0.8296551895017209,
+          "mass": 0.8
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": 2.025964046001641,
+              "y": 304.137522955566
+            },
+            "v": {
+              "x": 3.852417897863431,
+              "y": 0.8209018823641918
+            },
+            "w": -1.1238312973877764
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": 2.0084298681222865,
+              "y": 304.4605931492563
+            },
+            "v": {
+              "x": 3.7870552173467535,
+              "y": 0.9510746353046473
+            },
+            "w": 0.5902472934416078
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": 1.7942635866139023,
+              "y": 303.97765164656863
+            },
+            "v": {
+              "x": 4.332465802092393,
+              "y": 0.8098961636141705
+            },
+            "w": 2.9668188549937957
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": 1.4755818465855544,
+              "y": 304.11531716504305
+            },
+            "v": {
+              "x": 3.9905439277423884,
+              "y": 0.6363622217920626
+            },
+            "w": 0.5902472934416204
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": 1.836203686085438,
+              "y": 304.1908177249092
+            },
+            "v": {
+              "x": 3.9461893415982052,
+              "y": 0.8492619967695274
+            },
+            "w": 0.5902472934416078
+          }
+        ]
+      },
+      "end": {
+        "x": 73.65361030292384,
+        "y": 0.10379041510623523,
+        "vx": -9.111125982425591e-11,
+        "vy": 1.5110261912807996e-11,
+        "mass": 0.8
+      },
+      "impacts": 18
+    },
+    {
+      "n": 2,
+      "species": "mouse",
+      "fraction": 0.2,
+      "seed": 29002,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 4.703333333333255,
+        "openSky": 3.729999999999842,
+        "jungleCanopy": 1.8833333333333633,
+        "forestFloor": 49.68333333330439
+      },
+      "births": {
+        "round beetle": 12,
+        "leaf hopper": 6,
+        "puffy moth": 13,
+        "round bird": 12,
+        "waxleaf skid": 4,
+        "springy pod": 5,
+        "vine bug": 7,
+        "seed-husk skid": 4,
+        "rolling beetle": 4,
+        "round fungus": 5
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:14:0:16",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 13.59,
+          "position": {
+            "x": 258.4076655921758,
+            "y": 0.15899576608238108,
+            "vx": 2.6726150996479525,
+            "vy": -2.0135369040048605,
+            "mass": 0.75
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 29.44999999999961,
+          "totalGap": 46.24999999999866,
+          "overOneSeconds": 34.9499999999993
+        },
+        "960": {
+          "maxGap": 29.44999999999961,
+          "totalGap": 42.866666666665516,
+          "overOneSeconds": 32.71666666666609
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 6.415000000000189,
+        "center": {
+          "x": 2.6531972331150953,
+          "y": 305.7161755458578,
+          "vx": 8.5379830573964,
+          "vy": 3.243864269786896,
+          "mass": 0.75
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": 2.7867825794744894,
+              "y": 305.6029902908922
+            },
+            "v": {
+              "x": 7.857384079419557,
+              "y": 2.592097723884047
+            },
+            "w": -2.3588328761024924
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": 2.802986123168529,
+              "y": 305.8951352168974
+            },
+            "v": {
+              "x": 10.27573822987271,
+              "y": 1.8102305608609082
+            },
+            "w": -11.742648555332908
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": 2.5056475644086906,
+              "y": 305.5881967807901
+            },
+            "v": {
+              "x": 7.473502193846856,
+              "y": 4.188519629820462
+            },
+            "w": -5.931124037677109
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": 2.2774721873101655,
+              "y": 305.5642605004606
+            },
+            "v": {
+              "x": 6.667886421410781,
+              "y": 7.14877734114484
+            },
+            "w": -13.835174388421018
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": 2.6277042028296513,
+              "y": 305.71038841737845
+            },
+            "v": {
+              "x": 8.375959128493662,
+              "y": 3.417348156930027
+            },
+            "w": -7.7963459670238935
+          }
+        ]
+      },
+      "end": {
+        "x": 260.26798040040643,
+        "y": 0.1540170885290681,
+        "vx": -0.0010481627857227584,
+        "vy": -0.0005188054108302587,
+        "mass": 0.75
+      },
+      "impacts": 7
+    },
+    {
+      "n": 3,
+      "species": "turtle",
+      "fraction": 0.2,
+      "seed": 29003,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 4,
+      "species": "snake",
+      "fraction": 0.2,
+      "seed": 29004,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 5,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "seed": 29005,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 6,
+      "species": "flying-squirrel",
+      "fraction": 0.2,
+      "seed": 29006,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 7,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "seed": 29007,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 8,
+      "species": "small-marsupial",
+      "fraction": 0.2,
+      "seed": 29008,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 9,
+      "species": "tiny-primate",
+      "fraction": 0.2,
+      "seed": 29009,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 10,
+      "species": "frog",
+      "fraction": 0.2,
+      "seed": 29010,
+      "outcome": "seat-miss",
+      "biomeSeconds": {},
+      "births": {},
+      "contacts": [],
+      "maxBodies": 0,
+      "activity": {},
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      }
+    },
+    {
+      "n": 11,
+      "species": "lizard",
+      "fraction": 0.6,
+      "seed": 29011,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.5166666666667155,
+        "openSky": 2.4966666666666444,
+        "jungleCanopy": 2.3149999999999977,
+        "forestFloor": 49.671666666637734
+      },
+      "births": {
+        "leaf hopper": 11,
+        "round beetle": 10,
+        "round bird": 9,
+        "puffy moth": 7,
+        "waxleaf skid": 8,
+        "vine bug": 4,
+        "springy pod": 5,
+        "round fungus": 7,
+        "rolling beetle": 2,
+        "seed-husk skid": 3
+      },
+      "contacts": [],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 42.399999999998876,
+          "totalGap": 52.41666666666497,
+          "overOneSeconds": 43.46666666666548
+        },
+        "960": {
+          "maxGap": 36.216666666665894,
+          "totalGap": 47.09999999999861,
+          "overOneSeconds": 37.266666666665834
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 6.923333333333602,
+        "center": {
+          "x": -1.54537070058576,
+          "y": 304.41347622813765,
+          "vx": 7.402692353019953,
+          "vy": 16.305807478020448,
+          "mass": 0.65
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.4937633280693887,
+              "y": 304.6177612031348
+            },
+            "v": {
+              "x": 11.74928604783312,
+              "y": 15.252125057104402
+            },
+            "w": -33.00177492854586
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.7109756868014057,
+              "y": 304.70769884740685
+            },
+            "v": {
+              "x": 12.037981782974713,
+              "y": 19.41768074687111
+            },
+            "w": -21.73291447110803
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.4954348405753433,
+              "y": 304.26091691544997
+            },
+            "v": {
+              "x": 5.869529828960109,
+              "y": 16.180854713197107
+            },
+            "w": -10.519952519358025
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.3952347209000593,
+              "y": 304.03975573581386
+            },
+            "v": {
+              "x": -0.19776232276016245,
+              "y": 12.373974779795779
+            },
+            "w": -32.07841623808894
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.5747232293581572,
+              "y": 304.4271713955512
+            },
+            "v": {
+              "x": 7.604057541586432,
+              "y": 17.04631356477883
+            },
+            "w": -10.519952519358025
+          }
+        ]
+      },
+      "end": {
+        "x": 132.96433465848054,
+        "y": 0.1097960928069236,
+        "vx": 2.1093537774933396e-07,
+        "vy": -1.0717231913945673e-08,
+        "mass": 0.65
+      },
+      "impacts": 8
+    },
+    {
+      "n": 12,
+      "species": "salamander",
+      "fraction": 0.6,
+      "seed": 29012,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.196666666666665,
+        "openSky": 2.529999999999974,
+        "jungleCanopy": 1.941666666666698,
+        "forestFloor": 50.33166666663713
+      },
+      "births": {
+        "leaf hopper": 12,
+        "round beetle": 5,
+        "puffy moth": 15,
+        "round bird": 6,
+        "vine bug": 4,
+        "waxleaf skid": 8,
+        "springy pod": 4,
+        "rolling beetle": 3,
+        "round fungus": 8,
+        "seed-husk skid": 2
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:6:0:13",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 11.705,
+          "position": {
+            "x": 113.19802925710682,
+            "y": 0.3803458721848485,
+            "vx": 7.52817369263649,
+            "vy": -2.8995250797953154,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:7:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 16.266666666666666,
+          "position": {
+            "x": 136.6329443504081,
+            "y": 0.10390468206257608,
+            "vx": -0.19907568356700087,
+            "vy": 0.01825795449258083,
+            "mass": 0.8
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 35.88333333333258,
+          "totalGap": 43.28333333333216,
+          "overOneSeconds": 35.783333333332585
+        },
+        "960": {
+          "maxGap": 35.88333333333258,
+          "totalGap": 41.76666666666558,
+          "overOneSeconds": 34.98333333333263
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.2566666666669875,
+        "center": {
+          "x": -0.4674220003777517,
+          "y": 304.96289913804145,
+          "vx": 10.047469503488415,
+          "vy": 13.97075052250384,
+          "mass": 0.8
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -0.4610270052418047,
+              "y": 305.16393871256895
+            },
+            "v": {
+              "x": 13.490340793075136,
+              "y": 14.089466940449269
+            },
+            "w": -20.80279000307555
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.5762674295314819,
+              "y": 305.2714521120314
+            },
+            "v": {
+              "x": 13.509555917192332,
+              "y": 15.272999738156079
+            },
+            "w": -9.539043964927204
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.3319557989016826,
+              "y": 304.80725864042944
+            },
+            "v": {
+              "x": 7.920513192839677,
+              "y": 12.05800808516244
+            },
+            "w": -13.916855425520062
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.37634612355509034,
+              "y": 304.5551999629992
+            },
+            "v": {
+              "x": 5.031383100936675,
+              "y": 12.871691778550437
+            },
+            "w": -10.86043909919617
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.4905624301526224,
+              "y": 304.95401381976393
+            },
+            "v": {
+              "x": 9.868303013529282,
+              "y": 14.276992539921089
+            },
+            "w": -13.413306787404474
+          }
+        ]
+      },
+      "end": {
+        "x": 136.6113217125569,
+        "y": 0.10390100672855927,
+        "vx": -9.083768167678985e-11,
+        "vy": 1.519000344159333e-11,
+        "mass": 0.8
+      },
+      "impacts": 12
+    },
+    {
+      "n": 13,
+      "species": "mouse",
+      "fraction": 0.6,
+      "seed": 29013,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 6.895000000000264,
+        "openSky": 5.471666666666708,
+        "jungleCanopy": 3.2316666666665634,
+        "forestFloor": 44.40166666664253
+      },
+      "births": {
+        "round beetle": 14,
+        "leaf hopper": 5,
+        "round bird": 12,
+        "puffy moth": 8,
+        "waxleaf skid": 6,
+        "vine bug": 9,
+        "springy pod": 5,
+        "seed-husk skid": 6,
+        "round fungus": 7,
+        "rolling beetle": 4
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:14:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.8,
+          "position": {
+            "x": 262.6778460361586,
+            "y": 0.1737195536724807,
+            "vx": -0.9745019127811867,
+            "vy": 2.213381606047948,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:27",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 21.06833333333333,
+          "position": {
+            "x": 261.71887832601334,
+            "y": 0.1632967362219462,
+            "vx": 0.10517846043175287,
+            "vy": 0.0023925817894023594,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:27",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 21.281666666666666,
+          "position": {
+            "x": 261.7226756590116,
+            "y": 0.16330008526317183,
+            "vx": 0.1437096629813419,
+            "vy": -2.424919268311918e-05,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:27",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 21.635,
+          "position": {
+            "x": 261.7171427329697,
+            "y": 0.16333502912798095,
+            "vx": -0.01493831159644052,
+            "vy": 3.2214172627952535e-05,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:27",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 22.796666666666667,
+          "position": {
+            "x": 261.71753011470724,
+            "y": 0.1633339861773511,
+            "vx": -0.07595254641870339,
+            "vy": 0.000917226022253503,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:27",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 22.916666666666668,
+          "position": {
+            "x": 261.7056470803025,
+            "y": 0.16783179606992926,
+            "vx": -0.22547807439671189,
+            "vy": 0.021964992887142137,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:27",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 23,
+          "position": {
+            "x": 261.67799124488164,
+            "y": 0.16849147372330453,
+            "vx": -0.48098040459793695,
+            "vy": 0.10505870556487708,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:14:0:25",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 23.665,
+          "position": {
+            "x": 261.56448911926185,
+            "y": 0.17235036419491148,
+            "vx": -0.3732857133488446,
+            "vy": -0.1814392800191381,
+            "mass": 0.75
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 33.89999999999936,
+          "totalGap": 44.84999999999874,
+          "overOneSeconds": 33.89999999999936
+        },
+        "960": {
+          "maxGap": 33.89999999999936,
+          "totalGap": 42.11666666666556,
+          "overOneSeconds": 33.7833333333327
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0.9390581254286196,
+        "lastOnset": {
+          "time": 23.561666666666667,
+          "center": {
+            "x": 261.6188643304071,
+            "y": 0.19227758486401755,
+            "vx": -0.500974950584392,
+            "vy": -0.3009563314737329,
+            "mass": 0.75
+          },
+          "lastHit": {
+            "time": 23.448333333333334,
+            "type": "impact",
+            "encounter": null,
+            "strength": 0.12197540719205352,
+            "position": {
+              "x": 261.72050874403186,
+              "y": 0.009859458809844221
+            },
+            "material": "ground",
+            "surface": "ground",
+            "mass": 0.75
+          }
+        }
+      },
+      "release": {
+        "time": 7.106666666666964,
+        "center": {
+          "x": -1.4902700052544897,
+          "y": 303.91784073692,
+          "vx": 6.752435092878002,
+          "vy": 14.72058859108231,
+          "mass": 0.75
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.3590880919517172,
+              "y": 304.0262933833248
+            },
+            "v": {
+              "x": 8.930545123316364,
+              "y": 12.563845440049612
+            },
+            "w": -17.0681551970375
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.600134049697498,
+              "y": 304.117571180842
+            },
+            "v": {
+              "x": 9.796238437411356,
+              "y": 16.313657734765663
+            },
+            "w": -10.301003682883705
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.41496073309739,
+              "y": 303.730518566947
+            },
+            "v": {
+              "x": 4.237228054748135,
+              "y": 13.405985284429962
+            },
+            "w": -11.249606561879498
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.5089503649710259,
+              "y": 303.50964718762987
+            },
+            "v": {
+              "x": -2.726639685628071,
+              "y": 14.945436364072883
+            },
+            "w": -29.677473232120477
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.4896064021767261,
+              "y": 303.889133232083
+            },
+            "v": {
+              "x": 6.435636407267689,
+              "y": 14.832515069985039
+            },
+            "w": -18.549718340692674
+          }
+        ]
+      },
+      "end": {
+        "x": 261.56513477728794,
+        "y": 0.1679611249822928,
+        "vx": -2.1638620164559973e-05,
+        "vy": -8.418247840865318e-07,
+        "mass": 0.75
+      },
+      "impacts": 27
+    },
+    {
+      "n": 14,
+      "species": "turtle",
+      "fraction": 0.6,
+      "seed": 29014,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 4.846666666666611,
+        "openSky": 2.5799999999999685,
+        "jungleCanopy": 1.7283333333333597,
+        "forestFloor": 50.84499999997
+      },
+      "births": {
+        "leaf hopper": 6,
+        "round beetle": 6,
+        "puffy moth": 4,
+        "round bird": 9,
+        "vine bug": 9,
+        "waxleaf skid": 3,
+        "springy pod": 2,
+        "round fungus": 1,
+        "rolling beetle": 5,
+        "seed-husk skid": 2
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:0:8:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 2.35,
+          "position": {
+            "x": 8.530404580981317,
+            "y": 303.85941617356804,
+            "vx": 2.0592927453714416,
+            "vy": -11.316383382166205,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "grandfatherTree:1:9:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 9.045,
+          "position": {
+            "x": 22.317853019203707,
+            "y": 8.207078052133372,
+            "vx": 6.439423701083999,
+            "vy": -48.02429278796884,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "forestFloor:1:0:12",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 9.855,
+          "position": {
+            "x": 28.543785884694415,
+            "y": 0.6455787932169735,
+            "vx": 6.549306953709237,
+            "vy": -2.6972782693597175,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "forestFloor:2:0:13",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 13.171666666666667,
+          "position": {
+            "x": 39.132802212081735,
+            "y": 0.23175858164175428,
+            "vx": 0.3593781873066953,
+            "vy": 0.12210395384229361,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "forestFloor:2:0:14",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 13.223333333333333,
+          "position": {
+            "x": 39.14042856701922,
+            "y": 0.2315328287997034,
+            "vx": -0.9106878473433627,
+            "vy": -1.325538398737395,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "forestFloor:1:0:12",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 40.86333333333334,
+          "position": {
+            "x": 38.872704715772215,
+            "y": 0.23039970785689193,
+            "vx": 0.10461589518311762,
+            "vy": -0.04616557448229276,
+            "mass": 2.4
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 22.183333333333355,
+          "totalGap": 42.43333333333221,
+          "overOneSeconds": 39.333333333332384
+        },
+        "960": {
+          "maxGap": 19.116666666666863,
+          "totalGap": 32.94999999999941,
+          "overOneSeconds": 28.333333333333005
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0.1061961302201697,
+        "lastOnset": {
+          "time": 13.223333333333333,
+          "center": {
+            "x": 39.13952275420491,
+            "y": 0.23136677144853893,
+            "vx": -0.631631453495563,
+            "vy": 0.46350037797131455,
+            "mass": 2.4
+          },
+          "lastHit": {
+            "time": 13.171666666666667,
+            "type": "impact",
+            "encounter": "seed-husk skid",
+            "strength": 0.7078957567193226,
+            "position": {
+              "x": 39.449117296577455,
+              "y": 0.15186400096343736
+            },
+            "material": "leaf",
+            "surface": null,
+            "mass": 2.4
+          }
+        }
+      },
+      "release": {
+        "time": 7.145000000000303,
+        "center": {
+          "x": -2.0966725752832938,
+          "y": 303.2801083287478,
+          "vx": 4.520192464071227,
+          "vy": 11.787260089232932,
+          "mass": 2.4
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.159758238741611,
+              "y": 303.4809332911354
+            },
+            "v": {
+              "x": 7.117214590707656,
+              "y": 12.78771731856145
+            },
+            "w": -13.804230563683008
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.369820442550526,
+              "y": 303.3711021417021
+            },
+            "v": {
+              "x": 5.360688366154439,
+              "y": 15.104369607665223
+            },
+            "w": -10.395853831331449
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.9246415823067786,
+              "y": 303.412867370572
+            },
+            "v": {
+              "x": 7.408030243787777,
+              "y": 8.902059860589508
+            },
+            "w": -25.039252013734526
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.8118818514850112,
+              "y": 303.2146569576203
+            },
+            "v": {
+              "x": 3.7249466254982346,
+              "y": 7.478516962197048
+            },
+            "w": -18.168297349514347
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.099067620982767,
+              "y": 303.2485306760162
+            },
+            "v": {
+              "x": 4.049089063755746,
+              "y": 11.930828205593018
+            },
+            "w": -12.716223730292617
+          }
+        ]
+      },
+      "end": {
+        "x": 38.91113270694138,
+        "y": 0.22968280010543585,
+        "vx": 0.0040923903826297825,
+        "vy": -0.0001570112714270587,
+        "mass": 2.4
+      },
+      "impacts": 28
+    },
+    {
+      "n": 15,
+      "species": "snake",
+      "fraction": 0.6,
+      "seed": 29015,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 4.813333333333272,
+        "openSky": 2.5383333333333065,
+        "jungleCanopy": 5.958333333333451,
+        "forestFloor": 46.68999999997378
+      },
+      "births": {
+        "round beetle": 2,
+        "leaf hopper": 8,
+        "round bird": 10,
+        "puffy moth": 3,
+        "vine bug": 7,
+        "waxleaf skid": 4,
+        "springy pod": 10,
+        "seed-husk skid": 5,
+        "round fungus": 3,
+        "rolling beetle": 2
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:0:9:1",
+          "kind": "leaf hopper",
+          "birthBiome": "grandfatherTree",
+          "time": 1.9816666666666667,
+          "position": {
+            "x": 12.448093582294208,
+            "y": 309.8138361578418,
+            "vx": 5.396920010638821,
+            "vy": -6.593008056956491,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:2:3:16",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 14.498333333333333,
+          "position": {
+            "x": 49.44885730501587,
+            "y": 2.159082810378352,
+            "vx": 7.387379248727249,
+            "vy": -2.4516917457161673,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "jungleCanopy:3:2:15",
+          "kind": "vine bug",
+          "birthBiome": "jungleCanopy",
+          "time": 16.51,
+          "position": {
+            "x": 61.36947006453409,
+            "y": 0.08961272766549491,
+            "vx": 6.904473353253,
+            "vy": 0.4300935824956605,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:3:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 16.611666666666668,
+          "position": {
+            "x": 62.05075685710273,
+            "y": 0.21106459962563281,
+            "vx": 4.404730637580288,
+            "vy": -2.5826733861616282,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:3:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 16.69333333333333,
+          "position": {
+            "x": 62.342860981770635,
+            "y": 0.12295636569058951,
+            "vx": 2.037886334699005,
+            "vy": -0.4217639538504708,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:3:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 17.281666666666666,
+          "position": {
+            "x": 63.01802241587239,
+            "y": 0.09027753844948623,
+            "vx": 0.502509570370418,
+            "vy": -0.060813066396069676,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:3:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 17.525,
+          "position": {
+            "x": 63.07652709787306,
+            "y": 0.08942617661813146,
+            "vx": -0.016085363493936074,
+            "vy": -0.0015636173238377173,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:3:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 17.723333333333333,
+          "position": {
+            "x": 63.07651398074238,
+            "y": 0.08943184362896578,
+            "vx": 0.0003970460698070139,
+            "vy": 0.011316249714658546,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:3:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 17.921666666666667,
+          "position": {
+            "x": 63.07648247387033,
+            "y": 0.0894271116510281,
+            "vx": -0.0045645826033051395,
+            "vy": 7.003658547621072e-06,
+            "mass": 1.1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 35.34999999999928,
+          "totalGap": 39.683333333332364,
+          "overOneSeconds": 34.51666666666599
+        },
+        "960": {
+          "maxGap": 34.01666666666602,
+          "totalGap": 36.08333333333257,
+          "overOneSeconds": 33.03333333333274
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 6.873333333333594,
+        "center": {
+          "x": -1.3665336437756128,
+          "y": 303.4882255241787,
+          "vx": 6.968616443673947,
+          "vy": 12.922939271883386,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.8827358756754342,
+              "y": 303.4588731068191
+            },
+            "v": {
+              "x": 7.4617792979803514,
+              "y": 20.242019305533905
+            },
+            "w": -24.52221039362888
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.702532296306867,
+              "y": 303.38290125861386
+            },
+            "v": {
+              "x": 5.950628228480921,
+              "y": 17.07437876233974
+            },
+            "w": -11.18799788687619
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.5041706348285737,
+              "y": 303.3666688441648
+            },
+            "v": {
+              "x": 5.959836431009488,
+              "y": 13.171216397539826
+            },
+            "w": -28.07272450121892
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.3455237160081437,
+              "y": 303.4502818793553
+            },
+            "v": {
+              "x": 7.511911190719976,
+              "y": 9.453022792003145
+            },
+            "w": -16.36281914258466
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.2032326120535268,
+              "y": 303.5861185589352
+            },
+            "v": {
+              "x": 8.062841239739548,
+              "y": 9.843018694456084
+            },
+            "w": 15.350574501919168
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.0216407092474313,
+              "y": 303.6191246345496
+            },
+            "v": {
+              "x": 7.13839588367152,
+              "y": 10.5783751191717
+            },
+            "w": -5.851169836734682
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -0.8321564863236234,
+              "y": 303.5578035892928
+            },
+            "v": {
+              "x": 6.624470997786339,
+              "y": 9.05296097018923
+            },
+            "w": -10.308136817394285
+          }
+        ]
+      },
+      "end": {
+        "x": 63.0611223535442,
+        "y": 0.08941245460958439,
+        "vx": -8.575998101617499e-07,
+        "vy": -1.2339724126288192e-07,
+        "mass": 1.1
+      },
+      "impacts": 21
+    },
+    {
+      "n": 16,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "seed": 29016,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.428333333333368,
+        "openSky": 2.5083333333333098,
+        "jungleCanopy": 3.7599999999998386,
+        "forestFloor": 48.303333333305645
+      },
+      "births": {
+        "round beetle": 10,
+        "leaf hopper": 7,
+        "round bird": 11,
+        "puffy moth": 8,
+        "waxleaf skid": 5,
+        "springy pod": 6,
+        "vine bug": 6,
+        "rolling beetle": 1,
+        "round fungus": 6,
+        "seed-husk skid": 2
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:3:4:12",
+          "kind": "vine bug",
+          "birthBiome": "jungleCanopy",
+          "time": 11.836666666666666,
+          "position": {
+            "x": 58.810350316642456,
+            "y": 7.909391605345212,
+            "vx": 5.870847138289882,
+            "vy": -7.692939573202181,
+            "mass": 1
+          }
+        },
+        {
+          "id": "jungleCanopy:3:2:12",
+          "kind": "vine bug",
+          "birthBiome": "jungleCanopy",
+          "time": 14.578333333333333,
+          "position": {
+            "x": 67.42685790015746,
+            "y": 0.1685772639320285,
+            "vx": 4.298416767341175,
+            "vy": 0.49680029178539986,
+            "mass": 1
+          }
+        },
+        {
+          "id": "jungleCanopy:3:1:12",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 15.736666666666666,
+          "position": {
+            "x": 71.42788162788295,
+            "y": 0.16851478075035214,
+            "vx": 0.27754871830390226,
+            "vy": 0.38166246403512016,
+            "mass": 1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 28.46666666666633,
+          "totalGap": 41.39999999999893,
+          "overOneSeconds": 31.633333333332818
+        },
+        "960": {
+          "maxGap": 21.200000000000077,
+          "totalGap": 35.899999999999245,
+          "overOneSeconds": 23.583333333333275
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 6.861666666666926,
+        "center": {
+          "x": -1.8881870849581046,
+          "y": 304.14983365506043,
+          "vx": 5.084550971902967,
+          "vy": 15.739535616692358,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.830764319303259,
+              "y": 303.985903455816
+            },
+            "v": {
+              "x": 1.177623282517697,
+              "y": 13.775611844619982
+            },
+            "w": -35.24524592641001
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.6433580402485242,
+              "y": 304.05488368291776
+            },
+            "v": {
+              "x": 4.102308039279553,
+              "y": 11.756624063652025
+            },
+            "w": -16.22852815216588
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -2.06453303662505,
+              "y": 304.0985442470458
+            },
+            "v": {
+              "x": 3.152318710050812,
+              "y": 19.72045494953605
+            },
+            "w": -37.100025131118755
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -2.1902090187415912,
+              "y": 304.35226107482873
+            },
+            "v": {
+              "x": 8.41686796896387,
+              "y": 21.446630927121635
+            },
+            "w": -23.31784706915476
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.8775642366525487,
+              "y": 304.1928587311761
+            },
+            "v": {
+              "x": 6.163496485984958,
+              "y": 15.303769228226553
+            },
+            "w": -13.936629271925732
+          }
+        ]
+      },
+      "end": {
+        "x": 71.43113674885731,
+        "y": 0.168179354029638,
+        "vx": -2.166409774721221e-06,
+        "vy": 1.995424453296292e-07,
+        "mass": 1
+      },
+      "impacts": 19
+    },
+    {
+      "n": 17,
+      "species": "flying-squirrel",
+      "fraction": 0.6,
+      "seed": 29017,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 11.780000000001028,
+        "openSky": 16.950000000000824,
+        "jungleCanopy": 30.55833333332178,
+        "forestFloor": 0.7116666666666696
+      },
+      "births": {
+        "leaf hopper": 16,
+        "round beetle": 18,
+        "round bird": 27,
+        "puffy moth": 23,
+        "waxleaf skid": 30,
+        "springy pod": 28,
+        "vine bug": 29,
+        "round fungus": 1,
+        "rolling beetle": 1
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:0:9:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 2.66,
+          "position": {
+            "x": 12.265675889697397,
+            "y": 299.5224184167619,
+            "vx": 1.2662003556029886,
+            "vy": -11.326683215105197,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "grandfatherTree:5:0:15",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 12.433333333333334,
+          "position": {
+            "x": 104.115731600585,
+            "y": 242.3091940345615,
+            "vx": 10.756851766208555,
+            "vy": -4.310365990637883,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "openSky:7:13:19",
+          "kind": "puffy moth",
+          "birthBiome": "openSky",
+          "time": 15.98,
+          "position": {
+            "x": 132.648223670744,
+            "y": 212.64944289009784,
+            "vx": 9.105136763018548,
+            "vy": -12.811368604130834,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "openSky:10:8:25",
+          "kind": "puffy moth",
+          "birthBiome": "openSky",
+          "time": 20.186666666666667,
+          "position": {
+            "x": 191.4834761425224,
+            "y": 178.938250499916,
+            "vx": 7.308964057236012,
+            "vy": -6.265494573947708,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "openSky:13:2:34",
+          "kind": "round bird",
+          "birthBiome": "openSky",
+          "time": 26.593333333333334,
+          "position": {
+            "x": 244.3261634109699,
+            "y": 137.26260838935244,
+            "vx": 0.7154135677132565,
+            "vy": -3.4833730967270173,
+            "mass": 0.9
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 2.3833333333333298,
+          "totalGap": 24.14999999999991,
+          "overOneSeconds": 5.499999999999986
+        },
+        "960": {
+          "maxGap": 1.0500000000000012,
+          "totalGap": 13.70000000000026,
+          "overOneSeconds": 0.06666666666666667
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.21166666666698,
+        "center": {
+          "x": -0.15534187092274104,
+          "y": 305.1805841813004,
+          "vx": 10.691630195572285,
+          "vy": 13.39830946838384,
+          "mass": 0.9
+        },
+        "parts": [
+          {
+            "id": "front-membrane",
+            "p": {
+              "x": -0.07119796659910303,
+              "y": 305.32830756052647
+            },
+            "v": {
+              "x": 12.684540933736784,
+              "y": 12.405576589529312
+            },
+            "w": -19.007645348707275
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.28441445641599244,
+              "y": 305.42058970148065
+            },
+            "v": {
+              "x": 13.1112508365183,
+              "y": 15.044957284578262
+            },
+            "w": -13.163267133064629
+          },
+          {
+            "id": "rear-membrane",
+            "p": {
+              "x": -0.02335952311732319,
+              "y": 305.07126644894123
+            },
+            "v": {
+              "x": 9.195911475115777,
+              "y": 11.6750970108631
+            },
+            "w": -16.241474765799932
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.19014229739604357,
+              "y": 304.7814462267171
+            },
+            "v": {
+              "x": 7.249669720745198,
+              "y": 13.66056922095755
+            },
+            "w": -6.855160779580893
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.16212415361913693,
+              "y": 305.17896220595804
+            },
+            "v": {
+              "x": 10.472336526833828,
+              "y": 13.522987015690262
+            },
+            "w": -9.335450966130992
+          }
+        ]
+      },
+      "end": {
+        "x": 566.2661148108223,
+        "y": 2.4496304759614342,
+        "vx": 10.051308168756373,
+        "vy": -3.5874334156306933,
+        "mass": 0.9
+      },
+      "impacts": 5
+    },
+    {
+      "n": 18,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "seed": 29018,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.513333333333382,
+        "openSky": 2.7083333333332877,
+        "jungleCanopy": 4.253333333333185,
+        "forestFloor": 47.52499999997302
+      },
+      "births": {
+        "leaf hopper": 11,
+        "round beetle": 5,
+        "round bird": 7,
+        "puffy moth": 7,
+        "springy pod": 10,
+        "vine bug": 5,
+        "waxleaf skid": 5,
+        "rolling beetle": 3,
+        "seed-husk skid": 3,
+        "round fungus": 5
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:0:2:13",
+          "kind": "vine bug",
+          "birthBiome": "jungleCanopy",
+          "time": 12.711666666666666,
+          "position": {
+            "x": 7.505819940651738,
+            "y": 6.69190369860159,
+            "vx": -7.034311380880366,
+            "vy": -9.91160985349937,
+            "mass": 5
+          }
+        },
+        {
+          "id": "jungleCanopy:0:1:13",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 13.158333333333333,
+          "position": {
+            "x": 4.357666391787644,
+            "y": 1.2756181120043042,
+            "vx": -7.213834932955717,
+            "vy": -11.320938022306862,
+            "mass": 5
+          }
+        },
+        {
+          "id": "jungleCanopy:-1:1:17",
+          "kind": "springy pod",
+          "birthBiome": "jungleCanopy",
+          "time": 17.111666666666668,
+          "position": {
+            "x": -8.478681546365332,
+            "y": 0.2655531013632958,
+            "vx": -0.3289980968748997,
+            "vy": -0.00998195690616337,
+            "mass": 5
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.7833333333333319,
+          "totalGap": 36.949999999999186,
+          "overOneSeconds": 1.183333333333334
+        },
+        "960": {
+          "maxGap": 0.8333333333333343,
+          "totalGap": 32.749999999999424,
+          "overOneSeconds": 0
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 9.981666666666667,
+            "end": 16.761666666666667,
+            "distance": 41.98823720879526
+          }
+        ],
+        "distance": 41.98823720879526,
+        "lastOnset": {
+          "time": 9.981666666666667,
+          "center": {
+            "x": 33.57545948413974,
+            "y": 0.3473238427444569,
+            "vx": -9.552618810961992,
+            "vy": 15.719204789114182,
+            "mass": 5
+          },
+          "lastHit": {
+            "time": 9.976666666666667,
+            "type": "impact",
+            "encounter": null,
+            "strength": 93.92898564190932,
+            "position": {
+              "x": 33.882651907491386,
+              "y": 0.007865202672910469
+            },
+            "material": "ground",
+            "surface": "ground",
+            "mass": 5
+          }
+        }
+      },
+      "release": {
+        "time": 6.986666666666945,
+        "center": {
+          "x": -1.9047574176586948,
+          "y": 300.3296867196462,
+          "vx": 1.3332686805145741,
+          "vy": 6.290199795108383,
+          "mass": 5
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.1551312854509925,
+              "y": 300.1972129439269
+            },
+            "v": {
+              "x": 1.0325624680945702,
+              "y": 7.110609759916675
+            },
+            "w": 2.0041408671248746
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.9187128812923966,
+              "y": 299.9494803993783
+            },
+            "v": {
+              "x": -2.4140015030418427,
+              "y": 6.378480136085322
+            },
+            "w": -11.420924539375191
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.950649892458347,
+              "y": 300.6158395119765
+            },
+            "v": {
+              "x": 3.124168131840455,
+              "y": 6.910999797330394
+            },
+            "w": -3.8491437316316097
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.7396250799295843,
+              "y": 300.7836741980975
+            },
+            "v": {
+              "x": 5.237926968137078,
+              "y": 5.059364878406483
+            },
+            "w": -8.30801382166246
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.886367183314968,
+              "y": 300.34090433517895
+            },
+            "v": {
+              "x": 1.496620736464586,
+              "y": 6.234864142744795
+            },
+            "w": -8.507364591200377
+          }
+        ]
+      },
+      "end": {
+        "x": -8.37423884103055,
+        "y": 0.247629745786136,
+        "vx": -9.666935440796264e-06,
+        "vy": 8.211680412385059e-08,
+        "mass": 5
+      },
+      "impacts": 506
+    },
+    {
+      "n": 19,
+      "species": "small-marsupial",
+      "fraction": 0.6,
+      "seed": 29019,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.211666666666668,
+        "openSky": 2.5283333333333076,
+        "jungleCanopy": 4.354999999999867,
+        "forestFloor": 47.904999999972674
+      },
+      "births": {
+        "round beetle": 14,
+        "leaf hopper": 4,
+        "puffy moth": 11,
+        "round bird": 11,
+        "springy pod": 8,
+        "waxleaf skid": 10,
+        "vine bug": 8,
+        "rolling beetle": 7,
+        "round fungus": 4,
+        "seed-husk skid": 8
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:7:5:12",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 9.67,
+          "position": {
+            "x": 130.6415365382253,
+            "y": 47.34145022132188,
+            "vx": 37.19193357803424,
+            "vy": -14.948662081581501,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:16:0:18",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 14.448333333333334,
+          "position": {
+            "x": 299.212099935645,
+            "y": 0.17004732891202662,
+            "vx": -0.349290156807866,
+            "vy": 0.5420264690201408,
+            "mass": 0.7
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 27.64999999999971,
+          "totalGap": 46.46666666666531,
+          "overOneSeconds": 34.88333333333264
+        },
+        "960": {
+          "maxGap": 27.64999999999971,
+          "totalGap": 42.283333333332216,
+          "overOneSeconds": 32.24999999999945
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.015000000000283,
+        "center": {
+          "x": -0.6535804111623175,
+          "y": 304.8126298872475,
+          "vx": 10.774738994163766,
+          "vy": 14.101996068726772,
+          "mass": 0.7
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -0.6658069603652795,
+              "y": 304.97075979663674
+            },
+            "v": {
+              "x": 11.844820314209278,
+              "y": 14.474997187255639
+            },
+            "w": -4.398303767006064
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.8771942786443108,
+              "y": 304.78707951124613
+            },
+            "v": {
+              "x": 10.400564260526185,
+              "y": 15.997707851030507
+            },
+            "w": -4.251062688001972
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.522319925722184,
+              "y": 304.9217516838656
+            },
+            "v": {
+              "x": 13.003050355747485,
+              "y": 12.236127065153992
+            },
+            "w": -23.994975799152535
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.3125703584756128,
+              "y": 304.6516915561596
+            },
+            "v": {
+              "x": 9.22646093053609,
+              "y": 11.229025093761082
+            },
+            "w": -6.014546974500376
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.6464964299908583,
+              "y": 304.7891420148479
+            },
+            "v": {
+              "x": 10.414461955335636,
+              "y": 14.172757775173228
+            },
+            "w": -11.564943707502357
+          }
+        ]
+      },
+      "end": {
+        "x": 299.1661501901478,
+        "y": 0.16932468221360203,
+        "vx": -3.670902562754028e-05,
+        "vy": -7.282027316793912e-06,
+        "mass": 0.7
+      },
+      "impacts": 9
+    },
+    {
+      "n": 20,
+      "species": "tiny-primate",
+      "fraction": 0.6,
+      "seed": 29020,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.154999999999992,
+        "openSky": 2.5316666666666405,
+        "jungleCanopy": 4.571666666666568,
+        "forestFloor": 47.74166666663949
+      },
+      "births": {
+        "leaf hopper": 8,
+        "round beetle": 9,
+        "puffy moth": 9,
+        "round bird": 12,
+        "vine bug": 9,
+        "waxleaf skid": 9,
+        "springy pod": 8,
+        "rolling beetle": 5,
+        "round fungus": 8,
+        "seed-husk skid": 4
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:6:6:11",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 9.123333333333333,
+          "position": {
+            "x": 113.26231369707415,
+            "y": 54.97184793451454,
+            "vx": 28.27685969011055,
+            "vy": -5.968109236616125,
+            "mass": 0.8500000000000001
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.161666666666667,
+          "position": {
+            "x": 256.28015173158167,
+            "y": 0.2215077508572033,
+            "vx": 16.773824869697478,
+            "vy": -2.3551022602462495,
+            "mass": 0.8500000000000001
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.243333333333334,
+          "position": {
+            "x": 256.5385597809005,
+            "y": 0.21261334573599183,
+            "vx": 0.2328535179037447,
+            "vy": 0.06329691860589584,
+            "mass": 0.8500000000000001
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.681666666666667,
+          "position": {
+            "x": 256.46427807905866,
+            "y": 0.21876216701161336,
+            "vx": -0.18936722483180807,
+            "vy": -0.2910080277374028,
+            "mass": 0.8500000000000001
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.798333333333334,
+          "position": {
+            "x": 256.41398362846155,
+            "y": 0.2189135957589195,
+            "vx": -0.48952369471892804,
+            "vy": -0.12491214289698672,
+            "mass": 0.8500000000000001
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 35.03333333333263,
+          "totalGap": 44.53333333333209,
+          "overOneSeconds": 34.849999999999305
+        },
+        "960": {
+          "maxGap": 35.03333333333263,
+          "totalGap": 42.26666666666555,
+          "overOneSeconds": 34.04999999999935
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0.02889386477123958,
+        "lastOnset": {
+          "time": 15.743333333333334,
+          "center": {
+            "x": 256.4426147244932,
+            "y": 0.2260027800483754,
+            "vx": -0.5462136824704685,
+            "vy": -0.09854655752057441,
+            "mass": 0.8500000000000001
+          },
+          "lastHit": {
+            "time": 15.681666666666667,
+            "type": "impact",
+            "encounter": "seed-husk skid",
+            "strength": 0.5448979730748056,
+            "position": {
+              "x": 256.7079700078592,
+              "y": 0.4159281886351247
+            },
+            "material": "leaf",
+            "surface": null,
+            "mass": 0.85
+          }
+        }
+      },
+      "release": {
+        "time": 7.153333333333638,
+        "center": {
+          "x": -0.2503274190847443,
+          "y": 305.18665978594294,
+          "vx": 11.378652395234598,
+          "vy": 13.61963514203446,
+          "mass": 0.8500000000000001
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -0.2207571852315453,
+              "y": 305.33421144949926
+            },
+            "v": {
+              "x": 12.797462926526906,
+              "y": 13.716472376236675
+            },
+            "w": -12.284390230085707
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.36890353878296345,
+              "y": 305.3562540440473
+            },
+            "v": {
+              "x": 12.694489532404887,
+              "y": 14.695517049682753
+            },
+            "w": -9.116878106050846
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.047092956394099196,
+              "y": 305.01841874243115
+            },
+            "v": {
+              "x": 9.567864514192815,
+              "y": 11.345473996044074
+            },
+            "w": -18.22463971945337
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.39466503746944515,
+              "y": 304.96102952909683
+            },
+            "v": {
+              "x": 10.014130515945402,
+              "y": 14.172854911827718
+            },
+            "w": -2.8428249584258487
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.21875886904638697,
+              "y": 305.1480348437775
+            },
+            "v": {
+              "x": 11.0576732214233,
+              "y": 13.543431326328326
+            },
+            "w": -6.4680831243040835
+          }
+        ]
+      },
+      "end": {
+        "x": 256.42777728701117,
+        "y": 0.21842592926112195,
+        "vx": 0.002569976157025095,
+        "vy": -0.006847591763338153,
+        "mass": 0.8500000000000001
+      },
+      "impacts": 12
+    },
+    {
+      "n": 21,
+      "species": "frog",
+      "fraction": 0.6,
+      "seed": 29021,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.208333333333334,
+        "openSky": 2.529999999999974,
+        "jungleCanopy": 1.6450000000000244,
+        "forestFloor": 50.616666666636874
+      },
+      "births": {
+        "leaf hopper": 11,
+        "round beetle": 7,
+        "round bird": 11,
+        "puffy moth": 11,
+        "springy pod": 7,
+        "vine bug": 3,
+        "waxleaf skid": 6,
+        "round fungus": 4,
+        "rolling beetle": 9,
+        "seed-husk skid": 1
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:5:0:12",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 10.498333333333333,
+          "position": {
+            "x": 97.09649471306777,
+            "y": 2.2745141194406475,
+            "vx": 3.3984855445717828,
+            "vy": -10.473261702376776,
+            "mass": 1.05
+          }
+        },
+        {
+          "id": "jungleCanopy:5:0:12",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 10.658333333333333,
+          "position": {
+            "x": 97.63878672251028,
+            "y": 0.4774628506525722,
+            "vx": 3.2793446355061926,
+            "vy": -12.216762283453603,
+            "mass": 1.05
+          }
+        },
+        {
+          "id": "jungleCanopy:5:0:12",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 10.74,
+          "position": {
+            "x": 97.81816299430471,
+            "y": 0.18072352778810494,
+            "vx": 0.9587745485844462,
+            "vy": 0.4089656026382745,
+            "mass": 1.05
+          }
+        },
+        {
+          "id": "forestFloor:5:0:17",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 13.636666666666667,
+          "position": {
+            "x": 99.56248279952062,
+            "y": 0.18421625745410397,
+            "vx": 4.432414884376914,
+            "vy": 0.5220863352896454,
+            "mass": 1.05
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 24.516666666666556,
+          "totalGap": 46.54999999999864,
+          "overOneSeconds": 38.73333333333242
+        },
+        "960": {
+          "maxGap": 24.516666666666556,
+          "totalGap": 41.56666666666559,
+          "overOneSeconds": 32.41666666666611
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 6.99500000000028,
+        "center": {
+          "x": -0.9612113001448653,
+          "y": 304.66924271822995,
+          "vx": 9.74814346898411,
+          "vy": 14.102907186177555,
+          "mass": 1.05
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.0637238481673397,
+              "y": 304.85731333382444
+            },
+            "v": {
+              "x": 11.632812646618127,
+              "y": 15.222906398690393
+            },
+            "w": -13.638556198642823
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.168406523440069,
+              "y": 304.7377263669513
+            },
+            "v": {
+              "x": 10.085132643851493,
+              "y": 15.546360561513046
+            },
+            "w": -7.1319430496371625
+          },
+          {
+            "id": "rear-shin",
+            "p": {
+              "x": -0.6413160788088434,
+              "y": 304.6012049987968
+            },
+            "v": {
+              "x": 9.512739545839665,
+              "y": 11.902576840111218
+            },
+            "w": -16.00850548150486
+          },
+          {
+            "id": "rear-thigh",
+            "p": {
+              "x": -0.775242331335567,
+              "y": 304.55600479832253
+            },
+            "v": {
+              "x": 9.139711969293122,
+              "y": 13.02204353071098
+            },
+            "w": -0.679434658385844
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.9752835697065267,
+              "y": 304.6479293250165
+            },
+            "v": {
+              "x": 9.410726554771674,
+              "y": 14.015791842501828
+            },
+            "w": -8.575475690259568
+          }
+        ]
+      },
+      "end": {
+        "x": 106.62161215844012,
+        "y": 0.17253432864237003,
+        "vx": -0.00019659885384066292,
+        "vy": -9.208001757503279e-05,
+        "mass": 1.05
+      },
+      "impacts": 11
+    },
+    {
+      "n": 22,
+      "species": "lizard",
+      "fraction": 0.9,
+      "seed": 29022,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.563333333333389,
+        "openSky": 2.5033333333333103,
+        "jungleCanopy": 1.6383333333333576,
+        "forestFloor": 50.2949999999705
+      },
+      "births": {
+        "round beetle": 10,
+        "leaf hopper": 10,
+        "puffy moth": 5,
+        "round bird": 12,
+        "vine bug": 5,
+        "waxleaf skid": 4,
+        "springy pod": 6,
+        "seed-husk skid": 5,
+        "round fungus": 1
+      },
+      "contacts": [],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 44.98333333333206,
+          "totalGap": 56.01666666666477,
+          "overOneSeconds": 46.81666666666529
+        },
+        "960": {
+          "maxGap": 42.64999999999886,
+          "totalGap": 51.34999999999837,
+          "overOneSeconds": 42.14999999999889
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.940000000000428,
+        "center": {
+          "x": -1.93132991293593,
+          "y": 302.5958661969417,
+          "vx": 3.2640100464893873,
+          "vy": 16.948747672454402,
+          "mass": 0.65
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.912970428810772,
+              "y": 302.7934820629611
+            },
+            "v": {
+              "x": 7.925899868384077,
+              "y": 17.26285644586088
+            },
+            "w": -20.141892603706967
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.1897923121647174,
+              "y": 302.8224891415936
+            },
+            "v": {
+              "x": 8.00218390563337,
+              "y": 22.706391524778233
+            },
+            "w": -16.963042948927335
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.8330456575733836,
+              "y": 302.47747780424015
+            },
+            "v": {
+              "x": 1.1476573258848148,
+              "y": 15.106049121039945
+            },
+            "w": -22.247552078548345
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.6869247788353674,
+              "y": 302.27807017999555
+            },
+            "v": {
+              "x": -5.207506337889213,
+              "y": 9.434255245414034
+            },
+            "w": -36.37508811234805
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.966532315705336,
+              "y": 302.60460581019817
+            },
+            "v": {
+              "x": 3.866409071131693,
+              "y": 18.1864935246438
+            },
+            "w": -22.31356895619456
+          }
+        ]
+      },
+      "end": {
+        "x": 30.123747801950987,
+        "y": 0.09127030209819495,
+        "vx": 3.2044058246008924e-09,
+        "vy": -5.527661166327511e-10,
+        "mass": 0.65
+      },
+      "impacts": 10
+    },
+    {
+      "n": 23,
+      "species": "salamander",
+      "fraction": 0.9,
+      "seed": 29023,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.668333333333406,
+        "openSky": 2.481666666666646,
+        "jungleCanopy": 7.841666666667079,
+        "forestFloor": 44.00833333330955
+      },
+      "births": {
+        "leaf hopper": 7,
+        "round beetle": 13,
+        "round bird": 13,
+        "puffy moth": 6,
+        "springy pod": 9,
+        "vine bug": 12,
+        "waxleaf skid": 12,
+        "rolling beetle": 1,
+        "seed-husk skid": 4,
+        "round fungus": 2
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:10:0:22",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 17.375,
+          "position": {
+            "x": 183.0629133612323,
+            "y": 0.1210090843977227,
+            "vx": -5.158239899281078,
+            "vy": 0.642761924664831,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.075,
+          "position": {
+            "x": 182.04170363666555,
+            "y": 0.12089574907714791,
+            "vx": -0.4249388735911809,
+            "vy": 0.1765741103842476,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:22",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.1,
+          "position": {
+            "x": 182.0303714242997,
+            "y": 0.12409733140516747,
+            "vx": -0.4742783413056543,
+            "vy": -0.46136974004077386,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:22",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.381666666666668,
+          "position": {
+            "x": 181.6910109569712,
+            "y": 0.12082060150725288,
+            "vx": -1.3634321698745278,
+            "vy": 0.012494606606195228,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:22",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.641666666666666,
+          "position": {
+            "x": 181.3888374033379,
+            "y": 0.1206428178864646,
+            "vx": -1.0422619339993506,
+            "vy": 0.0020756742348688874,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.738333333333333,
+          "position": {
+            "x": 181.26798742081917,
+            "y": 0.12068205809951486,
+            "vx": -1.4375043794113311,
+            "vy": 0.002730443234604741,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.99,
+          "position": {
+            "x": 180.93741613370725,
+            "y": 0.12066742252342619,
+            "vx": -1.1525803528358336,
+            "vy": -0.03672172006000353,
+            "mass": 0.8
+          }
+        },
+        {
+          "id": "forestFloor:10:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 19.22,
+          "position": {
+            "x": 180.72449375385835,
+            "y": 0.12049559668926361,
+            "vx": -0.8392046121063523,
+            "vy": 0.002416509317871511,
+            "mass": 0.8
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 37.51666666666582,
+          "totalGap": 49.26666666666515,
+          "overOneSeconds": 39.34999999999905
+        },
+        "960": {
+          "maxGap": 30.583333333332877,
+          "totalGap": 40.43333333333232,
+          "overOneSeconds": 30.61666666666621
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 13.26,
+            "end": 18.075,
+            "distance": 46.77966176896378
+          },
+          {
+            "start": 18.101666666666667,
+            "end": 19.996666666666666,
+            "distance": 1.9591732820008967
+          }
+        ],
+        "distance": 48.74179786822288,
+        "lastOnset": {
+          "time": 18.101666666666667,
+          "center": {
+            "x": 182.0293075294356,
+            "y": 0.12396439848090998,
+            "vx": -0.6161363569145085,
+            "vy": 0.3087845206423487,
+            "mass": 0.8
+          },
+          "lastHit": {
+            "time": 18.075,
+            "type": "impact",
+            "encounter": "seed-husk skid",
+            "strength": 22.03156580646687,
+            "position": {
+              "x": 181.71320059528495,
+              "y": 0.24772948074287726
+            },
+            "material": "leaf",
+            "surface": null,
+            "mass": 0.8
+          }
+        }
+      },
+      "release": {
+        "time": 8.000000000000437,
+        "center": {
+          "x": -0.7452308680999938,
+          "y": 304.0542304339126,
+          "vx": 9.927780769398383,
+          "vy": 17.400957877258197,
+          "mass": 0.8
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -0.7746892382308268,
+              "y": 303.86169176388165
+            },
+            "v": {
+              "x": 5.056602586180648,
+              "y": 18.291095702832294
+            },
+            "w": -37.204298058486074
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.5703776004118551,
+              "y": 303.77789012414553
+            },
+            "v": {
+              "x": 6.050438201882856,
+              "y": 14.380107229832559
+            },
+            "w": -16.0316620145041
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.9107031227235767,
+              "y": 304.12559580148627
+            },
+            "v": {
+              "x": 11.188335718681566,
+              "y": 21.047445237503283
+            },
+            "w": -26.2293773033277
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.8892478822617431,
+              "y": 304.45514889454523
+            },
+            "v": {
+              "x": 15.614082803506934,
+              "y": 19.10766712655179
+            },
+            "w": -9.961937794845582
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.7177752572606536,
+              "y": 304.07276104201344
+            },
+            "v": {
+              "x": 10.68940387269326,
+              "y": 16.856455148479128
+            },
+            "w": -15.87148701307995
+          }
+        ]
+      },
+      "end": {
+        "x": 179.93684811911805,
+        "y": 0.12053115075322647,
+        "vx": 6.20415424853472e-08,
+        "vy": -3.9927076795008176e-10,
+        "mass": 0.8
+      },
+      "impacts": 18
+    },
+    {
+      "n": 24,
+      "species": "mouse",
+      "fraction": 0.9,
+      "seed": 29024,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.431666666666702,
+        "openSky": 2.5183333333333087,
+        "jungleCanopy": 5.1483333333333245,
+        "forestFloor": 46.90166666664025
+      },
+      "births": {
+        "round beetle": 13,
+        "leaf hopper": 7,
+        "puffy moth": 6,
+        "round bird": 11,
+        "vine bug": 9,
+        "springy pod": 8,
+        "waxleaf skid": 9,
+        "rolling beetle": 5,
+        "seed-husk skid": 3,
+        "round fungus": 5
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:11:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.031666666666666,
+          "position": {
+            "x": 210.27422516345732,
+            "y": 0.15844680892145135,
+            "vx": 12.954740571203983,
+            "vy": -3.1485016974509796,
+            "mass": 0.75
+          }
+        },
+        {
+          "id": "forestFloor:12:0:20",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 16.198333333333334,
+          "position": {
+            "x": 221.10540249940377,
+            "y": 0.15628583211768973,
+            "vx": 0.07992485237951857,
+            "vy": -1.645959554188913,
+            "mass": 0.75
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 36.89999999999919,
+          "totalGap": 47.233333333331935,
+          "overOneSeconds": 36.333333333332554
+        },
+        "960": {
+          "maxGap": 26.149999999999796,
+          "totalGap": 42.89999999999885,
+          "overOneSeconds": 33.88333333333269
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.795000000000405,
+        "center": {
+          "x": -1.708619839986272,
+          "y": 302.73080777203177,
+          "vx": 5.451899917881896,
+          "vy": 16.02567072008037,
+          "mass": 0.75
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.5486925018385511,
+              "y": 302.75798190148384
+            },
+            "v": {
+              "x": 5.771981304953389,
+              "y": 13.924719883101645
+            },
+            "w": 1.022321534452912
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.6858534513612509,
+              "y": 302.96205759600815
+            },
+            "v": {
+              "x": 11.218537529165294,
+              "y": 15.405820360719051
+            },
+            "w": -20.301475360011946
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.7296199337171183,
+              "y": 302.5291250797869
+            },
+            "v": {
+              "x": 1.3943493068926809,
+              "y": 15.741305812756119
+            },
+            "w": -17.138647184071967
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.9011049950574017,
+              "y": 302.3661210672673
+            },
+            "v": {
+              "x": -8.741336577957211,
+              "y": 21.79099716455649
+            },
+            "w": -52.69955692264021
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.7332231401372373,
+              "y": 302.7069310403961
+            },
+            "v": {
+              "x": 5.226385340697681,
+              "y": 16.29983122243147
+            },
+            "w": -26.387305699839427
+          }
+        ]
+      },
+      "end": {
+        "x": 221.06597298388238,
+        "y": 0.15401531184694683,
+        "vx": -0.0008641808505841943,
+        "vy": -0.00048124261601373156,
+        "mass": 0.75
+      },
+      "impacts": 9
+    },
+    {
+      "n": 25,
+      "species": "turtle",
+      "fraction": 0.9,
+      "seed": 29025,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 7.9650000000004315,
+        "openSky": 2.7933333333332784,
+        "jungleCanopy": 3.8183333333331655,
+        "forestFloor": 45.423333333308264
+      },
+      "births": {
+        "round beetle": 14,
+        "leaf hopper": 10,
+        "round bird": 12,
+        "puffy moth": 8,
+        "springy pod": 8,
+        "vine bug": 6,
+        "waxleaf skid": 2,
+        "rolling beetle": 3,
+        "round fungus": 2,
+        "seed-husk skid": 3
+      },
+      "contacts": [
+        {
+          "id": "jungleCanopy:0:4:16",
+          "kind": "springy pod",
+          "birthBiome": "jungleCanopy",
+          "time": 14.49,
+          "position": {
+            "x": 12.381460787872415,
+            "y": 9.88710071967244,
+            "vx": 4.655233666237426,
+            "vy": -6.7978818374140255,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "jungleCanopy:1:0:16",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 17.53,
+          "position": {
+            "x": 28.3103342326386,
+            "y": 0.2658801737041407,
+            "vx": 0.789034777981327,
+            "vy": 0.17208274387300942,
+            "mass": 2.4
+          }
+        },
+        {
+          "id": "forestFloor:1:0:20",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 18.141666666666666,
+          "position": {
+            "x": 28.497208668898146,
+            "y": 0.2719004107066,
+            "vx": -0.17988857185334922,
+            "vy": 0.013330430767836252,
+            "mass": 2.4
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 36.833333333332526,
+          "totalGap": 46.43333333333198,
+          "overOneSeconds": 37.2333333333325
+        },
+        "960": {
+          "maxGap": 36.833333333332526,
+          "totalGap": 44.79999999999874,
+          "overOneSeconds": 36.76666666666586
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.876666666667084,
+        "center": {
+          "x": -2.4511258186772817,
+          "y": 301.46203748291134,
+          "vx": 1.8846554656661207,
+          "vy": 12.275968420688368,
+          "mass": 2.4
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.6481412084234135,
+              "y": 301.55968990428033
+            },
+            "v": {
+              "x": 3.4317537834970624,
+              "y": 15.666764582969696
+            },
+            "w": -18.359559301943737
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.718345393767074,
+              "y": 301.3419776846777
+            },
+            "v": {
+              "x": 0.27351448088842917,
+              "y": 15.097378902588265
+            },
+            "w": -6.832042484586339
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -2.3140475150179447,
+              "y": 301.6303682913819
+            },
+            "v": {
+              "x": 3.894710195234851,
+              "y": 11.005445841432016
+            },
+            "w": -8.218781394017116
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -2.202299573898423,
+              "y": 301.6100266198193
+            },
+            "v": {
+              "x": 4.690075315745391,
+              "y": 8.13596668626613
+            },
+            "w": -20.37489175027981
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.4375525531561197,
+              "y": 301.4414515935247
+            },
+            "v": {
+              "x": 1.5429485804410923,
+              "y": 12.134712813298968
+            },
+            "w": -14.80236064443143
+          }
+        ]
+      },
+      "end": {
+        "x": 28.400940628546035,
+        "y": 0.2658070956596833,
+        "vx": -0.0002735003484020365,
+        "vy": -4.43069679413736e-06,
+        "mass": 2.4
+      },
+      "impacts": 25
+    },
+    {
+      "n": 26,
+      "species": "snake",
+      "fraction": 0.9,
+      "seed": 29026,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.230000000000004,
+        "openSky": 2.546666666666639,
+        "jungleCanopy": 9.350000000000648,
+        "forestFloor": 42.87333333331058
+      },
+      "births": {
+        "round beetle": 8,
+        "leaf hopper": 8,
+        "round bird": 8,
+        "puffy moth": 13,
+        "waxleaf skid": 9,
+        "vine bug": 17,
+        "springy pod": 13,
+        "rolling beetle": 2,
+        "round fungus": 1,
+        "seed-husk skid": 6
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:16:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.22833333333333,
+          "position": {
+            "x": 296.0503715015534,
+            "y": 0.24753744505603997,
+            "vx": 8.164586875967421,
+            "vy": 2.5461959835911747,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.31833333333333,
+          "position": {
+            "x": 296.29605620328175,
+            "y": 0.34880580371656195,
+            "vx": 2.1031516725684076,
+            "vy": 0.11103150190746842,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:23",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.803333333333335,
+          "position": {
+            "x": 297.1690573615138,
+            "y": 0.10281881100066666,
+            "vx": 1.0485683705319535,
+            "vy": 0.14836358553828627,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:24",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 18.923333333333332,
+          "position": {
+            "x": 297.11183251854266,
+            "y": 0.11909150204380814,
+            "vx": -0.12049345998817035,
+            "vy": 0.06464510356507325,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:24",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 19.216666666666665,
+          "position": {
+            "x": 296.999268533804,
+            "y": 0.09965139383221998,
+            "vx": -0.2561250892679841,
+            "vy": -0.10528953314183442,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:24",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 19.365,
+          "position": {
+            "x": 296.97521847793297,
+            "y": 0.08956918433046504,
+            "vx": -0.04772242926427199,
+            "vy": 0.0024747306547865766,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:24",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 21.25,
+          "position": {
+            "x": 296.9781430661915,
+            "y": 0.0892820571454961,
+            "vx": 0.0007929520692754329,
+            "vy": -5.840880413183154e-06,
+            "mass": 1.1
+          }
+        },
+        {
+          "id": "forestFloor:16:0:24",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 21.428333333333335,
+          "position": {
+            "x": 296.96177182789114,
+            "y": 0.08928241810596055,
+            "vx": -0.34836706175175064,
+            "vy": 3.14282167490994e-05,
+            "mass": 1.1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 33.76666666666603,
+          "totalGap": 47.816666666665235,
+          "overOneSeconds": 35.749999999999254
+        },
+        "960": {
+          "maxGap": 33.76666666666603,
+          "totalGap": 43.63333333333214,
+          "overOneSeconds": 33.46666666666605
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0.11708445219300445,
+        "lastOnset": {
+          "time": 21.473333333333333,
+          "center": {
+            "x": 296.94218183938654,
+            "y": 0.08928293248068539,
+            "vx": -0.5048566649873122,
+            "vy": 1.566285401463557e-05,
+            "mass": 1.1
+          },
+          "lastHit": {
+            "time": 21.428333333333335,
+            "type": "impact",
+            "encounter": "seed-husk skid",
+            "strength": 0.18014015959549165,
+            "position": {
+              "x": 297.6233625598469,
+              "y": 0.18039500790981336
+            },
+            "material": "leaf",
+            "surface": null,
+            "mass": 1.1
+          }
+        }
+      },
+      "release": {
+        "time": 7.935000000000427,
+        "center": {
+          "x": -1.7172406373818234,
+          "y": 302.3042754787642,
+          "vx": 5.704736456953591,
+          "vy": 14.71486189418813,
+          "mass": 1.1
+        },
+        "parts": [
+          {
+            "id": "head",
+            "p": {
+              "x": -1.4476928006520424,
+              "y": 302.4101711587955
+            },
+            "v": {
+              "x": 10.598674834605188,
+              "y": 10.42870692215313
+            },
+            "w": -45.39251980064501
+          },
+          {
+            "id": "segment-1",
+            "p": {
+              "x": -1.555490023865245,
+              "y": 302.2446973946526
+            },
+            "v": {
+              "x": 5.118926064702468,
+              "y": 13.981589443447476
+            },
+            "w": -20.4573297304258
+          },
+          {
+            "id": "segment-2",
+            "p": {
+              "x": -1.6866152212141616,
+              "y": 302.11035475359904
+            },
+            "v": {
+              "x": 3.0083552282823782,
+              "y": 15.190014623560172
+            },
+            "w": -4.916846765312796
+          },
+          {
+            "id": "segment-3",
+            "p": {
+              "x": -1.858886848497997,
+              "y": 302.1252584573899
+            },
+            "v": {
+              "x": 3.0750071100600893,
+              "y": 16.037051285233833
+            },
+            "w": -4.9169004666896825
+          },
+          {
+            "id": "segment-4",
+            "p": {
+              "x": -1.94411987242809,
+              "y": 302.2828831670414
+            },
+            "v": {
+              "x": 4.622639352956934,
+              "y": 16.512003452896817
+            },
+            "w": -12.694942587336882
+          },
+          {
+            "id": "segment-5",
+            "p": {
+              "x": -1.8708626223310463,
+              "y": 302.4470049173883
+            },
+            "v": {
+              "x": 6.255800201220913,
+              "y": 16.153633905312326
+            },
+            "w": -5.638485379744321
+          },
+          {
+            "id": "segment-6",
+            "p": {
+              "x": -1.6955239065027203,
+              "y": 302.4944305481925
+            },
+            "v": {
+              "x": 6.554618352896938,
+              "y": 15.313341479861004
+            },
+            "w": -4.1647129923919435
+          }
+        ]
+      },
+      "end": {
+        "x": 296.7541161593884,
+        "y": 0.08940960191025422,
+        "vx": 8.6856820651759e-07,
+        "vy": -1.2558795079767846e-07,
+        "mass": 1.1
+      },
+      "impacts": 20
+    },
+    {
+      "n": 27,
+      "species": "chipmunk",
+      "fraction": 0.9,
+      "seed": 29027,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.408333333333365,
+        "openSky": 2.523333333333308,
+        "jungleCanopy": 1.6433333333333577,
+        "forestFloor": 50.42499999997038
+      },
+      "births": {
+        "leaf hopper": 7,
+        "round beetle": 9,
+        "round bird": 10,
+        "puffy moth": 8,
+        "vine bug": 7,
+        "waxleaf skid": 3,
+        "springy pod": 6,
+        "round fungus": 3,
+        "rolling beetle": 5,
+        "seed-husk skid": 5
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 13.88,
+          "position": {
+            "x": 86.81214746459872,
+            "y": 0.18843473741662786,
+            "vx": 6.807932541921119,
+            "vy": 0.5484817904613193,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 14.105,
+          "position": {
+            "x": 87.90067668997304,
+            "y": 0.1849099315061376,
+            "vx": 3.655465208390919,
+            "vy": -0.22233957713717176,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 14.476666666666667,
+          "position": {
+            "x": 88.06522572847163,
+            "y": 0.16835295860749808,
+            "vx": 0.013495354225225025,
+            "vy": 0.17188400122454292,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 14.73,
+          "position": {
+            "x": 88.05688527317557,
+            "y": 0.1683129597374698,
+            "vx": 0.006971289713057518,
+            "vy": -1.1377438311906604e-05,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 14.993333333333334,
+          "position": {
+            "x": 88.05699783735588,
+            "y": 0.16832194032893527,
+            "vx": 0.02071842014668626,
+            "vy": 0.022510902777644268,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.113333333333333,
+          "position": {
+            "x": 88.0699700377329,
+            "y": 0.18009622020761365,
+            "vx": 0.0915772311097649,
+            "vy": -0.028435129718841153,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.2,
+          "position": {
+            "x": 88.08330623720022,
+            "y": 0.1779114796904152,
+            "vx": 0.257156786088201,
+            "vy": 0.14394108307118014,
+            "mass": 1
+          }
+        },
+        {
+          "id": "forestFloor:4:0:17",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.318333333333333,
+          "position": {
+            "x": 88.08132746412576,
+            "y": 0.175301610104217,
+            "vx": -0.11707588244146414,
+            "vy": -0.05317738922952874,
+            "mass": 1
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 43.13333333333217,
+          "totalGap": 51.966666666665,
+          "overOneSeconds": 44.18333333333211
+        },
+        "960": {
+          "maxGap": 43.13333333333217,
+          "totalGap": 49.69999999999846,
+          "overOneSeconds": 42.983333333332176
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 7.89000000000042,
+        "center": {
+          "x": -1.9677348213029702,
+          "y": 302.4505984642408,
+          "vx": 4.322332934813918,
+          "vy": 15.920834140755108,
+          "mass": 1
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.879548894594991,
+              "y": 302.63419543137854
+            },
+            "v": {
+              "x": 8.319577472656727,
+              "y": 14.759513180780502
+            },
+            "w": -17.220443258777788
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.2134882604374577,
+              "y": 302.59132221004006
+            },
+            "v": {
+              "x": 7.060569969605439,
+              "y": 20.276876532012427
+            },
+            "w": -12.803743427191556
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.7957908021541373,
+              "y": 302.3762774171769
+            },
+            "v": {
+              "x": 4.051288843248109,
+              "y": 13.260925531577465
+            },
+            "w": -12.219257392323309
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.8274587103686746,
+              "y": 302.11521505190166
+            },
+            "v": {
+              "x": -5.29160693914451,
+              "y": 11.775178344587466
+            },
+            "w": -40.220596599044406
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.9684343564131528,
+              "y": 302.45604493874157
+            },
+            "v": {
+              "x": 4.915404383890782,
+              "y": 16.214495358309993
+            },
+            "w": -20.01042466129957
+          }
+        ]
+      },
+      "end": {
+        "x": 88.02921132790286,
+        "y": 0.16839381756960747,
+        "vx": -2.2024827343033605e-06,
+        "vy": 2.0374429469356422e-07,
+        "mass": 1
+      },
+      "impacts": 17
+    },
+    {
+      "n": 28,
+      "species": "flying-squirrel",
+      "fraction": 0.9,
+      "seed": 29028,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 15.100000000001547,
+        "openSky": 27.948333333324154,
+        "jungleCanopy": 15.458333333334936,
+        "forestFloor": 1.4933333333333543
+      },
+      "births": {
+        "round beetle": 23,
+        "leaf hopper": 21,
+        "round bird": 46,
+        "puffy moth": 39,
+        "vine bug": 15,
+        "springy pod": 16,
+        "waxleaf skid": 12,
+        "seed-husk skid": 2,
+        "rolling beetle": 1
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:6:1:18",
+          "kind": "leaf hopper",
+          "birthBiome": "grandfatherTree",
+          "time": 14.59,
+          "position": {
+            "x": 121.65760410496422,
+            "y": 247.20097835350714,
+            "vx": 5.432074595589533,
+            "vy": -2.929631157683627,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "openSky:12:12:31",
+          "kind": "round bird",
+          "birthBiome": "openSky",
+          "time": 24.96,
+          "position": {
+            "x": 222.69756078898644,
+            "y": 205.04786509663086,
+            "vx": 6.414181321654217,
+            "vy": -12.103165692943803,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:24:14:60",
+          "kind": "springy pod",
+          "birthBiome": "jungleCanopy",
+          "time": 46.72666666666667,
+          "position": {
+            "x": 444.2387646095415,
+            "y": 106.79283506788032,
+            "vx": 1.4572320036814694,
+            "vy": -14.004034233555371,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:72",
+          "kind": "springy pod",
+          "birthBiome": "jungleCanopy",
+          "time": 55.835,
+          "position": {
+            "x": 541.964104256586,
+            "y": 47.70126617715948,
+            "vx": 1.596511870384816,
+            "vy": -5.389413933148895,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:73",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 56.946666666666665,
+          "position": {
+            "x": 543.1163894720132,
+            "y": 39.00117719908005,
+            "vx": 0.044532018968586454,
+            "vy": -15.862817294245378,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:73",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 57.06333333333333,
+          "position": {
+            "x": 543.0953704746263,
+            "y": 36.77899938800585,
+            "vx": -0.3358717922494916,
+            "vy": -20.007197462859406,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:73",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 57.14833333333333,
+          "position": {
+            "x": 543.0574682304269,
+            "y": 35.071441429589235,
+            "vx": -0.6573242785786304,
+            "vy": -20.76855888202674,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:73",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 57.37833333333333,
+          "position": {
+            "x": 542.7827460162686,
+            "y": 30.1033700695818,
+            "vx": -1.790658210524116,
+            "vy": -22.257804808518074,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:73",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 57.48166666666667,
+          "position": {
+            "x": 542.5832756194984,
+            "y": 27.795261510384424,
+            "vx": -2.153815655973804,
+            "vy": -22.531194662144657,
+            "mass": 0.9
+          }
+        },
+        {
+          "id": "jungleCanopy:30:7:73",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 59.67,
+          "position": {
+            "x": 540.4006079198127,
+            "y": 0.2994176370107634,
+            "vx": 1.6006887682622932,
+            "vy": -1.1378509062914164,
+            "mass": 0.9
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 3.4666666666666592,
+          "totalGap": 22.916666666666647,
+          "overOneSeconds": 6.949999999999981
+        },
+        "960": {
+          "maxGap": 1.949999999999998,
+          "totalGap": 13.8333333333336,
+          "overOneSeconds": 1.7499999999999987
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 57.125,
+            "end": 58.571666666666665,
+            "distance": 3.440788985348116
+          }
+        ],
+        "distance": 3.440788985348116,
+        "lastOnset": {
+          "time": 57.125,
+          "center": {
+            "x": 543.0695043037088,
+            "y": 35.531802446467445,
+            "vx": -0.5007968582676918,
+            "vy": -20.400727289590012,
+            "mass": 0.9
+          },
+          "lastHit": {
+            "time": 57.06333333333333,
+            "type": "impact",
+            "encounter": "waxleaf skid",
+            "strength": 0.33798922936797904,
+            "position": {
+              "x": 543.0555830208056,
+              "y": 36.95533015891352
+            },
+            "material": "leaf",
+            "surface": null,
+            "mass": 0.9
+          }
+        }
+      },
+      "release": {
+        "time": 7.80333333333374,
+        "center": {
+          "x": -1.6705970458627146,
+          "y": 302.8150291905367,
+          "vx": 5.710417295768674,
+          "vy": 16.4022723365536,
+          "mass": 0.9
+        },
+        "parts": [
+          {
+            "id": "front-membrane",
+            "p": {
+              "x": -1.5980269363591193,
+              "y": 302.964343613185
+            },
+            "v": {
+              "x": 8.43206238483773,
+              "y": 16.212075343235668
+            },
+            "w": -4.262093811163267
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.87043139022881,
+              "y": 303.02082702652183
+            },
+            "v": {
+              "x": 9.196314144379542,
+              "y": 19.453127597888187
+            },
+            "w": -7.341374903405413
+          },
+          {
+            "id": "rear-membrane",
+            "p": {
+              "x": -1.5518228777744594,
+              "y": 302.71387796807613
+            },
+            "v": {
+              "x": 4.641444837633419,
+              "y": 14.294706960595352
+            },
+            "w": -17.60612048849775
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.5481190837643515,
+              "y": 302.44336769724737
+            },
+            "v": {
+              "x": -4.018326225455494,
+              "y": 12.87315214456061
+            },
+            "w": -36.30431625691744
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.6837288847407277,
+              "y": 302.81696471599173
+            },
+            "v": {
+              "x": 6.4452116325929865,
+              "y": 16.869003783452648
+            },
+            "w": -19.956804377308266
+          }
+        ]
+      },
+      "end": {
+        "x": 540.8306876302375,
+        "y": 0.14654701116745525,
+        "vx": 1.0888971284610132,
+        "vy": -0.4615136238456419,
+        "mass": 0.9
+      },
+      "impacts": 14
+    },
+    {
+      "n": 29,
+      "species": "armadillo",
+      "fraction": 0.9,
+      "seed": 29029,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 8.815000000000564,
+        "openSky": 2.791666666666612,
+        "jungleCanopy": 1.7200000000000262,
+        "forestFloor": 46.67333333330713
+      },
+      "births": {
+        "round beetle": 11,
+        "leaf hopper": 11,
+        "round bird": 7,
+        "puffy moth": 9,
+        "springy pod": 8,
+        "vine bug": 2,
+        "waxleaf skid": 5,
+        "round fungus": 9,
+        "rolling beetle": 3,
+        "seed-husk skid": 2
+      },
+      "contacts": [
+        {
+          "id": "grandfatherTree:-1:6:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 3.79,
+          "position": {
+            "x": -6.001728353078851,
+            "y": 295.05567851603035,
+            "vx": -0.6434588243771693,
+            "vy": -1.3697985532295558,
+            "mass": 5
+          }
+        },
+        {
+          "id": "grandfatherTree:-1:7:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 4.291666666666667,
+          "position": {
+            "x": -6.458220758128351,
+            "y": 294.5034459873944,
+            "vx": -1.6223900707384389,
+            "vy": -0.4659531964216299,
+            "mass": 5
+          }
+        },
+        {
+          "id": "grandfatherTree:-1:7:1",
+          "kind": "round beetle",
+          "birthBiome": "grandfatherTree",
+          "time": 4.705,
+          "position": {
+            "x": -7.0541255495691075,
+            "y": 294.2893835246997,
+            "vx": -1.8624145758628239,
+            "vy": -0.15442149542909397,
+            "mass": 5
+          }
+        },
+        {
+          "id": "forestFloor:1:0:21",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 17.571666666666665,
+          "position": {
+            "x": 23.76210319199881,
+            "y": 0.24813592993096814,
+            "vx": 3.103740157571271,
+            "vy": 1.125440601379691,
+            "mass": 5
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.8333333333333317,
+          "totalGap": 34.28333333333267,
+          "overOneSeconds": 0.9333333333333346
+        },
+        "960": {
+          "maxGap": 0.9166666666666679,
+          "totalGap": 32.5666666666661,
+          "overOneSeconds": 0
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 1.8433333333333333,
+            "end": 13.388333333333334,
+            "distance": 13.646680340277182
+          }
+        ],
+        "distance": 13.646680340277182,
+        "lastOnset": {
+          "time": 1.8433333333333333,
+          "center": {
+            "x": -1.5288649403827048,
+            "y": 300.09614117087824,
+            "vx": -0.9494465195768766,
+            "vy": -4.149198104378134,
+            "mass": 5
+          },
+          "lastHit": {
+            "time": 1.8266666666666667,
+            "type": "impact",
+            "encounter": null,
+            "strength": 4.361494192070506,
+            "position": {
+              "x": -1.4951659429938151,
+              "y": 299.9944134011045
+            },
+            "material": "wood",
+            "surface": null,
+            "mass": 5
+          }
+        }
+      },
+      "release": {
+        "time": 7.865000000000416,
+        "center": {
+          "x": -2.275811456937365,
+          "y": 300.622991692731,
+          "vx": 0.45516991023752007,
+          "vy": 8.704647004850205,
+          "mass": 5
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -2.0580300204167243,
+              "y": 300.7543698587243
+            },
+            "v": {
+              "x": 3.0667430228159738,
+              "y": 5.116745794913715
+            },
+            "w": -20.859030244449222
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.076583461580116,
+              "y": 300.9435290747215
+            },
+            "v": {
+              "x": 3.717084354010936,
+              "y": 6.7889086798498735
+            },
+            "w": -7.479603447601013
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -2.245349769084335,
+              "y": 300.32081801978563
+            },
+            "v": {
+              "x": -2.0258700613618665,
+              "y": 8.476285583447051
+            },
+            "w": -2.331915648108214
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -2.5824043426882697,
+              "y": 300.2376780609711
+            },
+            "v": {
+              "x": -4.119287511588704,
+              "y": 12.036846214180287
+            },
+            "w": -9.091477410738138
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.309471464296148,
+              "y": 300.61800642442705
+            },
+            "v": {
+              "x": 0.26972931051432725,
+              "y": 9.141551461664926
+            },
+            "w": -13.376640006753904
+          }
+        ]
+      },
+      "end": {
+        "x": 27.02929284869079,
+        "y": 0.24750926863086992,
+        "vx": -9.618538378576561e-06,
+        "vy": 8.314168291220069e-08,
+        "mass": 5
+      },
+      "impacts": 496
+    },
+    {
+      "n": 30,
+      "species": "small-marsupial",
+      "fraction": 0.9,
+      "seed": 29030,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.450000000000038,
+        "openSky": 2.513333333333309,
+        "jungleCanopy": 4.1416666666665005,
+        "forestFloor": 47.89499999997268
+      },
+      "births": {
+        "leaf hopper": 12,
+        "round beetle": 10,
+        "round bird": 6,
+        "puffy moth": 11,
+        "vine bug": 12,
+        "springy pod": 7,
+        "waxleaf skid": 4,
+        "round fungus": 11,
+        "seed-husk skid": 8,
+        "rolling beetle": 4
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.405,
+          "position": {
+            "x": 265.87045439052116,
+            "y": 0.16153746580368042,
+            "vx": 12.130766700650174,
+            "vy": 0.12578516137804918,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.558333333333334,
+          "position": {
+            "x": 267.3314137837405,
+            "y": 0.16207345710584123,
+            "vx": 7.789089416841278,
+            "vy": 0.22042865242258133,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.65,
+          "position": {
+            "x": 267.77863380341427,
+            "y": 0.2103481408262688,
+            "vx": 4.178379414788705,
+            "vy": -0.18490428160577171,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.751666666666667,
+          "position": {
+            "x": 268.1371063234849,
+            "y": 0.18417239453077716,
+            "vx": 2.4735167682791523,
+            "vy": -0.05827387040452697,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.85,
+          "position": {
+            "x": 268.34304240674015,
+            "y": 0.16642645479627863,
+            "vx": 1.6957620526061274,
+            "vy": -0.2122209476221444,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 15.991666666666667,
+          "position": {
+            "x": 268.5038780668605,
+            "y": 0.1643396673906689,
+            "vx": 0.39446168668895293,
+            "vy": 0.10804315025120283,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 16.216666666666665,
+          "position": {
+            "x": 268.5077920234066,
+            "y": 0.1614677481388259,
+            "vx": -0.15545190381723598,
+            "vy": -0.21880832903873312,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 16.311666666666667,
+          "position": {
+            "x": 268.32953943082686,
+            "y": 0.16078781471685477,
+            "vx": -1.7349843473081201,
+            "vy": 0.053602930405744105,
+            "mass": 0.7
+          }
+        },
+        {
+          "id": "forestFloor:14:0:19",
+          "kind": "seed-husk skid",
+          "birthBiome": "forestFloor",
+          "time": 16.59,
+          "position": {
+            "x": 268.11066359553894,
+            "y": 0.15880841491569966,
+            "vx": -0.5368415331902365,
+            "vy": 0.019609642919480353,
+            "mass": 0.7
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 31.866666666666138,
+          "totalGap": 46.98333333333195,
+          "overOneSeconds": 34.383333333332665
+        },
+        "960": {
+          "maxGap": 31.866666666666138,
+          "totalGap": 42.78333333333219,
+          "overOneSeconds": 31.733333333332812
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0.4977133842582405,
+        "lastOnset": {
+          "time": 16.59,
+          "center": {
+            "x": 268.11066359553894,
+            "y": 0.15880841491569966,
+            "vx": -0.5368415331902365,
+            "vy": 0.019609642919480353,
+            "mass": 0.7
+          },
+          "lastHit": {
+            "time": 16.311666666666667,
+            "type": "impact",
+            "encounter": "seed-husk skid",
+            "strength": 0.35525957130310587,
+            "position": {
+              "x": 268.38748902219027,
+              "y": 0.2893256971722471
+            },
+            "material": "leaf",
+            "surface": null,
+            "mass": 0.7
+          }
+        }
+      },
+      "release": {
+        "time": 7.878333333333751,
+        "center": {
+          "x": -1.0910774429110628,
+          "y": 303.2231465221318,
+          "vx": 8.931153399211059,
+          "vy": 16.062416791288268,
+          "mass": 0.7
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.138876180712512,
+              "y": 303.3634918215444
+            },
+            "v": {
+              "x": 10.147305042252983,
+              "y": 16.93191573811055
+            },
+            "w": -8.793336416468488
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.300582009508832,
+              "y": 303.1283273217119
+            },
+            "v": {
+              "x": 7.676255313229871,
+              "y": 18.239937158839208
+            },
+            "w": -6.007218788558019
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -0.9853047684446151,
+              "y": 303.35445076186716
+            },
+            "v": {
+              "x": 12.190965925804415,
+              "y": 14.316427893989387
+            },
+            "w": -32.802132623987944
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -0.7279451683746079,
+              "y": 303.2350437726809
+            },
+            "v": {
+              "x": 8.902543956719509,
+              "y": 11.759927339032352
+            },
+            "w": -11.849442796480204
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.0796449999714313,
+              "y": 303.19528779269893
+            },
+            "v": {
+              "x": 8.359925035649653,
+              "y": 16.142877383720982
+            },
+            "w": -13.102094572498702
+          }
+        ]
+      },
+      "end": {
+        "x": 267.9096550813106,
+        "y": 0.1587963146059805,
+        "vx": -5.849315699917305e-06,
+        "vy": 3.8366155972779323e-07,
+        "mass": 0.7
+      },
+      "impacts": 16
+    },
+    {
+      "n": 31,
+      "species": "tiny-primate",
+      "fraction": 0.9,
+      "seed": 29031,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.306666666666683,
+        "openSky": 2.53666666666664,
+        "jungleCanopy": 2.7066666666666213,
+        "forestFloor": 49.44999999997127
+      },
+      "births": {
+        "round beetle": 9,
+        "leaf hopper": 7,
+        "round bird": 12,
+        "puffy moth": 7,
+        "waxleaf skid": 5,
+        "vine bug": 5,
+        "springy pod": 5,
+        "seed-husk skid": 4,
+        "round fungus": 4
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:1:0:18",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 14.28,
+          "position": {
+            "x": 21.359188994455696,
+            "y": 0.2648435782808869,
+            "vx": 2.1818895874650135,
+            "vy": -2.811210016949095,
+            "mass": 0.8500000000000001
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 42.283333333332216,
+          "totalGap": 53.533333333331576,
+          "overOneSeconds": 45.64999999999869
+        },
+        "960": {
+          "maxGap": 38.73333333333242,
+          "totalGap": 45.399999999998705,
+          "overOneSeconds": 38.4999999999991
+        }
+      },
+      "backward": {
+        "episodes": [
+          {
+            "start": 9.553333333333333,
+            "end": 11.803333333333333,
+            "distance": 4.899735527100693
+          }
+        ],
+        "distance": 4.899735527100693,
+        "lastOnset": {
+          "time": 9.553333333333333,
+          "center": {
+            "x": 26.31341221470767,
+            "y": 0.2683072890095701,
+            "vx": -1.1536523786000683,
+            "vy": 5.367269735087779,
+            "mass": 0.8500000000000001
+          },
+          "lastHit": {
+            "time": 9.551666666666666,
+            "type": "impact",
+            "encounter": null,
+            "strength": 25.648755058556162,
+            "position": {
+              "x": 26.17475884276486,
+              "y": 0.012934645859250499
+            },
+            "material": "ground",
+            "surface": "ground",
+            "mass": 0.85
+          }
+        }
+      },
+      "release": {
+        "time": 7.913333333333757,
+        "center": {
+          "x": -2.050634907583585,
+          "y": 302.18989792756446,
+          "vx": 2.9684830484751688,
+          "vy": 15.263961884119219,
+          "mass": 0.8500000000000001
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.9744736555464824,
+              "y": 302.35044932472766
+            },
+            "v": {
+              "x": 8.170572483230192,
+              "y": 13.461810092967681
+            },
+            "w": -30.04776859584245
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -2.232128756651847,
+              "y": 302.33559992524346
+            },
+            "v": {
+              "x": 6.097471216410782,
+              "y": 19.88683530077256
+            },
+            "w": -15.603559619121683
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.8876933463758896,
+              "y": 302.0311180565211
+            },
+            "v": {
+              "x": 0.16522971959279584,
+              "y": 11.0810666335064
+            },
+            "w": -12.54219924566739
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -2.0160542727248028,
+              "y": 301.8879021950741
+            },
+            "v": {
+              "x": -6.757392757657212,
+              "y": 13.846769314104536
+            },
+            "w": -34.22645096796264
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -2.028092171161882,
+              "y": 302.1773999160907
+            },
+            "v": {
+              "x": 2.7429373648382844,
+              "y": 14.789676265204301
+            },
+            "w": -31.698715936260033
+          }
+        ]
+      },
+      "end": {
+        "x": 21.94483942012638,
+        "y": 0.25702389791113706,
+        "vx": -0.0003981660906440694,
+        "vy": -0.0032681744424491563,
+        "mass": 0.8500000000000001
+      },
+      "impacts": 5
+    },
+    {
+      "n": 32,
+      "species": "frog",
+      "fraction": 0.9,
+      "seed": 29032,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.5150000000000485,
+        "openSky": 2.501666666666644,
+        "jungleCanopy": 1.636666666666691,
+        "forestFloor": 50.34666666663712
+      },
+      "births": {
+        "round beetle": 12,
+        "leaf hopper": 8,
+        "puffy moth": 11,
+        "round bird": 7,
+        "springy pod": 9,
+        "vine bug": 3,
+        "waxleaf skid": 3,
+        "rolling beetle": 5,
+        "round fungus": 8,
+        "seed-husk skid": 4
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:6:0:13",
+          "kind": "rolling beetle",
+          "birthBiome": "forestFloor",
+          "time": 11.693333333333333,
+          "position": {
+            "x": 117.58993821865465,
+            "y": 0.29928389587449417,
+            "vx": 2.809225890236045,
+            "vy": 2.75278021853777,
+            "mass": 1.05
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 37.66666666666581,
+          "totalGap": 47.18333333333194,
+          "overOneSeconds": 37.79999999999914
+        },
+        "960": {
+          "maxGap": 37.66666666666581,
+          "totalGap": 44.48333333333209,
+          "overOneSeconds": 37.033333333332514
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 0
+      },
+      "release": {
+        "time": 8.126666666667123,
+        "center": {
+          "x": -0.8340678812534182,
+          "y": 303.69822198614,
+          "vx": 9.413683720327473,
+          "vy": 16.422492967755634,
+          "mass": 1.05
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -0.8442700756872956,
+              "y": 303.4809992631236
+            },
+            "v": {
+              "x": 7.9790020440889755,
+              "y": 16.225710852404088
+            },
+            "w": -2.1661106266619488
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -0.6055075633537975,
+              "y": 303.65081177944074
+            },
+            "v": {
+              "x": 8.836618731878815,
+              "y": 13.924044444635618
+            },
+            "w": -11.963558654802666
+          },
+          {
+            "id": "rear-shin",
+            "p": {
+              "x": -1.14485644140307,
+              "y": 303.7926624673337
+            },
+            "v": {
+              "x": 10.105243745099495,
+              "y": 19.43137633096639
+            },
+            "w": -0.5592210585643294
+          },
+          {
+            "id": "rear-thigh",
+            "p": {
+              "x": -1.012988421888191,
+              "y": 303.8001080291834
+            },
+            "v": {
+              "x": 10.472458272806191,
+              "y": 18.593991972800385
+            },
+            "w": -12.516617520242832
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -0.8092033764391328,
+              "y": 303.7134760403523
+            },
+            "v": {
+              "x": 9.489546897014991,
+              "y": 16.23441846654926
+            },
+            "w": -10.568968293644108
+          }
+        ]
+      },
+      "end": {
+        "x": 123.10714089217099,
+        "y": 0.19383385485263283,
+        "vx": 3.975981706621879e-05,
+        "vy": 1.1248230050856146e-07,
+        "mass": 1.05
+      },
+      "impacts": 11
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 86400,
+    "warnings": 4073,
+    "maxSpeed": 79.29527122595563,
+    "collisions": [
+      {
+        "key": "0:480:jungleCanopy:4:0:17",
+        "species": "salamander",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 480,
+        "time": 22.78541666666178,
+        "speed": 5.4408640392490515,
+        "warningLead": null,
+        "visibleLead": 2.1887499999980093,
+        "readableLead": 1.7720833333317216,
+        "continuousNoticeLead": 1.7720833333317216,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:jungleCanopy:4:0:17",
+        "species": "salamander",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 960,
+        "time": 22.78541666666178,
+        "speed": 5.4408640392490515,
+        "warningLead": null,
+        "visibleLead": 2.8554166666640697,
+        "readableLead": 2.7220833333308576,
+        "continuousNoticeLead": 2.7220833333308576,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:forestFloor:4:0:19",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 24.277916666660424,
+        "speed": 0.5203365230653829,
+        "warningLead": null,
+        "visibleLead": 2.0979166666647586,
+        "readableLead": 1.5479166666652588,
+        "continuousNoticeLead": 1.5479166666652588,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:forestFloor:4:0:19",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 24.277916666660424,
+        "speed": 0.5203365230653829,
+        "warningLead": null,
+        "visibleLead": 2.831249999997425,
+        "readableLead": 2.831249999997425,
+        "continuousNoticeLead": 2.831249999997425,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:forestFloor:4:0:25",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 26.745833333324846,
+        "speed": 4.3155158831326155,
+        "warningLead": null,
+        "visibleLead": 0.8324999999992428,
+        "readableLead": 0.8324999999992428,
+        "continuousNoticeLead": 0.8324999999992428,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:forestFloor:4:0:25",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 26.745833333324846,
+        "speed": 4.3155158831326155,
+        "warningLead": null,
+        "visibleLead": 0.8324999999992428,
+        "readableLead": 0.8324999999992428,
+        "continuousNoticeLead": 0.8324999999992428,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "1:480:forestFloor:14:0:16",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 20.005416666664615,
+        "speed": 3.346222098823644,
+        "warningLead": 1.25708333333219,
+        "visibleLead": 0.5070833333328721,
+        "readableLead": 0.3904166666663116,
+        "continuousNoticeLead": 0.5237499999995237,
+        "maxUncoveredAfterNotice": 0.4833333333333333
+      },
+      {
+        "key": "1:960:forestFloor:14:0:16",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 20.005416666664615,
+        "speed": 3.346222098823644,
+        "warningLead": 1.25708333333219,
+        "visibleLead": 0.9570833333324629,
+        "readableLead": 0.8404166666659023,
+        "continuousNoticeLead": 0.8404166666659023,
+        "maxUncoveredAfterNotice": 0.16666666666666666
+      },
+      {
+        "key": "3:480:forestFloor:6:0:13",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 18.962083333332327,
+        "speed": 8.067257578314091,
+        "warningLead": null,
+        "visibleLead": 0.8220833333325857,
+        "readableLead": 0.605416666666116,
+        "continuousNoticeLead": 0.605416666666116,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "3:960:forestFloor:6:0:13",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 18.962083333332327,
+        "speed": 8.067257578314091,
+        "warningLead": null,
+        "visibleLead": 1.5054166666652975,
+        "readableLead": 1.2887499999988279,
+        "continuousNoticeLead": 1.2887499999988279,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "3:480:forestFloor:7:0:17",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 23.52333333332818,
+        "speed": 0.19991118200321314,
+        "warningLead": 0.8666666666658784,
+        "visibleLead": 1.4333333333320297,
+        "readableLead": 0.7999999999992724,
+        "continuousNoticeLead": 0.8666666666658784,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "3:960:forestFloor:7:0:17",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 23.52333333332818,
+        "speed": 0.19991118200321314,
+        "warningLead": null,
+        "visibleLead": 2.5999999999976353,
+        "readableLead": 2.09999999999809,
+        "continuousNoticeLead": 2.09999999999809,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "4:480:forestFloor:14:0:23",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 25.90666666665919,
+        "speed": 2.4184110717588077,
+        "warningLead": 1.183333333332257,
+        "visibleLead": 0.29999999999972715,
+        "readableLead": 0.14999999999986358,
+        "continuousNoticeLead": 0.7999999999992724,
+        "maxUncoveredAfterNotice": 0.3
+      },
+      {
+        "key": "4:960:forestFloor:14:0:23",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 25.90666666665919,
+        "speed": 2.4184110717588077,
+        "warningLead": 1.183333333332257,
+        "visibleLead": 0.6166666666661058,
+        "readableLead": 0.48333333333289374,
+        "continuousNoticeLead": 0.7999999999992724,
+        "maxUncoveredAfterNotice": 0.3
+      },
+      {
+        "key": "4:480:forestFloor:14:0:27",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 28.17499999999046,
+        "speed": 0.10520566993471779,
+        "warningLead": null,
+        "visibleLead": 0.7683333333326345,
+        "readableLead": 0.7683333333326345,
+        "continuousNoticeLead": 0.7683333333326345,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "4:960:forestFloor:14:0:27",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 28.17499999999046,
+        "speed": 0.10520566993471779,
+        "warningLead": null,
+        "visibleLead": 0.7683333333326345,
+        "readableLead": 0.7683333333326345,
+        "continuousNoticeLead": 0.7683333333326345,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "4:480:forestFloor:14:0:25",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 30.771666666654767,
+        "speed": 0.41504510131336203,
+        "warningLead": null,
+        "visibleLead": 4.881666666662227,
+        "readableLead": 4.881666666662227,
+        "continuousNoticeLead": 4.881666666662227,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "4:960:forestFloor:14:0:25",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 30.771666666654767,
+        "speed": 0.41504510131336203,
+        "warningLead": null,
+        "visibleLead": 4.881666666662227,
+        "readableLead": 4.881666666662227,
+        "continuousNoticeLead": 4.881666666662227,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:480:grandfatherTree:0:8:1",
+        "species": "turtle",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 9.495833333333929,
+        "speed": 11.502226717610242,
+        "warningLead": 1.0841666666667606,
+        "visibleLead": 1.2008333333334456,
+        "readableLead": 0.9341666666667372,
+        "continuousNoticeLead": 1.0841666666667606,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:960:grandfatherTree:0:8:1",
+        "species": "turtle",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 9.495833333333929,
+        "speed": 11.502226717610242,
+        "warningLead": 1.0841666666667606,
+        "visibleLead": 1.467500000000154,
+        "readableLead": 0.8675000000000601,
+        "continuousNoticeLead": 1.0841666666667606,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:480:grandfatherTree:1:9:1",
+        "species": "turtle",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 16.190833333334698,
+        "speed": 48.45409038860019,
+        "warningLead": 0.1291666666665492,
+        "visibleLead": 0.02916666666664014,
+        "readableLead": 0.02916666666664014,
+        "continuousNoticeLead": 0.1291666666665492,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:960:grandfatherTree:1:9:1",
+        "species": "turtle",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 16.190833333334698,
+        "speed": 48.45409038860019,
+        "warningLead": 0.1291666666665492,
+        "visibleLead": 5.862500000000713,
+        "readableLead": 5.2791666666672885,
+        "continuousNoticeLead": 0.1291666666665492,
+        "maxUncoveredAfterNotice": 4.0666666666666575
+      },
+      {
+        "key": "5:480:forestFloor:1:0:12",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 17.001250000000628,
+        "speed": 7.0829888914401335,
+        "warningLead": null,
+        "visibleLead": 0.6895833333327062,
+        "readableLead": 0.6562499999994031,
+        "continuousNoticeLead": 0.6562499999994031,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:960:forestFloor:1:0:12",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 17.001250000000628,
+        "speed": 7.0829888914401335,
+        "warningLead": null,
+        "visibleLead": 0.6895833333327062,
+        "readableLead": 0.6895833333327062,
+        "continuousNoticeLead": 0.6895833333327062,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:480:forestFloor:2:0:13",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 20.31666666666428,
+        "speed": 0.3795550777631188,
+        "warningLead": null,
+        "visibleLead": 2.2716666666646006,
+        "readableLead": 1.5383333333319342,
+        "continuousNoticeLead": 1.5383333333319342,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:960:forestFloor:2:0:13",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 20.31666666666428,
+        "speed": 0.3795550777631188,
+        "warningLead": null,
+        "visibleLead": 3.304999999996994,
+        "readableLead": 2.9549999999973124,
+        "continuousNoticeLead": 2.9549999999973124,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "5:480:forestFloor:2:0:14",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 20.3683333333309,
+        "speed": 1.6082302079696753,
+        "warningLead": 2.3233333333312203,
+        "visibleLead": 2.2899999999979173,
+        "readableLead": 1.9399999999982356,
+        "continuousNoticeLead": 1.9399999999982356,
+        "maxUncoveredAfterNotice": 0.36666666666666664
+      },
+      {
+        "key": "5:960:forestFloor:2:0:14",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 20.3683333333309,
+        "speed": 1.6082302079696753,
+        "warningLead": null,
+        "visibleLead": 2.706666666664205,
+        "readableLead": 2.706666666664205,
+        "continuousNoticeLead": 2.706666666664205,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:480:grandfatherTree:0:9:1",
+        "species": "snake",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 480,
+        "time": 8.85541666666719,
+        "speed": 8.520240656244807,
+        "warningLead": 1.148750000000133,
+        "visibleLead": 0.848750000000086,
+        "readableLead": 0.5320833333333699,
+        "continuousNoticeLead": 1.148750000000133,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:960:grandfatherTree:0:9:1",
+        "species": "snake",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 960,
+        "time": 8.85541666666719,
+        "speed": 8.520240656244807,
+        "warningLead": 1.148750000000133,
+        "visibleLead": 0.7320833333334011,
+        "readableLead": 0.3987500000000157,
+        "continuousNoticeLead": 1.148750000000133,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:480:jungleCanopy:2:3:16",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 21.371666666663216,
+        "speed": 7.783583016872034,
+        "warningLead": 0.6649999999993952,
+        "visibleLead": 0.39833333333297105,
+        "readableLead": 0.21499999999980446,
+        "continuousNoticeLead": 0.6649999999993952,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:960:jungleCanopy:2:3:16",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 21.371666666663216,
+        "speed": 7.783583016872034,
+        "warningLead": 0.6649999999993952,
+        "visibleLead": 2.464999999997758,
+        "readableLead": 0.11499999999989541,
+        "continuousNoticeLead": 0.6649999999993952,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:480:jungleCanopy:3:2:15",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 480,
+        "time": 23.384583333328052,
+        "speed": 6.917856082305028,
+        "warningLead": null,
+        "visibleLead": 1.294583333332156,
+        "readableLead": 0.7779166666659592,
+        "continuousNoticeLead": 0.7779166666659592,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:960:jungleCanopy:3:2:15",
+        "species": "snake",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 960,
+        "time": 23.384583333328052,
+        "speed": 6.917856082305028,
+        "warningLead": 0.5612499999994895,
+        "visibleLead": 2.1279166666647313,
+        "readableLead": 0.4945833333328835,
+        "continuousNoticeLead": 0.5612499999994895,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:480:forestFloor:3:0:21",
+        "species": "snake",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 23.48583333332796,
+        "speed": 5.106060497999022,
+        "warningLead": null,
+        "visibleLead": 0.779166666665958,
+        "readableLead": 0.779166666665958,
+        "continuousNoticeLead": 0.779166666665958,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "6:960:forestFloor:3:0:21",
+        "species": "snake",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 23.48583333332796,
+        "speed": 5.106060497999022,
+        "warningLead": null,
+        "visibleLead": 0.779166666665958,
+        "readableLead": 0.779166666665958,
+        "continuousNoticeLead": 0.779166666665958,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "7:480:jungleCanopy:3:4:12",
+        "species": "chipmunk",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 480,
+        "time": 18.698333333332567,
+        "speed": 9.677198220461676,
+        "warningLead": 1.203333333332239,
+        "visibleLead": 0.386666666666315,
+        "readableLead": 0.26999999999975444,
+        "continuousNoticeLead": 1.203333333332239,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "7:960:jungleCanopy:3:4:12",
+        "species": "chipmunk",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 960,
+        "time": 18.698333333332567,
+        "speed": 9.677198220461676,
+        "warningLead": 1.203333333332239,
+        "visibleLead": 0.31999999999970896,
+        "readableLead": 0.2199999999997999,
+        "continuousNoticeLead": 1.203333333332239,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "7:480:jungleCanopy:3:2:12",
+        "species": "chipmunk",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 480,
+        "time": 21.44124999999674,
+        "speed": 4.327030995460723,
+        "warningLead": 0.7629166666659728,
+        "visibleLead": 2.446249999997775,
+        "readableLead": 2.2629166666646086,
+        "continuousNoticeLead": 0.7629166666659728,
+        "maxUncoveredAfterNotice": 1.4499999999999997
+      },
+      {
+        "key": "7:960:jungleCanopy:3:2:12",
+        "species": "chipmunk",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 960,
+        "time": 21.44124999999674,
+        "speed": 4.327030995460723,
+        "warningLead": 0.7629166666659728,
+        "visibleLead": 3.4795833333301687,
+        "readableLead": 3.2795833333303506,
+        "continuousNoticeLead": 0.7629166666659728,
+        "maxUncoveredAfterNotice": 1.5333333333333328
+      },
+      {
+        "key": "7:480:jungleCanopy:3:1:12",
+        "species": "chipmunk",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 22.599166666662352,
+        "speed": 0.47191050792019695,
+        "warningLead": 1.0041666666657534,
+        "visibleLead": 2.07083333333145,
+        "readableLead": 0.8708333333325413,
+        "continuousNoticeLead": 1.0041666666657534,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "7:960:jungleCanopy:3:1:12",
+        "species": "chipmunk",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 22.599166666662352,
+        "speed": 0.47191050792019695,
+        "warningLead": null,
+        "visibleLead": 3.6041666666633887,
+        "readableLead": 3.187499999997101,
+        "continuousNoticeLead": 3.187499999997101,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:480:grandfatherTree:0:9:1",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 9.87208333333398,
+        "speed": 11.39723720889738,
+        "warningLead": 0.8437500000000497,
+        "visibleLead": 1.29375000000012,
+        "readableLead": 0.8270833333333805,
+        "continuousNoticeLead": 0.8437500000000497,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:960:grandfatherTree:0:9:1",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 9.87208333333398,
+        "speed": 11.39723720889738,
+        "warningLead": 0.8437500000000497,
+        "visibleLead": 1.0770833333334195,
+        "readableLead": 0.5437500000000028,
+        "continuousNoticeLead": 0.8437500000000497,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:480:grandfatherTree:5:0:15",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 19.644999999998177,
+        "speed": 11.588318035566326,
+        "warningLead": null,
+        "visibleLead": 0.6333333333327573,
+        "readableLead": 0.5166666666661968,
+        "continuousNoticeLead": 0.5166666666661968,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:960:grandfatherTree:5:0:15",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 19.644999999998177,
+        "speed": 11.588318035566326,
+        "warningLead": null,
+        "visibleLead": 1.149999999998954,
+        "readableLead": 1.0666666666656965,
+        "continuousNoticeLead": 1.0666666666656965,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:480:openSky:7:13:19",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 480,
+        "time": 23.191666666661618,
+        "speed": 15.717336955864411,
+        "warningLead": 0.47999999999956344,
+        "visibleLead": 0.4466666666662604,
+        "readableLead": 0.32999999999969987,
+        "continuousNoticeLead": 0.47999999999956344,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:960:openSky:7:13:19",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 960,
+        "time": 23.191666666661618,
+        "speed": 15.717336955864411,
+        "warningLead": null,
+        "visibleLead": 0.9299999999991542,
+        "readableLead": 0.7966666666659421,
+        "continuousNoticeLead": 0.7966666666659421,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:480:openSky:10:8:25",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 480,
+        "time": 27.39833333332446,
+        "speed": 9.626909049437211,
+        "warningLead": 0.5033333333328756,
+        "visibleLead": 0.419999999999618,
+        "readableLead": 0.30333333333305745,
+        "continuousNoticeLead": 0.5033333333328756,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:960:openSky:10:8:25",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "puffy moth",
+        "width": 960,
+        "time": 27.39833333332446,
+        "speed": 9.626909049437211,
+        "warningLead": 0.5033333333328756,
+        "visibleLead": 0.7199999999993452,
+        "readableLead": 0.28666666666640594,
+        "continuousNoticeLead": 0.5033333333328756,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:480:openSky:13:2:34",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 480,
+        "time": 33.80583333331863,
+        "speed": 3.5560799630871323,
+        "warningLead": 0.6774999999993838,
+        "visibleLead": 0.4608333333329142,
+        "readableLead": 0.34416666666635365,
+        "continuousNoticeLead": 0.6774999999993838,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "8:960:openSky:13:2:34",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 960,
+        "time": 33.80583333331863,
+        "speed": 3.5560799630871323,
+        "warningLead": null,
+        "visibleLead": 0.9108333333325049,
+        "readableLead": 0.8108333333325959,
+        "continuousNoticeLead": 0.8108333333325959,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "9:480:jungleCanopy:0:2:13",
+        "species": "armadillo",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 480,
+        "time": 19.698749999998228,
+        "speed": 12.154075303829938,
+        "warningLead": 0.4954166666662161,
+        "visibleLead": 0.295416666666398,
+        "readableLead": 0.24541666666644346,
+        "continuousNoticeLead": 0.4954166666662161,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "9:960:jungleCanopy:0:2:13",
+        "species": "armadillo",
+        "biome": "jungleCanopy",
+        "kind": "vine bug",
+        "width": 960,
+        "time": 19.698749999998228,
+        "speed": 12.154075303829938,
+        "warningLead": 0.4954166666662161,
+        "visibleLead": 1.1287499999989734,
+        "readableLead": 1.0287499999990644,
+        "continuousNoticeLead": 0.4954166666662161,
+        "maxUncoveredAfterNotice": 0.31666666666666665
+      },
+      {
+        "key": "9:480:jungleCanopy:0:1:13",
+        "species": "armadillo",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 20.14499999999782,
+        "speed": 13.423973038741005,
+        "warningLead": 1.2083333333322344,
+        "visibleLead": 0.6749999999993861,
+        "readableLead": 0.35833333333300743,
+        "continuousNoticeLead": 1.2083333333322344,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "9:960:jungleCanopy:0:1:13",
+        "species": "armadillo",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 20.14499999999782,
+        "speed": 13.423973038741005,
+        "warningLead": 1.2083333333322344,
+        "visibleLead": 0.5249999999995225,
+        "readableLead": 0.17499999999984084,
+        "continuousNoticeLead": 1.2083333333322344,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "9:480:jungleCanopy:-1:1:17",
+        "species": "armadillo",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 480,
+        "time": 24.098749999994226,
+        "speed": 0.32914949067404375,
+        "warningLead": null,
+        "visibleLead": 2.8287499999974273,
+        "readableLead": 2.495416666664397,
+        "continuousNoticeLead": 0.8454166666658978,
+        "maxUncoveredAfterNotice": 0.850000000000001
+      },
+      {
+        "key": "9:960:jungleCanopy:-1:1:17",
+        "species": "armadillo",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 960,
+        "time": 24.098749999994226,
+        "speed": 0.32914949067404375,
+        "warningLead": 0.6620833333327312,
+        "visibleLead": 3.245416666663715,
+        "readableLead": 2.978749999997291,
+        "continuousNoticeLead": 0.6620833333327312,
+        "maxUncoveredAfterNotice": 1.3833333333333333
+      },
+      {
+        "key": "10:480:jungleCanopy:7:5:12",
+        "species": "small-marsupial",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 16.685000000000834,
+        "speed": 40.0836927104056,
+        "warningLead": 0.48666666666622405,
+        "visibleLead": 0.13666666666654237,
+        "readableLead": 0.08666666666658784,
+        "continuousNoticeLead": 0.48666666666622405,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "10:960:jungleCanopy:7:5:12",
+        "species": "small-marsupial",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 16.685000000000834,
+        "speed": 40.0836927104056,
+        "warningLead": 0.48666666666622405,
+        "visibleLead": 0.28666666666640594,
+        "readableLead": 0.2199999999997999,
+        "continuousNoticeLead": 0.48666666666622405,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "10:480:forestFloor:16:0:18",
+        "species": "small-marsupial",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 21.464166666663154,
+        "speed": 0.6448226940495391,
+        "warningLead": 0.7491666666659853,
+        "visibleLead": 0.1658333333331825,
+        "readableLead": 0.08249999999992497,
+        "continuousNoticeLead": 0.7491666666659853,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "10:960:forestFloor:16:0:18",
+        "species": "small-marsupial",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 21.464166666663154,
+        "speed": 0.6448226940495391,
+        "warningLead": 0.7491666666659853,
+        "visibleLead": 0.3491666666663491,
+        "readableLead": 0.26583333333309156,
+        "continuousNoticeLead": 0.7491666666659853,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "11:480:jungleCanopy:6:6:11",
+        "species": "tiny-primate",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 16.276666666667985,
+        "speed": 28.899811795137722,
+        "warningLead": 0.489999999999732,
+        "visibleLead": 0.1733333333331757,
+        "readableLead": 0.08999999999991815,
+        "continuousNoticeLead": 0.489999999999732,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "11:960:jungleCanopy:6:6:11",
+        "species": "tiny-primate",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 16.276666666667985,
+        "speed": 28.899811795137722,
+        "warningLead": 0.489999999999732,
+        "visibleLead": 0.35666666666642577,
+        "readableLead": 0.27333333333308474,
+        "continuousNoticeLead": 0.489999999999732,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "11:480:forestFloor:14:0:19",
+        "species": "tiny-primate",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 22.314999999995827,
+        "speed": 16.938350197569378,
+        "warningLead": 0.6616666666660649,
+        "visibleLead": 0.37833333333298924,
+        "readableLead": 0.22833333333312567,
+        "continuousNoticeLead": 0.6616666666660649,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "11:960:forestFloor:14:0:19",
+        "species": "tiny-primate",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 22.314999999995827,
+        "speed": 16.938350197569378,
+        "warningLead": 0.6616666666660649,
+        "visibleLead": 0.6783333333327164,
+        "readableLead": 0.5449999999995043,
+        "continuousNoticeLead": 0.6616666666660649,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "12:480:jungleCanopy:5:0:12",
+        "species": "frog",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 17.493333333333663,
+        "speed": 11.010854402957813,
+        "warningLead": 1.0316666666657284,
+        "visibleLead": 0.8816666666658648,
+        "readableLead": 0.4649999999995771,
+        "continuousNoticeLead": 1.0316666666657284,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "12:960:jungleCanopy:5:0:12",
+        "species": "frog",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 17.493333333333663,
+        "speed": 11.010854402957813,
+        "warningLead": 1.0316666666657284,
+        "visibleLead": 1.2649999999988495,
+        "readableLead": 1.2316666666655465,
+        "continuousNoticeLead": 1.0316666666657284,
+        "maxUncoveredAfterNotice": 0.09999999999999999
+      },
+      {
+        "key": "12:480:forestFloor:5:0:17",
+        "species": "frog",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 20.632499999997474,
+        "speed": 4.46305678305152,
+        "warningLead": null,
+        "visibleLead": 0.8208333333325868,
+        "readableLead": 0.8208333333325868,
+        "continuousNoticeLead": 0.8208333333325868,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "12:960:forestFloor:5:0:17",
+        "species": "frog",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 20.632499999997474,
+        "speed": 4.46305678305152,
+        "warningLead": null,
+        "visibleLead": 0.8208333333325868,
+        "readableLead": 0.8208333333325868,
+        "continuousNoticeLead": 0.8208333333325868,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "14:480:forestFloor:10:0:22",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 25.375416666659827,
+        "speed": 5.198132525276179,
+        "warningLead": 0.5920833333327948,
+        "visibleLead": 0.7587499999993099,
+        "readableLead": 0.4754166666662343,
+        "continuousNoticeLead": 0.5920833333327948,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "14:960:forestFloor:10:0:22",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 25.375416666659827,
+        "speed": 5.198132525276179,
+        "warningLead": null,
+        "visibleLead": 0.7754166666659614,
+        "readableLead": 0.7754166666659614,
+        "continuousNoticeLead": 0.7754166666659614,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "14:480:forestFloor:10:0:23",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 26.075833333325857,
+        "speed": 0.4601646039700686,
+        "warningLead": null,
+        "visibleLead": 0.7758333333326277,
+        "readableLead": 0.7758333333326277,
+        "continuousNoticeLead": 0.7758333333326277,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "14:960:forestFloor:10:0:23",
+        "species": "salamander",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 26.075833333325857,
+        "speed": 0.4601646039700686,
+        "warningLead": null,
+        "visibleLead": 0.7758333333326277,
+        "readableLead": 0.7758333333326277,
+        "continuousNoticeLead": 0.7758333333326277,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "15:480:forestFloor:11:0:19",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 22.826666666662007,
+        "speed": 13.331855317473641,
+        "warningLead": 0.6483333333327437,
+        "visibleLead": 0.43166666666627407,
+        "readableLead": 0.2816666666664105,
+        "continuousNoticeLead": 0.6483333333327437,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "15:960:forestFloor:11:0:19",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 22.826666666662007,
+        "speed": 13.331855317473641,
+        "warningLead": 0.6483333333327437,
+        "visibleLead": 0.7649999999993042,
+        "readableLead": 0.6149999999994407,
+        "continuousNoticeLead": 0.6483333333327437,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "15:480:forestFloor:12:0:20",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 23.994166666660945,
+        "speed": 1.6478989156054606,
+        "warningLead": 0.9991666666657579,
+        "visibleLead": 0.6658333333327278,
+        "readableLead": 0.48249999999956117,
+        "continuousNoticeLead": 0.5324999999995157,
+        "maxUncoveredAfterNotice": 0.03333333333333333
+      },
+      {
+        "key": "15:960:forestFloor:12:0:20",
+        "species": "mouse",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 23.994166666660945,
+        "speed": 1.6478989156054606,
+        "warningLead": null,
+        "visibleLead": 0.9991666666657579,
+        "readableLead": 0.9991666666657579,
+        "continuousNoticeLead": 0.9991666666657579,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "16:480:jungleCanopy:0:4:16",
+        "species": "turtle",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 480,
+        "time": 22.36749999999356,
+        "speed": 8.239077494641851,
+        "warningLead": 1.1741666666655988,
+        "visibleLead": 2.324166666664553,
+        "readableLead": 0.19083333333315977,
+        "continuousNoticeLead": 1.1741666666655988,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "16:960:jungleCanopy:0:4:16",
+        "species": "turtle",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 960,
+        "time": 22.36749999999356,
+        "speed": 8.239077494641851,
+        "warningLead": 1.1741666666655988,
+        "visibleLead": 0.2741666666664173,
+        "readableLead": 0.12416666666655374,
+        "continuousNoticeLead": 1.1741666666655988,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "16:480:jungleCanopy:1:0:16",
+        "species": "turtle",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 25.407083333324127,
+        "speed": 0.8075817925157215,
+        "warningLead": 1.2470833333321991,
+        "visibleLead": 1.14708333333229,
+        "readableLead": 0.6970833333326993,
+        "continuousNoticeLead": 1.113749999998987,
+        "maxUncoveredAfterNotice": 0.09999999999999999
+      },
+      {
+        "key": "16:960:jungleCanopy:1:0:16",
+        "species": "turtle",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 25.407083333324127,
+        "speed": 0.8075817925157215,
+        "warningLead": null,
+        "visibleLead": 2.097083333331426,
+        "readableLead": 1.7137499999984414,
+        "continuousNoticeLead": 1.7137499999984414,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "16:480:forestFloor:1:0:20",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 26.018749999990238,
+        "speed": 0.18038181357302535,
+        "warningLead": 1.7920833333317034,
+        "visibleLead": 1.6920833333317944,
+        "readableLead": 1.4254166666653703,
+        "continuousNoticeLead": 1.4254166666653703,
+        "maxUncoveredAfterNotice": 0.16666666666666666
+      },
+      {
+        "key": "16:960:forestFloor:1:0:20",
+        "species": "turtle",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 26.018749999990238,
+        "speed": 0.18038181357302535,
+        "warningLead": null,
+        "visibleLead": 2.592083333330976,
+        "readableLead": 2.3754166666645062,
+        "continuousNoticeLead": 2.3754166666645062,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "17:480:forestFloor:16:0:23",
+        "species": "snake",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 26.16374999999227,
+        "speed": 8.552402752564642,
+        "warningLead": 0.7787499999992917,
+        "visibleLead": 0.3454166666663525,
+        "readableLead": 0.17874999999983743,
+        "continuousNoticeLead": 0.7787499999992917,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "17:960:forestFloor:16:0:23",
+        "species": "snake",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 26.16374999999227,
+        "speed": 8.552402752564642,
+        "warningLead": 0.7787499999992917,
+        "visibleLead": 0.6954166666660342,
+        "readableLead": 0.5287499999995191,
+        "continuousNoticeLead": 0.7787499999992917,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "17:480:forestFloor:16:0:24",
+        "species": "snake",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 26.85833333332497,
+        "speed": 0.13673939927782283,
+        "warningLead": null,
+        "visibleLead": 0.7899999999992815,
+        "readableLead": 0.7899999999992815,
+        "continuousNoticeLead": 0.7899999999992815,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "17:960:forestFloor:16:0:24",
+        "species": "snake",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 26.85833333332497,
+        "speed": 0.13673939927782283,
+        "warningLead": null,
+        "visibleLead": 0.7899999999992815,
+        "readableLead": 0.7899999999992815,
+        "continuousNoticeLead": 0.7899999999992815,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "18:480:forestFloor:4:0:17",
+        "species": "chipmunk",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 21.76999999999644,
+        "speed": 6.829991051957257,
+        "warningLead": 0.8799999999991996,
+        "visibleLead": 0.66333333333273,
+        "readableLead": 0.3633333333330029,
+        "continuousNoticeLead": 0.8799999999991996,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "18:960:forestFloor:4:0:17",
+        "species": "chipmunk",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 21.76999999999644,
+        "speed": 6.829991051957257,
+        "warningLead": null,
+        "visibleLead": 0.9466666666658057,
+        "readableLead": 0.9466666666658057,
+        "continuousNoticeLead": 0.9466666666658057,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:480:grandfatherTree:6:1:18",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 480,
+        "time": 22.394583333329205,
+        "speed": 6.171723675936885,
+        "warningLead": 0.6579166666660683,
+        "visibleLead": 0.5245833333328562,
+        "readableLead": 0.4245833333329472,
+        "continuousNoticeLead": 0.6579166666660683,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:960:grandfatherTree:6:1:18",
+        "species": "flying-squirrel",
+        "biome": "grandfatherTree",
+        "kind": "leaf hopper",
+        "width": 960,
+        "time": 22.394583333329205,
+        "speed": 6.171723675936885,
+        "warningLead": null,
+        "visibleLead": 1.074583333332356,
+        "readableLead": 1.00791666666575,
+        "continuousNoticeLead": 1.00791666666575,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:480:openSky:12:12:31",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 480,
+        "time": 32.76416666665311,
+        "speed": 13.697749516541382,
+        "warningLead": 0.6108333333327778,
+        "visibleLead": 0.7108333333326868,
+        "readableLead": 0.5608333333328233,
+        "continuousNoticeLead": 0.6108333333327778,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:960:openSky:12:12:31",
+        "species": "flying-squirrel",
+        "biome": "openSky",
+        "kind": "round bird",
+        "width": 960,
+        "time": 32.76416666665311,
+        "speed": 13.697749516541382,
+        "warningLead": 0.6108333333327778,
+        "visibleLead": 0.8774999999992055,
+        "readableLead": 0.36083333333300516,
+        "continuousNoticeLead": 0.6108333333327778,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:480:jungleCanopy:24:14:60",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 480,
+        "time": 54.52999999996665,
+        "speed": 14.07964843052355,
+        "warningLead": 0.5933333333327937,
+        "visibleLead": 0.5766666666661422,
+        "readableLead": 0.4266666666662786,
+        "continuousNoticeLead": 0.5933333333327937,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:960:jungleCanopy:24:14:60",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 960,
+        "time": 54.52999999996665,
+        "speed": 14.07964843052355,
+        "warningLead": 0.5933333333327937,
+        "visibleLead": 1.1433333333322935,
+        "readableLead": 0.4266666666662786,
+        "continuousNoticeLead": 0.5933333333327937,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:480:jungleCanopy:30:7:72",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 480,
+        "time": 63.6395833332917,
+        "speed": 5.620910308401928,
+        "warningLead": 0.8362499999992394,
+        "visibleLead": 0.5529166666661638,
+        "readableLead": 0.3862499999996487,
+        "continuousNoticeLead": 0.8362499999992394,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:960:jungleCanopy:30:7:72",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "springy pod",
+        "width": 960,
+        "time": 63.6395833332917,
+        "speed": 5.620910308401928,
+        "warningLead": 0.8362499999992394,
+        "visibleLead": 0.9695833333324515,
+        "readableLead": 0.4195833333329517,
+        "continuousNoticeLead": 0.8362499999992394,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:480:jungleCanopy:30:7:73",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 64.75124999995735,
+        "speed": 15.862879801956632,
+        "warningLead": 0.8479166666658955,
+        "visibleLead": 1.1312499999989711,
+        "readableLead": 0.4979166666662138,
+        "continuousNoticeLead": 0.8479166666658955,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "19:960:jungleCanopy:30:7:73",
+        "species": "flying-squirrel",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 64.75124999995735,
+        "speed": 15.862879801956632,
+        "warningLead": 0.8479166666658955,
+        "visibleLead": 0.8145833333325925,
+        "readableLead": 0.3145833333330472,
+        "continuousNoticeLead": 0.8479166666658955,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "20:480:grandfatherTree:-1:6:1",
+        "species": "armadillo",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 11.655416666666577,
+        "speed": 1.5134025687498462,
+        "warningLead": null,
+        "visibleLead": 2.0570833333325567,
+        "readableLead": 1.773749999999179,
+        "continuousNoticeLead": 1.773749999999179,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "20:960:grandfatherTree:-1:6:1",
+        "species": "armadillo",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 11.655416666666577,
+        "speed": 1.5134025687498462,
+        "warningLead": 1.4737499999991321,
+        "visibleLead": 1.773749999999179,
+        "readableLead": 1.407083333332455,
+        "continuousNoticeLead": 1.4737499999991321,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "20:480:grandfatherTree:-1:7:1",
+        "species": "armadillo",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 480,
+        "time": 12.15708333333285,
+        "speed": 1.687975687883629,
+        "warningLead": null,
+        "visibleLead": 3.475416666665639,
+        "readableLead": 3.475416666665639,
+        "continuousNoticeLead": 3.475416666665639,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "20:960:grandfatherTree:-1:7:1",
+        "species": "armadillo",
+        "biome": "grandfatherTree",
+        "kind": "round beetle",
+        "width": 960,
+        "time": 12.15708333333285,
+        "speed": 1.687975687883629,
+        "warningLead": null,
+        "visibleLead": 3.475416666665639,
+        "readableLead": 3.475416666665639,
+        "continuousNoticeLead": 3.475416666665639,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "20:480:forestFloor:1:0:21",
+        "species": "armadillo",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 25.43749999998973,
+        "speed": 3.301487469755779,
+        "warningLead": 1.4224999999987062,
+        "visibleLead": 0.889166666665858,
+        "readableLead": 0.6391666666660853,
+        "continuousNoticeLead": 0.6391666666660853,
+        "maxUncoveredAfterNotice": 0.7500000000000007
+      },
+      {
+        "key": "20:960:forestFloor:1:0:21",
+        "species": "armadillo",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 25.43749999998973,
+        "speed": 3.301487469755779,
+        "warningLead": 1.4224999999987062,
+        "visibleLead": 1.6224999999985243,
+        "readableLead": 1.4058333333320547,
+        "continuousNoticeLead": 1.4224999999987062,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "21:480:forestFloor:14:0:19",
+        "species": "small-marsupial",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 480,
+        "time": 23.284583333328396,
+        "speed": 12.131418822727456,
+        "warningLead": 1.0562499999990393,
+        "visibleLead": 0.20624999999981242,
+        "readableLead": 0.10624999999990337,
+        "continuousNoticeLead": 1.0562499999990393,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "21:960:forestFloor:14:0:19",
+        "species": "small-marsupial",
+        "biome": "forestFloor",
+        "kind": "seed-husk skid",
+        "width": 960,
+        "time": 23.284583333328396,
+        "speed": 12.131418822727456,
+        "warningLead": 1.0562499999990393,
+        "visibleLead": 0.422916666666282,
+        "readableLead": 0.322916666666373,
+        "continuousNoticeLead": 1.0562499999990393,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "22:480:forestFloor:1:0:18",
+        "species": "tiny-primate",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 22.194583333329387,
+        "speed": 3.5585873505203125,
+        "warningLead": null,
+        "visibleLead": 0.7145833333326834,
+        "readableLead": 0.7145833333326834,
+        "continuousNoticeLead": 0.7145833333326834,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "22:960:forestFloor:1:0:18",
+        "species": "tiny-primate",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 22.194583333329387,
+        "speed": 3.5585873505203125,
+        "warningLead": null,
+        "visibleLead": 0.7145833333326834,
+        "readableLead": 0.7145833333326834,
+        "continuousNoticeLead": 0.7145833333326834,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "23:480:forestFloor:6:0:13",
+        "species": "frog",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 480,
+        "time": 19.82041666666488,
+        "speed": 3.9331347591895898,
+        "warningLead": 0.8937499999991871,
+        "visibleLead": 0.4270833333329449,
+        "readableLead": 0.31041666666638434,
+        "continuousNoticeLead": 0.8937499999991871,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "23:960:forestFloor:6:0:13",
+        "species": "frog",
+        "biome": "forestFloor",
+        "kind": "rolling beetle",
+        "width": 960,
+        "time": 19.82041666666488,
+        "speed": 3.9331347591895898,
+        "warningLead": 0.8937499999991871,
+        "visibleLead": 0.8604166666658841,
+        "readableLead": 0.7437499999993236,
+        "continuousNoticeLead": 0.8937499999991871,
+        "maxUncoveredAfterNotice": 0
+      }
+    ]
+  },
+  "durationSeconds": 60
+}

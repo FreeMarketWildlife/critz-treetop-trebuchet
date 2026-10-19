@@ -1,0 +1,132 @@
+{
+  "baseline": "d02a2c40acecc4ad0e648fbea1389b9762b88d3f",
+  "attempts": 33,
+  "releases": 24,
+  "seatingMisses": 9,
+  "releaseObjectsExactlyEqualAllCases": true,
+  "initialContacts": {
+    "springy pod": 3,
+    "seed-husk skid": 16,
+    "round fungus": 7,
+    "rolling beetle": 6,
+    "vine bug": 2
+  },
+  "intermediateContacts": {
+    "springy pod": 5,
+    "rolling beetle": 8,
+    "round fungus": 12,
+    "seed-husk skid": 48,
+    "round beetle": 7,
+    "leaf hopper": 2,
+    "waxleaf skid": 15,
+    "vine bug": 4,
+    "puffy moth": 2,
+    "round bird": 2
+  },
+  "finalContacts": {
+    "waxleaf skid": 23,
+    "puffy moth": 3,
+    "seed-husk skid": 36,
+    "round beetle": 15,
+    "rolling beetle": 6,
+    "round fungus": 17,
+    "vine bug": 5,
+    "leaf hopper": 8,
+    "round bird": 3,
+    "springy pod": 4
+  },
+  "finalMaxBodies": 8,
+  "backwardDefinition": "COM vx < -0.5 m/s continuously >=0.5 seconds, covering >=1 metre leftward; excludes short jitter. All actual negative path increments are separately retained by the live flight-travel observer.",
+  "backwardCasesBefore": [
+    1,
+    15,
+    18,
+    20,
+    21,
+    23,
+    26,
+    29,
+    31
+  ],
+  "backwardCasesFinal": [
+    1,
+    11,
+    14,
+    15,
+    18,
+    23,
+    29,
+    31
+  ],
+  "backwardRateFinal": 0.3333333333333333,
+  "backwardGoalMet": false,
+  "activityDefinition": "60Hz logical viewport intersection below top72px HUD of an enemy conservative radius, with relative COM speed >0.5m/s, OR a scored physical impulse in preceding1/60sec. Active window ends at last COM speed>0.15m/s within60seconds. Full60second gaps including terminal rest are also retained; this conservative sampled metric is not human perception or guaranteed notice.",
+  "activity": {
+    "480": {
+      "medianMaxActiveGap": 1.541666666666666,
+      "worstMaxActiveGap": 8.816666666666684,
+      "casesMaxActiveGapAtMost1Second": 6,
+      "meanMaxFull60SecondGap": 32.549305555554845
+    },
+    "960": {
+      "medianMaxActiveGap": 0.9250000000000012,
+      "worstMaxActiveGap": 5.383333333333319,
+      "casesMaxActiveGapAtMost1Second": 15,
+      "meanMaxFull60SecondGap": 29.717361111110545
+    }
+  },
+  "activityGoalMet": false,
+  "contactAltitude": {
+    "waxleafAbove5m": 8,
+    "waxleafAtOrBelow5m": 15
+  },
+  "tests": {
+    "pass": 219,
+    "fail": 0,
+    "log": "/tmp/critz29-tests-final.log"
+  },
+  "browser": {
+    "oneSaveFreeReviewTab": true,
+    "mechanismUncockedAndRealMotorWindingObserved": true,
+    "midairWaxleaf": {
+      "case": 26,
+      "contactAltitude": 47.04575636082275,
+      "pausedAfterReplaySeconds": 0.53,
+      "vx": 10.23
+    },
+    "naturalFloorSkid": {
+      "case": 12,
+      "pausedAfterReplaySeconds": 0.6,
+      "vx": 0.53
+    },
+    "naturalBackward": {
+      "case": 14,
+      "pausedAfterReplaySeconds": 0.51,
+      "vx": -0.89
+    },
+    "portraitViewport": [
+      390,
+      844
+    ],
+    "reducedMotionChecked": true,
+    "warningsErrors": [],
+    "viewportReset": true,
+    "noGameSaveAccess": true
+  },
+  "limitations": [
+    "Neither <=1second activity gap nor under5percent backwards goal is achieved.",
+    "Only24 released starter runs with fixed seeds; not a population estimate or earned-equipment balance study.",
+    "Controlled numerical force-drag preparation and actual natural trajectories; not new native human drag launches.",
+    "No new authored branches or physical counterweight geometry change in this checkpoint.",
+    "No actual-device FPS, human reaction or audible quality claim."
+  ],
+  "presentationSourceSHA256": {
+    "src/camera.js": "45ce476fb299db294d3062a28e070c79455283a0cdc8d1c0a34d853f1968b893",
+    "src/render.js": "90e610f520d382602cb1bcade1d941d40678f800e266c17aa868024afa138614",
+    "src/lab.js": "3825c5bc7ee990b874f1c1134ea6818279d677bd6a4ae6082c5de059600a32fd",
+    "src/scenery.js": "395d97975e16a3b0cb7b5281db5bad66b6951f76ea341993911e75e51fe16267",
+    "src/mechanism-art.js": "687276c59b2821e0e1e0ab90c259a0712b4b8344df625ff30ff75bf3f41632d3",
+    "src/encounter-state.js": "78af633562892f9b08c3eca2f9d22856b9e25b37e599e07151dfeec859389104",
+    "src/flight-travel.js": "5bd0c8964d681145ac0aa60943bca783fe871789110747eef5f5777b3720d125"
+  }
+}
