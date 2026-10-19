@@ -38,4 +38,4 @@ The school's formal name, the spelling feysian / feyjian, Naboo's relationship t
 
 ## Mechanism prototype
 
-Run `npm start` and open `http://localhost:8080` for the schematic lab; `npm test` runs numerical checks. See [prototype requirements, physical assumptions and open input decisions](docs/prototype.md). The authored-world direction, three travel regions and timed-slider input are recorded there. The slider-to-mechanism mapping is intentionally pending discussion.
+Run `npm start` and open `http://localhost:8080` for the schematic lab; `npm test` runs numerical checks. See [prototype requirements, physical assumptions and open input decisions](docs/prototype.md). The authored-world direction, three travel regions and timed-slider input are recorded there. The slider-to-mechanism mapping is intentionally pending discussion. Drag a critter into the sling before unlatching; the lab preserves varied loading states with explicit seating/input safeguards. Optional losses and deterministic placeholder collisions exercise post-launch flight. See the prototype notes for physical limitations.
