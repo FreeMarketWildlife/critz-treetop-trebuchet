@@ -128,7 +128,7 @@ export class CritterScene {
   }return false;
  }
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
-  const count=this.p.collisionSubsteps&&this.collisionRegion(dt)?Math.min(4,Math.ceil(dt*1200)):1;
+  const count=this.p.collisionSubsteps&&this.collisionRegion(dt)?Math.min(4,Math.ceil(dt*(this.p.collisionStepHz??1200))):1;
   for(let i=0;i<count;i++)this.integrate(dt/count);
  }
  integrate(dt){

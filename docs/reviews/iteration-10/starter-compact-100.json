@@ -1,0 +1,913 @@
+{
+  "protocol": "All11 species, actual motor winding0.6, same finite torso/root lift recipe and contact observer. Independently loaded mechanisms; no encounters/control. Changes are visible hardware, not velocity boosts. Initial screening uses one placement; follow-up needed for posture robustness.",
+  "sourceSHA256": {
+    "src/articulated.js": "01a9636aff5be0d743ebff1c0fff1b5ae61623cb804b1be9aa26186c1b8fad16",
+    "src/hook-experiment.js": "a5289b746b0bb61eaa513b61d9089ebd50dddf17e70abdff3ab39b8fc95e05b1",
+    "src/physics.js": "1d3db230cad1529590b2196ebfdc08955a41a33e2adb6038bdbafe6c12a76ca0",
+    "src/species.js": "156aaafe21f2b8203a9c1fce7dbda275c84266c73c4ed116d77a684934bbd35d",
+    "src/world.js": "dee8c8b189a36c5c8f2e8f1045da36405c5526ca6e91b69d4832e65e28784e80"
+  },
+  "setups": [
+    {
+      "id": "previous",
+      "hookAngle": 3.4,
+      "channelLength": 0.22
+    },
+    {
+      "id": "rail-365",
+      "hookAngle": 3.65,
+      "channelLength": 0.22
+    },
+    {
+      "id": "rail-38",
+      "hookAngle": 3.8,
+      "channelLength": 0.22
+    },
+    {
+      "id": "short-rail",
+      "hookAngle": 3.4,
+      "channelLength": 0.12
+    },
+    {
+      "id": "balanced-140",
+      "counterMass": 140,
+      "hookAngle": 3.55,
+      "channelLength": 0.18
+    },
+    {
+      "id": "balanced-100",
+      "counterMass": 100,
+      "hookAngle": 3.55,
+      "channelLength": 0.18
+    },
+    {
+      "id": "balanced-120",
+      "counterMass": 120,
+      "hookAngle": 3.55,
+      "channelLength": 0.18
+    },
+    {
+      "id": "counter-120",
+      "counterMass": 120,
+      "hookAngle": 3.4,
+      "channelLength": 0.22
+    },
+    {
+      "id": "compact-140",
+      "counterMass": 140,
+      "longArm": 2.5,
+      "sling": 2.2,
+      "hookAngle": 3.5,
+      "channelLength": 0.18
+    },
+    {
+      "id": "compact-100",
+      "counterMass": 100,
+      "longArm": 2.5,
+      "sling": 2.2,
+      "hookAngle": 3.5,
+      "channelLength": 0.18
+    },
+    {
+      "id": "compact-later",
+      "counterMass": 140,
+      "longArm": 2.5,
+      "sling": 2.2,
+      "hookAngle": 3.55,
+      "channelLength": 0.18
+    },
+    {
+      "id": "longer-beam",
+      "longArm": 3.6,
+      "shortArm": 0.9,
+      "hookAngle": 3.4,
+      "channelLength": 0.22
+    }
+  ],
+  "summaries": [
+    {
+      "setup": "compact-100",
+      "ready": 11,
+      "forward": 11,
+      "branch": 4,
+      "ground": 7,
+      "minimumVx": 0.1716249351635899
+    }
+  ],
+  "rows": [
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "lizard",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.0052485633099977995,
+          "cradleSpin": -0.01836143253923646,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 1,
+          "relativeSpeed": 0.07733958253798462,
+          "maxPartRelativeSpeed": 0.5141016202389301,
+          "maxRelativeSpin": 4.912812258474072
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 8.858333333334716,
+          "x": 70.8289600721689,
+          "y": 0.012667525317127497,
+          "surface": "ground"
+        },
+        "time": 0.9066666666668084,
+        "center": {
+          "x": -0.39457865610855664,
+          "y": 303.1314357478562,
+          "vx": 8.021544242870963,
+          "vy": 9.28682921874065,
+          "mass": 0.65
+        },
+        "speed": 12.271526758247784,
+        "firstHardwareExit": 0.595000000000093,
+        "firstPanelOpening": 0.7133333333334448,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.7707476648532804,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -674.6340461063733,
+        "energyChange": -67.7927396906523,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "salamander",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.4983333333333314,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.0804356604621953,
+          "cradleSpin": -0.043046126641735585,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 5,
+          "relativeSpeed": 0.2699129854766801,
+          "maxPartRelativeSpeed": 0.3112335153568325,
+          "maxRelativeSpin": 1.240241973493316
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.012500000001129,
+          "x": 44.77272222625806,
+          "y": 0.01014271643288752,
+          "surface": "ground"
+        },
+        "time": 0.9083333333334753,
+        "center": {
+          "x": -0.9951836423032714,
+          "y": 303.07285444394313,
+          "vx": 5.073966169585966,
+          "vy": 10.640889558735331,
+          "mass": 0.8
+        },
+        "speed": 11.788709144401922,
+        "firstHardwareExit": 0.595000000000093,
+        "firstPanelOpening": 0.7000000000001094,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.7247866480224773,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -681.8185289888004,
+        "energyChange": -70.41099178543698,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "mouse",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.007613293588854984,
+          "cradleSpin": -0.015848449692294694,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.05075993095375302,
+          "maxPartRelativeSpeed": 0.2558232770310453,
+          "maxRelativeSpin": 3.4300630261122484
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.078333333334749,
+          "x": 54.42299563674731,
+          "y": 0.014489317642982369,
+          "surface": "ground"
+        },
+        "time": 0.8866666666668053,
+        "center": {
+          "x": -1.1493227625973492,
+          "y": 302.78557430789556,
+          "vx": 6.125055656346588,
+          "vy": 11.254701333625727,
+          "mass": 0.75
+        },
+        "speed": 12.81345421431942,
+        "firstHardwareExit": 0.5883333333334253,
+        "firstPanelOpening": 0.7066666666667771,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.8317351998013595,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -679.8103678187916,
+        "energyChange": -67.59750303930707,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "turtle",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.1765925312235493,
+          "cradleSpin": 0.016999334430965053,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.050643168115586466,
+          "maxPartRelativeSpeed": 0.5173144936002375,
+          "maxRelativeSpin": 2.848075280333863
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 2.275000000000343,
+          "x": 3.5417964870563097,
+          "y": 294.0070506376398,
+          "surface": "launch branch"
+        },
+        "time": 0.8733333333334699,
+        "center": {
+          "x": -1.89977312045672,
+          "y": 301.17226720753615,
+          "vx": 2.3934244363357067,
+          "vy": 8.140953946828313,
+          "mass": 2.4
+        },
+        "speed": 8.485494192846305,
+        "firstHardwareExit": 0.5850000000000914,
+        "firstPanelOpening": 0.7400000000001157,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.7822166488314823,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -740.0346384425188,
+        "energyChange": -120.65629547268554,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "snake",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.36833333333333274,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.0009377724929832857,
+          "cradleSpin": -0.004563137870979288,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.06543230388336459,
+          "maxPartRelativeSpeed": 0.49215450004348565,
+          "maxRelativeSpin": 3.6930047270987303
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 8.95166666666804,
+          "x": 43.92741807803235,
+          "y": 0.008200589279601544,
+          "surface": "ground"
+        },
+        "time": 0.8616666666668014,
+        "center": {
+          "x": -1.5236509055496619,
+          "y": 302.04588485034657,
+          "vx": 5.1408492668238335,
+          "vy": 10.212373906583384,
+          "mass": 1.1
+        },
+        "speed": 11.433324625500157,
+        "firstHardwareExit": 0.5850000000000914,
+        "firstPanelOpening": 0.7183333333334456,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.378695738737675,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -692.2031384155862,
+        "energyChange": -91.01758836710587,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "chipmunk",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.12333333333333317,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.17107443833305205,
+          "cradleSpin": 0.044289098136996836,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.058125232784095905,
+          "maxPartRelativeSpeed": 0.08300137786944109,
+          "maxRelativeSpin": 0.3484976624617288
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 2.4933333333337053,
+          "x": 2.9240504352733034,
+          "y": 294.00941449554284,
+          "surface": "launch branch"
+        },
+        "time": 0.825000000000129,
+        "center": {
+          "x": -1.8510527097576932,
+          "y": 301.372576521886,
+          "vx": 1.6285462705011375,
+          "vy": 8.646661073058713,
+          "mass": 1
+        },
+        "speed": 8.79868800830624,
+        "firstHardwareExit": 0.5883333333334253,
+        "firstPanelOpening": 0.7050000000001102,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.1848028724422353,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -687.2944116503498,
+        "energyChange": -64.4711465865746,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "flying-squirrel",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.09999999999999988,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.126715680468292,
+          "cradleSpin": 0.02409418972677967,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.0842513435833802,
+          "maxPartRelativeSpeed": 0.5988697682180096,
+          "maxRelativeSpin": 6.841095907619232
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 2.6466666666670466,
+          "x": 2.1136703604933684,
+          "y": 294.00945030456614,
+          "surface": "launch branch"
+        },
+        "time": 0.8383333333334644,
+        "center": {
+          "x": -1.8366220685210282,
+          "y": 301.714744788442,
+          "vx": 2.0477642822932474,
+          "vy": 9.735476889427092,
+          "mass": 0.9
+        },
+        "speed": 9.948509879394251,
+        "firstHardwareExit": 0.5866666666667584,
+        "firstPanelOpening": 0.7000000000001094,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.9744274766787425,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -683.920902480317,
+        "energyChange": -63.22727825443917,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "armadillo",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.4649999999999984,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.005956841537595981,
+          "cradleSpin": -0.04123129364558284,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 4,
+          "relativeSpeed": 0.014016263747048563,
+          "maxPartRelativeSpeed": 0.2116361164430593,
+          "maxRelativeSpin": 0.900063662714095
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 4.258333333333985,
+          "x": -2.1630147332642715,
+          "y": 294.0099886203999,
+          "surface": "launch branch"
+        },
+        "time": 0.9300000000001454,
+        "center": {
+          "x": -2.350370486108794,
+          "y": 300.37460423686514,
+          "vx": 0.1716249351635899,
+          "vy": 5.642981697212145,
+          "mass": 5
+        },
+        "speed": 5.645590983541154,
+        "firstHardwareExit": 0.641666666666767,
+        "firstPanelOpening": 0.7966666666667912,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 1.482936880959007,
+        "hardwareEscapedAtPayloadDeparture": true,
+        "initialEnergy": -836.250872057228,
+        "energyChange": -138.51458355331317,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "small-marsupial",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.30500000000000005,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.27298240200542645,
+          "cradleSpin": -0.10984472199803388,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.18794236932238909,
+          "maxPartRelativeSpeed": 0.2815823585707341,
+          "maxRelativeSpin": 3.123469620197136
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.018333333334635,
+          "x": 66.44168830156838,
+          "y": 0.013947934525050804,
+          "surface": "ground"
+        },
+        "time": 0.9350000000001462,
+        "center": {
+          "x": -0.5005461929729151,
+          "y": 303.52211675911815,
+          "vx": 7.429261958101046,
+          "vy": 10.626238010592798,
+          "mass": 0.7
+        },
+        "speed": 12.965757498112271,
+        "firstHardwareExit": 0.6016666666667607,
+        "firstPanelOpening": 0.7150000000001118,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.6956432015768267,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -677.5793823723969,
+        "energyChange": -70.9086174420512,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "tiny-primate",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.14666666666666664,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.27890182466377167,
+          "cradleSpin": -0.11528048312274881,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 3,
+          "relativeSpeed": 0.053918036717688564,
+          "maxPartRelativeSpeed": 0.12294049779570272,
+          "maxRelativeSpin": 0.4904645695338868
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.053333333334747,
+          "x": 68.56550195043926,
+          "y": 0.012529503175237749,
+          "surface": "ground"
+        },
+        "time": 0.9483333333334816,
+        "center": {
+          "x": -0.3887379393458114,
+          "y": 303.64928288707364,
+          "vx": 7.6277111647303135,
+          "vy": 10.938073112367325,
+          "mass": 0.8500000000000001
+        },
+        "speed": 13.335044845220601,
+        "firstHardwareExit": 0.6016666666667607,
+        "firstPanelOpening": 0.7200000000001125,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.6966136387545062,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -683.2575576650465,
+        "energyChange": -90.35517090293752,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    },
+    {
+      "pose": "torso",
+      "setup": "compact-100",
+      "species": "frog",
+      "parameters": {
+        "longArm": 2.5,
+        "shortArm": 0.8,
+        "sling": 2.2,
+        "counterMass": 100,
+        "projectileMass": 1,
+        "beamLinearDensity": 2.1052631578947367,
+        "releasePinAngle": 1.45,
+        "gravity": 9.81,
+        "frameMass": 30,
+        "frameFriction": 0.65,
+        "armDamping": 0,
+        "flightDrag": 0,
+        "pivotHeight": 300,
+        "initialArm": -3,
+        "initialSling": -1.5707963267948966,
+        "initialSlingSpeed": 0,
+        "releaseHardware": "channel",
+        "stoppedSplitPouch": true,
+        "pouchPanelMass": 0.5,
+        "mechanicalWinding": true,
+        "collisionSubsteps": true,
+        "hookAngle": 3.5,
+        "channelLength": 0.18
+      },
+      "ready": true,
+      "settling": {
+        "waited": 0.37833333333333263,
+        "quiet": 0.10166666666666654,
+        "status": {
+          "cradleSpeed": 0.009062682376145879,
+          "cradleSpin": -0.017069739555007662,
+          "withinEnvelope": true,
+          "contacting": true,
+          "contactingParts": 2,
+          "relativeSpeed": 0.10647835648237004,
+          "maxPartRelativeSpeed": 0.5676215175860747,
+          "maxRelativeSpin": 4.395119890158895
+        }
+      },
+      "result": {
+        "dt": 0.0016666666666666668,
+        "released": true,
+        "firstWorldImpact": {
+          "afterRelease": 9.115000000001132,
+          "x": 49.54832051445717,
+          "y": 0.01175711148007966,
+          "surface": "ground"
+        },
+        "time": 0.93833333333348,
+        "center": {
+          "x": -0.7325752756701869,
+          "y": 303.3940530071265,
+          "vx": 5.484047193254631,
+          "vy": 11.466297740966017,
+          "mass": 1.05
+        },
+        "speed": 12.710261897471915,
+        "firstHardwareExit": 0.595000000000093,
+        "firstPanelOpening": 0.7183333333334456,
+        "escapedAtPanelOpening": true,
+        "panelOpeningAtDeparture": 0.7135141738391705,
+        "hardwareEscapedAtPayloadDeparture": false,
+        "initialEnergy": -690.7976932825469,
+        "energyChange": -99.62723616166352,
+        "maximumEnergyGain": 0,
+        "maximumStepEnergyGain": 0,
+        "explicitWork": 0
+      }
+    }
+  ]
+}

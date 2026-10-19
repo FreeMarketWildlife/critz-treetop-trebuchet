@@ -26,7 +26,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
  for(const rope of scene.ropes)line(local(rope.getAnchorA()),local(rope.getAnchorB()),'#444',2);
  const pivot=scene.arm.getWorldPoint({x:0,y:0});dot(local(pivot),5,'#e6c475');
  if(portrait && preview)preview.points.forEach((p,i)=>dot(local(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
- ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':'Drag, settle, then unlatch',12,24);ctx.restore();
+ ctx.fillStyle='#243b30';ctx.font='14px system-ui';ctx.fillText(scene.phase==='uncocked'?'Set height to wind the real counterweight':scene.phase==='winding'?'Winding under torque…':scene.phase==='flight'?'Bank or try the next volunteer':scene.phase==='launching'?'Arm moving under gravity':'Lift over green cradle; release grip to seat',12,24);ctx.restore();
  }
  if(!portrait || scene.phase==='flight'){
  const panel=portrait?{x:0,y:0,w:480,h:600}:{x:500,y:40,w:460,h:440},region=c.y>245?'grandfatherTree':c.y>120?'openSky':c.y>5?'jungleCanopy':'forestFloor';

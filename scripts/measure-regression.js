@@ -1,3 +1,4 @@
+import {STARTER_HARDWARE} from '../src/starter.js';
 import {PhysicalHookScene} from '../src/hook-experiment.js';
 import {createPredictionJob} from '../src/prediction.js';
 import {profiles} from '../src/species.js';
@@ -8,13 +9,13 @@ import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
 
 // Diagnostic thresholds flag candidates for review; they are not calibrated tolerances.
-const sourcePaths=['src/articulated.js','src/hook-experiment.js','src/physics.js','src/species.js','src/economy.js','src/world.js','src/prediction.js'];
+const sourcePaths=['src/articulated.js','src/hook-experiment.js','src/physics.js','src/species.js','src/economy.js','src/world.js','src/prediction.js','src/starter.js'];
 const sourceSHA256=Object.fromEntries(sourcePaths.map(p=>[p,createHash('sha256').update(readFileSync(p)).digest('hex')]));
 const DT=1/600,limits={ropeStretch:.05,hingeAnchorError:.05,angularLimitError:.08,
  explosiveEnergyResidual:250,bodySpeed:300,bodySpin:1000,surfaceDepth:.08,releaseSeconds:5};
 const base={releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,
- mechanicalWinding:true,collisionSubsteps:true,initialArm:-3,counterMass:100,longArm:3,shortArm:.8,sling:2.5,
- hookAngle:3.4,channelLength:.22};
+ mechanicalWinding:true,collisionSubsteps:true,collisionStepHz:2400,initialArm:-3,counterMass:100,longArm:3,shortArm:.8,sling:2.5,
+ hookAngle:3.4,channelLength:.22,...STARTER_HARDWARE};
 const cases=[];
 for(const grip of ['torso','head'])for(const p of profiles)cases.push({id:`default-${p.id}-${grip}`,species:p.id,grip,fraction:.6,equipment:[]});
 for(const species of ['lizard','turtle','armadillo'])for(const fraction of [.2,.9])cases.push({id:`winding-${species}-${fraction}`,species,grip:'offset',fraction,equipment:[]});
@@ -105,4 +106,4 @@ function run(entry){
 const start=performance.now(),rows=[];for(const entry of selected){const row=run(entry);rows.push(row);console.error(`${entry.id}: ${row.outcome}${row.flags.length?' ['+row.flags.join(', ')+']':''} (${row.wallMilliseconds.toFixed(0)} ms)`);}
 const totalWallMilliseconds=performance.now()-start,counts={};for(const r of rows)counts[r.outcome]=(counts[r.outcome]??0)+1;
 const evidence={scope:'Bounded stratified diagnostic of the explicit stopped-pouch0.5kg physical prototype. One force-driven loading recipe cannot establish universal input validity; seating failures and poor throws are preserved separately from numeric faults.',protocol:{cases:selected.length,dt:DT,limits,phases:'Actual bounded motor; torso/head/offset physical grip; unheld gravity settling; canonical same-solver prediction/live launch; first world impact or15s flight.',equipment:'Acquired and equipped in isolated in-memory economy state through actual reducers. No user save or account writes.',surfaceDetection:'Suspected surface penetration means a part COM crossed through authored material depth with no matching recent per-part surface impulse. Candidates require review; this is not proof of continuous-collision failure.',finiteChecks:'Every diagnostic step inspects every dynamic body and rope/revolute joint. Energy residual is mechanical-energy change minus recorded hand/motor/control/damping/drag/spawn work.',runtime:'Node wall time includes prediction and diagnostic scanning; not browser FPS.'},runtime:{node:process.version,platform:process.platform,arch:process.arch,planck:JSON.parse(readFileSync('node_modules/planck/package.json')).version},sourceSHA256,sourcesChangedDuringRun:sourcePaths.filter(p=>createHash('sha256').update(readFileSync(p)).digest('hex')!==sourceSHA256[p]),totalWallMilliseconds,counts,rows};
-mkdirSync('docs/reviews/iteration-9',{recursive:true});const suffix=selectedId?'-'+selectedId:benchmarkOnly?'-prediction-benchmark':'';writeFileSync(`docs/reviews/iteration-9/regression${suffix}.json`,JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify({totalWallMilliseconds,counts,cases:rows.length},null,2));
+mkdirSync('docs/reviews/iteration-10',{recursive:true});const suffix=selectedId?'-'+selectedId:benchmarkOnly?'-prediction-benchmark':'';writeFileSync(`docs/reviews/iteration-10/regression${suffix}.json`,JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify({totalWallMilliseconds,counts,cases:rows.length},null,2));

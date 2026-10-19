@@ -140,5 +140,5 @@ test('collision-region substeps refine fast flight only, preserve time and canon
  const center=s.center();for(const b of s.parts){const q=b.getPosition();b.setPosition({x:q.x+20-center.x,y:q.y+.3-center.y});b.setLinearVelocity({x:0,y:-40});}
  const before=s.elapsed;assert.equal(s.collisionRegion(1/600),true);calls=0;s.step();assert.equal(calls,2);assert.ok(Math.abs(s.elapsed-before-1/600)<1e-12);
  const clone=s.clone();s.step();clone.step();assert.deepEqual(s.center(),clone.center());
- assert.throws(()=>new CritterScene({collisionSubsteps:2}));
+ assert.throws(()=>new CritterScene({collisionSubsteps:2}));assert.throws(()=>new CritterScene({collisionStepHz:1800}));
 });

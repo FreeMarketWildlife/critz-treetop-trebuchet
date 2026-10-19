@@ -3,7 +3,7 @@
 export const PROTOTYPE_BALANCE = Object.freeze({pointsPerMetre:10,pointsPerImpact:25,bellsPerLaunch:5,bellsPerImpact:2,maxRewardImpacts:50,maxRewardDistance:10000});
 const freeze = value => { for(const v of Object.values(value)) if(v&&typeof v==='object')freeze(v);return Object.freeze(value); };
 export const catalog=freeze([
- {id:'counterweight-heavy',label:'Heavier counterweight',slot:'counterweight',price:30,effects:{counterMass:140}},
+ {id:'counterweight-heavy',label:'Heavier counterweight',slot:'counterweight',price:30,effects:{counterMass:180}},
  {id:'beam-long',label:'Longer beam',slot:'beam',price:45,effects:{longArm:3.6,shortArm:.9,beamLinearDensity:2.2}},
  {id:'beam-light',label:'Lighter beam',slot:'beam',price:55,effects:{longArm:3,shortArm:.8,beamLinearDensity:1.6}},
  {id:'sling-long',label:'Longer sling',slot:'sling',price:35,effects:{sling:2.9}},

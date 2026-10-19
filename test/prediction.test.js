@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {PhysicalHookScene} from '../src/hook-experiment.js';import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent} from '../src/prediction.js';
+import {PhysicalHookScene} from '../src/hook-experiment.js';import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent,predictionAdvice} from '../src/prediction.js';
 import {load,waitForContact} from '../scripts/measure-hook.js';
-function ready(){const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,collisionSubsteps:true});assert.ok(load(s));waitForContact(s);return s;}
+function ready(){const s=new PhysicalHookScene({releaseHardware:'channel',stoppedSplitPouch:true,pouchPanelMass:.5,collisionSubsteps:true,collisionStepHz:2400});assert.ok(load(s));waitForContact(s);return s;}
 test('budgeted prediction preserves source and matches canonical physical release',()=>{
  const s=ready(),before=s.snapshot(),expected=s.predict(),job=createPredictionJob(s);let slices=0;
  while(!job.done){job.advance({maxSteps:37,budgetMs:1000});slices++;assert.ok(slices<200);}
@@ -21,4 +21,11 @@ test('displayed prediction expires against its original moving pose, not the nex
  x=.21;assert.equal(predictionPoseIsCurrent(scene,first),false);assert.equal(predictionPoseIsCurrent(scene,next),true);
  x=0;angle=.41;assert.equal(predictionPoseIsCurrent(scene,first),false);angle=0;elapsed=5.01;assert.equal(predictionPoseIsCurrent(scene,first),false);
  elapsed=3;assert.equal(predictionPoseIsCurrent(scene,first),false);assert.equal(predictionPoseIsCurrent(scene,null),false);
+});
+
+test('mechanical advice uses observed release and names only the clipped obstacle',()=>{
+ assert.equal(predictionAdvice(null),'');assert.equal(predictionAdvice({release:{center:{vx:NaN,vy:0}}}), '');
+ assert.match(predictionAdvice({release:{center:{vx:-2,vy:4}}}), /2.0 m\/s backward/);
+ assert.match(predictionAdvice({release:{center:{vx:2,vy:4}},obstacle:'launch branch'}), /before the launch branch/);
+ assert.doesNotMatch(predictionAdvice({release:{center:{vx:8,vy:12}}}), /bells|points|bounce|range/i);
 });
