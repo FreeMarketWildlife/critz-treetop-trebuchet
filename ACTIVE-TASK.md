@@ -1,6 +1,16 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 26 checkpoint
+## CURRENT implementation: iteration 27 checkpoint
+
+Canonical project: /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Continue exclusively here; the old task-5/treetop checkout is a preserved recovery copy. Canonical baseline and public GitHub were verified at 473e282 before this refinement. Existing loopback 8080 now serves this folder; original destination empty Git metadata is backed up outside the project. No force push or deployment is authorized.
+
+Read docs/reviews/iteration-27/findings.md and verification.json. Shared winding button/meter and actual loading coach now beside canvas, preserving original gesture/motor/phase gates. Both pointer and ordinary keyboard 1000ms near holds read .49, physical fraction .5675, winding→loading; both controls disabled while real grip held. 320/390 portrait and844 landscape no horizontal overflow; override reset.206tests pass. No physics/economy/save implementation changes or redundant soaks.
+
+Final-CSS pointer roster coverage all11 complete: prior10 records plus Frog this session, canvas/scroll stable. One rapid squirrel preset miss disclosed, inspected regrip succeeded; not a load-success benchmark. Ordinary Tab→Return on Letgo releases with unchanged canvas/scroll; prior locator-specific focus scroll not reproduced. No focus workaround needed.
+
+Earned origin recovered18117points89bells after migration and was left untouched this refinement. QA uses isolated127.0.0.1:8082, zero wallet, SaveOFF. Prior four review tabs were already absent at migration inventory; do not imply their session-only wallets were saved or inspect inaccessible tabs. Surviving older/user tabs remain untouched. No export retry/unlock/deploy/install. Next: human two-stage preparation usability, full-size original visual identity/world presentation and actual device/audio assessment. Preserve genuine weak/failed throws; do not add assists.
+
+## Historical implementation: iteration 26 checkpoint
 
 Read docs/reviews/iteration-26/findings.md,checkpoint-summary.json,manual-session.json. UI-only real-anchor/target tether(existingforcecapcolor),nearLetgo+status,resize/cancel viewrecovery afterlayout(coalesced/reset-cancelled),reservedcontrol/statusspace and body scrollanchoringoff. No physics/collider/economy/save changes.206tests pass.44real-force pointer-mapped cases allpicked/alltargetsvisible,39ready;ALLphysicalrowsexactbaseline. All35non-timingregrowsEXACT25,32release/3lowmiss,32predictiondiff0. Nineangularposesactualfixturecaptured/read-onlybrowser4xreview no grossbreak;singlebodyproxy .479–.795CSSpx,anchorcombined .531–1.475,oneoutertick threshold;notvideo/downstreambound. No solverchanges.
 

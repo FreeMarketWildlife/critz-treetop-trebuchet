@@ -1,0 +1,85 @@
+{
+  "baseline": "473e2821903096629c0f14e0e442d59796e00ada",
+  "tests": {
+    "pass": 206,
+    "fail": 0,
+    "log": "/tmp/critz27-tests.log"
+  },
+  "rosterLayout": {
+    "viewport": [
+      390,
+      844
+    ],
+    "hardware": {
+      "long": 3.6,
+      "short": 0.9,
+      "sling": 2.9
+    },
+    "windingFraction": 0.2,
+    "previousSessionSpecies": [
+      "Lizard",
+      "Salamander",
+      "Mouse",
+      "Turtle",
+      "Snake",
+      "Chipmunk",
+      "Flying squirrel",
+      "Armadillo",
+      "Pygmy possum",
+      "Pygmy marmoset"
+    ],
+    "completedThisSession": "Frog",
+    "canvas": {
+      "left": 8,
+      "top": 72.3671875,
+      "width": 374,
+      "height": 467.5,
+      "scrollY": 506.5
+    },
+    "all11PointerPickupAndReleaseStable": true,
+    "priorPresetMiss": "One rapid Flying squirrel preset pickup missed; inspected re-grip succeeded. Cause not established.",
+    "scope": "Layout and real grip/release only, not a two-stage loading success benchmark."
+  },
+  "keyboard": {
+    "species": "Frog",
+    "ordinaryTabFocused": "dropGrip",
+    "ordinaryEnterReleased": true,
+    "canvasAndScrollUnchanged": true,
+    "locatorPressFocusScroll": "Prior locator.press moved scroll; ordinary Tab/Return did not reproduce it.",
+    "automationAttempts": "Two stale-closure coordinate calculations rejected outside viewport before input; fresh visible coordinates used."
+  },
+  "nearWinding": {
+    "pointerHoldMs": 1000,
+    "pointerTarget": 0.49,
+    "ordinaryKeyboardTabFocused": "timeNear",
+    "enterHoldMs": 1000,
+    "keyboardTarget": 0.49,
+    "physicalFractionForTarget": 0.5675,
+    "metersAgree": true,
+    "motorWindingObserved": true,
+    "loadingObserved": true,
+    "bothControlsDisabledWhileGripHeld": true,
+    "heldCanvasStable": true,
+    "layoutWidths": [
+      320,
+      390,
+      844
+    ],
+    "horizontalOverflow": false,
+    "viewportReset": true,
+    "consoleWarningsErrors": []
+  },
+  "saveIsolation": {
+    "qaOrigin": "http://127.0.0.1:8082",
+    "points": 0,
+    "bells": 0,
+    "saveEnabled": false,
+    "earnedOriginUntouched": true
+  },
+  "limitations": [
+    "No successful end-to-end human two-stage loading benchmark in this review.",
+    "No audible, actual-device frame-rate or human reaction testing.",
+    "No review frame/clip export attempted.",
+    "No physics or economy source changed; existing long soaks not repeated for UI-only changes."
+  ]
+}

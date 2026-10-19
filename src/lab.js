@@ -62,8 +62,9 @@ for(const id of ['species','mass','long','short','friction','drag','sling','rail
 $('reset').onclick=reset;
 $('next').onclick=()=>{try{const id=queue.peek()[0],candidate=new (SceneType())(settings(),id);bank();queue.consume();$('species').value=id;installScene(candidate);}catch(e){error=e.message;}};
 function beginWinding(){if(isPaused())return;fraction=.2+.75*Number($('power').value);sliderRunning=false;try{scene.startWinding(fraction);clearPreview();error='';const windingScene=scene;sound.unlock().then(ok=>{if(ok&&!isPaused()&&scene===windingScene&&scene.phase==='winding')sound.play('wind',{intensity:.35});});}catch(e){error=e.message;}}
-const winding=createWindingInput({enabled:()=>!isPaused()&&!held&&['uncocked','loading','wind-stalled'].includes(scene?.phase),onAim:()=>{sliderRunning=true;sliderStart=performance.now();$('power').value=0;sound.unlock();clearPreview();},onCommit:()=>{if(sliderRunning)$('power').value=windingMeter(performance.now(),sliderStart);beginWinding();},onCancel:()=>{sliderRunning=false;},capture:id=>$('time').setPointerCapture(id),releaseCapture:id=>{if($('time').hasPointerCapture(id))$('time').releasePointerCapture(id);}});
-$('time').onpointerdown=winding.pointerDown;$('time').onpointerup=winding.pointerUp;$('time').onpointercancel=winding.pointerCancel;$('time').onlostpointercapture=winding.lostPointerCapture;$('time').onkeydown=winding.keyDown;$('time').onkeyup=winding.keyUp;$('time').onclick=winding.click;
+let windingCaptureTarget=$('time');
+const winding=createWindingInput({enabled:()=>!isPaused()&&!held&&['uncocked','loading','wind-stalled'].includes(scene?.phase),onAim:()=>{sliderRunning=true;sliderStart=performance.now();$('power').value=0;sound.unlock();clearPreview();},onCommit:()=>{if(sliderRunning)$('power').value=windingMeter(performance.now(),sliderStart);beginWinding();},onCancel:()=>{sliderRunning=false;},capture:id=>windingCaptureTarget.setPointerCapture(id),releaseCapture:id=>{if(windingCaptureTarget.hasPointerCapture(id))windingCaptureTarget.releasePointerCapture(id);}});
+for(const id of ['time','timeNear']){const button=$(id);button.onpointerdown=e=>{if(!winding.active)windingCaptureTarget=button;return winding.pointerDown(e);};button.onpointerup=winding.pointerUp;button.onpointercancel=winding.pointerCancel;button.onlostpointercapture=winding.lostPointerCapture;button.onkeydown=winding.keyDown;button.onkeyup=winding.keyUp;button.onclick=winding.click;}
 $('power').oninput=()=>{winding.cancel();sliderRunning=false;};$('power').onchange=beginWinding;
 $('retry').onclick=()=>{if(reset()){$('power').value=(.6-.2)/.75;beginWinding();}};
 function freezeInputs(){grip.blur();winding.cancel();if(scene)scene.control=0;accumulator=0;frameClock.reset();clearPreview();sound.pause();}
@@ -134,7 +135,8 @@ function render(now){const frameBegan=performance.now(),samplePhase=scene?.phase
  if(banked)hints.push('Rewards collected. Shop, choose the next volunteer or retry.');
  if(runObstacle==='launch branch')hints.push('The volunteer hit the launch branch. Collect & retry keeps this run’s rewards; adjust the load or hardware before another shot.');
  if(scene.phase==='launching'&&launchStarted!==null&&clock-launchStarted>5)hints.push('Payload is still supported. Reset and try different rail mounting, sling length or counterweight.');
- const coaching=loadingCoach.update(scene,{fraction,held});$('retry').hidden=!coaching.retry||paused;if(coaching.reason)hints.push(coaching.reason);
+ $('preparation').hidden=!['uncocked','winding','loading','wind-stalled'].includes(scene.phase);$('timeNear').disabled=$('time').disabled;setText('timeNear',$('time').textContent);$('powerNear').value=Number($('power').value);
+ const coaching=loadingCoach.update(scene,{fraction,held});setText('preparationStatus',scene.phase==='uncocked'?'Hold here, then release near the middle. The counterweight winds before you load.':scene.phase==='winding'?'The motor is winding. Wait for the cradle to become available.':coaching.reason);$('retry').hidden=!coaching.retry||paused;if(coaching.reason)hints.push(coaching.reason);
  if(scene.phase==='loading'){
   if(held&&scene.hand?.body.getUserData()?.id==='head'&&scene.rig.bodies.some(b=>b.id==='torso'))hints.push('Head grip: try the torso for steadier loading.');
   if(held&&scene.rig.totalMass>=2)hints.push('Heavy load: move slowly.');
