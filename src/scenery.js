@@ -87,6 +87,7 @@ export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',kind='',col
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size,flap=Math.max(-1,Math.min(1,motion))*.16;
  // Markings animate inside the invariant round collision silhouette.
  ctx.beginPath();ctx.arc(0,0,s,0,Math.PI*2);ctx.clip();
+ const opacity=Number.isFinite(ctx.globalAlpha)?ctx.globalAlpha:1;ctx.globalAlpha=opacity*.22;ellipse(ctx,-s*.36,-s*.48,s*.16,s*.10,'#fff5dc',-.4);ctx.globalAlpha=opacity;
  ctx.strokeStyle='#394d43';ctx.lineWidth=Math.max(.7,s*.07);ctx.lineCap='round';
  if(kind==='round bird'){
   ellipse(ctx,s*.3,-s*.2,s*.3,s*.32,'#e8e0be');ctx.fillStyle='#dfb35c';ctx.beginPath();ctx.moveTo(s*.5,-s*.12);ctx.lineTo(s*.87,s*.05);ctx.lineTo(s*.5,s*.18);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(-s*.65,0);ctx.quadraticCurveTo(-s*.25,s*.5,s*.1,s*.16);ctx.stroke();

@@ -1,4 +1,4 @@
-import {approachCues} from './approach-cues.js';
+import {approachCues,payloadWarningRadius} from './approach-cues.js';
 import {drawSpeciesMarkings} from './species-art.js';
 import {biomeAt} from './journey.js';
 import {createFlightCamera} from './camera.js';
@@ -9,7 +9,7 @@ export function pointerWorld(point,bounds,viewport){
  if(![point.clientX,point.clientY,bounds.left,bounds.top,bounds.width,bounds.height].every(Number.isFinite)||bounds.width<=0||bounds.height<=0)return null;
  const x=(point.clientX-bounds.left)*viewport.width/bounds.width,y=(point.clientY-bounds.top)*viewport.height/bounds.height;
  return {x:(x-viewport.originX)/45,y:294+(viewport.originY-y)/45};}
-export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000),camera=createFlightCamera(),cameraScene=null,lastTime=0,wasFlying=false,approachNotice='';
+export function createRenderer(canvas){const ctx=canvas.getContext('2d');let viewport=viewportFor(1000),camera=createFlightCamera(),cameraScene=null,lastTime=0,wasFlying=false,approachNotice='',lastCssWidth=0,lastCssHeight=0,cueScale=1;
  const line=(a,b,color,width=3)=>{ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();};
  const dot=(p,r,color)=>{ctx.beginPath();ctx.fillStyle=color;ctx.arc(...p,r,0,Math.PI*2);ctx.fill();};
  function body(scene,b,transform,scale,motion=0){const role=b.getUserData()?.role;if(role==='static')return;
@@ -34,6 +34,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
  return {get approachNotice(){return approachNotice;},get viewport(){return viewport;},point(e){return pointerWorld(e,canvas.getBoundingClientRect(),viewport);},
  draw(scene,preview,effects,time,reduced,width,height=globalThis.innerHeight??Infinity){
   approachNotice='';viewport=viewportFor(width,height);if(canvas.width!==viewport.width||canvas.height!==viewport.height){canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.aspectRatio=`${viewport.width}/${viewport.height}`;}
+  if(width!==lastCssWidth||height!==lastCssHeight){lastCssWidth=width;lastCssHeight=height;const displayed=canvas.getBoundingClientRect?.().width??Math.max(240,width-16);cueScale=Math.max(1,Math.min(1.75,viewport.width/Math.max(1,displayed)));}
   const {portrait,originX,originY}=viewport,c=scene.center(),flying=scene.phase==='flight',local=p=>[originX+p.x*45,originY-(p.y-294)*45];ctx.clearRect(0,0,canvas.width,canvas.height);
   if(!flying){cameraScene=null;
    ctx.save();ctx.beginPath();ctx.rect(0,0,480,canvas.height);ctx.clip();drawScenery(ctx,{width:480,height:canvas.height,region:'grandfatherTree',camera:{x:0,y:297},scale:45,reducedMotion:reduced,time});
@@ -55,11 +56,12 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
     for(const pin of layout.bumpers){const p=view(pin);dot(p,pin.radius*scale,'#ab7041');dot(p,pin.radius*scale*.83,'#f3cf76');dot(p,pin.radius*scale*.44,'#d9914c');}
    }else dot([panel.x+panel.w/2,panel.y+panel.h/2],110,'rgba(255,248,222,.45)');
    if(preview)preview.points.forEach((p,i)=>dot(view(p),2,`rgba(82,85,45,${(1-i/preview.points.length)*.8})`));
-   for(const e of reduced?[]:effects){const p=view(e),t=1-e.life/.4,r=4+t*(8+14*(e.strength??.4));ctx.save();ctx.globalAlpha=Math.max(0,e.life/.4)*.8;ctx.strokeStyle=e.material==='leaf'?'#e9f4af':e.material==='bumper'?'#f9bd55':'#fff0ba';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(...p,r,0,Math.PI*2);ctx.stroke();if((e.strength??0)>.25)for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;line([p[0]+Math.cos(a)*(r+2),p[1]+Math.sin(a)*(r+2)],[p[0]+Math.cos(a)*(r+5),p[1]+Math.sin(a)*(r+5)],ctx.strokeStyle,1.5);}ctx.restore();}
+   for(const e of reduced?[]:effects){const p=view(e),t=1-e.life/.4,r=4+t*(8+14*(e.strength??.4));ctx.save();ctx.globalAlpha=Math.max(0,e.life/.4)*.8;ctx.strokeStyle=e.material==='leaf'?'#e9f4af':e.material==='bumper'?'#f9bd55':'#fff0ba';ctx.lineWidth=1.5;ctx.beginPath();if(e.material==='ground')ctx.ellipse(...p,r,r*.4,0,0,Math.PI*2);else ctx.arc(...p,r,0,Math.PI*2);ctx.stroke();if((e.strength??0)>.25)for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;line([p[0]+Math.cos(a)*(r+2),p[1]+Math.sin(a)*(r+2)],[p[0]+Math.cos(a)*(r+5),p[1]+Math.sin(a)*(r+5)],ctx.strokeStyle,1.5);}ctx.restore();}
    // Feedback sits behind actual articulated bodies and collision silhouettes.
    if(flying){const encounters=[...scene.enemies.values()].map(b=>{const p=b.getWorldCenter(),v=b.getLinearVelocity(),tag=b.getUserData();return {id:tag.id,kind:tag.kind,x:p.x,y:p.y,vx:v.x,vy:v.y,radius:b.getFixtureList().getShape().getRadius()};});
-    const cues=approachCues(c,encounters,{camera:cam,width:panel.w,height:panel.h,scale});approachNotice=cues.length?'Nearby moving encounters: '+cues.map(q=>`${q.kind} (${Math.abs(Math.sin(q.angle))>.707?(Math.sin(q.angle)>0?'below':'above'):(Math.cos(q.angle)>0?'right':'left')})`).join(', ')+'.':'';
-    for(const cue of cues){ctx.save();ctx.translate(cue.x,cue.y);ctx.rotate(cue.angle);ctx.fillStyle='#f8d58c';ctx.strokeStyle='#5c4b2a';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(-7,-7);ctx.lineTo(-7,7);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();}
+    const bounds=[];for(const part of scene.parts)for(let f=part.getFixtureList();f;f=f.getNext())bounds.push(f.getAABB(0));
+    const cues=approachCues(c,encounters,{camera:cam,width:panel.w,height:panel.h,scale,payloadRadius:payloadWarningRadius(c,bounds)});approachNotice=cues.length?'Nearby: '+cues.map(q=>`${q.count>1?q.count+' moving encounters':q.kind} (${Math.abs(Math.sin(q.angle))>.707?(Math.sin(q.angle)>0?'below':'above'):(Math.cos(q.angle)>0?'right':'left')})`).join(', ')+'.':'';
+    for(const cue of cues){ctx.save();ctx.translate(cue.x,cue.y);ctx.scale(cueScale,cueScale);ctx.rotate(cue.angle);ctx.fillStyle='#f8d58c';ctx.strokeStyle='#5c4b2a';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(10,0);ctx.lineTo(-7,-7);ctx.lineTo(-7,7);ctx.closePath();ctx.fill();ctx.stroke();ctx.rotate(-cue.angle);if(cue.count>1){ctx.fillStyle='#263b31';ctx.font='bold 11px system-ui';ctx.textAlign='center';ctx.fillText(String(cue.count),-Math.cos(cue.angle)*14,-Math.sin(cue.angle)*14+4);}ctx.restore();}
    }
    // Encounters first: a foreground collision cannot hide the volunteer's body.
    for(const role of ['enemy','part'])for(let b=scene.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role===role)body(scene,b,view,scale,reduced?0:Math.sin(time*8));
