@@ -1,0 +1,387 @@
+{
+  "protocol": "Replayed five iteration14 seating_failed rows at original0.2 and recovery0.6 winding, same equipped hardware/species/grip and finite-force loading path. Observed all2100postdrop ticks rather than skipping first61ticks. No unlatch or payout is attempted; readiness does not prove a good launch. Coach sampled600Hz rather than browser RAF. Read-only production review.",
+  "rows": [
+    {
+      "i": 5,
+      "species": "chipmunk",
+      "fraction": 0.2,
+      "firstReady": null,
+      "firstContact": null,
+      "endStatus": {
+        "cradleSpeed": 0.45658159315923846,
+        "cradleSpin": -1.912328720516625,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 4.535419509152517,
+        "maxPartRelativeSpeed": 4.63095564687272,
+        "maxRelativeSpin": 1.9149790959053048
+      },
+      "center": {
+        "x": -2.2008616190181165,
+        "y": 294.24451039105827,
+        "vx": 0.000590586523577845,
+        "vy": -0.00025504182886111826,
+        "mass": 1
+      },
+      "cup": {
+        "x": -3.028935944967834,
+        "y": 296.10729987305456
+      },
+      "coach": {
+        "reason": "Low winding; cradle moving 0.5 m/s. Lift over its center. A brief contact window may be usable; medium winding is easier to retry.",
+        "retry": true
+      },
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      },
+      "grip": "head"
+    },
+    {
+      "i": 5,
+      "species": "chipmunk",
+      "fraction": 0.6,
+      "firstReady": 12,
+      "firstContact": 12,
+      "endStatus": {
+        "cradleSpeed": 0.016439750769610996,
+        "cradleSpin": -0.01578696766581431,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.006200263372870664,
+        "maxPartRelativeSpeed": 0.016875561671248426,
+        "maxRelativeSpin": 0.22180601576471684
+      },
+      "center": {
+        "x": -2.8450233110785472,
+        "y": 295.23873595046217,
+        "vx": 0.01149447854059195,
+        "vy": -0.009828275333165295,
+        "mass": 1
+      },
+      "cup": {
+        "x": -2.6877622780455654,
+        "y": 295.163689631986
+      },
+      "coach": {
+        "reason": "Contact ready. Unlatch when you want to test this pose.",
+        "retry": false
+      },
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long"
+      },
+      "grip": "head"
+    },
+    {
+      "i": 37,
+      "species": "snake",
+      "fraction": 0.2,
+      "firstReady": 0,
+      "firstContact": 0,
+      "endStatus": {
+        "cradleSpeed": 2.4570119861994555,
+        "cradleSpin": -0.7237977135871823,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 4.862978585980331,
+        "maxPartRelativeSpeed": 5.009503624072002,
+        "maxRelativeSpin": 0.9964072719043473
+      },
+      "center": {
+        "x": -6.732019636497077,
+        "y": 294.216837932471,
+        "vx": -0.0008159726918399754,
+        "vy": -0.012657185170942668,
+        "mass": 1.1
+      },
+      "cup": {
+        "x": -4.181348323691711,
+        "y": 296.58409601871756
+      },
+      "coach": {
+        "reason": "Contact was lost; the volunteer is below the cradle. Re-grip from the branch or retry at medium winding.",
+        "retry": true
+      },
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "grip": "head"
+    },
+    {
+      "i": 37,
+      "species": "snake",
+      "fraction": 0.6,
+      "firstReady": 0,
+      "firstContact": 0,
+      "endStatus": {
+        "cradleSpeed": 0.16638470739754097,
+        "cradleSpin": -0.07099658330297745,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 4,
+        "relativeSpeed": 0.012040374215777616,
+        "maxPartRelativeSpeed": 0.03197863503977892,
+        "maxRelativeSpin": 0.3279482007979154
+      },
+      "center": {
+        "x": -2.5726291234368577,
+        "y": 295.2301919689198,
+        "vx": -0.16357232725671,
+        "vy": -0.0077770593259132124,
+        "mass": 1.1
+      },
+      "cup": {
+        "x": -2.4695694947603952,
+        "y": 295.12867906810396
+      },
+      "coach": {
+        "reason": "Contact ready. Unlatch when you want to test this pose.",
+        "retry": false
+      },
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-light",
+        "sling": "sling-long"
+      },
+      "grip": "head"
+    },
+    {
+      "i": 40,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "firstReady": null,
+      "firstContact": null,
+      "endStatus": {
+        "cradleSpeed": 1.2655808055203668,
+        "cradleSpin": -4.50113772338893,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 296.4140238592965,
+        "maxPartRelativeSpeed": 300.75260002136326,
+        "maxRelativeSpin": 12.007572142801692
+      },
+      "center": {
+        "x": -31.49849866995305,
+        "y": 238.30857755758066,
+        "vx": -8.24524714872279,
+        "vy": -35.63733636683393,
+        "mass": 5
+      },
+      "cup": {
+        "x": -5.674072989768546,
+        "y": 296.36023493605336
+      },
+      "coach": {
+        "reason": "Low winding; cradle moving 1.3 m/s. Lift over its center. A brief contact window may be usable; medium winding is easier to retry.",
+        "retry": true
+      },
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "grip": "torso"
+    },
+    {
+      "i": 40,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "firstReady": 151,
+      "firstContact": 151,
+      "endStatus": {
+        "cradleSpeed": 0.1212052268286251,
+        "cradleSpin": -0.046243538081254046,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.030879083955953665,
+        "maxPartRelativeSpeed": 0.04482472777599663,
+        "maxRelativeSpin": 0.1252215080361318
+      },
+      "center": {
+        "x": -2.423851749948536,
+        "y": 294.94960897462914,
+        "vx": 0.10375360781668111,
+        "vy": -0.04084514680200868,
+        "mass": 5
+      },
+      "cup": {
+        "x": -2.2984878863611353,
+        "y": 294.79511647541125
+      },
+      "coach": {
+        "reason": "Contact ready. Unlatch when you want to test this pose.",
+        "retry": false
+      },
+      "equipment": {
+        "counterweight": "counterweight-heavy",
+        "beam": "beam-long",
+        "sling": "sling-long"
+      },
+      "grip": "torso"
+    },
+    {
+      "i": 73,
+      "species": "armadillo",
+      "fraction": 0.2,
+      "firstReady": null,
+      "firstContact": null,
+      "endStatus": {
+        "cradleSpeed": 0.0033238684910605917,
+        "cradleSpin": -0.0003676465292155509,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 33.99473181475311,
+        "maxPartRelativeSpeed": 35.82565165690762,
+        "maxRelativeSpin": 8.002510842721898
+      },
+      "center": {
+        "x": 29.4207161926327,
+        "y": 248.55676825324517,
+        "vx": 9.317638905576716,
+        "vy": -32.70053559922362,
+        "mass": 5
+      },
+      "cup": {
+        "x": 0.40196389941033617,
+        "y": 300.2364648674844
+      },
+      "coach": {
+        "reason": "The release bead has left its rail while loading. Retry this volunteer; compare rail or sling settings.",
+        "retry": true
+      },
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "grip": "head"
+    },
+    {
+      "i": 73,
+      "species": "armadillo",
+      "fraction": 0.6,
+      "firstReady": 0,
+      "firstContact": 0,
+      "endStatus": {
+        "cradleSpeed": 0.022687052230230983,
+        "cradleSpin": -0.07815691368449058,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 3,
+        "relativeSpeed": 0.003588228904537408,
+        "maxPartRelativeSpeed": 0.015245728469298472,
+        "maxRelativeSpin": 0.05517383000281346
+      },
+      "center": {
+        "x": -2.4775460448559663,
+        "y": 295.2697311172658,
+        "vx": -0.015585349540731791,
+        "vy": -0.035847841722607916,
+        "mass": 5
+      },
+      "cup": {
+        "x": -2.392886868485204,
+        "y": 295.1221271353593
+      },
+      "coach": {
+        "reason": "Contact ready. Unlatch when you want to test this pose.",
+        "retry": false
+      },
+      "equipment": {
+        "beam": "beam-light",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "grip": "head"
+    },
+    {
+      "i": 76,
+      "species": "frog",
+      "fraction": 0.2,
+      "firstReady": null,
+      "firstContact": 0,
+      "endStatus": {
+        "cradleSpeed": 0.5827946578369566,
+        "cradleSpin": 2.9251513444522472,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 9.872126525948426,
+        "maxPartRelativeSpeed": 10.3132388518758,
+        "maxRelativeSpin": 2.925420284414299
+      },
+      "center": {
+        "x": -6.099424570497681,
+        "y": 294.183893454655,
+        "vx": -1.1680641200565092,
+        "vy": -2.3011095455381773e-06,
+        "mass": 1.05
+      },
+      "cup": {
+        "x": -4.3680164104135955,
+        "y": 295.8222783457152
+      },
+      "coach": {
+        "reason": "Contact was lost; the volunteer is below the cradle. Re-grip from the branch or retry at medium winding.",
+        "retry": true
+      },
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "grip": "torso"
+    },
+    {
+      "i": 76,
+      "species": "frog",
+      "fraction": 0.6,
+      "firstReady": 149,
+      "firstContact": 149,
+      "endStatus": {
+        "cradleSpeed": 0.22298191940829806,
+        "cradleSpin": 0.04386319495366551,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 4,
+        "relativeSpeed": 0.0005132069930298144,
+        "maxPartRelativeSpeed": 0.001528291831588249,
+        "maxRelativeSpin": 0.009374489279729524
+      },
+      "center": {
+        "x": -2.8137373482298695,
+        "y": 294.8167170022572,
+        "vx": 0.21860699710883622,
+        "vy": -0.0079878482664671,
+        "mass": 1.05
+      },
+      "cup": {
+        "x": -2.6162564729285522,
+        "y": 294.77186742659586
+      },
+      "coach": {
+        "reason": "Contact ready. Unlatch when you want to test this pose.",
+        "retry": false
+      },
+      "equipment": {
+        "beam": "beam-long",
+        "sling": "sling-long",
+        "frame": "frame-grip",
+        "counterweight": "counterweight-heavy"
+      },
+      "grip": "torso"
+    }
+  ]
+}

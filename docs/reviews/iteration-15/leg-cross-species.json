@@ -1,0 +1,1391 @@
+{
+  "protocol": "Research-only synthetic unchanged rigs translated to COM(50,4), prescribed velocity before integration, specified0/40rad/s initial body spin. One second600Hz. Compare existing2400 contact refinement with3600/4800 only when contact region and part speed>40 or spin>100. Masses/inertias/limits untouched. Cold timings include diagnostic scans; not performance acceptance evidence.",
+  "rows": [
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.03150608766959573,
+      "maxAnchor": 0.0000412725199901795,
+      "maxPositiveResidual": 0,
+      "integrations": 1902,
+      "wallMs": 115.71504200000001
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.03150608766959573,
+      "maxAnchor": 0.0000412725199901795,
+      "maxPositiveResidual": 0,
+      "integrations": 1902,
+      "wallMs": 84.52529200000001
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03150608766959573,
+      "maxAnchor": 0.0000412725199901795,
+      "maxPositiveResidual": 0,
+      "integrations": 1902,
+      "wallMs": 71.11466599999997
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.036679714972660094,
+      "maxAnchor": 0.0007230266562033747,
+      "maxPositiveResidual": 0,
+      "integrations": 705,
+      "wallMs": 32.71079099999997
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.04620742987997184,
+      "maxAnchor": 0.00026286584335316626,
+      "maxPositiveResidual": 0,
+      "integrations": 685,
+      "wallMs": 27.879291000000023
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.05626262875500765,
+      "maxAnchor": 0.00014294453371386387,
+      "maxPositiveResidual": 0,
+      "integrations": 671,
+      "wallMs": 23.355875000000026
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.08322600610951669,
+      "maxAnchor": 0.001324695157225174,
+      "maxPositiveResidual": 0,
+      "integrations": 666,
+      "wallMs": 22.911666000000025
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.05237971618024839,
+      "maxAnchor": 0.000805676892923845,
+      "maxPositiveResidual": 0,
+      "integrations": 705,
+      "wallMs": 21.953750000000014
+    },
+    {
+      "species": "lizard",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.07550513924456359,
+      "maxAnchor": 0.001008888308946607,
+      "maxPositiveResidual": 0,
+      "integrations": 761,
+      "wallMs": 24.18025
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.015838617923588538,
+      "maxAnchor": 0.00006732658445027444,
+      "maxPositiveResidual": 0,
+      "integrations": 1275,
+      "wallMs": 39.38137499999999
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.013476560528725479,
+      "maxAnchor": 0.00004268460770538746,
+      "maxPositiveResidual": 0,
+      "integrations": 1276,
+      "wallMs": 38.39683400000001
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.012774053846645872,
+      "maxAnchor": 0.00004268460770538746,
+      "maxPositiveResidual": 0,
+      "integrations": 1286,
+      "wallMs": 36.98004100000003
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.03638160443008087,
+      "maxAnchor": 0.0010448719212071355,
+      "maxPositiveResidual": 0,
+      "integrations": 672,
+      "wallMs": 18.673458000000096
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.04404847387282229,
+      "maxAnchor": 0.00048364326955349093,
+      "maxPositiveResidual": 0,
+      "integrations": 641,
+      "wallMs": 17.342667000000006
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.07517383924503895,
+      "maxAnchor": 0.00027753645871701126,
+      "maxPositiveResidual": 0,
+      "integrations": 661,
+      "wallMs": 19.817457999999988
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.05265918911127465,
+      "maxAnchor": 0.00032808412751197166,
+      "maxPositiveResidual": 0,
+      "integrations": 654,
+      "wallMs": 18.233083999999963
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.04229123469778917,
+      "maxAnchor": 0.005150626119326701,
+      "maxPositiveResidual": 0,
+      "integrations": 680,
+      "wallMs": 19.04849999999999
+    },
+    {
+      "species": "salamander",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.04229123469778917,
+      "maxAnchor": 0.000261998214021527,
+      "maxPositiveResidual": 0,
+      "integrations": 705,
+      "wallMs": 19.550207999999998
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.032735542121496986,
+      "maxAnchor": 0.000026091760908382375,
+      "maxPositiveResidual": 0,
+      "integrations": 1908,
+      "wallMs": 53.949457999999936
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.032735542121496986,
+      "maxAnchor": 0.000026091760908382375,
+      "maxPositiveResidual": 0,
+      "integrations": 1908,
+      "wallMs": 53.52583400000003
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.032735542121496986,
+      "maxAnchor": 0.000026091760908382375,
+      "maxPositiveResidual": 0,
+      "integrations": 1908,
+      "wallMs": 53.84520800000007
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.05798839505749798,
+      "maxAnchor": 0.0004322662094007092,
+      "maxPositiveResidual": 0,
+      "integrations": 687,
+      "wallMs": 18.899125000000026
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.04275664911026367,
+      "maxAnchor": 0.00019257437246369415,
+      "maxPositiveResidual": 0,
+      "integrations": 707,
+      "wallMs": 19.50229200000001
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.040209683819078856,
+      "maxAnchor": 0.0001872711272442766,
+      "maxPositiveResidual": 0,
+      "integrations": 739,
+      "wallMs": 20.32095800000002
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.10812588311465143,
+      "maxAnchor": 0.0001152380878502504,
+      "maxPositiveResidual": 0,
+      "integrations": 705,
+      "wallMs": 19.791041999999948
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.037693508278467736,
+      "maxAnchor": 0.000045771734863146584,
+      "maxPositiveResidual": 0,
+      "integrations": 726,
+      "wallMs": 20.435459000000037
+    },
+    {
+      "species": "mouse",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.02337949627913738,
+      "maxAnchor": 0.000029571792864217625,
+      "maxPositiveResidual": 0,
+      "integrations": 780,
+      "wallMs": 22.32579099999998
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.03664534048369528,
+      "maxAnchor": 0.000009340084551687976,
+      "maxPositiveResidual": 0,
+      "integrations": 1914,
+      "wallMs": 62.998292000000106
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.03664534048369528,
+      "maxAnchor": 0.000009340084551687976,
+      "maxPositiveResidual": 0,
+      "integrations": 1916,
+      "wallMs": 62.12424999999985
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03664534048369528,
+      "maxAnchor": 0.000009340084551687976,
+      "maxPositiveResidual": 0,
+      "integrations": 1918,
+      "wallMs": 60.78379199999995
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.1760053115757877,
+      "maxAnchor": 0.0002689812137936339,
+      "maxPositiveResidual": 0,
+      "integrations": 672,
+      "wallMs": 18.439707999999882
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.024558765271020855,
+      "maxAnchor": 0.00010983855990550895,
+      "maxPositiveResidual": 0,
+      "integrations": 680,
+      "wallMs": 19.91195800000014
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.043494260079282976,
+      "maxAnchor": 0.0001120536859306028,
+      "maxPositiveResidual": 0,
+      "integrations": 688,
+      "wallMs": 20.221249999999827
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.20025767048269516,
+      "maxAnchor": 0.014575105871633213,
+      "maxPositiveResidual": 0,
+      "integrations": 1809,
+      "wallMs": 56.23929199999998
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.038419843593215375,
+      "maxAnchor": 0.00004972891688996361,
+      "maxPositiveResidual": 0,
+      "integrations": 2037,
+      "wallMs": 57.45375000000013
+    },
+    {
+      "species": "turtle",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03857687766505158,
+      "maxAnchor": 0.00004972891688996361,
+      "maxPositiveResidual": 0,
+      "integrations": 1728,
+      "wallMs": 50.08554099999992
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.013955276519381332,
+      "maxAnchor": 0.00016370509567477596,
+      "maxPositiveResidual": 0,
+      "integrations": 756,
+      "wallMs": 28.829999999999927
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.013955276519381332,
+      "maxAnchor": 0.00016370509567477596,
+      "maxPositiveResidual": 0,
+      "integrations": 756,
+      "wallMs": 25.80275000000006
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.013955276519381332,
+      "maxAnchor": 0.00016370509567477596,
+      "maxPositiveResidual": 0,
+      "integrations": 756,
+      "wallMs": 25.276292000000012
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.03490545483420915,
+      "maxAnchor": 0.0015428176700497656,
+      "maxPositiveResidual": 0,
+      "integrations": 630,
+      "wallMs": 21.416709000000083
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.01619873407476735,
+      "maxAnchor": 0.00069810461867405,
+      "maxPositiveResidual": 0,
+      "integrations": 639,
+      "wallMs": 21.252542000000176
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.006443668447573048,
+      "maxAnchor": 0.0004925979649518746,
+      "maxPositiveResidual": 0,
+      "integrations": 642,
+      "wallMs": 22.08633399999985
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.0870667428357843,
+      "maxAnchor": 0.020852953761647988,
+      "maxPositiveResidual": 0,
+      "integrations": 657,
+      "wallMs": 30.067542000000003
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.08543883426099086,
+      "maxAnchor": 0.001625718351976944,
+      "maxPositiveResidual": 0,
+      "integrations": 679,
+      "wallMs": 27.74804199999994
+    },
+    {
+      "species": "snake",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.11429768406837693,
+      "maxAnchor": 0.0014349228939699434,
+      "maxPositiveResidual": 0,
+      "integrations": 694,
+      "wallMs": 27.79641599999991
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.031522227813553294,
+      "maxAnchor": 0.00004092144912820071,
+      "maxPositiveResidual": 0,
+      "integrations": 1911,
+      "wallMs": 74.2036250000001
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.031522227813553294,
+      "maxAnchor": 0.00004092144912820071,
+      "maxPositiveResidual": 0,
+      "integrations": 1911,
+      "wallMs": 72.84062500000005
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.031522227813553294,
+      "maxAnchor": 0.00004092144912820071,
+      "maxPositiveResidual": 0,
+      "integrations": 1911,
+      "wallMs": 71.35012499999993
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.1493091535760005,
+      "maxAnchor": 0.0006551269853549987,
+      "maxPositiveResidual": 0,
+      "integrations": 1884,
+      "wallMs": 64.80670800000007
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.03530887162181251,
+      "maxAnchor": 0.0004454166210245775,
+      "maxPositiveResidual": 0,
+      "integrations": 681,
+      "wallMs": 20.260332999999946
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03495387094500635,
+      "maxAnchor": 0.00015228836877937888,
+      "maxPositiveResidual": 0,
+      "integrations": 1629,
+      "wallMs": 51.261833000000024
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.054195269219385445,
+      "maxAnchor": 0.00022100257742260226,
+      "maxPositiveResidual": 0,
+      "integrations": 690,
+      "wallMs": 19.96345899999983
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.03580114693008496,
+      "maxAnchor": 0.00021580886539751141,
+      "maxPositiveResidual": 0,
+      "integrations": 729,
+      "wallMs": 21.195167000000083
+    },
+    {
+      "species": "chipmunk",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.029924784091720946,
+      "maxAnchor": 0.00017449444363109792,
+      "maxPositiveResidual": 0,
+      "integrations": 746,
+      "wallMs": 21.321416
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.016597202504107567,
+      "maxAnchor": 0.00001807981982064055,
+      "maxPositiveResidual": 0,
+      "integrations": 1428,
+      "wallMs": 59.14991699999996
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.018887326432889595,
+      "maxAnchor": 0.000023628734603327927,
+      "maxPositiveResidual": 0,
+      "integrations": 1447,
+      "wallMs": 49.21612499999992
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.016698766260191622,
+      "maxAnchor": 0.000018066903973601157,
+      "maxPositiveResidual": 0,
+      "integrations": 1442,
+      "wallMs": 43.886083000000326
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.034908419109941025,
+      "maxAnchor": 0.015510589313386215,
+      "maxPositiveResidual": 0,
+      "integrations": 636,
+      "wallMs": 19.32245899999998
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.034905555400598476,
+      "maxAnchor": 0.008483106461056503,
+      "maxPositiveResidual": 0,
+      "integrations": 650,
+      "wallMs": 20.078958000000057
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.0349625050474337,
+      "maxAnchor": 0.0002780447988741258,
+      "maxPositiveResidual": 0,
+      "integrations": 682,
+      "wallMs": 20.168666999999914
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.06959681457310374,
+      "maxAnchor": 0.0009660163200681454,
+      "maxPositiveResidual": 0,
+      "integrations": 657,
+      "wallMs": 19.22741700000006
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.09580920903234136,
+      "maxAnchor": 0.00021821864457090176,
+      "maxPositiveResidual": 0,
+      "integrations": 683,
+      "wallMs": 20.330582999999933
+    },
+    {
+      "species": "flying-squirrel",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.07457574282453316,
+      "maxAnchor": 0.00024741017965555366,
+      "maxPositiveResidual": 0,
+      "integrations": 717,
+      "wallMs": 20.84904200000028
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.02766996136458244,
+      "maxAnchor": 0.00001754781484996028,
+      "maxPositiveResidual": 0,
+      "integrations": 1917,
+      "wallMs": 59.57249999999976
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.02766996136458244,
+      "maxAnchor": 0.00001754781484996028,
+      "maxPositiveResidual": 0,
+      "integrations": 1917,
+      "wallMs": 60.689332999999806
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.02766996136458244,
+      "maxAnchor": 0.00001754781484996028,
+      "maxPositiveResidual": 0,
+      "integrations": 1917,
+      "wallMs": 60.104665999999725
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.043345383533066606,
+      "maxAnchor": 0.00024631483479537776,
+      "maxPositiveResidual": 0,
+      "integrations": 693,
+      "wallMs": 21.88899999999967
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.04798248319022569,
+      "maxAnchor": 0.00013013774095572766,
+      "maxPositiveResidual": 0,
+      "integrations": 689,
+      "wallMs": 20.288666999999805
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03536031501716275,
+      "maxAnchor": 0.00013563043840147964,
+      "maxPositiveResidual": 0,
+      "integrations": 703,
+      "wallMs": 21.801832999999988
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.21723350555921273,
+      "maxAnchor": 0.0003949789457932371,
+      "maxPositiveResidual": 0,
+      "integrations": 720,
+      "wallMs": 21.579749999999876
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.08418643839817319,
+      "maxAnchor": 0.00015379838783781812,
+      "maxPositiveResidual": 0,
+      "integrations": 764,
+      "wallMs": 22.78041600000006
+    },
+    {
+      "species": "armadillo",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.08418643839817319,
+      "maxAnchor": 0.00013216488147728926,
+      "maxPositiveResidual": 0,
+      "integrations": 795,
+      "wallMs": 23.269708000000264
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.027578980277055187,
+      "maxAnchor": 0.00007338699740713816,
+      "maxPositiveResidual": 0,
+      "integrations": 1713,
+      "wallMs": 49.192083999999795
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.027578980277055187,
+      "maxAnchor": 0.00007338699740713816,
+      "maxPositiveResidual": 0,
+      "integrations": 1713,
+      "wallMs": 47.791541999999936
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.027578980277055187,
+      "maxAnchor": 0.00007338699740713816,
+      "maxPositiveResidual": 0,
+      "integrations": 1713,
+      "wallMs": 48.04583300000013
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.10509784456164972,
+      "maxAnchor": 0.0006185806682557738,
+      "maxPositiveResidual": 0,
+      "integrations": 678,
+      "wallMs": 19.27729199999976
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.11179930784581615,
+      "maxAnchor": 0.0003888115511807059,
+      "maxPositiveResidual": 0,
+      "integrations": 712,
+      "wallMs": 19.848833000000013
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.047844417032607334,
+      "maxAnchor": 0.0003977412006395133,
+      "maxPositiveResidual": 0,
+      "integrations": 750,
+      "wallMs": 20.609833999999864
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.08429430950395234,
+      "maxAnchor": 0.021861227249111992,
+      "maxPositiveResidual": 0,
+      "integrations": 705,
+      "wallMs": 19.31162499999982
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.10796413379931047,
+      "maxAnchor": 0.0016720645233017609,
+      "maxPositiveResidual": 0,
+      "integrations": 660,
+      "wallMs": 19.443291000000045
+    },
+    {
+      "species": "small-marsupial",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.11380810129003249,
+      "maxAnchor": 0.0013373896939185756,
+      "maxPositiveResidual": 0,
+      "integrations": 719,
+      "wallMs": 20.434792000000016
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.03669286345099487,
+      "maxAnchor": 0.000027814708735210173,
+      "maxPositiveResidual": 0,
+      "integrations": 1743,
+      "wallMs": 52.22612499999968
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.03669286345099487,
+      "maxAnchor": 0.000027814708735210173,
+      "maxPositiveResidual": 0,
+      "integrations": 1743,
+      "wallMs": 52.10379200000034
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03669286345099487,
+      "maxAnchor": 0.000027814708735210173,
+      "maxPositiveResidual": 0,
+      "integrations": 1743,
+      "wallMs": 52.15695800000003
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.055982818020591685,
+      "maxAnchor": 0.0004850130642791011,
+      "maxPositiveResidual": 0,
+      "integrations": 687,
+      "wallMs": 18.335415999999896
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.08450948121416801,
+      "maxAnchor": 0.0006922918415853588,
+      "maxPositiveResidual": 0,
+      "integrations": 707,
+      "wallMs": 19.360124999999698
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.03296588133701328,
+      "maxAnchor": 0.0005282635173918665,
+      "maxPositiveResidual": 0,
+      "integrations": 724,
+      "wallMs": 21.028916999999637
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.03490704148600354,
+      "maxAnchor": 0.0014632567079663444,
+      "maxPositiveResidual": 0,
+      "integrations": 921,
+      "wallMs": 24.77166699999998
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.043177988438333204,
+      "maxAnchor": 0.0012300355616955705,
+      "maxPositiveResidual": 0,
+      "integrations": 938,
+      "wallMs": 24.390833999999813
+    },
+    {
+      "species": "tiny-primate",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.030922364572990135,
+      "maxAnchor": 0.0015281469974886064,
+      "maxPositiveResidual": 0,
+      "integrations": 1013,
+      "wallMs": 28.427083999999923
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.02309351270698745,
+      "maxAnchor": 0.00024702899779246133,
+      "maxPositiveResidual": 0,
+      "integrations": 1293,
+      "wallMs": 37.19208299999991
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.02309351270698745,
+      "maxAnchor": 0.00024702899779246133,
+      "maxPositiveResidual": 0,
+      "integrations": 1293,
+      "wallMs": 35.921291999999994
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 8,
+        "y": -12,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.02309351270698745,
+      "maxAnchor": 0.00024702899779246133,
+      "maxPositiveResidual": 0,
+      "integrations": 1293,
+      "wallMs": 36.36020800000006
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 0,
+      "maxAngle": 0.08321723918412749,
+      "maxAnchor": 0.001854441819506874,
+      "maxPositiveResidual": 0,
+      "integrations": 672,
+      "wallMs": 18.151832999999897
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.06989170172108228,
+      "maxAnchor": 0.001950563077277598,
+      "maxPositiveResidual": 0,
+      "integrations": 715,
+      "wallMs": 20.565541999999823
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 0
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.02836489599595826,
+      "maxAnchor": 0.001998400685726879,
+      "maxPositiveResidual": 0,
+      "integrations": 761,
+      "wallMs": 20.97129199999972
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 0,
+      "maxAngle": 0.08166624301850223,
+      "maxAnchor": 0.024108834079176703,
+      "maxPositiveResidual": 0,
+      "integrations": 735,
+      "wallMs": 20.489540999999917
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 3600,
+      "maxAngle": 0.08189792524097372,
+      "maxAnchor": 0.001196793342199681,
+      "maxPositiveResidual": 0,
+      "integrations": 787,
+      "wallMs": 22.56058299999995
+    },
+    {
+      "species": "frog",
+      "velocity": {
+        "x": 25,
+        "y": -60,
+        "spin": 40
+      },
+      "adaptive": 4800,
+      "maxAngle": 0.06127836039297074,
+      "maxAnchor": 0.0010466141380362432,
+      "maxPositiveResidual": 0,
+      "integrations": 1041,
+      "wallMs": 29.653625000000375
+    }
+  ]
+}

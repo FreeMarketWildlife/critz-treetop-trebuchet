@@ -1,0 +1,216 @@
+{
+  "protocol": "Frozen original incoming state. Counterfactual interventions before integration only. Shape trials preserve each leg mass but use fixture-derived inertia; no runtime repair. Anchor trials deliberately change constraints at the same incoming pose and are therefore not equivalent natural trajectory trials.",
+  "rows": [
+    {
+      "id": "baseline",
+      "maxAngle": 0.27268860188117405,
+      "maxAnchor": 0.0005890900366703062,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 559.2109406418275,
+      "wallMs": 80.539917
+    },
+    {
+      "id": "friction0",
+      "friction": 0,
+      "maxAngle": 0.27268860188117405,
+      "maxAnchor": 0.0005890900366703062,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 559.2109406418275,
+      "wallMs": 53.71041700000001
+    },
+    {
+      "id": "restitution0",
+      "restitution": 0,
+      "maxAngle": 0.27268860188117405,
+      "maxAnchor": 0.0005890900366703062,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 559.2109406418275,
+      "wallMs": 43.97966600000001
+    },
+    {
+      "id": "both0",
+      "friction": 0,
+      "restitution": 0,
+      "maxAngle": 0.27268860188117405,
+      "maxAnchor": 0.0005890900366703062,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 559.2109406418275,
+      "wallMs": 40.58687499999999
+    },
+    {
+      "id": "hull",
+      "shape": "hull",
+      "maxAngle": 0.25728505642918553,
+      "maxAnchor": 0.0005720458575182308,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 551.5541825009996,
+      "wallMs": 45.508166999999986
+    },
+    {
+      "id": "box",
+      "shape": "box",
+      "maxAngle": 0.22960450148449785,
+      "maxAnchor": 0.0005414196179176329,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 537.5695214600195,
+      "wallMs": 40.432500000000005
+    },
+    {
+      "id": "circle",
+      "shape": "circle",
+      "maxAngle": 0.2607059768076738,
+      "maxAnchor": 0.000575831865542051,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 553.2625897640091,
+      "wallMs": 39.03362499999997
+    },
+    {
+      "id": "anchor-legcenter",
+      "anchor": 1,
+      "maxAngle": 0.030089934183827438,
+      "maxAnchor": 0.0005651234448670737,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "head"
+      ],
+      "maxSpin": 252.0384480192143,
+      "wallMs": 41.660000000000025
+    },
+    {
+      "id": "anchor-quarter",
+      "anchor": 0.75,
+      "maxAngle": 0.06751166259283115,
+      "maxAnchor": 0.00035651233382444597,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "front-leg"
+      ],
+      "maxSpin": 379.0260706617335,
+      "wallMs": 37.79154199999999
+    },
+    {
+      "id": "fine4800",
+      "hz": 4800,
+      "maxAngle": 0.01493430529389883,
+      "maxAnchor": 0.00009182755032395775,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "head"
+      ],
+      "maxSpin": 469.1760041860852,
+      "wallMs": 202.98366700000003
+    },
+    {
+      "id": "fine9600",
+      "hz": 9600,
+      "maxAngle": 0.0320327427945728,
+      "maxAnchor": 0.000026310093059553773,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "front-leg"
+      ],
+      "maxSpin": 458.2262221498208,
+      "wallMs": 382.3202500000001
+    },
+    {
+      "id": "bullet",
+      "bullet": true,
+      "maxAngle": 0.27268860188117405,
+      "maxAnchor": 0.0005890900366703062,
+      "maxPositiveResidual": 0,
+      "bad": 1,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 559.2109406418275,
+      "wallMs": 39.495291999999836
+    },
+    {
+      "id": "region3600",
+      "region": 3600,
+      "maxAngle": 0.06036858595703909,
+      "maxAnchor": 0.00012419195041517788,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 332.97925300645676,
+      "wallMs": 36.87408400000004
+    },
+    {
+      "id": "region4800",
+      "region": 4800,
+      "maxAngle": 0.03784135282325285,
+      "maxAnchor": 0.00006985781691161091,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 334.24117568180736,
+      "wallMs": 38.696916999999985
+    },
+    {
+      "id": "fast-region4800",
+      "region": 4800,
+      "fast": true,
+      "maxAngle": 0.03784135282325285,
+      "maxAnchor": 0.00006985781691161091,
+      "maxPositiveResidual": 0,
+      "bad": 0,
+      "worst": [
+        "torso",
+        "rear-leg"
+      ],
+      "maxSpin": 334.24117568180736,
+      "wallMs": 36.55687499999999
+    }
+  ]
+}

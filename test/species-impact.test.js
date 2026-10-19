@@ -6,3 +6,8 @@ test('all eleven authored rigs survive the same finite ground arrival without en
  assert.ok(impact,p.id);assert.ok(s.assistWork<=1e-9,p.id);
  }
 });
+test('fast collision resolution keeps eleven unchanged rigs within bounds on high-speed ground arrivals',()=>{
+ for(const p of profiles){const s=new CritterScene({...STARTER_HARDWARE,mechanicalWinding:true,collisionSubsteps:true,collisionStepHz:2400,fastCollisionStepHz:4800},p.id),c=s.center();for(const b of s.parts){const q=b.getPosition();b.setPosition(P.Vec2(q.x+50-c.x,q.y+4-c.y));b.setLinearVelocity(P.Vec2(25,-60));}s.phase='flight';s.release={time:0,center:s.center()};const e0=s.energy(),w0=work(s);let hit=false;
+ for(let i=0;i<600;i++){s.step();hit ||=s.events.some(e=>e.type==='impact');s.events.length=0;assert.ok(s.energy()-e0-(work(s)-w0)<.01,p.id);for(let j=s.world.getJointList();j;j=j.getNext())if(j.getType()==='revolute-joint'&&[j.getBodyA(),j.getBodyB()].every(b=>b.getUserData()?.role==='part')){const a=j.getAnchorA(),b=j.getAnchorB();assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<.003,p.id);assert.ok(Math.max(0,j.getJointAngle()-j.getUpperLimit(),j.getLowerLimit()-j.getJointAngle())<.08,p.id);}}assert.ok(hit,p.id);assert.ok(s.assistWork<=1e-9,p.id);
+ }
+});

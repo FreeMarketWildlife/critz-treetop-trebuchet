@@ -1,5 +1,12 @@
 # Active implementation task — consult before resuming
 
+## Current checkpoint: iteration 15
+
+Current implementation is iteration15, continuing from fdc3435. Read docs/reviews/iteration-15/findings.md, not the obsolete lore delegation.154tests pass. Fast flight collision region opts into4800Hz above40m/s or100rad/s, max8steps; masses/inertia/limits/forces unchanged. Savedleg.272689→.037841rad; natural35cases32release/3lowwindmiss, angularflags18→11,max.174853rad,anchor.033266m; predictionexact/no mutation. Syntheticspinning3species stillwarn. Allfive132soakmisses recover contact atmedium,one snake miss is delayed-searchartifact. Coach handlesnevercontactfall/offcenter/actualpartmotion; windingfocus/middlemarker; Collect opensshop/freezescompletedrun, purchaseconfirmsnextsetup.
+
+Finalsoak127release/5miss,43m49ssim,259worldszero retainedat12GCchecks;Nodep952.603ms,max46.403ms means no strictbudgetclaim. Freshcurrentbrowser0wallet→twofrogflights→earned30bellcounterweightpurchase→possumrelaunch completed; possumbackward0.4m/s/branchhit retainedaspoorresult.Collect&retrythenReset2309points35bellsunchanged;ownedcounter180,saveOFF,stickyON,Soundon35%,normalviewport,idlelocalhosttab1219045088keptopen,nobrowserwarn/errors. Originalsaved127origin18117/89untouched. Manualpausecollection→Next→Resume verified. Actualhidden-tabE2E unavailable(nativeMaclocked),ears/deviceFPS unverified. No push/deploy/export retry. Next: investigate remaining natural impact transients and irregular release/branch returns with identical physical fixtures; profile long-run CPU outliers before any frame-budget claim. Keep local tested commits and preserve work. Earlier chronological entries below are history.
+
+
 The active task is ongoing LOCAL GAME DEVELOPMENT of Critz: Treetop Trebuchet. Earlier lore documentation is complete; do not report that as current progress. User authorized continued overnight mechanics/game-feel work until stopped. Preserve local code. No push, deployment, paid assets, unlock bypass or retry of blocked exports.
 
 Repository: this directory. Baseline before iteration 7: 5e817d4ae1d0abae0e30d4097e6e89f9b59378ab (109 tests). Read docs/prototype.md iteration 7 and docs/reviews/iteration-7/regression-findings.md for current measured results. Iteration 7 has 124 passing tests and 35-case regression (32 launches, three low-winding seating failures). Exact source hashes are recorded in JSON.

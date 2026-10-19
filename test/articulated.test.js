@@ -142,3 +142,7 @@ test('collision-region substeps refine fast flight only, preserve time and canon
  const clone=s.clone();s.step();clone.step();assert.deepEqual(s.center(),clone.center());
  assert.throws(()=>new CritterScene({collisionSubsteps:2}));assert.throws(()=>new CritterScene({collisionStepHz:1800}));
 });
+
+test('fast refinement is opt-in, collision-local, and bounded without altering launch integration',()=>{
+ const s=new CritterScene({collisionSubsteps:true,collisionStepHz:2400,fastCollisionStepHz:4800});let calls=0;const integrate=s.integrate.bind(s);s.integrate=dt=>{calls++;integrate(dt);};s.step();assert.equal(calls,1);s.phase='flight';s.parts.forEach(b=>b.setLinearVelocity({x:0,y:-60}));calls=0;s.step();assert.equal(calls,1);const c=s.center();for(const b of s.parts){const p=b.getPosition();b.setPosition({x:p.x+20-c.x,y:p.y+.3-c.y});}calls=0;s.step();assert.equal(calls,8);assert.throws(()=>new CritterScene({fastCollisionStepHz:9600}));
+});

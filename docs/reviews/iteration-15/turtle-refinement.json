@@ -1,0 +1,20 @@
+{
+  "protocol": "Legacy turtle incoming fixture using current74%/6%physical masses/inertias before integration. All part joints measured each600Hzouterstep; one second. Same speed40/spin100 fast collision-region gate.",
+  "rows": [
+    {
+      "hz": 2400,
+      "maxAngle": 0.04308438504540679,
+      "maxAnchor": 0.00010418780646171406
+    },
+    {
+      "hz": 3600,
+      "maxAngle": 0.03332967362422612,
+      "maxAnchor": 0.0001503493036281703
+    },
+    {
+      "hz": 4800,
+      "maxAngle": 0.03846330029546441,
+      "maxAnchor": 0.00014515221396812093
+    }
+  ]
+}

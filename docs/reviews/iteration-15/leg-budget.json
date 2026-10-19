@@ -1,0 +1,76 @@
+{
+  "rows": [
+    {
+      "fixture": "leg",
+      "hz": 2400,
+      "protocol": "Eight identical1second trials, first2warmups excluded.360ten-tick batches engine-only timing. Max joint scan every10ticks ONLY so use other studies for precisepeak.",
+      "batchP95Ms": 1.9094580000000008,
+      "batchMaxMs": 2.4859170000000006,
+      "over4ms": 0,
+      "integrations": 6888,
+      "maxAngle": 0.03492693971885363,
+      "maxAnchor": 0.00017757663254603626,
+      "maxResidual": 0
+    },
+    {
+      "fixture": "leg",
+      "hz": 3600,
+      "protocol": "Eight identical1second trials, first2warmups excluded.360ten-tick batches engine-only timing. Max joint scan every10ticks ONLY so use other studies for precisepeak.",
+      "batchP95Ms": 1.529457999999977,
+      "batchMaxMs": 2.1538750000000277,
+      "over4ms": 0,
+      "integrations": 5840,
+      "maxAngle": 0.026825912357794746,
+      "maxAnchor": 0.00005967946130027167,
+      "maxResidual": 0
+    },
+    {
+      "fixture": "leg",
+      "hz": 4800,
+      "protocol": "Eight identical1second trials, first2warmups excluded.360ten-tick batches engine-only timing. Max joint scan every10ticks ONLY so use other studies for precisepeak.",
+      "batchP95Ms": 1.5985829999999623,
+      "batchMaxMs": 2.534041000000002,
+      "over4ms": 0,
+      "integrations": 5896,
+      "maxAngle": 0.021882757170899936,
+      "maxAnchor": 0.00003351899421362964,
+      "maxResidual": 0
+    },
+    {
+      "fixture": "turtle",
+      "hz": 2400,
+      "protocol": "Eight identical1second trials, first2warmups excluded.360ten-tick batches engine-only timing. Max joint scan every10ticks ONLY so use other studies for precisepeak.",
+      "batchP95Ms": 1.440208999999868,
+      "batchMaxMs": 1.6930830000001151,
+      "over4ms": 0,
+      "integrations": 14832,
+      "maxAngle": 0.020602066779147776,
+      "maxAnchor": 0.00010418780646171406,
+      "maxResidual": 0
+    },
+    {
+      "fixture": "turtle",
+      "hz": 3600,
+      "protocol": "Eight identical1second trials, first2warmups excluded.360ten-tick batches engine-only timing. Max joint scan every10ticks ONLY so use other studies for precisepeak.",
+      "batchP95Ms": 1.346708000000035,
+      "batchMaxMs": 1.632291000000123,
+      "over4ms": 0,
+      "integrations": 14048,
+      "maxAngle": 0.033291189301922985,
+      "maxAnchor": 0.0001503493036281703,
+      "maxResidual": 0
+    },
+    {
+      "fixture": "turtle",
+      "hz": 4800,
+      "protocol": "Eight identical1second trials, first2warmups excluded.360ten-tick batches engine-only timing. Max joint scan every10ticks ONLY so use other studies for precisepeak.",
+      "batchP95Ms": 1.3700420000000122,
+      "batchMaxMs": 2.179583999999977,
+      "over4ms": 0,
+      "integrations": 14360,
+      "maxAngle": 0.012326116062442383,
+      "maxAnchor": 0.00014515221396812093,
+      "maxResidual": 0
+    }
+  ]
+}

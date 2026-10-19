@@ -1,0 +1,104 @@
+{
+  "protocol": "Research prototype-step override only; natural unchanged motor/loading, same script case recipes; threshold normal40/100,low20/50,allnear4800. Canonicalprediction uses same research step. No production edits. Nine cold runs timing diagnostic-inclusive and not CPU acceptance.",
+  "rows": [
+    {
+      "threshold": "normal",
+      "id": "default-lizard-head",
+      "maxAngle": 0.17062765885565345,
+      "maxAnchor": 0.014135996150638645,
+      "phase": "impact_recovery",
+      "part": "front-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 650.0811249999999
+    },
+    {
+      "threshold": "normal",
+      "id": "owned-beam-light",
+      "maxAngle": 0.17485337325004768,
+      "maxAnchor": 0.017243270969221416,
+      "phase": "impact_recovery",
+      "part": "rear-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 626.7810840000001
+    },
+    {
+      "threshold": "normal",
+      "id": "winding-armadillo-0.9",
+      "maxAngle": 0.16908380776324639,
+      "maxAnchor": 0.0196915421379215,
+      "phase": "impact_recovery",
+      "part": "rear-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 959.126
+    },
+    {
+      "threshold": "low",
+      "id": "default-lizard-head",
+      "maxAngle": 0.17062765885565345,
+      "maxAnchor": 0.014135996150638645,
+      "phase": "impact_recovery",
+      "part": "front-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 667.04825
+    },
+    {
+      "threshold": "low",
+      "id": "owned-beam-light",
+      "maxAngle": 0.17485337325004768,
+      "maxAnchor": 0.017243270969221416,
+      "phase": "impact_recovery",
+      "part": "rear-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 642.2152500000001
+    },
+    {
+      "threshold": "low",
+      "id": "winding-armadillo-0.9",
+      "maxAngle": 0.16908380776324639,
+      "maxAnchor": 0.0196915421379215,
+      "phase": "impact_recovery",
+      "part": "rear-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 980.8216249999999
+    },
+    {
+      "threshold": "all",
+      "id": "default-lizard-head",
+      "maxAngle": 0.17062765885565345,
+      "maxAnchor": 0.014135996150638645,
+      "phase": "impact_recovery",
+      "part": "front-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 673.396458
+    },
+    {
+      "threshold": "all",
+      "id": "owned-beam-light",
+      "maxAngle": 0.17485337325004768,
+      "maxAnchor": 0.017243270969221416,
+      "phase": "impact_recovery",
+      "part": "rear-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 637.9853330000001
+    },
+    {
+      "threshold": "all",
+      "id": "winding-armadillo-0.9",
+      "maxAngle": 0.16908380776324639,
+      "maxAnchor": 0.0196915421379215,
+      "phase": "impact_recovery",
+      "part": "rear-leg",
+      "energy": 0,
+      "prediction": 0,
+      "wallMs": 971.252875
+    }
+  ]
+}

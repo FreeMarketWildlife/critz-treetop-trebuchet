@@ -4,3 +4,9 @@ test('recorded heavy-frame leg arrival stays finite and recovers with unchanged 
  for(let i=0;i<600;i++){s.step();let excess=0;for(let j=s.world.getJointList();j;j=j.getNext())if(j.getType()==='revolute-joint'&&[j.getBodyA(),j.getBodyB()].every(b=>b.getUserData()?.role==='part')){const a=j.getAnchorA(),b=j.getAnchorB();assert.ok(Math.hypot(a.x-b.x,a.y-b.y)<.005);excess=Math.max(excess,0,j.getJointAngle()-j.getUpperLimit(),j.getLowerLimit()-j.getJointAngle());}assert.ok(Number.isFinite(excess));assert.ok(s.energy()-e0-(work()-w0)<.01);max=Math.max(max,excess);badSteps+=Number(excess>.08);final=excess;}
  assert.ok(max<.3,'known transient must not worsen');assert.ok(badSteps<=2);assert.ok(final<.08);
 });
+
+test('fast contact refinement fixes the recorded leg transient without changing mass or limits',()=>{
+ const saved=JSON.parse(readFileSync(new URL('../docs/reviews/iteration-14/incoming-owned-frame-heavy.json',import.meta.url))),s=new PhysicalHookScene({...saved.p,fastCollisionStepHz:4800},saved.species,structuredClone(saved)),masses=s.parts.map(b=>[b.getMass(),b.getInertia()]),work=()=>s.handWork+s.windingWork+s.assistWork+s.dragWork+s.dampingWork+s.spawnEnergy-s.despawnEnergy,e0=s.energy(),w0=work();let max=0,maxAnchor=0,maxSteps=0,calls=0;const integrate=s.integrate.bind(s);s.integrate=dt=>{calls++;integrate(dt);};
+ for(let i=0;i<600;i++){calls=0;s.step();maxSteps=Math.max(maxSteps,calls);for(let j=s.world.getJointList();j;j=j.getNext())if(j.getType()==='revolute-joint'&&[j.getBodyA(),j.getBodyB()].every(b=>b.getUserData()?.role==='part')){const a=j.getAnchorA(),b=j.getAnchorB();max=Math.max(max,0,j.getJointAngle()-j.getUpperLimit(),j.getLowerLimit()-j.getJointAngle());maxAnchor=Math.max(maxAnchor,Math.hypot(a.x-b.x,a.y-b.y));}assert.ok(s.energy()-e0-(work()-w0)<.01);}
+ assert.ok(max<.05,`${max}`);assert.ok(maxAnchor<.001);assert.equal(maxSteps,8);assert.deepEqual(s.parts.map(b=>[b.getMass(),b.getInertia()]),masses);
+});

@@ -128,7 +128,13 @@ export class CritterScene {
   }return false;
  }
  step(dt=1/600){if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');
-  const count=this.p.collisionSubsteps&&this.collisionRegion(dt)?Math.min(4,Math.ceil(dt*(this.p.collisionStepHz??1200))):1;
+  const near=this.p.collisionSubsteps&&this.collisionRegion(dt);
+  // Pinned Planck TOI solves contacts without connected joints. Resolve a fast
+  // arrival more finely before that contact-only pass can rotate a small limb.
+  // This changes integration resolution only, never mass/inertia, limits or state.
+  const fast=near&&this.p.fastCollisionStepHz&&this.parts.some(b=>b.getLinearVelocity().length()>40||Math.abs(b.getAngularVelocity())>100);
+  const hz=fast?Math.max(this.p.collisionStepHz??1200,this.p.fastCollisionStepHz):this.p.collisionStepHz??1200;
+  const count=near?Math.min(fast?8:4,Math.ceil(dt*hz)):1;
   for(let i=0;i<count;i++)this.integrate(dt/count);
  }
  integrate(dt){
