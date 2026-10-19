@@ -1,0 +1,1894 @@
+{
+  "baseline": "db22939; only contact-animation timestamp fix differs, no physical changes",
+  "protocol": "Original >1sec portrait gaps clipped at original activeEnd retained. Camera updated60Hz; actual fixture-AABB visibility and COM state sampled10Hz during those intervals. Moving-contact means pre-solve closing normal speed>.5m/s in preceding.1s; it does not alter scoring or claim perception. Original metric remains primary; these categories diagnose causes.",
+  "rows": [
+    {
+      "seedBase": 29000,
+      "n": 17,
+      "gaps": [],
+      "samples": []
+    },
+    {
+      "seedBase": 29000,
+      "n": 28,
+      "species": "flying-squirrel",
+      "gaps": [
+        {
+          "start": 0,
+          "end": 1.0333333333333334
+        },
+        {
+          "start": 3.6166666666666676,
+          "end": 5.133333333333334
+        },
+        {
+          "start": 6.966666666666667,
+          "end": 8.7
+        },
+        {
+          "start": 11.683333333333335,
+          "end": 13.266666666666667
+        },
+        {
+          "start": 43.416666666666664,
+          "end": 44.516666666666666
+        }
+      ],
+      "samples": [
+        {
+          "t": 0,
+          "worldY": 302.84230099186,
+          "worldX": -1.6610944367553688,
+          "biome": "grandfatherTree",
+          "speed": 17.32796184823078,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 300
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.1,
+          "worldY": 304.3793331695201,
+          "worldX": -1.106330446848281,
+          "biome": "grandfatherTree",
+          "speed": 15.301867325606882,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.2,
+          "worldY": 305.69130763579227,
+          "worldX": -0.5897363990476076,
+          "biome": "grandfatherTree",
+          "speed": 13.028949669840951,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.3,
+          "worldY": 306.82423874499045,
+          "worldX": -0.11862346878210998,
+          "biome": "grandfatherTree",
+          "speed": 11.31033044310189,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.4,
+          "worldY": 307.7456363362924,
+          "worldX": 0.31687648433877685,
+          "biome": "grandfatherTree",
+          "speed": 9.318488920420364,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.5,
+          "worldY": 308.5176717503932,
+          "worldX": 0.7162384099592842,
+          "biome": "grandfatherTree",
+          "speed": 8.021021639057096,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.6,
+          "worldY": 309.11995178702927,
+          "worldX": 1.0902400754032247,
+          "biome": "grandfatherTree",
+          "speed": 6.1925546028089915,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.7,
+          "worldY": 309.56393527643326,
+          "worldX": 1.4206995123290027,
+          "biome": "grandfatherTree",
+          "speed": 5.031367868381951,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 0,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.8,
+          "worldY": 309.9021316710992,
+          "worldX": 1.7360692542873293,
+          "biome": "grandfatherTree",
+          "speed": 4.233357550351526,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 0.9,
+          "worldY": 310.13151056268043,
+          "worldX": 2.0413464939827217,
+          "biome": "grandfatherTree",
+          "speed": 3.4614274577566553,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 1,
+          "worldY": 310.2531409985517,
+          "worldX": 2.333439569247394,
+          "biome": "grandfatherTree",
+          "speed": 2.95740220027719,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 251.99999999999898
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 3.7,
+          "worldY": 290.96376982890706,
+          "worldX": 8.13073106038794,
+          "biome": "grandfatherTree",
+          "speed": 12.97440751745702,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 2,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "top-band-only"
+        },
+        {
+          "t": 3.8,
+          "worldY": 289.86209472444665,
+          "worldX": 8.848904163829559,
+          "biome": "grandfatherTree",
+          "speed": 13.319473535723786,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 1,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "top-band-only"
+        },
+        {
+          "t": 3.9,
+          "worldY": 288.77944007034614,
+          "worldX": 9.651550547054304,
+          "biome": "grandfatherTree",
+          "speed": 13.627547512955202,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4,
+          "worldY": 287.71998192299253,
+          "worldX": 10.530698022880804,
+          "biome": "grandfatherTree",
+          "speed": 13.89970858864876,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.1,
+          "worldY": 286.68739807591663,
+          "worldX": 11.479464071499006,
+          "biome": "grandfatherTree",
+          "speed": 14.139533091070659,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.2,
+          "worldY": 285.68533022706407,
+          "worldX": 12.492220087541202,
+          "biome": "grandfatherTree",
+          "speed": 14.348668373859235,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.3,
+          "worldY": 284.716792470245,
+          "worldX": 13.563283004868888,
+          "biome": "grandfatherTree",
+          "speed": 14.525972669202975,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.4,
+          "worldY": 283.7839148520845,
+          "worldX": 14.686545715000308,
+          "biome": "grandfatherTree",
+          "speed": 14.670890893504911,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.5,
+          "worldY": 282.88830554967114,
+          "worldX": 15.85605422452153,
+          "biome": "grandfatherTree",
+          "speed": 14.785046314272996,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.6,
+          "worldY": 282.03174837341146,
+          "worldX": 17.06666435525975,
+          "biome": "grandfatherTree",
+          "speed": 14.870309988561864,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.7,
+          "worldY": 281.2160015016265,
+          "worldX": 18.313589374697397,
+          "biome": "grandfatherTree",
+          "speed": 14.926545584011157,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.8,
+          "worldY": 280.4423589936854,
+          "worldX": 19.591892739414707,
+          "biome": "grandfatherTree",
+          "speed": 14.953217638204817,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 4.9,
+          "worldY": 279.7116281312103,
+          "worldX": 20.896560002632565,
+          "biome": "grandfatherTree",
+          "speed": 14.950758208805922,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 5,
+          "worldY": 279.0243805910167,
+          "worldX": 22.22275411906075,
+          "biome": "grandfatherTree",
+          "speed": 14.920128388286141,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 5.1,
+          "worldY": 278.38115603715204,
+          "worldX": 23.565912223873795,
+          "biome": "grandfatherTree",
+          "speed": 14.862188768782364,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7,
+          "worldY": 273.5760883365675,
+          "worldX": 47.1872047519433,
+          "biome": "grandfatherTree",
+          "speed": 10.114568868539868,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.1,
+          "worldY": 273.48823333946376,
+          "worldX": 48.18390984252174,
+          "biome": "grandfatherTree",
+          "speed": 9.904517118785122,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.2,
+          "worldY": 273.386845237239,
+          "worldX": 49.15946621476318,
+          "biome": "grandfatherTree",
+          "speed": 9.719274390472004,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.3,
+          "worldY": 273.26964052268517,
+          "worldX": 50.11591774239521,
+          "biome": "grandfatherTree",
+          "speed": 9.56031230090956,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.4,
+          "worldY": 273.1345622033475,
+          "worldX": 51.05536257844862,
+          "biome": "grandfatherTree",
+          "speed": 9.429126997075718,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.5,
+          "worldY": 272.9797778523875,
+          "worldX": 51.97994568310174,
+          "biome": "grandfatherTree",
+          "speed": 9.326921966581724,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.6,
+          "worldY": 272.80367054942667,
+          "worldX": 52.89183389999828,
+          "biome": "grandfatherTree",
+          "speed": 9.254661079562952,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.7,
+          "worldY": 272.604777713413,
+          "worldX": 53.793193146226294,
+          "biome": "grandfatherTree",
+          "speed": 9.212243718156815,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.8,
+          "worldY": 272.38238333381196,
+          "worldX": 54.686137992083005,
+          "biome": "grandfatherTree",
+          "speed": 9.197395671429476,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.9,
+          "worldY": 272.1364586874213,
+          "worldX": 55.572697896489416,
+          "biome": "grandfatherTree",
+          "speed": 9.20767922708203,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8,
+          "worldY": 271.8673294602302,
+          "worldX": 56.45480221813574,
+          "biome": "grandfatherTree",
+          "speed": 9.240793911765605,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.1,
+          "worldY": 271.57551194989617,
+          "worldX": 57.33427842268649,
+          "biome": "grandfatherTree",
+          "speed": 9.294505400378249,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.2,
+          "worldY": 271.2616732142316,
+          "worldX": 58.21285971938255,
+          "biome": "grandfatherTree",
+          "speed": 9.366581787765199,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.3,
+          "worldY": 270.92662258958137,
+          "worldX": 59.09218918461808,
+          "biome": "grandfatherTree",
+          "speed": 9.45471959791416,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.4,
+          "worldY": 270.5713326198735,
+          "worldX": 59.97381729119441,
+          "biome": "grandfatherTree",
+          "speed": 9.556381124789697,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.5,
+          "worldY": 270.19700107930606,
+          "worldX": 60.85919874621801,
+          "biome": "grandfatherTree",
+          "speed": 9.668710685154043,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.6,
+          "worldY": 269.8050943041982,
+          "worldX": 61.74968435205032,
+          "biome": "grandfatherTree",
+          "speed": 9.788668935568786,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.7,
+          "worldY": 269.3973221587436,
+          "worldX": 62.646499592463805,
+          "biome": "grandfatherTree",
+          "speed": 9.913230189120759,
+          "visible": 1,
+          "passing": 1,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "passing-visible"
+        },
+        {
+          "t": 11.7,
+          "worldY": 257.12760583127044,
+          "worldX": 92.82100209916511,
+          "biome": "grandfatherTree",
+          "speed": 10.79416587516279,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 11.8,
+          "worldY": 256.801373244892,
+          "worldX": 93.84784772008213,
+          "biome": "grandfatherTree",
+          "speed": 10.755069062245838,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 11.9,
+          "worldY": 256.4768824467289,
+          "worldX": 94.87119380685104,
+          "biome": "grandfatherTree",
+          "speed": 10.716994628117513,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12,
+          "worldY": 256.1536050147052,
+          "worldX": 95.89102059812525,
+          "biome": "grandfatherTree",
+          "speed": 10.680787289416449,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.1,
+          "worldY": 255.83085672625958,
+          "worldX": 96.90736469144149,
+          "biome": "grandfatherTree",
+          "speed": 10.647515437037313,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.2,
+          "worldY": 255.50786283848973,
+          "worldX": 97.92032899095481,
+          "biome": "grandfatherTree",
+          "speed": 10.617867272433873,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.3,
+          "worldY": 255.18393749735796,
+          "worldX": 98.93008258611518,
+          "biome": "grandfatherTree",
+          "speed": 10.591945097100407,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.4,
+          "worldY": 254.85858314845896,
+          "worldX": 99.93684055254363,
+          "biome": "grandfatherTree",
+          "speed": 10.569478112073668,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.5,
+          "worldY": 254.53148039623866,
+          "worldX": 100.94083530126504,
+          "biome": "grandfatherTree",
+          "speed": 10.550050571697659,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.6,
+          "worldY": 254.20244801995653,
+          "worldX": 101.94230138587741,
+          "biome": "grandfatherTree",
+          "speed": 10.533338886964689,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.7,
+          "worldY": 253.87135974267335,
+          "worldX": 102.94147608336723,
+          "biome": "grandfatherTree",
+          "speed": 10.519426165773305,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.8,
+          "worldY": 253.5380120052636,
+          "worldX": 103.93860483239835,
+          "biome": "grandfatherTree",
+          "speed": 10.508833772070327,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 12.9,
+          "worldY": 253.2020769658183,
+          "worldX": 104.93394897770409,
+          "biome": "grandfatherTree",
+          "speed": 10.50205608998288,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 13,
+          "worldY": 252.86322132247466,
+          "worldX": 105.92779437361685,
+          "biome": "grandfatherTree",
+          "speed": 10.499105530707695,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 13.1,
+          "worldY": 252.52125391223797,
+          "worldX": 106.92044782860881,
+          "biome": "grandfatherTree",
+          "speed": 10.499523560308997,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 13.2,
+          "worldY": 252.17616466505373,
+          "worldX": 107.91221522066671,
+          "biome": "grandfatherTree",
+          "speed": 10.50261699898483,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 43.5,
+          "worldY": 100.65215939559516,
+          "worldX": 388.7230902719481,
+          "biome": "jungleCanopy",
+          "speed": 11.384653266329629,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 43.6,
+          "worldY": 100.1901319401106,
+          "worldX": 389.7651028873307,
+          "biome": "jungleCanopy",
+          "speed": 11.409871755120538,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 43.7,
+          "worldY": 99.74082702712623,
+          "worldX": 390.81469750836044,
+          "biome": "jungleCanopy",
+          "speed": 11.422489453102498,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 43.8,
+          "worldY": 99.30446417456838,
+          "worldX": 391.87047316557306,
+          "biome": "jungleCanopy",
+          "speed": 11.423803960271576,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 43.9,
+          "worldY": 98.88104985730513,
+          "worldX": 392.9310698782122,
+          "biome": "jungleCanopy",
+          "speed": 11.414613309269942,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 44,
+          "worldY": 98.47051389666112,
+          "worldX": 393.99518434022764,
+          "biome": "jungleCanopy",
+          "speed": 11.395419891061835,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 44.1,
+          "worldY": 98.07272473759761,
+          "worldX": 395.06156019575616,
+          "biome": "jungleCanopy",
+          "speed": 11.366709952789536,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 44.2,
+          "worldY": 97.68744994179788,
+          "worldX": 396.12898979423045,
+          "biome": "jungleCanopy",
+          "speed": 11.329295634141053,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 44.3,
+          "worldY": 97.31424642177392,
+          "worldX": 397.19633129678357,
+          "biome": "jungleCanopy",
+          "speed": 11.284621752854626,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 44.4,
+          "worldY": 96.95234417628221,
+          "worldX": 398.262535097218,
+          "biome": "jungleCanopy",
+          "speed": 11.234532781222049,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 44.5,
+          "worldY": 96.60070029633201,
+          "worldX": 399.32667644936765,
+          "biome": "jungleCanopy",
+          "speed": 11.18060954022851,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        }
+      ]
+    },
+    {
+      "seedBase": 39000,
+      "n": 17,
+      "species": "flying-squirrel",
+      "gaps": [
+        {
+          "start": 5.866666666666671,
+          "end": 8.5
+        },
+        {
+          "start": 45.43333333333334,
+          "end": 46.46666666666667
+        }
+      ],
+      "samples": [
+        {
+          "t": 5.9,
+          "worldY": 274.05618092723006,
+          "worldX": 49.22728874458906,
+          "biome": "grandfatherTree",
+          "speed": 13.169509489284337,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6,
+          "worldY": 273.93715290247223,
+          "worldX": 50.519203063931855,
+          "biome": "grandfatherTree",
+          "speed": 12.784378140303644,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.1,
+          "worldY": 273.8535558714791,
+          "worldX": 51.77513622061408,
+          "biome": "grandfatherTree",
+          "speed": 12.396801352908362,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.2,
+          "worldY": 273.79856718981995,
+          "worldX": 52.99392971421819,
+          "biome": "grandfatherTree",
+          "speed": 12.011612727143898,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.3,
+          "worldY": 273.76470112450363,
+          "worldX": 54.17537019673471,
+          "biome": "grandfatherTree",
+          "speed": 11.635305217374494,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.4,
+          "worldY": 273.74430309259327,
+          "worldX": 55.32014935077687,
+          "biome": "grandfatherTree",
+          "speed": 11.272544253780417,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.5,
+          "worldY": 273.7305338360866,
+          "worldX": 56.42956305618863,
+          "biome": "grandfatherTree",
+          "speed": 10.926139992166494,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.6,
+          "worldY": 273.7175811312064,
+          "worldX": 57.505276013493436,
+          "biome": "grandfatherTree",
+          "speed": 10.598478300374758,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.7,
+          "worldY": 273.70042803047767,
+          "worldX": 58.5492240284423,
+          "biome": "grandfatherTree",
+          "speed": 10.292267242935374,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.8,
+          "worldY": 273.674616947204,
+          "worldX": 59.56358183133619,
+          "biome": "grandfatherTree",
+          "speed": 10.010623903239718,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 6.9,
+          "worldY": 273.63612096590526,
+          "worldX": 60.55073513561702,
+          "biome": "grandfatherTree",
+          "speed": 9.75676922725549,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7,
+          "worldY": 273.58133519450905,
+          "worldX": 61.5132249158364,
+          "biome": "grandfatherTree",
+          "speed": 9.533524335328234,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.1,
+          "worldY": 273.507155734702,
+          "worldX": 62.45366841889168,
+          "biome": "grandfatherTree",
+          "speed": 9.342955648688129,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.2,
+          "worldY": 273.41104734296533,
+          "worldX": 63.37468774026052,
+          "biome": "grandfatherTree",
+          "speed": 9.186335224764521,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.3,
+          "worldY": 273.29103470322724,
+          "worldX": 64.27886424894473,
+          "biome": "grandfatherTree",
+          "speed": 9.064240029227815,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.4,
+          "worldY": 273.1456460590699,
+          "worldX": 65.16871413196844,
+          "biome": "grandfatherTree",
+          "speed": 8.976615539801648,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.5,
+          "worldY": 272.97385765366255,
+          "worldX": 66.04667732676666,
+          "biome": "grandfatherTree",
+          "speed": 8.922825703107922,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.6,
+          "worldY": 272.77504029042126,
+          "worldX": 66.91511627688509,
+          "biome": "grandfatherTree",
+          "speed": 8.901747026759786,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.7,
+          "worldY": 272.54889434410353,
+          "worldX": 67.77631788891756,
+          "biome": "grandfatherTree",
+          "speed": 8.911842111877585,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.8,
+          "worldY": 272.29539792773744,
+          "worldX": 68.63249077859858,
+          "biome": "grandfatherTree",
+          "speed": 8.951108219381041,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 7.9,
+          "worldY": 272.0148105875583,
+          "worldX": 69.4857579786607,
+          "biome": "grandfatherTree",
+          "speed": 9.016947831280287,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8,
+          "worldY": 271.70772602181546,
+          "worldX": 70.33815109424715,
+          "biome": "grandfatherTree",
+          "speed": 9.106142922183478,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.1,
+          "worldY": 271.3751134782858,
+          "worldX": 71.19160526774499,
+          "biome": "grandfatherTree",
+          "speed": 9.215013100994042,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.2,
+          "worldY": 271.0183069514379,
+          "worldX": 72.04794845906972,
+          "biome": "grandfatherTree",
+          "speed": 9.339651270325971,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.3,
+          "worldY": 270.6389604205617,
+          "worldX": 72.90888578358445,
+          "biome": "grandfatherTree",
+          "speed": 9.476131000484006,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.4,
+          "worldY": 270.2389947590058,
+          "worldX": 73.7759854961685,
+          "biome": "grandfatherTree",
+          "speed": 9.620716152823078,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 8.5,
+          "worldY": 269.82052101390155,
+          "worldX": 74.65066521374723,
+          "biome": "grandfatherTree",
+          "speed": 9.770101773243182,
+          "visible": 1,
+          "passing": 1,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 348.000000000001
+          },
+          "category": "passing-visible"
+        },
+        {
+          "t": 45.5,
+          "worldY": 87.31944929799293,
+          "worldX": 429.4130251317316,
+          "biome": "jungleCanopy",
+          "speed": 11.471002174898715,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 4,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 45.6,
+          "worldY": 86.87406837458137,
+          "worldX": 430.47045231905594,
+          "biome": "jungleCanopy",
+          "speed": 11.475038536779655,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 45.7,
+          "worldY": 86.44255209120166,
+          "worldX": 431.53342203270347,
+          "biome": "jungleCanopy",
+          "speed": 11.467820078612604,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 45.8,
+          "worldY": 86.02476420743304,
+          "worldX": 432.6005136207632,
+          "biome": "jungleCanopy",
+          "speed": 11.45019296466372,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 45.9,
+          "worldY": 85.62049289411993,
+          "worldX": 433.67037692206986,
+          "biome": "jungleCanopy",
+          "speed": 11.422740079300162,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 46,
+          "worldY": 85.22946072044773,
+          "worldX": 434.7417229618511,
+          "biome": "jungleCanopy",
+          "speed": 11.386058252519046,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 5,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 46.1,
+          "worldY": 84.85128105169015,
+          "worldX": 435.8133282548825,
+          "biome": "jungleCanopy",
+          "speed": 11.341114636352138,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 46.2,
+          "worldY": 84.48534232479449,
+          "worldX": 436.88405304675257,
+          "biome": "jungleCanopy",
+          "speed": 11.289500990787225,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 8,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 46.3,
+          "worldY": 84.13071076901466,
+          "worldX": 437.95286827970574,
+          "biome": "jungleCanopy",
+          "speed": 11.233106386368608,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 7,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        },
+        {
+          "t": 46.4,
+          "worldY": 83.78621601856621,
+          "worldX": 439.01888562207455,
+          "biome": "jungleCanopy",
+          "speed": 11.173469965528918,
+          "visible": 0,
+          "passing": 0,
+          "topOnly": 0,
+          "active": 6,
+          "movingContact": false,
+          "comScreen": {
+            "x": 240,
+            "y": 347.99999999999983
+          },
+          "category": "empty-viewport"
+        }
+      ]
+    }
+  ]
+}

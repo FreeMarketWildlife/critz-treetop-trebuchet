@@ -10,9 +10,9 @@ export const encounterPools = Object.freeze({
   jungleCanopy: [
     {kind:'springy pod',shape:'pod',color:'#d69e5f',radius:.65,mass:1.5,friction:.18,restitution:.8,motion:'bob'},
     {kind:'vine bug',shape:'oval',color:'#97b95d',radius:.45,mass:.7,friction:.28,restitution:.65,motion:'hop'},
-    {kind:'waxleaf skid',shape:'skid',color:'#60bda0',radius:1.1,mass:4,friction:.015,restitution:.08,motion:'wave'}],
+    {kind:'waxleaf skid',shape:'skid',color:'#60bda0',radius:1.1,mass:1.2,friction:.015,restitution:.08,motion:'wave'}],
   forestFloor: [
-    {kind:'round fungus',shape:'cap',color:'#d28ba8',radius:.8,mass:2.5,friction:.2,restitution:.75,motion:'bob'},
+    {kind:'round fungus',shape:'cap',geometry:'dome',color:'#d28ba8',radius:.8,mass:2.5,friction:.2,restitution:.75,motion:'bob'},
     {kind:'rolling beetle',shape:'circle',color:'#ad8059',radius:.6,mass:1.8,friction:.15,restitution:.7,motion:'roll'},
     {kind:'seed-husk skid',shape:'skid',color:'#c3a16a',radius:1.2,mass:6,friction:.025,restitution:.1,motion:'roll'}]
 });
@@ -71,7 +71,7 @@ export function createEncounterDirector(seed=0,saved=null){
       if(age<0||age>=2)continue;
       const amplitude=biome==='forestFloor'?.2:1.5,omega=1.2;
       const horizontal=recipe.motion==='roll'||recipe.motion==='wave',offset=amplitude*Math.sin(age*omega+phase),velocity=amplitude*omega*Math.cos(age*omega+phase);
-      candidates.push({id,biome,kind:recipe.kind,shape:recipe.shape,color:recipe.color,motion:recipe.motion,
+      candidates.push({id,biome,kind:recipe.kind,shape:recipe.shape,color:recipe.color,motion:recipe.motion,...(recipe.geometry?{geometry:recipe.geometry}:{}),
         x:baseX+(horizontal?offset:0),y:baseY+(horizontal?0:offset),vx:horizontal?velocity:0,vy:horizontal?0:velocity,
         radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+2,harmless:true});
     }

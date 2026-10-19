@@ -1,0 +1,425 @@
+{
+  "seedBase": 39000,
+  "mediumOnly": false,
+  "durationSeconds": 13,
+  "selectedCase": 11,
+  "activityBasis": "Legacy impulse-only global80ms gate observed separately; moving-qualified scoring is row.impacts, old semantics row.legacyImpacts.",
+  "protocol": "Genuine torque-wound force-drag loaded starter attempts:11species x3winding fractions;13seconds after actual release;seedBase+case;no steering,forced encounters,pose changes after release,save or economy writes.Contacts are raw physical impulses>.08 with80ms per-enemy observation cooldown,distinct from global scored impacts. Biome seconds follow actual COM. Natural body births only; not historical director observations.",
+  "sourceSHA256": {
+    "src/encounters.js": "3da658776cb474ba5d5bbf615d08810e7210d5e36f11ee5deae0026d0352423e",
+    "src/encounter-body.js": "c129dd43c4c41d3a5021d502a52199739888e0e5ef624ab6fd059ae0c64d85fa",
+    "src/articulated.js": "1579e6cae186755809f388368edb40e28444873256495ab1b2d6bcfe5804aba6",
+    "src/hook-experiment.js": "ca7bba70d5c60d88d3c285f17acb29b98b35ea2f5ec66881a2a7cce685a85361",
+    "src/species.js": "bce6f817eab3ab0fcf2c206e8c1106810f2dd1cdeee412077b5591a64a9495e6",
+    "src/world.js": "60abc4f42db037e716bdd3eb3a6dafc188298ab3d3ac1cc1c0b5ea282cd827f3",
+    "src/approach-cues.js": "b24b13a345b683d3c2e22f1e80f4b52a39a00572e8ae681e46f43f6d84297c58",
+    "src/fixed-obstacles.js": "25e43a1097736c7bc47f8090ee660a74aa7b6dc69242585ea02238dec170a101",
+    "src/mushroom-geometry.js": "c0e36ef200dd453b42e68a043fb7c69c62a5fd23b7ca64ed3311398fd692a62c"
+  },
+  "sourcesChanged": false,
+  "rows": [
+    {
+      "n": 11,
+      "species": "lizard",
+      "fraction": 0.6,
+      "seed": 39011,
+      "outcome": "released",
+      "biomeSeconds": {
+        "grandfatherTree": 5.5166666666667155,
+        "openSky": 2.4966666666666444,
+        "jungleCanopy": 1.6350000000000242,
+        "forestFloor": 3.35166666666655
+      },
+      "births": {
+        "leaf hopper": 16,
+        "round beetle": 18,
+        "puffy moth": 9,
+        "round bird": 23,
+        "springy pod": 15,
+        "vine bug": 8,
+        "waxleaf skid": 7,
+        "round fungus": 3,
+        "seed-husk skid": 2
+      },
+      "contacts": [
+        {
+          "id": "forestFloor:4:0:19",
+          "kind": "round fungus",
+          "birthBiome": "forestFloor",
+          "time": 10.006666666666666,
+          "position": {
+            "x": 74.55683003915523,
+            "y": 2.7684225608011754,
+            "vx": 8.762338094106937,
+            "vy": 7.847085466302113,
+            "mass": 0.65
+          }
+        },
+        {
+          "id": "jungleCanopy:4:0:19",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 11.033333333333333,
+          "position": {
+            "x": 75.68278754174794,
+            "y": 0.15144266059626607,
+            "vx": 0.646914506817216,
+            "vy": -5.608789276779034,
+            "mass": 0.65
+          }
+        },
+        {
+          "id": "jungleCanopy:4:0:19",
+          "kind": "waxleaf skid",
+          "birthBiome": "jungleCanopy",
+          "time": 12.091666666666667,
+          "position": {
+            "x": 75.05086367033769,
+            "y": 0.09137151228784386,
+            "vx": -1.6817650727770441,
+            "vy": 0.32740418177546815,
+            "mass": 0.65
+          }
+        }
+      ],
+      "maxBodies": 8,
+      "activity": {
+        "480": {
+          "maxGap": 1.0666666666666678,
+          "totalGap": 5.033333333333321,
+          "overOneSeconds": 0.08333333333333333,
+          "maxActiveGap": 1.0666666666666678,
+          "gaps": [
+            {
+              "start": -1.1102230246251565e-15,
+              "end": 1.0666666666666667
+            },
+            {
+              "start": 1.8333333333333335,
+              "end": 2.25
+            },
+            {
+              "start": 2.8833333333333333,
+              "end": 3.15
+            },
+            {
+              "start": 3.183333333333333,
+              "end": 3.55
+            },
+            {
+              "start": 4.283333333333332,
+              "end": 5.116666666666666
+            },
+            {
+              "start": 5.55,
+              "end": 5.616666666666666
+            },
+            {
+              "start": 5.766666666666667,
+              "end": 6.05
+            },
+            {
+              "start": 6.083333333333334,
+              "end": 6.133333333333334
+            },
+            {
+              "start": 6.449999999999999,
+              "end": 6.583333333333333
+            },
+            {
+              "start": 6.75,
+              "end": 6.816666666666666
+            },
+            {
+              "start": 6.866666666666666,
+              "end": 7.016666666666667
+            },
+            {
+              "start": 7.233333333333333,
+              "end": 7.266666666666667
+            },
+            {
+              "start": 7.533333333333333,
+              "end": 7.566666666666666
+            },
+            {
+              "start": 7.85,
+              "end": 8.466666666666667
+            },
+            {
+              "start": 8.533333333333333,
+              "end": 8.633333333333333
+            },
+            {
+              "start": 8.833333333333332,
+              "end": 8.85
+            },
+            {
+              "start": 9.116666666666667,
+              "end": 9.65
+            }
+          ]
+        },
+        "960": {
+          "maxGap": 0.8000000000000008,
+          "totalGap": 2.7833333333333283,
+          "overOneSeconds": 0,
+          "maxActiveGap": 0.8000000000000008,
+          "gaps": [
+            {
+              "start": -7.771561172376096e-16,
+              "end": 0.8
+            },
+            {
+              "start": 2.65,
+              "end": 2.9166666666666665
+            },
+            {
+              "start": 4.05,
+              "end": 4.2
+            },
+            {
+              "start": 4.616666666666666,
+              "end": 5.033333333333333
+            },
+            {
+              "start": 5.05,
+              "end": 5.1
+            },
+            {
+              "start": 5.483333333333333,
+              "end": 5.516666666666667
+            },
+            {
+              "start": 5.566666666666666,
+              "end": 5.583333333333333
+            },
+            {
+              "start": 5.9,
+              "end": 6.016666666666667
+            },
+            {
+              "start": 6.449999999999999,
+              "end": 6.583333333333333
+            },
+            {
+              "start": 7.283333333333333,
+              "end": 7.3
+            },
+            {
+              "start": 7.816666666666667,
+              "end": 8.016666666666667
+            },
+            {
+              "start": 8.083333333333334,
+              "end": 8.283333333333333
+            },
+            {
+              "start": 8.516666666666667,
+              "end": 8.583333333333334
+            },
+            {
+              "start": 8.8,
+              "end": 8.866666666666667
+            },
+            {
+              "start": 9.016666666666667,
+              "end": 9.05
+            },
+            {
+              "start": 9.1,
+              "end": 9.183333333333334
+            },
+            {
+              "start": 9.266666666666667,
+              "end": 9.3
+            },
+            {
+              "start": 9.466666666666667,
+              "end": 9.533333333333333
+            },
+            {
+              "start": 9.6,
+              "end": 9.633333333333333
+            }
+          ]
+        }
+      },
+      "backward": {
+        "episodes": [],
+        "distance": 1.2512684669108496,
+        "lastOnset": {
+          "time": 12.091666666666667,
+          "center": {
+            "x": 75.04876267357808,
+            "y": 0.09177621314880235,
+            "vx": -1.6804979472241526,
+            "vy": 0.3210755408476044,
+            "mass": 0.65
+          },
+          "lastHit": {
+            "time": 11.456666666666667,
+            "type": "impact",
+            "encounter": null,
+            "strength": 0.34471477420469104,
+            "closingSpeed": 1.6483645421084125,
+            "position": {
+              "x": 75.55420272694973,
+              "y": 0.010017755728867234
+            },
+            "material": "ground",
+            "surface": "ground",
+            "mass": 0.65
+          }
+        }
+      },
+      "release": {
+        "time": 6.923333333333602,
+        "center": {
+          "x": -1.54537070058576,
+          "y": 304.41347622813765,
+          "vx": 7.402692353019953,
+          "vy": 16.305807478020448,
+          "mass": 0.65
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": -1.4937633280693887,
+              "y": 304.6177612031348
+            },
+            "v": {
+              "x": 11.74928604783312,
+              "y": 15.252125057104402
+            },
+            "w": -33.00177492854586
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": -1.7109756868014057,
+              "y": 304.70769884740685
+            },
+            "v": {
+              "x": 12.037981782974713,
+              "y": 19.41768074687111
+            },
+            "w": -21.73291447110803
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": -1.4954348405753433,
+              "y": 304.26091691544997
+            },
+            "v": {
+              "x": 5.869529828960109,
+              "y": 16.180854713197107
+            },
+            "w": -10.519952519358025
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": -1.3952347209000593,
+              "y": 304.03975573581386
+            },
+            "v": {
+              "x": -0.19776232276016245,
+              "y": 12.373974779795779
+            },
+            "w": -32.07841623808894
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": -1.5747232293581572,
+              "y": 304.4271713955512
+            },
+            "v": {
+              "x": 7.604057541586432,
+              "y": 17.04631356477883
+            },
+            "w": -10.519952519358025
+          }
+        ]
+      },
+      "captureAt": 9.4,
+      "activeEnd": 12.853333333333333,
+      "end": {
+        "x": 74.31908024032116,
+        "y": 0.09112582579395294,
+        "vx": 8.085840587796237e-10,
+        "vy": -1.395639320529273e-10,
+        "mass": 0.65
+      },
+      "impacts": 7,
+      "legacyImpacts": 8
+    }
+  ],
+  "notice": {
+    "protocol": "Read-only observation of natural starter33sample. Same physical world; two render-camera geometries sampled60Hz, no geography/body/encounter changes. post-solve enemy contact>0.08impulse recorded once per encounter and viewport. visibleLead is any-pixel intersection; readableLead requireswhole conservative silhouetteclearing8pxrim/top72pxHUD. continuousNoticeLead is currentuninterrupted readable-or-warned interval at60Hz; zero iflastsampleuncovered. maxUncoveredAfterNotice measures anygap afterfirstnotice. Cluster memberIDs countaswarned. Not a reactiontime guarantee. Occlusion, acceleration aftersample and audio perception are not measured.",
+    "frames": 780,
+    "warnings": 52,
+    "maxSpeed": 79.19791926694172,
+    "collisions": [
+      {
+        "key": "0:480:forestFloor:4:0:19",
+        "species": "lizard",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 480,
+        "time": 16.93000000000084,
+        "speed": 11.762453791232824,
+        "warningLead": 0.28999999999973625,
+        "visibleLead": 0.33999999999969077,
+        "readableLead": 0.25666666666643323,
+        "continuousNoticeLead": 0.28999999999973625,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:960:forestFloor:4:0:19",
+        "species": "lizard",
+        "biome": "forestFloor",
+        "kind": "round fungus",
+        "width": 960,
+        "time": 16.93000000000084,
+        "speed": 11.762453791232824,
+        "warningLead": null,
+        "visibleLead": 0.33999999999969077,
+        "readableLead": 0.33999999999969077,
+        "continuousNoticeLead": 0.33999999999969077,
+        "maxUncoveredAfterNotice": 0
+      },
+      {
+        "key": "0:480:jungleCanopy:4:0:19",
+        "species": "lizard",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 480,
+        "time": 17.956666666666575,
+        "speed": 5.645973390872653,
+        "warningLead": 1.016666666665742,
+        "visibleLead": 1.2999999999988177,
+        "readableLead": 0.6999999999993634,
+        "continuousNoticeLead": 0.9333333333324845,
+        "maxUncoveredAfterNotice": 0.05
+      },
+      {
+        "key": "0:960:jungleCanopy:4:0:19",
+        "species": "lizard",
+        "biome": "jungleCanopy",
+        "kind": "waxleaf skid",
+        "width": 960,
+        "time": 17.956666666666575,
+        "speed": 5.645973390872653,
+        "warningLead": 1.016666666665742,
+        "visibleLead": 1.3999999999987267,
+        "readableLead": 0.4333333333329392,
+        "continuousNoticeLead": 0.9333333333324845,
+        "maxUncoveredAfterNotice": 0.05
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "baseline": "db22939",
+  "tests": {
+    "pass": 228,
+    "fail": 0
+  },
+  "releaseParity": {
+    "original": 24,
+    "holdout": 11,
+    "allExact": true
+  },
+  "observerPhysicalFingerprintsUnchanged": true,
+  "cohorts": {
+    "natural-final": {
+      "attempts": 33,
+      "releases": 24,
+      "backwardCases": [
+        1,
+        18,
+        29,
+        31
+      ],
+      "sourcesChanged": false,
+      "activity": {
+        "activity": {
+          "480": {
+            "medianMaxActiveGap": 1.158333333333334,
+            "worstMaxActiveGap": 6.466666666666651
+          },
+          "960": {
+            "medianMaxActiveGap": 0.8916666666666666,
+            "worstMaxActiveGap": 3.79999999999999
+          }
+        },
+        "movingActivity": {
+          "480": {
+            "medianMaxActiveGap": 1.158333333333334,
+            "worstMaxActiveGap": 6.466666666666651
+          },
+          "960": {
+            "medianMaxActiveGap": 0.8916666666666666,
+            "worstMaxActiveGap": 3.79999999999999
+          }
+        }
+      }
+    },
+    "holdout-final": {
+      "attempts": 11,
+      "releases": 11,
+      "backwardCases": [
+        18,
+        19
+      ],
+      "sourcesChanged": false,
+      "activity": {
+        "activity": {
+          "480": {
+            "medianMaxActiveGap": 1.0333333333333345,
+            "worstMaxActiveGap": 3.21666666666666
+          },
+          "960": {
+            "medianMaxActiveGap": 0.8000000000000008,
+            "worstMaxActiveGap": 1.4333333333333331
+          }
+        },
+        "movingActivity": {
+          "480": {
+            "medianMaxActiveGap": 1.0666666666666678,
+            "worstMaxActiveGap": 3.2499999999999933
+          },
+          "960": {
+            "medianMaxActiveGap": 0.8666666666666677,
+            "worstMaxActiveGap": 1.4333333333333331
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Current \u2014 yielding 1.2kg leaf",
+    "file": "leaf-natural-incoming.json",
+    "seconds": 2
+  },
+  {
+    "label": "Baseline \u2014 4kg leaf",
+    "file": "leaf-baseline-natural-incoming.json",
+    "seconds": 2
+  },
+  {
+    "label": "Current \u2014 fungus cap and stem",
+    "file": "fungus-natural-incoming.json",
+    "seconds": 2
+  },
+  {
+    "label": "Baseline \u2014 circular fungus",
+    "file": "fungus-baseline-natural-incoming.json",
+    "seconds": 2
+  }
+]

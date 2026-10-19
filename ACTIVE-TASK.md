@@ -1,6 +1,10 @@
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration 30 checkpoint
+## CURRENT implementation: iteration 31 checkpoint
+
+Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Baseline db22939; recovery untouched. Read docs/reviews/iteration-31/findings.md and summary.json. Passive 1.2kg leaf, real 2.5kg fungus cap/stem within old radius, moving-impact scoring qualification, simultaneous contact states. 228 tests pass; all33 outcomes/24 releases and11 holdout releases exact baseline. Observer extension exact physical fingerprints. Ordinary backwards2/11→1/11; holdout4/11→2/11; full6/24→4/24. Targets <5% backwards and <=1sec activity gaps NOTMET. Both legacy/moving metrics preserved. No camera/map/density/launch changes. Next diagnose passive spin/ground contacts and sparse tree-band activity. One save-free paused QA tab, normal viewport; no saves, export retry, unlock, deployment or install. Local checkpoint authorized; do not push without current explicit authorization.
+
+## Historical implementation: iteration 30 checkpoint
 
 Canonical only /Users/tanoshi/Documents/ChatGPT/Critz-Treetop-Trebuchet. Baseline1f03ed7; recoverycopy untouched. Physics-first user priorities and exact-X/backward camera remain. Read docs/reviews/iteration-30/findings.md and summary.json; original denominators/definitions retained.
 
