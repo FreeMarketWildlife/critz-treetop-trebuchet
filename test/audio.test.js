@@ -65,3 +65,8 @@ test('impact WebAudio scheduling has bounded nodes, positive ramps and quiet-tai
  audio.setMuted(false);audio.setVolume(-1);assert.equal(audio.play('impact'),false);
  await audio.dispose();
 });
+test('original biome cues and bounded repeated-impact variation stay finite',()=>{
+ const frequencies=new Set();for(const biome of ['grandfatherTree','openSky','jungleCanopy','forestFloor','__proto__']){const cue=soundSpec('zone',1,{biome});assert.ok(Number.isFinite(cue.frequency));assert.ok(cue.gain<=.05);if(biome!=='__proto__')frequencies.add(cue.frequency);}assert.equal(frequencies.size,4);
+ const variants=[0,1,2,3].map(variant=>soundSpec('impact',.5,{material:'wood',variant}));assert.equal(new Set(variants.map(v=>v.frequency)).size,4);assert.equal(new Set(variants.map(v=>v.gain)).size,1);
+ const audio=createAudio();assert.deepEqual(audio.getStatus(),{muted:false,volume:.55,contextState:'not-started',voices:0});audio.setMuted(true);audio.setVolume(.15);assert.equal(audio.getStatus().muted,true);assert.equal(audio.getStatus().volume,.15);
+});

@@ -14,6 +14,6 @@ test('all eleven original face variants are bounded and guard invalid input',()=
 });
 
 test('encounter shape markings stay bounded and restore canvas state',()=>{
- for(const shape of ['wings','leaf','cap','pod','oval','circle']){const {ctx,calls}=context();drawEncounterDetails(ctx,{x:5,y:10,size:12,shape});assert.ok(calls.length<100);assert.equal(calls[0][0],'save');assert.equal(calls.at(-1)[0],'restore');}
+ for(const [shape,kind] of [['wings','puffy moth'],['leaf','leaf hopper'],['cap','round fungus'],['pod','springy pod'],['oval','round bird'],['oval','round beetle'],['oval','vine bug'],['circle','rolling beetle']]){const {ctx,calls}=context();drawEncounterDetails(ctx,{x:5,y:10,size:12,shape,kind});assert.ok(calls.length<100);assert.equal(calls[0][0],'save');assert.equal(calls.at(-1)[0],'restore');}
  const {ctx,calls}=context();drawEncounterDetails(ctx,{x:NaN,y:0});assert.equal(calls.length,0);
 });

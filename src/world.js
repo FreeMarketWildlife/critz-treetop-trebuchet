@@ -5,7 +5,7 @@ const surfaces=[
   {id:'canopy branch',y:105,minX:170,maxX:230,restitution:.35,tangentRetention:.8},
   {id:'ground',y:0,minX:-10000,maxX:10000,restitution:.3,tangentRetention:.8}
 ];
-export const world=Object.freeze({bumpers:Object.freeze([{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(Object.freeze)),launchHeight:300,canopyTop:120,ground:0,
+export const world=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(Object.freeze)),launchHeight:300,canopyTop:120,ground:0,
   groundDeceleration:2, surfaces:Object.freeze(surfaces.map(Object.freeze)),
   regions:Object.freeze(['Grandfather Tree branches/leaves → open-air freefall','Long jungle-canopy descent','Ground travel while horizontal momentum remains'])});
 export function regionAt(y){return y>world.canopyTop?'Branches / open air':y>world.ground?'Jungle canopy':'Ground';}

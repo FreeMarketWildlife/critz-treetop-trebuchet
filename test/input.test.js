@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createGripController} from '../src/input.js';
+import {createGripController,isFlightControlKey} from '../src/input.js';
 const event=(pointerId=1,extra={})=>({pointerId,clientX:2,clientY:3,button:0,...extra});
 function setup(options={}){const calls=[];const c=createGripController({onStart:p=>{calls.push(['start',p]);return true;},onMove:p=>calls.push(['move',p]),onEnd:r=>calls.push(['end',r]),capture:id=>calls.push(['capture',id]),releaseCapture:id=>calls.push(['release',id]),...options});return {c,calls};}
 test('mouse/touch repeated drags own one pointer and end exactly once',()=>{
@@ -30,4 +30,12 @@ test('foreign cancellation cannot end the owning touch; sticky release tap does 
  assert.equal(c.pointerCancel(event(5)),false);assert.equal(c.lostPointerCapture(event(5)),false);assert.equal(c.active,true);
  c.pointerUp(event(4));assert.equal(c.pointerDown(event(6,{isPrimary:false})),false);assert.equal(c.active,true);
  c.pointerDown(event(7,{pointerType:'touch',isPrimary:true}));assert.equal(c.active,false);assert.equal(calls.filter(x=>x[0]==='start').length,1);assert.equal(calls.filter(x=>x[0]==='end').length,1);
+});
+
+test('flight arrows preserve editing and browser shortcuts while allowing steering after a button click',()=>{
+ for(const tagName of ['INPUT','SELECT','TEXTAREA'])assert.equal(isFlightControlKey({key:'ArrowRight',target:{tagName}}),false);
+ assert.equal(isFlightControlKey({key:'ArrowLeft',target:{isContentEditable:true}}),false);
+ for(const modifier of ['altKey','ctrlKey','metaKey'])assert.equal(isFlightControlKey({key:'ArrowLeft',[modifier]:true,target:{tagName:'BODY'}}),false);
+ for(const tagName of ['BODY','CANVAS','BUTTON'])assert.equal(isFlightControlKey({key:'ArrowLeft',target:{tagName}}),true);
+ assert.equal(isFlightControlKey({key:'ArrowUp'}),false);
 });

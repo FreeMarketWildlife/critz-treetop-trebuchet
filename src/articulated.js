@@ -89,7 +89,7 @@ export class CritterScene {
   const births=this.encounters.update(time,c).spawns;let added=false;
   for(const e of births)if(!this.enemies.has(e.id)&&this.enemies.size<8){
    if(Math.hypot(e.x-c.x,e.y-c.y)<e.radius+1.5||!this.canSpawnEncounter(e))continue;
-   const body=this.world.createDynamicBody({position:V(e.x,e.y),linearVelocity:V(e.vx,e.vy),bullet:true});body.setUserData({role:'enemy',id:e.id,color:e.color,shape:e.shape,expiresAt:e.expiresAt});
+   const body=this.world.createDynamicBody({position:V(e.x,e.y),linearVelocity:V(e.vx,e.vy),bullet:true});body.setUserData({role:'enemy',id:e.id,color:e.color,kind:e.kind,biome:e.biome,shape:e.shape,expiresAt:e.expiresAt});
    body.createFixture(P.Circle(e.radius),{density:e.mass/(Math.PI*e.radius**2),friction:e.material.friction,restitution:e.material.restitution,filterCategoryBits:32,filterMaskBits:5});
    this.enemies.set(e.id,body);this.spawnEnergy+=this.bodyEnergy(body);added=true;
   }

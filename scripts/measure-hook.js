@@ -45,7 +45,7 @@ function firstWorldImpact(scene){
  let hit=null;const start=scene.elapsed;
  scene.world.on('post-solve',(contact,impulse)=>{if(hit)return;const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody();
   const roles=[a.getUserData()?.role,b.getUserData()?.role];if(!roles.includes('part')||!roles.includes('static')||impulse.normalImpulses.reduce((n,x)=>n+x,0)<1e-6)return;
-  const point=contact.getWorldManifold()?.points[0];if(point)hit={afterRelease:scene.elapsed-start,x:point.x,y:point.y,surface:Math.abs(point.y-294)<.2?'launch branch':Math.abs(point.y-105)<.2?'canopy branch':Math.abs(point.y)<.2?'ground':'loading shelf/other'};
+  const obstacle=roles[0]==='static'?contact.getFixtureA():contact.getFixtureB();const point=contact.getWorldManifold()?.points[0];if(point)hit={afterRelease:scene.elapsed-start,x:point.x,y:point.y,surface:obstacle.getShape().getType()==='circle'?'bumper':Math.abs(point.y-294)<.2?'launch branch':Math.abs(point.y-105)<.2?'canopy branch':Math.abs(point.y)<.2?'ground':'loading shelf/other'};
  });
  for(let i=0;i<9000&&!hit;i++)scene.step();return hit;
 }

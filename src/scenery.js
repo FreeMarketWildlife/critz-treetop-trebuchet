@@ -69,11 +69,13 @@ export function drawFace(ctx,{x,y,angle=0,size=7,species='mouse',color='#b6b0a9'
  * x/y,size are screen coordinates/radius; shapes are readable original visual cues,
  * not extra collision geometry. No animation, health or injury state.
  */
-export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',color='#ad8059',angle=0}={}){
+export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',kind='',color='#ad8059',angle=0}={}){
  if(!ctx||![x,y,size,angle].every(Number.isFinite)||size<=0)return;
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size;
  ctx.strokeStyle='#394d43';ctx.lineWidth=Math.max(.7,s*.07);ctx.lineCap='round';
- if(shape==='wings'){
+ if(kind==='round bird'){
+  ellipse(ctx,s*.3,-s*.2,s*.3,s*.32,'#e8e0be');ctx.fillStyle='#dfb35c';ctx.beginPath();ctx.moveTo(s*.5,-s*.12);ctx.lineTo(s*.87,s*.05);ctx.lineTo(s*.5,s*.18);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(-s*.65,0);ctx.quadraticCurveTo(-s*.25,s*.5,s*.1,s*.16);ctx.stroke();
+ }else if(shape==='wings'){
   ellipse(ctx,-s*.35,0,s*.35,s*.65,'#f4e8e6',-.35);ellipse(ctx,s*.35,0,s*.35,s*.65,'#f4e8e6',.35);ellipse(ctx,0,0,s*.12,s*.6,color);
  }else if(shape==='leaf'){
   ctx.beginPath();ctx.moveTo(-s*.7,s*.4);ctx.quadraticCurveTo(-s*.7,-s*.7,s*.65,-s*.5);ctx.quadraticCurveTo(s*.6,s*.55,-s*.7,s*.4);ctx.fillStyle='#c9dda0';ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(-s*.6,s*.35);ctx.lineTo(s*.5,-s*.4);ctx.stroke();
@@ -84,5 +86,6 @@ export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',color='#ad8
  }else {
   ctx.beginPath();ctx.moveTo(0,-s*.7);ctx.lineTo(0,s*.7);ctx.stroke();ellipse(ctx,-s*.38,-s*.08,s*.12,s*.18,'#e5c894');ellipse(ctx,s*.38,-s*.08,s*.12,s*.18,'#e5c894');
  }
+ if(kind.includes('beetle')||kind==='vine bug'){ctx.beginPath();ctx.moveTo(-s*.2,-s*.45);ctx.lineTo(-s*.5,-s*.72);ctx.moveTo(s*.2,-s*.45);ctx.lineTo(s*.5,-s*.72);ctx.stroke();for(const dy of [.05,.3]){ctx.beginPath();ctx.moveTo(-s*.55,dy*s);ctx.lineTo(s*.55,dy*s);ctx.stroke();}}
  ellipse(ctx,-s*.22,-s*.32,s*.09,s*.12,'#2e4438');ellipse(ctx,s*.22,-s*.32,s*.09,s*.12,'#2e4438');ctx.beginPath();ctx.arc(0,-s*.08,s*.17,.15,Math.PI-.15);ctx.stroke();ctx.restore();
 }

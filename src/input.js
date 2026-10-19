@@ -36,3 +36,10 @@ export function createGripController({onStart=()=>true,onMove=()=>{},onEnd=()=>{
   dispose(){return end('dispose');}
  });
 }
+
+// Arrow keys belong to form controls while editing; a focused launch button still
+// permits flight steering after activation. Never intercept browser shortcuts.
+export function isFlightControlKey(event){
+ if(!['ArrowLeft','ArrowRight'].includes(event.key)||event.altKey||event.ctrlKey||event.metaKey)return false;
+ const target=event.target;return !target?.isContentEditable&&!['INPUT','SELECT','TEXTAREA'].includes(target?.tagName?.toUpperCase());
+}
