@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Treetop Trebuchet — mechanism lab</title>
+<style>body{font:16px system-ui;background:#182722;color:#ecf0df;max-width:1000px;margin:32px auto;padding:16px}canvas{width:100%;background:#d4e0dc;border-radius:8px}label{display:inline-block;margin:12px}button{padding:10px}output{display:block;margin:12px 0}small{display:block;line-height:1.6}</style>
+<h1>Trebuchet mechanism lab</h1><p>Bounded physics study • original schematic • provisional dimensions</p>
+<label>Counterweight (kg) <input id="mass" type="number" min="20" max="300" value="100"></label>
+<label>Critter mass (kg) <input id="critter" type="number" min="0.1" max="10" step="0.1" value="1"></label>
+<label>Long beam (m) <input id="long" type="number" min="1" max="6" step="0.1" value="3"></label>
+<label>Short beam (m) <input id="short" type="number" min="0.3" max="2" step="0.1" value="0.8"></label>
+<button id="launch">Launch / replay</button><button id="time">Stop timing slider</button><progress id="power" max="1" value="0"></progress>
+<small>The dotted arc hints at initial free flight for the current configuration; its short extent is provisional. The timing slider is a scaffold only: its result is not connected to energy or velocity. Launch angle and speed emerge from the masses, beam geometry, sling dynamics and fixed release-pin geometry. Slack can release sooner.</small>
+<output id="readout"></output><canvas id="view" width="960" height="480" aria-label="Animated schematic of arm, counterweight, sling and projectile"></canvas>
+<p>Left: mechanism at 45 pixels/metre. Right: fixed world overview at 1 pixel/metre. Press Launch to replay. The ground ends this test flight; bounce, hazards and ground travel await design.</p>
+<script type="module" src="./src/lab.js"></script></html>

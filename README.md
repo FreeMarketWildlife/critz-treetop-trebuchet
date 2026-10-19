@@ -2,7 +2,7 @@
 
 **We're going places.**
 
-Earliest game ideas approved by Phil, recorded October 19, 2026. This repository currently documents the concept; these notes do not establish an implementation plan.
+Earliest game ideas approved by Phil, recorded October 19, 2026. The approved concept remains documented here; a bounded mechanism prototype now accompanies it.
 
 ## Premise and setting
 
@@ -35,3 +35,7 @@ The Jedi archive on Coruscant inspires the immense knowledge archive. A Mirkwood
 The shared lore is maintained in [Critz–Dragex](https://github.com/FreeMarketWildlife/Critz-Dragex), especially its [Grandfather Tree record](https://github.com/FreeMarketWildlife/Critz-Dragex/blob/main/world/grandfather-tree.md).
 
 The school's formal name, the spelling feysian / feyjian, Naboo's relationship to Lady Wisdom, and the cause/date of the archive's near destruction remain open. Do not infer a cause or place that damage relative to the departure, tower or battle without further author direction. The earlier proposed acorn helmet and woodland crew are not approved canon.
+
+## Mechanism prototype
+
+Run `npm start` and open `http://localhost:8080` for the schematic lab; `npm test` runs numerical checks. See [prototype requirements, physical assumptions and open input decisions](docs/prototype.md). The authored-world direction, three travel regions and timed-slider input are recorded there. The slider-to-mechanism mapping is intentionally pending discussion.
