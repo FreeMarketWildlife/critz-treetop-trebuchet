@@ -1,0 +1,9 @@
+# Critz: Treetop Trebuchet continuity and mechanism rules
+
+- Work in this folder. Preserve concurrent character-art and map-editor changes.
+- This game is set in **early Age 4, Arcane**, at the Grandfather Tree academy in Grimroot Grove. **No humans exist in this game's time period.** Do not add a human operator, human crew, or human silhouettes. The trebuchet is operated invisibly by player input; critters are its volunteers.
+- Source: Phil's explicit instruction on October 20, 2026; local `README.md` for the game's setting; `/Users/tanoshi/Documents/ChatGPT/Critz-Dragex/canon/author-confirmed.md` (Humans, Ages) and `timeline/seven-ages.md`. The Dragex timeline introduces humans at the beginning of **Age 6, Man**, after Age 5 judgement. Fey-blooded critters with humanlike qualities are animals, not humans. Do not resolve unsettled lore or invent an in-world explanation for player controls.
+- The **front crank wheel** is the winding-gear equipment slot (`winch`, historical save IDs retained). Hold winds **clockwise** as seen on screen; release unlatches it and the falling counterweight drives **counterclockwise** payout. Never use a decorative wall-clock spinner that moves while paused, or add a launch impulse to simulate a spring. Gravity supplies the throw.
+- Wheel dimensions scale from frame height/footprint and its purchased tier. Keep all part connections in the same world coordinates, including moving frames and floating axles.
+- Drag the critter into the sling before winding. Cancel/blur/modal interruptions must never launch. Enter provides keyboard loading; Space holds/releases the crank. Preparation is a supported placement approximation, not a full articulated ragdoll; retain the current character-art pipeline.
+- Starter balance is **up to 150 g**: field mouse (25 g), tree frog (30 g), chipmunk (100 g). This mass cutoff, shop prices, and gear specifications are game balance, not world canon.

@@ -2,13 +2,15 @@
 
 **We're going places.**
 
-The current local game fills the screen. **Hold the clearing to wind; release to throw** (mouse, touch or Space). Build, Shop and Blueprints open from the game dock. Creative unlocks the whole collection. Adventure earns Bells for permanent parts, randomized Acorn Exchange offers, parcels and shop perks. The full-screen shell also supports portrait play; settings include sound, fullscreen and rendering quality. Run `npm start -- --bind 127.0.0.1`, then open [the game](http://127.0.0.1:8080/). Mechanics, model limits and the Balatro shop study are in [the research notes](docs/custom-workshop/research.html).
+The current local game fills the screen. **Drag your critter into the sling, hold the clearing to crank clockwise, and release to throw** (mouse, touch or Space). Build, Shop and Blueprints open from the game dock. Creative unlocks the whole collection. Adventure earns Bells for permanent parts, randomized Acorn Exchange offers, parcels and shop perks. The full-screen shell also supports portrait play; settings include sound, fullscreen and rendering quality. Run `npm start -- --bind 127.0.0.1`, then open [the game](http://127.0.0.1:8080/). Mechanics, model limits and the Balatro shop study are in [the research notes](docs/custom-workshop/research.html).
 
 Earliest game ideas approved by Phil, recorded October 19, 2026. The approved concept remains documented here; a bounded mechanism prototype now accompanies it.
 
 ## Premise and setting
 
 The player is a **critter attending a school/academy at the Grandfather Tree**, hidden deep within **Grimroot Grove**. The institution's formal name is undecided. The game occurs in the **early Fourth Age, the Age of Arcane**.
+
+**Humans do not exist in this period.** The player operates the trebuchet invisibly; do not draw a human operator or crew. The shared Dragex timeline introduces humans in Age 6 (Man). See [mechanism and lore guardrails](AGENTS.md).
 
 The player's academy project is to develop a trebuchet that launches objects as far as possible. Begin with the most basic trebuchet and progressively upgrade it.
 
@@ -71,3 +73,7 @@ Export JSON for a portable backup; import validates the entire map before replac
 ## Release validation runtime
 
 The numerical archive includes exact floating-point hashes recorded on Apple Silicon with Node 24.21.0. CI uses macOS 14 / Node 24.21.0 to validate those archived results. Linux / Node 22 produced six historical exact-value mismatches; cross-platform bitwise reproducibility is not claimed. Browser physics remains a prototype.
+
+## Front crank wheel and loading
+
+The front winding wheel replaces the operator. It winds clockwise while held and pays out counterclockwise with the actual gravity-driven arm motion after release. Wheel upgrades are sold in the existing winding-gear shop slot. Drag a volunteer onto the glowing pouch before winding; Enter loads it for keyboard play, and Space winds/releases. Mouse, tree frog and chipmunk start unlocked under a 150 g limit. See [implementation and model limits](docs/trebuchet-crank/implementation.md).

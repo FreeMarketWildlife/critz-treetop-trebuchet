@@ -24,9 +24,9 @@ export const PARTS=[
  item('nail','release','Bent release nail',0,'Adjust the pin angle and length. The ring slips when tension pulls along the pin.',{friction:.16}),
  item('polished','release','Polished release pin',75,'Less ring friction changes release timing.',{friction:.04}),
  item('rollerPin','release','Roller release finger',360,'A very low friction release with a wider tuning range.',{friction:.008}),
- ...[['hand','Hand winch',0,100],['geared','Geared winch',100,2500],['capstan','Great capstan',700,500000],['engine','Gantry winch',3000,500000000]].map(([id,name,price,power])=>item(id,'winch',name,price,'Sets preparation rate from stored potential energy. Adds no energy after release.',{power})),
+ ...[['hand','Acorn crank wheel',0,100,.12,.24,3,6,'#bb793e'],['geared','Brass geared wheel',100,2500,.145,.22,5,8,'#d2a24e'],['capstan','Iron capstan wheel',700,500000,.18,.26,7,8,'#819b91'],['engine','Gantry winding wheel',3000,500000000,.21,.28,9,10,'#677e87']].map(([id,name,price,power,radiusRatio,drumRatio,gearing,spokes,color])=>item(id,'winch',name,price,'Front-mounted winding wheel. Hold to crank clockwise; release to freewheel counterclockwise as the ballast falls. Larger geared drums raise heavier loads faster.',{power,radiusRatio,drumRatio,gearing,spokes,color})),
 ];
-export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight capacity'],['material','Ballast material'],['mount','Counterweight joint'],['sling','Pouch'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Winding gear'],['trough','Launch trough']];
+export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight capacity'],['material','Ballast material'],['mount','Counterweight joint'],['sling','Pouch'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Crank wheel'],['trough','Launch trough']];
 export const CRITTERS=[
  {id:'mouse',name:'Field mouse',grams:25,length:0.18,width:0.055,color:'#b0a19a',price:0},
  {id:'frog',name:'Tree frog',grams:30,length:0.08,width:0.05,color:'#8ab667',price:20},
@@ -40,12 +40,15 @@ export const CRITTERS=[
  {id:'elephant',name:'Elephant',grams:5000000,length:6,width:2.6,color:'#9daaaa',price:2600},
  {id:'whale',name:'Blue whale',grams:100000000,length:24,width:4.5,color:'#6d9ca9',price:7000},
 ];
+// Prototype balance, not world canon: all three small volunteers fit the starter.
+export const STARTER_MAX_GRAMS=150;
+export const STARTER_ANIMALS=CRITTERS.filter(a=>a.grams<=STARTER_MAX_GRAMS).map(a=>a.id);
 export const part=id=>{const p=PARTS.find(p=>p.id===id);if(!p)throw Error(`Unknown part: ${id}`);return p;};
 export const critter=id=>{const c=CRITTERS.find(c=>c.id===id);if(!c)throw Error(`Unknown volunteer: ${id}`);return c;};
 export const LEGACY_STARTER={name:'Little acorn',chassis:'anchored',arm:'twig',frame:'sapling',ballast:'pebble',material:'stone',mount:'fixed',sling:'pocket',rope:'twine',bearing:'woodAxle',release:'nail',winch:'hand',animal:'mouse',longArm:1.25,shortArm:.32,beamWidth:.025,pivotHeight:1.05,baseWidth:.85,frameGrams:1800,counterGrams:2000,hanger:.22,slingLength:1.1,pouchWidth:.16,pinAngle:-30,pinLength:.035,axleRadius:.012,cockAngle:28,footFriction:.8,wheelRadius:.13,wheelGrams:150,brake:.002,walkingLean:22,braceCount:1,hingeFriction:.008,wind:0,drag:1};
 // A complete, tuned kit is granted at the beginning; upgrades still have shop prices.
 // 3 m means ground to axle. The moving arm sweeps above the tower.
-export const STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ballast:'boulder',mount:'hinged',bearing:'bronze',release:'polished',winch:'geared',trough:'runway',longArm:2.6,shortArm:.65,beamWidth:.04,pivotHeight:3,baseWidth:2,frameGrams:9000,counterGrams:18000,hanger:.4,slingLength:2.4,pouchWidth:.2,cockAngle:55,pinAngle:-45,braceCount:2,troughLength:4,troughHeight:.06};
+export const STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ballast:'boulder',mount:'hinged',bearing:'bronze',release:'polished',winch:'hand',trough:'runway',longArm:2.6,shortArm:.65,beamWidth:.04,pivotHeight:3,baseWidth:2,frameGrams:9000,counterGrams:18000,hanger:.4,slingLength:2.4,pouchWidth:.2,cockAngle:55,pinAngle:-45,braceCount:2,troughLength:4,troughHeight:.06};
 export const STARTER_PARTS=[...new Set([...PARTS.filter(p=>p.price===0).map(p=>p.id),...SLOTS.map(([slot])=>STARTER[slot])])];
 export const dimensions=a=>`${Number((a.length*100).toFixed(1))} × ${Number((a.width*100).toFixed(1))} cm`;
 export function drawLimit(c,pivotY=c.pivotHeight,deckY=c.troughHeight){return Math.min(c.cockAngle,Math.asin(Math.max(0,Math.min(1,(pivotY-deckY-c.beamWidth/2-.025)/c.longArm)))*180/Math.PI);}

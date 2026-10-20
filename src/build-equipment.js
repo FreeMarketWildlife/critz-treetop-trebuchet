@@ -1,4 +1,4 @@
-import {part,validateBuild} from './build-catalog.js?v=9';
+import {part,validateBuild} from './build-catalog.js?v=11';
 /** Fit owned equipment, reducing dimensions only when the selected part cannot
  * accommodate them. Buying capacity never secretly fills the counterweight. */
 export function fitEquipment(build,offer){

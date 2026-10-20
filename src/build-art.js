@@ -1,7 +1,9 @@
-import {RopeVisual} from './rope-visual.js?v=9';
-import {part,grams} from './build-catalog.js?v=9';
-import {drawGroveWorld} from './grove-art.js?v=9';
-import {groveSetupCamera,groveFlightCamera} from './grove-camera.js?v=9';
+import {drawCounterweight} from './counterweight-art.js?v=11';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=11';
+import {RopeVisual} from './rope-visual.js?v=11';
+import {part,grams} from './build-catalog.js?v=11';
+import {drawGroveWorld} from './grove-art.js?v=11';
+import {groveSetupCamera,groveFlightCamera} from './grove-camera.js?v=11';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -89,47 +91,36 @@ export function createBuildRenderer(canvas){
   const tip=sim.tip(),short=transform({x:-c.shortArm,y:0}),pivot=sim.pivot(),cw=sim.counterPoint();timber(short,tip,c.beamWidth,wood);
   if(c.mount==='hinged'&&c.chassis!=='floating')timber(short,cw,c.beamWidth*.3,'#7a8972');
   const cp=project(cw),r=sim.facts.counterRadius*cam.scale;
-  if(c.material==='stone'){
-   ctx.beginPath();for(let i=0;i<7;i++){const a=i*TAU/7+sim.real(sim.counter).angle,rr=r*(i%2?.95:1);const x=cp[0]+Math.cos(a)*rr,y=cp[1]-Math.sin(a)*rr;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.fillStyle='#899081';ctx.strokeStyle='#45533f';ctx.lineWidth=2.5;ctx.fill();ctx.stroke();path(ctx,[[cp[0]-r*.4,cp[1]-r*.5],[cp[0]+r*.3,cp[1]-r*.65],[cp[0]+r*.6,cp[1]-r*.2]],'#bac0a6',2);
-  }else{ctx.save();ctx.translate(...cp);ctx.rotate(-sim.real(sim.counter).angle);ctx.beginPath();ctx.roundRect(-r,-r,r*2,r*2,Math.max(1,r*.16));ctx.fillStyle=c.material==='sand'?'#aa8951':'#6a8680';ctx.strokeStyle='#3f5347';ctx.lineWidth=2.5;ctx.fill();ctx.stroke();for(let i=-1;i<=1;i++)path(ctx,[[-r*.8,r*i*.45],[r*.8,r*i*.45]],c.material==='sand'?'#735b38':'#abc0ac',2);ctx.restore();}
+  drawCounterweight(ctx,{point:cp,radius:r,angle:sim.real(sim.counter).angle,material:c.material});
   const pp=project(pivot);ellipse(ctx,...pp,Math.max(5,c.axleRadius*cam.scale*2),Math.max(5,c.axleRadius*cam.scale*2),'#607b66','#364e3d',2);ellipse(ctx,...pp,2,2,'#c8d3ac',null);
   const pinEnd={x:tip.x+Math.cos(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength,y:tip.y+Math.sin(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength};line(tip,pinEnd,'#496c66',4);
-  const payload=sim.real(sim.shot),p=project(payload),physicalSize=sim.animal.length*cam.scale;
+  const animalPoint=sim.real(sim.shot),payload=sim.loading&&!sim.loading.loaded?sim.loading.target():animalPoint,p=project(payload),physicalSize=sim.animal.length*cam.scale;
   if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1,'#c1d3b1');
    ctx.save();ctx.translate(...p);ctx.beginPath();const pw=Math.max(9,c.pouchWidth*cam.scale*.65);ctx.moveTo(-pw,-4);ctx.quadraticCurveTo(-pw,physicalSize*.4,0,physicalSize*.39);ctx.quadraticCurveTo(pw,physicalSize*.4,pw,-4);ctx.lineTo(pw*.7,2);ctx.quadraticCurveTo(0,physicalSize*.22,-pw*.7,2);ctx.closePath();ctx.fillStyle='#759381';ctx.strokeStyle='#3e5e47';ctx.lineWidth=2;ctx.fill();ctx.stroke();ctx.restore();
   }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,'#c1d3b1',true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
-  drawCritter(ctx,sim.animal,...p,physicalSize,-payload.angle,!!sim.release,sim.animal.width*cam.scale);
+  drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,sim.loading?.dragging?sim.loading.angle:-animalPoint.angle,!!sim.release,sim.animal.width*cam.scale);
   trough(sim,true);
-  if(!sim.release)caretaker(sim);
+  drawCrankWheel(ctx,sim,project,cam.scale);
+  if(sim.loading&&!sim.loading.loaded&&!preview)loadingCues(sim);
   if(preview&&H>250){
    const a=project({x:-c.baseWidth*.75,y:0}),b=project({x:-c.baseWidth*.75,y:c.pivotHeight});path(ctx,[a,b],'#66774f',1);for(const pt of[a,b])path(ctx,[[pt[0]-4,pt[1]],[pt[0]+4,pt[1]]],'#66774f',1.5);ctx.fillStyle='#4a613d';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='left';ctx.textAlign='right';ctx.fillText(`${c.pivotHeight.toFixed(2)} m`,a[0]-7,(a[1]+b[1])/2);
   }
   if(labels&&!sim.release&&!preview){annotation(cw,grams(c.counterGrams),24,-55);annotation({x:(tip.x+payload.x)/2,y:(tip.y+payload.y)/2},`${c.slingLength.toFixed(2)} m sling`,-150,-33);if(W>550)annotation(pivot,part(c.chassis).name,35,-25);if(physicalSize<25)annotation(payload,`${sim.animal.name} · ${grams(sim.animal.grams)}`,35,-25);}
   if(sim.release){const origin=project(sim.release);if(origin[0]>0&&origin[0]<W){ellipse(ctx,...origin,5,5,'#f0cb78','#926d38',1.5);ctx.font='9px "DM Sans",sans-serif';ctx.fillStyle='#687848';ctx.textAlign='left';ctx.fillText('RELEASE',origin[0]+9,origin[1]-7);}}
  }
- function caretaker(sim){
-  const c=sim.c,unit=Math.max(.18,c.pivotHeight*.12),anchor={x:-c.baseWidth*.5-unit*1.6,y:unit*.78},p=project(anchor),r=unit*cam.scale;
-  const drum={x:anchor.x+unit*1.1,y:unit*.55},d=project(drum),crank=windActive?nowTime*11:0;
-  // The little keeper operates a physical-looking capstan. Its line is visibly
-  // taken off the beam after unlatching; the simulation's power limit does work.
-  if(sim.phase==='ready'){line(drum,sim.tip(),'#686344',1.4);const t=project(sim.tip());ellipse(ctx,...t,2.5,2.5,'#e2c888',null);}
-  ellipse(ctx,...d,r*.3,r*.3,'#b18a52','#4a5337',Math.max(1.2,r*.1));
-  for(let i=0;i<5;i++){const a=crank+i*TAU/5;path(ctx,[d,[d[0]+Math.cos(a)*r*.24,d[1]+Math.sin(a)*r*.24]],'#6a6b47',1);}
-  const hand=[d[0]+Math.cos(crank)*r*.31,d[1]+Math.sin(crank)*r*.31];path(ctx,[d,hand],'#4e6c57',2);
-  const sway=windActive?Math.sin(crank)*r*.04:0;ctx.save();ctx.translate(p[0]+sway,p[1]);
-  path(ctx,[[-r*.2,r*.36],[-r*.24,r*.77]],'#4f5841',Math.max(2,r*.14));path(ctx,[[r*.15,r*.36],[r*.26,r*.77]],'#4f5841',Math.max(2,r*.14));
-  ellipse(ctx,0,r*.15,r*.32,r*.41,'#8baf78','#3d533c',Math.max(1.2,r*.09));ellipse(ctx,0,-r*.28,r*.35,r*.32,'#c7b18d','#46543d',Math.max(1.2,r*.08));
-  ellipse(ctx,-r*.25,-r*.5,r*.15,r*.19,'#c7b18d','#46543d',Math.max(1,r*.06));ellipse(ctx,r*.24,-r*.5,r*.15,r*.19,'#c7b18d','#46543d',Math.max(1,r*.06));ellipse(ctx,r*.17,-r*.31,r*.06,r*.08,'#263e30',null);ellipse(ctx,r*.34,-r*.19,r*.08,r*.06,'#3e4b35',null);
-  ctx.beginPath();ctx.moveTo(-r*.36,-r*.51);ctx.quadraticCurveTo(0,-r*.9,r*.39,-r*.48);ctx.closePath();ctx.fillStyle='#c89f54';ctx.fill();ctx.strokeStyle='#536044';ctx.lineWidth=Math.max(1,r*.06);ctx.stroke();
-  path(ctx,[[r*.12,r*.04],[r*.47,r*.17],[hand[0]-p[0]-sway,hand[1]-p[1]]],'#384f37',Math.max(2,r*.14));path(ctx,[[r*.12,r*.04],[r*.47,r*.17],[hand[0]-p[0]-sway,hand[1]-p[1]]],'#bbab83',Math.max(1,r*.09));
-  ctx.restore();
+ function loadingCues(sim){
+  const target=project(sim.loading.target()),animal=project(sim.real(sim.shot)),held=sim.loading.dragging;
+  ctx.save();ctx.setLineDash([4,4]);ellipse(ctx,...target,Math.max(15,sim.c.pouchWidth*cam.scale*.8),12,'#ffe5a438','#e5ba63',2);ctx.setLineDash([]);
+  if(!held){ellipse(ctx,...animal,Math.max(19,sim.animal.length*cam.scale*.65),Math.max(15,sim.animal.width*cam.scale),'#ffe8a124','#f5d58b',1.5);}
+  ctx.font='bold 12px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.lineWidth=3;ctx.strokeStyle='#fff0cc';ctx.fillStyle='#3b3428';
+  const text=held?'Drop into the sling':'Drag into the sling';ctx.strokeText(text,held?target[0]:animal[0],(held?target[1]:animal[1])-27);ctx.fillText(text,held?target[0]:animal[0],(held?target[1]:animal[1])-27);ctx.restore();
  }
  function effectAnchor(sim,slot){
   if(['ballast','material','mount'].includes(slot))return sim.counterPoint();
   if(['release','arm'].includes(slot))return sim.tip();
   if(['sling','rope','animal'].includes(slot))return sim.real(sim.shot);
   if(slot==='trough')return sim.railPoint(0);
-  if(slot==='winch')return{x:-sim.c.baseWidth*.6,y:sim.c.pivotHeight*.12};
+  if(slot==='winch')return crankGeometry(sim).center;
   if(slot==='chassis')return{x:sim.c.baseWidth*.5,y:sim.c.wheelRadius};
   return sim.pivot();
  }
@@ -146,6 +137,9 @@ export function createBuildRenderer(canvas){
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   mechanism(sim,labels);
+  const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);
+  canvas.dataset.animalPoint=JSON.stringify(project(sim.real(sim.shot)));canvas.dataset.slingPoint=JSON.stringify(project(sim.loading?.target()??sim.real(sim.shot)));
+
   if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
   drawEffects(sim);
   // The optional parts overlay includes a scale bar in real world units.
@@ -154,5 +148,5 @@ export function createBuildRenderer(canvas){
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
   }
  }
- return{draw,fit:()=>{fit=true;},project,equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0;},get camera(){return{...cam};}};
+ return{draw,fit:()=>{fit=true;},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0;},get camera(){return{...cam};}};
 }

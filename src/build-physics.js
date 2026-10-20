@@ -1,7 +1,7 @@
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=9';
-import {validateGroveMap,enemyRecipe,gravityScaleAt} from './grove-map.js?v=9';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=9';
+import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=11';
+import {validateGroveMap,enemyRecipe,gravityScaleAt} from './grove-map.js?v=11';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=11';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const GRAVITY=9.80665;
 const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
@@ -165,7 +165,7 @@ export class BuildSimulation{
  pivot(){if(this.beamBroken)return this.lastPivot;const p=this.axle?.getAnchorA()??this.arm.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
  energy(){let E=0;for(const b of this.moving){const m=b.getMass()*this.M,v=b.getLinearVelocity(),w=b.getAngularVelocity()/this.T;E+=m*GRAVITY*b.getWorldCenter().y*this.L+.5*m*(v.x*v.x+v.y*v.y)*this.L+.5*(b.getInertia()-b.getMass()*b.getLocalCenter().lengthSquared())*this.M*this.L*this.L*w*w;}return E;}
  fire(){
-  if(this.phase!=='ready')return false;
+  if(this.phase!=='ready'||this.loading&&!this.loading.loaded)return false;
   const fatal=this.facts.warnings.filter(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'));
   if(fatal.length){this.failure=fatal[0];this.phase='invalid';return false;}
   for(const [b,type]of this.storeTypes){b.setType(type);b.setAwake(true);}
@@ -190,7 +190,7 @@ export class BuildSimulation{
    this.counter.setTransform(Vec2((pivot.x-c.shortArm*Math.cos(angle))/this.L,(pivot.y-c.shortArm*Math.sin(angle)-(c.chassis==='floating'?0:c.hanger))/this.L),0);
   }
   const loaded=this.loadingPosition(this.tip());
-  this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
+  if(!this.loading||this.loading.loaded)this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
   this.startX=loaded.x;this.initialCounterY=this.counterPoint().y;
  }
  wind(dt){

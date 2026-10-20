@@ -1,7 +1,7 @@
-import {PARTS,CRITTERS,STARTER,LEGACY_STARTER,STARTER_PARTS,SLOTS,part,critter,validateBuild} from './build-catalog.js?v=9';
-import {VOUCHERS,validateShop} from './build-shop.js?v=9';
+import {PARTS,CRITTERS,STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild} from './build-catalog.js?v=11';
+import {VOUCHERS,validateShop} from './build-shop.js?v=11';
 export const SAVE_KEY='treetop-custom-workshop-v1';
-export function newProgress(){return{version:1,starterRevision:2,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:['mouse'],build:{...STARTER},blueprints:[],history:[],claimed:[]};}
+export function newProgress(){return{version:1,starterRevision:3,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[]};}
 export function canBuild(state,build,creative=false){validateBuild(build);if(creative)return true;if(build.wind!==0||build.drag!==1)throw Error('Adventure uses calm air with air resistance. Reset Creative atmosphere settings first.');for(const[slot]of SLOTS)if(!state.owned.includes(build[slot]))throw Error(`Buy ${part(build[slot]).name} first.`);if(!state.animals.includes(build.animal))throw Error('Invite this volunteer in the shop first.');return true;}
 export function buy(state,id,animal=false){const product=animal?critter(id):part(id),key=animal?'animals':'owned';if(state[key].includes(id))throw Error('Already owned.');if(state.bells<product.price)throw Error('More Bells needed.');return {...state,bells:state.bells-product.price,[key]:[...state[key],id]};}
 export function rewards({distance=0,height=0,release,grams=25,failure=''}){
@@ -24,11 +24,13 @@ export function validateProgress(raw){
  if(!Array.isArray(vouchers)||vouchers.length>VOUCHERS.length||new Set(vouchers).size!==vouchers.length||vouchers.some(id=>!VOUCHERS.some(v=>v.id===id)))throw Error('Invalid shop upgrades.');
  // Grant the complete new kit once. Migrate only the untouched old recipe;
  // preserve custom geometry, earned Bells, volunteers, history and blueprints.
- const upgraded=raw.starterRevision!==2;
+ const upgraded=!raw.starterRevision;
+ const wheelRevision=raw.starterRevision!==3;
  const legacy=upgraded&&Object.entries(LEGACY_STARTER).every(([key,value])=>['name','animal'].includes(key)||raw.build?.[key]===value);
  const owned=upgraded?[...new Set([...raw.owned,...STARTER_PARTS])]:raw.owned;
  const build=legacy?{...STARTER,animal:raw.build.animal}:raw.build;
- const s={...raw,starterRevision:2,owned,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild)};canBuild(s,s.build);return s;
+ const animals=wheelRevision?[...new Set([...raw.animals,...STARTER_ANIMALS])]:raw.animals;
+ const s={...raw,starterRevision:3,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild)};canBuild(s,s.build);return s;
 }
 export function saveProgress(storage,state){storage.setItem(SAVE_KEY,JSON.stringify(validateProgress(state)));}
 export function loadProgress(storage){const data=storage.getItem(SAVE_KEY);return data?validateProgress(JSON.parse(data)):newProgress();}

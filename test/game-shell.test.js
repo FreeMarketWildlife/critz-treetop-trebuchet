@@ -69,7 +69,7 @@ test('old saves migrate without losing inventory; malformed offers and prices ar
 });
 test('every unowned item remains reachable and all generated deals contain unique valid cards',()=>{
  const seen=new Set();for(let i=0;i<300;i++){const s=stocked(50000,i*7001);const keys=s.shop.offers.map(o=>`${o.kind}:${o.id}`);assert.equal(keys.length,new Set(keys).size);keys.forEach(k=>seen.add(k));validateProgress(s);}
- for(const p of PARTS.filter(p=>!newProgress().owned.includes(p.id)))assert.ok(seen.has(`part:${p.id}`),p.id);for(const a of CRITTERS.filter(a=>a.price>0))assert.ok(seen.has(`animal:${a.id}`),a.id);
+ for(const p of PARTS.filter(p=>!newProgress().owned.includes(p.id)))assert.ok(seen.has(`part:${p.id}`),p.id);for(const a of CRITTERS.filter(a=>!newProgress().animals.includes(a.id)))assert.ok(seen.has(`animal:${a.id}`),a.id);
 });
 test('pinball palette has distinct mechanical, release, bounce, deal, and scoring envelopes',()=>{
  const cues=['ratchet','ready','launch','impact','reroll','pack','purchase','score'].map(e=>soundSpec(e));

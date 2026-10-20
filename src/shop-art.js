@@ -1,4 +1,4 @@
-import {drawCritter} from './build-art.js?v=9';
+import {drawCritter} from './build-art.js?v=11';
 /** Tiny original paper-card illustrations, using the same ink and timber palette. */
 export function drawShopArt(canvas,p,kind='part') {
   const ctx=canvas.getContext('2d');
@@ -26,6 +26,6 @@ export function drawShopArt(canvas,p,kind='part') {
   else if(slot==='rope'){for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(-8+i*4,-2,28,18,.3,0,Math.PI*2);ctx.lineWidth=4;ctx.strokeStyle=i%2?'#bda573':'#8d815b';ctx.stroke();}line([[19,13],[40,22],[46,11]],'#bda573',3);}
   else if(slot==='bearing'){wheel(0,0,27);for(let i=0;i<7;i++)ball(Math.cos(i)*21,Math.sin(i)*21,4,'#799a8c');}
   else if(slot==='release'){line([[-39,26],[10,-15]],'#ad8952',8);line([[10,-15],[30,-27],[37,-19]],'#718e80',5);ctx.beginPath();ctx.ellipse(20,-18,8,12,.5,0,Math.PI*2);ctx.strokeStyle='#c9a452';ctx.lineWidth=3;ctx.stroke();}
-  else if(slot==='winch'){wheel(-6,0,25);line([[-6,0],[31,4],[34,-18]],'#7f987e',5);ball(34,-18,6,'#bf9857');}
+  else if(slot==='winch'){const r=18+p.radiusRatio*65;line([[-28,30],[-6,0],[18,30]],'#a77543',5);wheel(-6,0,r);if(p.gearing>1)wheel(27,14,8+p.gearing*2);line([[-6,0],[r*.55-6,-r*.16]],'#8ea498',4);ball(r*.55-6,-r*.16,4,'#efbd61');line([[-6,-r-2],[36,-r-2]],'#d6b479',2);}
   else {line([[-18,-30],[-18,-7],[13,21]],'#718e80',6);ball(-18,-7,7,'#e1ba69');box(-3,11,39,22,'#aa8652');}
 }
