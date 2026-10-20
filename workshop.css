@@ -24,3 +24,5 @@
 .preview-warning{position:absolute;left:18px;right:18px;bottom:112px;font-size:11px!important;line-height:1.4!important;background:#f3dfb5ed;border-left:3px solid #b07743;padding:8px;color:#83542f!important;pointer-events:none}@media(max-width:750px){.preview-warning{left:124px;right:9px;bottom:35px;font-size:8px!important;line-height:1.2!important;padding:4px}}
 
 .bumper-combo{position:absolute;right:22px;top:190px;padding:10px 14px;border:2px solid #617447;border-radius:12px;background:#fff0b8;color:#4d603b;font-weight:900;font-size:13px;box-shadow:0 4px 0 #5d704544;pointer-events:none;animation:combo-pop .3s ease-out}@keyframes combo-pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}@media(max-width:600px){.bumper-combo{right:10px;top:190px;font-size:10px;padding:7px}}
+
+#gameZoomOut,#gameZoomIn{min-width:28px;padding-left:8px;padding-right:8px}#treeCamera[aria-pressed="true"]{background:#d7e7b5;color:#35523a}@media(max-width:600px){.field-controls #labelsToggle,.field-controls #followToggle{display:none}.field-controls{gap:4px}.field-controls button{padding-left:7px;padding-right:7px}}

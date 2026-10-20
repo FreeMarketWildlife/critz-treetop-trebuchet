@@ -1,3 +1,23 @@
+# Current update — Grandfather crown editor, October 20, 2026
+
+Implemented the user's 20× thicker / 2× taller tree: 280 m trunk, 800 m height, 600 m launch. New default has 267 editable pieces, 79 fixed-size enemies, 97 active leaf fields and seven sap patches. Branch drawing/extension, slopes, leaf-density presets, sap, explicit eraser and map JSON copy are available. Existing edited v2 maps remain intact; untouched old starters migrate. Explicit Load new starter is undoable.
+
+Foliage uses spatially indexed swept body paths with density/path-dependent drag; sap retains 1% speed once per entry, with future critter resistance supported. Leaves never become a supporting floor. The world-space full crown and detailed forest survive overview zoom; game/editor Tree controls frame real dimensions and Fit restores animal follow. Preserve the front crank, drag loading, gravitational launch and no-human rule from HEAD 3c70820. Details: docs/crown-workshop/implementation.md.
+
+Validation: 388/388 tests pass. Local browser verified 267-piece Creative bridge, keyboard load/wind/release at 38° / 24.1 m/s, Tree zoom/Fit, branch/extend/copy/erase/undo, slopes, density, sap, portable snapshot and JSON copy. Portrait editor/game reviewed at 390×844 and 320×667; no physical-device FPS claim. Publication pending final hosted verification. Local preview at http://127.0.0.1:8080/ stays running.
+
+---
+
+# Current update — fixed encounter sizes and slapstick, October 20, 2026
+
+The user authorized fixing enemy scale, reducing all live-game gravity by 10% (including space), and adding held cartoon flight/impact/pain cels for every volunteer. Implemented fourteen fixed-size named encounters: ten standard models, four separately named larger relatives with distinctive marks. Base beetles are 16 cm across beside the 18 cm mouse. V2 imports/saves normalize enemy radii to canonical types; enemy width/radius editing is locked, while generic collision geometry remains unrestricted.
+
+Global gravity is 8.825985 m/s²; space reaches 1.2356379 m/s². Launch hardware, bearing loads, winch work and visual rope sag use that baseline. `src/critter-performance.js` holds ready, flying, alternating BONK/OOF, stars and dazed cels; meaningful hits accumulate cosmetic bruises, bandages and gap-toothed grins. It ignores duplicate/low-speed resting contacts, pauses with simulation time and resets on a new launch. Direct vector drawing keeps details crisp across camera scales; actual collision geometry/forces stay unchanged by poses. Added original synthesized bonk punctuation, impact starbursts and live portrait reactions.
+
+Full suite: 370/370 passing. Final focused suite: 42/42. All eleven preset volunteers finish the default Grove with finite states and no solver failures. Mouse: 38.40° at 24.07 m/s, 30.7 m and five meaningful hits. Browser review verified six mouse/whale cels, live BONK, 16 cm beetle duplication and a separate locked 60 cm elder. Evidence and scale-review page: `docs/slapstick/`. Public publication verification pending below; preserve the existing Site ID and public audience.
+
+---
+
 # Current release — Grove World Workshop, October 20, 2026
 
 The current user authorized completing and publishing the map editor for the live custom trebuchet game, with giant-tree scenery, parallax, arbitrary collision shapes, an animal-follow camera, Creative playtests, working shop feedback, and pinball sound. Earlier local-only, fixed-clearing, and original-editor descriptions below are historical and superseded for this scope. The requested final handoff is only the public editor link after final hosted verification.

@@ -1,21 +1,24 @@
-import {drawCounterweight} from './counterweight-art.js?v=11';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=11';
-import {RopeVisual} from './rope-visual.js?v=11';
-import {part,grams} from './build-catalog.js?v=11';
-import {drawGroveWorld} from './grove-art.js?v=11';
-import {groveSetupCamera,groveFlightCamera} from './grove-camera.js?v=11';
+import {drawCounterweight} from './counterweight-art.js?v=12';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=12';
+import {RopeVisual} from './rope-visual.js?v=12';
+import {part,grams} from './build-catalog.js?v=12';
+import {drawGroveWorld} from './grove-art.js?v=12';
+import {createCritterPerformance} from './critter-performance.js?v=12';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=12';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
-export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height){
+export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,performance={}){
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);const bounds=animal.id==='whale'?[-68,-24,52,27]:animal.id==='elephant'?[-43,-42,62,41]:animal.id==='rabbit'?[-57,-56,52,32]:animal.id==='squirrel'?[-61,-48,52,32]:[-57,-33,52,32];const [x0,y0,x1,y1]=bounds;ctx.scale(size/(x1-x0),height===undefined?size/(x1-x0):height/(y1-y0));ctx.translate(-(x0+x1)/2,-(y0+y1)/2);ctx.lineJoin='round';
- const color=animal.color,id=animal.id,ink='#3e4638';
+ const color=animal.color,id=animal.id,ink='#3e4638',pose=performance.pose??(air?'flying':'ready'),tier=performance.tier??0,bonk=pose.startsWith('bonk'),stars=pose==='stars',dazed=pose==='dazed',active=air&&pose!=='ready';
+ // Held silhouettes: paws out in flight, tucked on one hit, splayed on the next.
+ if(bonk)ctx.rotate(pose==='bonk-a'?-.08:.08);
  if(id==='whale'){
-  ctx.beginPath();ctx.moveTo(-45,0);ctx.bezierCurveTo(-18,-28,42,-23,48,-3);ctx.bezierCurveTo(50,26,-15,25,-42,8);ctx.lineTo(-56,24);ctx.lineTo(-53,3);ctx.lineTo(-66,-8);ctx.lineTo(-47,-6);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=2.5;ctx.stroke();ellipse(ctx,16,13,24,5,'#b7d1c5',null);path(ctx,[[-2,10],[-13,24],[10,14]],'#547f8a',4);ellipse(ctx,36,-1,2.6,3.6,'#243e3a',null);path(ctx,[[35,10],[43,8]],ink,1.8);
+  ctx.beginPath();ctx.moveTo(-45,0);ctx.bezierCurveTo(-18,-28,42,-23,48,-3);ctx.bezierCurveTo(50,26,-15,25,-42,8);ctx.lineTo(-56,24);ctx.lineTo(-53,3);ctx.lineTo(-66,-8);ctx.lineTo(-47,-6);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=2.5;ctx.stroke();ellipse(ctx,16,13,24,5,'#b7d1c5',null);path(ctx,bonk?[[-2,10],[-17,bonk&&pose==='bonk-a'?-3:27],[10,14]]:active?[[-2,10],[-18,24],[10,14]]:[[-2,10],[-13,24],[10,14]],'#547f8a',4);drawCritterFace(ctx,{x:36,y:-1,whale:true,pose,tier});
  }else{
   const elephant=id==='elephant',frog=id==='frog',rabbit=id==='rabbit',bear=id==='bear',tiger=id==='tiger';
   if(!frog&&!elephant){ctx.beginPath();ctx.moveTo(-34,6);ctx.quadraticCurveTo(-65,-(id==='squirrel'?50:3),-46,-(id==='squirrel'?35:9));ctx.strokeStyle=ink;ctx.lineWidth=id==='squirrel'?18:3.5;ctx.stroke();ctx.strokeStyle=color;ctx.lineWidth=id==='squirrel'?14:2;ctx.stroke();}
-  for(const x of [-23,17])ellipse(ctx,x,22,elephant?9:8,elephant?17:8,color,ink,2.4);
+  for(const x of [-23,17]){const limbY=bonk?(pose==='bonk-a'?8:28):active?14:22,limbX=x+(bonk?(x<0?-9:8):active?(x<0?-5:4):0);ellipse(ctx,limbX,limbY,elephant?9:8,elephant?17:8,color,ink,2.4);}
   ellipse(ctx,-4,2,elephant?37:34,elephant?29:frog?20:24,color,ink,2.8);
   ellipse(ctx,-7,12,23,9,elephant?'#abb9af':id==='tiger'?'#f2c678':'#ddccaa',null);
   if(tiger)for(const x of [-28,-12,4])path(ctx,[[x,-19],[x+3,-5],[x-3,1]],'#73523c',4);
@@ -26,18 +29,37 @@ export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height){
   ellipse(ctx,29,-6,elephant?20:19,elephant?24:18,color,ink,2.5);
   if(elephant){ellipse(ctx,13,-5,13,19,'#b1bcb0',ink,2);path(ctx,[[43,4],[49,25],[57,24]],ink,10);path(ctx,[[43,4],[49,25],[57,24]],color,6);path(ctx,[[38,9],[46,14],[47,10]],'#f3e1b9',3);}
   if(frog){ellipse(ctx,23,-21,7,9,color,ink,2);ellipse(ctx,38,-20,7,9,color,ink,2);}
-  ellipse(ctx,frog?24:34,frog?-21:-10,3.5,4.8,'#fffbed',ink,1.2);ellipse(ctx,frog?25:35,frog?-20:-9,1.9,2.8,'#293e32',null);
-  if(!frog&&!elephant)ellipse(ctx,46,0,4,3,ink,null);
-  if(air){ctx.beginPath();ctx.arc(elephant?36:34,7,5,0,Math.PI);ctx.strokeStyle=ink;ctx.lineWidth=1.5;ctx.stroke();}else path(ctx,[[33,6],[37,8],[40,6]],ink,1.4);
   if(bear)ellipse(ctx,40,0,8,6,'#c2a382',null);
+  drawCritterFace(ctx,{x:frog?26:34,y:frog?-20:-10,pose,tier});
+  if(!frog&&!elephant)ellipse(ctx,46,0,4,3,ink,null);
+  if(active){const pawY=bonk?(pose==='bonk-a'?-5:24):18;path(ctx,[[-16,8],[-29,pawY],[-39,pawY-3]],ink,5);path(ctx,[[-16,8],[-29,pawY],[-39,pawY-3]],color,2.7);if(!elephant){path(ctx,[[12,12],[19,pawY+5],[27,pawY+2]],ink,4);path(ctx,[[12,12],[19,pawY+5],[27,pawY+2]],color,2);}}
+
  }
+ if(stars||dazed)drawDizzyStars(ctx,tier,performance.frame??0);
  ctx.restore();
 }
+function drawCritterFace(ctx,{x,y,whale=false,pose,tier}){
+ const ink='#3e4638',bonk=pose.startsWith('bonk'),dazed=pose==='stars'||pose==='dazed',active=pose!=='ready',eye=whale?4:5;
+ if(bonk){path(ctx,[[x-eye,y-eye],[x+eye,y+eye]],ink,2.5);path(ctx,[[x+eye,y-eye],[x-eye,y+eye]],ink,2.5);}
+ else if(dazed){ctx.beginPath();for(let i=0;i<26;i++){const a=i*.46,r=.16*i;const xx=x+Math.cos(a)*r,yy=y+Math.sin(a)*r;i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}ctx.strokeStyle=ink;ctx.lineWidth=1.9;ctx.stroke();}
+ else{ellipse(ctx,x,y,eye,eye*1.4,'#fffbed',ink,1.4);ellipse(ctx,x+1.5,y-.5,eye*.5,eye*.7,'#293e32',null);ellipse(ctx,x+2,y-2,1,1,'#fffbed',null);}
+ const mx=x+(whale?1:1),my=y+(whale?10:16);
+ if(active){
+  ellipse(ctx,mx,my,bonk?7:6,bonk?6.8:4.7,'#684b46',ink,1.5);
+  if(!bonk||tier>=2){ctx.fillStyle='#fff6dc';ctx.beginPath();ctx.roundRect(mx-4.5,my-3.2,9,3.6,1);ctx.fill();if(tier>=2){ctx.fillStyle='#684b46';ctx.fillRect(mx-.7,my-3.6,tier>=3?3.6:2.2,4.4);}}
+  if(bonk||tier===0)ellipse(ctx,mx+1,my+2,3.1,1.7,'#d89683',null);
+ }else path(ctx,[[mx-4,my],[mx,my+2],[mx+4,my-1]],ink,1.5);
+ if(tier>0){ellipse(ctx,x-10,y+9,5,3.5,'#bc8f99',null);path(ctx,[[x-13,y+8],[x-10,y+11]],'#937d91',1);}
+ if(tier>=2){ctx.save();ctx.translate(x-13,y-9);ctx.rotate(-.4);ctx.fillStyle='#f3dbac';ctx.strokeStyle='#9b825d';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(-8,-3,16,6,2);ctx.fill();ctx.stroke();ctx.fillStyle='#d1b184';ctx.fillRect(-2.5,-2.5,5,5);ctx.restore();}
+}
+function drawDizzyStars(ctx,tier,frame){
+ const ink='#8b764e';for(let i=0;i<3;i++){const a=i*Math.PI*2/3+(frame%4)*Math.PI/12,x=13+Math.cos(a)*24,y=-24+Math.sin(a)*8,r=3.4+(tier>2?1:0);ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+r*.4,y-r*.3);ctx.lineTo(x+r,y);ctx.lineTo(x+r*.35,y+r*.35);ctx.lineTo(x,y+r);ctx.lineTo(x-r*.35,y+r*.35);ctx.lineTo(x-r,y);ctx.lineTo(x-r*.4,y-r*.3);ctx.closePath();ctx.fillStyle=i%2?'#f4d476':'#fff0b4';ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=1;ctx.stroke();}
+}
 export function createBuildRenderer(canvas){
- const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
+ const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let zoomFactor=1,treeZoom=1,treeOverview=false,cameraUntil=0;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const performanceState=createCritterPerformance();let critterCel={pose:'ready',tier:0,hits:0,angle:0};const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
- function fitScene(sim){cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});fit=false;}
+ function fitScene(sim){cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});cam.scale*=zoomFactor;fit=false;}
  function background(sim){
   if(sim.map){drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,editor:false});return;}
   const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#cedec5');grad.addColorStop(.65,'#dee4be');grad.addColorStop(1,'#b5c18d');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
@@ -98,7 +120,7 @@ export function createBuildRenderer(canvas){
   if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1,'#c1d3b1');
    ctx.save();ctx.translate(...p);ctx.beginPath();const pw=Math.max(9,c.pouchWidth*cam.scale*.65);ctx.moveTo(-pw,-4);ctx.quadraticCurveTo(-pw,physicalSize*.4,0,physicalSize*.39);ctx.quadraticCurveTo(pw,physicalSize*.4,pw,-4);ctx.lineTo(pw*.7,2);ctx.quadraticCurveTo(0,physicalSize*.22,-pw*.7,2);ctx.closePath();ctx.fillStyle='#759381';ctx.strokeStyle='#3e5e47';ctx.lineWidth=2;ctx.fill();ctx.stroke();ctx.restore();
   }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,'#c1d3b1',true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
-  drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,sim.loading?.dragging?sim.loading.angle:-animalPoint.angle,!!sim.release,sim.animal.width*cam.scale);
+  drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,sim.loading?.dragging?sim.loading.angle:critterCel.angle,!!sim.release,sim.animal.width*cam.scale,critterCel);
   trough(sim,true);
   drawCrankWheel(ctx,sim,project,cam.scale);
   if(sim.loading&&!sim.loading.loaded&&!preview)loadingCues(sim);
@@ -132,8 +154,10 @@ export function createBuildRenderer(canvas){
   preview=showPreview;windActive=winding||!!sim.winding;const now=performance.now()/1000;nowTime=now;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
   const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
   if(lastSim!==sim){lastSim=sim;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);
-  if(sim.release&&follow&&!preview){cam=groveFlightCamera(cam,sim.real(sim.shot),{width:W,height:H,animalLength:sim.animal.length,dt:paused?0:ropeDt,reducedMotion});}
-  canvas.dataset.cameraScale=cam.scale.toFixed(4);canvas.dataset.cameraMode=sim.release&&follow&&!preview?'payload':'rig';
+  if(treeOverview&&sim.map&&!preview){const target=groveTreeCamera(sim.map,{width:W,height:H});target.scale*=treeZoom;const mix=reducedMotion||nowTime>=cameraUntil?1:1-Math.exp(-ropeDt*8);cam={x:cam.x+(target.x-cam.x)*mix,y:cam.y+(target.y-cam.y)*mix,scale:Math.exp(Math.log(cam.scale)*(1-mix)+Math.log(target.scale)*mix)};}
+  else if(sim.release&&follow&&!preview){cam=groveFlightCamera(cam,sim.real(sim.shot),{width:W,height:H,animalLength:sim.animal.length/zoomFactor,dt:paused?0:ropeDt,reducedMotion});}
+  canvas.dataset.cameraScale=cam.scale.toFixed(4);canvas.dataset.cameraMode=treeOverview&&!preview?'tree':sim.release&&follow&&!preview?'payload':'rig';
+  critterCel=performanceState.update(sim);canvas.dataset.critterPose=critterCel.pose;canvas.dataset.critterHits=String(critterCel.hits);canvas.dataset.critterDamage=String(critterCel.tier);
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   mechanism(sim,labels);
@@ -142,11 +166,12 @@ export function createBuildRenderer(canvas){
 
   if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
   drawEffects(sim);
+  if(critterCel.pose.startsWith('bonk')&&!preview){const p=project(sim.real(sim.shot)),r=Math.max(15,Math.min(30,sim.animal.length*cam.scale*.65));ctx.save();ctx.globalAlpha=.85;ctx.fillStyle='#ffedab';ctx.strokeStyle='#9b7851';ctx.lineWidth=1.5;ctx.beginPath();for(let i=0;i<16;i++){const a=i*TAU/16,rr=r*(i%2?.72:1.15),x=p[0]+Math.cos(a)*rr,y=p[1]+Math.sin(a)*rr;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();ctx.font='bold 12px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.lineWidth=3;ctx.strokeStyle='#fff0ba';const word=critterCel.pose==='bonk-a'?'BONK!':'OOF!';ctx.strokeText(word,p[0],p[1]-r-8);ctx.fillStyle='#594e3e';ctx.fillText(word,p[0],p[1]-r-8);ctx.restore();}
   // The optional parts overlay includes a scale bar in real world units.
   if(!preview){
   const desired=90/cam.scale,n=10**Math.floor(Math.log10(desired)),bar=n*(desired/n>=5?5:desired/n>=2?2:1),px=bar*cam.scale;
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
   }
  }
- return{draw,fit:()=>{fit=true;},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0;},get camera(){return{...cam};}};
+ return{draw,fit:(reset=true)=>{fit=true;if(reset){zoomFactor=1;treeZoom=1;treeOverview=false;}},overview(){treeOverview=!treeOverview;cameraUntil=performance.now()/1000+.7;if(!treeOverview)fit=true;return treeOverview;},zoomBy(factor){if(!Number.isFinite(factor)||factor<=0)return;if(treeOverview){cameraUntil=performance.now()/1000+.45;treeZoom=Math.max(.3,Math.min(10,treeZoom*factor));}else{const before=zoomFactor;zoomFactor=Math.max(.002,Math.min(4,zoomFactor*factor));cam.scale*=zoomFactor/before;}},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0||now<cameraUntil;},get camera(){return{...cam};}};
 }

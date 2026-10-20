@@ -1,5 +1,5 @@
 /** Original synthesized cues. No assets, autoplay, persistent loops, or physics side effects. */
-export const AUDIO_EVENTS = Object.freeze(['unlatch', 'launch', 'impact', 'coin', 'shop', 'enemy', 'wind', 'zone','ratchet','ready','reroll','pack','purchase','score','click','bumper','sparkle']);
+export const AUDIO_EVENTS = Object.freeze(['unlatch', 'launch', 'impact', 'coin', 'shop', 'enemy', 'wind', 'zone','ratchet','ready','reroll','pack','purchase','score','click','bumper','sparkle','bonk','rustle','sap']);
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, Number.isFinite(v) ? v : lo));
 export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, variant = 0, biome = 'openSky' } = {}) {
   const strength = clamp(intensity, 0, 1);
@@ -20,6 +20,9 @@ export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, v
     purchase: {frequency:783.99,endFrequency:1046.5,duration:.27,gain:.14,type:'sine',harmony:1.5},
     score: {frequency:1318.5,endFrequency:1568,duration:.34,gain:.11,type:'sine',harmony:1.5},
     bumper: {frequency:523.25,endFrequency:783.99,duration:.22,gain:.14,type:'sine',harmony:2,bend:1.35,noise:.025},
+    rustle:{frequency:540,endFrequency:290,duration:.13,gain:.045,type:'sine',noise:.7,noiseFrequency:2300},
+    sap:{frequency:170,endFrequency:48,duration:.22,gain:.1,type:'triangle',harmony:1.25,bend:1.65,noise:.16,noiseFrequency:700},
+    bonk: {frequency:240,endFrequency:95,duration:.19,gain:.09,type:'triangle',harmony:1.5,bend:1.8,noise:.04},
     sparkle: {frequency:1568,endFrequency:2093,duration:.3,gain:.065,type:'sine',harmony:1.5},
     click: {frequency:440,endFrequency:330,duration:.055,gain:.06,type:'triangle'},
   };

@@ -20,3 +20,7 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
  return{x:payload.x,y:payload.y,scale};
 }
 export function groveProject(point,camera,width,height){return{x:width/2+(point.x-camera.x)*camera.scale,y:height/2-(point.y-camera.y)*camera.scale};}
+export function groveTreeCamera(map,{width,height}){
+ const t=map.tree,r=t.crownRadius??t.trunkWidth*3.6,minX=t.trunkX-r-40,maxX=Math.max(220,t.trunkX+r+40),minY=-map.launch.y-30,maxY=t.height-map.launch.y+55;
+ return{x:(minX+maxX)/2,y:(minY+maxY)/2,scale:Math.min(Math.max(160,width)*.9/(maxX-minX),Math.max(120,height)*.84/(maxY-minY))};
+}

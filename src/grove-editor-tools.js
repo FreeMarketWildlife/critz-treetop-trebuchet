@@ -1,4 +1,4 @@
-import {validateGroveMap,objectBounds} from './grove-map.js?v=9';
+import {validateGroveMap,objectBounds,enemyRecipe} from './grove-map.js?v=12';
 const clone=v=>structuredClone(v);
 export function createEditorHistory(initial,limit=80){
  let states=[clone(initial)],index=0;
@@ -6,6 +6,7 @@ export function createEditorHistory(initial,limit=80){
 }
 export function translateObject(o,dx,dy){return o.points?{...o,points:o.points.map(p=>({x:p.x+dx,y:p.y+dy}))}:{...o,x:o.x+dx,y:o.y+dy};}
 export function resizeObject(o,width,height){
+ if(o.type==='enemy')return {...o,radius:enemyRecipe(o.kind).radius};
  if(!o.points)return {...o,radius:Math.max(.05,width/2)};
  const b=objectBounds(o),sx=width/(b.maxX-b.minX||1),sy=height/(b.maxY-b.minY||1);
  return {...o,points:o.points.map(p=>({x:b.minX+(p.x-b.minX)*sx,y:b.minY+(p.y-b.minY)*sy}))};

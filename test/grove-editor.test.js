@@ -38,3 +38,7 @@ test('inspector accepts quarter-metre snapped positions without native step mism
  const {readFile}=await import('node:fs/promises');const html=await readFile(new URL('../editor.html',import.meta.url),'utf8');
  for(const id of ['propX','propY','propWidth','propHeight','vertexX','vertexY']){const input=html.match(new RegExp(`<input[^>]+id="${id}"[^>]*>`))?.[0];assert.ok(input,`${id} exists`);assert.match(input,/step="any"/,`${id} accepts imported and snapped decimals`);}
 });
+
+test('enemy size is locked while position and separately named larger variants remain editable',()=>{
+ const original=createGroveMap().objects.find(o=>o.kind==='beetle'),resized=resizeObject(original,1000,1000);assert.equal(resized.radius,original.radius);assert.deepEqual(translateObject(resized,2,-3),{...original,x:original.x+2,y:original.y-3});
+});

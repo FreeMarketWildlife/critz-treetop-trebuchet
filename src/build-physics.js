@@ -1,9 +1,11 @@
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=12';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=11';
-import {validateGroveMap,enemyRecipe,gravityScaleAt} from './grove-map.js?v=11';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=11';
+import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=12';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=12';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=12';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
-export const GRAVITY=9.80665;
+export const EARTH_GRAVITY=9.80665;
+export const GRAVITY=EARTH_GRAVITY*.9;
 const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 /** Similarity units: x_real=L*x_solver, t_real=sqrt(L)*t_solver,
  * m_real=M*m_solver. Therefore g_solver=g_real, F_real=M*F_solver,
@@ -76,9 +78,9 @@ export class BuildSimulation{
   this.world.on('end-contact',contact=>{this.shotContacts.delete(contact);});
  }
  installMap(){
-  this.terrain=[];this.mapBodies=[];
+  this.terrain=[];this.mapBodies=[];this.environment=createEnvironmentIndex(this.worldObjects);
   for(const o of this.worldObjects){
-   if(!o.collision)continue;
+   if(!o.collision||isEnvironment(o))continue;
    const b=this.world.createBody(),bounds=objectBounds(o);this.mapBodies.push(b);
    const options={friction:o.material==='leaf'?.22:o.material==='bumper'?.05:.65,restitution:o.bounce,filterCategoryBits:8};
    const add=shape=>{const f=b.createFixture(shape,options);f.setUserData({worldObject:o});};
@@ -226,11 +228,16 @@ export class BuildSimulation{
   if(!this.beamBroken){this.axle.enableMotor(true);this.axle.setMotorSpeed(0);this.axle.setMaxMotorTorque(axleFriction);}
   for(const joint of this.wheelAxles){joint.setMaxMotorTorque(c.brake*total*GRAVITY*c.wheelRadius/2/(this.M*this.L));}
   const p=this.real(this.shot),area=Math.PI*(this.animal.width/2)**2,rvx=p.vx-c.wind,v=Math.hypot(rvx,p.vy);
-  if(this.map&&this.release){this.gravityFactor=gravityScaleAt(p.y+this.map.launch.y);this.shot.setGravityScale(this.gravityFactor);}
+  if(this.map&&this.release){this.gravityFactor=gravityScaleAt(p.y+this.map.launch.y,this.map);this.shot.setGravityScale(this.gravityFactor);}
   if(this.release&&(this.map?this.shotContacts.size>0:p.y<this.payloadRadius+.06*this.L)&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
-  if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520-p.y-this.map.launch.y)/60)):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
+  if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520*spaceScale(this.map)-p.y-this.map.launch.y)/(60*spaceScale(this.map)))):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
   this.world.step(dt,32,12);this.time+=h;
   if(this.pendingEncounters.length)this.applyEncounters();
+  if(this.release&&this.environment){
+   const result=this.environment.step(p,this.real(this.shot),this.animal);this.leafDepth=result.leafDepth;this.environmentChecks=result.checks;
+   if(result.retention<1){const v=this.shot.getLinearVelocity(),mass=this.shot.getMass();this.shot.applyLinearImpulse(Vec2(v.x*(result.retention-1)*mass,v.y*(result.retention-1)*mass),this.shot.getWorldCenter(),true);this.shot.setAngularVelocity(this.shot.getAngularVelocity()*result.retention);}
+   for(const o of result.events){this.contactEvents.push({seq:++this.contactSequence,id:o.id,kind:o.material,material:o.material,x:p.x,y:p.y,strength:o.material==='foliage'?.02:Math.min(1,Math.hypot(p.vx,p.vy)/22),time:this.time});if(this.contactEvents.length>64)this.contactEvents.shift();}
+  }
   if(c.wind===0&&!(this.map&&this.release)&&this.energy()>this.initialEnergy*1.05+1){this.failure='Numerical energy check failed — change the geometry or mass balance';this.phase='invalid';return;}
   const q=this.real(this.shot);this.maxX=Math.max(this.maxX,q.x-this.startX);this.maxY=Math.max(this.maxY,q.y);this.lastTension=this.sling?this.sling.getReactionForce(1/dt).length()*this.M:0;this.peakTension=Math.max(this.peakTension,this.lastTension);
   if(this.sling){
@@ -251,7 +258,7 @@ export class BuildSimulation{
   }
   if(this.time-(this.lastTrail??-1)>.06){this.trail.push({x:q.x,y:q.y,t:this.time});this.lastTrail=this.time;if(this.trail.length>1200)this.trail.shift();}
   if(![q.x,q.y,q.vx,q.vy,this.counterPoint().y].every(Number.isFinite)||Math.abs(q.x)>100000){this.failure='Configuration exceeded the solver’s stable range';this.phase='invalid';return;}
-  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&(this.map?this.shotContacts.size>0:q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L)?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>100)this.phase='finished';}
+  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&(this.map?this.shotContacts.size>0:q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L)?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>(this.map?Math.max(100,this.map.tree.height*.5):100))this.phase='finished';}
   else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
  }
  snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure};}

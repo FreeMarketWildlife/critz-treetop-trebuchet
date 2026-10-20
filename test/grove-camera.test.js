@@ -24,3 +24,7 @@ test('reduced motion changes scale immediately; invalid payload dimensions are r
  assert.ok(Math.abs(c.scale-150)<1e-9);assert.equal(c.y,-50);
  assert.throws(()=>groveFlightCamera({scale:1},{x:0,y:NaN},{width:1000,height:600,animalLength:.2}));
 });
+
+test('whole-tree framing preserves physical proportions in portrait and landscape',async()=>{
+ const {groveTreeCamera}=await import('../src/grove-camera.js');const {createGroveMap}=await import('../src/grove-map.js');const map=createGroveMap();for(const [width,height]of[[390,844],[1031,738]]){const c=groveTreeCamera(map,{width,height});assert.ok(map.tree.height*c.scale<height*.85);assert.ok(map.tree.crownRadius*2*c.scale<width);assert.equal((map.tree.trunkWidth*c.scale)/(map.tree.height*c.scale),280/800);assert.ok(c.scale<1);}
+});

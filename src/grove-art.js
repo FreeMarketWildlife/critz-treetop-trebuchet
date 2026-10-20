@@ -1,3 +1,6 @@
+import {drawGroveBackdrop} from './grove-backdrop.js?v=12';
+import {pointInPolygon} from './grove-geometry.js?v=12';
+import {enemyRecipe} from './grove-map.js?v=12';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#374b3c';
@@ -10,7 +13,7 @@ function leaf(c,x,y,s,angle,color){c.save();c.translate(x,y);c.rotate(angle);c.b
 function cloud(c,x,y,s,alpha=1){c.save();c.globalAlpha*=alpha;ellipse(c,x,y,s*1.4,s*.36,'#f5f4df',null);ellipse(c,x-s*.5,y-s*.14,s*.62,s*.44,'#f5f4df',null);ellipse(c,x+s*.13,y-s*.32,s*.7,s*.58,'#f8f7e8',null);ellipse(c,x+s*.7,y-s*.04,s*.67,s*.4,'#f5f4df',null);line(c,[[x-s*.8,y+s*.18],[x+s*.8,y+s*.18]],'#c7ded4',Math.max(1,s*.06));c.restore();}
 /** Original illustrated encounter models. size means diameter in screen px. */
 export function drawGroveEnemy(c,kind,x,y,size,time=0){
- const name=String(kind??'beetle').toLowerCase();c.save();c.translate(x,y);c.scale(Math.max(.001,size)/100,Math.max(.001,size)/100);c.lineJoin='round';c.lineCap='round';
+ const recipe=enemyRecipe(kind),name=String(recipe?.model??kind??'beetle').toLowerCase();c.save();c.translate(x,y);c.scale(Math.max(.001,size)/100,Math.max(.001,size)/100);c.lineJoin='round';c.lineCap='round';
  const frog=name.includes('hopper')||name.includes('leaf'),bird=name.includes('bird'),yokai=name.includes('yokai'),cloudy=name.includes('cloud'),fungus=name.includes('fung')||name.includes('mushroom'),pod=name.includes('pod'),ring=name.includes('fragment')||name.includes('ring'),skid=name.includes('skid'),b=Math.sin(time*3)*2;
  if(yokai){
   c.beginPath();c.moveTo(-29,20);c.bezierCurveTo(-53,-39,32,-57,35,0);c.quadraticCurveTo(38,20,47,32);c.quadraticCurveTo(24,26,14,38);c.quadraticCurveTo(4,26,-9,37);c.quadraticCurveTo(-20,28,-29,20);c.fillStyle='#b3a1da';c.fill();c.strokeStyle='#534968';c.lineWidth=3;c.stroke();
@@ -41,57 +44,40 @@ export function drawGroveEnemy(c,kind,x,y,size,time=0){
   ellipse(c,0,5,31,33,name.includes('archive')?'#b77c4a':'#a88767',INK,3);ellipse(c,-8,0,15,26,'#d9a562',null);line(c,[[0,-24],[0,35]],'#705b3e',3);for(const y of[-10,6,22]){line(c,[[-25,y],[-4,y+6]],'#8d6e44',2);line(c,[[6,y+6],[25,y]],'#8d6e44',2);}
   ellipse(c,0,-24,22,17,'#7f9c73',INK,3);line(c,[[-12,-36],[-20,-45],[-29,-45]],INK,2.5);line(c,[[12,-36],[20,-45],[29,-45]],INK,2.5);ellipse(c,-9,-25,5,7,'#f7ebbc',INK,1.8);ellipse(c,10,-25,5,7,'#f7ebbc',INK,1.8);ellipse(c,-7,-24,2,4,INK,null);ellipse(c,12,-24,2,4,INK,null);
  }
+ // Larger encounters are separate named models, with their own readable marks.
+ if(recipe?.variant){
+  if(recipe.variant==='ancient'){leaf(c,-27,26,19,.25,'#9cad77');leaf(c,26,26,19,2.8,'#9cad77');line(c,[[-17,-19],[-2,-24],[14,-17]],'#f4e1ac',3);}
+  else{const yy=recipe.variant==='elder'?-43:-35;c.beginPath();c.moveTo(-18,yy);c.lineTo(-20,yy-14);c.lineTo(-8,yy-8);c.lineTo(0,yy-23);c.lineTo(9,yy-8);c.lineTo(20,yy-14);c.lineTo(18,yy);c.closePath();c.fillStyle=recipe.variant==='elder'?'#9bae70':'#e6bd65';c.fill();c.strokeStyle=INK;c.lineWidth=2.5;c.stroke();ellipse(c,0,yy-7,3,3,'#f8e9ad',null);}
+ }
  c.restore();
 }
 function objectBounds(o){if(o.points?.length){const xs=o.points.map(p=>p.x),ys=o.points.map(p=>p.y);return{minX:Math.min(...xs),maxX:Math.max(...xs),minY:Math.min(...ys),maxY:Math.max(...ys)};}const r=o.radius??1;return{minX:o.x-r,maxX:o.x+r,minY:o.y-r,maxY:o.y+r};}
 export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=false,editor=false}={}){
  if(!map)return;const cam=camera,s=cam.scale,alt=cam.y+(map.launch?.y??300),project=(x,y)=>[W/2+(x-cam.x)*s,H/2-(y-cam.y)*s];
  c.save();c.lineJoin='round';c.lineCap='round';
- if(!foreground){
-  const space=clamp((alt-445)/100,0,1),floor=clamp((150-alt)/140,0,1);
-  const top=blend(blend('#9dc6ce','#4f776d',floor),'#222b52',space),bottom=blend(blend('#e5edd1','#b5bd88',floor),'#69749d',space);
-  const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,top);g.addColorStop(1,bottom);c.fillStyle=g;c.fillRect(0,0,W,H);
-  if(space>.05){c.globalAlpha=space;for(let i=0;i<72;i++){const x=((i*173.17-cam.x*s*.008)%(W+30)+W+30)%(W+30),y=((i*91.37+cam.y*s*.005)%(H+30)+H+30)%(H+30);ellipse(c,x,y,i%5===0?1.8:1,i%5===0?1.8:1,'#fff3c8',null);}c.globalAlpha=1;}
-  // Three cloud depths drift at different fractions of camera travel, not with
-  // the projectile. Their spacing remains readable during extreme close-ups.
-  for(let depth=0;depth<3;depth++){const par=[.012,.035,.075][depth],spacing=470-depth*85;
-   for(let i=-1;i<Math.ceil(W/spacing)+2;i++){const phase=cam.x*9*par+time*(.7+depth*.3),xx=((i*spacing-phase)%(W+spacing)+W+spacing)%(W+spacing)-spacing*.3;const yy=H*(.18+depth*.19)+Math.sin(i*2.3+depth)*H*.12+Math.sin(cam.y*.006)*H*.1;cloud(c,xx,yy,35+depth*17,(1-space)*(.55-depth*.09));}}
-  // Distant layers describe the great crown overhead and lower forest beneath.
-  const crownY=project(0,100)[1],lowerY=project(0,-150)[1];
-  const canopyBand=(base,par,color,count=10)=>{for(let i=-1;i<count+1;i++){const xx=i*W/(count-1)-((cam.x*s*par)%(W/(count-1))),yy=base+Math.sin(i*2.4)*20;ellipse(c,xx,yy,W/count*.95,36+W/count*.3,color,null);}};
-  if(alt<445){
-   const by=H*.83+clamp((alt-300)/150,-1,1)*H*.48;canopyBand(by,.018,blend('#7fa693','#a8bbb0',.2),9);canopyBand(by+H*.11,.045,'#779b83',7);
-   if(alt<240){canopyBand(H*.76+(alt-160)*1.2,.075,'#577d63',10);for(let i=0;i<12;i++){const xx=i*150-((cam.x*s*.08)%150);line(c,[[xx,H+20],[xx+15,H*.48]],'#6c8d68',10+i%4*6);}}
-   if(crownY>-H&&crownY<H){const yy=H*.05+(crownY-H*.05)*.1;canopyBand(yy,.025,'#91ad77',8);}
-  }
-  // One immense trunk spans 400 metres. At launch it is a wall of bark,
-  // not a small tree stamped behind the machine.
-  const tx=map.tree?.trunkX??-12,tw=map.tree?.trunkWidth??14,root=-(map.launch?.y??300),topY=(map.tree?.height??400)+root;
-  const left=project(tx-tw/2,0)[0],right=project(tx+tw/2,0)[0],yt=project(0,topY)[1],yb=project(0,root)[1];
-  if(right>-50&&left<W+50&&yb>0&&yt<H){
-   const trunk=c.createLinearGradient(Math.max(-W,left),0,Math.min(W*2,right),0);trunk.addColorStop(0,'#665b3c');trunk.addColorStop(.56,'#a38550');trunk.addColorStop(1,'#b8995e');c.fillStyle=trunk;c.beginPath();c.moveTo(left-tw*s*.12,yb);c.lineTo(left,yt);c.lineTo(right-tw*s*.2,yt);c.bezierCurveTo(right-tw*s*.08,H*.3,right,H*.8,right+tw*s*.2,yb);c.closePath();c.fill();c.strokeStyle='#46553b';c.lineWidth=3;c.stroke();
-   c.save();c.beginPath();c.rect(left,Math.max(-100,yt),right-left,Math.min(H+200,yb-yt));c.clip();for(let i=0;i<16;i++){const xx=left+(right-left)*i/16;const shift=Math.sin(i*8)*10;line(c,[[xx+shift,-30],[xx-8,H*.31],[xx+8,H*.62],[xx-5,H+30]],i%2?'#796640':'#d2b477',Math.max(1.1,Math.min(5,s*.04)));}c.restore();
-   for(let i=0;i<4;i++){const p=project(tx+tw*(.05+i*.12),35-i*24);if(p[1]>-100&&p[1]<H+100)ellipse(c,...p,Math.max(2,tw*s*.035),Math.max(4,tw*s*.12),null,'#78613c',Math.max(1,s*.02));}
-   // The arched workshop door and brass lantern provide a human-sized cue.
-   const dx=map.tree?.doorX??-8,[xx,yy]=project(dx,0),dw=1.4*s,dh=2.15*s;
-   if(xx+dw>0&&xx-dw<W&&yy>0&&yy-dh<H){
-    c.save();c.translate(xx,yy);c.beginPath();c.moveTo(-dw*.5,0);c.lineTo(-dw*.5,-dh+dw*.5);c.arc(0,-dh+dw*.5,dw*.5,Math.PI,TAU);c.lineTo(dw*.5,0);c.closePath();c.fillStyle='#34473b';c.fill();c.strokeStyle='#d2b777';c.lineWidth=Math.max(2,s*.06);c.stroke();
-    c.beginPath();c.roundRect(-dw*.38,-dh*.76,dw*.76,dh*.75,Math.max(1,s*.12));c.fillStyle='#866b43';c.fill();c.strokeStyle='#1f3a30';c.lineWidth=Math.max(1,s*.025);c.stroke();for(let i=-1;i<=1;i++)line(c,[[i*dw*.22,-dh*.71],[i*dw*.22,-s*.06]],'#b29558',Math.max(1,s*.025));ellipse(c,dw*.2,-dh*.38,s*.055,s*.055,'#efd888',null);ellipse(c,0,-dh*.84,s*.19,s*.15,'#f3d995','#536447',Math.max(1,s*.025));line(c,[[-dw*.62,0],[dw*.62,0]],'#d3b36e',Math.max(3,s*.1));
-    line(c,[[dw*.65,-dh*.8],[dw*.9,-dh*.8],[dw*.9,-dh*.62]],'#314c39',Math.max(1,s*.04));ellipse(c,dw*.9,-dh*.52,s*.12,s*.18,'#f9dc8b','#586648',Math.max(1,s*.03));c.restore();
-   }
-  }
-  const gy=project(0,-(map.launch?.y??300))[1];if(gy<H){c.fillStyle='#79865d';c.fillRect(0,Math.max(0,gy),W,H-Math.max(0,gy));line(c,[[0,gy],[W,gy]],'#b8c98c',5);}
- }
+ if(!foreground)drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time});
  const visible={minX:cam.x-W/(2*s)-4,maxX:cam.x+W/(2*s)+4,minY:cam.y-H/(2*s)-4,maxY:cam.y+H/(2*s)+4};
- const palette={wood:['#a6814c','#d4b371'],leaf:['#739558','#bed58c'],stone:['#899b90','#c1ccc0'],bumper:['#c68c75','#ffe4a2']};
+ const palette={wood:['#a6814c','#d4b371'],leaf:['#739558','#bed58c'],stone:['#899b90','#c1ccc0'],bumper:['#c68c75','#ffe4a2'],foliage:['#789c59','#b8ce83'],sap:['#c9913a','#f7d98b']};
  let objects=map.objects??[];
  if(!editor){let cached=objectCache.get(map);if(!cached){cached=objects.map(o=>({o,b:objectBounds(o)})).sort((a,b)=>(a.o.layer==='back'?-1:0)-(b.o.layer==='back'?-1:0));objectCache.set(map,cached);}objects=cached;}else objects=objects.map(o=>({o,b:objectBounds(o)})).sort((a,b)=>(a.o.layer==='back'?-1:0)-(b.o.layer==='back'?-1:0));
+ let leafBudget=160;
  for(const {o,b} of objects){
   const layer=o.layer??'world';if((layer==='front')!==foreground)continue;
   if(b.maxX<visible.minX||b.minX>visible.maxX||b.maxY<visible.minY||b.minY>visible.maxY)continue;
   c.save();if(o.collision===false)c.globalAlpha=editor?.55:layer==='back'?.52:.7;
-  if(o.type==='enemy'){const p=project(o.x,o.y);drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,(o.radius??.5)*2*s,time);c.restore();continue;}
+  if(o.type==='enemy'){const p=project(o.x,o.y),size=(o.radius??.5)*2*s;if(size<12){ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;}
   const colors=palette[o.material]??palette.wood;
+  if(['foliage','sap'].includes(o.material)){
+   const sap=o.material==='sap',p=project((b.minX+b.maxX)/2,(b.minY+b.maxY)/2);
+   c.beginPath();if(o.points){o.points.forEach((q,i)=>{const p=project(q.x,q.y);i?c.lineTo(...p):c.moveTo(...p);});c.closePath();}else c.ellipse(...p,o.radius*s,o.radius*s,0,0,TAU);
+   c.globalAlpha*=sap?.82:editor?.28:.18;c.fillStyle=colors[0];c.fill();c.globalAlpha=sap?.9:editor?.5:.4;c.strokeStyle=colors[1];c.lineWidth=sap?2:1;c.stroke();c.globalAlpha=1;
+   if(sap){const r=Math.min(20,(b.maxX-b.minX)*s*.18);ellipse(c,p[0]-r*.8,p[1]-r*.45,Math.max(1,r),Math.max(.8,r*.3),'#ffe5a0',null);ellipse(c,p[0]+r,p[1]+r*.2,Math.max(1,r*.3),Math.max(1,r*.3),'#ffefb7',null);}
+   else if(s>1.5){const x0=Math.max(b.minX,visible.minX),x1=Math.min(b.maxX,visible.maxX),y0=Math.max(b.minY,visible.minY),y1=Math.min(b.maxY,visible.maxY),spacing=Math.max(.65,Math.sqrt((x1-x0)*(y1-y0)/26));let count=0;
+    for(let x=Math.ceil(x0/spacing)*spacing;x<=x1&&count<32&&leafBudget>0;x+=spacing)for(let y=Math.ceil(y0/spacing)*spacing;y<=y1&&count<32&&leafBudget>0;y+=spacing){const inside=o.points?pointInPolygon({x,y},o.points):Math.hypot(x-o.x,y-o.y)<o.radius;if(!inside)continue;const pp=project(x,y),seed=Math.sin(x*12.9+y*7.3);leaf(c,...pp,Math.max(2,Math.min(65,s*(.2+(seed+1)*.12))),seed*2,seed>0?'#8eaf67':'#779b58');count++;leafBudget--;}
+    if(count===0&&leafBudget>0){leaf(c,...p,Math.max(2,Math.min(65,(b.maxX-b.minX)*s*.4)),.3,'#8eaf67');leafBudget--;}
+   }
+   c.restore();continue;
+  }
   if(o.type==='circle'){const p=project(o.x,o.y),r=(o.radius??1)*s;ellipse(c,...p,r,r,colors[0],INK,2.5);ellipse(c,p[0]-r*.15,p[1]-r*.16,r*.64,r*.58,colors[1],INK,1.4);ellipse(c,...p,r*.2,r*.2,'#f0dc9c',INK,1.5);if(o.material==='bumper'){for(let j=0;j<8;j++){const a=j*TAU/8;line(c,[[p[0]+Math.cos(a)*r*.8,p[1]+Math.sin(a)*r*.8],[p[0]+Math.cos(a)*r*.95,p[1]+Math.sin(a)*r*.95]],'#ffe8aa',2);}}}
   else if(o.points?.length){
    const pts=o.points.map(p=>project(p.x,p.y));c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);
@@ -104,6 +90,6 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
   c.restore();
  }
  // Thin foreground leaves frame the world without hiding the flight center.
- if(foreground&&!editor&&alt>220&&alt<400){c.globalAlpha=.45;for(let i=0;i<4;i++){const xx=(i%2?W+12:-12)-Math.sin(cam.x*.03+i)*8,yy=H*(.2+i*.19)+Math.sin(cam.y*.012+i)*28;leaf(c,xx,yy,35+i*9,i%2?2.5:.2,'#507954');}c.globalAlpha=1;}
+ if(foreground&&!editor&&alt>map.tree.height*.55&&alt<map.tree.height){c.globalAlpha=.45;for(let i=0;i<4;i++){const xx=(i%2?W+12:-12)-Math.sin(cam.x*.03+i)*8,yy=H*(.2+i*.19)+Math.sin(cam.y*.012+i)*28;leaf(c,xx,yy,35+i*9,i%2?2.5:.2,'#507954');}c.globalAlpha=1;}
  c.restore();
 }
