@@ -1,0 +1,1287 @@
+{
+  "loading": [
+    {
+      "id": "stock-chipmunk-0.6",
+      "peak": 0.13462300572187247,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.603333333333189,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.0846230057218724,
+        "speed": -88.90260353420089,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.13462300572187247,
+      "candidateLoadingMax": 0.052572267468250944
+    },
+    {
+      "id": "counterweight-heavy-snake-0.75",
+      "peak": 0.08026380071503714,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.899999999999823,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "segment-5"
+        },
+        "b": {
+          "role": "part",
+          "id": "segment-6"
+        },
+        "angle": 1.1302638007150372,
+        "speed": 64.95295092240633,
+        "lower": -1.05,
+        "upper": 1.05
+      },
+      "held": true,
+      "outerPeak": 0.08026380071503714,
+      "candidateLoadingMax": 0.03511655225136212
+    },
+    {
+      "id": "counterweight-heavy-chipmunk-0.45",
+      "peak": 0.08611909995305145,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.3383333333332184,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "tail"
+        },
+        "angle": 1.2861190999530514,
+        "speed": 56.86424889532253,
+        "lower": -1.2,
+        "upper": 1.2
+      },
+      "held": true,
+      "outerPeak": 0.08611909995305145,
+      "candidateLoadingMax": 0.022812585524318196
+    },
+    {
+      "id": "counterweight-heavy-chipmunk-0.6",
+      "peak": 0.138867746238317,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.6533333333331837,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.088867746238317,
+        "speed": -88.90611222573136,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.138867746238317,
+      "candidateLoadingMax": 0.05375244380198141
+    },
+    {
+      "id": "beam-long-salamander-0.6",
+      "peak": 0.10468990652878118,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.436666666666541,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "angle": -1.0546899065287811,
+        "speed": -68.9575791070367,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.10468990652878118,
+      "candidateLoadingMax": 0.04198078064365962
+    },
+    {
+      "id": "beam-long-salamander-0.75",
+      "peak": 0.08595437767620706,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.7799999999998364,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.035954377676207,
+        "speed": -55.53510281594895,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.08595437767620706,
+      "candidateLoadingMax": 0.028665162830838975
+    },
+    {
+      "id": "beam-long-mouse-0.75",
+      "peak": 0.09185257659710033,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.7699999999998375,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.0418525765971003,
+        "speed": -56.31443175085814,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.09185257659710033,
+      "candidateLoadingMax": 0.038693122541930025
+    },
+    {
+      "id": "beam-long-snake-0.75",
+      "peak": 0.09251145366187541,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.748333333333173,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "head"
+        },
+        "b": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "angle": 1.1425114536618755,
+        "speed": 58.54905953909055,
+        "lower": -1.05,
+        "upper": 1.05
+      },
+      "held": true,
+      "outerPeak": 0.09251145366187541,
+      "candidateLoadingMax": 0.03521277368900644
+    },
+    {
+      "id": "beam-light-chipmunk-0.6",
+      "peak": 0.13484478861395144,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.606666666666522,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.0848447886139514,
+        "speed": -88.68287611490325,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.13484478861395144,
+      "candidateLoadingMax": 0.052630060755317176
+    },
+    {
+      "id": "sling-long-chipmunk-0.45",
+      "peak": 0.08074277256047346,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.358333333333216,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": 1.0307427725604734,
+        "speed": 48.86668055344857,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.08074277256047346,
+      "candidateLoadingMax": 0.022519115435765125
+    },
+    {
+      "id": "sling-long-frog-0.75",
+      "peak": 0.08077039332254654,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.8666666666664935,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "rear-thigh"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-shin"
+        },
+        "angle": -1.5807703933225465,
+        "speed": -51.90751979416388,
+        "lower": -1.5,
+        "upper": 1.5
+      },
+      "held": true,
+      "outerPeak": 0.08077039332254654,
+      "candidateLoadingMax": 0.03491158907285008
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.45",
+      "peak": 0.08499567065513891,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.2799999999998914,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "tail"
+        },
+        "angle": 1.2849956706551389,
+        "speed": 52.119871387525315,
+        "lower": -1.2,
+        "upper": 1.2
+      },
+      "held": true,
+      "outerPeak": 0.08499567065513891,
+      "candidateLoadingMax": 0.0201777214020884
+    },
+    {
+      "id": "frame-heavy-chipmunk-0.6",
+      "peak": 0.14322235494845637,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.599999999999856,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.0932223549484563,
+        "speed": -102.23954953773553,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.14322235494845637,
+      "candidateLoadingMax": 0.04327701801505612
+    },
+    {
+      "id": "frame-grip-chipmunk-0.6",
+      "peak": 0.1350279959009948,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.603333333333189,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "rear-leg"
+        },
+        "angle": -1.0850279959009947,
+        "speed": -88.95254775884685,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.1350279959009948,
+      "candidateLoadingMax": 0.05408093098239086
+    },
+    {
+      "id": "combined-snake-0.6",
+      "peak": 0.08782419162245425,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.4966666666665343,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "head"
+        },
+        "b": {
+          "role": "part",
+          "id": "segment-1"
+        },
+        "angle": 1.1378241916224543,
+        "speed": 62.01305080426725,
+        "lower": -1.05,
+        "upper": 1.05
+      },
+      "held": true,
+      "outerPeak": 0.08782419162245425,
+      "candidateLoadingMax": 0.03518392313978902
+    },
+    {
+      "id": "combined-snake-0.75",
+      "peak": 0.11577003900117178,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 3.978333333333148,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "segment-3"
+        },
+        "b": {
+          "role": "part",
+          "id": "segment-4"
+        },
+        "angle": 1.1657700390011718,
+        "speed": 71.28215437580461,
+        "lower": -1.05,
+        "upper": 1.05
+      },
+      "held": true,
+      "outerPeak": 0.11577003900117178,
+      "candidateLoadingMax": 0.04550808764992964
+    },
+    {
+      "id": "combined-chipmunk-0.75",
+      "peak": 0.1666861182877375,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 4.0266666666664825,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "angle": -1.1166861182877375,
+        "speed": -118.54719588003319,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.1666861182877375,
+      "candidateLoadingMax": 0.03791508542911992
+    },
+    {
+      "id": "combined-small-marsupial-0.75",
+      "peak": 0.08327478806629718,
+      "flagIntegrations": 1,
+      "sampledStepOccupancySeconds": 0.0016666666666666668,
+      "longestSampledRun": 0.0016666666666666668,
+      "worstTime": 4.1183333333331635,
+      "dt": 0.0016666666666666668,
+      "joint": {
+        "a": {
+          "role": "part",
+          "id": "torso"
+        },
+        "b": {
+          "role": "part",
+          "id": "front-leg"
+        },
+        "angle": -1.0332747880662971,
+        "speed": -57.466976198042836,
+        "lower": -0.95,
+        "upper": 0.95
+      },
+      "held": true,
+      "outerPeak": 0.08327478806629718,
+      "candidateLoadingMax": 0.04360417068782518
+    }
+  ],
+  "budget": {
+    "default": {
+      "replayedCases": 54,
+      "allRetainedPhysicsAndDiagnosticsExact": true,
+      "eventCount": 21,
+      "cases": 21,
+      "boundaryRequests": 3,
+      "settlingRequests": 18,
+      "cap16Events": 10,
+      "reservedSlotEvents": 12,
+      "maxTickAngular": 0.03141444661011694,
+      "maxWindowAngular": 0.035136944011344484,
+      "maxWindowOuterAngular": 0.03494249772576841,
+      "events": [
+        {
+          "id": "stock-lizard-0.6",
+          "time": 16.635000000000726,
+          "requestedBoundary": true,
+          "requestedJoint": {
+            "a": {
+              "role": "part",
+              "id": "torso"
+            },
+            "b": {
+              "role": "part",
+              "id": "head"
+            },
+            "predictedBoundary": -0.5043633231299858,
+            "beforeAngle": -0.46285599545473133,
+            "beforeSpeed": -327.9582450793392
+          },
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.028322830984492953,
+          "outerAngular": 0.027385880598203016,
+          "windowInnerAngular": 0.028322830984492953,
+          "windowOuterAngular": 0.027385880598203016,
+          "windowAnchor": 0.00010693891150564581,
+          "windowRope": 0.0000020508375078165386,
+          "energyResidual": -977.0637550177435
+        },
+        {
+          "id": "stock-mouse-0.6",
+          "time": 18.273333333332452,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.008452272286689322,
+          "outerAngular": 0.008452272286689322,
+          "windowInnerAngular": 0.008500311482094958,
+          "windowOuterAngular": 0.008452272286689322,
+          "windowAnchor": 0.0002960844643772269,
+          "windowRope": 2.2453594539229016e-11,
+          "energyResidual": -1900.103447141355
+        },
+        {
+          "id": "stock-turtle-0.75",
+          "time": 18.324999999998052,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.006323826664548449,
+          "outerAngular": 0.006323826664548449,
+          "windowInnerAngular": 0.006342916114021158,
+          "windowOuterAngular": 0.006342916114021158,
+          "windowAnchor": 0.0001406744724715789,
+          "windowRope": 2.696291327985989e-7,
+          "energyResidual": -6677.562476192228
+        },
+        {
+          "id": "stock-small-marsupial-0.75",
+          "time": 16.691666666667306,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.007052232851350482,
+          "outerAngular": 0.007052232851350482,
+          "windowInnerAngular": 0.007052232851350482,
+          "windowOuterAngular": 0.007052232851350482,
+          "windowAnchor": 0.011724963981941353,
+          "windowRope": 1.6331455743312517e-8,
+          "energyResidual": -2099.787519669151
+        },
+        {
+          "id": "counterweight-heavy-mouse-0.45",
+          "time": 15.53666666666769,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.03141444661011694,
+          "outerAngular": 0.03141444661011694,
+          "windowInnerAngular": 0.035136944011344484,
+          "windowOuterAngular": 0.03494249772576841,
+          "windowAnchor": 0.00014301944709856564,
+          "windowRope": 0.0000021986656029149287,
+          "energyResidual": -1218.0088519304495
+        },
+        {
+          "id": "counterweight-heavy-chipmunk-0.75",
+          "time": 16.675000000000075,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.004443338685408138,
+          "outerAngular": 0.0032973385684187395,
+          "windowInnerAngular": 0.0065354286208958445,
+          "windowOuterAngular": 0.006453623469052205,
+          "windowAnchor": 0.00017418756568831495,
+          "windowRope": 3.496666645119717e-8,
+          "energyResidual": -404.4108221417832
+        },
+        {
+          "id": "counterweight-heavy-frog-0.6",
+          "time": 16.761666666667292,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.0043894753249332785,
+          "outerAngular": 0.004309485752358455,
+          "windowInnerAngular": 0.005666858535397501,
+          "windowOuterAngular": 0.005554681535576811,
+          "windowAnchor": 0.0002329687954678159,
+          "windowRope": 7.240482253756397e-7,
+          "energyResidual": -333.9136501079802
+        },
+        {
+          "id": "beam-long-lizard-0.6",
+          "time": 18.42333333333214,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.0043485540680052726,
+          "outerAngular": 0.0033030247954741743,
+          "windowInnerAngular": 0.006888278823205862,
+          "windowOuterAngular": 0.00648506191893139,
+          "windowAnchor": 0.00010974378597512912,
+          "windowRope": 1.52267394248895e-8,
+          "energyResidual": -156.52262617662927
+        },
+        {
+          "id": "beam-long-salamander-0.75",
+          "time": 17.5033333333331,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.005232604596048462,
+          "outerAngular": 0.005037063576824652,
+          "windowInnerAngular": 0.005232604596048462,
+          "windowOuterAngular": 0.005037063576824652,
+          "windowAnchor": 0.00020851921535406122,
+          "windowRope": 0,
+          "energyResidual": -289.13359528001183
+        },
+        {
+          "id": "beam-long-frog-0.75",
+          "time": 19.638333333331232,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.004302085005051026,
+          "outerAngular": 0.003783284087198524,
+          "windowInnerAngular": 0.004622262063229243,
+          "windowOuterAngular": 0.004597393120022275,
+          "windowAnchor": 0.0002529168839268433,
+          "windowRope": 0.0000017975840584938396,
+          "energyResidual": -172.0789196725991
+        },
+        {
+          "id": "beam-light-mouse-0.6",
+          "time": 15.995000000001017,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.017065939362783,
+          "outerAngular": 0.0038041483968129786,
+          "windowInnerAngular": 0.017065939362783,
+          "windowOuterAngular": 0.0045736920362629,
+          "windowAnchor": 0.00010860431689367269,
+          "windowRope": 2.3938955751034996e-7,
+          "energyResidual": -98.57213066778331
+        },
+        {
+          "id": "beam-light-turtle-0.6",
+          "time": 18.148333333331433,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.005084333452998635,
+          "outerAngular": 0.005054012404457353,
+          "windowInnerAngular": 0.005267089026844474,
+          "windowOuterAngular": 0.005054012404457353,
+          "windowAnchor": 0.00017129172712571577,
+          "windowRope": 5.648875056607494e-8,
+          "energyResidual": -6221.938664275465
+        },
+        {
+          "id": "beam-light-snake-0.75",
+          "time": 16.738333333334094,
+          "requestedBoundary": true,
+          "requestedJoint": {
+            "a": {
+              "role": "part",
+              "id": "head"
+            },
+            "b": {
+              "role": "part",
+              "id": "segment-1"
+            },
+            "predictedBoundary": -1.0543633231299858,
+            "beforeAngle": -1.0491652916091567,
+            "beforeSpeed": -42.41863696133903
+          },
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.0068395511151180255,
+          "outerAngular": 0.005843991140434879,
+          "windowInnerAngular": 0.0068395511151180255,
+          "windowOuterAngular": 0.005843991140434879,
+          "windowAnchor": 0.0011906815579744126,
+          "windowRope": 7.081138013731447e-7,
+          "energyResidual": -532.6223040447239
+        },
+        {
+          "id": "beam-light-chipmunk-0.75",
+          "time": 19.486666666664537,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.004704799551362271,
+          "outerAngular": 0.004624244628018914,
+          "windowInnerAngular": 0.005009190788786144,
+          "windowOuterAngular": 0.005009190788786144,
+          "windowAnchor": 0.00005352856349436186,
+          "windowRope": 0,
+          "energyResidual": -102.95095903599668
+        },
+        {
+          "id": "beam-light-tiny-primate-0.75",
+          "time": 18.963333333331494,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.005147427848794406,
+          "outerAngular": 0.004342354602695719,
+          "windowInnerAngular": 0.005147427848794406,
+          "windowOuterAngular": 0.004342354602695719,
+          "windowAnchor": 0.00012120953771881672,
+          "windowRope": 1.765325130520523e-8,
+          "energyResidual": -173.0438900055933
+        },
+        {
+          "id": "sling-long-chipmunk-0.75",
+          "time": 17.218333333333266,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.006381850517630738,
+          "outerAngular": 0.006381850517630738,
+          "windowInnerAngular": 0.009995197124808897,
+          "windowOuterAngular": 0.00840722751710743,
+          "windowAnchor": 0.0002018448569603552,
+          "windowRope": 4.43280177009342e-8,
+          "energyResidual": -880.5258366441476
+        },
+        {
+          "id": "frame-grip-mouse-0.6",
+          "time": 15.905000000000971,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.007218202655309369,
+          "outerAngular": 0.007218202655309369,
+          "windowInnerAngular": 0.00746044727709716,
+          "windowOuterAngular": 0.007439360967097741,
+          "windowAnchor": 0.00015731982434046023,
+          "windowRope": 8.645040154853234e-7,
+          "energyResidual": -447.7090038307888
+        },
+        {
+          "id": "frame-grip-chipmunk-0.75",
+          "time": 17.22500000000013,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.009927982371308985,
+          "outerAngular": 0.009770344060569869,
+          "windowInnerAngular": 0.009927982371308985,
+          "windowOuterAngular": 0.009770344060569869,
+          "windowAnchor": 0.00019626437830225755,
+          "windowRope": 0.000001470071191889133,
+          "energyResidual": -3015.4829103490692
+        },
+        {
+          "id": "frame-grip-frog-0.75",
+          "time": 16.970000000000244,
+          "requestedBoundary": true,
+          "requestedJoint": {
+            "a": {
+              "role": "part",
+              "id": "torso"
+            },
+            "b": {
+              "role": "part",
+              "id": "rear-thigh"
+            },
+            "predictedBoundary": 1.1043633231299859,
+            "beforeAngle": 1.098907087581921,
+            "beforeSpeed": 79.12922404865748
+          },
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.01448375199263685,
+          "outerAngular": 0.0139249168731026,
+          "windowInnerAngular": 0.01448375199263685,
+          "windowOuterAngular": 0.0139249168731026,
+          "windowAnchor": 0.00011341453312576471,
+          "windowRope": 1.7971079069312168e-7,
+          "energyResidual": -769.9270902316812
+        },
+        {
+          "id": "combined-lizard-0.45",
+          "time": 20.336666666663874,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.00436867511684369,
+          "outerAngular": 0.00428187311467032,
+          "windowInnerAngular": 0.005585696553672692,
+          "windowOuterAngular": 0.005520402898034904,
+          "windowAnchor": 0.00010293400784402102,
+          "windowRope": 4.465255765140341e-8,
+          "energyResidual": -807.3844363540129
+        },
+        {
+          "id": "combined-turtle-0.6",
+          "time": 16.463333333334045,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.005033630827023239,
+          "outerAngular": 0.005016723503666776,
+          "windowInnerAngular": 0.005033630827023239,
+          "windowOuterAngular": 0.005016723503666776,
+          "windowAnchor": 0.00010530579980487189,
+          "windowRope": 2.593531895911383e-7,
+          "energyResidual": -7132.0774944003115
+        }
+      ]
+    },
+    "candidate": {
+      "replayedCases": 54,
+      "allRetainedPhysicsAndDiagnosticsExact": true,
+      "eventCount": 19,
+      "cases": 17,
+      "boundaryRequests": 3,
+      "settlingRequests": 16,
+      "cap16Events": 10,
+      "reservedSlotEvents": 10,
+      "maxTickAngular": 0.0504940953690074,
+      "maxWindowAngular": 0.0704042526900992,
+      "maxWindowOuterAngular": 0.04350088643885219,
+      "events": [
+        {
+          "id": "counterweight-heavy-mouse-0.75",
+          "time": 17.69166666666565,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.004152410978792931,
+          "outerAngular": 0.004029050514719801,
+          "windowInnerAngular": 0.004152410978792931,
+          "windowOuterAngular": 0.004029050514719801,
+          "windowAnchor": 0.00007148476109724997,
+          "windowRope": 3.7223097049121634e-8,
+          "energyResidual": -214.47266982182282
+        },
+        {
+          "id": "counterweight-heavy-turtle-0.45",
+          "time": 14.280000000001145,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.0043407166745765835,
+          "outerAngular": 0.003884920923371782,
+          "windowInnerAngular": 0.00512615295372143,
+          "windowOuterAngular": 0.005107454576084081,
+          "windowAnchor": 0.00003230801722511014,
+          "windowRope": 5.266263958247919e-8,
+          "energyResidual": -405.0534281014752
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "time": 15.981666666667516,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.03917777969717551,
+          "outerAngular": 0.0272097121556667,
+          "windowInnerAngular": 0.03917777969717551,
+          "windowOuterAngular": 0.0272097121556667,
+          "windowAnchor": 0.0007992087750681744,
+          "windowRope": 7.325372308741862e-9,
+          "energyResidual": -448.265105260306
+        },
+        {
+          "id": "counterweight-heavy-snake-0.75",
+          "time": 15.981666666667516,
+          "requestedBoundary": true,
+          "requestedJoint": {
+            "a": {
+              "role": "part",
+              "id": "segment-1"
+            },
+            "b": {
+              "role": "part",
+              "id": "segment-2"
+            },
+            "predictedBoundary": -1.0543633231299858,
+            "beforeAngle": -1.0351927191378545,
+            "beforeSpeed": -268.9898222615877
+          },
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.03917777969717551,
+          "outerAngular": 0.0272097121556667,
+          "windowInnerAngular": 0.03917777969717551,
+          "windowOuterAngular": 0.0272097121556667,
+          "windowAnchor": 0.0007992087750681744,
+          "windowRope": 7.325372308741862e-9,
+          "energyResidual": -448.265105260306
+        },
+        {
+          "id": "counterweight-heavy-tiny-primate-0.75",
+          "time": 16.991666666667054,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.0043381762379055555,
+          "outerAngular": 0.002260127437540449,
+          "windowInnerAngular": 0.0048814005121187165,
+          "windowOuterAngular": 0.004811660732570999,
+          "windowAnchor": 0.00008049991083665874,
+          "windowRope": 3.1013286161396536e-7,
+          "energyResidual": -742.9739219938442
+        },
+        {
+          "id": "beam-long-mouse-0.45",
+          "time": 13.995000000000783,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.005620649112344056,
+          "outerAngular": 0,
+          "windowInnerAngular": 0.005620649112344056,
+          "windowOuterAngular": 0.004075645369837844,
+          "windowAnchor": 0.00008349844435641997,
+          "windowRope": 4.251566396717976e-7,
+          "energyResidual": -363.8187147055628
+        },
+        {
+          "id": "beam-long-turtle-0.6",
+          "time": 18.596666666664955,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.005120990808281101,
+          "outerAngular": 0.005120990808281101,
+          "windowInnerAngular": 0.005449621507176539,
+          "windowOuterAngular": 0.00544210600215822,
+          "windowAnchor": 0.000018829381529405883,
+          "windowRope": 1.1370814956279673e-8,
+          "energyResidual": -859.532524776716
+        },
+        {
+          "id": "beam-light-lizard-0.6",
+          "time": 16.79833333333408,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.01706858893371077,
+          "outerAngular": 0.016739693321227378,
+          "windowInnerAngular": 0.01706858893371077,
+          "windowOuterAngular": 0.016739693321227378,
+          "windowAnchor": 0.0004028363832790324,
+          "windowRope": 1.5061134117644315e-8,
+          "energyResidual": -640.5307775255687
+        },
+        {
+          "id": "beam-light-turtle-0.75",
+          "time": 16.740000000000443,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.004362537284907875,
+          "outerAngular": 0.004353052585048589,
+          "windowInnerAngular": 0.004832147958717337,
+          "windowOuterAngular": 0.004821376674991051,
+          "windowAnchor": 0.00004968118016703112,
+          "windowRope": 3.111749569129074e-8,
+          "energyResidual": -4212.334402500757
+        },
+        {
+          "id": "sling-long-turtle-0.75",
+          "time": 16.56166666666736,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.00489517477452639,
+          "outerAngular": 0.0045021971187054755,
+          "windowInnerAngular": 0.00489517477452639,
+          "windowOuterAngular": 0.0045021971187054755,
+          "windowAnchor": 0.00009606406697346701,
+          "windowRope": 6.55299010610122e-8,
+          "energyResidual": -7019.165195639947
+        },
+        {
+          "id": "sling-long-chipmunk-0.6",
+          "time": 19.506666666664703,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.0049864455821933,
+          "outerAngular": 0.004636489392356724,
+          "windowInnerAngular": 0.0049864455821933,
+          "windowOuterAngular": 0.004636489392356724,
+          "windowAnchor": 0.000041183657190626844,
+          "windowRope": 2.6440369893521165e-9,
+          "energyResidual": -186.88829980334958
+        },
+        {
+          "id": "frame-heavy-lizard-0.45",
+          "time": 15.915000000001037,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.006271483119756782,
+          "outerAngular": 0.006050161469043802,
+          "windowInnerAngular": 0.011364085112269606,
+          "windowOuterAngular": 0.010749218788681958,
+          "windowAnchor": 0.00406780109114745,
+          "windowRope": 1.1239638997295742e-7,
+          "energyResidual": -106.03272442008529
+        },
+        {
+          "id": "frame-heavy-mouse-0.75",
+          "time": 17.178333333333267,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.0042075568066963775,
+          "outerAngular": 0.003230753906240169,
+          "windowInnerAngular": 0.0704042526900992,
+          "windowOuterAngular": 0.04350088643885219,
+          "windowAnchor": 0.0002546463603544638,
+          "windowRope": 0,
+          "energyResidual": -200.89316805688668
+        },
+        {
+          "id": "frame-heavy-turtle-0.75",
+          "time": 16.610000000000205,
+          "requestedBoundary": true,
+          "requestedJoint": {
+            "a": {
+              "role": "part",
+              "id": "torso"
+            },
+            "b": {
+              "role": "part",
+              "id": "head"
+            },
+            "predictedBoundary": -0.5043633231299858,
+            "beforeAngle": -0.46688333053670306,
+            "beforeSpeed": -496.5816094588651
+          },
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.018450921990663005,
+          "outerAngular": 0.018415715660040632,
+          "windowInnerAngular": 0.018450921990663005,
+          "windowOuterAngular": 0.018415715660040632,
+          "windowAnchor": 0.00008204996887338616,
+          "windowRope": 0.000004134385838128196,
+          "energyResidual": -2232.286118458538
+        },
+        {
+          "id": "frame-heavy-tiny-primate-0.6",
+          "time": 16.351666666667516,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.004345422911936181,
+          "outerAngular": 0.004043503142358462,
+          "windowInnerAngular": 0.004345422911936181,
+          "windowOuterAngular": 0.004043503142358462,
+          "windowAnchor": 0.00007510241693338757,
+          "windowRope": 1.0188301802216415e-7,
+          "energyResidual": -700.111396296269
+        },
+        {
+          "id": "combined-salamander-0.45",
+          "time": 16.67833333333385,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 15,
+          "remainingExtra": 1,
+          "reserved": 1,
+          "innerAngular": 0.0043667695603517576,
+          "outerAngular": 0.004234096523180186,
+          "windowInnerAngular": 0.0043667695603517576,
+          "windowOuterAngular": 0.004234096523180186,
+          "windowAnchor": 0.000055748767674687255,
+          "windowRope": 7.266633961222624e-9,
+          "energyResidual": -168.82313171163332
+        },
+        {
+          "id": "combined-mouse-0.45",
+          "time": 18.178333333332105,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.0504940953690074,
+          "outerAngular": 0.03490697959570355,
+          "windowInnerAngular": 0.0504940953690074,
+          "windowOuterAngular": 0.03490697959570355,
+          "windowAnchor": 0.00017422602330462706,
+          "windowRope": 1.1461292448444738e-7,
+          "energyResidual": -1852.1484345035497
+        },
+        {
+          "id": "combined-mouse-0.45",
+          "time": 18.178333333332105,
+          "requestedBoundary": true,
+          "requestedJoint": {
+            "a": {
+              "role": "part",
+              "id": "torso"
+            },
+            "b": {
+              "role": "part",
+              "id": "head"
+            },
+            "predictedBoundary": 0.5043633231299858,
+            "beforeAngle": 0.4579757593488978,
+            "beforeSpeed": 454.3740500994637
+          },
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.0504940953690074,
+          "outerAngular": 0.03490697959570355,
+          "windowInnerAngular": 0.0504940953690074,
+          "windowOuterAngular": 0.03490697959570355,
+          "windowAnchor": 0.00017422602330462706,
+          "windowRope": 1.1461292448444738e-7,
+          "energyResidual": -1852.1484345035497
+        },
+        {
+          "id": "combined-tiny-primate-0.45",
+          "time": 16.78500000000065,
+          "requestedBoundary": false,
+          "requestedJoint": null,
+          "actualIntegrations": 16,
+          "remainingExtra": 0,
+          "reserved": 0,
+          "innerAngular": 0.00433292299966781,
+          "outerAngular": 0.00426575392875983,
+          "windowInnerAngular": 0.004359155094999068,
+          "windowOuterAngular": 0.00426575392875983,
+          "windowAnchor": 0.00018581179260420232,
+          "windowRope": 4.481833348890518e-8,
+          "energyResidual": -629.5315056158524
+        }
+      ]
+    }
+  },
+  "failedPreparations": [
+    {
+      "mode": "default",
+      "id": "frame-heavy-snake-0.75",
+      "outcome": "seating_failed",
+      "loading": {
+        "cradleSpeed": 0.0017122615295814532,
+        "cradleSpin": -0.005336146390224034,
+        "withinEnvelope": false,
+        "contacting": false,
+        "contactingParts": 0,
+        "relativeSpeed": 0.005901163459848426,
+        "maxPartRelativeSpeed": 0.007239066420847234,
+        "maxRelativeSpin": 0.005336146390224031,
+        "waited": 2.9999999999999223,
+        "quiet": 0
+      }
+    },
+    {
+      "mode": "default",
+      "id": "combined-frog-0.75",
+      "outcome": "seating_failed",
+      "loading": {
+        "cradleSpeed": 0.008396090835452967,
+        "cradleSpin": 0.0011634568714426557,
+        "withinEnvelope": false,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.0009951452680705766,
+        "maxPartRelativeSpeed": 0.002397296587012358,
+        "maxRelativeSpin": 0.004104627782799233,
+        "waited": 2.9999999999999223,
+        "quiet": 0
+      }
+    },
+    {
+      "mode": "candidate",
+      "id": "frame-heavy-snake-0.75",
+      "outcome": "launched",
+      "loading": {
+        "cradleSpeed": 1.1044988966358982,
+        "cradleSpin": 0.29810348571059636,
+        "withinEnvelope": true,
+        "contacting": true,
+        "contactingParts": 4,
+        "relativeSpeed": 0.10509002218922443,
+        "maxPartRelativeSpeed": 0.2697899535982962,
+        "maxRelativeSpin": 2.9877191986186578,
+        "waited": 0.2083333333333337,
+        "quiet": 0.10166666666666654
+      }
+    },
+    {
+      "mode": "candidate",
+      "id": "combined-frog-0.75",
+      "outcome": "seating_failed",
+      "loading": {
+        "cradleSpeed": 0.007646685350666173,
+        "cradleSpin": 0.0008748218085872778,
+        "withinEnvelope": false,
+        "contacting": true,
+        "contactingParts": 2,
+        "relativeSpeed": 0.0005921119314105338,
+        "maxPartRelativeSpeed": 0.0031076356188552796,
+        "maxRelativeSpin": 0.007267025140971261,
+        "waited": 2.9999999999999223,
+        "quiet": 0
+      }
+    }
+  ],
+  "prediction": {}
+}

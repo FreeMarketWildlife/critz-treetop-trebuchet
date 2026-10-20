@@ -1,0 +1,463 @@
+{
+  "protocol": "Read-only raw/one/two reconstruction comparison at identical physically loaded held-dropped input. Ordering/state observations do not alone prove the entire cause of later trajectory drift. Corrected parity harness starts raw and constructs each prediction/live path exactly once.",
+  "id": "stock-lizard-0.45",
+  "raw": {
+    "bodyOrder": [
+      {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 2.8715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      {
+        "role": "part",
+        "id": "front-leg"
+      },
+      {
+        "role": "part",
+        "id": "rear-leg"
+      },
+      {
+        "role": "part",
+        "id": "tail"
+      },
+      {
+        "role": "part",
+        "id": "head"
+      },
+      {
+        "role": "part",
+        "id": "torso"
+      },
+      {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      {
+        "role": "arm",
+        "id": "beam"
+      },
+      {
+        "role": "frame",
+        "id": "support"
+      },
+      {
+        "role": "static",
+        "id": "world"
+      }
+    ],
+    "jointOrder": [
+      [
+        "rope-joint",
+        {
+          "role": "hooklink",
+          "id": "channel-bead",
+          "channelAlpha": 3.55,
+          "channelLength": 0.18,
+          "beadRadius": 0.025,
+          "pegLocal": {
+            "x": 2.8715143691647214,
+            "y": -0.055600743420034376
+          }
+        },
+        {
+          "role": "pouchflap",
+          "id": "right-panel"
+        }
+      ],
+      [
+        "rope-joint",
+        {
+          "role": "arm",
+          "id": "beam"
+        },
+        {
+          "role": "pouch",
+          "id": "cradle"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "pouch",
+          "id": "cradle"
+        },
+        {
+          "role": "pouchflap",
+          "id": "right-panel"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "front-leg"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "rear-leg"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "tail"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "head"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "frame",
+          "id": "support"
+        },
+        {
+          "role": "arm",
+          "id": "beam"
+        }
+      ]
+    ],
+    "sortedPhysicalHash": "e38d1e8521d4da446b0f08c1a89152cb55004ef6d55859eb9df522ffadcc99ca"
+  },
+  "one": {
+    "bodyOrder": [
+      {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 2.8715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      {
+        "role": "part",
+        "id": "front-leg"
+      },
+      {
+        "role": "part",
+        "id": "rear-leg"
+      },
+      {
+        "role": "part",
+        "id": "tail"
+      },
+      {
+        "role": "part",
+        "id": "head"
+      },
+      {
+        "role": "part",
+        "id": "torso"
+      },
+      {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      {
+        "role": "arm",
+        "id": "beam"
+      },
+      {
+        "role": "frame",
+        "id": "support"
+      },
+      {
+        "role": "static",
+        "id": "world"
+      }
+    ],
+    "jointOrder": [
+      [
+        "rope-joint",
+        {
+          "role": "hooklink",
+          "id": "channel-bead",
+          "channelAlpha": 3.55,
+          "channelLength": 0.18,
+          "beadRadius": 0.025,
+          "pegLocal": {
+            "x": 2.8715143691647214,
+            "y": -0.055600743420034376
+          }
+        },
+        {
+          "role": "pouchflap",
+          "id": "right-panel"
+        }
+      ],
+      [
+        "rope-joint",
+        {
+          "role": "arm",
+          "id": "beam"
+        },
+        {
+          "role": "pouch",
+          "id": "cradle"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "pouch",
+          "id": "cradle"
+        },
+        {
+          "role": "pouchflap",
+          "id": "right-panel"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "front-leg"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "rear-leg"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "tail"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "head"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "frame",
+          "id": "support"
+        },
+        {
+          "role": "arm",
+          "id": "beam"
+        }
+      ]
+    ],
+    "sortedPhysicalHash": "df43b38cdb81404037bb723f2176fd65c243959b1a4b206ed9d99091241a9d11"
+  },
+  "two": {
+    "bodyOrder": [
+      {
+        "role": "hooklink",
+        "id": "channel-bead",
+        "channelAlpha": 3.55,
+        "channelLength": 0.18,
+        "beadRadius": 0.025,
+        "pegLocal": {
+          "x": 2.8715143691647214,
+          "y": -0.055600743420034376
+        }
+      },
+      {
+        "role": "pouchflap",
+        "id": "right-panel"
+      },
+      {
+        "role": "part",
+        "id": "front-leg"
+      },
+      {
+        "role": "part",
+        "id": "rear-leg"
+      },
+      {
+        "role": "part",
+        "id": "tail"
+      },
+      {
+        "role": "part",
+        "id": "head"
+      },
+      {
+        "role": "part",
+        "id": "torso"
+      },
+      {
+        "role": "pouch",
+        "id": "cradle"
+      },
+      {
+        "role": "arm",
+        "id": "beam"
+      },
+      {
+        "role": "frame",
+        "id": "support"
+      },
+      {
+        "role": "static",
+        "id": "world"
+      }
+    ],
+    "jointOrder": [
+      [
+        "rope-joint",
+        {
+          "role": "hooklink",
+          "id": "channel-bead",
+          "channelAlpha": 3.55,
+          "channelLength": 0.18,
+          "beadRadius": 0.025,
+          "pegLocal": {
+            "x": 2.8715143691647214,
+            "y": -0.055600743420034376
+          }
+        },
+        {
+          "role": "pouchflap",
+          "id": "right-panel"
+        }
+      ],
+      [
+        "rope-joint",
+        {
+          "role": "arm",
+          "id": "beam"
+        },
+        {
+          "role": "pouch",
+          "id": "cradle"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "pouch",
+          "id": "cradle"
+        },
+        {
+          "role": "pouchflap",
+          "id": "right-panel"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "front-leg"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "rear-leg"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "tail"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "part",
+          "id": "torso"
+        },
+        {
+          "role": "part",
+          "id": "head"
+        }
+      ],
+      [
+        "revolute-joint",
+        {
+          "role": "frame",
+          "id": "support"
+        },
+        {
+          "role": "arm",
+          "id": "beam"
+        }
+      ]
+    ],
+    "sortedPhysicalHash": "81b3c5009ee9fe259bc1ce7b2b0e93650387e82d2affcd049859ed818470bb32"
+  }
+}

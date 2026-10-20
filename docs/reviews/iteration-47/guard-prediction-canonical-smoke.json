@@ -1,0 +1,173 @@
+{
+  "protocol": "All264 equipment/species/winding cases x2 loading modes; raw physically loaded scene, exactly one canonical reconstruction per prediction/live path; every full release also equals retained46 catalog; physically loaded fresh, explicit research clone override only. Production synchronous and budgeted prediction algorithms use the same disabled reserve1 kernel as canonical live. Every common outer snapshot SHA exact, full releases exact, live loaded source unchanged. Different clipping rules retain different trace lengths; no timing comparison under concurrent catalog job. Production clone implementation unchanged.",
+  "rows": [
+    {
+      "id": "stock-lizard-0.45",
+      "candidate": false,
+      "outcome": "exact_research_prediction_parity",
+      "syncSteps": 870,
+      "budgetedSteps": 867,
+      "slices": 187,
+      "reason": "Same physical snapshot; clipped before obstacle",
+      "release": {
+        "time": 6.976666666666944,
+        "center": {
+          "x": 3.459531040641499,
+          "y": 297.7729571977217,
+          "vx": -4.500799699271718,
+          "vy": -20.8659307582496,
+          "mass": 0.65
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": 3.520646641086907,
+              "y": 297.980877010906
+            },
+            "v": {
+              "x": 1.6435892148862508,
+              "y": -22.081654528273862
+            },
+            "w": -32.38334103942354
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": 3.4770954386827984,
+              "y": 298.0937012037921
+            },
+            "v": {
+              "x": 1.2966218004365406,
+              "y": -20.93761531941206
+            },
+            "w": -12.363656483341924
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": 3.4768195510527273,
+              "y": 297.6093779991171
+            },
+            "v": {
+              "x": -6.349594344336239,
+              "y": -21.456769890984077
+            },
+            "w": -16.28126268243793
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": 3.4012765030280057,
+              "y": 297.3676287798528
+            },
+            "v": {
+              "x": -17.112015057566598,
+              "y": -19.340909227736375
+            },
+            "w": -47.23472959119345
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": 3.448365657670554,
+              "y": 297.79127174733827
+            },
+            "v": {
+              "x": -3.278740150019775,
+              "y": -20.814968530024345
+            },
+            "w": -17.776656126565072
+          }
+        ]
+      },
+      "maxOuterActual": 9,
+      "contactSplits": 1,
+      "sourceUnchanged": true
+    },
+    {
+      "id": "stock-lizard-0.45",
+      "candidate": true,
+      "outcome": "exact_research_prediction_parity",
+      "syncSteps": 926,
+      "budgetedSteps": 926,
+      "slices": 216,
+      "reason": "Same physical snapshot; clipped before obstacle",
+      "release": {
+        "time": 7.055000000000336,
+        "center": {
+          "x": 2.6779029493109583,
+          "y": 298.0096556306089,
+          "vx": -5.462080651050613,
+          "vy": -8.553922355659589,
+          "mass": 0.65
+        },
+        "parts": [
+          {
+            "id": "front-leg",
+            "p": {
+              "x": 2.8874694855051986,
+              "y": 298.0071957232661
+            },
+            "v": {
+              "x": -4.511027011400148,
+              "y": -14.427643960919458
+            },
+            "w": -46.73690666758566
+          },
+          {
+            "id": "head",
+            "p": {
+              "x": 2.885261885081479,
+              "y": 298.22986341604485
+            },
+            "v": {
+              "x": -1.216444270696918,
+              "y": -11.397261025263315
+            },
+            "w": -18.24542988487895
+          },
+          {
+            "id": "rear-leg",
+            "p": {
+              "x": 2.6721759879175995,
+              "y": 297.81807726722883
+            },
+            "v": {
+              "x": -9.858615140555422,
+              "y": -8.249883784450628
+            },
+            "w": -29.16642801631499
+          },
+          {
+            "id": "tail",
+            "p": {
+              "x": 2.2828016766642287,
+              "y": 297.96719126660327
+            },
+            "v": {
+              "x": -6.840295120010972,
+              "y": -2.7025843346871348
+            },
+            "w": -7.996206997215127
+          },
+          {
+            "id": "torso",
+            "p": {
+              "x": 2.6816560328811336,
+              "y": 298.0064716567898
+            },
+            "v": {
+              "x": -5.403131118158927,
+              "y": -7.807733034289264
+            },
+            "w": -18.24542988487895
+          }
+        ]
+      },
+      "maxOuterActual": 10,
+      "contactSplits": 1,
+      "sourceUnchanged": true
+    }
+  ]
+}

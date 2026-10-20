@@ -4,7 +4,7 @@ import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js
 import {fixedObstacleVertices} from './fixed-obstacles.js';
 import {createEncounterBody} from './encounter-body.js';
 import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js';
-import * as P from '../node_modules/planck/dist/planck.mjs';
+import * as P from '../vendor/planck/planck.mjs';
 import {aerodynamicForces} from './glide.js';
 import {config} from './physics.js';
 import {createRig} from './species.js';

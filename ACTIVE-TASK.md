@@ -1,6 +1,29 @@
+# Release checkpoint — October 20, 2026
+
+Public release authorized by the current user request. Preserve all local work and existing browser saves. Research remains paused; experimental constraint guards remain disabled. Iteration 47 corrected all-equipment prediction coverage and end-to-end benchmarks remain incomplete. Release validation: 303 tests pass. Planck 1.5.1 is vendored byte-for-byte with license so static public hosting works without node_modules. CI runs the tests and dependency comparison. Current main also includes the Workshop, five-area map, map editor and richer enemy artwork added after 0641f2e. Earlier no-push entries below are historical and superseded only for this authorized game release.
+
 # Active implementation task — consult before resuming
 
-## CURRENT implementation: iteration46 completed LOCAL ONLY
+## CURRENT PRIORITY: PLAYABLE SERVER RECOVERED — KEEP RUNNING
+
+Phil reported blank/failed localhost and authorized direct Mac takeover. Chrome tab1219045347 actually showed ERR_CONNECTION_REFUSED. No existing service at8080 established through Chrome and failedconnection, no processinventory route. Restarted supported project command `npm start -- --bind 127.0.0.1` in canonical checkout; managedPTY session3948 RUNNING. KEEP THIS SERVER RUNNING; do not Ctrl-C it or start a duplicate. Host-network curl verified HTTP200 (sandbox curl cannot reach hostloopback, so do not misdiagnose its failure alone). No security/network settings changed.
+
+Reclaimed the existing failed local tab in Chrome, no extra playable tab. Reload renderedgame; actualslider interaction went Ready→Winding→Load cradle, counterweight moved0.11→0.48m. Save18117points/89bells unchanged; no bank/purchase/equipment change. Resetsetup leavesTurtle ready-to-wind. Raised actual GoogleChrome window via observedRaise action; verifiedrenderedscreenshot. Tab1219045347 markedDELIVERABLE, handedoff; do NOT manipulate it afterhandoff. Other user/clienttabs untouched. ExactURL http://127.0.0.1:8080/ . Research remainspaused, no push. Ordinarysource/experimentalflags unchanged.
+
+## Earlier playable handoff (server later stopped)
+
+
+Phil requested playable build immediately and permission to close stale Chrome tests. Existing ordinary http://127.0.0.1:8080/ VERIFIED loads app, ready-to-wind armadillo,18117points/89bells, existing gear unchanged. Shop opens correctly, consoleerrorsnone. One playable Chrome tab1219045347 markedDELIVERABLE; oldQA1219045251 alreadyabsent. Do NOT manipulate playable tab afterhandoff. User/clienttabs preserved. No newserver. User may close my testtabs; current throw/queue sessiononly, collectedsave stays.
+
+ALL research paused, no source physics changes/promotions. Correctedprediction72492 INTERRUPTED via knownsessionCtrl-C,exit130; 387 completedloglines,NOTfull coverage, nofinalJSON. See docs/reviews/iteration-47/PAUSED-FOR-PLAYTEST.md. No processinventoryretry/routearound, no publicpush. Otherknownresearchjobsfinished; no newbenchmark started.
+
+47uncommitted/localwork preserved: all108 flagged-case/counterpart audits physicallyexact46,40fallbackevents (21default/19candidate in21/17cases),18 realheldloadingone-step flags;20mswindows allbelow.08 butnonzeroconstraintovershoot and scheduling sensitivity remain. Four failurecounterpartreplays retain3seatfailures+oneexperimentalcorrectsuccess. Full original462prediction archive isdepth2self-consistencycontrol. Found harness error: prepared43 alreadycanonical, so old45/46/47 predictionpath tests clonedtwice; fullphysics catalog and directliveisolation unaffected. Newraw-input47 returnsraw readyworld; actualsingleclone smoke bothstocklizard.45 modes EXACT46release; new2regressiontests and full281tests PASS. Correctedall528 actualcatalogpath run pausedafter387 lines. Neverclaimcompletedcorrectedall-gear parity yet.
+
+Sensitivity4cases usesidenticaluninterruptedprefixes, actual16cap allcontrols, oneouteruniform16 orreleasedreserve then12guardticks. Uniform16 isNOTtruth; maxpartdelta16.2cm/COM3.32cm after20ms shows partition sensitivity despite lowangularflags. Releasedreservation maxpart1.86mm. Allsourcecontrols/failedcasespreserved. End-to-end22case(all11species×stock/combined60%) fourpolicybenchmark PREPARED, only4policyonecase smoke releasechecks run; fulltimingNOTRUN. No perfclaimsfromcontendedaudits. QAheldgeometry normal45px/m +8×review savedasHTML/data only, noheldsnapshotbypass/noimageexports; priorQApage nowgone. Physicalrawsnapshotwhilehandheldguard respected. No actualcomplete manualUIthrow onlatesthandoff; actualbrowserload/shop+automatedphysicschecks distinguish.
+
+Resume research only after further user/parent direction; keep ordinarybuild ready forPhil. BaselineHEAD0641f2e; latestcheckpoint mayonlyjournal partialresearch andhandoff. Earnedsaves untouched.
+
+## Historical implementation: iteration46 completed LOCAL ONLY
 
 Public sync PAUSED pending parent authorization; no push/retry/alternate route. Canonical only. PriorHEAD59b88e7. ALL known catalog/isolation/pilot/prediction/test/benchmark jobs COMPLETE; don'tduplicate. Ordinary source and earned saves untouched; ALL refinements disabled. No process-inventory retry/server/tab/export/permission change.
 

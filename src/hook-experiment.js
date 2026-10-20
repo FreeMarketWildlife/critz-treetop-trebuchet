@@ -1,7 +1,7 @@
 // Isolated planar contact-release experiments, NOT closed 3D ring-on-pin models.
 // The open C-link remains weak/sensitive; the finite channel is more useful in bounded tests.
 // Both remain optional research modes, without calibrated-realism claims.
-import * as P from '../node_modules/planck/dist/planck.mjs';
+import * as P from '../vendor/planck/planck.mjs';
 import {CritterScene} from './articulated.js?v=50-trebuchet';
 import {stageInitialVolunteer} from './staging.js';
 const V=P.Vec2;

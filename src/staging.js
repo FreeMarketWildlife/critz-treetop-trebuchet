@@ -1,4 +1,4 @@
-import * as P from '../node_modules/planck/dist/planck.mjs';
+import * as P from '../vendor/planck/planck.mjs';
 // Construction only. Existing shelf geometry is centered at(-4.3,pivotHeight-4.5).
 // Never call after simulation starts or on a restored snapshot.
 export function initialVolunteerClearance(scene){
