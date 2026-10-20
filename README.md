@@ -53,3 +53,7 @@ Choose Branch or Platform and drag to draw; click to place a short default surfa
 Edits autosave in this browser under `treetop-grandfather-map-v1`. **Save & play** reloads the game with the authored contact geometry and placed enemies. Placed enemies materialize near their saved positions with arrival clearance, then use the same dynamic bodies and passive effects as existing encounters; at most eight are active. Procedural encounters can be toggled separately. Editing another open tab does not change a launch already in progress; reload the game to use the new layout. The editor's vertical limits are authoring bounds; the existing 600 m deep-space death rule remains in gameplay.
 
 Export JSON for a portable backup; import validates the entire map before replacing anything. Undo can recover an import or original-map restoration during the current editor session. Browser storage is local to the same origin and may be cleared; exports are the durable backup. The public build is a prototype; saves and editor layouts remain local to each browser origin.
+
+## Release validation runtime
+
+The numerical archive includes exact floating-point hashes recorded on Apple Silicon with Node 24.21.0. CI uses macOS 14 / Node 24.21.0 to validate those archived results. Linux / Node 22 produced six historical exact-value mismatches; cross-platform bitwise reproducibility is not claimed. Browser physics remains a prototype.
