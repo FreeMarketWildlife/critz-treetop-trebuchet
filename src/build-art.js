@@ -1,9 +1,10 @@
-import {part,grams} from './build-catalog.js';
+import {RopeVisual} from './rope-visual.js?v=6';
+import {part,grams} from './build-catalog.js?v=6';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
-export function drawCritter(ctx,animal,x,y,size,angle=0,air=false){
- ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size/100;ctx.scale(s,s);ctx.lineJoin='round';
+export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height){
+ ctx.save();ctx.translate(x,y);ctx.rotate(angle);const bounds=animal.id==='whale'?[-68,-24,52,27]:animal.id==='elephant'?[-43,-42,62,41]:animal.id==='rabbit'?[-57,-56,52,32]:animal.id==='squirrel'?[-61,-48,52,32]:[-57,-33,52,32];const [x0,y0,x1,y1]=bounds;ctx.scale(size/(x1-x0),height===undefined?size/(x1-x0):height/(y1-y0));ctx.translate(-(x0+x1)/2,-(y0+y1)/2);ctx.lineJoin='round';
  const color=animal.color,id=animal.id,ink='#3e4638';
  if(id==='whale'){
   ctx.beginPath();ctx.moveTo(-45,0);ctx.bezierCurveTo(-18,-28,42,-23,48,-3);ctx.bezierCurveTo(50,26,-15,25,-42,8);ctx.lineTo(-56,24);ctx.lineTo(-53,3);ctx.lineTo(-66,-8);ctx.lineTo(-47,-6);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=2.5;ctx.stroke();ellipse(ctx,16,13,24,5,'#b7d1c5',null);path(ctx,[[-2,10],[-13,24],[10,14]],'#547f8a',4);ellipse(ctx,36,-1,2.6,3.6,'#243e3a',null);path(ctx,[[35,10],[43,8]],ink,1.8);
@@ -29,10 +30,14 @@ export function drawCritter(ctx,animal,x,y,size,angle=0,air=false){
  ctx.restore();
 }
 export function createBuildRenderer(canvas){
- const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let W=1000,H=600;
+ const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60;let cords=[new RopeVisual(),new RopeVisual()];
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
- function fitScene(sim){const c=sim.c,wide=c.longArm+c.slingLength+c.shortArm+c.baseWidth*.7,high=c.pivotHeight+c.longArm*.7+sim.facts.counterRadius,scale=Math.min(W*(W<600?.94:.8)/Math.max(wide,3.5),H*.53/Math.max(high,2.4));cam={x:0,y:H*(W<600?.13:.25)/scale,scale};fit=false;}
+ function fitScene(sim){
+  const c=sim.c,wide=preview?Math.max(c.troughLength*1.15,c.longArm*Math.cos(sim.initialAngle-Math.PI)+c.shortArm+c.baseWidth*.5):Math.max(c.longArm+c.slingLength+c.shortArm+c.baseWidth*.7,c.troughLength*1.1),high=preview?c.pivotHeight+c.shortArm+sim.facts.counterRadius:c.pivotHeight+c.longArm*.7+sim.facts.counterRadius;
+  const scale=Math.min(W*(preview?.87:W<600?.94:.8)/Math.max(wide,3.5),H*(preview?.64:.53)/Math.max(high,2.4));
+  cam={x:preview?-c.troughLength*.2:0,y:H*(preview?.22:W<600?.13:.25)/scale,scale};fit=false;
+ }
  function background(sim){
   const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#cedec5');grad.addColorStop(.65,'#dee4be');grad.addColorStop(1,'#b5c18d');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
   // The same authored clearing and tree silhouettes at every launch; camera parallax only.
@@ -49,6 +54,10 @@ export function createBuildRenderer(canvas){
    for(let i=0;i<30;i++){const x=((i*63.2-cam.x*cam.scale)%(W+60)+W+60)%(W+60)-30;path(ctx,[[x-4,gy],[x-7,gy-7],[x-2,gy-2],[x+3,gy-11],[x+4,gy]],'#6b8547',1.5);}
 
   }
+  if(!preview){
+   const stride=cam.scale<12?10:cam.scale<30?5:1,start=Math.ceil((cam.x-W/(2*cam.scale)-sim.startX)/stride)*stride,end=cam.x+W/(2*cam.scale)-sim.startX;
+   for(let m=start;m<=end;m+=stride){if(m<0)continue;const x=project({x:sim.startX+m,y:0})[0],y=gy;path(ctx,[[x,y+2],[x,y+13]],'#4b613e',2);ctx.fillStyle='#ece3b4';ctx.textAlign='center';ctx.font='bold 10px Trebuchet MS';ctx.fillText(`${m} m`,x,y+27);}
+  }
   // Pale pollen and distant birds are decorative, never hidden forces.
   for(let i=0;i<20;i++)ellipse(ctx,(i*317.1)%W,(i*97.3)%(H*.7),1+i%2,1+i%2,'#f7f5cd',null);
  }
@@ -59,12 +68,19 @@ export function createBuildRenderer(canvas){
  }
  function timber(a,b,width,color){line(a,b,'#444a34',Math.max(4,width*cam.scale+3));line(a,b,color,Math.max(2,width*cam.scale));const p=project(a),q=project(b);path(ctx,[[p[0],p[1]-Math.max(1,width*cam.scale*.2)],[q[0],q[1]-Math.max(1,width*cam.scale*.2)]],'#e1b16b',Math.max(.7,width*cam.scale*.09));}
  function annotation(p,text,dx,dy){const [x,y]=project(p),xx=Math.max(15,Math.min(W-190,x+dx)),yy=Math.max(88,Math.min(H-80,y+dy));path(ctx,[[x,y],[xx,yy+9],[xx+8,yy+9]],'#61754e88',1);ctx.font='10px "DM Sans",sans-serif';const width=Math.min(190,ctx.measureText(text).width+18);ctx.fillStyle='#f4f4dfec';ctx.beginPath();ctx.roundRect(xx+5,yy-3,width,24,5);ctx.fill();ctx.fillStyle='#5a6d45';ctx.textAlign='left';ctx.fillText(text,xx+14,yy+12);}
- function rope(a,b,slack=0,color='#e0d4a0'){
-  const p=project(a),q=project(b);ctx.beginPath();ctx.moveTo(...p);ctx.quadraticCurveTo((p[0]+q[0])/2,(p[1]+q[1])/2+slack*cam.scale,q[0],q[1]);ctx.strokeStyle='#4b5337';ctx.lineWidth=4;ctx.stroke();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();
+ function rope(a,b,length,index=0,color='#e0d4a0',free=false){
+  const ps=cords[index].update(a,b,length,ropeDt,x=>lastSim.supportHeight(x)+.006*lastSim.L,{pinA:!free});
+  const points=ps.map(project);path(ctx,points,'#4b5337',3.5);path(ctx,points,color,1.8);
+ }
+ function trough(sim,front=false){
+  const c=sim.c,a=sim.railPoint(-c.troughLength*.75),b=sim.railPoint(c.troughLength*.25),dy=front?-.04:.025;
+  timber({x:a.x,y:a.y+dy},{x:b.x,y:b.y+dy},Math.max(.025,c.troughHeight*.5),front?'#c7a062':'#e3c48c');
+  if(!front){for(let i=0;i<=8;i++){const x=a.x+(b.x-a.x)*i/8,y=a.y+(b.y-a.y)*i/8;line({x,y:y-.04},{x,y:y+.06},'#695a3b',1.3);}}
  }
  function mechanism(sim,labels){
   const c=sim.c,wood=part(c.arm).color,frame=sim.frame;
-  for(let f=frame.getFixtureList();f;f=f.getNext())polygon(frame,f,'#ad814c');
+  for(let f=frame.getFixtureList();f;f=f.getNext())if(f!==sim.troughFixture)polygon(frame,f,'#ad814c');
+  trough(sim);
   // Grain follows actual frame members.
   const fp=pt=>{const q=frame.getWorldPoint({x:pt.x/sim.L,y:pt.y/sim.L});return{x:q.x*sim.L,y:q.y*sim.L};};
   if(c.chassis==='anchored')for(const x of [-c.baseWidth/2,c.baseWidth/2]){const a=fp({x,y:.04}),b={x:a.x-.08*c.pivotHeight,y:-.12*c.pivotHeight};line(a,b,'#5a6c50',Math.max(2,cam.scale*c.beamWidth*.4));}
@@ -80,17 +96,26 @@ export function createBuildRenderer(canvas){
   const pp=project(pivot);ellipse(ctx,...pp,Math.max(5,c.axleRadius*cam.scale*2),Math.max(5,c.axleRadius*cam.scale*2),'#607b66','#364e3d',2);ellipse(ctx,...pp,2,2,'#c8d3ac',null);
   const pinEnd={x:tip.x+Math.cos(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength,y:tip.y+Math.sin(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength};line(tip,pinEnd,'#496c66',4);
   const payload=sim.real(sim.shot),p=project(payload),physicalSize=sim.animal.length*cam.scale;
-  if(sim.sling){const len=Math.hypot(payload.x-tip.x,payload.y-tip.y);rope(tip,payload,Math.max(0,c.slingLength-len)*.4);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},Math.max(0,c.slingLength-len)*.3,'#c1d3b1');
+  if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1,'#c1d3b1');
    ctx.save();ctx.translate(...p);ctx.beginPath();const pw=Math.max(9,c.pouchWidth*cam.scale*.65);ctx.moveTo(-pw,-4);ctx.quadraticCurveTo(-pw,physicalSize*.4,0,physicalSize*.39);ctx.quadraticCurveTo(pw,physicalSize*.4,pw,-4);ctx.lineTo(pw*.7,2);ctx.quadraticCurveTo(0,physicalSize*.22,-pw*.7,2);ctx.closePath();ctx.fillStyle='#759381';ctx.strokeStyle='#3e5e47';ctx.lineWidth=2;ctx.fill();ctx.stroke();ctx.restore();
-  }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,Math.max(0,c.slingLength-Math.hypot(tip.x-pouch.x,tip.y-pouch.y))*.35);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
-  drawCritter(ctx,sim.animal,...p,Math.max(7,physicalSize),-payload.angle,!!sim.release);
-  if(labels&&!sim.release){annotation(cw,grams(c.counterGrams),24,-55);annotation({x:(tip.x+payload.x)/2,y:(tip.y+payload.y)/2},`${c.slingLength.toFixed(2)} m sling`,-150,-33);if(W>550)annotation(pivot,part(c.chassis).name,35,-25);if(physicalSize<25)annotation(payload,`${sim.animal.name} · ${grams(sim.animal.grams)}`,35,-25);}
+  }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,'#c1d3b1',true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
+  drawCritter(ctx,sim.animal,...p,physicalSize,-payload.angle,!!sim.release,sim.animal.width*cam.scale);
+  trough(sim,true);
+  if(physicalSize<15){
+   ctx.setLineDash([2,3]);ellipse(ctx,...p,9,9,'#f7e8ad16','#f5e4a2',1.2);ctx.setLineDash([]);
+   if(sim.release&&!preview){const lx=Math.min(W-50,Math.max(50,p[0]+54)),ly=Math.max(155,p[1]-53);path(ctx,[p,[lx,ly]],'#f1deb080',1);ellipse(ctx,lx,ly,24,24,'#f6efd4e8','#9ba778',2);drawCritter(ctx,sim.animal,lx,ly,37,0,true);ctx.fillStyle='#536a44';ctx.font='8px Trebuchet MS';ctx.textAlign='center';ctx.fillText('ZOOM',lx,ly+35);}
+  }
+  if(preview&&H>250){
+   const a=project({x:-c.baseWidth*.75,y:0}),b=project({x:-c.baseWidth*.75,y:c.pivotHeight});path(ctx,[a,b],'#66774f',1);for(const pt of[a,b])path(ctx,[[pt[0]-4,pt[1]],[pt[0]+4,pt[1]]],'#66774f',1.5);ctx.fillStyle='#4a613d';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='left';ctx.textAlign='right';ctx.fillText(`${c.pivotHeight.toFixed(2)} m`,a[0]-7,(a[1]+b[1])/2);
+  }
+  if(labels&&!sim.release&&!preview){annotation(cw,grams(c.counterGrams),24,-55);annotation({x:(tip.x+payload.x)/2,y:(tip.y+payload.y)/2},`${c.slingLength.toFixed(2)} m sling`,-150,-33);if(W>550)annotation(pivot,part(c.chassis).name,35,-25);if(physicalSize<25)annotation(payload,`${sim.animal.name} · ${grams(sim.animal.grams)}`,35,-25);}
   if(sim.release){const origin=project(sim.release);if(origin[0]>0&&origin[0]<W){ellipse(ctx,...origin,5,5,'#f0cb78','#926d38',1.5);ctx.font='9px "DM Sans",sans-serif';ctx.fillStyle='#687848';ctx.textAlign='left';ctx.fillText('RELEASE',origin[0]+9,origin[1]-7);}}
  }
- function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2}={}){
-  const bounds=canvas.getBoundingClientRect();W=Math.max(280,bounds.width);H=Math.max(250,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
-  if(lastSim!==sim){lastSim=sim;fit=true;}if(fit)fitScene(sim);
-  if(sim.release&&follow&&!paused){const q=sim.real(sim.shot),targetScale=Math.min(cam.scale,Math.max(1,Math.min(W/Math.max(8,sim.release.speed*1.5),H/Math.max(5,sim.maxY*1.3))));cam.x+=(q.x-cam.x)*.07;cam.y+=(Math.max(q.y,sim.animal.length*2+H/(cam.scale*3))-cam.y)*.07;cam.scale+=(targetScale-cam.scale)*.04;}
+ function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false}={}){
+  preview=showPreview;const now=performance.now()/1000;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
+  const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
+  if(lastSim!==sim){lastSim=sim;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);
+  if(sim.release&&follow&&!paused){const q=sim.real(sim.shot),targetScale=Math.min(cam.scale,Math.max(1,Math.min(W/Math.max(8,sim.release.speed*1.5),H/Math.max(5,sim.maxY*1.3))));const pan=1-Math.exp(-4.35*ropeDt),zoom=1-Math.exp(-2.45*ropeDt);cam.x+=(q.x-cam.x)*pan;cam.y+=(Math.max(q.y,sim.animal.length*2+H/(cam.scale*3))-cam.y)*pan;cam.scale+=(targetScale-cam.scale)*zoom;}
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   mechanism(sim,labels);
@@ -103,7 +128,7 @@ export function createBuildRenderer(canvas){
    const q=sim.real(sim.shot),tip=sim.tip(),sa=-Math.atan2(q.y-tip.y,q.x-tip.x);path(ctx,[[rx,ry],[rx+Math.cos(sa)*27,ry+Math.sin(sa)*27]],'#a28d56',1.5);ellipse(ctx,rx,ry,5,5,'#efd182','#907641',1.5);
   }
   // The optional parts overlay includes a scale bar in real world units.
-  if(labels){
+  if(!preview){
   const desired=90/cam.scale,n=10**Math.floor(Math.log10(desired)),bar=n*(desired/n>=5?5:desired/n>=2?2:1),px=bar*cam.scale;
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
   }

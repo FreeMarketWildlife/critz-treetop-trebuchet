@@ -1,5 +1,5 @@
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter} from './build-catalog.js';
+import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=6';
 const {Vec2,World,Box,Circle,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const GRAVITY=9.80665;
 const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
@@ -12,13 +12,16 @@ export class BuildSimulation{
   const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
   this.world=new World(Vec2(0,-GRAVITY));this.time=0;this.phase='ready';this.release=null;this.failure='';this.events=[];this.trail=[];this.maxX=0;this.maxY=0;this.peakTension=0;this.peakStress=0;this.lastTension=0;this.wheels=[];this.wheelAxles=[];this.moving=[];this.elapsedSettled=0;this.accumulator=0;
   this.ground=this.world.createBody();this.ground.createFixture(Box(100000/this.L,1/this.L,Vec2(0,-1/this.L)),{friction:.8,restitution:.12});
-  const tipStartY=c.pivotHeight-c.longArm*Math.sin(rad(c.cockAngle));
   this.initialAngle=Math.PI+rad(c.cockAngle);
   this.frame=this.body(0,0,0,c.frameGrams/1000,'frame');
   const h=c.pivotHeight,b=c.baseWidth/2,t=Math.max(c.beamWidth*.65,h*.025),wheelLift=c.chassis==='wheels'?c.wheelRadius*1.3:0;
   this.frame.setPosition(Vec2(0,wheelLift/this.L));
   this.bar(this.frame,{x:-b,y:t},{x:0,y:h-wheelLift},t*.55);this.bar(this.frame,{x:b,y:t},{x:0,y:h-wheelLift},t*.55);this.bar(this.frame,{x:-b,y:t},{x:b,y:t},t*.55);
   for(let i=0;i<c.braceCount;i++){const y=h*(i+1)/(c.braceCount+2);this.bar(this.frame,{x:-b*(1-y/h),y},{x:b*(1-y/h),y},t*.35);}
+  // The trough has its own collision lane: it supports the pouch, while the
+  // beam and counterweight move beside it in this side-on model.
+  this.troughFixture=this.frame.createFixture(Box(c.troughLength/(2*this.L),c.troughHeight/(2*this.L),Vec2(-c.troughLength*.25/this.L,c.troughHeight/(2*this.L))),{density:0,friction:part(c.trough).friction,restitution:0,filterCategoryBits:2,filterMaskBits:4});
+  this.troughFixture.setUserData('trough');
   this.setMass(this.frame,c.frameGrams/1000*(1+c.braceCount*.04));
   if(c.chassis==='walking'){
    // A separate support triangle rocks on real toe contacts. Its initial lean is a tuning-string setting.
@@ -27,6 +30,7 @@ export class BuildSimulation{
   this.pivotLocal=this.frame.getLocalPoint(Vec2(0,c.pivotHeight/this.L));
   if(c.chassis==='walking')this.pivotLocal=Vec2(0,(h-wheelLift)/this.L);
   let pivot=this.frame.getWorldPoint(this.pivotLocal);
+  this.initialAngle=Math.PI+rad(drawLimit(c,pivot.y*this.L,this.railPoint(0).y));
   this.arm=this.body(pivot.x*this.L,pivot.y*this.L,this.initialAngle,this.facts.beamGrams/1000,'arm');
   this.bar(this.arm,{x:-c.shortArm,y:0},{x:c.longArm,y:0},c.beamWidth/2);
   this.setMass(this.arm,this.facts.beamGrams/1000);
@@ -50,14 +54,13 @@ export class BuildSimulation{
   if(c.chassis==='wheels'){
    for(const x of [-b,b]){const w=this.body(x,c.wheelRadius,0,c.wheelGrams/1000,'wheel');w.createFixture(Circle(c.wheelRadius/this.L),{density:1,friction:c.footFriction,restitution:.02,filterGroupIndex:-1});this.setMass(w,c.wheelGrams/1000);this.wheels.push(w);this.wheelAxles.push(this.world.createJoint(RevoluteJoint({enableMotor:true,motorSpeed:0,maxMotorTorque:0},this.frame,w,w.getPosition())));}
   }
-  for(let f=this.frame.getFixtureList();f;f=f.getNext())f.setFriction(c.footFriction);
-  const tip=this.tip(),payloadRadius=Math.max(.02,this.animal.length*.23),pouchMass=part(c.sling).mass/1000+2*part(c.rope).linearGrams*c.slingLength/1000;
+  for(let f=this.frame.getFixtureList();f;f=f.getNext())if(f!==this.troughFixture)f.setFriction(c.footFriction);
+  const tip=this.tip(),payloadRadius=this.animal.width/2,pouchMass=part(c.sling).mass/1000+2*part(c.rope).linearGrams*c.slingLength/1000;
   this.payloadMass=this.animal.grams/1000;this.pouchMass=pouchMass;
-  // Rest the pouch on the runway if reachable. Cord starts taut, never teleports at fire.
-  const y=Math.max(payloadRadius,tip.y-Math.min(c.slingLength*.8,Math.max(0,tip.y-payloadRadius)));
-  const dy=y-tip.y,dx=Math.sqrt(Math.max(0,c.slingLength**2-dy**2));
-  this.shot=this.body(tip.x+dx,y,0,this.payloadMass+pouchMass,'payload');
-  const half=Math.max(0,this.animal.length/2-payloadRadius)/this.L,pr=payloadRadius/this.L,payloadFixture={density:1,friction:.32,restitution:.32,filterGroupIndex:-1};
+  this.payloadRadius=payloadRadius;
+  const loaded=this.loadingPosition(tip);
+  this.shot=this.body(loaded.x,loaded.y,0,this.payloadMass+pouchMass,'payload');
+  const half=Math.max(0,this.animal.length/2-payloadRadius)/this.L,pr=payloadRadius/this.L,payloadFixture={density:1,friction:.32,restitution:.32,filterGroupIndex:-1,filterCategoryBits:4};
   if(half>0)this.shot.createFixture(Box(half,pr),payloadFixture);
   for(const x of half>0?[-half,half]:[0])this.shot.createFixture(Circle(Vec2(x,0),pr),payloadFixture);
   this.setMass(this.shot,this.payloadMass+pouchMass);this.shot.setBullet(true);
@@ -65,6 +68,25 @@ export class BuildSimulation{
   this.startX=this.shot.getPosition().x*this.L;this.initialCounterY=this.counterPoint().y;this.initialEnergy=this.energy();this.initialPivot={x:pivot.x*this.L,y:pivot.y*this.L};
   this.storeTypes=new Map();for(const bdy of this.moving){this.storeTypes.set(bdy,bdy.getType());bdy.setType('static');}
   this.world.on('begin-contact',contact=>{if(this.release&&(contact.getFixtureA().getBody()===this.shot||contact.getFixtureB().getBody()===this.shot)){this.contacts=(this.contacts??0)+1;}});
+ }
+ railPoint(x){const p=this.frame.getWorldPoint(Vec2(x/this.L,this.c.troughHeight/this.L));return{x:p.x*this.L,y:p.y*this.L};}
+ supportHeight(x){
+  const a=this.railPoint(-this.c.troughLength*.75),b=this.railPoint(this.c.troughLength*.25);
+  if(x<Math.min(a.x,b.x)||x>Math.max(a.x,b.x))return 0;
+  return Math.max(0,a.y+(b.y-a.y)*(x-a.x)/(b.x-a.x||1));
+ }
+ loadingPosition(tip){
+  const c=this.c,r=this.payloadRadius,skin=.012*this.L;
+  let x=tip.x+c.slingLength,y;
+  for(let i=0;i<8;i++){
+   const floor=this.supportHeight(x)+r+skin;
+   y=Math.max(floor,tip.y-c.slingLength*.8);
+   const dy=y-tip.y;
+   x=tip.x+.94*Math.sqrt(Math.max(0,c.slingLength**2-dy**2));
+  }
+  // Resolve support before enabling dynamics, never by injecting a correction
+  // into a moving payload. Ground contact while winding is a normal load state.
+  return{x,y:Math.max(y,this.supportHeight(x)+r+skin)};
  }
  body(x,y,a,mass,role){const b=this.world.createDynamicBody({position:Vec2(x/this.L,y/this.L),angle:a,allowSleep:false,userData:{role}});this.moving.push(b);return b;}
  bar(body,a,b,r){const dx=b.x-a.x,dy=b.y-a.y;body.createFixture(Box(Math.hypot(dx,dy)/(2*this.L),r/this.L,Vec2((a.x+b.x)/(2*this.L),(a.y+b.y)/(2*this.L)),Math.atan2(dy,dx)),{density:1,friction:.6,restitution:0,filterGroupIndex:-1});}
@@ -100,11 +122,9 @@ export class BuildSimulation{
   if(this.counter!==this.arm){
    this.counter.setTransform(Vec2((pivot.x-c.shortArm*Math.cos(angle))/this.L,(pivot.y-c.shortArm*Math.sin(angle)-(c.chassis==='floating'?0:c.hanger))/this.L),0);
   }
-  const tip=this.tip(),r=Math.max(.02,this.animal.length*.23);
-  const y=Math.max(r,tip.y-Math.min(c.slingLength*.8,Math.max(0,tip.y-r)));
-  const dx=Math.sqrt(Math.max(0,c.slingLength**2-(y-tip.y)**2));
-  this.shot.setTransform(Vec2((tip.x+dx)/this.L,y/this.L),0);
-  this.startX=(tip.x+dx);this.initialCounterY=this.counterPoint().y;
+  const loaded=this.loadingPosition(this.tip());
+  this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
+  this.startX=loaded.x;this.initialCounterY=this.counterPoint().y;
  }
  wind(dt){
   if(this.phase!=='ready')return;
@@ -138,8 +158,8 @@ export class BuildSimulation{
   const axleFriction=part(c.bearing).friction*bearingLoad*c.axleRadius/(this.M*this.L);
   if(!this.beamBroken){this.axle.enableMotor(true);this.axle.setMotorSpeed(0);this.axle.setMaxMotorTorque(axleFriction);}
   for(const joint of this.wheelAxles){joint.setMaxMotorTorque(c.brake*total*GRAVITY*c.wheelRadius/2/(this.M*this.L));}
-  const p=this.real(this.shot),area=Math.PI*(this.animal.length*.23)**2,rvx=p.vx-c.wind,v=Math.hypot(rvx,p.vy);
-  if(this.release&&p.y<this.animal.length*.23+.06*this.L&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
+  const p=this.real(this.shot),area=Math.PI*(this.animal.width/2)**2,rvx=p.vx-c.wind,v=Math.hypot(rvx,p.vy);
+  if(this.release&&p.y<this.payloadRadius+.06*this.L&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
   if(c.drag){const k=.5*1.225*.8*area;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
   this.world.step(dt,32,12);this.time+=h;
   if(c.wind===0&&this.energy()>this.initialEnergy*1.05+1){this.failure='Numerical energy check failed — change the geometry or mass balance';this.phase='invalid';return;}
@@ -151,7 +171,9 @@ export class BuildSimulation{
    // Friction resists sliding; the free loop must traverse pinLength before release.
    const pull=this.lastTension*Math.cos(relative-finger),normal=this.lastTension*Math.abs(Math.sin(relative-finger));
    const outward=pull-part(c.release).friction*normal;
-   if(outward>0&&this.time>.03){const accel=outward/Math.max(.001,this.payloadMass*.08);this.ringSpeed=(this.ringSpeed??0)+accel*h;this.ringTravel=(this.ringTravel??0)+this.ringSpeed*h;}else{this.ringSpeed=0;this.ringTravel=0;}
+   const airborne=q.y-this.payloadRadius>this.supportHeight(q.x)+.018*this.L;
+   if(airborne&&Math.hypot(q.vx,q.vy)>.5*Math.sqrt(this.L))this.hasLifted=true;
+   if(outward>0&&this.time>.03&&this.hasLifted){const accel=outward/Math.max(.001,this.payloadMass*.08);this.ringSpeed=(this.ringSpeed??0)+accel*h;this.ringTravel=(this.ringTravel??0)+this.ringSpeed*h;}else{this.ringSpeed=0;this.ringTravel=0;}
    if(this.lastTension>part(c.rope).strength){this.failure='Sling cord snapped';this.detach('Cord overload — uncontrolled release');}
    else if(this.ringTravel>=c.pinLength)this.detach('Release ring cleared the pin');
    const bending=this.lastTension*c.longArm+c.counterGrams/1000*GRAVITY*c.shortArm*.15;
@@ -160,7 +182,7 @@ export class BuildSimulation{
   }
   if(this.time-(this.lastTrail??-1)>.06){this.trail.push({x:q.x,y:q.y,t:this.time});this.lastTrail=this.time;if(this.trail.length>1200)this.trail.shift();}
   if(![q.x,q.y,q.vx,q.vy,this.counterPoint().y].every(Number.isFinite)||Math.abs(q.x)>100000){this.failure='Configuration exceeded the solver’s stable range';this.phase='invalid';return;}
-  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&q.y<this.animal.length*.3+.06*this.L?this.elapsedSettled+h:0;if(this.elapsedSettled>.8||this.time>100)this.phase='finished';}
+  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>100)this.phase='finished';}
   else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
  }
  snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure};}

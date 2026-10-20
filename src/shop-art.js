@@ -1,4 +1,4 @@
-import {drawCritter} from './build-art.js';
+import {drawCritter} from './build-art.js?v=6';
 /** Tiny original paper-card illustrations, using the same ink and timber palette. */
 export function drawShopArt(canvas,p,kind='part') {
   const ctx=canvas.getContext('2d');
@@ -21,6 +21,7 @@ export function drawShopArt(canvas,p,kind='part') {
   if(slot==='chassis'||slot==='frame'){line([[-34,24],[0,-28],[34,24]],'#b88b50',7);line([[-36,24],[36,24]],'#ac8049',7);line([[-21,5],[21,5]],'#cb9c59',5);ball(0,-26,5,'#718c72');if(p.id==='wheels'){wheel(-27,24,12);wheel(27,24,12);}if(p.id==='floating')line([[-40,-26],[40,-26]],'#879a82',5);if(p.id==='walking'){line([[-34,24],[-47,31]],'#b18c50',6);}}
   else if(slot==='arm'){line([[-47,24],[45,-24]],p.color||'#bc8b4b',10);ball(-18,9,7,'#7c9277');line([[-42,20],[38,-22]],'#e6bf78',1);}
   else if(slot==='ballast'||slot==='material'){if(p.id==='steel'){for(let i=0;i<4;i++)box(-27,-21+i*11,54,10,'#8fa394');}else{box(-32,-6,64,31,'#b18953');for(let i=0;i<6;i++)ball(-22+i*9,-8-(i%2)*7,11,p.id==='sand'?'#c0aa70':'#9ca88b');line([[-32,10],[32,10]],'#e0bd7c',3);}}
+  else if(slot==='trough'){line([[-50,10],[42,10]],'#d6b270',9);line([[-50,20],[42,20]],p.id==='waxedRunway'?'#aec5a0':'#aa7c43',5);for(let x=-43;x<43;x+=17)line([[x,7],[x,24]],'#805f39',2);line([[-20,-22],[-8,4],[7,5],[20,-22]],'#c5b482',2);ball(0,1,7,'#9dac82');}
   else if(slot==='sling'){line([[-30,-30],[-23,15],[0,26],[23,15],[30,-30]],'#b8a477',2);ctx.beginPath();ctx.moveTo(-28,6);ctx.quadraticCurveTo(0,53,28,6);ctx.quadraticCurveTo(0,22,-28,6);ctx.fillStyle='#83a18b';ctx.fill();ctx.stroke();ball(0,9,9,'#bac6a3');}
   else if(slot==='rope'){for(let i=0;i<5;i++){ctx.beginPath();ctx.ellipse(-8+i*4,-2,28,18,.3,0,Math.PI*2);ctx.lineWidth=4;ctx.strokeStyle=i%2?'#bda573':'#8d815b';ctx.stroke();}line([[19,13],[40,22],[46,11]],'#bda573',3);}
   else if(slot==='bearing'){wheel(0,0,27);for(let i=0;i<7;i++)ball(Math.cos(i)*21,Math.sin(i)*21,4,'#799a8c');}

@@ -1,0 +1,244 @@
+{
+  "date": "2026-10-20",
+  "starter": {
+    "name": "Acorn Flyer",
+    "chassis": "anchored",
+    "arm": "oak",
+    "frame": "sapling",
+    "ballast": "boulder",
+    "material": "stone",
+    "mount": "hinged",
+    "sling": "pocket",
+    "rope": "twine",
+    "bearing": "bronze",
+    "release": "polished",
+    "winch": "geared",
+    "animal": "mouse",
+    "longArm": 2.6,
+    "shortArm": 0.65,
+    "beamWidth": 0.04,
+    "pivotHeight": 3,
+    "baseWidth": 2,
+    "frameGrams": 9000,
+    "counterGrams": 18000,
+    "hanger": 0.4,
+    "slingLength": 2.4,
+    "pouchWidth": 0.2,
+    "pinAngle": -45,
+    "pinLength": 0.035,
+    "axleRadius": 0.012,
+    "cockAngle": 55,
+    "footFriction": 0.8,
+    "wheelRadius": 0.13,
+    "wheelGrams": 150,
+    "brake": 0.002,
+    "walkingLean": 22,
+    "braceCount": 2,
+    "hingeFriction": 0.008,
+    "wind": 0,
+    "drag": 1,
+    "trough": "runway",
+    "troughLength": 4,
+    "troughHeight": 0.06
+  },
+  "physics": [
+    {
+      "animal": "mouse",
+      "grams": 25,
+      "length": 0.18,
+      "width": 0.055,
+      "distance": 23.257124156122295,
+      "releaseAngle": 38.86046644579357,
+      "speed": 25.33863056492601,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "frog",
+      "grams": 30,
+      "length": 0.08,
+      "width": 0.05,
+      "distance": 28.83859703109431,
+      "releaseAngle": 39.814455507948175,
+      "speed": 25.505298660898976,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "chipmunk",
+      "grams": 100,
+      "length": 0.26,
+      "width": 0.09,
+      "distance": 24.296964395768274,
+      "releaseAngle": 42.056599769639035,
+      "speed": 21.497155379679146,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "squirrel",
+      "grams": 500,
+      "length": 0.45,
+      "width": 0.14,
+      "distance": 18.180695338226478,
+      "releaseAngle": 48.85558653251329,
+      "speed": 15.211661703456697,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "rabbit",
+      "grams": 2000,
+      "length": 0.45,
+      "width": 0.22,
+      "distance": 38.73502170468486,
+      "releaseAngle": 40.55577928510986,
+      "speed": 21.29900297808642,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "armadillo",
+      "grams": 5000,
+      "length": 0.65,
+      "width": 0.27,
+      "distance": 30.91263543916206,
+      "releaseAngle": 41.469968505309325,
+      "speed": 17.47510088046998,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "fox",
+      "grams": 6000,
+      "length": 0.85,
+      "width": 0.3,
+      "distance": 26.043240572810273,
+      "releaseAngle": 44.22373712111246,
+      "speed": 16.00622660365682,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "tiger",
+      "grams": 220000,
+      "length": 2.6,
+      "width": 0.8,
+      "distance": 20.5781065591005,
+      "releaseAngle": 36.888157392686715,
+      "speed": 12.244421264676172,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "bear",
+      "grams": 250000,
+      "length": 2.2,
+      "width": 1.1,
+      "distance": 29.440140666399948,
+      "releaseAngle": 44.561246903569696,
+      "speed": 15.830569945780546,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "elephant",
+      "grams": 5000000,
+      "length": 6,
+      "width": 2.6,
+      "distance": 141.0482318313582,
+      "releaseAngle": 41.887965463852545,
+      "speed": 34.46047679549428,
+      "phase": "finished",
+      "failure": ""
+    },
+    {
+      "animal": "whale",
+      "grams": 100000000,
+      "length": 24,
+      "width": 4.5,
+      "distance": 688.2845873936144,
+      "releaseAngle": 40.109991866564236,
+      "speed": 75.75916647617909,
+      "phase": "finished",
+      "failure": ""
+    }
+  ],
+  "checks": [
+    "Zero launch impulse; measured release velocity continues into gravity flight",
+    "Ground-loaded long-arm build remains above guide during winding and completes its throw",
+    "Starter migration preserves custom builds and earned inventory",
+    "Shop and parcel equipment can be fitted and saved atomically",
+    "Rope display is separate from the tension-only physical joint"
+  ],
+  "browser": {
+    "status": "Verified in the local in-app browser",
+    "desktop": [
+      1031,
+      738
+    ],
+    "portraitViewports": [
+      [
+        320,
+        667
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        430,
+        932
+      ]
+    ],
+    "hardwareCaveat": "Portrait layouts exercised through the viewport harness, not physical phone hardware.",
+    "starterThrows": {
+      "holdMs": 1900,
+      "releaseDegrees": 38.9,
+      "releaseSpeedMetresPerSecond": 25.3,
+      "distanceMetres": 23.3,
+      "bellsPerThrow": 41
+    },
+    "transactions": {
+      "twoThrowsEarned": 82,
+      "frogCost": 20,
+      "frogAutomaticallyEquipped": true,
+      "parcelCost": 28,
+      "chosenPart": "wheels",
+      "chosenPartAutomaticallyEquipped": true,
+      "rerollCost": 5,
+      "nextRerollCost": 6,
+      "endingQaBells": 29
+    },
+    "arcTuner": {
+      "targetDegrees": 40,
+      "resultDegrees": 39.6,
+      "pinDegrees": -44
+    },
+    "savedAdventure": {
+      "bellsPreserved": 11,
+      "bestPreserved": 5.7,
+      "customBuildPreservedAs": "Little acorn · before starter upgrade",
+      "equipped": "Acorn Flyer",
+      "heightMetres": 3,
+      "reloadedSuccessfully": true
+    },
+    "currentRuntimeErrors": 0,
+    "notes": [
+      "An initial stale cached-module error was fixed with versioned module URLs before final checks.",
+      "Idle renderer remained at two frames after the final reload.",
+      "QA sessions never write to the Adventure save."
+    ],
+    "screenshots": [
+      "starter-clearing.png",
+      "starter-flight.png",
+      "live-rig-shop.png",
+      "portrait-live-shop.png"
+    ]
+  },
+  "automated": {
+    "command": "npm test",
+    "passed": 338,
+    "failed": 0
+  }
+}

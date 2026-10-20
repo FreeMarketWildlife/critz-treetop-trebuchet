@@ -13,7 +13,7 @@ test('all mechanism families have distinct constrained movement and finite outco
  const results=['anchored','skids','wheels','walking','floating'].map(chassis=>runBuild(scaledPreset('mouse',chassis),30));
  assert.ok(results.every(s=>['finished','flight'].includes(s.phase)&&Number.isFinite(s.maxX)));
  approx(results[0].real(results[0].frame).x,0,1e-12);
- assert.ok(Math.abs(results[2].real(results[2].frame).x)>.01);
+ const rolling=new BuildSimulation(scaledPreset('mouse','wheels'));rolling.fire();let recoil=0;for(let i=0;i<360;i++){rolling.step(1/120);recoil=Math.max(recoil,Math.abs(rolling.real(rolling.frame).x));}assert.ok(recoil>.1,'wheels allow physical recoil during the throw');
  assert.ok(Math.abs(results[2].wheels[0].getAngle())>.01);
  assert.ok(Math.abs(results[3].pivot().x-results[3].initialPivot.x)>.1);
  assert.ok(Math.abs(results[4].pivot().x)>.01);

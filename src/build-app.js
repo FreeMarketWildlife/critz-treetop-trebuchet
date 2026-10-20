@@ -1,9 +1,10 @@
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js';
-import{BuildSimulation}from'./build-physics.js';
-import{createBuildRenderer,drawCritter}from'./build-art.js';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js';
-import {drawShopArt} from './shop-art.js';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=6';
+import {fitEquipment} from './build-equipment.js?v=6';
+import{BuildSimulation}from'./build-physics.js?v=6';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=6';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=6';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=6';
+import {drawShopArt} from './shop-art.js?v=6';
 import {createHoldControl} from './hold-control.js';
 import {createAudio} from './audio.js';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
@@ -18,30 +19,51 @@ function saveSound(){if(!qa)try{saveAudioPreferences(localStorage,audioPrefs);}c
 try{if(!qa){saving=localStorage.getItem('treetop-custom-save-enabled')!=='false';if(saving)state=loadProgress(localStorage);}}catch(e){toast(`Save could not be loaded. A fresh session is open; your stored data was kept. ${e.message}`);saving=false;}
 state=visitShop(state,qa?42+state.launches:undefined);
 adventureBuild={...state.build};draft={...state.build};
-const renderer=createBuildRenderer($('stage'));
+const renderer=createBuildRenderer($('stage')),previewRenderer=createBuildRenderer($('previewStage'));
+let previewSim,previewKey='',presetAnimal='mouse',presetChassis='anchored';
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,5200);}
 function persist(){if(!saving||qa)return;try{saveProgress(localStorage,state);$('saveStatus').textContent='Adventure progress saved locally. Your original prototype save is kept separately.';}catch(e){$('saveStatus').textContent=`Saving unavailable: ${e.message}. Export a backup to keep your work.`;toast('Progress is in this session. Browser storage is unavailable; export a backup.');}}
 function equippedValue(id){return creative||state.owned.includes(id);}
 function populate(){
- $('animal').replaceChildren();for(const a of CRITTERS.filter(a=>creative||state.animals.includes(a.id))){const o=el('option',a.name);o.value=a.id;$('animal').append(o);}$('animal').value=draft.animal;
- $('buildParts').replaceChildren();for(const[slot,title]of SLOTS){const box=el('div',undefined,'part-group'),label=el('label',title);label.htmlFor=`part-${slot}`;label.append(el('span',slot==='chassis'?'MECHANISM':'PART'));const select=el('select');select.id=`part-${slot}`;for(const p of PARTS.filter(p=>p.slot===slot&&equippedValue(p.id))){const o=el('option',p.name);o.value=p.id;select.append(o);}select.value=draft[slot];const desc=el('p',part(draft[slot]).description);select.addEventListener('change',()=>{draft[slot]=select.value;desc.textContent=part(select.value).description;refreshFacts();});box.append(label,select,desc);$('buildParts').append(box);}
+ $('animal').replaceChildren(...CRITTERS.filter(a=>creative||state.animals.includes(a.id)).map(a=>choiceCard(a,'animal',a.id===draft.animal,()=>selectEquipment({kind:'animal',id:a.id}))));
+ $('animalName').textContent=critter(draft.animal).name;
+ $('buildParts').replaceChildren();
+ for(const[slot,title]of SLOTS){
+  const box=el('details',undefined,'part-group'),summary=el('summary'),p=part(draft[slot]),art=el('canvas');drawShopArt(art,p);art.setAttribute('aria-hidden','true');
+  const text=el('span');text.append(el('small',title),el('strong',p.name));summary.append(art,text,el('span','⌄','part-chevron'));
+  const choices=el('div',undefined,'part-options');for(const option of PARTS.filter(p=>p.slot===slot&&equippedValue(p.id)))choices.append(choiceCard(option,'part',option.id===p.id,()=>selectEquipment({kind:'part',id:option.id})));
+  box.append(summary,el('p',p.description),choices);$('buildParts').append(box);
+ }
  $('tuningFields').replaceChildren();for(const[key,title,unit,min,max,step,slot]of TUNING){const label=el('label',undefined,'tune-row');label.append(el('span',title));const input=el('input');input.type='number';input.id=`tune-${key}`;input.min=min;input.max=max;input.step=step;input.value=draft[key];input.setAttribute('aria-label',`${title}${unit?` (${unit})`:''}`);input.addEventListener('change',()=>{draft[key]=input.valueAsNumber;refreshFacts();});label.append(input,el('span',unit));$('tuningFields').append(label);}
  $('buildName').value=draft.name;$('wind').value=draft.wind;$('drag').checked=!!draft.drag;
  $('ownedCount').textContent=creative?'ALL PARTS UNLOCKED':`${state.owned.length} parts owned`;$('wallet').textContent=creative?'∞':state.bells.toLocaleString();$('best').innerHTML=`${state.best.toFixed(1)} <em>m</em>`;
  $('creativePresets').hidden=!creative;$('creativeWeather').hidden=!creative;refreshFacts();renderShop();renderBlueprints();
 }
+function choiceCard(p,kind,selected,onSelect){
+ const button=el('button',undefined,'equipment-choice'),art=el('canvas');drawShopArt(art,p,kind);art.setAttribute('aria-hidden','true');button.setAttribute('aria-pressed',String(selected));button.setAttribute('aria-label',`Fit ${p.name}`);button.append(art,el('span',p.name));if(kind==='animal')button.append(el('small',`${grams(p.grams)} · ${dimensions(p)}`));button.onclick=onSelect;return button;
+}
+function fitted(name){
+ $('fittedNotice').textContent=`✓ ${name} fitted`;$('fittedNotice').classList.remove('pop');$('previewStage').classList.remove('equip-pop');void $('fittedNotice').offsetWidth;$('fittedNotice').classList.add('pop');$('previewStage').classList.add('equip-pop');dirty=true;
+}
+function selectEquipment(offer){try{draft=fitEquipment(draft,offer);applyBuild({quiet:true});cue('purchase');fitted(product(offer).name);}catch(e){toast(e.message);}}
+function syncPreview(){
+ try{const c=validateBuild(draft),key=JSON.stringify(c);if(key!==previewKey){previewSim=new BuildSimulation(c);previewSim.setDraw(1);previewKey=key;}
+ const warnings=buildFacts(c).warnings;$('previewWarning').textContent=warnings[0]??'';$('previewWarning').hidden=!warnings.length;
+ $('previewName').textContent=c.name;$('previewHeight').textContent=`↕ ${c.pivotHeight.toFixed(2)} m to axle`;$('previewWeight').textContent=`◆ ${grams(c.counterGrams)} ballast`;$('previewAnimal').textContent=`${critter(c.animal).name} · ${dimensions(critter(c.animal))}`;
+ }catch{}dirty=true;
+}
 function refreshFacts(){
  dirty=true;
- const a=critter(draft.animal);$('animalMass').textContent=grams(a.grams);const pc=$('portrait').getContext('2d');pc.clearRect(0,0,108,88);drawCritter(pc,a,52,48,73,0,false);
+ const a=critter(draft.animal);$('animalMass').textContent=`${grams(a.grams)} · ${dimensions(a)} (L × W)`;const pc=$('portrait').getContext('2d');pc.clearRect(0,0,108,88);drawCritter(pc,a,52,48,73,0,false);
  const f=buildFacts(draft);$('ratio').textContent=`${f.ratio.toFixed(2)} : 1`;$('beamMass').textContent=grams(f.beamGrams);$('capacity').textContent=grams(f.capacity);
  const work=draft.counterGrams/1000*9.80665*draft.shortArm*(1+Math.sin(draft.cockAngle*Math.PI/180));const prep=Math.max(1.65,work/part(draft.winch).power);$('prepTime').textContent=prep<60?`${prep.toFixed(1)} s`:`${(prep/60).toFixed(1)} min`;
  $('buildWarnings').replaceChildren();let err='';try{validateBuild(draft);canBuild(state,draft,creative);}catch(e){err=e.message;}
  for(const w of [...(err?[err]:[]),...f.warnings])$('buildWarnings').append(el('p',w,'warning'));
  $('apply').disabled=!!err;
  for(const key of ['wheelRadius','wheelGrams','brake'])$(`tune-${key}`).closest('label').hidden=draft.chassis!=='wheels';
- $('tune-walkingLean').closest('label').hidden=draft.chassis!=='walking';for(const key of ['hanger','hingeFriction'])$(`tune-${key}`).closest('label').hidden=draft.mount!=='hinged'||draft.chassis==='floating';
+ syncPreview();$('tune-walkingLean').closest('label').hidden=draft.chassis!=='walking';for(const key of ['hanger','hingeFriction'])$(`tune-${key}`).closest('label').hidden=draft.mount!=='hinged'||draft.chassis==='floating';
 }
-function applyBuild({quiet=false}={}){try{const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b);sim.setDraw(0);paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Pause';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
+function applyBuild({quiet=false}={}){try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b);sim.setDraw(0);paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Pause';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
 function switchMode(next){if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every volunteer. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
 function drawHudCritter(){const c=$('hudCritter').getContext('2d');c.clearRect(0,0,100,70);drawCritter(c,sim.animal,50,36,70,0,false);}
 const hold=createHoldControl({
@@ -66,7 +88,7 @@ function updateReadouts(){
  const pct=Math.round((sim.drawFraction??0)*100);$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
  $('sceneHint').textContent=`${sim.animal.name} · ${grams(sim.animal.grams)}`;
  $('launchPrompt').hidden=resultShown;$('collectShop').hidden=creative;
- $('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);
+ $('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);$('stage').dataset.build=sim.c.name;$('stage').dataset.axleHeight=String(sim.c.pivotHeight);$('stage').dataset.animal=sim.animal.id;
  if(['finished','invalid'].includes(s.phase)&&!resultShown)showResult();
 }
 function resultData(){return{distance:sim.maxX,height:sim.maxY,release:sim.release,grams:sim.animal.grams,animal:sim.animal.id,failure:sim.failure};}
@@ -79,13 +101,16 @@ function shopCard(offer,{packChoice=false}={}){
  const art=el('canvas');art.setAttribute('aria-hidden','true');drawShopArt(art,p,offer.kind);
  const cost=priceFor(state,offer),button=el('button',packChoice?'Choose this card':creative?'Unlocked':owned?'Yours forever':`${cost.toLocaleString()} Bells`,`buy${owned||creative?' owned':''}`);
  button.disabled=creative||owned||(!packChoice&&state.bells<cost);button.setAttribute('aria-label',packChoice?`Choose ${p.name}`:creative?`${p.name} unlocked`:owned?`${p.name} owned`:`Buy ${p.name} for ${cost} Bells`);
- button.onclick=()=>{try{state=packChoice?choosePack(state,p.id):purchaseOffer(state,offer);persist();cue('purchase');populate();toast(`${p.name} is yours! ${offer.kind==='voucher'?'Perk active.':'Equip it at your workbench.'}`);}catch(e){toast(e.message);}};
- card.append(tag,art,el('h3',p.name),el('p',offer.kind==='animal'?`${grams(p.grams)} of curiosity. Invite once, fly forever.`:p.description),button);return card;
+ button.onclick=()=>{try{
+  const next=packChoice?choosePack(state,p.id):purchaseOffer(state,offer);
+  const fittedBuild=fitEquipment(state.build,offer);canBuild(next,fittedBuild);state={...next,build:fittedBuild};draft={...fittedBuild};adventureBuild={...fittedBuild};applyBuild({quiet:true});persist();cue('purchase');fitted(p.name);toast(`${p.name} ${offer.kind==='voucher'?'perk active!':'fitted to your trebuchet!'}`);
+ }catch(e){toast(e.message);}};
+ card.append(tag,art,el('h3',p.name),el('p',offer.kind==='animal'?`${grams(p.grams)} · ${dimensions(p)}. Auto-equipped on purchase.`:p.description),button);return card;
 }
 function renderShop(){
  const shop=state.shop;if(!shop)return;
  $('shopWallet').textContent=creative?'∞':state.bells.toLocaleString();$('shopRound').textContent=`VISIT ${shop.round+1}`;
- $('shopMessage').textContent=creative?'Every part is already yours. Build something wild.':'Buy a possibility. See where it takes you.';
+ $('shopMessage').textContent=creative?'Every part is already yours. Build something wild.':'Pick a card. Watch your trebuchet change.';
  const ctx=$('shopkeeper').getContext('2d');ctx.clearRect(0,0,160,110);drawCritter(ctx,critter('mouse'),78,60,104,0,false);
  $('shopItems').replaceChildren(...shop.offers.map(o=>shopCard(o)));
  if(!shop.offers.length)$('shopItems').append(el('p','The whole grove is in your collection. What will you build?','empty-shelf'));
@@ -100,11 +125,28 @@ function renderShop(){
 function renderBlueprints(){$('blueprintList').replaceChildren();if(!state.blueprints.length)$('blueprintList').append(el('p','Your saved experiments will appear here.','micro'));state.blueprints.forEach((b,i)=>{const row=el('div',undefined,'blueprint'),text=el('span',b.name);text.append(el('small',`${critter(b.animal).name} · ${part(b.chassis).name}`));const button=el('button','Load','secondary');button.addEventListener('click',()=>{try{canBuild(state,b,creative);draft={...b};populate();applyBuild();}catch(e){toast(e.message);}});const remove=el('button','×','text-button');remove.setAttribute('aria-label',`Delete ${b.name}`);remove.addEventListener('click',()=>{state={...state,blueprints:state.blueprints.filter((_,n)=>n!==i)};persist();renderBlueprints();});row.append(text,button,remove);$('blueprintList').append(row);});}
 function exportJSON(value,name){const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
 function showLog(){$('launchLog').replaceChildren();const records=sessionLog.length?sessionLog:state.history;if(!records.length)$('launchLog').append(el('p','Collect the result of a launch to record your first experiment.'));for(const r of records){const row=el('div',undefined,'log-row');row.append(el('span',`${critter(r.animal).name} · ${r.distance.toFixed(1)} m`),el('span',r.creative?'Creative':`+${r.bells} Bells`),el('small',`${r.build??'Adventure launch'}${r.releaseAngle!==undefined?` · ${r.releaseAngle.toFixed(1)}° · ${r.releaseSpeed.toFixed(1)} m/s`:''}${r.failure?` · ${r.failure}`:''}`));$('launchLog').append(row);}$('logDialog').showModal();}
-for(const a of CRITTERS){const o=el('option',`${a.name} · ${grams(a.grams)}`);o.value=a.id;$('presetAnimal').append(o);}for(const p of PARTS.filter(p=>p.slot==='chassis')){const o=el('option',p.name);o.value=p.id;$('presetChassis').append(o);}
-$('adventureMode').onclick=()=>switchMode(false);$('creativeMode').onclick=()=>switchMode(true);$('animal').onchange=()=>{draft.animal=$('animal').value;refreshFacts();};$('apply').onclick=()=>{applyBuild();if(!$('apply').disabled){$('workshopDialog').close();cue('shop');}};$('reset').onclick=()=>applyBuild({quiet:true});$('collect').onclick=collect;$('pause').onclick=()=>{hold.cancel();paused=!paused;dirty=true;if(paused){soundQueue.length=0;sound.pause();}else sound.unlock();$('pause').textContent=paused?'Resume':'Pause';$('pause').setAttribute('aria-pressed',String(paused));updateReadouts();};$('labelsToggle').onclick=()=>{labels=!labels;dirty=true;document.body.classList.toggle('show-details',labels);$('labelsToggle').classList.toggle('active',labels);$('labelsToggle').setAttribute('aria-pressed',String(labels));};$('followToggle').onclick=()=>{follow=!follow;dirty=true;$('followToggle').classList.toggle('active',follow);$('followToggle').setAttribute('aria-pressed',String(follow));};$('fitCamera').onclick=()=>{renderer.fit();dirty=true;follow=false;$('followToggle').classList.remove('active');$('followToggle').setAttribute('aria-pressed','false');};
-for(const b of document.querySelectorAll('[data-tab]')){b.onkeydown=e=>{const tabs=[...document.querySelectorAll('[data-tab]')],i=tabs.indexOf(b);if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=tabs[e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];next.click();next.focus();}};b.onclick=()=>{$('workshopTitle').textContent=b.dataset.tab==='shop'?'The grove’s little shop':b.dataset.tab==='blueprints'?'Good ideas, kept safe':'Your workbench';for(const t of document.querySelectorAll('[data-tab]')){const active=t===b;t.classList.toggle('active',active);t.setAttribute('aria-selected',String(active));$(`${t.dataset.tab}Panel`).hidden=!active;}};}
+function renderPresets(){
+ $('presetAnimal').replaceChildren(...CRITTERS.map(a=>choiceCard(a,'animal',a.id===presetAnimal,()=>{presetAnimal=a.id;renderPresets();})));
+ $('presetChassis').replaceChildren(...PARTS.filter(p=>p.slot==='chassis').map(p=>choiceCard(p,'part',p.id===presetChassis,()=>{presetChassis=p.id;renderPresets();})));
+}
+renderPresets();
+$('restoreStarter').onclick=()=>{draft={...STARTER};$('buildName').value=draft.name;applyBuild({quiet:true});fitted('3 m Acorn Flyer');};
+$('tuneArc').onclick=async()=>{
+ const fingerprint=JSON.stringify(draft),c={...draft};$('tuneArc').disabled=true;$('arcAdvice').textContent='Trying release-pin settings on this exact build…';let best;
+ try{
+  for(let angle=-110;angle<=35;angle+=3){
+   const test=new BuildSimulation({...c,pinAngle:angle});test.fire();for(let t=0;t<Math.max(8,12*test.T)&&test.phase==='swing';t+=1/60)test.step(1/60);
+   if(test.release&&!test.failure&&test.release.vx>1){const score=Math.abs(test.release.angle-40)+8/test.release.speed;if(!best||score<best.score)best={score,angle,release:test.release};}
+   if(angle%9===-2||angle%9===7){await new Promise(requestAnimationFrame);if(JSON.stringify(draft)!==fingerprint)return;}
+  }
+  if(best){draft={...c,pinAngle:best.angle};applyBuild({quiet:true});fitted('Release pin');$('arcAdvice').textContent=`Full draw: ${best.release.angle.toFixed(1)}° arc · ${best.release.speed.toFixed(1)} m/s. Pin set to ${best.angle}°. Hold until the chime.`;}
+  else $('arcAdvice').textContent='This build needs more than a pin adjustment. Check the counterweight, beam and pouch warnings.';
+ }catch(e){$('arcAdvice').textContent=e.message;}finally{$('tuneArc').disabled=false;}
+};
+$('adventureMode').onclick=()=>switchMode(false);$('creativeMode').onclick=()=>switchMode(true);$('apply').onclick=()=>{applyBuild();if(!$('apply').disabled){$('workshopDialog').close();cue('shop');}};$('reset').onclick=()=>applyBuild({quiet:true});$('collect').onclick=collect;$('pause').onclick=()=>{hold.cancel();paused=!paused;dirty=true;if(paused){soundQueue.length=0;sound.pause();}else sound.unlock();$('pause').textContent=paused?'Resume':'Pause';$('pause').setAttribute('aria-pressed',String(paused));updateReadouts();};$('labelsToggle').onclick=()=>{labels=!labels;dirty=true;document.body.classList.toggle('show-details',labels);$('labelsToggle').classList.toggle('active',labels);$('labelsToggle').setAttribute('aria-pressed',String(labels));};$('followToggle').onclick=()=>{follow=!follow;dirty=true;$('followToggle').classList.toggle('active',follow);$('followToggle').setAttribute('aria-pressed',String(follow));};$('fitCamera').onclick=()=>{renderer.fit();dirty=true;follow=false;$('followToggle').classList.remove('active');$('followToggle').setAttribute('aria-pressed','false');};
+for(const b of document.querySelectorAll('[data-tab]')){b.onkeydown=e=>{const tabs=[...document.querySelectorAll('[data-tab]')],i=tabs.indexOf(b);if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=tabs[e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];next.click();next.focus();}};b.onclick=()=>{$('workshopTitle').textContent=b.dataset.tab==='shop'?'The grove’s little shop':b.dataset.tab==='blueprints'?'Good ideas, kept safe':'Your workbench';for(const t of document.querySelectorAll('[data-tab]')){const active=t===b;t.classList.toggle('active',active);t.setAttribute('aria-selected',String(active));$(`${t.dataset.tab}Panel`).hidden=!active;}dirty=true;};}
 function openDialog(id){hold.cancel();$(id).showModal();dirty=true;cue('click');}
-function openWorkshop(tab){hold.cancel();$(`${tab}Tab`).click();$('workshopDialog').showModal();dirty=true;cue('shop');if(tab==='shop')$('shopNew').hidden=true;}
+function openWorkshop(tab){hold.cancel();$(`${tab}Tab`).click();$('workshopDialog').showModal();syncPreview();previewRenderer.fit();dirty=true;cue('shop');if(tab==='shop')$('shopNew').hidden=true;}
 $('openBuild').onclick=()=>openWorkshop('build');$('openShop').onclick=()=>openWorkshop('shop');$('openBlueprints').onclick=()=>openWorkshop('blueprints');
 $('rerollShop').onclick=()=>{try{state=rerollShop(state);persist();populate();cue('reroll');}catch(e){toast(e.message);}};
 $('collectShop').onclick=()=>{collect();openWorkshop('shop');};
@@ -118,7 +160,7 @@ $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await docume
 document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=document.fullscreenElement?'Exit fullscreen':'Enter fullscreen';dirty=true;});
 
 $('saveBlueprint').onclick=()=>{try{const b=validateBuild({...draft,name:$('buildName').value.trim()||'Untitled experiment'});if(state.blueprints.length>=20)throw Error('20 blueprints saved. Remove one to make room.');state={...state,blueprints:[...state.blueprints,b]};persist();renderBlueprints();toast('Blueprint saved.');}catch(e){toast(e.message);}};
-$('loadPreset').onclick=()=>{draft=scaledPreset($('presetAnimal').value,$('presetChassis').value);populate();applyBuild();};$('exportBuild').onclick=()=>{try{exportJSON({type:'treetop-build',version:1,build:validateBuild(draft)},'treetop-blueprint.json');}catch(e){toast(e.message);}};
+$('loadPreset').onclick=()=>{draft=scaledPreset(presetAnimal,presetChassis);populate();applyBuild();};$('exportBuild').onclick=()=>{try{exportJSON({type:'treetop-build',version:1,build:validateBuild(draft)},'treetop-blueprint.json');}catch(e){toast(e.message);}};
 $('importBuild').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>50000)throw Error('Blueprint is too large.');const data=JSON.parse(await f.text());if(data.type!=='treetop-build'||data.version!==1)throw Error('Choose a Treetop blueprint.');const b=validateBuild(data.build);canBuild(state,b,creative);draft=b;populate();applyBuild();}catch(e){toast(e.message);}finally{e.target.value='';}};
 $('saveEnabled').checked=saving;$('saveEnabled').onchange=()=>{saving=$('saveEnabled').checked;try{localStorage.setItem('treetop-custom-save-enabled',String(saving));}catch{}if(saving)persist();else $('saveStatus').textContent='Saving is off. Existing saved progress remains untouched.';};$('exportSave').onclick=()=>exportJSON(state,'treetop-progress.json');$('importSave').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>150000)throw Error('Save is too large.');const next=validateProgress(JSON.parse(await f.text()));state=visitShop(next);adventureBuild={...state.build};if(!creative)draft={...state.build};persist();populate();applyBuild({quiet:true});toast('Adventure progress imported.');}catch(e){toast(`Import rejected: ${e.message}`);}finally{e.target.value='';}};
 $('wind').onchange=()=>{if(creative)draft.wind=$('wind').valueAsNumber;};$('drag').onchange=()=>{if(creative)draft.drag=Number($('drag').checked);};
@@ -136,13 +178,14 @@ document.addEventListener('keyup',e=>{if(e.code==='Space'){if(hold.active)e.prev
 function interrupt(){hold.cancel();soundQueue.length=0;sound.pause();if(['swing','flight'].includes(sim?.phase)){paused=true;$('pause').textContent='Resume';$('pause').setAttribute('aria-pressed','true');}lastTime=0;dirty=true;}
 window.addEventListener('blur',interrupt);document.addEventListener('visibilitychange',()=>{if(document.hidden)interrupt();lastTime=0;});
 new ResizeObserver(()=>{dirty=true;renderer.fit();}).observe(stage);
+new ResizeObserver(()=>{dirty=true;previewRenderer.fit();}).observe($('previewStage'));
 function frame(timestamp){
  const delta=lastTime?Math.min((timestamp-lastTime)/1000,.05):0;lastTime=timestamp;
  const modal=!!document.querySelector('dialog[open]'),active=!paused&&!document.hidden&&!modal;
  if(active){
   if(winding){sim.wind(delta);const tick=Math.floor((sim.drawFraction??0)*24);if(tick!==ratchetStep){cue('ratchet',{intensity:.6+tick/60});ratchetStep=tick;}if(sim.drawFraction>=1&&!readyCue){cue('ready');readyCue=true;}}
   else {let remaining=delta*Number($('speed').value);while(remaining>0){const step=Math.min(.05,remaining);sim.step(step);remaining-=step;}}
-  if(sim.release&&!seenRelease){seenRelease=true;cue('launch');}
+  if(sim.release&&!seenRelease){seenRelease=true;cue('launch');document.body.classList.remove('launch-kick');void stage.offsetWidth;document.body.classList.add('launch-kick');}
   if((sim.contacts??0)>seenContacts){seenContacts=sim.contacts;cue('impact',{material:'bumper',mass:Math.max(.15,Math.log10(sim.animal.grams)),intensity:.7});}
   const milestone=Math.floor(sim.maxX/Math.max(10,sim.c.longArm*10));if(milestone>scoreStep){scoreStep=milestone;cue('coin',{intensity:.45});}
  }
@@ -151,6 +194,7 @@ function frame(timestamp){
  const refresh=dirty||running||(!resultShown&&['finished','invalid'].includes(sim.phase));
  const low=$('quality').value==='low',interval=low?1000/30:1000/60;
  if((dirty||running)&&timestamp-lastDraw>=interval-.5&&!document.hidden){
+  if($('workshopDialog').open&&previewSim)previewRenderer.draw(previewSim,{labels:true,follow:false,paused:true,preview:true,pixelRatio:low?1:2});
   renderer.draw(sim,{labels,follow,paused:paused||modal,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);
  }
  if(refresh&&timestamp-refreshAt>110){updateReadouts();refreshAt=timestamp;}

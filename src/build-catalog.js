@@ -14,6 +14,8 @@ export const PARTS=[
  item('stone','material','River stone',0,'2,700,000 g/m³. A lumpy, bulky weight.',{density:2700}),
  item('sand','material','Sand basket',35,'1,600,000 g/m³. The same mass needs a larger basket.',{density:1600}),
  item('steel','material','Steel plates',150,'7,850,000 g/m³. Compact ballast with a different moment of inertia.',{density:7850}),
+ item('runway','trough','Timber launch rail',0,'A low wooden trough supports the loaded pouch and guides its first slide.',{friction:.24}),
+ item('waxedRunway','trough','Waxed launch rail',85,'A smooth lined trough reduces the friction before lift-off.',{friction:.06}),
  item('fixed','mount','Fixed weight',0,'Rigidly attached to the short arm; its mass and inertia turn with the beam.'),
  item('hinged','mount','Swinging hanger',90,'An independent pendulum. Hanger length and hinge friction change the energy transfer.'),
  ...[['pocket','Leaf pocket',0,150,.22,3,2],['pouch','Canvas pouch',60,3000,.75,10,35],['cradle','Deep cradle',200,20000,1.7,25,250],['hammock','Great hammock',650,500000,4,65,5000],['elephant','Elephant harness',2200,8000000,9,120,80000],['whale','Whale hammock',6500,150000000,32,230,1000000]].map(([id,name,price,capacity,width,maxLength,mass])=>item(id,'sling',name,price,'Larger cargo needs a larger pouch. Extra cloth adds moving mass.',{capacity,width,maxLength,mass})),
@@ -24,24 +26,31 @@ export const PARTS=[
  item('rollerPin','release','Roller release finger',360,'A very low friction release with a wider tuning range.',{friction:.008}),
  ...[['hand','Hand winch',0,100],['geared','Geared winch',100,2500],['capstan','Great capstan',700,500000],['engine','Gantry winch',3000,500000000]].map(([id,name,price,power])=>item(id,'winch',name,price,'Sets preparation rate from stored potential energy. Adds no energy after release.',{power})),
 ];
-export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight capacity'],['material','Ballast material'],['mount','Counterweight joint'],['sling','Pouch'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Winding gear']];
+export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight capacity'],['material','Ballast material'],['mount','Counterweight joint'],['sling','Pouch'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Winding gear'],['trough','Launch trough']];
 export const CRITTERS=[
- {id:'mouse',name:'Field mouse',grams:25,length:.1,color:'#b0a19a',price:0},
- {id:'frog',name:'Tree frog',grams:30,length:.08,color:'#8ab667',price:20},
- {id:'chipmunk',name:'Chipmunk',grams:100,length:.17,color:'#c58a53',price:40},
- {id:'squirrel',name:'Squirrel',grams:500,length:.3,color:'#b18361',price:90},
- {id:'rabbit',name:'Rabbit',grams:2000,length:.45,color:'#d9c6af',price:160},
- {id:'armadillo',name:'Armadillo',grams:5000,length:.65,color:'#a4978b',price:250},
- {id:'fox',name:'Fox',grams:6000,length:.85,color:'#d77d49',price:330},
- {id:'tiger',name:'Tiger',grams:220000,length:2.6,color:'#e3a04a',price:800},
- {id:'bear',name:'Brown bear',grams:250000,length:2.2,color:'#8e6851',price:900},
- {id:'elephant',name:'Elephant',grams:5000000,length:6,color:'#9daaaa',price:2600},
- {id:'whale',name:'Blue whale',grams:100000000,length:24,color:'#6d9ca9',price:7000},
+ {id:'mouse',name:'Field mouse',grams:25,length:0.18,width:0.055,color:'#b0a19a',price:0},
+ {id:'frog',name:'Tree frog',grams:30,length:0.08,width:0.05,color:'#8ab667',price:20},
+ {id:'chipmunk',name:'Chipmunk',grams:100,length:0.26,width:0.09,color:'#c58a53',price:40},
+ {id:'squirrel',name:'Squirrel',grams:500,length:0.45,width:0.14,color:'#b18361',price:90},
+ {id:'rabbit',name:'Rabbit',grams:2000,length:0.45,width:0.22,color:'#d9c6af',price:160},
+ {id:'armadillo',name:'Armadillo',grams:5000,length:0.65,width:0.27,color:'#a4978b',price:250},
+ {id:'fox',name:'Fox',grams:6000,length:0.85,width:0.3,color:'#d77d49',price:330},
+ {id:'tiger',name:'Tiger',grams:220000,length:2.6,width:0.8,color:'#e3a04a',price:800},
+ {id:'bear',name:'Brown bear',grams:250000,length:2.2,width:1.1,color:'#8e6851',price:900},
+ {id:'elephant',name:'Elephant',grams:5000000,length:6,width:2.6,color:'#9daaaa',price:2600},
+ {id:'whale',name:'Blue whale',grams:100000000,length:24,width:4.5,color:'#6d9ca9',price:7000},
 ];
 export const part=id=>{const p=PARTS.find(p=>p.id===id);if(!p)throw Error(`Unknown part: ${id}`);return p;};
 export const critter=id=>{const c=CRITTERS.find(c=>c.id===id);if(!c)throw Error(`Unknown volunteer: ${id}`);return c;};
-export const STARTER={name:'Little acorn',chassis:'anchored',arm:'twig',frame:'sapling',ballast:'pebble',material:'stone',mount:'fixed',sling:'pocket',rope:'twine',bearing:'woodAxle',release:'nail',winch:'hand',animal:'mouse',longArm:1.25,shortArm:.32,beamWidth:.025,pivotHeight:1.05,baseWidth:.85,frameGrams:1800,counterGrams:2000,hanger:.22,slingLength:1.1,pouchWidth:.16,pinAngle:-30,pinLength:.035,axleRadius:.012,cockAngle:28,footFriction:.8,wheelRadius:.13,wheelGrams:150,brake:.002,walkingLean:22,braceCount:1,hingeFriction:.008,wind:0,drag:1};
+export const LEGACY_STARTER={name:'Little acorn',chassis:'anchored',arm:'twig',frame:'sapling',ballast:'pebble',material:'stone',mount:'fixed',sling:'pocket',rope:'twine',bearing:'woodAxle',release:'nail',winch:'hand',animal:'mouse',longArm:1.25,shortArm:.32,beamWidth:.025,pivotHeight:1.05,baseWidth:.85,frameGrams:1800,counterGrams:2000,hanger:.22,slingLength:1.1,pouchWidth:.16,pinAngle:-30,pinLength:.035,axleRadius:.012,cockAngle:28,footFriction:.8,wheelRadius:.13,wheelGrams:150,brake:.002,walkingLean:22,braceCount:1,hingeFriction:.008,wind:0,drag:1};
+// A complete, tuned kit is granted at the beginning; upgrades still have shop prices.
+// 3 m means ground to axle. The moving arm sweeps above the tower.
+export const STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ballast:'boulder',mount:'hinged',bearing:'bronze',release:'polished',winch:'geared',trough:'runway',longArm:2.6,shortArm:.65,beamWidth:.04,pivotHeight:3,baseWidth:2,frameGrams:9000,counterGrams:18000,hanger:.4,slingLength:2.4,pouchWidth:.2,cockAngle:55,pinAngle:-45,braceCount:2,troughLength:4,troughHeight:.06};
+export const STARTER_PARTS=[...new Set([...PARTS.filter(p=>p.price===0).map(p=>p.id),...SLOTS.map(([slot])=>STARTER[slot])])];
+export const dimensions=a=>`${Number((a.length*100).toFixed(1))} × ${Number((a.width*100).toFixed(1))} cm`;
+export function drawLimit(c,pivotY=c.pivotHeight,deckY=c.troughHeight){return Math.min(c.cockAngle,Math.asin(Math.max(0,Math.min(1,(pivotY-deckY-c.beamWidth/2-.025)/c.longArm)))*180/Math.PI);}
 export const TUNING=[
+ ['troughLength','Guide length','m',.3,350,.1,'trough'],['troughHeight','Guide deck height','m',.02,15,.01,'trough'],
  ['longArm','Long arm','m',.15,150,.05,'arm'],['shortArm','Short arm','m',.08,60,.02,'arm'],['beamWidth','Beam thickness','m',.01,12,.005,'arm'],
  ['pivotHeight','Axle height','m',.2,220,.05,'frame'],['baseWidth','Footprint','m',.15,180,.05,'frame'],['frameGrams','Frame + ballast','g',100,2000000000,100,'frame'],['braceCount','Cross braces','',0,6,1,'frame'],
  ['counterGrams','Counterweight fill','g',100,15000000000,100,'ballast'],['hanger','Hanger length','m',.05,100,.05,'mount'],['hingeFriction','Hinge friction','',0,.3,.001,'mount'],
@@ -69,21 +78,22 @@ export function buildFacts(c){
  const a=critter(c.animal),s=part(c.sling),wood=part(c.arm),beamGrams=wood.density*c.beamWidth**2*(c.longArm+c.shortArm)*1000;
  const counterRadius=Math.cbrt(3*(c.counterGrams/1000)/(4*Math.PI*part(c.material).density));
  const warnings=[];
- const initialCounterY=c.pivotHeight+c.shortArm*Math.sin(c.cockAngle*Math.PI/180)-(c.mount==='hinged'&&c.chassis!=='floating'?c.hanger:0);
+ const initialCounterY=c.pivotHeight+c.shortArm*Math.sin(drawLimit(c)*Math.PI/180)-(c.mount==='hinged'&&c.chassis!=='floating'?c.hanger:0);
  if(initialCounterY<counterRadius)warnings.push('The counterweight starts below the deck. Raise the axle or reduce its size.');
  if(a.grams>s.capacity)warnings.push(`${a.name} exceeds this pouch’s ${grams(s.capacity)} capacity.`);
  if(c.pouchWidth<a.length*.7)warnings.push('The pouch opening is too small for this volunteer.');
- if(c.pivotHeight-c.longArm*Math.sin(c.cockAngle*Math.PI/180)<Math.max(.02,a.length*.23))warnings.push('The loaded arm or volunteer starts below the deck. Raise the axle or reduce draw-down.');
+ if(drawLimit(c)<c.cockAngle)warnings.push('The rail limits draw-down to '+drawLimit(c).toFixed(1)+'°. Raise the axle for more travel.');
  if(c.pivotHeight<c.shortArm+(c.mount==='hinged'?c.hanger:0)+counterRadius)warnings.push('The counterweight may hit the deck before completing its fall.');
  if(c.counterGrams*c.shortArm<(a.grams*c.longArm+beamGrams*(c.longArm-c.shortArm)/2))warnings.push('The payload side may overpower the counterweight. Expect a stall or backward motion.');
  return {beamGrams,counterRadius,warnings,ratio:c.longArm/c.shortArm,payload:a,capacity:s.capacity};
 }
 export function scaledPreset(animal='mouse',chassis='anchored'){
- const profiles={mouse:{},frog:{animal:'frog'},chipmunk:{animal:'chipmunk'},squirrel:{animal:'squirrel',sling:'pouch',pouchWidth:.4,rope:'hemp',counterGrams:5000,pinAngle:-70,beamWidth:.04},rabbit:{animal:'rabbit',sling:'pouch',pouchWidth:.55,rope:'hemp',ballast:'boulder',counterGrams:30000,arm:'oak',frame:'timber',longArm:3,shortArm:.8,pivotHeight:2.7,slingLength:2.7,beamWidth:.06,frameGrams:30000,baseWidth:2,pinAngle:-40},armadillo:{},fox:{}};
+ const profiles={mouse:{},frog:{animal:'frog'},chipmunk:{animal:'chipmunk'},squirrel:{animal:'squirrel',sling:'pouch',pouchWidth:.4,rope:'hemp',counterGrams:30000,pinAngle:-60,beamWidth:.05},rabbit:{animal:'rabbit',cockAngle:28,sling:'pouch',pouchWidth:.55,rope:'hemp',ballast:'quarry',counterGrams:150000,arm:'oak',frame:'timber',longArm:3,shortArm:.8,pivotHeight:2.7,slingLength:2.7,beamWidth:.1,frameGrams:30000,baseWidth:2,pinAngle:-45},armadillo:{},fox:{}};
  const heavy={tiger:[3,220000,6500000],bear:[3,250000,7500000],elephant:[9,5000000,200000000],whale:[32,100000000,5000000000]};
  let c={...STARTER,...profiles[animal],animal,chassis};
- if(['armadillo','fox'].includes(animal))c={...c,...profiles.rabbit,animal,sling:'cradle',rope:'cable',pouchWidth:1,counterGrams:80000,pinAngle:-40};
- if(heavy[animal]){const [k,,mass]=heavy[animal];c={...c,arm:animal==='whale'?'colossus':'ironwood',frame:animal==='whale'?'leviathan':'giant',ballast:'continental',material:'steel',mount:'hinged',sling:animal==='whale'?'whale':animal==='elephant'?'elephant':'hammock',rope:'titanCable',bearing:'precision',release:'polished',winch:'engine',longArm:k*2.6,shortArm:k*.8,pivotHeight:k*2.7,baseWidth:k*2,beamWidth:k*.19,frameGrams:mass*.22,counterGrams:mass,hanger:k*.5,slingLength:k*2.4,pouchWidth:k*.88,axleRadius:k*.025,pinLength:k*.025,pinAngle:animal==='tiger'?-30:-45,wheelRadius:k*.22,wheelGrams:mass*.008};}
+ if(['armadillo','fox'].includes(animal))c={...c,...profiles.rabbit,animal,sling:'cradle',rope:'cable',pouchWidth:1,beamWidth:.1,mount:'fixed',counterGrams:200000,pinAngle:-45};
+ if(heavy[animal]){const [k,,mass]=heavy[animal];c={...c,cockAngle:28,arm:animal==='whale'?'colossus':'ironwood',frame:animal==='whale'?'leviathan':'giant',ballast:'continental',material:'steel',mount:'hinged',sling:animal==='whale'?'whale':animal==='elephant'?'elephant':'hammock',rope:'titanCable',bearing:'precision',release:'polished',winch:'engine',longArm:k*2.6,shortArm:k*.8,pivotHeight:k*2.7,baseWidth:k*2,beamWidth:k*.19,frameGrams:mass*.22,counterGrams:mass,hanger:k*.5,slingLength:k*2.4,pouchWidth:k*.88,axleRadius:k*.025,pinLength:k*.025,pinAngle:animal==='tiger'?-40:-45,wheelRadius:k*.22,wheelGrams:mass*.008};}
+ if(heavy[animal]){c.troughLength=heavy[animal][0]*5.5;c.troughHeight=heavy[animal][0]*.06;}
  if(chassis==='walking')c={...c,longArm:c.longArm*.65,shortArm:c.longArm*.55,cockAngle:62,pivotHeight:c.longArm*1.12,walkingLean:25};
  return {...c,name:`${critter(animal).name} ${chassis}`};
 }
