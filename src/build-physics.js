@@ -1,0 +1,135 @@
+import * as P from '../vendor/planck/planck.mjs';
+import {validateBuild,buildFacts,part,critter} from './build-catalog.js';
+const {Vec2,World,Box,Circle,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
+export const GRAVITY=9.80665;
+const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
+/** Similarity units: x_real=L*x_solver, t_real=sqrt(L)*t_solver,
+ * m_real=M*m_solver. Therefore g_solver=g_real, F_real=M*F_solver,
+ * torque_real=M*L*torque_solver. No launch impulses or range modifiers. */
+export class BuildSimulation{
+ constructor(raw){
+  this.c=validateBuild(raw);this.facts=buildFacts(this.c);this.animal=critter(this.c.animal);
+  const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
+  this.world=new World(Vec2(0,-GRAVITY));this.time=0;this.phase='ready';this.release=null;this.failure='';this.events=[];this.trail=[];this.maxX=0;this.maxY=0;this.peakTension=0;this.peakStress=0;this.lastTension=0;this.wheels=[];this.wheelAxles=[];this.moving=[];this.elapsedSettled=0;this.accumulator=0;
+  this.ground=this.world.createBody();this.ground.createFixture(Box(100000/this.L,1/this.L,Vec2(0,-1/this.L)),{friction:.8,restitution:.12});
+  const tipStartY=c.pivotHeight-c.longArm*Math.sin(rad(c.cockAngle));
+  this.initialAngle=Math.PI+rad(c.cockAngle);
+  this.frame=this.body(0,0,0,c.frameGrams/1000,'frame');
+  const h=c.pivotHeight,b=c.baseWidth/2,t=Math.max(c.beamWidth*.65,h*.025),wheelLift=c.chassis==='wheels'?c.wheelRadius*1.3:0;
+  this.frame.setPosition(Vec2(0,wheelLift/this.L));
+  this.bar(this.frame,{x:-b,y:t},{x:0,y:h-wheelLift},t*.55);this.bar(this.frame,{x:b,y:t},{x:0,y:h-wheelLift},t*.55);this.bar(this.frame,{x:-b,y:t},{x:b,y:t},t*.55);
+  for(let i=0;i<c.braceCount;i++){const y=h*(i+1)/(c.braceCount+2);this.bar(this.frame,{x:-b*(1-y/h),y},{x:b*(1-y/h),y},t*.35);}
+  this.setMass(this.frame,c.frameGrams/1000*(1+c.braceCount*.04));
+  if(c.chassis==='walking'){
+   // A separate support triangle rocks on real toe contacts. Its initial lean is a tuning-string setting.
+   this.frame.setAngle(-rad(c.walkingLean));const verts=this.vertices(this.frame);const low=Math.min(...verts.map(v=>v.y));this.frame.setPosition(Vec2(0,this.frame.getPosition().y-low+.008));
+  }
+  this.pivotLocal=this.frame.getLocalPoint(Vec2(0,c.pivotHeight/this.L));
+  if(c.chassis==='walking')this.pivotLocal=Vec2(0,(h-wheelLift)/this.L);
+  let pivot=this.frame.getWorldPoint(this.pivotLocal);
+  this.arm=this.body(pivot.x*this.L,pivot.y*this.L,this.initialAngle,this.facts.beamGrams/1000,'arm');
+  this.bar(this.arm,{x:-c.shortArm,y:0},{x:c.longArm,y:0},c.beamWidth/2);
+  this.setMass(this.arm,this.facts.beamGrams/1000);
+  const cwLocal=Vec2(-c.shortArm/this.L,0),cwAttach=this.arm.getWorldPoint(cwLocal),r=this.facts.counterRadius/this.L;
+  if(c.mount==='fixed'&&c.chassis!=='floating'){
+   const fixture=this.arm.createFixture(Circle(cwLocal,r),{density:(c.counterGrams/1000/this.M)/(Math.PI*r*r),friction:.6,restitution:.05,filterGroupIndex:-1});fixture.setUserData('counter');this.counter=this.arm;
+  }else{
+   const hanger=c.chassis==='floating'?0:c.hanger/this.L;
+   this.counter=this.body(cwAttach.x*this.L,(cwAttach.y-hanger)*this.L,0,c.counterGrams/1000,'counter');
+   this.counter.createFixture(Circle(r),{density:1,friction:.6,restitution:.04,filterGroupIndex:-1});
+   if(hanger)this.bar(this.counter,{x:0,y:0},{x:0,y:c.hanger},Math.max(c.beamWidth*.15,.005));
+   this.setMass(this.counter,c.counterGrams/1000);
+   this.hinge=this.world.createJoint(RevoluteJoint({enableMotor:true,motorSpeed:0,maxMotorTorque:c.hingeFriction*c.counterGrams/1000*GRAVITY*c.axleRadius/(this.M*this.L)},this.arm,this.counter,cwAttach));
+  }
+  if(c.chassis==='floating'){
+   this.carriage=this.body(pivot.x*this.L,pivot.y*this.L,0,c.frameGrams/20000,'carriage');this.carriage.createFixture(Circle(Math.max(.025,c.beamWidth)/this.L),{density:1,filterGroupIndex:-1});this.setMass(this.carriage,c.frameGrams/20000);
+   this.track=this.world.createJoint(PrismaticJoint({enableLimit:true,lowerTranslation:-c.baseWidth/2/this.L,upperTranslation:c.baseWidth/2/this.L},this.ground,this.carriage,pivot,Vec2(1,0)));
+   this.guide=this.world.createJoint(PrismaticJoint({},this.ground,this.counter,this.counter.getPosition(),Vec2(0,1)));
+   this.axle=this.world.createJoint(RevoluteJoint({},this.carriage,this.arm,pivot));
+  }else this.axle=this.world.createJoint(RevoluteJoint({},this.frame,this.arm,pivot));
+  if(c.chassis==='wheels'){
+   for(const x of [-b,b]){const w=this.body(x,c.wheelRadius,0,c.wheelGrams/1000,'wheel');w.createFixture(Circle(c.wheelRadius/this.L),{density:1,friction:c.footFriction,restitution:.02,filterGroupIndex:-1});this.setMass(w,c.wheelGrams/1000);this.wheels.push(w);this.wheelAxles.push(this.world.createJoint(RevoluteJoint({enableMotor:true,motorSpeed:0,maxMotorTorque:0},this.frame,w,w.getPosition())));}
+  }
+  for(let f=this.frame.getFixtureList();f;f=f.getNext())f.setFriction(c.footFriction);
+  const tip=this.tip(),payloadRadius=Math.max(.02,this.animal.length*.23),pouchMass=part(c.sling).mass/1000+2*part(c.rope).linearGrams*c.slingLength/1000;
+  this.payloadMass=this.animal.grams/1000;this.pouchMass=pouchMass;
+  // Rest the pouch on the runway if reachable. Cord starts taut, never teleports at fire.
+  const y=Math.max(payloadRadius,tip.y-Math.min(c.slingLength*.8,Math.max(0,tip.y-payloadRadius)));
+  const dy=y-tip.y,dx=Math.sqrt(Math.max(0,c.slingLength**2-dy**2));
+  this.shot=this.body(tip.x+dx,y,0,this.payloadMass+pouchMass,'payload');
+  const half=Math.max(0,this.animal.length/2-payloadRadius)/this.L,pr=payloadRadius/this.L,payloadFixture={density:1,friction:.32,restitution:.32,filterGroupIndex:-1};
+  if(half>0)this.shot.createFixture(Box(half,pr),payloadFixture);
+  for(const x of half>0?[-half,half]:[0])this.shot.createFixture(Circle(Vec2(x,0),pr),payloadFixture);
+  this.setMass(this.shot,this.payloadMass+pouchMass);this.shot.setBullet(true);
+  this.sling=this.world.createJoint(RopeJoint({maxLength:c.slingLength/this.L,localAnchorA:Vec2(c.longArm/this.L,0),localAnchorB:Vec2(0,0)},this.arm,this.shot));
+  this.startX=this.shot.getPosition().x*this.L;this.initialCounterY=this.counterPoint().y;this.initialEnergy=this.energy();this.initialPivot={x:pivot.x*this.L,y:pivot.y*this.L};
+  this.storeTypes=new Map();for(const bdy of this.moving){this.storeTypes.set(bdy,bdy.getType());bdy.setType('static');}
+  this.world.on('begin-contact',contact=>{if(this.release&&(contact.getFixtureA().getBody()===this.shot||contact.getFixtureB().getBody()===this.shot)){this.contacts=(this.contacts??0)+1;}});
+ }
+ body(x,y,a,mass,role){const b=this.world.createDynamicBody({position:Vec2(x/this.L,y/this.L),angle:a,allowSleep:false,userData:{role}});this.moving.push(b);return b;}
+ bar(body,a,b,r){const dx=b.x-a.x,dy=b.y-a.y;body.createFixture(Box(Math.hypot(dx,dy)/(2*this.L),r/this.L,Vec2((a.x+b.x)/(2*this.L),(a.y+b.y)/(2*this.L)),Math.atan2(dy,dx)),{density:1,friction:.6,restitution:0,filterGroupIndex:-1});}
+ setMass(b,kg){const mass=b.getMass(),ratio=kg/this.M/mass;for(let f=b.getFixtureList();f;f=f.getNext())f.setDensity(f.getDensity()*ratio);b.resetMassData();}
+ vertices(b){const vs=[];for(let f=b.getFixtureList();f;f=f.getNext()){const sh=f.getShape();if(sh.getType()==='polygon')vs.push(...sh.m_vertices.map(v=>b.getWorldPoint(v)));}return vs;}
+ real(b){const p=b.getPosition(),v=b.getLinearVelocity();return{x:p.x*this.L,y:p.y*this.L,vx:v.x*this.L/this.T,vy:v.y*this.L/this.T,angle:b.getAngle()};}
+ tip(){const q=this.arm.getWorldPoint(Vec2(this.c.longArm/this.L,0));return{x:q.x*this.L,y:q.y*this.L};}
+ counterPoint(){const p=this.counter===this.arm?this.arm.getWorldPoint(Vec2(-this.c.shortArm/this.L,0)):this.counter.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
+ pivot(){if(this.beamBroken)return this.lastPivot;const p=this.axle?.getAnchorA()??this.arm.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
+ energy(){let E=0;for(const b of this.moving){const m=b.getMass()*this.M,v=b.getLinearVelocity(),w=b.getAngularVelocity()/this.T;E+=m*GRAVITY*b.getWorldCenter().y*this.L+.5*m*(v.x*v.x+v.y*v.y)*this.L+.5*(b.getInertia()-b.getMass()*b.getLocalCenter().lengthSquared())*this.M*this.L*this.L*w*w;}return E;}
+ fire(){
+  if(this.phase!=='ready')return false;
+  const fatal=this.facts.warnings.filter(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'));
+  if(fatal.length){this.failure=fatal[0];this.phase='invalid';return false;}
+  for(const [b,type]of this.storeTypes){b.setType(type);b.setAwake(true);}
+  if(['anchored','floating'].includes(this.c.chassis))this.frame.setType('static');
+  this.phase='swing';this.initialEnergy=this.energy();this.events.push({time:0,text:'Trigger withdrawn. Gravity takes over.'});return true;
+ }
+ detach(reason){
+  if(!this.sling||this.release)return;
+  const p=this.real(this.shot);this.release={...p,time:this.time,reason,speed:Math.hypot(p.vx,p.vy),angle:Math.atan2(p.vy,p.vx)*180/Math.PI,energy:.5*this.payloadMass*(p.vx*p.vx+p.vy*p.vy)};
+  this.world.destroyJoint(this.sling);this.sling=null;
+  // Split the co-moving pouch mass without changing either body's velocity.
+  this.pouch=this.body(p.x,p.y,p.angle,this.pouchMass,'pouch');this.pouch.createFixture(Circle(Math.max(.012,this.c.pouchWidth*.1)/this.L),{density:1,filterGroupIndex:-1});this.setMass(this.pouch,this.pouchMass);this.pouch.setLinearVelocity(this.shot.getLinearVelocity());this.pouch.setAngularVelocity(this.shot.getAngularVelocity());this.setMass(this.shot,this.payloadMass);
+  this.emptyCord=this.world.createJoint(RopeJoint({maxLength:this.c.slingLength/this.L,localAnchorA:Vec2(this.c.longArm/this.L,0)},this.arm,this.pouch));
+  this.phase='flight';this.events.push({time:this.time,text:reason});
+ }
+ step(dt=1/60){
+  if(!['swing','flight'].includes(this.phase))return;
+  this.accumulator+=Math.min(dt,.1);const h=this.T/480;
+  let steps=0;while(this.accumulator>=h&&steps++<200){this.tick(h);this.accumulator-=h;if(!['swing','flight'].includes(this.phase))break;}
+ }
+ tick(h){
+  const c=this.c,dt=h/this.T;
+  const total=(c.counterGrams+c.frameGrams+this.facts.beamGrams+this.animal.grams)/1000;
+  const reaction=this.beamBroken?null:this.axle.getReactionForce(1/dt);
+  const bearingLoad=this.time>0&&reaction?reaction.length()*this.M:(c.counterGrams+this.facts.beamGrams+this.animal.grams)/1000*GRAVITY;
+  const axleFriction=part(c.bearing).friction*bearingLoad*c.axleRadius/(this.M*this.L);
+  if(!this.beamBroken){this.axle.enableMotor(true);this.axle.setMotorSpeed(0);this.axle.setMaxMotorTorque(axleFriction);}
+  for(const joint of this.wheelAxles){joint.setMaxMotorTorque(c.brake*total*GRAVITY*c.wheelRadius/2/(this.M*this.L));}
+  const p=this.real(this.shot),area=Math.PI*(this.animal.length*.23)**2,rvx=p.vx-c.wind,v=Math.hypot(rvx,p.vy);
+  if(this.release&&p.y<this.animal.length*.23+.06*this.L&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
+  if(c.drag){const k=.5*1.225*.8*area;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
+  this.world.step(dt,32,12);this.time+=h;
+  if(c.wind===0&&this.energy()>this.initialEnergy*1.05+1){this.failure='Numerical energy check failed — change the geometry or mass balance';this.phase='invalid';return;}
+  const q=this.real(this.shot);this.maxX=Math.max(this.maxX,q.x-this.startX);this.maxY=Math.max(this.maxY,q.y);this.lastTension=this.sling?this.sling.getReactionForce(1/dt).length()*this.M:0;this.peakTension=Math.max(this.peakTension,this.lastTension);
+  if(this.sling){
+   const tip=this.tip(),phi=Math.atan2(q.y-tip.y,q.x-tip.x),relative=wrap(phi-this.arm.getAngle());
+   const finger=c.pinAngle*Math.PI/180;
+   // A finite idealized ring slides along the finger under resolved cord tension.
+   // Friction resists sliding; the free loop must traverse pinLength before release.
+   const pull=this.lastTension*Math.cos(relative-finger),normal=this.lastTension*Math.abs(Math.sin(relative-finger));
+   const outward=pull-part(c.release).friction*normal;
+   if(outward>0&&this.time>.03){const accel=outward/Math.max(.001,this.payloadMass*.08);this.ringSpeed=(this.ringSpeed??0)+accel*h;this.ringTravel=(this.ringTravel??0)+this.ringSpeed*h;}else{this.ringSpeed=0;this.ringTravel=0;}
+   if(this.lastTension>part(c.rope).strength){this.failure='Sling cord snapped';this.detach('Cord overload — uncontrolled release');}
+   else if(this.ringTravel>=c.pinLength)this.detach('Release ring cleared the pin');
+   const bending=this.lastTension*c.longArm+c.counterGrams/1000*GRAVITY*c.shortArm*.15;
+   this.peakStress=Math.max(this.peakStress,bending/(c.beamWidth**3/6));
+   if(this.peakStress>part(c.arm).strength*2&&!this.failure){this.failure='Beam overloaded';this.detach('Beam overloaded — throw interrupted');this.lastPivot=this.pivot();this.world.destroyJoint(this.axle);this.beamBroken=true;}
+  }
+  if(this.time-(this.lastTrail??-1)>.06){this.trail.push({x:q.x,y:q.y,t:this.time});this.lastTrail=this.time;if(this.trail.length>1200)this.trail.shift();}
+  if(![q.x,q.y,q.vx,q.vy,this.counterPoint().y].every(Number.isFinite)||Math.abs(q.x)>100000){this.failure='Configuration exceeded the solver’s stable range';this.phase='invalid';return;}
+  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&q.y<this.animal.length*.3+.06*this.L?this.elapsedSettled+h:0;if(this.elapsedSettled>.8||this.time>100)this.phase='finished';}
+  else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
+ }
+ snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure};}
+}
+export function runBuild(c,seconds=80){const sim=new BuildSimulation(c);sim.fire();for(let t=0;t<seconds&&['swing','flight'].includes(sim.phase);t+=1/60)sim.step(1/60);return sim;}

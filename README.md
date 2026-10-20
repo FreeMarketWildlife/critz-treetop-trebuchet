@@ -36,7 +36,19 @@ The shared lore is maintained in [Critz–Dragex](https://github.com/FreeMarketW
 
 The school's formal name, the spelling feysian / feyjian, Naboo's relationship to Lady Wisdom, and the cause/date of the archive's near destruction remain open. Do not infer a cause or place that damage relative to the departure, tower or battle without further author direction. The earlier proposed acorn helmet and woodland crew are not approved canon.
 
-## Local playable prototype
+## Custom trebuchet workshop — October 20, 2026
+
+The home page now opens the playable custom workshop: Adventure progression with Bells and a separate Creative mode. It includes 46 equipment items in 11 slots, 21 physical tuning controls, five foundation mechanisms (anchored, skids, wheels, walking triangle and floating axle), and eleven volunteers from a 25 g mouse to a 100,000,000 g blue whale. The original game remains at `mechanism-lab.html`, with its existing saves, map editor, articulated rigs and encounters intact.
+
+Run `npm start -- --bind 127.0.0.1`, then open `http://127.0.0.1:8080/`. Click **Wind & release**, collect a landed throw’s Bells, buy parts in **Shop**, and fit owned equipment under **Build**. In **Creative → Blueprints**, select a volunteer and mechanism to load a proportioned example. You can then change every available part and tuning control. **Parts** shows physical labels and a release-finger close-up; slow motion and disabling **Follow** let you inspect the mechanism.
+
+Adventure uses its own browser key, `treetop-custom-workshop-v1`, with opt-out saving and JSON backups. Creative builds and launches never award Adventure Bells or bypass owned-equipment checks. Saved blueprints can be reused after buying their parts. The `?qa=1` URL isolates UI testing from saved progress. The new workshop uses a fixed launch clearing; the existing map editor still edits the original mechanism lab, not this clearing.
+
+`src/build-physics.js` uses vendored Planck, Earth gravity (9.80665 m/s²), distributed rigid-body inertia, tension-only sling constraints, an idealized tension/friction release ring, wheel/ground contacts, a separate hinged counterweight, aerodynamic drag, cord failure and an approximate beam-overload failure. All player-facing masses use grams. Geometry/time/mass normalization preserves physical units across sizes. A calm-air energy guard rejects unstable configurations.
+
+The model does **not** claim complete real-world fidelity: rope/cloth are simplified, beam flex and 3D effects are absent, and winch preparation is a lifting-work countdown with a cocked-pose preview. See the [mechanics and primary research sources](docs/custom-workshop/research.html). `test/build-system.test.js` covers real velocities, Earth-gravity free flight, energy bounds, all mechanism families, every volunteer, failure cases, purchases and save isolation. Run the full suite with `npm test`.
+
+## Original articulated mechanism prototype
 
 Run `npm ci`, `npm start`, then open `http://localhost:8080`. Run `npm test` for numerical, articulated-body and game-system checks. See [requirements, physical assumptions and current limits](docs/prototype.md).
 

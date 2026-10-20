@@ -57,7 +57,7 @@ $('travel').oninput=()=>{camera.x=Number($('travel').value);clampCamera();draw()
 mini.onpointerdown=e=>{const r=mini.getBoundingClientRect();camera.x=(e.clientX-r.left)/r.width*MAP_WIDTH;camera.y=(1-(e.clientY-r.top)/r.height)*600;const i=Math.min(4,Math.floor(camera.y/120));level=Math.max(0,i);enemyBiome=LEVELS[level].id;recipe=0;refreshLevels();palette();clampCamera();draw();};
 function undo(){doc=history.undo();selected=null;save();refresh();status('Undone · Saved');}function redo(){doc=history.redo();selected=null;save();refresh();status('Redone · Saved');}
 $('undo').onclick=undo;$('redo').onclick=redo;$('save').onclick=save;
-$('play').onclick=()=>{if(save())location.href='index.html?editedMap=1';};
+$('play').onclick=()=>{if(save())location.href='mechanism-lab.html?editedMap=1';};
 $('ambient').onchange=()=>{doc.ambient=$('ambient').checked;commit();};
 function remove(){if(!selected)return;doc.objects=doc.objects.filter(o=>o.id!==selected);selected=null;commit('Object deleted · Saved');}
 function duplicate(){const o=object();if(!o||doc.objects.length>=4000)return;const n=normalizeObject({...o,id:id(),x:o.x+10,y:o.y+5});doc.objects.push(n);selected=n.id;commit('Object duplicated · Saved');}

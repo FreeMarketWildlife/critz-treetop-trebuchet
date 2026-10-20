@@ -1,3 +1,15 @@
+# Current task — custom trebuchet workshop, October 20, 2026
+
+The user explicitly authorized renewed research and implementation of comprehensive custom trebuchets, gram-based mass, Earth gravity, visibly different mechanisms, a Bells shop and Creative mode. This supersedes the earlier research pause for this scope.
+
+The new home page is the custom workshop (`src/build-*.js`, `workshop.css`). Preserve the prior home page at `mechanism-lab.html`; its source modules, save keys, editor and authored map remain intact. New workshop save key: `treetop-custom-workshop-v1`. The new clearing is fixed and is not yet driven by the old map editor. Sources, implemented variables and model limits are in `docs/custom-workshop/research.html`. Do not describe the idealized ring, lumped cloth/rope, overload threshold, or preparation countdown as full physical cloth/contact/winch simulation.
+
+Local preview: http://127.0.0.1:8080/ . Current server was started by this task in the canonical checkout. Keep it available for the playable handoff. No public deployment has been performed for the custom workshop. The original release notes below are historical context.
+
+Validation: 317 tests pass (303 existing + 14 new). All 55 volunteer/mechanism examples complete with finite releases; weak combinations can fail as intended. Browser checks cover purchase/equip, Creative isolation, a whale launch and the 390px phone layout. Review artifacts under `docs/custom-workshop/`. User explicitly wants bad combinations to remain possible; do not add hidden launch impulses, optimal-angle correction, or upgrade range multipliers.
+
+---
+
 # Release checkpoint — October 20, 2026
 
 Public release authorized by the current user request. Preserve all local work and existing browser saves. Research remains paused; experimental constraint guards remain disabled. Iteration 47 corrected all-equipment prediction coverage and end-to-end benchmarks remain incomplete. Release validation: 303 tests pass. Planck 1.5.1 is vendored byte-for-byte with license so static public hosting works without node_modules. CI runs the tests and dependency comparison. Current main also includes the Workshop, five-area map, map editor and richer enemy artwork added after 0641f2e. Earlier no-push entries below are historical and superseded only for this authorized game release.
