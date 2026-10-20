@@ -5,6 +5,8 @@ export const defaults = Object.freeze({ longArm: 3, shortArm: 0.8, sling: 2.5,
   frameMass:30, frameFriction:.65, armDamping: 0, flightDrag: 0, pivotHeight: 300, initialArm: -2.5, initialSling: -Math.PI / 2, initialSlingSpeed: 0 });
 export function config(overrides = {}) {
   const p = { ...defaults, ...overrides };
+  if(p.counterMount!==undefined&&!['fixed','hinged'].includes(p.counterMount))throw Error('Invalid counterweight mounting');
+  if(p.counterMount==='hinged'&&(!p.counterKind||!Number.isFinite(p.counterHanger)||p.counterHanger<.3||p.counterHanger>1))throw Error('Hinged weight needs a material and a 0.3–1 m hanger');
   if(p.counterKind!==undefined&&!['rock','basket','iron'].includes(p.counterKind))throw Error('Invalid counterweight material');
   if(p.foundationBraces!==undefined&&(!Number.isInteger(p.foundationBraces)||p.foundationBraces<0||p.foundationBraces>3))throw Error('Invalid foundation braces');
   if(p.fastCollisionStepHz!==undefined&&![2400,4800].includes(p.fastCollisionStepHz))throw new Error('Invalid fastCollisionStepHz');

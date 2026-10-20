@@ -1,5 +1,5 @@
-import {atmosphereAt} from './journey.js';
-import {counterOutline} from './workshop.js';
+import {atmosphereAt} from './journey.js?v=50-trebuchet';
+import {counterOutline} from './workshop.js?v=50-trebuchet';
 import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js';
 import {fixedObstacleVertices} from './fixed-obstacles.js';
 import {createEncounterBody} from './encounter-body.js';
@@ -49,8 +49,11 @@ export class CritterScene {
   this.arm=this.world.createDynamicBody({position:V(0,p.pivotHeight),angle:p.initialArm});tag(this.arm,'arm','beam');
   this.arm.createFixture(P.Box((p.longArm+p.shortArm)/2,.055,V((p.longArm-p.shortArm)/2,0)),{density:p.beamLinearDensity/.11,filterCategoryBits:8,filterMaskBits:1});
   if(p.counterKind){
-   const vertices=counterOutline(p),area=Math.abs(vertices.reduce((sum,v,i)=>{const q=vertices[(i+1)%vertices.length];return sum+v.x*q.y-q.x*v.y;},0))/2;
-   const weight=this.arm.createFixture(P.Polygon(vertices.map(v=>V(v.x,v.y))),{density:p.counterMass/area,filterCategoryBits:8,filterMaskBits:1});weight.setUserData({role:'counterweight',kind:p.counterKind});
+   const hinged=p.counterMount==='hinged',body=hinged?this.world.createDynamicBody({position:this.arm.getWorldPoint(V(-p.shortArm,0)),bullet:true}):this.arm;
+   if(hinged){this.counterWeight=body;tag(body,'counterweight','swinging-weight');body.createFixture(P.Box(.025,p.counterHanger/2,V(0,-p.counterHanger/2)),{density:0,filterCategoryBits:8,filterMaskBits:1});}
+   const vertices=counterOutline(p).map(v=>hinged?{x:v.x+p.shortArm,y:v.y-p.counterHanger}:v),area=Math.abs(vertices.reduce((sum,v,i)=>{const q=vertices[(i+1)%vertices.length];return sum+v.x*q.y-q.x*v.y;},0))/2;
+   const weight=body.createFixture(P.Polygon(vertices.map(v=>V(v.x,v.y))),{density:p.counterMass/area,filterCategoryBits:8,filterMaskBits:1});weight.setUserData({role:'counterweight',kind:p.counterKind});
+   if(hinged){this.counterHinge=this.world.createJoint(new P.RevoluteJoint({collideConnected:false},this.arm,body,this.arm.getWorldPoint(V(-p.shortArm,0))));this.counterHinge.setUserData({role:'counterweight-hinge'});}
   }else this.arm.createFixture(P.Circle(V(-p.shortArm,0),.1),{density:p.counterMass/(Math.PI*.01),filterCategoryBits:8,filterMaskBits:1});
   this.pivot=this.world.createJoint(new P.RevoluteJoint({enableLimit:true,lowerAngle:0,upperAngle:0},this.frame,this.arm,V(0,p.pivotHeight)));this.pivot.setUserData({role:'pivot'});
   const tip=this.arm.getWorldPoint(V(p.longArm,0));
@@ -68,9 +71,9 @@ export class CritterScene {
   for(const j of this.rig.joints){const a=map.get(j.a),b=map.get(j.b);this.world.createJoint(new P.RevoluteJoint({bodyA:a,bodyB:b,localAnchorA:V(j.anchorA.x,j.anchorA.y),localAnchorB:V(j.anchorB.x,j.anchorB.y),referenceAngle:j.referenceAngle,enableLimit:true,lowerAngle:j.minAngle,upperAngle:j.maxAngle,collideConnected:false}));}
   this.index();if(new.target===CritterScene)this.initialStaging=stageInitialVolunteer(this);
  }
- index(){this.routeTerrainReady=false;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.id==='canopy-route')this.routeTerrainReady=true;this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);if(d?.role==='enemy')this.enemies.set(d.id,b);}
+ index(){this.routeTerrainReady=false;for(let b=this.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.id==='canopy-route')this.routeTerrainReady=true;this.parts=[];for(let b=this.world.getBodyList();b;b=b.getNext()){const d=b.getUserData();if(d?.role==='counterweight')this.counterWeight=b;if(d?.role==='arm')this.arm=b;if(d?.role==='frame')this.frame=b;if(d?.role==='pouch')this.pouch=b;if(d?.role==='part')this.parts.push(b);if(d?.role==='enemy')this.enemies.set(d.id,b);}
   this.parts.sort((a,b)=>a.getUserData().id.localeCompare(b.getUserData().id));this.rope=null;this.ropes=[];
-  for(let j=this.world.getJointList();j;j=j.getNext()){if(j.getUserData()?.role==='pivot')this.pivot=j;if(j.getUserData()?.role==='rope')this.ropes.push(j);}
+  for(let j=this.world.getJointList();j;j=j.getNext()){if(j.getUserData()?.role==='counterweight-hinge')this.counterHinge=j;if(j.getUserData()?.role==='pivot')this.pivot=j;if(j.getUserData()?.role==='rope')this.ropes.push(j);}
   this.ropes.sort((a,b)=>a.getUserData().id-b.getUserData().id);this.rope=this.ropes[0]??null;this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   // Visual contact starts follow actual touching, independently of reward thresholds.
   this.world.on('begin-contact',contact=>{if(this.phase!=='flight')return;const a=contact.getFixtureA().getBody(),b=contact.getFixtureB().getBody(),other=a.getUserData()?.role==='part'?b:b.getUserData()?.role==='part'?a:null;if(other?.getUserData()?.role==='enemy')other.getUserData().lastContact=this.elapsed;});

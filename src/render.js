@@ -1,7 +1,7 @@
 import{drawLoadingContacts}from'./loading-contact-art.js';
 import {drawFixedObstacles} from './fixed-obstacles.js';
 import {encounterAnimationState} from './encounter-state.js';
-import {drawMechanismDetails} from './mechanism-art.js';
+import {drawMechanismDetails} from './mechanism-art.js?v=50-trebuchet';
 import {drawGripTether} from './grip-art.js';
 import {terrainApproaches} from './terrain-cues.js';
 import {surfaceY} from './terrain.js';
@@ -9,7 +9,7 @@ import {drawSurfaceTrim} from './surface-art.js';
 import {PICKUP_RADIUS_CSS} from './pickup.js';
 import {approachCues,payloadWarningRadius} from './approach-cues.js';
 import {drawSpeciesMarkings} from './species-art.js';
-import {biomeAt,atmosphereAt} from './journey.js';
+import {biomeAt,atmosphereAt} from './journey.js?v=50-trebuchet';
 import {createFlightCamera} from './camera.js';
 import {world as layout} from './world.js';
 import {drawScenery,drawFace,drawEncounterDetails} from './scenery.js';
@@ -83,7 +83,7 @@ export function createRenderer(canvas){const ctx=canvas.getContext('2d');let vie
    }
    // Show actual hardware context in the contact close-up and through physical departure.
    if(!flying)for(let b=scene.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role==='static')body(scene,b,view,scale,0,true);
-   for(let b=scene.world.getBodyList();b;b=b.getNext())if(['frame','arm','pouch','pouchflap','hooklink'].includes(b.getUserData()?.role))body(scene,b,view,scale);drawMechanismDetails(ctx,scene,view,{labels:false});
+   for(let b=scene.world.getBodyList();b;b=b.getNext())if(['counterweight','frame','arm','pouch','pouchflap','hooklink'].includes(b.getUserData()?.role))body(scene,b,view,scale);drawMechanismDetails(ctx,scene,view,{labels:false});
    // Encounters first: a foreground collision cannot hide the volunteer's body.
    for(const role of ['enemy','part'])for(let b=scene.world.getBodyList();b;b=b.getNext())if(b.getUserData()?.role===role)body(scene,b,view,scale,reduced?0:Math.sin(time*8));
    if(!flying)drawLoadingContacts(ctx,scene,view,cueScale);

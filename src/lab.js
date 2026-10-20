@@ -1,4 +1,4 @@
-import {workshopDefaults,workshopConfig} from './workshop.js';
+import {workshopDefaults,workshopConfig,counterCenter} from './workshop.js?v=50-trebuchet';
 import {createFlightTravelTracker} from './flight-travel.js';
 import {createViewRecovery} from './view-recovery.js';
 import {pickupFallback} from './pickup.js';
@@ -9,14 +9,14 @@ import {createFrameClock,createRuntimeMetrics} from './runtime.js';
 import {createLoadingCoach} from './loading-coach.js?v=39';
 import {drawVolunteerPortrait,speciesTraits} from './species-art.js';
 import {loadProgressConsent,saveProgressConsent} from './progress-preferences.js';
-import {createJourneyTracker} from './journey.js';
+import {createJourneyTracker} from './journey.js?v=50-trebuchet';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
 import {STARTER_HARDWARE} from './starter.js';
-import {CritterScene,gripParameters} from './articulated.js';
-import {PhysicalHookScene} from './hook-experiment.js';
+import {CritterScene,gripParameters} from './articulated.js?v=50-trebuchet';
+import {PhysicalHookScene} from './hook-experiment.js?v=50-trebuchet';
 import {createGripController,isFlightControlKey} from './input.js';
 import {createPredictionJob,capturePredictionPose,predictionPoseIsCurrent,predictionAdvice} from './prediction.js';
-import {createRenderer} from './render.js?v=38-final';
+import {createRenderer} from './render.js?v=50-trebuchet';
 import {installReviewExports} from './review.js';
 import {profiles,createRig,createVolunteerQueue} from './species.js';
 import {createAudio} from './audio.js';
@@ -55,10 +55,12 @@ const settings=()=>{const base=derivePhysicalConfig(economy,{counterMass:Number(
 function restoreStarterValues(){for(const [id,key]of Object.entries({mass:'counterMass',long:'longArm',short:'shortArm',sling:'sling',railAngle:'hookAngle',railLength:'channelLength',panelMass:'pouchPanelMass'}))$(id).value=STARTER_HARDWARE[key];}
 restoreStarterValues();
 let workshopWasPaused=false;
-$('workshopOpen').onclick=()=>{workshopWasPaused=manualPaused;manualPaused=true;freezeInputs();const c=workshopChoice??{...workshopDefaults,counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value)};for(const [id,key]of Object.entries({wsCounter:'counterKind',wsMass:'counterMass',wsSling:'slingPieces',wsFoundation:'foundation',wsWood:'wood',wsLong:'longArm',wsShort:'shortArm'}))$(id).value=c[key];setText('workshopStatus','');$('workshopDialog').showModal();};
+$('workshopOpen').onclick=()=>{workshopWasPaused=manualPaused;manualPaused=true;freezeInputs();const c=workshopChoice??{...workshopDefaults,counterMass:Number($('mass').value),longArm:Number($('long').value),shortArm:Number($('short').value),hookDegrees:Math.round(Number($('railAngle').value)*180/Math.PI*10)/10};for(const [id,key]of Object.entries({wsCounter:'counterKind',wsMount:'counterMount',wsHanger:'hangerLength',wsHook:'hookDegrees',wsMass:'counterMass',wsSling:'slingPieces',wsFoundation:'foundation',wsWood:'wood',wsLong:'longArm',wsShort:'shortArm'}))$(id).value=c[key];updateWorkshopFacts();setText('workshopStatus','');$('workshopDialog').showModal();};
+function updateWorkshopFacts(){const a=Number($('wsLong').value),b=Number($('wsShort').value),l=2.5+Number($('wsSling').value)*.15,m=Number($('wsMass').value);$('wsHanger').disabled=$('wsMount').value!=='hinged';setText('workshopFacts',`Arm ratio ${(a/b).toFixed(2)}:1 • sling / long arm ${(l/a).toFixed(2)} • counterweight / volunteer ${(m/(scene?.rig.totalMass??1)).toFixed(0)}:1. Compare throws: extra weight or length does not guarantee more range.`);}
+$('workshopForm').oninput=updateWorkshopFacts;
 $('workshopClose').onclick=()=>$('workshopDialog').close();
 $('workshopDialog').addEventListener('close',()=>{manualPaused=workshopWasPaused;frameClock.reset();});
-$('workshopForm').onsubmit=e=>{e.preventDefault();const previous=workshopChoice;try{const c={counterKind:$('wsCounter').value,counterMass:Number($('wsMass').value),slingPieces:Number($('wsSling').value),foundation:Number($('wsFoundation').value),wood:$('wsWood').value,longArm:Number($('wsLong').value),shortArm:Number($('wsShort').value)};workshopConfig(c);workshopChoice=c;if(!reset())throw Error(error);$('workshopDialog').close();}catch(e){workshopChoice=previous;setText('workshopStatus',e.message);}};
+$('workshopForm').onsubmit=e=>{e.preventDefault();const previous=workshopChoice;try{const c={counterKind:$('wsCounter').value,counterMount:$('wsMount').value,hangerLength:Number($('wsHanger').value),hookDegrees:Number($('wsHook').value),counterMass:Number($('wsMass').value),slingPieces:Number($('wsSling').value),foundation:Number($('wsFoundation').value),wood:$('wsWood').value,longArm:Number($('wsLong').value),shortArm:Number($('wsShort').value)};workshopConfig(c);workshopChoice=c;if(!reset())throw Error(error);$('workshopDialog').close();}catch(e){workshopChoice=previous;setText('workshopStatus',e.message);}};
 $('starter').onclick=()=>{workshopChoice=null;restoreStarterValues();reset();};
 $('species').innerHTML=profiles.map(p=>`<option value="${p.id}">${p.label}</option>`).join('');$('species').value=queue.current;
 function clearPreview(){previewJob?.cancel();previewJob=null;previewSource=null;previewCapture=null;previewBasis=null;preview=null;}
@@ -157,8 +159,8 @@ function render(now){const frameBegan=performance.now(),samplePhase=scene?.phase
  for(const event of scene.events.splice(0)){if(event.type==='impact'){runObstacle??=event.surface??null;if(event.encounter){contactNotice=event.encounter;contactNoticeUntil=clock+.9;}sound.play('impact',{intensity:Math.min(1,event.strength/5),material:event.material,mass:event.mass});if(!$('reduced').checked)effects.push({x:event.position.x,y:event.position.y,life:.4,material:event.material,strength:Math.min(1,event.strength/Math.max(.1,scene.rig.totalMass*10))});}else if(event.type==='launch')sound.play('launch');else if(event.type==='enemy')sound.play('enemy',{intensity:.3});}
  effects=effects.map(e=>({...e,life:e.life-dt})).filter(e=>e.life>0).slice(-20);
  if(clock>=nextStatus||statusPhase!==scene.phase){const audio=sound.getStatus();setText('audioEngine',audio.muted?'Audio muted; no cues are being scheduled.':audio.contextState==='running'?`Audio active • recent cue: ${audio.lastCue??'none'}`:'Audio waiting for an interaction.');nextStatus=clock+.25;statusPhase=scene.phase;
- setText('readout',error||`${scene.rig.label} • ${({uncocked:'Ready to wind',winding:'Winding',loading:'Load the cradle',launching:'Arm moving',flight:'In flight','wind-stalled':'Winding stalled'})[scene.phase]??scene.phase} • ${release?Math.max(0,c.x-release.x).toFixed(0)+' m • '+scene.impactCount+' bounces • '+(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(1)+' m/s':'Counterweight '+(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)+' m above axle'}`);
- setText('mechanicsReadout',`${scene.rig.label} • ${scene.phase} • ${release?(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(2)+' m/s • ':''}hand work ${scene.handWork.toFixed(2)} J • arcade work ${scene.assistWork.toFixed(2)} J${scene.forceCapped?' ('+gripParameters(scene.rig.totalMass).maxForce.toFixed(0)+' N cap)':''} • motor net work ${scene.windingWork.toFixed(1)} J • counterweight lift ${(-scene.p.shortArm*Math.sin(scene.arm.getAngle())).toFixed(2)} m above pivot • frame x ${scene.frame.getPosition().x.toFixed(3)} m • queue seed ${seed}`);
+ setText('readout',error||`${scene.rig.label} • ${({uncocked:'Ready to wind',winding:'Winding',loading:'Load the cradle',launching:'Arm moving',flight:'In flight','wind-stalled':'Winding stalled'})[scene.phase]??scene.phase} • ${release?Math.max(0,c.x-release.x).toFixed(0)+' m • '+scene.impactCount+' bounces • '+(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(1)+' m/s':'Counterweight '+(counterCenter(scene).y-scene.arm.getPosition().y).toFixed(2)+' m relative to axle'}`);
+ setText('mechanicsReadout',`${scene.rig.label} • ${scene.phase} • ${release?(Math.atan2(release.vy,release.vx)*180/Math.PI).toFixed(1)+'° / '+Math.hypot(release.vx,release.vy).toFixed(2)+' m/s • ':''}hand work ${scene.handWork.toFixed(2)} J • arcade work ${scene.assistWork.toFixed(2)} J${scene.forceCapped?' ('+gripParameters(scene.rig.totalMass).maxForce.toFixed(0)+' N cap)':''} • motor net work ${scene.windingWork.toFixed(1)} J • counterweight height ${(counterCenter(scene).y-scene.arm.getPosition().y).toFixed(2)} m relative to pivot • frame x ${scene.frame.getPosition().x.toFixed(3)} m • queue seed ${seed}`);
  if(scene.release){const t=travelDistance.snapshot();$('mechanicsReadout').textContent+=` • travel forward ${t.forward.toFixed(2)} m / leftward ${t.backward.toFixed(2)} m (session observation)`;}
  setText('queue',`Next 3: ${queue.peek().map(id=>profiles.find(p=>p.id===id).label).join(' → ')}`);
  }

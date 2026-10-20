@@ -2,7 +2,7 @@
 // The open C-link remains weak/sensitive; the finite channel is more useful in bounded tests.
 // Both remain optional research modes, without calibrated-realism claims.
 import * as P from '../node_modules/planck/dist/planck.mjs';
-import {CritterScene} from './articulated.js';
+import {CritterScene} from './articulated.js?v=50-trebuchet';
 import {stageInitialVolunteer} from './staging.js';
 const V=P.Vec2;
 export function makeCLink(world,position,angle=0,options={}){

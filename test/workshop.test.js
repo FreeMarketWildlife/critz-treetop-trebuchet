@@ -20,3 +20,30 @@ test('rock and customized stone basket wind, load and launch under gravity witho
   const s=new PhysicalHookScene(workshopConfig(choice,base),'lizard');s.startWinding(.6);for(let i=0;i<7200&&s.phase==='winding';i++)s.step();assert.equal(s.phase,'loading');assert.ok(s.windingWork>100);assert.ok(load(s));waitForContact(s);assert.ok(s.loadingStatus().contacting);const before=s.energy(),t=s.elapsed;s.unlatch();assert.equal(s.phase,'launching');assert.equal(s.elapsed,t);assert.equal(s.energy(),before);for(let i=0;i<3000&&!s.release;i++)s.step();assert.ok(s.release,JSON.stringify(choice));assert.ok(Number.isFinite(s.release.center.vx));
  }
 });
+
+test('braces add physical mass without inventing a change in foot material',()=>{
+ assert.equal(workshopConfig({foundation:3}).frameFriction,.65);
+ assert.equal(workshopConfig({foundation:3},{frameFriction:.85}).frameFriction,.85);
+ assert.ok(Math.abs(workshopConfig({hookDegrees:210}).hookAngle-210*Math.PI/180)<1e-12);
+ for(const c of [{counterMount:'fake'},{counterMount:'hinged',hangerLength:0},{hookDegrees:NaN}])assert.throws(()=>workshopConfig(c));
+});
+
+test('hinged basket winds and releases with a free joint, finite mass and no trigger energy injection',async()=>{
+ const {counterCenter}=await import('../src/workshop.js');
+ const {createPredictionJob}=await import('../src/prediction.js');
+ const s=new PhysicalHookScene(workshopConfig({counterMount:'hinged',counterKind:'basket'},base),'lizard');
+ assert.equal(s.counterWeight.getMass(),140);assert.equal(s.counterHinge.isMotorEnabled(),false);assert.equal(s.counterHinge.isLimitEnabled(),false);
+ const p=counterCenter(s);assert.ok(Math.abs(p.y-(s.arm.getWorldPoint({x:-s.p.shortArm,y:0}).y-.65))<1e-10);
+ s.startWinding(.6);let maxAnchor=0;
+ for(let i=0;i<7200&&s.phase==='winding';i++){s.step();const a=s.counterHinge.getAnchorA(),b=s.counterHinge.getAnchorB();maxAnchor=Math.max(maxAnchor,Math.hypot(a.x-b.x,a.y-b.y));}
+ assert.equal(s.phase,'loading');assert.ok(maxAnchor<.005);assert.ok(load(s));waitForContact(s);assert.ok(s.loadingStatus().contacting);
+ const snapshot=JSON.stringify(s.snapshot()),clone=s.clone();assert.ok(clone.counterWeight);assert.ok(clone.counterHinge);assert.deepEqual(counterCenter(clone),counterCenter(s));assert.equal(clone.counterWeight.getMass(),140);
+ const job=createPredictionJob(s);while(!job.done)job.advance({maxSteps:500,budgetMs:100});assert.ok(job.result.release);assert.equal(JSON.stringify(s.snapshot()),snapshot);
+ const energy=s.energy(),time=s.elapsed;s.unlatch();assert.equal(s.energy(),energy);assert.equal(s.elapsed,time);
+ for(let i=0;i<3000&&!s.release;i++)s.step();assert.ok(s.release);assert.ok(s.energy()<energy+1);assert.ok(Math.abs(s.counterWeight.getAngle()-s.arm.getAngle())>.1);
+});
+
+test('counterweight readout follows actual rock centroid rather than the nominal attachment',async()=>{
+ const {counterCenter}=await import('../src/workshop.js');const s=new PhysicalHookScene(workshopConfig({},base));
+ const nominal=s.arm.getWorldPoint({x:-s.p.shortArm,y:0}),actual=counterCenter(s);assert.ok(Math.hypot(actual.x-nominal.x,actual.y-nominal.y)>.001);
+});
