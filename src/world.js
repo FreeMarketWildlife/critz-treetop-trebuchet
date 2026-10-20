@@ -1,3 +1,4 @@
+import {readMap,mapSurfaces} from './map-document.js';
 import {surfaceY,surfaceCrossing} from './terrain.js';
 import {flightStep} from './physics.js';
 // One authored layout. Test dimensions/material coefficients are not lore.
@@ -15,9 +16,11 @@ const surfaces=[
   {id:'canopy outer crossing',flightOnly:true,slope:-.35,y:58,minX:145,maxX:157,restitution:.3,tangentRetention:.8},
   {id:'canopy outer lower',flightOnly:true,slope:-.35,y:26,minX:180,maxX:193,restitution:.3,tangentRetention:.8}
 ];
-export const world=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(p=>Object.freeze({...p,lore:'Grimroot Grove wind-worn branch',shape:'deflector',slope:-.65,friction:.08,restitution:.3}))),launchHeight:300,canopyTop:240,ground:0,
+export const defaultWorld=Object.freeze({bumpers:Object.freeze([{x:32,y:255,radius:1.2},{x:48,y:165,radius:1.1},{x:75,y:260,radius:1.2},{x:110,y:215,radius:1.5},{x:145,y:165,radius:1.4},{x:180,y:90,radius:1.2},{x:230,y:18,radius:1.3}].map(p=>Object.freeze({...p,lore:'Grimroot Grove wind-worn branch',shape:'deflector',slope:-.65,friction:.08,restitution:.3}))),launchHeight:300,canopyTop:240,ground:0,
   groundDeceleration:2, surfaces:Object.freeze(surfaces.map(Object.freeze)),
   regions:Object.freeze(['Grandfather Tree branches/leaves → open-air freefall','Long jungle-canopy descent','Ground travel while horizontal momentum remains'])});
+const authored=readMap();
+export const world=authored?Object.freeze({...defaultWorld,bumpers:Object.freeze([]),surfaces:Object.freeze([...defaultWorld.surfaces.filter(s=>['ground','launch branch'].includes(s.id)).map(s=>s.id==='ground'?{...s,maxX:20000}:s),...mapSurfaces(authored)]),authoredEnemies:authored.objects.filter(o=>o.type==='enemy'),ambient:authored.ambient}):defaultWorld;
 export function regionAt(y){return y>world.canopyTop?'Branches / open air':y>world.ground?'Jungle canopy':'Ground';}
 // Point reference against authored one-way contact segments; swept crossing avoids tunneling.
 export function firstCollision(a,b,layout=world) {

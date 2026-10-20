@@ -103,38 +103,4 @@ export function drawFace(ctx,{x,y,angle=0,size=7,species='mouse',color='#b6b0a9'
  }
  ctx.restore();
 }
-/** Optional encounter markings within the caller's circular collision silhouette.
- * x/y,size are screen coordinates/radius; shapes are readable original visual cues,
- * not extra collision geometry. No animation, health or injury state.
- */
-export function drawEncounterDetails(ctx,{x,y,size=12,shape='circle',kind='',color='#ad8059',angle=0,motion=0,state='idle'}={}){
- if(!ctx||![x,y,size,angle,motion].every(Number.isFinite)||size<=0)return;
- ctx.save();ctx.translate(x,y);ctx.rotate(angle);const s=size,flap=Math.max(-1,Math.min(1,motion))*.16;
- // The skid outline matches its capsule fixtures; chevrons distinguish slide from bounce.
- if(shape==='skid'){
-  const l=s*.78,h=s*.22;ctx.beginPath();ctx.moveTo(-l,-h);ctx.lineTo(l,-h);ctx.arc(l,0,h,-Math.PI/2,Math.PI/2);ctx.lineTo(-l,h);ctx.arc(-l,0,h,Math.PI/2,Math.PI*1.5);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.strokeStyle='#263f36';ctx.lineWidth=Math.max(1,s*.035);ctx.stroke();ctx.clip();
-  ctx.strokeStyle='#f7e8b8';ctx.lineWidth=Math.max(1,s*.04);for(const dx of [-.3,.15]){ctx.beginPath();ctx.moveTo((dx-.12)*s,-h*.55);ctx.lineTo(dx*s,0);ctx.lineTo((dx-.12)*s,h*.55);ctx.stroke();}
-  if(state==='post'){ctx.strokeStyle='#253e35';for(const dx of [-.64,-.53]){ctx.beginPath();ctx.moveTo((dx-.03)*s,-h*.3);ctx.lineTo((dx+.03)*s,-h*.1);ctx.stroke();}}else{ellipse(ctx,-s*.64,-h*.2,s*(state==='pre'?.055:.04),s*.055,'#253e35');ellipse(ctx,-s*.53,-h*.2,s*(state==='pre'?.055:.04),s*.055,'#253e35');}ctx.restore();return;
- }
- // Markings animate inside the invariant round collision silhouette.
- ctx.beginPath();ctx.arc(0,0,s,0,Math.PI*2);ctx.clip();
- const opacity=Number.isFinite(ctx.globalAlpha)?ctx.globalAlpha:1;ctx.globalAlpha=opacity*.22;ellipse(ctx,-s*.36,-s*.48,s*.16,s*.10,'#fff5dc',-.4);ctx.globalAlpha=opacity;
- ctx.strokeStyle='#394d43';ctx.lineWidth=Math.max(.7,s*.07);ctx.lineCap='round';
- if(shape==='yokai'){
-  ellipse(ctx,0,0,s*.65,s*.8,'#e3d8ff');ctx.strokeStyle='#7962b5';ctx.beginPath();ctx.moveTo(-s*.6,-s*.3);ctx.lineTo(-s*.4,-s*.85);ctx.moveTo(s*.6,-s*.3);ctx.lineTo(s*.4,-s*.85);ctx.stroke();
- }else if(kind.includes('letter bird')){
-  ellipse(ctx,s*.3,-s*.2,s*.3,s*.32,'#e8e0be');ctx.fillStyle='#dfb35c';ctx.beginPath();ctx.moveTo(s*.5,-s*.12);ctx.lineTo(s*.87,s*.05);ctx.lineTo(s*.5,s*.18);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(-s*.65,0);ctx.quadraticCurveTo(-s*.25,s*.5,s*.1,s*.16);ctx.stroke();
- }else if(shape==='wings'){
-  ellipse(ctx,-s*.35,0,s*.35,s*.65,'#f4e8e6',-.35-flap);ellipse(ctx,s*.35,0,s*.35,s*.65,'#f4e8e6',.35+flap);ellipse(ctx,0,0,s*.12,s*.6,color);
- }else if(shape==='leaf'){
-  ctx.beginPath();ctx.moveTo(-s*.7,s*.4);ctx.quadraticCurveTo(-s*.7,-s*.7,s*.65,-s*.5);ctx.quadraticCurveTo(s*.6,s*.55,-s*.7,s*.4);ctx.fillStyle='#c9dda0';ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(-s*.6,s*.35);ctx.lineTo(s*.5,-s*.4);ctx.stroke();
- }else if(shape==='cap'){
-  ellipse(ctx,0,-s*.15,s*.8,s*.45,'#f5d9c4');for(const dx of [-.4,.15,.5])ellipse(ctx,s*dx,-s*.25,s*.09,s*.08,color);ctx.fillStyle='#f1e0b9';ctx.fillRect(-s*.15,s*.1,s*.3,s*.55);
- }else if(shape==='pod'){
-  for(const dx of [-.35,0,.35]){ctx.beginPath();ctx.moveTo(dx*s,-s*.65);ctx.quadraticCurveTo((dx+.25)*s,0,dx*s,s*.65);ctx.stroke();}
- }else {
-  ctx.beginPath();ctx.moveTo(0,-s*.7);ctx.lineTo(0,s*.7);ctx.stroke();ellipse(ctx,-s*.38,-s*.08,s*.12,s*.18,'#e5c894');ellipse(ctx,s*.38,-s*.08,s*.12,s*.18,'#e5c894');
- }
- if(kind.includes('beetle')||kind==='vine bug'){ctx.beginPath();ctx.moveTo(-s*.2,-s*.45);ctx.lineTo(-s*.5,-s*.72);ctx.moveTo(s*.2,-s*.45);ctx.lineTo(s*.5,-s*.72);ctx.stroke();for(const dy of [.05,.3]){ctx.beginPath();ctx.moveTo(-s*.55,dy*s);ctx.lineTo(s*.55,dy*s);ctx.stroke();}}
- if(state==='post'){for(const dx of [-.22,.22]){ctx.beginPath();ctx.moveTo((dx-.08)*s,-s*.32);ctx.lineTo((dx+.08)*s,-s*.32);ctx.stroke();}}else{ellipse(ctx,-s*.22,-s*.32,s*(state==='pre'?.13:.09),s*.12,'#2e4438');ellipse(ctx,s*.22,-s*.32,s*(state==='pre'?.13:.09),s*.12,'#2e4438');}ctx.beginPath();ctx.arc(0,-s*.08,s*.17,.15,Math.PI-.15);ctx.stroke();ctx.restore();
-}
+export {drawEncounterDetails} from './enemy-art.js';

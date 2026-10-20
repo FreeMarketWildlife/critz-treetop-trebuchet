@@ -47,7 +47,7 @@ export function hasArrivalClearance(enemy,player){
  * Use time since release and do not call until the launch preview quiet period ends.
  * Events describe visibility transitions only; collision sounds belong to the solver.
  */
-export function createEncounterDirector(seed=0,saved=null){
+export function createEncounterDirector(seed=0,saved=null,mapOptions={}){
   if(!['number','string'].includes(typeof seed)||typeof seed==='number'&&!Number.isFinite(seed))throw new Error('Seed must be finite number or string');
   let previous=new Set(),observed=new Map(),latestTime=-1,lastSound=-Infinity;
   // Seed/cell/slot recipes are immutable. Cache only derived constants, never
@@ -67,7 +67,7 @@ export function createEncounterDirector(seed=0,saved=null){
       || !(saved.lastSound===null || Number.isFinite(saved.lastSound)&&saved.lastSound>=0&&saved.lastSound<=saved.latestTime))throw new Error('Invalid encounter snapshot or seed mismatch');
     previous=new Set(saved.previous);observed=new Map(saved.observed);latestTime=saved.latestTime;lastSound=saved.lastSound??-Infinity;
   }
-  return {update(time,player,region){
+  return {update(time,player,region,{capacity=8}={}){
     if(!Number.isFinite(time)||time<0||!player||!Number.isFinite(player.x)||!Number.isFinite(player.y))throw new Error('Finite nonnegative time and player position required');
     const biome=resolveRegion(region??player.region,player.y),cell=Math.floor(player.x/(biome==='openSky'?10:18)),slot=Math.floor(time/.5),[low,high]=regions[biome],lastRow=Math.ceil((high-low)/8)-1,row=Math.max(0,Math.min(lastRow,Math.floor((player.y-low)/8))),candidates=[];
     // Seeded 10m(sky)/18m(other) x8m neighborhood; four live .5s slots. At most36 recipes, eight public observations/births.
@@ -81,6 +81,10 @@ export function createEncounterDirector(seed=0,saved=null){
         radius:recipe.radius,mass:recipe.mass,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:start,expiresAt:start+2,harmless:true});
     }
     candidates.sort((a,b)=>Math.hypot(a.x-player.x,a.y-player.y)-Math.hypot(b.x-player.x,b.y-player.y)||a.id.localeCompare(b.id));
+    if(mapOptions.ambient===false)candidates.length=0;
+    const authored=[];for(const o of mapOptions.authoredEnemies??[]){const recipe=encounterPools[o.biome]?.[o.recipe];if(!recipe||Math.hypot(o.x-player.x,o.y-player.y)>18)continue;const id=`authored:${o.id}`;if(observed.has(id))continue;const e={...recipe,id,biome:o.biome,x:o.x,y:o.y,vx:0,vy:0,radius:recipe.radius*o.size,mass:recipe.mass*o.size**2,material:{friction:recipe.friction,restitution:recipe.restitution},spawnTime:time,expiresAt:time+600,harmless:true};if(hasArrivalClearance(e,player)){authored.push(e);}}
+    authored.sort((a,b)=>Math.hypot(a.x-player.x,a.y-player.y)-Math.hypot(b.x-player.x,b.y-player.y));
+    candidates.unshift(...authored);
     const active=candidates.slice(0,8),current=new Set(active.map(e=>e.id)),events=[],spawns=[];
     // Dynamic solvers consume spawns, NOT the historical active observations.
     // A birth is available for 0.25 s, never replayed after a rewind or revisit.
@@ -88,8 +92,9 @@ export function createEncounterDirector(seed=0,saved=null){
     const forward=time>=latestTime;
     for(const [id,expiry] of observed)if(expiry<time && forward)observed.delete(id);
     if(forward)for(const enemy of candidates)if(!observed.has(enemy.id)){
+      if(enemy.id.startsWith('authored:')&&spawns.length>=capacity)continue;
       observed.set(enemy.id,enemy.expiresAt);
-      if(spawns.length<8&&time-enemy.spawnTime<=.25 && hasArrivalClearance(enemy,player))spawns.push(enemy);
+      if(spawns.length<Math.min(8,capacity)&&time-enemy.spawnTime<=.25 && hasArrivalClearance(enemy,player))spawns.push(enemy);
     }
     const audible=new Set();
     if(spawns.length && time-lastSound>=.4){audible.add(spawns[0].id);lastSound=time;}

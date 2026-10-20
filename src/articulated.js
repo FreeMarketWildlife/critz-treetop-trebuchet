@@ -31,7 +31,7 @@ export function cockedConfig(overrides={},desiredFraction=.6){
 export class CritterScene {
  constructor(overrides={},species='lizard',saved=null){
   this.p=config(overrides);this.rig=createRig(species);this.phase=this.p.mechanicalWinding?'uncocked':'loading';this.elapsed=0;this.frame=null;this.hand=null;this.handWork=0;this.forceCapped=false;this.release=null;this.control=0;this.assistWork=0;this.events=[];this.impactCount=0;this.enemies=new Map();this.encounters=null;this.spawnEnergy=0;this.despawnEnergy=0;this.encounterSeed=null;this.lastEnemySound=-Infinity;this.lastImpact=-1;this.windingWork=0;this.windingInput=0;this.windingBraking=0;this.windingTarget=null;this.windingStart=0;this.dampingWork=0;this.dragWork=0;this.routeTerrainReady=false;
-  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0,spawnEnergy:saved.spawnEnergy??0,despawnEnergy:saved.despawnEnergy??0,lastImpact:saved.lastImpact??-1,lastEnemySound:saved.lastEnemySound??-Infinity,encounterSeed:saved.encounterSeed??null,dampingWork:saved.dampingWork??0,dragWork:saved.dragWork??0});this.index();if(saved.encounterState)this.encounters=createEncounterDirector(this.encounterSeed,saved.encounterState);return;}
+  if(saved){this.world=serializer.fromJson(saved.world);Object.assign(this,{phase:saved.phase,elapsed:saved.elapsed,release:saved.release,handWork:saved.handWork,assistWork:saved.assistWork??0,control:saved.control??0,impactCount:saved.impactCount??0,windingWork:saved.windingWork??0,windingInput:saved.windingInput??0,windingBraking:saved.windingBraking??0,windingTarget:saved.windingTarget??null,windingStart:saved.windingStart??0,spawnEnergy:saved.spawnEnergy??0,despawnEnergy:saved.despawnEnergy??0,lastImpact:saved.lastImpact??-1,lastEnemySound:saved.lastEnemySound??-Infinity,encounterSeed:saved.encounterSeed??null,dampingWork:saved.dampingWork??0,dragWork:saved.dragWork??0});this.index();if(saved.encounterState)this.encounters=createEncounterDirector(this.encounterSeed,saved.encounterState,layout);return;}
   const p=this.p;if(p.pivotHeight+p.longArm*Math.sin(p.initialArm)-p.sling-.23<294+.02)throw new Error('Cocked cradle intersects support branch; reduce lift or change hardware');this.world=new P.World(V(0,-p.gravity));this.world.setWarmStarting(false);this.world.setAllowSleeping(false);
   const ground=this.world.createBody();tag(ground,'static','world');
   for(const s of layout.surfaces.filter(s=>!s.flightOnly))ground.createFixture(P.Box((s.maxX-s.minX)/2,.04,V((s.minX+s.maxX)/2,s.y-.04)),{friction:.12,restitution:.3,filterCategoryBits:1});
@@ -103,12 +103,12 @@ export class CritterScene {
   for(let body=this.world.getBodyList();body;body=body.getNext())for(let fixture=body.getFixtureList();fixture;fixture=fixture.getNext())if(fixture.getFilterMaskBits()!==0){const other=fixture.getShape();for(let i=0;i<(other.getChildCount?.()??1);i++)if(P.testOverlap(shape,0,other,i,transform,body.getTransform()))return false;}
   return true;
  }
- enableEncounters(seed){this.encounterSeed=seed;this.encounters=createEncounterDirector(seed);}
+ enableEncounters(seed){this.encounterSeed=seed;this.encounters=createEncounterDirector(seed,null,layout);}
  updateEncounters(){if(!this.encounters||this.phase!=='flight'||this.elapsed-this.release.time<.8)return;
   const time=this.elapsed-this.release.time,c=this.center();
   // Remove old distant bodies before evaluating capacity; account for signed energy removal.
   for(const[id,body]of this.enemies)if((()=>{const p=body.getPosition(),v=body.getLinearVelocity(),tag=body.getUserData(),dx=p.x-c.x,dy=p.y-c.y,d=Math.hypot(dx,dy),receding=dx*(c.vx-v.x)+dy*(c.vy-v.y)<0;return time>tag.expiresAt&&d>20||d>20&&time-(tag.spawnTime??0)>.35&&receding;})()){this.despawnEnergy+=this.bodyEnergy(body);this.world.destroyBody(body);this.enemies.delete(id);}
-  const births=this.encounters.update(time,c).spawns;let added=false;
+  const births=this.encounters.update(time,c,undefined,{capacity:8-this.enemies.size}).spawns;let added=false;
   for(const e of births)if(!this.enemies.has(e.id)&&this.enemies.size<8){
    if(Math.hypot(e.x-c.x,e.y-c.y)<e.radius+1.5||!this.canSpawnEncounter(e))continue;
    const body=createEncounterBody(this.world,e);
@@ -159,7 +159,7 @@ export class CritterScene {
   // extra broadphase proxies out of loading preserves the existing contact order.
   if(this.routeTerrainReady)return;
   const terrain=this.world.createBody();tag(terrain,'static','canopy-route');
-  for(const s of layout.surfaces.filter(s=>s.flightOnly))terrain.createFixture(P.Polygon(surfaceVertices(s).map(p=>V(p.x,p.y))),{friction:.12,restitution:.3,filterCategoryBits:1});
+  for(const s of layout.surfaces.filter(s=>s.flightOnly))terrain.createFixture(P.Polygon(surfaceVertices(s).map(p=>V(p.x,p.y))),{friction:.12,restitution:s.restitution??.3,filterCategoryBits:1});
   this.routeTerrainReady=true;
  }
  step(dt=1/600){if(this.phase==='dead')return;if(!(dt>0&&dt<=1/120))throw new Error('Engine timestep outside tested domain');if(this.phase==='flight'&&!this.routeTerrainReady)this.installRouteTerrain();
