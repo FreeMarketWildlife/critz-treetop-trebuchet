@@ -83,6 +83,39 @@ export class BuildSimulation{
   if(['anchored','floating'].includes(this.c.chassis))this.frame.setType('static');
   this.phase='swing';this.initialEnergy=this.energy();this.events.push({time:0,text:'Trigger withdrawn. Gravity takes over.'});return true;
  }
+ /** Quasi-static ratchet rigging. The winch supports the mechanism before the
+  * latch opens. It changes gravitational potential, never launch velocity.
+  * Rope and counterweight joints remain coincident, including floating rails. */
+ setDraw(fraction){
+  if(this.phase!=='ready')return;
+  this.drawFraction=Math.max(0,Math.min(1,fraction));
+  const c=this.c,angle=Math.PI-.4+(this.initialAngle-Math.PI+.4)*this.drawFraction;
+  const pivot={...this.initialPivot};
+  if(this.carriage){
+   const guideX=this.initialPivot.x-c.shortArm*Math.cos(this.initialAngle);
+   pivot.x=guideX+c.shortArm*Math.cos(angle);
+   this.carriage.setPosition(Vec2(pivot.x/this.L,pivot.y/this.L));
+  }
+  this.arm.setTransform(Vec2(pivot.x/this.L,pivot.y/this.L),angle);
+  if(this.counter!==this.arm){
+   this.counter.setTransform(Vec2((pivot.x-c.shortArm*Math.cos(angle))/this.L,(pivot.y-c.shortArm*Math.sin(angle)-(c.chassis==='floating'?0:c.hanger))/this.L),0);
+  }
+  const tip=this.tip(),r=Math.max(.02,this.animal.length*.23);
+  const y=Math.max(r,tip.y-Math.min(c.slingLength*.8,Math.max(0,tip.y-r)));
+  const dx=Math.sqrt(Math.max(0,c.slingLength**2-(y-tip.y)**2));
+  this.shot.setTransform(Vec2((tip.x+dx)/this.L,y/this.L),0);
+  this.startX=(tip.x+dx);this.initialCounterY=this.counterPoint().y;
+ }
+ wind(dt){
+  if(this.phase!=='ready')return;
+  const c=this.c,f=this.drawFraction??0,span=this.initialAngle-Math.PI+.4;
+  // The rate governor makes small winches readable; heavier loads additionally
+  // respect motor power through d(mgh)/d(fraction). Ratchet holds at each stop.
+  const angle=Math.PI-.4+span*f;
+  const joulesPerFraction=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
+  const rate=Math.min(1/1.65,part(c.winch).power/Math.max(.01,joulesPerFraction));
+  this.setDraw(f+Math.max(0,Math.min(.1,dt))*rate);
+ }
  detach(reason){
   if(!this.sling||this.release)return;
   const p=this.real(this.shot);this.release={...p,time:this.time,reason,speed:Math.hypot(p.vx,p.vy),angle:Math.atan2(p.vy,p.vx)*180/Math.PI,energy:.5*this.payloadMass*(p.vx*p.vx+p.vy*p.vy)};

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-20",
+  "automatedTests": 330,
+  "preview": "http://127.0.0.1:8080/",
+  "desktopViewport": [
+    1031,
+    738
+  ],
+  "portraitViewports": [
+    [
+      320,
+      667
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      430,
+      932
+    ]
+  ],
+  "browserChecks": [
+    "Mouse hold 1.8\u20132.0 s raises counterweight and releases from full draw",
+    "Full starter throw 8.2 m, 28 Bells",
+    "Two collected throws: 56 Bells",
+    "Shop reroll deducted 5 Bells and next cost became 6",
+    "Tree frog purchase deducted 20 Bells; frog appeared in Build and equipped at 30 g",
+    "Parcel bought for 44 Bells from 56; choosing Steel plates added exactly one owned part, pack consumed, balance 12",
+    "Portrait 390\u00d7844 launch completes at 8.2 m",
+    "No clipped game controls at 320\u00d7667",
+    "Idle render counter remained at 2 between checks",
+    "Web Audio entered running state after a user gesture",
+    "No console errors or warnings during tested flows",
+    "Whale on wheels: 2.6 s hold, 611.2 m finished throw, 28.7 degree release",
+    "Creative whale result left Adventure wallet unchanged at 12 Bells in isolated QA",
+    "Mute toggled to true via HUD; battery saver backing size matched 1031\u00d7738 CSS pixels",
+    "Restored normal saved Adventure: 66 Bells and 5.7 m prior best intact"
+  ],
+  "scope": "Browser viewport testing on this Mac; no claim of physical-device or audio-output hardware testing. QA sessions do not alter Adventure progress."
+}

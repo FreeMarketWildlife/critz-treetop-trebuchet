@@ -1,5 +1,5 @@
 /** Original synthesized cues. No assets, autoplay, persistent loops, or physics side effects. */
-export const AUDIO_EVENTS = Object.freeze(['unlatch', 'launch', 'impact', 'coin', 'shop', 'enemy', 'wind', 'zone']);
+export const AUDIO_EVENTS = Object.freeze(['unlatch', 'launch', 'impact', 'coin', 'shop', 'enemy', 'wind', 'zone','ratchet','ready','reroll','pack','purchase','score','click']);
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, Number.isFinite(v) ? v : lo));
 export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, variant = 0, biome = 'openSky' } = {}) {
   const strength = clamp(intensity, 0, 1);
@@ -13,6 +13,13 @@ export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, v
     enemy: { frequency: 280, endFrequency: 110, duration: .23, gain: .11, type: 'triangle', harmony: 1.03 },
     zone: {frequency:Object.hasOwn(notes,biome)?notes[biome]:392,endFrequency:392,duration:.32,gain:.045,type:'sine',harmony:1.5},
     wind: { frequency: 350, endFrequency: 800, duration: .45, gain: .035, type: 'sine', noise: 1 },
+    ratchet: {frequency:580,endFrequency:220,duration:.045,gain:.095,type:'triangle',noise:.13,noiseFrequency:2300},
+    ready: {frequency:1046.5,endFrequency:1046.5,duration:.32,gain:.12,type:'sine',harmony:1.5},
+    reroll: {frequency:210,endFrequency:680,duration:.18,gain:.13,type:'triangle',noise:.2,noiseFrequency:1700},
+    pack: {frequency:660,endFrequency:1320,duration:.42,gain:.12,type:'sine',harmony:1.25,noise:.08},
+    purchase: {frequency:783.99,endFrequency:1046.5,duration:.27,gain:.14,type:'sine',harmony:1.5},
+    score: {frequency:1318.5,endFrequency:1568,duration:.34,gain:.11,type:'sine',harmony:1.5},
+    click: {frequency:440,endFrequency:330,duration:.055,gain:.06,type:'triangle'},
   };
   let cue = Object.hasOwn(cues, event) ? cues[event] : null;
   if (!cue) return null;

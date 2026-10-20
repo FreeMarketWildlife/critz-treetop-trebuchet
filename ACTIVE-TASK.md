@@ -1,3 +1,17 @@
+# Current task — full-screen game and Acorn Exchange, October 20, 2026
+
+User requested replacing the broken wind-up button with hold/release across the playfield, a full-screen game shell, portrait mobile layout, Balatro-inspired randomized shop and pinball-like sound. Implemented in the existing custom workshop with the original art. The prior workshop implementation and older notes below remain historical context.
+
+Hold the canvas (or Space) to visibly draw the arm and raise the counterweight; release opens the latch. Winding is supported, quasi-static ratchet rigging with a power cap and speed governor, not a dynamic winch drivetrain. Full-draw throws preserve the previous physical result; partial draws change the physical starting pose. Pointer interruptions cancel instead of firing.
+
+Shop logic lives in `src/build-shop.js`: persistent randomized offers, escalating paid rerolls, choose-one parcels, three permanent vouchers. Purchases are permanent and separate from Creative. Stock refreshes only after collected Adventure throws; reopening/reloading cannot bypass paid rerolls. Existing v1 saves migrate without losing progress. `?qa=1` remains isolated and never saves; its offers are seeded for repeatable checks.
+
+The game fills the viewport; Build, Shop, Blueprints and Settings are modal overlays. Sound extends the existing synthesized voice engine and respects mute/volume preferences. Idle and modal frames skip canvas redraw; quality controls affect rendering only. QA harness: `docs/custom-workshop/mobile-preview.html`. Local preview remains http://127.0.0.1:8080/ and must stay running. No public deployment of this iteration.
+
+Validation: 330 automated tests passing, including 13 new hold/winding/shop/audio regressions. Browser review artifacts and detailed sources/model limits are under `docs/custom-workshop/`.
+
+---
+
 # Current task — custom trebuchet workshop, October 20, 2026
 
 The user explicitly authorized renewed research and implementation of comprehensive custom trebuchets, gram-based mass, Earth gravity, visibly different mechanisms, a Bells shop and Creative mode. This supersedes the earlier research pause for this scope.

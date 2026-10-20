@@ -32,14 +32,14 @@ export function createBuildRenderer(canvas){
  const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let W=1000,H=600;
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
- function fitScene(sim){const c=sim.c,wide=c.longArm+c.slingLength+c.shortArm+c.baseWidth*.7,high=c.pivotHeight+c.longArm*.7+sim.facts.counterRadius;cam={x:0,y:high*.43,scale:Math.min(W*.76/Math.max(wide,3.5),H*.67/Math.max(high,2.4))};fit=false;}
+ function fitScene(sim){const c=sim.c,wide=c.longArm+c.slingLength+c.shortArm+c.baseWidth*.7,high=c.pivotHeight+c.longArm*.7+sim.facts.counterRadius,scale=Math.min(W*(W<600?.94:.8)/Math.max(wide,3.5),H*.53/Math.max(high,2.4));cam={x:0,y:H*(W<600?.13:.25)/scale,scale};fit=false;}
  function background(sim){
   const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#cedec5');grad.addColorStop(.65,'#dee4be');grad.addColorStop(1,'#b5c18d');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
   // The same authored clearing and tree silhouettes at every launch; camera parallax only.
   ctx.globalAlpha=.18;
   for(let i=0;i<13;i++){const x=i*145-170-cam.x*cam.scale*.025;path(ctx,[[x,H*.9],[x+30,H*.38],[x+16,-80]],'#819e74',25+i%3*12);ellipse(ctx,x+15,H*.17,160,100,'#a7bf92',null);}
   ctx.globalAlpha=.24;ctx.fillStyle='#fffbe0';ctx.beginPath();ctx.moveTo(W*.66,0);ctx.lineTo(W*.87,0);ctx.lineTo(W*.45,H);ctx.lineTo(W*.23,H);ctx.fill();ctx.globalAlpha=1;
-  const trunkX=project({x:-4,y:0})[0];const tx=Math.min(W*.17,Math.max(-180,trunkX));
+  const tx=W*.10-cam.x*cam.scale*.06;
   ctx.fillStyle='#728b57';ctx.beginPath();ctx.moveTo(tx-165,-10);ctx.lineTo(tx-18,-10);ctx.bezierCurveTo(tx-37,H*.3,tx-30,H*.65,tx+30,H);ctx.lineTo(tx-190,H);ctx.closePath();ctx.fill();
   path(ctx,[[tx-27,H*.36],[tx+85,H*.18],[tx+195,H*.15]],'#728b57',21);path(ctx,[[tx-130,H*.22],[tx-115,H*.65],[tx-147,H]],'#879d62',9);path(ctx,[[tx-77,-5],[tx-90,H*.48],[tx-64,H*.84]],'#617d50',5);
   for(let i=0;i<16;i++){const x=tx-100+Math.cos(i*2.3)*220,y=-17+Math.sin(i*1.6)*85;ellipse(ctx,x,y,75+i%3*15,48+i%4*8,['#718e4c','#819c55','#90a863'][i%3],'#6b854f',1.5);}
@@ -47,7 +47,7 @@ export function createBuildRenderer(canvas){
    const earth=ctx.createLinearGradient(0,gy+8,0,H);earth.addColorStop(0,'#8a8855');earth.addColorStop(1,'#596d42');ctx.fillStyle=earth;ctx.fillRect(0,gy+10,W,H-gy);
    for(let i=0;i<75;i++){const x=((i*93.71-cam.x*cam.scale)%(W+80)+W+80)%(W+80)-40;const y=gy+10+(i*37)%Math.max(20,H-gy);ellipse(ctx,x,y,2+i%4,1.5,'#b2ad73',null);}
    for(let i=0;i<30;i++){const x=((i*63.2-cam.x*cam.scale)%(W+60)+W+60)%(W+60)-30;path(ctx,[[x-4,gy],[x-7,gy-7],[x-2,gy-2],[x+3,gy-11],[x+4,gy]],'#6b8547',1.5);}
-   const start=project({x:0,y:0})[0];if(start>-40&&start<W+40){path(ctx,[[start,gy+16],[start,gy+36]],'#d6d39e',1);ctx.font='9px "DM Sans",sans-serif';ctx.fillStyle='#d5d7ac';ctx.textAlign='center';ctx.fillText('START',start,gy+48);}
+
   }
   // Pale pollen and distant birds are decorative, never hidden forces.
   for(let i=0;i<20;i++)ellipse(ctx,(i*317.1)%W,(i*97.3)%(H*.7),1+i%2,1+i%2,'#f7f5cd',null);
@@ -87,24 +87,26 @@ export function createBuildRenderer(canvas){
   if(labels&&!sim.release){annotation(cw,grams(c.counterGrams),24,-55);annotation({x:(tip.x+payload.x)/2,y:(tip.y+payload.y)/2},`${c.slingLength.toFixed(2)} m sling`,-150,-33);if(W>550)annotation(pivot,part(c.chassis).name,35,-25);if(physicalSize<25)annotation(payload,`${sim.animal.name} · ${grams(sim.animal.grams)}`,35,-25);}
   if(sim.release){const origin=project(sim.release);if(origin[0]>0&&origin[0]<W){ellipse(ctx,...origin,5,5,'#f0cb78','#926d38',1.5);ctx.font='9px "DM Sans",sans-serif';ctx.fillStyle='#687848';ctx.textAlign='left';ctx.fillText('RELEASE',origin[0]+9,origin[1]-7);}}
  }
- function draw(sim,{labels=true,follow=true,paused=false}={}){
-  const bounds=canvas.getBoundingClientRect();W=Math.max(320,bounds.width);H=Math.max(250,bounds.height);const dpr=Math.min(2,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
+ function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2}={}){
+  const bounds=canvas.getBoundingClientRect();W=Math.max(280,bounds.width);H=Math.max(250,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
   if(lastSim!==sim){lastSim=sim;fit=true;}if(fit)fitScene(sim);
   if(sim.release&&follow&&!paused){const q=sim.real(sim.shot),targetScale=Math.min(cam.scale,Math.max(1,Math.min(W/Math.max(8,sim.release.speed*1.5),H/Math.max(5,sim.maxY*1.3))));cam.x+=(q.x-cam.x)*.07;cam.y+=(Math.max(q.y,sim.animal.length*2+H/(cam.scale*3))-cam.y)*.07;cam.scale+=(targetScale-cam.scale)*.04;}
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   mechanism(sim,labels);
   if(labels&&sim.phase!=='ready'&&sim.phase!=='invalid'&&(!sim.release||sim.time-sim.release.time<2)){
-   const ix=W-153,iy=78;ctx.fillStyle='#f7f5e5ec';ctx.strokeStyle='#adb998';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(ix,iy,133,91,8);ctx.fill();ctx.stroke();ctx.fillStyle='#788769';ctx.textAlign='left';ctx.font='8px "DM Sans",sans-serif';ctx.fillText(sim.release?'RING FREE · POUCH OPEN':'RELEASE FINGER · CLOSEUP',ix+11,iy+16);
+   const ix=W-153,iy=246;ctx.fillStyle='#f7f5e5ec';ctx.strokeStyle='#adb998';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(ix,iy,133,91,8);ctx.fill();ctx.stroke();ctx.fillStyle='#788769';ctx.textAlign='left';ctx.font='8px "DM Sans",sans-serif';ctx.fillText(sim.release?'RING FREE · POUCH OPEN':'RELEASE FINGER · CLOSEUP',ix+11,iy+16);
    const cx=ix+64,cy=iy+53,a=-sim.arm.getAngle(),f=a-sim.c.pinAngle*Math.PI/180;
    path(ctx,[[cx-Math.cos(a)*36,cy-Math.sin(a)*36],[cx,cy]],'#a97d48',7);
    const px=cx+Math.cos(f)*29,py=cy+Math.sin(f)*29;path(ctx,[[cx,cy],[px,py]],'#526f61',3);
    const fraction=sim.release?1.3:Math.min(1,(sim.ringTravel??0)/sim.c.pinLength),rx=cx+Math.cos(f)*29*fraction,ry=cy+Math.sin(f)*29*fraction;
    const q=sim.real(sim.shot),tip=sim.tip(),sa=-Math.atan2(q.y-tip.y,q.x-tip.x);path(ctx,[[rx,ry],[rx+Math.cos(sa)*27,ry+Math.sin(sa)*27]],'#a28d56',1.5);ellipse(ctx,rx,ry,5,5,'#efd182','#907641',1.5);
   }
-  // Explicit scale bar always tracks world units.
+  // The optional parts overlay includes a scale bar in real world units.
+  if(labels){
   const desired=90/cam.scale,n=10**Math.floor(Math.log10(desired)),bar=n*(desired/n>=5?5:desired/n>=2?2:1),px=bar*cam.scale;
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
+  }
  }
  return{draw,fit:()=>{fit=true;},project};
 }
