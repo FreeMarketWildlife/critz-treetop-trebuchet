@@ -1,3 +1,17 @@
+# Current release — Grove World Workshop, October 20, 2026
+
+The current user authorized completing and publishing the map editor for the live custom trebuchet game, with giant-tree scenery, parallax, arbitrary collision shapes, an animal-follow camera, Creative playtests, working shop feedback, and pinball sound. Earlier local-only, fixed-clearing, and original-editor descriptions below are historical and superseded for this scope. The requested final handoff is only the public editor link after final hosted verification.
+
+Implementation is complete in the shared Grove v2 map (`src/grove-map.js`), physics, art/camera, and rebuilt `editor.html`. The launch is local (0, 0), at 300 m altitude on a 400 m tree. Shapes support concave polygons, freehand chains, circles, individual vertex edits, collision flags and depth layers. Original mechanism-lab v1 saves remain separate. Edits autosave locally; validated JSON and portable snapshot links transfer layouts. Embedded Creative playtests receive the editor map through an origin/source-checked bridge and never save Adventure progress. The Creative shop uses a separate ledger; equipment changes fit immediately with anchored particles and sound.
+
+The rig is framed during setup; after physical release the camera zooms to and locks onto the animal without a magnifying inset. A visible caretaker turns the supported winch; this is animation, not a simulated playable operator. Launch physics remains gravitational. Post-release map encounters apply explicit arcade pinball impulses; only the released payload transitions to 14% gravity in space. The physical trough, flexible display strands and ground-loaded winding safeguard remain.
+
+Final code validation on October 20: **363/363 tests pass**, including **31/31 custom mechanism tests** (14 build-system, 8 starter-flight, 9 Grove physics). All 11 animal presets finish the default Grove with finite states and no simulation failures. The starter retains its measured 38.86° / 25.34 m/s release and now bounces through the elevated world. A 419-object Node check observed physics-frame p95 0.211 ms and max 0.726 ms; those measurements are not phone FPS. Another check exercised 150 concave polygons on starter/whale scales without hidden fallback boxes.
+
+Hosting identity remains `appgprj_6ad7e6e45d248191be8711c7e74d9c3b` in `.openai/hosting.json`; use the existing isolated Sites checkout and public audience. Root is completing final public publication/browser verification. Local preview at http://127.0.0.1:8080/ must stay available. Implementation/model limits: `docs/grove-workshop/implementation.md` and `docs/custom-workshop/research.html`.
+
+---
+
 # Current task — full-screen game and Acorn Exchange, October 20, 2026
 
 User requested replacing the broken wind-up button with hold/release across the playfield, a full-screen game shell, portrait mobile layout, Balatro-inspired randomized shop and pinball-like sound. Implemented in the existing custom workshop with the original art. The prior workshop implementation and older notes below remain historical context.

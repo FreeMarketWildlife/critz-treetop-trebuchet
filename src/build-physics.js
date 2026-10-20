@@ -1,17 +1,22 @@
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=6';
-const {Vec2,World,Box,Circle,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
+import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=9';
+import {validateGroveMap,enemyRecipe,gravityScaleAt} from './grove-map.js?v=9';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=9';
+const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const GRAVITY=9.80665;
 const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 /** Similarity units: x_real=L*x_solver, t_real=sqrt(L)*t_solver,
  * m_real=M*m_solver. Therefore g_solver=g_real, F_real=M*F_solver,
  * torque_real=M*L*torque_solver. No launch impulses or range modifiers. */
 export class BuildSimulation{
- constructor(raw){
+ constructor(raw,{map=null}={}){
+  this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();
   this.c=validateBuild(raw);this.facts=buildFacts(this.c);this.animal=critter(this.c.animal);
   const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
   this.world=new World(Vec2(0,-GRAVITY));this.time=0;this.phase='ready';this.release=null;this.failure='';this.events=[];this.trail=[];this.maxX=0;this.maxY=0;this.peakTension=0;this.peakStress=0;this.lastTension=0;this.wheels=[];this.wheelAxles=[];this.moving=[];this.elapsedSettled=0;this.accumulator=0;
-  this.ground=this.world.createBody();this.ground.createFixture(Box(100000/this.L,1/this.L,Vec2(0,-1/this.L)),{friction:.8,restitution:.12});
+  this.groundY=this.map?-this.map.launch.y:0;
+  this.ground=this.world.createBody();const earth=this.ground.createFixture(Box(100000/this.L,1/this.L,Vec2(0,(this.groundY-1)/this.L)),{friction:.8,restitution:.12});earth.setUserData({worldObject:{id:'forest-floor',type:'ground',material:'stone'}});
+  if(this.map)this.installMap();
   this.initialAngle=Math.PI+rad(c.cockAngle);
   this.frame=this.body(0,0,0,c.frameGrams/1000,'frame');
   const h=c.pivotHeight,b=c.baseWidth/2,t=Math.max(c.beamWidth*.65,h*.025),wheelLift=c.chassis==='wheels'?c.wheelRadius*1.3:0;
@@ -67,13 +72,75 @@ export class BuildSimulation{
   this.sling=this.world.createJoint(RopeJoint({maxLength:c.slingLength/this.L,localAnchorA:Vec2(c.longArm/this.L,0),localAnchorB:Vec2(0,0)},this.arm,this.shot));
   this.startX=this.shot.getPosition().x*this.L;this.initialCounterY=this.counterPoint().y;this.initialEnergy=this.energy();this.initialPivot={x:pivot.x*this.L,y:pivot.y*this.L};
   this.storeTypes=new Map();for(const bdy of this.moving){this.storeTypes.set(bdy,bdy.getType());bdy.setType('static');}
-  this.world.on('begin-contact',contact=>{if(this.release&&(contact.getFixtureA().getBody()===this.shot||contact.getFixtureB().getBody()===this.shot)){this.contacts=(this.contacts??0)+1;}});
+  this.world.on('begin-contact',contact=>this.onContact(contact));
+  this.world.on('end-contact',contact=>{this.shotContacts.delete(contact);});
+ }
+ installMap(){
+  this.terrain=[];this.mapBodies=[];
+  for(const o of this.worldObjects){
+   if(!o.collision)continue;
+   const b=this.world.createBody(),bounds=objectBounds(o);this.mapBodies.push(b);
+   const options={friction:o.material==='leaf'?.22:o.material==='bumper'?.05:.65,restitution:o.bounce,filterCategoryBits:8};
+   const add=shape=>{const f=b.createFixture(shape,options);f.setUserData({worldObject:o});};
+   const point=p=>Vec2(p.x/this.L,p.y/this.L);
+   if(o.type==='polygon')for(const triangle of triangulatePolygon(o.points)){
+    const vertices=triangle.map(point);
+    // Planck welds polygon vertices closer than half its linear slop. Feeding a
+    // tiny triangle to it silently creates a 2×2 fallback box at the origin.
+    // Keep sub-resolution details as boundary edges instead, at their real place.
+    const minEdge=Math.min(...vertices.map((p,i)=>Math.hypot(p.x-vertices[(i+1)%3].x,p.y-vertices[(i+1)%3].y)));
+    if(minEdge<.0026){for(let i=0;i<3;i++)add(Edge(vertices[i],vertices[(i+1)%3]));}
+    else add(Polygon(vertices));
+   }
+   else if(o.type==='chain')for(let i=1;i<o.points.length;i++)add(Edge(point(o.points[i-1]),point(o.points[i])));
+   else add(Circle(Vec2(o.x/this.L,o.y/this.L),o.radius/this.L));
+   if(o.type!=='enemy')this.terrain.push({o,bounds});
+  }
+ }
+ terrainHeight(x,ceiling=Infinity){
+  let highest=this.groundY;
+  for(const {o,bounds} of this.terrain??[]){
+   if(x<bounds.minX||x>bounds.maxX||bounds.minY>ceiling)continue;
+   if(o.type==='circle'){const y=o.y+Math.sqrt(Math.max(0,o.radius**2-(x-o.x)**2));if(y<=ceiling)highest=Math.max(highest,y);continue;}
+   const n=o.points.length-(o.type==='chain'?1:0);
+   for(let i=0;i<n;i++){const a=o.points[i],b=o.points[(i+1)%o.points.length];if(Math.abs(b.x-a.x)<1e-9||x<Math.min(a.x,b.x)||x>Math.max(a.x,b.x))continue;const y=a.y+(x-a.x)*(b.y-a.y)/(b.x-a.x);if(y<=ceiling)highest=Math.max(highest,y);}
+  }
+  return highest;
+ }
+ onContact(contact){
+  const a=contact.getFixtureA(),b=contact.getFixtureB();
+  if(a.getBody()!==this.shot&&b.getBody()!==this.shot)return;
+  this.shotContacts.add(contact);
+  if(!this.release)return;
+  this.contacts=(this.contacts??0)+1;
+  const other=a.getBody()===this.shot?b:a,o=other.getUserData()?.worldObject,p=this.real(this.shot);
+  if(!this.map||!o)return;
+  if(this.time-(this.contactTimes.get(o.id)??-100)>.09){
+   this.contactTimes.set(o.id,this.time);
+   this.contactEvents.push({seq:++this.contactSequence,id:o.id,kind:o.type==='enemy'?o.kind:o.material??'wood',material:o.material??'stone',x:p.x,y:p.y,strength:Math.min(1,Math.hypot(p.vx,p.vy)/22),time:this.time});
+   if(this.contactEvents.length>64)this.contactEvents.shift();
+  }
+  if(o.type==='enemy'&&this.time-(this.encounterTimes.get(o.id)??-100)>.7){this.encounterTimes.set(o.id,this.time);this.pendingEncounters.push(o);}
+ }
+ applyEncounters(){
+  // These small, authored impulses are pinball powers. They only happen after
+  // release and are intentionally excluded from the mechanism's energy audit.
+  for(const o of this.pendingEncounters.splice(0)){
+   const recipe=enemyRecipe(o.kind),p=this.real(this.shot),pop=Math.min(18,9+Math.sqrt(o.radius)*3);
+   let vx=p.vx,vy=p.vy;
+   if(recipe.effect==='updraft')vy=Math.max(vy,pop);
+   if(recipe.effect==='gust'){vx=Math.min(35,Math.max(7,vx+6));vy=Math.max(vy,4);}
+   if(recipe.effect==='snare'){vx*=.7;vy*=.8;}
+   if(recipe.effect==='spin'){vy=Math.max(vy,pop*.65);this.shot.setAngularVelocity(Math.max(-12,Math.min(12,this.shot.getAngularVelocity()+2)));}
+   const mass=this.shot.getMass();this.shot.applyLinearImpulse(Vec2((vx-p.vx)*this.T/this.L*mass,(vy-p.vy)*this.T/this.L*mass),this.shot.getWorldCenter(),true);
+  }
  }
  railPoint(x){const p=this.frame.getWorldPoint(Vec2(x/this.L,this.c.troughHeight/this.L));return{x:p.x*this.L,y:p.y*this.L};}
  supportHeight(x){
   const a=this.railPoint(-this.c.troughLength*.75),b=this.railPoint(this.c.troughLength*.25);
-  if(x<Math.min(a.x,b.x)||x>Math.max(a.x,b.x))return 0;
-  return Math.max(0,a.y+(b.y-a.y)*(x-a.x)/(b.x-a.x||1));
+  const ground=this.map?this.terrainHeight(x,.1):0;
+  if(x<Math.min(a.x,b.x)||x>Math.max(a.x,b.x))return ground;
+  return Math.max(ground,a.y+(b.y-a.y)*(x-a.x)/(b.x-a.x||1));
  }
  loadingPosition(tip){
   const c=this.c,r=this.payloadRadius,skin=.012*this.L;
@@ -159,10 +226,12 @@ export class BuildSimulation{
   if(!this.beamBroken){this.axle.enableMotor(true);this.axle.setMotorSpeed(0);this.axle.setMaxMotorTorque(axleFriction);}
   for(const joint of this.wheelAxles){joint.setMaxMotorTorque(c.brake*total*GRAVITY*c.wheelRadius/2/(this.M*this.L));}
   const p=this.real(this.shot),area=Math.PI*(this.animal.width/2)**2,rvx=p.vx-c.wind,v=Math.hypot(rvx,p.vy);
-  if(this.release&&p.y<this.payloadRadius+.06*this.L&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
-  if(c.drag){const k=.5*1.225*.8*area;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
+  if(this.map&&this.release){this.gravityFactor=gravityScaleAt(p.y+this.map.launch.y);this.shot.setGravityScale(this.gravityFactor);}
+  if(this.release&&(this.map?this.shotContacts.size>0:p.y<this.payloadRadius+.06*this.L)&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
+  if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520-p.y-this.map.launch.y)/60)):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
   this.world.step(dt,32,12);this.time+=h;
-  if(c.wind===0&&this.energy()>this.initialEnergy*1.05+1){this.failure='Numerical energy check failed — change the geometry or mass balance';this.phase='invalid';return;}
+  if(this.pendingEncounters.length)this.applyEncounters();
+  if(c.wind===0&&!(this.map&&this.release)&&this.energy()>this.initialEnergy*1.05+1){this.failure='Numerical energy check failed — change the geometry or mass balance';this.phase='invalid';return;}
   const q=this.real(this.shot);this.maxX=Math.max(this.maxX,q.x-this.startX);this.maxY=Math.max(this.maxY,q.y);this.lastTension=this.sling?this.sling.getReactionForce(1/dt).length()*this.M:0;this.peakTension=Math.max(this.peakTension,this.lastTension);
   if(this.sling){
    const tip=this.tip(),phi=Math.atan2(q.y-tip.y,q.x-tip.x),relative=wrap(phi-this.arm.getAngle());
@@ -182,7 +251,7 @@ export class BuildSimulation{
   }
   if(this.time-(this.lastTrail??-1)>.06){this.trail.push({x:q.x,y:q.y,t:this.time});this.lastTrail=this.time;if(this.trail.length>1200)this.trail.shift();}
   if(![q.x,q.y,q.vx,q.vy,this.counterPoint().y].every(Number.isFinite)||Math.abs(q.x)>100000){this.failure='Configuration exceeded the solver’s stable range';this.phase='invalid';return;}
-  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>100)this.phase='finished';}
+  if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&(this.map?this.shotContacts.size>0:q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L)?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>100)this.phase='finished';}
   else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
  }
  snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure};}

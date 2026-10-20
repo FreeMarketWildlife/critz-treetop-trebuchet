@@ -1,5 +1,7 @@
-import {RopeVisual} from './rope-visual.js?v=6';
-import {part,grams} from './build-catalog.js?v=6';
+import {RopeVisual} from './rope-visual.js?v=9';
+import {part,grams} from './build-catalog.js?v=9';
+import {drawGroveWorld} from './grove-art.js?v=9';
+import {groveSetupCamera,groveFlightCamera} from './grove-camera.js?v=9';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -30,15 +32,12 @@ export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height){
  ctx.restore();
 }
 export function createBuildRenderer(canvas){
- const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60;let cords=[new RopeVisual(),new RopeVisual()];
+ const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
- function fitScene(sim){
-  const c=sim.c,wide=preview?Math.max(c.troughLength*1.15,c.longArm*Math.cos(sim.initialAngle-Math.PI)+c.shortArm+c.baseWidth*.5):Math.max(c.longArm+c.slingLength+c.shortArm+c.baseWidth*.7,c.troughLength*1.1),high=preview?c.pivotHeight+c.shortArm+sim.facts.counterRadius:c.pivotHeight+c.longArm*.7+sim.facts.counterRadius;
-  const scale=Math.min(W*(preview?.87:W<600?.94:.8)/Math.max(wide,3.5),H*(preview?.64:.53)/Math.max(high,2.4));
-  cam={x:preview?-c.troughLength*.2:0,y:H*(preview?.22:W<600?.13:.25)/scale,scale};fit=false;
- }
+ function fitScene(sim){cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});fit=false;}
  function background(sim){
+  if(sim.map){drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,editor:false});return;}
   const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#cedec5');grad.addColorStop(.65,'#dee4be');grad.addColorStop(1,'#b5c18d');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
   // The same authored clearing and tree silhouettes at every launch; camera parallax only.
   ctx.globalAlpha=.18;
@@ -101,37 +100,59 @@ export function createBuildRenderer(canvas){
   }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,'#c1d3b1',true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
   drawCritter(ctx,sim.animal,...p,physicalSize,-payload.angle,!!sim.release,sim.animal.width*cam.scale);
   trough(sim,true);
-  if(physicalSize<15){
-   ctx.setLineDash([2,3]);ellipse(ctx,...p,9,9,'#f7e8ad16','#f5e4a2',1.2);ctx.setLineDash([]);
-   if(sim.release&&!preview){const lx=Math.min(W-50,Math.max(50,p[0]+54)),ly=Math.max(155,p[1]-53);path(ctx,[p,[lx,ly]],'#f1deb080',1);ellipse(ctx,lx,ly,24,24,'#f6efd4e8','#9ba778',2);drawCritter(ctx,sim.animal,lx,ly,37,0,true);ctx.fillStyle='#536a44';ctx.font='8px Trebuchet MS';ctx.textAlign='center';ctx.fillText('ZOOM',lx,ly+35);}
-  }
+  if(!sim.release)caretaker(sim);
   if(preview&&H>250){
    const a=project({x:-c.baseWidth*.75,y:0}),b=project({x:-c.baseWidth*.75,y:c.pivotHeight});path(ctx,[a,b],'#66774f',1);for(const pt of[a,b])path(ctx,[[pt[0]-4,pt[1]],[pt[0]+4,pt[1]]],'#66774f',1.5);ctx.fillStyle='#4a613d';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='left';ctx.textAlign='right';ctx.fillText(`${c.pivotHeight.toFixed(2)} m`,a[0]-7,(a[1]+b[1])/2);
   }
   if(labels&&!sim.release&&!preview){annotation(cw,grams(c.counterGrams),24,-55);annotation({x:(tip.x+payload.x)/2,y:(tip.y+payload.y)/2},`${c.slingLength.toFixed(2)} m sling`,-150,-33);if(W>550)annotation(pivot,part(c.chassis).name,35,-25);if(physicalSize<25)annotation(payload,`${sim.animal.name} · ${grams(sim.animal.grams)}`,35,-25);}
   if(sim.release){const origin=project(sim.release);if(origin[0]>0&&origin[0]<W){ellipse(ctx,...origin,5,5,'#f0cb78','#926d38',1.5);ctx.font='9px "DM Sans",sans-serif';ctx.fillStyle='#687848';ctx.textAlign='left';ctx.fillText('RELEASE',origin[0]+9,origin[1]-7);}}
  }
- function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false}={}){
-  preview=showPreview;const now=performance.now()/1000;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
+ function caretaker(sim){
+  const c=sim.c,unit=Math.max(.18,c.pivotHeight*.12),anchor={x:-c.baseWidth*.5-unit*1.6,y:unit*.78},p=project(anchor),r=unit*cam.scale;
+  const drum={x:anchor.x+unit*1.1,y:unit*.55},d=project(drum),crank=windActive?nowTime*11:0;
+  // The little keeper operates a physical-looking capstan. Its line is visibly
+  // taken off the beam after unlatching; the simulation's power limit does work.
+  if(sim.phase==='ready'){line(drum,sim.tip(),'#686344',1.4);const t=project(sim.tip());ellipse(ctx,...t,2.5,2.5,'#e2c888',null);}
+  ellipse(ctx,...d,r*.3,r*.3,'#b18a52','#4a5337',Math.max(1.2,r*.1));
+  for(let i=0;i<5;i++){const a=crank+i*TAU/5;path(ctx,[d,[d[0]+Math.cos(a)*r*.24,d[1]+Math.sin(a)*r*.24]],'#6a6b47',1);}
+  const hand=[d[0]+Math.cos(crank)*r*.31,d[1]+Math.sin(crank)*r*.31];path(ctx,[d,hand],'#4e6c57',2);
+  const sway=windActive?Math.sin(crank)*r*.04:0;ctx.save();ctx.translate(p[0]+sway,p[1]);
+  path(ctx,[[-r*.2,r*.36],[-r*.24,r*.77]],'#4f5841',Math.max(2,r*.14));path(ctx,[[r*.15,r*.36],[r*.26,r*.77]],'#4f5841',Math.max(2,r*.14));
+  ellipse(ctx,0,r*.15,r*.32,r*.41,'#8baf78','#3d533c',Math.max(1.2,r*.09));ellipse(ctx,0,-r*.28,r*.35,r*.32,'#c7b18d','#46543d',Math.max(1.2,r*.08));
+  ellipse(ctx,-r*.25,-r*.5,r*.15,r*.19,'#c7b18d','#46543d',Math.max(1,r*.06));ellipse(ctx,r*.24,-r*.5,r*.15,r*.19,'#c7b18d','#46543d',Math.max(1,r*.06));ellipse(ctx,r*.17,-r*.31,r*.06,r*.08,'#263e30',null);ellipse(ctx,r*.34,-r*.19,r*.08,r*.06,'#3e4b35',null);
+  ctx.beginPath();ctx.moveTo(-r*.36,-r*.51);ctx.quadraticCurveTo(0,-r*.9,r*.39,-r*.48);ctx.closePath();ctx.fillStyle='#c89f54';ctx.fill();ctx.strokeStyle='#536044';ctx.lineWidth=Math.max(1,r*.06);ctx.stroke();
+  path(ctx,[[r*.12,r*.04],[r*.47,r*.17],[hand[0]-p[0]-sway,hand[1]-p[1]]],'#384f37',Math.max(2,r*.14));path(ctx,[[r*.12,r*.04],[r*.47,r*.17],[hand[0]-p[0]-sway,hand[1]-p[1]]],'#bbab83',Math.max(1,r*.09));
+  ctx.restore();
+ }
+ function effectAnchor(sim,slot){
+  if(['ballast','material','mount'].includes(slot))return sim.counterPoint();
+  if(['release','arm'].includes(slot))return sim.tip();
+  if(['sling','rope','animal'].includes(slot))return sim.real(sim.shot);
+  if(slot==='trough')return sim.railPoint(0);
+  if(slot==='winch')return{x:-sim.c.baseWidth*.6,y:sim.c.pivotHeight*.12};
+  if(slot==='chassis')return{x:sim.c.baseWidth*.5,y:sim.c.wheelRadius};
+  return sim.pivot();
+ }
+ function drawEffects(sim){
+  effects=effects.filter(e=>nowTime-e.start<1.2);
+  for(const e of effects){const age=(nowTime-e.start)/1.2,p=project(effectAnchor(sim,e.slot));ctx.save();ctx.globalAlpha=1-age;const spread=(reducedMotion?12:12+age*58);for(let i=0;i<12;i++){const a=i*TAU/12+.2,xx=p[0]+Math.cos(a)*spread,yy=p[1]+Math.sin(a)*spread-age*15,r=(1-age)*(i%3+2.5);ctx.fillStyle=i%2?'#fff0a1':'#e7b95d';ctx.beginPath();ctx.moveTo(xx,yy-r*1.6);ctx.lineTo(xx+r*.5,yy-r*.4);ctx.lineTo(xx+r*1.4,yy);ctx.lineTo(xx+r*.4,yy+r*.4);ctx.lineTo(xx,yy+r*1.5);ctx.lineTo(xx-r*.4,yy+r*.4);ctx.lineTo(xx-r*1.4,yy);ctx.lineTo(xx-r*.4,yy-r*.4);ctx.closePath();ctx.fill();}ellipse(ctx,...p,6+age*40,6+age*40,null,'#f8eab0',2*(1-age));ctx.restore();}
+ }
+ function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false,winding=false}={}){
+  preview=showPreview;windActive=winding||!!sim.winding;const now=performance.now()/1000;nowTime=now;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
   const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
   if(lastSim!==sim){lastSim=sim;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);
-  if(sim.release&&follow&&!paused){const q=sim.real(sim.shot),targetScale=Math.min(cam.scale,Math.max(1,Math.min(W/Math.max(8,sim.release.speed*1.5),H/Math.max(5,sim.maxY*1.3))));const pan=1-Math.exp(-4.35*ropeDt),zoom=1-Math.exp(-2.45*ropeDt);cam.x+=(q.x-cam.x)*pan;cam.y+=(Math.max(q.y,sim.animal.length*2+H/(cam.scale*3))-cam.y)*pan;cam.scale+=(targetScale-cam.scale)*zoom;}
+  if(sim.release&&follow&&!preview){cam=groveFlightCamera(cam,sim.real(sim.shot),{width:W,height:H,animalLength:sim.animal.length,dt:paused?0:ropeDt,reducedMotion});}
+  canvas.dataset.cameraScale=cam.scale.toFixed(4);canvas.dataset.cameraMode=sim.release&&follow&&!preview?'payload':'rig';
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   mechanism(sim,labels);
-  if(labels&&sim.phase!=='ready'&&sim.phase!=='invalid'&&(!sim.release||sim.time-sim.release.time<2)){
-   const ix=W-153,iy=246;ctx.fillStyle='#f7f5e5ec';ctx.strokeStyle='#adb998';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(ix,iy,133,91,8);ctx.fill();ctx.stroke();ctx.fillStyle='#788769';ctx.textAlign='left';ctx.font='8px "DM Sans",sans-serif';ctx.fillText(sim.release?'RING FREE · POUCH OPEN':'RELEASE FINGER · CLOSEUP',ix+11,iy+16);
-   const cx=ix+64,cy=iy+53,a=-sim.arm.getAngle(),f=a-sim.c.pinAngle*Math.PI/180;
-   path(ctx,[[cx-Math.cos(a)*36,cy-Math.sin(a)*36],[cx,cy]],'#a97d48',7);
-   const px=cx+Math.cos(f)*29,py=cy+Math.sin(f)*29;path(ctx,[[cx,cy],[px,py]],'#526f61',3);
-   const fraction=sim.release?1.3:Math.min(1,(sim.ringTravel??0)/sim.c.pinLength),rx=cx+Math.cos(f)*29*fraction,ry=cy+Math.sin(f)*29*fraction;
-   const q=sim.real(sim.shot),tip=sim.tip(),sa=-Math.atan2(q.y-tip.y,q.x-tip.x);path(ctx,[[rx,ry],[rx+Math.cos(sa)*27,ry+Math.sin(sa)*27]],'#a28d56',1.5);ellipse(ctx,rx,ry,5,5,'#efd182','#907641',1.5);
-  }
+  if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
+  drawEffects(sim);
   // The optional parts overlay includes a scale bar in real world units.
   if(!preview){
   const desired=90/cam.scale,n=10**Math.floor(Math.log10(desired)),bar=n*(desired/n>=5?5:desired/n>=2?2:1),px=bar*cam.scale;
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
   }
  }
- return{draw,fit:()=>{fit=true;},project};
+ return{draw,fit:()=>{fit=true;},project,equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0;},get camera(){return{...cam};}};
 }
