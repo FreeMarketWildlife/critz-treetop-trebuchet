@@ -1,3 +1,9 @@
+# Overnight pass 6 checkpoint — October 21, 2026
+
+Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-6/implementation.md for 483 tests, 48 cue-on/off parity cases, conservative advisory landing marks, actual-motion Fire captions and quieter varied woodland composition. First-four phone contacts get about .74 s of visible notice without camera or time changes. Marks are optional under Pause → Options, clear after boosts/uncertainty and hide for pause/parts/overview. Canonical revision-7 default remains 499 pieces; saves/launcher/rotation preserved. Next: first-time cue comprehension and destination identity, with organic seedhead/branch silhouettes. Do not add hidden time dilation or filler physics. Sites operations remain deferred pending parent/user approval. Keep localhost:8080 running and continue the overnight bounded passes.
+
+---
+
 # Overnight pass 5 checkpoint — October 21, 2026
 
 Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-5/implementation.md for the 470-test checkpoint, 48 fixed-input comparisons, phone-scale starter silhouettes, 26.13 px context floor, coherent woodland parallax/bark, and explicit Fire purpose/availability. Automatic landing slowdown was removed after a real frame-cadence path regression; preserve original swing/release/impact beats. Canonical revision-7 map remains 499 pieces. Next priority: intentional weapon timing and destination identity earlier in the arc, plus less repetitive major botanical silhouettes. Preserve physical loading/rotation, saves, weapons and disabled experimental guards. Sites packaging/save/deploy remains deferred pending parent/user approval. Keep localhost:8080 running.

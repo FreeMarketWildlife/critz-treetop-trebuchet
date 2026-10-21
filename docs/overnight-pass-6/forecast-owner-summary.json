@@ -1,0 +1,51 @@
+[
+  {
+    "draw": 0.5,
+    "calls": 239,
+    "cues": 70,
+    "unique": [
+      "launch-bough"
+    ],
+    "matched": 70,
+    "maxError": 0.009743891459363718,
+    "earliestActualLead": 0.8856293535400575,
+    "p95ms": 0.1424159999999972,
+    "maxMs": 2.4020829999999904,
+    "misses": []
+  },
+  {
+    "draw": 0.75,
+    "calls": 626,
+    "cues": 270,
+    "unique": [
+      "launch-bough",
+      "opening-skip-1",
+      "opening-rescue-mat",
+      "opening-rest-terrace"
+    ],
+    "matched": 270,
+    "maxError": 0.009711730157232007,
+    "earliestActualLead": 0.8917625208083404,
+    "p95ms": 0.1512920000000122,
+    "maxMs": 1.3033329999999808,
+    "misses": []
+  },
+  {
+    "draw": 1,
+    "calls": 958,
+    "cues": 306,
+    "unique": [
+      "opening-skip-1",
+      "opening-skip-2",
+      "opening-skip-3",
+      "opening-skip-4",
+      "canopy-exit-east-log"
+    ],
+    "matched": 306,
+    "maxError": 0.02288270368698113,
+    "earliestActualLead": 0.8905358873546838,
+    "p95ms": 0.05658300000004601,
+    "maxMs": 1.286625000000015,
+    "misses": []
+  }
+]

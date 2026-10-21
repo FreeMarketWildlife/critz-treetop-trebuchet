@@ -1,5 +1,5 @@
 /** Original material illustration follows the exact editable polygon silhouette.
- * Broad bark scales, leaf folds and stone facets are decoration, never terrain. */
+ * Broad bark seams, leaf folds and stone facets are decoration, never terrain. */
 const INK='#302d2b',clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export const GROVE_MATERIALS={wood:['#a5663e','#d6a15a'],leaf:['#738d52','#c2d58c'],stone:['#617b80','#b3c7bb'],bumper:['#bd6a4e','#f2cf79']};
 const stroke=(c,pts,color,width)=>{c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.stroke();};
@@ -29,19 +29,22 @@ export function drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s}){
    const y=top+thick*(.22+.18*Math.sin(x*.3));c.beginPath();c.moveTo(x,y);c.lineTo(x+step*.58,y-thick*.1);c.lineTo(x+step*.83,y+thick*.35);c.lineTo(x+step*.2,y+thick*.18);c.closePath();c.fillStyle=count%2?'#809b9c':'#6d888c';c.fill();stroke(c,[[x,y],[x+step*.58,y-thick*.1]],'#aec7bb',1.2);
   }
  }else if(o.material==='wood'||!GROVE_MATERIALS[o.material]){
-  // Bark has a rounded lit shoulder and long overlapping scales. All bands
-  // follow the editable face instead of cutting it with horizontal planks.
+  // Bark has a rounded lit shoulder and a few long organic seams. Its light
+  // follows the editable face instead of cutting it with horizontal planks.
   const a=o.points[0],z=o.points[1],dx=z.x-a.x,slope=Math.abs(dx)>.001?(z.y-a.y)/dx:0;
   const depth=Math.max(.08,...o.points.map(p=>a.y+(p.x-a.x)*slope-p.y)),at=(x,f)=>project(x,a.y+(x-a.x)*slope-depth*f);
   const worldLeft=Math.max(b.minX,b.minX+(left-project(b.minX,0)[0])/s),worldRight=Math.min(b.maxX,worldLeft+(right-left)/s);
-  const band=(from,to,color)=>{c.beginPath();c.moveTo(...at(b.minX,from));c.bezierCurveTo(...at(b.minX+(b.maxX-b.minX)*.3,from+.08),...at(b.minX+(b.maxX-b.minX)*.7,from-.04),...at(b.maxX,from));c.lineTo(...at(b.maxX,to));c.lineTo(...at(b.minX,to));c.closePath();c.fillStyle=color;c.fill();};
-  band(.38,1.5,'#895334');band(.78,1.5,'#553c2e');
-  if(depth*s>8){const spacing=2.8,start=Math.floor(worldLeft/spacing)*spacing;let scales=0;
-   for(let x=start;x<worldRight&&scales<9;x+=spacing,scales++){
-    const seed=Math.sin(Math.floor(x/spacing)*9.17),f=.16+seed*.055;
-    c.beginPath();c.moveTo(...at(x,f+.06));c.bezierCurveTo(...at(x+spacing*.28,f-.11),...at(x+spacing*.6,f-.07),...at(x+spacing*.96,f+.01));c.lineTo(...at(x+spacing*.54,f+.18));c.lineTo(...at(x+spacing*.14,f+.3));c.closePath();c.fillStyle=seed>0?'#c18a50':'#b57a46';c.fill();
-    c.beginPath();c.moveTo(...at(x+spacing*.06,.8));c.bezierCurveTo(...at(x+spacing*.22,.73),...at(x+spacing*.35,.44),...at(x+spacing*.75,.4));c.strokeStyle='#513a2e';c.lineWidth=clamp(depth*s*.025,1,4);c.stroke();
-    if(seed>.35){const p=at(x+spacing*.62,.53),rx=clamp(s*.065,2,10),ry=Math.max(1,rx*.42);c.beginPath();c.ellipse(...p,rx,ry,-Math.atan(slope),0,Math.PI*2);c.strokeStyle='#613f2b';c.lineWidth=1.3;c.stroke();}
+  // The cylindrical light runs perpendicular to the actual upper contour;
+  // smooth depth replaces wide hard bands and repeated triangular patches.
+  const d=depth/(1+slope*slope),p=project(a.x,a.y),q=project(a.x+slope*d,a.y-d),shade=c.createLinearGradient(...p,...q);
+  for(const [at,color]of[[0,'#ce995c'],[.15,'#ad7243'],[.5,'#925a37'],[.83,'#694631'],[1,'#4c372b']])shade.addColorStop(at,color);
+  c.fillStyle=shade;c.fillRect(left,top,Math.max(0,right-left),Math.max(0,thick));
+  if(depth*s>8){const spacing=6.5,start=Math.floor(worldLeft/spacing)*spacing;let seams=0;
+   for(let x=start;x<worldRight&&seams<5;x+=spacing,seams++){
+    const seed=Math.sin(Math.floor(x/spacing)*9.17),f=.46+seed*.1;
+    c.beginPath();c.moveTo(...at(x+spacing*.06,.76));c.bezierCurveTo(...at(x+spacing*.28,.68+seed*.13),...at(x+spacing*.5,f),...at(x+spacing*.94,f-.04));c.strokeStyle='#513a2e';c.lineWidth=clamp(depth*s*.019,.9,3);c.stroke();
+    c.beginPath();c.moveTo(...at(x+spacing*.36,f-.04));c.bezierCurveTo(...at(x+spacing*.53,f-.11),...at(x+spacing*.67,f-.05),...at(x+spacing*.83,f-.08));c.strokeStyle='#bc8450';c.lineWidth=clamp(s*.009,.6,1.5);c.stroke();
+    if(seed>.6){const pt=at(x+spacing*.57,.52),rx=clamp(s*.08,2,11),ry=Math.max(1,rx*.4);c.beginPath();c.ellipse(...pt,rx,ry,-Math.atan(slope),0,Math.PI*2);c.strokeStyle='#613f2b';c.lineWidth=1.3;c.stroke();}
    }
   }
  }else{

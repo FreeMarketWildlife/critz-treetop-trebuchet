@@ -47,3 +47,10 @@ test('phone distant crowns and forks are recognizable whole forms rather than fu
   }
  }
 });
+
+
+test('the phone canopy composes several broad botanical silhouettes instead of one repeated stamp',()=>{
+ const c=canvas();drawGroveBackdrop(c.ctx,{camera:{x:70,y:-25,scale:112},width:390,height:844,map:createGroveMap()});
+ const crowns=c.fills.filter(f=>f.color==='#3d776b'||f.color==='#6b9987'),families=new Set(crowns.map(f=>f.path.map(p=>p[0]).join('/')));
+ assert.ok(crowns.length>3);assert.equal(families.size,3,'spreading, upright and drooping crowns have distinct outline structures');
+});

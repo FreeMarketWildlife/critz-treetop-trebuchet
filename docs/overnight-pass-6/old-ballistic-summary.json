@@ -1,0 +1,200 @@
+[
+  {
+    "draw": 0.5,
+    "duration": 4.439186468783265,
+    "summary": [
+      {
+        "horizon": 0.65,
+        "predictions": 18,
+        "sameFace": 18,
+        "wrongFace": 0,
+        "maxEtaError": 0.03668908617200106,
+        "maxPointError": 0.14910167686318665,
+        "firstCues": [
+          {
+            "id": "launch-bough",
+            "actualTime": 2.2680452558111015,
+            "firstCorrectLead": 0.6648353318818714
+          },
+          {
+            "id": "launch-bough",
+            "actualTime": 2.9255207869710333,
+            "firstCorrectLead": 0.07237137376573877
+          }
+        ]
+      },
+      {
+        "horizon": 1.2,
+        "predictions": 23,
+        "sameFace": 23,
+        "wrongFace": 0,
+        "maxEtaError": 0.050420743783947675,
+        "maxPointError": 0.30070322260732363,
+        "firstCues": [
+          {
+            "id": "launch-bough",
+            "actualTime": 2.2680452558111015,
+            "firstCorrectLead": 0.8733630190034916
+          },
+          {
+            "id": "launch-bough",
+            "actualTime": 2.9255207869710333,
+            "firstCorrectLead": 0.07237137376573877
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "draw": 0.75,
+    "duration": 10.896184968831552,
+    "summary": [
+      {
+        "horizon": 0.65,
+        "predictions": 75,
+        "sameFace": 75,
+        "wrongFace": 0,
+        "maxEtaError": 0.07034186551100419,
+        "maxPointError": 0.18943322439357643,
+        "firstCues": [
+          {
+            "id": "launch-bough",
+            "actualTime": 2.807763975420001,
+            "firstCorrectLead": 0.45017447749196826
+          },
+          {
+            "id": "opening-skip-1",
+            "actualTime": 3.5253445458091055,
+            "firstCorrectLead": 0.33487093284824887
+          },
+          {
+            "id": "opening-skip-1",
+            "actualTime": 4.258871351095746,
+            "firstCorrectLead": 0.3594036019213811
+          },
+          {
+            "id": "opening-rescue-mat",
+            "actualTime": 5.741871196566563,
+            "firstCorrectLead": 0.6758750329647807
+          },
+          {
+            "id": "opening-rest-terrace",
+            "actualTime": 7.535209305812496,
+            "firstCorrectLead": 0.7188072038427613
+          }
+        ]
+      },
+      {
+        "horizon": 1.2,
+        "predictions": 102,
+        "sameFace": 102,
+        "wrongFace": 0,
+        "maxEtaError": 0.13545990335292313,
+        "maxPointError": 0.6660944353512205,
+        "firstCues": [
+          {
+            "id": "launch-bough",
+            "actualTime": 2.807763975420001,
+            "firstCorrectLead": 0.45017447749196826
+          },
+          {
+            "id": "opening-skip-1",
+            "actualTime": 3.5253445458091055,
+            "firstCorrectLead": 0.33487093284824887
+          },
+          {
+            "id": "opening-skip-1",
+            "actualTime": 4.258871351095746,
+            "firstCorrectLead": 0.3594036019213811
+          },
+          {
+            "id": "opening-rescue-mat",
+            "actualTime": 5.741871196566563,
+            "firstCorrectLead": 1.2180470194809931
+          },
+          {
+            "id": "opening-rest-terrace",
+            "actualTime": 7.535209305812496,
+            "firstCorrectLead": 1.3026847277832978
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "draw": 1,
+    "duration": 16.47491391606241,
+    "summary": [
+      {
+        "horizon": 0.65,
+        "predictions": 100,
+        "sameFace": 100,
+        "wrongFace": 0,
+        "maxEtaError": 0.34703154118242985,
+        "maxPointError": 0.2872912669573562,
+        "firstCues": [
+          {
+            "id": "opening-skip-1",
+            "actualTime": 3.6026224533894706,
+            "firstCorrectLead": 0.6991810685842559
+          },
+          {
+            "id": "opening-skip-2",
+            "actualTime": 5.284336918352655,
+            "firstCorrectLead": 0.6721951326038109
+          },
+          {
+            "id": "opening-skip-3",
+            "actualTime": 7.21383134095447,
+            "firstCorrectLead": 0.6856881005940334
+          },
+          {
+            "id": "opening-skip-4",
+            "actualTime": 9.364119785214472,
+            "firstCorrectLead": 0.7102207696671652
+          },
+          {
+            "id": "canopy-exit-east-log",
+            "actualTime": 13.089405583969533,
+            "firstCorrectLead": 0.7690991754426815
+          }
+        ]
+      },
+      {
+        "horizon": 1.2,
+        "predictions": 172,
+        "sameFace": 172,
+        "wrongFace": 0,
+        "maxEtaError": 0.3682934399877684,
+        "maxPointError": 1.340444910668252,
+        "firstCues": [
+          {
+            "id": "opening-skip-1",
+            "actualTime": 3.6026224533894706,
+            "firstCorrectLead": 1.3235374964954598
+          },
+          {
+            "id": "opening-skip-2",
+            "actualTime": 5.284336918352655,
+            "firstCorrectLead": 1.0892505068470513
+          },
+          {
+            "id": "opening-skip-3",
+            "actualTime": 7.21383134095447,
+            "firstCorrectLead": 1.2683389910809133
+          },
+          {
+            "id": "opening-skip-4",
+            "actualTime": 9.364119785214472,
+            "firstCorrectLead": 1.2940982936077017
+          },
+          {
+            "id": "canopy-exit-east-log",
+            "actualTime": 13.089405583969533,
+            "firstCorrectLead": 0.8942157877156536
+          }
+        ]
+      }
+    ]
+  }
+]

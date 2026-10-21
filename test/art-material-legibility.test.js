@@ -5,15 +5,15 @@ import {drawMaterialPolygon,GROVE_MATERIALS} from '../src/grove-material-art.js'
 const rgb=hex=>hex.match(/[0-9a-f]{2}/gi).map(v=>parseInt(v,16));
 const luminance=hex=>rgb(hex).map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);
 function canvas(){
- const calls=[],strokes=[],fills=[];let path=[],depth=0,clips=0;
+ const calls=[],strokes=[],fills=[],gradients=[];let path=[],depth=0,clips=0;
  const methods=new Set(['save','restore','beginPath','closePath','moveTo','lineTo','bezierCurveTo','ellipse','fill','stroke','fillRect','clip']);
- const ctx=new Proxy({},{get(target,key){if(!methods.has(key))return target[key];return(...args)=>{
+ const ctx=new Proxy({},{get(target,key){if(key==='createLinearGradient')return(...points)=>{assert.ok(points.every(Number.isFinite));const gradient={points,stops:[],addColorStop(at,color){assert.ok(at>=0&&at<=1);assert.match(color,/^#[0-9a-f]{6}$/i);this.stops.push([at,color]);}};gradients.push(gradient);return gradient;};if(!methods.has(key))return target[key];return(...args)=>{
   calls.push([key,...args]);for(const a of args)if(typeof a==='number')assert.ok(Number.isFinite(a),`${key} must stay finite`);
   if(key==='save')depth++;if(key==='restore')assert.ok(--depth>=0);if(key==='clip')clips++;
   if(key==='beginPath')path=[];if(['moveTo','lineTo','bezierCurveTo','ellipse'].includes(key))path.push([key,...args]);
   if(key==='fill')fills.push({color:target.fillStyle,path:[...path]});if(key==='stroke')strokes.push({color:target.strokeStyle,path:[...path]});
- };},set(target,key,value){if(['fillStyle','strokeStyle'].includes(key))assert.match(value,/^#[0-9a-f]{6}$/i);target[key]=value;return true;}});
- return{ctx,calls,strokes,fills,get depth(){return depth;},get clips(){return clips;}};
+ };},set(target,key,value){if(['fillStyle','strokeStyle'].includes(key)&&typeof value==='string')assert.match(value,/^#[0-9a-f]{6}$/i);target[key]=value;return true;}});
+ return{ctx,calls,strokes,fills,gradients,get depth(){return depth;},get clips(){return clips;}};
 }
 function render(material,points,scale=43,x=9){
  const c=canvas(),object={material,points},before=JSON.stringify(object),b={minX:Math.min(...points.map(p=>p.x)),maxX:Math.max(...points.map(p=>p.x)),minY:Math.min(...points.map(p=>p.y)),maxY:Math.max(...points.map(p=>p.y))};
@@ -50,4 +50,12 @@ test('wide bark faces remain bounded and fissures stay fixed under camera moveme
  const points=[{x:-500,y:0},{x:20000,y:0},{x:20000,y:-3},{x:-500,y:-3}],scale=80;
  const fissures=x=>{const c=render('wood',points,scale,x);assert.ok(c.calls.length<220,`wide bark stays bounded: ${c.calls.length}`);return c.strokes.filter(s=>s.color==='#513a2e').map(s=>s.path.map(([op,...v])=>[op,...v.map((n,i)=>Math.round((i%2?(422-n)/scale:(n-195)/scale+x)*1e6)/1e6)]));};
  const a=fissures(4),b=fissures(5);assert.ok(a.length&&b.length);assert.ok(a.some(p=>b.some(q=>JSON.stringify(p)===JSON.stringify(q))),'bark scales do not slide with the camera');
+});
+
+
+test('bark depth light follows the face normal with a warm lit shoulder and quiet underside',()=>{
+ const points=[{x:0,y:0},{x:18,y:3},{x:18,y:2.5},{x:0,y:-.5}],c=render('wood',points,80,4);
+ assert.equal(c.gradients.length,1);const {points:[x0,y0,x1,y1],stops}=c.gradients[0],tangent=[18*80,-3*80];
+ assert.ok(Math.abs((x1-x0)*tangent[0]+(y1-y0)*tangent[1])<1e-6,'lighting is perpendicular to the editable face');
+ assert.ok(luminance(stops[0][1])>luminance(stops.at(-1)[1])*3,'broad rounded depth stays visible without band texture');
 });

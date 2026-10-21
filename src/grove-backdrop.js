@@ -1,7 +1,7 @@
-import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=22';
-import {drawAncientTree} from './grove-tree-art.js?v=22';
-import {drawJungleBackdrop} from './grove-jungle-art.js?v=22';
-import {spaceScale} from './grove-map.js?v=22';
+import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=23';
+import {drawAncientTree} from './grove-tree-art.js?v=23';
+import {drawJungleBackdrop} from './grove-jungle-art.js?v=23';
+import {spaceScale} from './grove-map.js?v=23';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Every crown, trunk and forest tree is placed in metres. Parallax fades out
@@ -30,15 +30,26 @@ export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0}){
    // Both apparent size and camera motion use the distant projection. A
    // skipped-cell LOD keeps broad views sparse without changing world anchors.
    const step=baseStep*Math.max(1,Math.ceil(W/(ds*baseStep*4))),vertical=22*Math.max(1,Math.ceil(H/(ds*22*3)));
-   const x0=Math.floor((cam.x-W/(2*ds)-7)/step)*step,y0=Math.floor((cam.y-H/(2*ds)-14)/vertical)*vertical;
+   const x0=Math.floor((cam.x-W/(2*ds)-7)/step)*step,y0=Math.floor((cam.y-H/(2*ds)-22)/vertical)*vertical;
    let budget=40;c.save();c.globalAlpha=canopy*(layer?.22:.16);
    const p=(x,y)=>[W/2+(x-cam.x)*ds,H/2-(y-cam.y)*ds];
-   for(let x=x0;x<cam.x+W/(2*ds)+7&&budget>0;x+=step)for(let y=y0;y<cam.y+H/(2*ds)+14&&budget>0;y+=vertical){
-    const xx=x+Math.sin(x*3.1+y)*2,yy=y+Math.sin(x+y*.7)*2,q=p(xx,yy);
-    if(q[0]+7*ds<0||q[0]-7*ds>W||q[1]+12*ds<0||q[1]-14*ds>H)continue;
-    // Tree bases reach the actual world floor, never a floating screen cut.
-    c.beginPath();c.moveTo(...p(xx-.65,-origin));c.bezierCurveTo(...p(xx-.8,yy-5),...p(xx+.4,yy+2),...p(xx-1.3,yy+7));c.quadraticCurveTo(...p(xx-2.5,yy+10),...p(xx-4.5,yy+12));c.quadraticCurveTo(...p(xx-1,yy+10),...p(xx-.1,yy+8));c.quadraticCurveTo(...p(xx+1,yy+10),...p(xx+3.2,yy+12));c.quadraticCurveTo(...p(xx+1.7,yy+7),...p(xx+1,yy+3));c.bezierCurveTo(...p(xx+.8,yy-3),...p(xx+.35,yy-6),...p(xx+.75,-origin));c.closePath();c.fillStyle=layer?'#285f5b':'#4d8075';c.fill();
-    c.beginPath();c.moveTo(...p(xx-5,yy+8));c.bezierCurveTo(...p(xx-7,yy+11),...p(xx-4,yy+13),...p(xx-1,yy+12.5));c.bezierCurveTo(...p(xx+2,yy+15),...p(xx+6,yy+12),...p(xx+5.2,yy+9.8));c.bezierCurveTo(...p(xx+4,yy+6),...p(xx+.8,yy+7.2),...p(xx,yy+8));c.bezierCurveTo(...p(xx-2,yy+7),...p(xx-4,yy+6.8),...p(xx-5,yy+8));c.closePath();c.fillStyle=layer?'#3d776b':'#6b9987';c.fill();budget--;
+   for(let x=x0;x<cam.x+W/(2*ds)+7&&budget>0;x+=step)for(let y=y0;y<cam.y+H/(2*ds)+18&&budget>0;y+=vertical){
+    const seed=Math.sin(x*1.731+y*.371),family=Math.abs(Math.floor(Math.sin(x*.27+y*.13)*19))%3;
+    const xx=x+Math.sin(x*.31+y*.27)*3.2,yy=y+Math.sin(x*.21+y*.37)*6,q=p(xx,yy),wide=.8+(seed+1)*.13,tall=.86+(1-seed)*.13,lean=Math.sin(x*.17-y*.21)*1.6;
+    if(q[0]+9*ds<0||q[0]-9*ds>W||q[1]+18*ds<0||q[1]-22*ds>H)continue;
+    const v=(u,h)=>p(xx+u*wide+lean*clamp((h+10)/24,0,1),yy+h*tall),left=family===1?-2.4:family===2?-2.8:-4.5,right=family===2?4.7:3.2;
+    // Every trunk reaches the world floor. Lean, asymmetric branching and crown
+    // family vary broad composition, without outlines or extra texture marks.
+    c.beginPath();c.moveTo(...p(xx-.65,-origin));c.bezierCurveTo(...v(-.8,-5),...v(.4,2),...v(-1.1,7));c.quadraticCurveTo(...v(-2.1,10),...v(left,12));c.quadraticCurveTo(...v(-1,10),...v(-.1,8));c.quadraticCurveTo(...v(1,10),...v(right,12));c.quadraticCurveTo(...v(1.7,7),...v(1,3));c.bezierCurveTo(...v(.8,-3),...v(.35,-6),...p(xx+.75,-origin));c.closePath();c.fillStyle=layer?'#285f5b':'#4d8075';c.fill();
+    c.beginPath();
+    if(family===0){ // A spreading crown, open and gently scalloped underneath.
+     c.moveTo(...v(-5.8,8));c.bezierCurveTo(...v(-7,11),...v(-4.2,13.2),...v(-1.8,12.1));c.bezierCurveTo(...v(.4,14.4),...v(5.9,13),...v(5.3,10));c.bezierCurveTo(...v(5,7.2),...v(2.1,7.5),...v(.3,8.6));c.bezierCurveTo(...v(-2,7.2),...v(-4.2,7.5),...v(-5.8,8));
+    }else if(family===1){ // Tall rounded alder-like crowns leave narrow light gaps.
+     c.moveTo(...v(-3.1,7));c.bezierCurveTo(...v(-5.4,8.7),...v(-4.7,15.5),...v(-1.2,16.6));c.bezierCurveTo(...v(2.2,18),...v(5.2,13.5),...v(3.5,9.8));c.bezierCurveTo(...v(2.8,6.5),...v(-.9,6),...v(-3.1,7));
+    }else{ // Long drooping crowns frame an uneven, quiet negative space.
+     c.moveTo(...v(-5.4,10));c.bezierCurveTo(...v(-5.7,14.8),...v(3.7,15.2),...v(5.9,11));c.quadraticCurveTo(...v(6.7,7),...v(5.3,5.6));c.quadraticCurveTo(...v(4.7,8.6),...v(3.6,9));c.quadraticCurveTo(...v(3.9,5.7),...v(2.2,5.1));c.quadraticCurveTo(...v(1.5,8.4),...v(-.3,9.1));c.quadraticCurveTo(...v(-2.8,7.6),...v(-4.1,5.8));c.quadraticCurveTo(...v(-6.6,6.6),...v(-5.4,10));
+    }
+    c.closePath();c.fillStyle=layer?'#3d776b':'#6b9987';c.fill();budget--;
    }c.restore();
   }}
   const radius=t.crownRadius??t.trunkWidth*3.6,half=(t.crownDepth??t.height*.44)/2,cy=t.height-half-origin,cx=t.trunkX;

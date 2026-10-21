@@ -1,13 +1,15 @@
+import {landingOpportunity} from './landing-opportunity.js?v=23';
+import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=23';
 import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=22';
+import {GRAVITY} from './build-physics.js?v=23';
 import {drawFlightAccents} from './flight-art.js';
-import {drawCounterweight} from './counterweight-art.js?v=22';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=22';
-import {RopeVisual} from './rope-visual.js?v=22';
-import {part,grams} from './build-catalog.js?v=22';
-import {drawGroveWorld} from './grove-art.js?v=22';
-import {createCritterPerformance} from './critter-performance.js?v=22';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=22';
+import {drawCounterweight} from './counterweight-art.js?v=23';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=23';
+import {RopeVisual} from './rope-visual.js?v=23';
+import {part,grams} from './build-catalog.js?v=23';
+import {drawGroveWorld} from './grove-art.js?v=23';
+import {createCritterPerformance} from './critter-performance.js?v=23';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=23';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -148,7 +150,7 @@ function drawDizzyStars(ctx,tier,frame){
 }
 export function createBuildRenderer(canvas){
  let guidanceActive=false;
- const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let zoomFactor=1,treeZoom=1,treeOverview=false,cameraUntil=0;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60,strandDt=1/60,lastDrawnSimTime=0;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const performanceState=createCritterPerformance();let critterCel={pose:'ready',tier:0,hits:0,angle:0};const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
+ const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let zoomFactor=1,treeZoom=1,treeOverview=false,cameraUntil=0;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60,strandDt=1/60,lastDrawnSimTime=0;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const performanceState=createCritterPerformance(),landingCue=createLandingCue();let critterCel={pose:'ready',tier:0,hits:0,angle:0};const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
  function fitScene(sim){cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});cam.scale*=zoomFactor;fit=false;}
@@ -279,7 +281,7 @@ export function createBuildRenderer(canvas){
   }
   if(feel.impact>0&&feel.impactPoint){const p=project(feel.impactPoint),r=reducedMotion?10:9+feel.impactAge*90;ctx.save();ctx.globalAlpha=feel.impact*.55;ellipse(ctx,...p,r,r,'#ffe8a41a','#f7d87f',1.7);ctx.restore();}
  }
- function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false,winding=false,feel=null}={}){
+ function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false,winding=false,feel=null,landingMarks=true}={}){
   guidanceActive=!paused&&!!sim.loading?.hint&&sim.phase==='ready';
   preview=showPreview;windActive=winding||!!sim.winding;const now=performance.now()/1000;nowTime=now;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
   const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(!(lastSim===sim&&sim.release&&follow&&!preview))fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
@@ -301,6 +303,11 @@ export function createBuildRenderer(canvas){
   const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);canvas.dataset.loadingHint=String(guidanceActive&&!preview);canvas.dataset.grabPart=sim.loading?.grip?.part??'';canvas.dataset.loadingParts=JSON.stringify(sim.loading?.parts.map(p=>({...p,screen:project(p)}))??[]);canvas.dataset.loadingGrip=JSON.stringify(sim.loading?.grip?project(sim.loading.grip):null);
   canvas.dataset.animalPoint=JSON.stringify(project(sim.real(sim.shot)));canvas.dataset.slingPoint=JSON.stringify(project(sim.loading?.target()??sim.real(sim.shot)));
 
+  const cueEnabled=landingMarks&&follow&&!treeOverview&&!preview&&!labels;
+  const opportunity=cueEnabled&&!paused?landingOpportunity(sim):null;
+  const cue=landingCue.update(sim,opportunity,{project,width:W,height:H,dt:ropeDt,paused,enabled:cueEnabled});
+  canvas.dataset.flightCue=cue?.id??'';canvas.dataset.flightCueMode=cue?.mode??'';canvas.dataset.flightCueOpacity=String(cue?.alpha??0);canvas.dataset.flightCuePoint=cue?JSON.stringify([cue.x,cue.y]):'';
+  drawLandingCue(ctx,cue);
   if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
   if(!preview)drawFlightAccents(ctx,{sim,project,width:W,height:H,scale:cam.scale,reducedMotion});
   drawEffects(sim);drawLaunchFeedback(sim,feel);
@@ -312,5 +319,5 @@ export function createBuildRenderer(canvas){
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
   }
  }
- return{draw,fit:(reset=true)=>{fit=reset||!lastSim?.release;if(reset){zoomFactor=1;treeZoom=1;treeOverview=false;}},overview(){treeOverview=!treeOverview;cameraUntil=performance.now()/1000+.7;if(!treeOverview)fit=true;return treeOverview;},zoomBy(factor){if(!Number.isFinite(factor)||factor<=0)return;if(treeOverview){cameraUntil=performance.now()/1000+.45;treeZoom=Math.max(.3,Math.min(10,treeZoom*factor));}else{const before=zoomFactor;zoomFactor=Math.max(.002,Math.min(4,zoomFactor*factor));cam.scale*=zoomFactor/before;}},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0||now<cameraUntil;},get camera(){return{...cam};}};
+ return{draw,clearLandingCue:()=>landingCue.clear(),fit:(reset=true)=>{fit=reset||!lastSim?.release;if(reset){zoomFactor=1;treeZoom=1;treeOverview=false;}},overview(){treeOverview=!treeOverview;cameraUntil=performance.now()/1000+.7;if(!treeOverview)fit=true;return treeOverview;},zoomBy(factor){if(!Number.isFinite(factor)||factor<=0)return;if(treeOverview){cameraUntil=performance.now()/1000+.45;treeZoom=Math.max(.3,Math.min(10,treeZoom*factor));}else{const before=zoomFactor;zoomFactor=Math.max(.002,Math.min(4,zoomFactor*factor));cam.scale*=zoomFactor/before;}},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0||now<cameraUntil;},get camera(){return{...cam};}};
 }

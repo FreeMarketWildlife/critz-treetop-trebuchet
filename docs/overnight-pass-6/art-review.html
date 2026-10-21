@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pass 6 · actual-size woodland review</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f0e8ce;color:#354a3b;font:14px system-ui}h1{font-size:18px;margin:16px}p{margin:0 16px 16px}h2{font-size:13px;margin:0;padding:8px 14px}canvas{display:block;width:100%;height:600px}section{border-top:1px solid #82957e}</style>
+<h1>Grimroot Grove · woodland composition review</h1><p>Shared canonical map and actual drawing functions. Fixed poses and cameras allow comparison; live play remains the primary check.</p>
+<section><h2>Opening · landing materials and volunteer</h2><canvas id="opening"></canvas></section><section><h2>Canopy exit · bark depth and woodland layers</h2><canvas id="exit"></canvas></section><section><h2>Starter species · actual flight scale, rise / dive / impact</h2><canvas id="species" style="height:300px"></canvas></section>
+<script type="module">
+import {drawCritter} from '../../src/build-art.js?v=23';
+import {CRITTERS} from '../../src/build-catalog.js?v=23';
+import {drawGroveWorld} from '../../src/grove-art.js?v=23';
+import {createGroveMap} from '../../src/grove-map.js?v=23';
+const map=createGroveMap(),mouse=CRITTERS.find(a=>a.id==='mouse');
+function setup(id,h){const e=document.getElementById(id),w=e.clientWidth,dpr=devicePixelRatio;e.width=w*dpr;e.height=h*dpr;const c=e.getContext('2d');c.scale(dpr,dpr);return{c,w,h};}
+function paint(){
+for(const[id,camera]of[['opening',{x:25,y:-5.55,scale:145.1667}],['exit',{x:73,y:-60.8,scale:145.1667}]]){const{c,w,h}=setup(id,600);drawGroveWorld(c,{camera,width:w,height:h,map,time:3});drawCritter(c,mouse,w*.42,h*.33,mouse.length*camera.scale,-.35,true,mouse.width*camera.scale,{pose:'flying',airPose:'dive',flex:{head:0,tail:0},tier:0});drawGroveWorld(c,{camera,width:w,height:h,map,time:3,foreground:true});}
+{const{c,w,h}=setup('species',300);c.fillStyle='#9db5a5';c.fillRect(0,0,w,h);for(const[i,id]of['mouse','frog','chipmunk'].entries()){const a=CRITTERS.find(a=>a.id===id);for(const[j,pose]of['flying','flying','bonk-a'].entries()){drawCritter(c,a,(i+.5)*w/3,60+j*80,26.13,[-.2,-.9,.5][j],true,26.13*a.width/a.length,{pose,airPose:j===0?'rise':'dive',flex:{head:0,tail:0},tier:j===2?1:0});}c.fillStyle='#34483a';c.font='12px system-ui';c.textAlign='center';c.fillText(a.name,(i+.5)*w/3,288);}}
+}
+paint();window.addEventListener('resize',paint);
+</script>

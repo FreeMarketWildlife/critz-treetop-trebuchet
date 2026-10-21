@@ -1,9 +1,9 @@
-import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=22';
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=22';
-import {drawForestForeground} from './grove-jungle-art.js?v=22';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=22';
-import {pointInPolygon} from './grove-geometry.js?v=22';
-import {enemyRecipe} from './grove-map.js?v=22';
+import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=23';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=23';
+import {drawForestForeground} from './grove-jungle-art.js?v=23';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=23';
+import {pointInPolygon} from './grove-geometry.js?v=23';
+import {enemyRecipe} from './grove-map.js?v=23';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#302d2b';
@@ -67,7 +67,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
  for(const {o,b} of objects){
   const layer=o.layer??'world';if((layer==='front')!==foreground)continue;
   if(b.maxX<visible.minX||b.minX>visible.maxX||b.maxY<visible.minY||b.minY>visible.maxY)continue;
-  c.save();if(o.collision===false)c.globalAlpha=editor?.55:layer==='back'?.52:.7;
+  c.save();if(o.collision===false)c.globalAlpha=editor?.55:layer==='back'?(o.material==='wood'?.52-.32*clamp((s-3)/24,0,1):.52):.7;
   if(o.type==='enemy'){const p=project(o.x,o.y),size=(o.radius??.5)*2*s;if(size<12){ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;}
   const colors=palette[o.material]??palette.wood;
   if(o.material==='foliage'&&!editor&&s<6){c.restore();continue;}
