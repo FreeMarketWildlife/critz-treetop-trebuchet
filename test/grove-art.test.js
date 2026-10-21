@@ -5,7 +5,7 @@ import {createGroveMap,ENEMIES} from '../src/grove-map.js';
 function checkedCanvas(){
  let commands=0,gradients=0;
  const methods=new Set(['save','restore','beginPath','closePath','fill','stroke','moveTo','lineTo','bezierCurveTo','quadraticCurveTo','ellipse','arc','fillRect','strokeRect','rect','clip','translate','rotate','scale','roundRect','setLineDash','fillText']);
- const c=new Proxy({globalAlpha:1},{get(target,key){if(key==='createLinearGradient')return(...points)=>{assert.ok(points.every(Number.isFinite));gradients++;return{addColorStop(at,color){assert.ok(Number.isFinite(at));assert.match(color,/^#[0-9a-f]{6}$/i,`valid gradient color: ${color}`);}};};if(methods.has(key))return(...args)=>{commands++;for(const a of args)if(typeof a==='number')assert.ok(Number.isFinite(a),`${key} arguments must stay finite`);};return target[key];},set(target,key,value){target[key]=value;return true;}});
+ const c=new Proxy({globalAlpha:1},{get(target,key){if(['createLinearGradient','createRadialGradient'].includes(key))return(...points)=>{assert.ok(points.every(Number.isFinite));gradients++;return{addColorStop(at,color){assert.ok(Number.isFinite(at));assert.match(color,/^#[0-9a-f]{6}([0-9a-f]{2})?$/i,`valid gradient color: ${color}`);}};};if(methods.has(key))return(...args)=>{commands++;for(const a of args)if(typeof a==='number')assert.ok(Number.isFinite(a),`${key} arguments must stay finite`);};return target[key];},set(target,key,value){target[key]=value;return true;}});
  return{ctx:c,get commands(){return commands;},get gradients(){return gradients;}};
 }
 test('every altitude and camera scale renders valid sky colors and finite world commands',()=>{

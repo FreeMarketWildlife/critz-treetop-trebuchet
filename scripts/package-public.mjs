@@ -8,7 +8,7 @@ const manifest=JSON.parse(await readFile(resolve(root,'.openai/hosting.json'),'u
 const existing=JSON.parse(await readFile(resolve(target,'.openai/hosting.json'),'utf8'));
 if(existing.project_id!==manifest.project_id)throw Error('Publication checkout belongs to another Site.');
 const dist=resolve(target,'dist');await mkdir(dist,{recursive:true});
-for(const name of ['index.html','editor.html','editor.css','workshop.css','mobile.css','mechanism-lab.html','atlas.html','src','vendor']){
+for(const name of ['index.html','editor.html','editor.css','workshop.css','mobile.css','weapons.css','clean-play.css','assets','mechanism-lab.html','atlas.html','src','vendor']){
  await cp(resolve(root,name),resolve(dist,name),{recursive:true});
 }
 await mkdir(resolve(dist,'docs/custom-workshop'),{recursive:true});

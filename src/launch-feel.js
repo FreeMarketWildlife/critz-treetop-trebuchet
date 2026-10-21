@@ -1,4 +1,4 @@
-import {GRAVITY} from './build-physics.js?v=17';
+import {GRAVITY} from './build-physics.js?v=18';
 /** Presentation timing over the unmodified fixed-step mechanism solver.
  * A slower counterweight fall reveals real motion; no forces, transforms or
  * release velocities are assigned here. All feedback uses active playback time. */
@@ -29,7 +29,7 @@ export function createLaunchFeel(){
    const p=sim.real(sim.shot);if(!swished&&Math.hypot(p.vx,p.vy)>Math.sqrt(sim.c.pivotHeight*GRAVITY)*1.5){swished=true;events.push({type:'swish',intensity:.72});}
   }
   for(const hit of sim.contactEvents??[]){if(hit.seq<=lastSeq)continue;lastSeq=hit.seq;if(!sim.release||clock-lastImpact<.20||['foliage','sap'].includes(hit.material))continue;
-   if((hit.strength??0)<.3&&!hit.kind&&hit.material!=='bumper')continue;
+   if((hit.strength??0)<.3&&!hit.power&&hit.material!=='bumper')continue;
    lastImpact=clock;impactAge=0;impactPoint={x:hit.x,y:hit.y};impactStrength=clamp(hit.strength??.55,.3,1);freeze=Math.max(freeze,.025+impactStrength*.025);
   }
   return state();

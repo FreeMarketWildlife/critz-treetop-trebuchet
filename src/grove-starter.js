@@ -1,4 +1,4 @@
-import {branchPolygon,slopedPlatform} from './grove-branches.js?v=16';
+import {branchPolygon,slopedPlatform} from './grove-branches.js?v=18';
 export const CROWN_TREE=Object.freeze({height:800,trunkX:-145,trunkWidth:280,doorX:-8,crownRadius:500,crownDepth:350});
 const ellipsePoints=(x,y,rx,ry)=>Array.from({length:12},(_,i)=>({x:x+Math.cos(i*Math.PI/6)*rx,y:y+Math.sin(i*Math.PI/6)*ry}));
 export function crownStarterObjects(base,makeEnemy){
@@ -52,4 +52,32 @@ export function crownStarterObjects(base,makeEnemy){
  // bough sections pass behind the play plane; their outer ends remain solid.
  const clip=(points,x,greater)=>{const out=[];for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],ain=greater?a.x>=x:a.x<=x,bin=greater?b.x>=x:b.x<=x;if(ain)out.push(a);if(ain!==bin){const t=(x-a.x)/(b.x-a.x);out.push({x,y:a.y+(b.y-a.y)*t});}}return out;};
  return objects.flatMap(o=>{if(o.type==='enemy'&&o.y>5&&o.y<250&&Math.abs(o.x)<125)o={...o,x:(o.x<0?-1:1)*(145+(Math.abs(o.y)%45))};if(o.material!=='wood'||!o.points||Math.min(...o.points.map(p=>p.y))<5||Math.max(...o.points.map(p=>p.y))>230)return[o];const lo=Math.min(...o.points.map(p=>p.x)),hi=Math.max(...o.points.map(p=>p.x));if(hi<=-120||lo>=120)return[o];const back=clip(clip(o.points,-120,true),120,false),pieces=[];if(back.length>=3)pieces.push({...o,points:back,collision:false,layer:'back',name:o.name+' · behind the launch shaft'});for(const [x,greater,suffix]of[[-120,false,'west'],[120,true,'east']]){const points=clip(o.points,x,greater);if(points.length>=3)pieces.push({...o,id:o.id+'-'+suffix,points});}return pieces;});
+}
+
+/** A short authored opening route in the same editable map as the rest of the
+ * crown. These are real sloping leaf-stem mats, not launch assistance. The
+ * descending faces turn an incoming fall into four separated forward skips. */
+export function launchRunStarterObjects(base,makeEnemy){
+ const superseded=new Set(['returning-bough','leafy-ramp','first-hopper','first-beetle','spring-return','sky-gust']);
+ const bounds=o=>o.points?{minX:Math.min(...o.points.map(p=>p.x)),maxX:Math.max(...o.points.map(p=>p.x)),minY:Math.min(...o.points.map(p=>p.y)),maxY:Math.max(...o.points.map(p=>p.y))}:{minX:o.x-o.radius,maxX:o.x+o.radius,minY:o.y-o.radius,maxY:o.y+o.radius};
+ const objects=base.objects.filter(o=>!superseded.has(o.id)&&!/^stepping-bough-[0-4]$|^garden-(friend|pal)-[0-4]$/.test(o.id)).map(o=>{
+  const b=bounds(o);
+  // Keep the visual canopy, but author a sunlit air gap through the first
+  // skips. The outside tree still has dense drag fields and sap hazards.
+  return o.material==='foliage'&&b.minX<110&&b.maxX>17&&b.minY<2&&b.maxY>-65?{...o,collision:false,layer:'back',name:'Airy opening · '+o.name}:o;
+ });
+ const skips=[
+  [22,-3.8,28,-6.8,'First skip · sunlit leaf mat'],
+  [32,-10,38,-13,'Second skip · waxleaf sweep'],
+  [42,-18,48,-21,'Third skip · fern spring'],
+  [52,-27,61,-31.5,'Fourth skip · canopy exit']
+ ];
+ for(let i=0;i<skips.length;i++){
+  const[x,y,endX,endY,name]=skips[i];
+  objects.push({id:`opening-skip-${i+1}`,name,type:'polygon',points:[{x,y},{x:endX,y:endY},{x:endX,y:endY-.5},{x,y:y-.5}],collision:true,layer:'world',material:'leaf',bounce:.87});
+ }
+ // A visible choice beyond the four skips: the friendly waxleaf and pod can
+ // rescue a lower approach; the sap patch is off the main landing faces.
+ objects.push(makeEnemy('opening-exit-pod','pod',65,-40),makeEnemy('opening-exit-skid','skid',72,-47));
+ return objects;
 }

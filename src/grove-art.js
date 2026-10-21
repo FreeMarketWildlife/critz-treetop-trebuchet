@@ -1,8 +1,8 @@
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=16';
-import {drawForestForeground} from './grove-jungle-art.js?v=16';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=16';
-import {pointInPolygon} from './grove-geometry.js?v=16';
-import {enemyRecipe} from './grove-map.js?v=16';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=18';
+import {drawForestForeground} from './grove-jungle-art.js?v=18';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=18';
+import {pointInPolygon} from './grove-geometry.js?v=18';
+import {enemyRecipe} from './grove-map.js?v=18';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#374b3c';
@@ -90,6 +90,14 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
     // Bright upper edges make the collision plane legible without wireframes.
     for(let i=0;i<o.points.length;i++){const a=o.points[i],b=o.points[(i+1)%o.points.length];if(Math.abs(a.y-b.y)<Math.abs(a.x-b.x)*.65&&i===0)line(c,[project(a.x,a.y),project(b.x,b.y)],colors[1],Math.max(.45,Math.min(2,s*.035)));}
    }else{c.strokeStyle=INK;c.lineWidth=Math.max(.6,Math.min(16,(o.width??.16)*s+.45));c.stroke();line(c,pts,colors[0],Math.max(.25,Math.min(13,(o.width??.16)*s)));}
+  }
+  // The authored opening's flexible stem mats have a warm, readable lip and
+  // bound moss ribs. These marks follow the actual editable collision face.
+  if(o.id.startsWith('opening-skip-')&&o.points?.length>=2){
+   const a=project(o.points[0].x,o.points[0].y),z=project(o.points[1].x,o.points[1].y),dx=z[0]-a[0],dy=z[1]-a[1],length=Math.hypot(dx,dy);
+   if(length>10){const nx=dy/length,ny=-dx/length;line(c,[a,z],'#2e4941',Math.max(3,Math.min(10,s*.13)));line(c,[a,z],'#b9d982',Math.max(1.8,Math.min(6,s*.075)));line(c,[[a[0]+nx*2,a[1]+ny*2],[z[0]+nx*2,z[1]+ny*2]],'#f4e8b2',Math.max(1,Math.min(2,s*.025)));
+    for(let j=1;j<=Math.min(12,Math.floor(length/18));j++){const t=j/(Math.min(12,Math.floor(length/18))+1),x=a[0]+dx*t,y=a[1]+dy*t;line(c,[[x-nx*3,y-ny*3],[x-nx*7+dx/length*3,y-ny*7+dy/length*3]],'#4d7250',Math.max(1,Math.min(2,s*.025)));}
+   }
   }
   c.restore();
  }

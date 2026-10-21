@@ -1,9 +1,9 @@
-import {addCritterFixtures} from './critter-body.js?v=17';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=17';
+import {addCritterFixtures} from './critter-body.js?v=18';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=18';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=17';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=17';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=17';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=18';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=18';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=18';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
@@ -13,7 +13,7 @@ const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
  * torque_real=M*L*torque_solver. No launch impulses or range modifiers. */
 export class BuildSimulation{
  constructor(raw,{map=null}={}){
-  this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();
+  this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();this.impactApproaches=new WeakMap();this.pendingImpacts=new Map();
   this.c=validateBuild(raw);this.facts=buildFacts(this.c);this.animal=critter(this.c.animal);
   const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
   this.world=new World(Vec2(0,-GRAVITY));this.time=0;this.phase='ready';this.release=null;this.failure='';this.events=[];this.trail=[];this.maxX=0;this.maxY=0;this.peakTension=0;this.peakStress=0;this.lastTension=0;this.wheels=[];this.wheelAxles=[];this.moving=[];this.elapsedSettled=0;this.accumulator=0;
@@ -74,6 +74,8 @@ export class BuildSimulation{
   this.startX=this.shot.getPosition().x*this.L;this.initialCounterY=this.counterPoint().y;this.initialEnergy=this.energy();this.initialPivot={x:pivot.x*this.L,y:pivot.y*this.L};
   this.storeTypes=new Map();for(const bdy of this.moving){this.storeTypes.set(bdy,bdy.getType());bdy.setType('static');}
   this.world.on('begin-contact',contact=>this.onContact(contact));
+  this.world.on('pre-solve',contact=>this.observeImpact(contact));
+  this.world.on('post-solve',(contact,impulse)=>this.resolveImpact(contact,impulse));
   this.world.on('end-contact',contact=>{this.shotContacts.delete(contact);});
  }
  installMap(){
@@ -113,16 +115,46 @@ export class BuildSimulation{
   if(a.getBody()!==this.shot&&b.getBody()!==this.shot)return;
   this.shotContacts.add(contact);
   if(!this.release)return;
-  this.contacts=(this.contacts??0)+1;
-  const other=a.getBody()===this.shot?b:a,o=other.getUserData()?.worldObject,p=this.real(this.shot);
-  if(!this.map||!o)return;
-  if(this.time-(this.contactTimes.get(o.id)??-100)>.09){
-   this.contactTimes.set(o.id,this.time);
-   this.contactEvents.push({seq:++this.contactSequence,id:o.id,kind:o.type==='enemy'?o.kind:o.material??'wood',material:o.material??'stone',x:p.x,y:p.y,strength:Math.min(1,Math.hypot(p.vx,p.vy)/22),time:this.time});
-   if(this.contactEvents.length>64)this.contactEvents.shift();
-  }
-  if(o.type==='enemy'&&this.time-(this.encounterTimes.get(o.id)??-100)>.7){this.encounterTimes.set(o.id,this.time);this.pendingEncounters.push(o);}
+  const other=a.getBody()===this.shot?b:a,o=other.getUserData()?.worldObject;
+  if(o?.type==='enemy'&&this.time-(this.encounterTimes.get(o.id)??-100)>.7){this.encounterTimes.set(o.id,this.time);this.pendingEncounters.push(o);}
  }
+ observeImpact(contact){
+  if(!this.release)return;
+  const a=contact.getFixtureA(),b=contact.getFixtureB(),shotA=a.getBody()===this.shot;
+  if(!shotA&&b.getBody()!==this.shot)return;
+  const other=shotA?b:a,o=other.getUserData()?.worldObject,manifold=contact.getWorldManifold();
+  if(!o||!manifold||!contact.getManifold().pointCount)return;
+  // Measure closing speed at the actual contact, including physical tumbling.
+  // A fast graze is quiet; the speed parallel to a branch is not a BONK.
+  const normal={x:manifold.normal.x*(shotA?-1:1),y:manifold.normal.y*(shotA?-1:1)};
+  let impact=null;
+  for(let i=0;i<contact.getManifold().pointCount;i++){
+   const point=manifold.points[i],v=this.shot.getLinearVelocityFromWorldPoint(point),w=other.getBody().getLinearVelocityFromWorldPoint(point);
+   const speed=Math.max(0,-((v.x-w.x)*normal.x+(v.y-w.y)*normal.y))*this.L/this.T;
+   if(!impact||speed>impact.speed)impact={o,speed,x:point.x*this.L,y:point.y*this.L,normal};
+  }
+  this.impactApproaches.set(contact,impact);
+ }
+ resolveImpact(contact,impulse){
+  const impact=this.impactApproaches.get(contact);this.impactApproaches.delete(contact);
+  if(!impact)return;
+  const change=impulse.normalImpulses.reduce((sum,n)=>sum+n,0)/this.shot.getMass()*this.L/this.T;
+  // Resting support and tiny fixture-seam taps must not restart hit pause,
+  // count as bounce chains, or produce repeated full-strength impact sounds.
+  if(impact.speed<.6||change<.35)return;
+  const old=this.pendingImpacts.get(impact.o.id);
+  if(!old||impact.speed>old.speed)this.pendingImpacts.set(impact.o.id,{...impact,change});
+ }
+ recordImpact(hit){
+  const o=hit.o;
+  if(this.time-(this.contactTimes.get(o.id)??-100)<=.12)return;
+  this.contactTimes.set(o.id,this.time);this.contacts=(this.contacts??0)+1;
+  if(!this.map)return;
+  this.contactEvents.push({seq:++this.contactSequence,id:o.id,kind:o.type==='enemy'?o.kind:o.material??'wood',material:o.material??'stone',x:hit.x,y:hit.y,
+   normal:{...hit.normal},normalSpeed:hit.speed,velocityChange:hit.change,...(hit.power?{power:true}:{}),strength:Math.min(1,Math.sqrt((hit.power?hit.change:hit.speed)/20)),time:this.time});
+  if(this.contactEvents.length>64)this.contactEvents.shift();
+ }
+ flushImpacts(){for(const hit of this.pendingImpacts.values())this.recordImpact(hit);this.pendingImpacts.clear();}
  applyEncounters(){
   // These small, authored impulses are pinball powers. They only happen after
   // release and are intentionally excluded from the mechanism's energy audit.
@@ -134,6 +166,11 @@ export class BuildSimulation{
    if(recipe.effect==='snare'){vx*=.7;vy*=.8;}
    if(recipe.effect==='spin'){vy=Math.max(vy,pop*.65);this.shot.setAngularVelocity(Math.max(-12,Math.min(12,this.shot.getAngularVelocity()+2)));}
    const mass=this.shot.getMass();this.shot.applyLinearImpulse(Vec2((vx-p.vx)*this.T/this.L*mass,(vy-p.vy)*this.T/this.L*mass),this.shot.getWorldCenter(),true);
+   // An authored power can activate from a gentle touch. Keep its punctuation
+   // even when the physical impact was too quiet to count as a normal bounce.
+   const change=Math.hypot(vx-p.vx,vy-p.vy);
+   if(change>.35){const dx=p.x-o.x,dy=p.y-o.y,d=Math.hypot(dx,dy)||1,normal={x:dx/d,y:dy/d};this.recordImpact({o,speed:0,change,power:true,x:o.x+normal.x*o.radius,y:o.y+normal.y*o.radius,normal});}
+
   }
  }
  railPoint(x){const p=this.frame.getWorldPoint(Vec2(x/this.L,this.c.troughHeight/this.L));return{x:p.x*this.L,y:p.y*this.L};}
@@ -231,7 +268,7 @@ export class BuildSimulation{
   if(this.map&&this.release){this.gravityFactor=gravityScaleAt(p.y+this.map.launch.y,this.map);this.shot.setGravityScale(this.gravityFactor);}
   if(this.release&&(this.map?this.shotContacts.size>0:p.y<this.payloadRadius+.06*this.L)&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
   if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520*spaceScale(this.map)-p.y-this.map.launch.y)/(60*spaceScale(this.map)))):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
-  this.world.step(dt,32,12);this.time+=h;
+  this.world.step(dt,32,12);this.time+=h;this.flushImpacts();
   if(this.pendingEncounters.length)this.applyEncounters();
   if(this.release&&this.environment){
    const result=this.environment.step(p,this.real(this.shot),this.animal);this.leafDepth=result.leafDepth;this.environmentChecks=result.checks;

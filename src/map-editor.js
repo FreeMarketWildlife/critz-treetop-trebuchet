@@ -1,15 +1,17 @@
-import {JUNGLE_LAYERS,jungleLayerAt} from './grove-jungle.js?v=16';
-import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=16';
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=16';
-import {groveTreeCamera} from './grove-camera.js?v=16';
-import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=16';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=16';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=16';
-import {createAudio} from './audio.js?v=16';
+import {editorMapStorage} from './editor-storage.js';
+import {JUNGLE_LAYERS,jungleLayerAt} from './grove-jungle.js?v=18';
+import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=18';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=18';
+import {groveTreeCamera} from './grove-camera.js?v=18';
+import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=18';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=18';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=18';
+import {createAudio} from './audio.js?v=18';
 import {loadAudioPreferences} from './audio-preferences.js';
 const $=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d'),mini=$('minimap'),mc=mini.getContext('2d'),clone=v=>structuredClone(v);
+const qa=new URLSearchParams(location.search).has('qa'),mapStore=editorMapStorage(localStorage,sessionStorage,{qa});
 const sound=createAudio({maxVoices:4});try{const pref=loadAudioPreferences(localStorage);sound.setMuted(pref.muted);sound.setVolume(pref.volume*.65);}catch{}
-let doc=readGroveMap()??createGroveMap(),history=createEditorHistory(doc),stable=clone(doc),selected=null,vertex=0,tool='select',enemyKind='hopper',space=false,gesture=null,ghost=null,points=[],readOnly=false,unsaved=false,width=0,height=0,dpr=1,refreshPending=false,extension=null,selectionFilter='all';
+let doc=readGroveMap(mapStore)??createGroveMap(),history=createEditorHistory(doc),stable=clone(doc),selected=null,vertex=0,tool='select',enemyKind='hopper',space=false,gesture=null,ghost=null,points=[],readOnly=false,unsaved=false,width=0,height=0,dpr=1,refreshPending=false,extension=null,selectionFilter='all';
 const camera={x:5,y:1.7,scale:24},pointers=new Map();let firstSize=true,mapLoadGeneration=0,localBeforeShared=null;
 const iconByLevel={forestFloor:'♧',jungleCanopy:'❧',grandfatherTree:'♠',openSky:'☁',space:'✦'},effectName={spin:'Springy shell',updraft:'Upward pop',gust:'Sideward nudge',snare:'Slow & settle'};
 function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
@@ -18,7 +20,7 @@ function status(text){$('status').textContent=text;}
 function object(){return doc.objects.find(o=>o.id===selected);}
 function id(){return crypto.randomUUID();}
 function writable(){if(!readOnly)return true;status('Shared snapshot: choose “Edit a copy” to make changes.');return false;}
-function save(){if(readOnly){status('Shared snapshot · your saved map is unchanged');return false;}try{doc=saveGroveMap(localStorage,doc);unsaved=false;$('saveState').textContent='Your browser · autosaved';return true;}catch(e){unsaved=true;$('saveState').textContent='Not saved · export a backup';status(`Save unavailable: ${e.message}`);return false;}}
+function save(){if(readOnly){status('Shared snapshot · your saved map is unchanged');return false;}try{doc=saveGroveMap(mapStore,doc);unsaved=false;$('saveState').textContent=qa?'QA tab · session map saved':'Your browser · autosaved';return true;}catch(e){unsaved=true;$('saveState').textContent='Not saved · export a backup';status(`Save unavailable: ${e.message}`);return false;}}
 function commit(message='Saved on this browser',before=stable){try{doc=validateGroveMap(doc);history.push(doc);stable=clone(doc);const saved=save();if(saved)status(message);cue('click');refresh();return true;}catch(e){doc=clone(before);stable=clone(doc);status(e.message);refresh();return false;}}
 function replaceObject(next){doc.objects=doc.objects.map(o=>o.id===next.id?next:o);}
 function project(p){return{x:width/2+(p.x-camera.x)*camera.scale,y:height/2-(p.y-camera.y)*camera.scale};}
@@ -106,7 +108,7 @@ async function loadLocationMap(){
  if(!$('playOverlay').hidden){$('playOverlay').hidden=true;editorInert(false);$('playFrame').src='about:blank';}
  closeDialog();finish(true);cancelDrawing();
  if(!token){
-  if(readOnly){doc=localBeforeShared?.unsaved?clone(localBeforeShared.doc):(readGroveMap()??clone(localBeforeShared?.doc??stable));stable=clone(doc);history=createEditorHistory(doc);unsaved=!!localBeforeShared?.unsaved;localBeforeShared=null;selected=null;readOnly=false;document.body.classList.remove('shared');$('sharedBanner').hidden=true;$('saveState').textContent=unsaved?'Not saved · export a backup':'Your browser · autosaved';status('Your browser map restored');refresh();}
+  if(readOnly){doc=localBeforeShared?.unsaved?clone(localBeforeShared.doc):(readGroveMap(mapStore)??clone(localBeforeShared?.doc??stable));stable=clone(doc);history=createEditorHistory(doc);unsaved=!!localBeforeShared?.unsaved;localBeforeShared=null;selected=null;readOnly=false;document.body.classList.remove('shared');$('sharedBanner').hidden=true;$('saveState').textContent=unsaved?'Not saved · export a backup':'Your browser · autosaved';status('Your browser map restored');refresh();}
   return;
  }
  try{

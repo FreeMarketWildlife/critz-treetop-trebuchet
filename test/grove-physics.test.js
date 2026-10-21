@@ -11,7 +11,7 @@ function advance(s,seconds){for(let i=0;i<seconds*60;i++)s.step(1/60);return s;}
 
 test('map defaults place the launch three quarters up an 800 m tree and retain gaps',()=>{
  const m=validateGroveMap(createGroveMap());assert.equal(m.launch.y/m.tree.height,.75);
- const sim=new BuildSimulation(STARTER,{map:m});assert.equal(sim.groundY,-600);assert.equal(sim.terrainHeight(0,.1),0);assert.ok(sim.terrainHeight(23,.1)<-10);
+ const sim=new BuildSimulation(STARTER,{map:m});assert.equal(sim.groundY,-600);assert.equal(sim.terrainHeight(0,.1),0);assert.ok(sim.terrainHeight(30,.1)<-10);
  assert.equal(m.objects.find(o=>o.id==='far-bough').collision,false);assert.equal(sim.mapBodies.length,m.objects.filter(o=>o.collision&&!['foliage','sap'].includes(o.material)).length);
 });
 test('concave geometry triangulates to exactly its area without filling its notch',()=>{
@@ -44,7 +44,7 @@ test('space only lowers released payload gravity; the launch mechanism keeps the
 test('the lighter-gravity starter keeps an upward release and a bounded pinball journey',()=>{
  const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.setDraw(0);for(let i=0;i<110;i++)s.wind(1/60);s.fire();advance(s,40);
  assert.equal(s.failure,'');assert.equal(s.phase,'finished');assert.ok(s.release.angle>38&&s.release.angle<40);assert.ok(s.release.speed>21&&s.release.speed<23);
- assert.ok(s.contactEvents.some(e=>e.id==='lower-canopy-one'),'a real canopy surface catches the starter flight');assert.ok(s.real(s.shot).y<-15);
+ assert.ok(s.contactEvents.some(e=>e.id==='opening-skip-1'),'the authored opening catches the starter flight');assert.ok(s.contactEvents.some(e=>e.id==='opening-skip-4'),'separated spring mats carry the starter forward');assert.ok(s.real(s.shot).y<-15);
  assert.ok(s.contactEvents.length<=64);assert.equal(new Set(s.contactEvents.map(e=>e.seq)).size,s.contactEvents.length);
 });
 test('invalid imports reject crossings, duplicates, unknown enemies and excess geometry before replacing a save',()=>{

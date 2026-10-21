@@ -1,7 +1,7 @@
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=16';
-import {drawAncientTree} from './grove-tree-art.js?v=16';
-import {drawJungleBackdrop} from './grove-jungle-art.js?v=16';
-import {spaceScale} from './grove-map.js?v=16';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=18';
+import {drawAncientTree} from './grove-tree-art.js?v=18';
+import {drawJungleBackdrop} from './grove-jungle-art.js?v=18';
+import {spaceScale} from './grove-map.js?v=18';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Every crown, trunk and forest tree is placed in metres. Parallax fades out
@@ -18,6 +18,9 @@ export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0}){
   for(let i=-4;i<13;i++){const x=i*165+Math.sin(i*2.4)*40,y=t.height+70+Math.sin(i*1.7)*75-origin;c.globalAlpha=(1-space)*.62;oval(x,y,65,12,'#eff0dc');oval(x-22,y+9,30,18,'#f4f3df');oval(x+16,y+11,35,24,'#f4f3df');}c.globalAlpha=1;
   drawJungleBackdrop(c,{project,camera:cam,scale:s,width:W,height:H,origin,parallax:depth});
   drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:H,camera:cam});
+  // A quiet pool of canopy light separates small volunteers from the enormous
+  // crown behind them. Atmosphere is screen-space; actual trees stay in metres.
+  if(s>6&&space<.1){const light=c.createRadialGradient(W*.54,H*.38,0,W*.54,H*.38,Math.max(W,H)*.76);light.addColorStop(0,'#e8f0d8b0');light.addColorStop(.5,'#c2dac18a');light.addColorStop(1,'#84b6a000');c.fillStyle=light;c.fillRect(0,0,W,H);}
   const radius=t.crownRadius??t.trunkWidth*3.6,half=(t.crownDepth??t.height*.44)/2,cy=t.height-half-origin,cx=t.trunkX;
   // Layered sprays, stems and hanging vines give the close interior depth.
   // Detail is selected on a world grid; wide views retain the same whole crown.

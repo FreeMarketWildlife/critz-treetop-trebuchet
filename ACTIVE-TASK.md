@@ -1,3 +1,9 @@
+# Overnight improvement checkpoint — October 21, 2026
+
+Current work continues on codex/custom-trebuchet-workshop. Read docs/overnight-pass-1/implementation.md for tested changes, screenshots, model limits and next pass. Preserve the clean-play/weapon/loading work, new revision-5 shared default route, .55-second follow acquisition and current public Sites version-8 identity. Sites publication of this pass is pending a separate source-helper release action; no credential/access changes performed. Existing server and personal saves remain untouched. Focus next on clearer original world art and speed-aware post-launch framing, not experimental physics research.
+
+---
+
 # Current update — ancient tree, jungle strata and leaf scale, October 20, 2026
 
 Completed the user’s combined tree/jungle/leaf-scale revision. The forked 800 m tree has curved boughs, layered crown and buttress roots; rainforest depths and four botanical strata add 487 editable starter pieces, including collidable lianas, spring boughs, fungi and logs. Ordinary leaves are 10–18 cm beside the 18 cm mouse. Existing edited geometry and saves are preserved. New starter revision 4 only replaces an untouched revision 3. Front crank, gravity-driven throw, jointed loading and character models are retained.
