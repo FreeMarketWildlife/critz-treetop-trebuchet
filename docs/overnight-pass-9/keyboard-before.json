@@ -1,0 +1,31 @@
+{
+  "method": "Node VM, extracted baseline build-app handlers with actual createHoldControl; no native browser",
+  "baseline": "41e8d45b2b428ee3bcbd100b3158f9baca18b7e0",
+  "cases": [
+    {
+      "sequence": "Launcher Space down, Enter down, Enter up while Space remains down",
+      "events": [
+        "wind",
+        "FIRE"
+      ],
+      "active": false,
+      "problem": "Foreign key release fires owning Space hold"
+    },
+    {
+      "sequence": "Launcher Enter down, Tab away, Enter up on document",
+      "events": [
+        "wind"
+      ],
+      "active": true,
+      "problem": "Hold remains active after focused control loses keyup"
+    },
+    {
+      "sequence": "Launcher Space down, Tab away, Space up on document",
+      "events": [
+        "wind"
+      ],
+      "active": true,
+      "problem": "Document keyup ends stage Space owner, not launcher keyboard owner"
+    }
+  ]
+}

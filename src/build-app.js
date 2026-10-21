@@ -218,8 +218,12 @@ const launchButton=$('launchButton');
 launchButton.addEventListener('pointerdown',e=>{if(e.button!==0||!e.isPrimary)return;e.preventDefault();if(beginHold(e.pointerId))launchButton.setPointerCapture(e.pointerId);});
 launchButton.addEventListener('pointerup',e=>{hold.end(e.pointerId);if(launchButton.hasPointerCapture(e.pointerId))launchButton.releasePointerCapture(e.pointerId);});
 for(const type of ['pointercancel','lostpointercapture'])launchButton.addEventListener(type,e=>hold.cancel(e.pointerId));
-launchButton.addEventListener('keydown',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();if(!e.repeat)beginHold('launcher-key');}});
-launchButton.addEventListener('keyup',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();hold.end('launcher-key');}});
+launchButton.addEventListener('keydown',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();if(!e.repeat)beginHold('launcher-key:'+e.code);}});
+launchButton.addEventListener('keyup',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();hold.end('launcher-key:'+e.code);}});
+// Focus changes cancel only this control's keyboard owners. Pointer capture and
+// the stage's Space gesture keep their independent ownership.
+launchButton.addEventListener('blur',()=>{for(const code of ['Space','Enter'])hold.cancel('launcher-key:'+code);});
+stage.addEventListener('blur',()=>hold.cancel('space'));
 launchButton.addEventListener('click',e=>e.preventDefault());
 stage.addEventListener('contextmenu',e=>e.preventDefault());
 document.addEventListener('pointerdown',()=>{sound.unlock();},{capture:true});
@@ -231,7 +235,7 @@ document.addEventListener('keydown',e=>{
  if(e.code==='Space'&&!['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!e.repeat)beginHold('space');}
  if(e.code==='Escape'&&!document.querySelector('dialog[open]')){if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else $('pause').click();}
 });
-document.addEventListener('keyup',e=>{if(e.code==='Space'){if(hold.active)e.preventDefault();hold.end('space');}});
+document.addEventListener('keyup',e=>{if(['Space','Enter'].includes(e.code)){const launcher=hold.end('launcher-key:'+e.code),stageKey=e.code==='Space'&&hold.end('space');if(launcher||stageKey)e.preventDefault();}});
 function interrupt(){cancelLoading();hold.cancel();soundQueue.length=0;sound.pause();if(['swing','flight'].includes(sim?.phase)){paused=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','true');}lastTime=0;dirty=true;}
 window.addEventListener('blur',interrupt);document.addEventListener('visibilitychange',()=>{if(document.hidden)interrupt();lastTime=0;});
 new ResizeObserver(()=>{dirty=true;renderer.fit(false);}).observe(stage);
