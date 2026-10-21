@@ -17,3 +17,6 @@ Grandfather crown publication: **version 4**, source `4debd28d39ad590101f7e898ee
 
 
 Close-up loading release: **version 6**, source `7394726e0b8375555e25fd3356e1cc3dae42f1a0`, deployment `appgdep_6ad8040337b881919655c4bb35b32141`. Public live manual loading/throw verified; normal save migrated to the compact kit while retaining the older geared wheel and earned progress. Final suite 395/395, focused 35/35. Four final runtime module checks returned 200 and exact parity. See docs/loading-workshop/implementation.md for model boundaries and evidence. Local game remains running at port 8080.
+
+
+Slower swing release: **version 7**, source `53db1df9bec0eb543d844e686a6fa8e6b72726e8`, deployment `appgdep_6ad822d332408191bed16420f65c38af`. The public game verified a 1.375-second swing, exact physical release parity and new release/audio feedback. Five key module fetches returned 200 with exact parity; no new hosted errors. Full suite 401/401. All implementation and prior local game work were committed and pushed to `origin/codex/custom-trebuchet-workshop` (implementation `abb600b`). Evidence and model limits: docs/swing-workshop/implementation.md.
