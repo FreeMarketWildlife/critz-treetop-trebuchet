@@ -1,4 +1,4 @@
-import {decodeMapLink} from './map-link-codec.js?v=36';
+import {decodeMapLink} from './map-link-codec.js?v=38';
 /** Player-readable snapshots use only world data. No author UI, stylesheet or
  * second game is imported. Applying/restoring a snapshot never saves it. */
 export function createWorldLinkLoader(world,{decode=decodeMapLink,canApply=()=>true}={}){

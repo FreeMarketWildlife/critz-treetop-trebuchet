@@ -1,4 +1,4 @@
-import {mapLevels,spaceScale} from './grove-map.js?v=36';
+import {mapLevels,spaceScale} from './grove-map.js?v=38';
 import {critter} from './build-catalog.js?v=31';
 
 const finite=(value,low,high)=>Number.isFinite(value)&&value>=low&&value<=high;

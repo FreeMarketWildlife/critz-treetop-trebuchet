@@ -1,6 +1,6 @@
 import {drawProportionedOak} from './grove-tree-art.js?v=35';
 import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=25';
-import {mapLevels} from './grove-map.js?v=36';
+import {mapLevels} from './grove-map.js?v=38';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Derive decorative crowns from canonical editable props, not another forest

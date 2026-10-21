@@ -3,7 +3,7 @@
   "status": "Code-level evidence; native browser acceptance pending; see release-readiness.md for release status",
   "map": {
     "version": 4,
-    "starterRevision": 3,
+    "starterRevision": 4,
     "launch": {
       "x": 0,
       "y": 32
@@ -16,7 +16,7 @@
       "crownRadius": 38,
       "crownDepth": 64
     },
-    "canonicalSha256": "06e741415ebe9f37514fb943a548e0d9e56ac7e11c3a58f7f8fc9a1e07569817"
+    "canonicalSha256": "fc21db583254fe54d2b96474707609949887ab9834082eab0a153b2627b88d15"
   },
   "protocol": {
     "preparationStep": 0.008333333333333333,
@@ -1125,22 +1125,22 @@
       "supportedAfterWind": true,
       "postWindSettle": 0.2583333333333333,
       "release": {
-        "x": -9.213177452796193,
-        "y": 43.39986902646389,
-        "vx": 50.5202926752149,
-        "vy": 35.63462641321202,
-        "angle": 35.197334488673576,
+        "x": -9.21317745279604,
+        "y": 43.399869026463946,
+        "vx": 50.52029267521487,
+        "vy": 35.63462641321174,
+        "angle": 35.19733448867339,
         "time": 2.023811379550981,
         "reason": "Release ring cleared the pin",
-        "speed": 61.82334972806439,
-        "energy": 9555316.428996399
+        "speed": 61.8233497280642,
+        "energy": 9555316.428996343
       },
-      "peakTension": 4332679.0337434085,
+      "peakTension": 4332679.033665297,
       "ropeLimit": 1500000000,
-      "peakStress": 281447755.9346082,
+      "peakStress": 281447755.9296733,
       "beamFailureStress": 320000000,
-      "distance": 325.96763750409485,
-      "maxHeightAboveFloor": 101.84045993049494,
+      "distance": 325.9676375013697,
+      "maxHeightAboveFloor": 101.84045993047485,
       "completionSeconds": 19.069433984782936,
       "phase": "finished",
       "failure": "",

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {createGroveMap,createV4Revision1GroveMap,createV4Revision2GroveMap,readGroveMap,saveGroveMap,validateGroveMap,enemyRecipe,objectBounds,MAP_KEY} from '../src/grove-map.js';
+import {createGroveMap,createV4Revision1GroveMap,createV4Revision2GroveMap,createV4Revision3GroveMap,readGroveMap,saveGroveMap,validateGroveMap,enemyRecipe,objectBounds,MAP_KEY} from '../src/grove-map.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {createPayloadLoading} from '../src/payload-loading.js';
 import {SCALE_BUILDS,createScaleBuild} from '../src/scale-builds.js';
@@ -12,7 +12,7 @@ const cache=new Map();
 // No pose, velocity, draw state or collision fixtures are substituted.
 function run(revision,id,draw,weapon='none'){
  const key=[revision,id,draw,weapon].join('/');if(cache.has(key))return cache.get(key);
- const map=revision===1?createV4Revision1GroveMap():revision===2?createV4Revision2GroveMap():createGroveMap(),s=new BuildSimulation(createScaleBuild(id),{map});s.setDraw(0);s.loading=createPayloadLoading(s);
+ const map=revision===1?createV4Revision1GroveMap():revision===2?createV4Revision2GroveMap():revision===3?createV4Revision3GroveMap():createGroveMap(),s=new BuildSimulation(createScaleBuild(id),{map});s.setDraw(0);s.loading=createPayloadLoading(s);
  const support=()=>{let stable=0;for(let i=0;i<720&&stable<30;i++){s.loading.step(1/120);stable=s.loading.loaded?stable+1:0;}assert.equal(stable,30,`${key}: supported for .25s`);};
  assert.equal(s.loading.loadKeyboard(),true);support();
  let winds=0;while(s.drawFraction<draw&&winds++<36000){s.wind(1/120);s.loading.step(1/120);}assert.ok(s.drawFraction>=draw);support();
@@ -32,7 +32,7 @@ function run(revision,id,draw,weapon='none'){
 test('revision-one default stays exact and only untouched copies migrate without writes',()=>{
  const previous=createV4Revision1GroveMap(),raw=JSON.stringify(previous),storage=store(raw);
  assert.equal(createHash('sha256').update(raw).digest('hex'),'2ed10782a59f071793c0e734bfa0b373b8b25a1d34528e41486f94e26b7a2b94');
- assert.equal(previous.objects.length,93);assert.equal(createGroveMap().starterRevision,3);assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.raw,raw);assert.equal(storage.writes,0);
+ assert.equal(previous.objects.length,93);assert.equal(createGroveMap().starterRevision,4);assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.raw,raw);assert.equal(storage.writes,0);
  for(const edit of[m=>{m.name='My authored grove';},m=>{m.objects[0].points[0].x-=.01;},m=>{m.objects[0].bounce=.42;},m=>{m.objects[0].collision=false;},m=>{m.objects.pop();},m=>{m.tree.height=105;}]){const changed=structuredClone(previous);edit(changed);const s=store(JSON.stringify(changed)),before=s.raw;assert.deepEqual(readGroveMap(s),validateGroveMap(changed));assert.equal(s.raw,before);assert.equal(s.writes,0);}
  const invalid=store('{broken');assert.equal(readGroveMap(invalid),null);assert.equal(invalid.raw,'{broken');assert.equal(invalid.writes,0);
  const saved=store();saveGroveMap(saved,createGroveMap());assert.deepEqual(readGroveMap(saved),validateGroveMap(createGroveMap()));
@@ -46,19 +46,19 @@ test('new route uses short real boughs, ordinary forest scales and unchanged spe
  assert.ok(m.objects.some(o=>o.id==='route-upper-bay-10-a'));assert.ok(!m.objects.some(o=>o.id.startsWith('route-cloud-bank-')));
 });
 
-for(const {id,minimumDraw}of SCALE_BUILDS)for(const draw of[...new Set([minimumDraw,.75,1])])test(`${id}/${draw}: actual carried launch keeps clearance and reaches a natural finish`,()=>{const r=run(3,id,draw);assert.ok(r.s.time-r.s.release.time<45);});
+for(const {id,minimumDraw}of SCALE_BUILDS)for(const draw of[...new Set([minimumDraw,.75,1])])test(`${id}/${draw}: actual carried launch keeps clearance and reaches a natural finish`,()=>{const r=run(4,id,draw);assert.ok(r.s.time-r.s.release.time<45);});
 
 for(const draw of[.75,1])test(`starter/${draw}: early top landings and continued contacts replace the empty opening`,()=>{
- const before=run(1,'small',draw),after=run(3,'small',draw);
+ const before=run(1,'small',draw),after=run(4,'small',draw);
  assert.ok(after.contacts[0].time-after.s.release.time<1.5);assert.ok(after.props.size>=5);assert.ok(after.props.size>before.props.size);assert.ok(after.maxGap<2.75);assert.ok(after.s.maxX>50);
 });
 
 for(const id of['medium','large'])for(const draw of[.75,1])test(`${id}/${draw}: upgraded flight encounters the authored forest instead of bare floor`,()=>{
- const before=run(1,id,draw),after=run(3,id,draw);assert.ok(after.props.size>=3);assert.ok(after.props.size>=before.props.size);assert.ok(after.maxGap<4);assert.ok(after.maxGap<before.maxGap);
+ const before=run(1,id,draw),after=run(4,id,draw);assert.ok(after.props.size>=3);assert.ok(after.props.size>=before.props.size);assert.ok(after.maxGap<4);assert.ok(after.maxGap<before.maxGap);
 });
 
 for(const id of['small','medium','large','elephant'])for(const draw of[.75,1])for(const weapon of['air','staff'])test(`${id}/${draw}/${weapon}: bounded flight interventions still finish`,()=>{
- const r=run(3,id,draw,weapon);assert.equal(r.shots,weapon==='air'?1:3);assert.ok(r.s.time-r.s.release.time<50);
+ const r=run(4,id,draw,weapon);assert.equal(r.shots,weapon==='air'?1:3);assert.ok(r.s.time-r.s.release.time<50);
 });
 
 
@@ -70,7 +70,7 @@ test('released revision-two stays exact; only untouched copies migrate and reads
 });
 
 test('four rare rooted emergents add only short visible upper boughs below the Grandfather crown',()=>{
- const before=createV4Revision2GroveMap(),m=validateGroveMap(createGroveMap()),oldIds=new Set(before.objects.map(o=>o.id)),added=m.objects.filter(o=>!oldIds.has(o.id));
+ const before=createV4Revision2GroveMap(),m=validateGroveMap(createV4Revision3GroveMap()),oldIds=new Set(before.objects.map(o=>o.id)),added=m.objects.filter(o=>!oldIds.has(o.id));
  assert.deepEqual(m.objects.filter(o=>oldIds.has(o.id)),before.objects);assert.equal(m.objects.length,377);assert.equal(added.length,21);
  const trunks=added.filter(o=>o.id.endsWith('-trunk')),crowns=added.filter(o=>o.id.endsWith('-crown')),boughs=added.filter(o=>o.id.startsWith('route-rare-bough-'));
  assert.equal(trunks.length,4);assert.equal(crowns.length,4);assert.equal(boughs.length,13);assert.deepEqual(trunks.map(o=>objectBounds(o).maxY+32),[88.5,88.5,88.5,85]);

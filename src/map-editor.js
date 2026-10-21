@@ -3,9 +3,9 @@ import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=35';
 import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=30';
 import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=25';
 import {groveTreeCamera,groveOverviewBounds} from './grove-camera.js?v=35';
-import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=36';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=36';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=36';
+import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=38';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=38';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=38';
 import {createAudio} from './audio.js?v=28';
 import {loadAudioPreferences} from './audio-preferences.js';
 /** Mount tools inside the game's scoped panel. The supplied world is the

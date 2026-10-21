@@ -139,7 +139,7 @@ export function proportionedV2StarterObjects(makeEnemy){
  * https://www.botanic.cam.ac.uk/expedition-finds-the-tallest-tree-in-the-amazon/
  * Trunks/crowns are background props; every supporting bough is its editable
  * visible polygon. No collision wall, scaled encounter or extra impulse. */
-export function proportionedStarterObjects(makeEnemy){
+export function proportionedV3StarterObjects(makeEnemy){
  const objects=proportionedV2StarterObjects(makeEnemy),floor=-PROPORTIONED_LAUNCH_Y;
  const poly=(id,name,points,material,bounce,extra={})=>objects.push({id,name,type:'polygon',points,collision:true,layer:'world',material,bounce,...extra});
  const bough=(id,name,x,y,endX,endY,width=.32,material='wood',bounce=.58)=>poly(id,name,branchPolygon(point(x,y),point(endX,endY),width,width*.45),material,bounce);
@@ -155,5 +155,13 @@ export function proportionedStarterObjects(makeEnemy){
   poly(`amazon-tree-${i}-crown`,'Rare emergent crown · background',ellipse(x,top-8,9,8),'foliage',0,{...back,density:.5});
   for(const[j,dx,y,endDx,endY,width,material,bounce]of branches)bough(`route-rare-bough-${i}-${j}`,'Rare emergent bough',x+dx,y,x+endDx,endY,width,material,bounce);
  }
+ return objects;
+}
+
+/** A short return fork on the existing 45m tree. Visible passive contact, not
+ * a larger tree, invisible barrier, enlarged animal or powered launch. */
+export function proportionedStarterObjects(makeEnemy){
+ const objects=proportionedV3StarterObjects(makeEnemy);
+ objects.push({id:'corridor-return-fork',name:'Forest return fork',type:'polygon',points:branchPolygon(point(352,-7),point(345,-6),.25,.10),collision:true,layer:'world',material:'wood',bounce:.5});
  return objects;
 }

@@ -2644,6 +2644,16 @@
     "objectId": "route-rare-bough-58-2"
   },
   {
+    "id": "object-corridor-return-fork",
+    "name": "Forest return fork",
+    "category": "World solids",
+    "width": 7.024748737341554,
+    "height": 1.1732411613907043,
+    "extent": 7.024748737341554,
+    "measure": "Physical polygon · wood",
+    "objectId": "corridor-return-fork"
+  },
+  {
     "id": "object-route-rare-bough-56-2",
     "name": "Rare emergent bough",
     "category": "World solids",

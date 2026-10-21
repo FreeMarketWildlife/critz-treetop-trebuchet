@@ -1,4 +1,4 @@
-import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG,formatMetres} from './world-scale.js?v=36';
+import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG,formatMetres} from './world-scale.js?v=38';
 import {SCALE_BUILDS,scaleBuildFacts} from './scale-builds.js?v=35';
 const $=id=>document.getElementById(id),el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node;};
 const inventory=scaleInventory();

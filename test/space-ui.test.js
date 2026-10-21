@@ -159,3 +159,36 @@ test('Collect retries the applied rig while preserving an unfinished invalid bui
  const h=setup();display(h);const original=h.c.sim.c,reward=rewards(h.c.resultData()),before=h.c.state.bells;h.c.draft={...original,pivotHeight:NaN};h.$('buildName').value='Work in progress';h.c.collect();
  assert.equal(h.c.state.bells,before+reward.bells);assert.equal(h.c.sim.phase,'ready');assert.equal(h.c.sim.c.pivotHeight,original.pivotHeight);assert.equal(h.c.state.pendingSpace,null);assert.ok(Number.isNaN(h.c.draft.pivotHeight));assert.equal(h.$('buildName').value,'Work in progress');const paid=copy(h.c.state);h.c.collect();assert.deepEqual(copy(h.c.state),paid);
 });
+
+
+test('actual Collect reports ledger overflow without phantom logs or consuming the pending result',()=>{
+ for(const key of['bells','points','launches']){
+  const initial={...newProgress(),bells:89,points:18117,[key]:Number.MAX_SAFE_INTEGER-1},h=setup({state:initial});display(h);
+  // Launch-count overflow needs the final safe value, since one run adds one.
+  if(key==='launches'){h.c.state={...h.c.state,launches:Number.MAX_SAFE_INTEGER};saveProgress(h.storage,h.c.state);}
+  h.c.sessionLog=[{existing:'kept'}];const before=copy(h.c.state),log=copy(h.c.sessionLog),bytes=h.storage.getItem(SAVE_KEY),sim=h.c.sim,chimes=h.chimes.length,shopNew=h.$('shopNew').hidden;
+  assert.doesNotThrow(()=>h.c.collect(),key+' overflow must be contained by the actual UI transaction');
+  assert.deepEqual(copy(h.c.state),before);assert.deepEqual(copy(h.c.sessionLog),log);assert.equal(h.storage.getItem(SAVE_KEY),bytes);
+  assert.equal(h.c.sim,sim);assert.equal(h.c.banked,false);assert.equal(h.c.resultShown,true);assert.equal(h.c.pendingCollection(),true);
+  assert.equal(h.chimes.length,chimes);assert.equal(h.$('shopNew').hidden,shopNew);assert.match(h.messages.at(-1),/supported range/i);
+ }
+});
+test('an injected shop successor failure rolls back the whole Collect transaction and one later retry pays once',()=>{
+ const h=setup();display(h);h.c.sessionLog=[{existing:'kept'}];const originalVisit=h.c.visitShop,before=copy(h.c.state),log=copy(h.c.sessionLog),bytes=h.storage.getItem(SAVE_KEY),sim=h.c.sim,reward=rewards(h.c.resultData()),chimes=h.chimes.length,shopNew=h.$('shopNew').hidden;
+ // Fault injection at the domain transaction boundary, not a claim that normal
+ // valid catalogue data causes visitShop to throw.
+ h.c.visitShop=()=>{throw Error('Injected shop successor failure');};
+ assert.doesNotThrow(()=>h.c.collect());assert.deepEqual(copy(h.c.state),before);assert.deepEqual(copy(h.c.sessionLog),log);assert.equal(h.storage.getItem(SAVE_KEY),bytes);
+ assert.equal(h.c.sim,sim);assert.equal(h.c.banked,false);assert.equal(h.c.resultShown,true);assert.equal(h.c.pendingCollection(),true);
+ assert.equal(h.chimes.length,chimes);assert.equal(h.$('shopNew').hidden,shopNew);assert.match(h.messages.at(-1),/Injected shop successor failure/);
+ h.c.visitShop=originalVisit;h.c.collect();assert.equal(h.c.state.bells,before.bells+reward.bells);assert.equal(h.c.state.points,before.points+reward.points);assert.equal(h.c.state.launches,before.launches+1);
+ assert.equal(h.c.state.pendingSpace,null);assert.equal(h.c.sim.phase,'ready');assert.deepEqual(copy(h.c.state.claimed),['escape-ui']);assert.equal(h.c.sessionLog.length,log.length+1);
+ const paid=copy(h.c.state),paidLog=copy(h.c.sessionLog);h.c.collect();assert.deepEqual(copy(h.c.state),paid);assert.deepEqual(copy(h.c.sessionLog),paidLog);assert.deepEqual(loadProgress(h.storage),paid);
+});
+test('a stale actual UI collector cannot roll back another tab payment and later earnings',()=>{
+ const h=setup();display(h);h.c.sessionLog=[{existing:'kept'}];const before=copy(h.c.state),log=copy(h.c.sessionLog),sim=h.c.sim;
+ let current=bank(loadProgress(h.storage),'escape-ui',{});saveProgress(h.storage,current);
+ current=bank(current,'later-legitimate',{distance:20,height:2,release:true,grams:25,animal:'mouse'});saveProgress(h.storage,current);const bytes=h.storage.getItem(SAVE_KEY);
+ assert.doesNotThrow(()=>h.c.collect());assert.deepEqual(copy(h.c.state),before);assert.deepEqual(copy(h.c.sessionLog),log);assert.equal(h.c.sim,sim);assert.equal(h.c.banked,false);assert.equal(h.c.resultShown,true);
+ assert.equal(h.storage.getItem(SAVE_KEY),bytes);assert.deepEqual(loadProgress(h.storage),current);assert.match(h.messages.at(-1),/Reload/);
+});
