@@ -1,4 +1,5 @@
-import {mapLevels,gravityScaleAt,spaceScale} from './grove-map.js?v=25';
+import {escapeAltitude} from './space-policy.js?v=31';
+import {mapLevels,gravityScaleAt} from './grove-map.js?v=25';
 
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const metres=v=>`${Math.abs(v)>=1e7?v.toExponential(1):Math.round(v).toLocaleString('en-US')} m`;
@@ -10,7 +11,7 @@ export function altitudeStripState({map,altitude,animal,spaceState='bound',gravi
  const treeCenter=map.tree.height/2,spaceStart=mapLevels(map).find(l=>l.id==='space').low;
  // Old custom maps can put a tall tree above the start of starlight. Keep the
  // tree centre in the middle and move the compression break above that crown.
- const skyBreak=Math.max(spaceStart,map.tree.height),top=Math.max(map.height,skyBreak+100*spaceScale(map));
+ const skyBreak=Math.max(spaceStart,map.tree.height),top=escapeAltitude(map);
  const anchors=[{altitude:0,fraction:.94},{altitude:treeCenter,fraction:.5},{altitude:skyBreak,fraction:.24},{altitude:top,fraction:.065}];
  const fractionAt=y=>{
   if(y<=0)return anchors[0].fraction;if(y>=top)return anchors.at(-1).fraction;
@@ -27,7 +28,7 @@ export function altitudeStripState({map,altitude,animal,spaceState='bound',gravi
  const displayLabel=edge==='above'?`${metres(top)}+`:edge==='below'?'Below 0 m':altitudeLabel;
  const name=animal?.name??'Critter';
  const landmarks={floor:{altitude:0,fraction:fractionAt(0)},tree:{altitude:treeCenter,fraction:fractionAt(treeCenter)},crown:{altitude:map.tree.height,fraction:fractionAt(map.tree.height)},space:{altitude:spaceStart,fraction:fractionAt(spaceStart)},top:{altitude:top,fraction:fractionAt(top)}};
- const label=`${name}: ${altitudeLabel}. ${status}${!escaped&&known?`; gravity ${Math.round(gravity*100)} percent`:''}. Height only; horizontal distance is not shown. Nonlinear scale: upper sky compressed. Forest floor 0 m; Grandfather Tree centre ${metres(treeCenter)}, crown ${metres(map.tree.height)}; starlight ${metres(spaceStart)}; map top ${metres(top)}.${edge==='below'?' Marker is pinned below the floor.':edge==='above'?' Marker is pinned above the map.':''}`;
+ const label=`${name}: ${altitudeLabel}. ${status}${!escaped&&known?`; gravity ${Math.round(gravity*100)} percent`:''}. Height only; horizontal distance is not shown. Nonlinear scale: upper sky compressed. Forest floor 0 m; Grandfather Tree centre ${metres(treeCenter)}, crown ${metres(map.tree.height)}; starlight ${metres(spaceStart)}; free-drift boundary ${metres(top)}.${edge==='below'?' Marker is pinned below the floor.':edge==='above'?' Marker is pinned above the map.':''}`;
  return{altitude,altitudeLabel,displayLabel,animalId:animal?.id??'',spaceState:escaped?'escaped':'bound',status,gravityFactor:gravity,fraction:known?fractionAt(altitude):null,edge,anchors,landmarks,label};
 }
 const line=(c,points,color,width=1)=>{c.beginPath();c.moveTo(...points[0]);for(const p of points.slice(1))c.lineTo(...p);c.strokeStyle=color;c.lineWidth=width;c.stroke();};

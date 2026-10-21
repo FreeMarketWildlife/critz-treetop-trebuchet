@@ -1,3 +1,4 @@
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=31';
 import {windingMinimum} from './winding-comfort.js?v=30';
 import {addCritterFixtures} from './critter-body.js?v=25';
 import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=25';
@@ -18,7 +19,7 @@ const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
  * torque_real=M*L*torque_solver. No launch impulses or range modifiers. */
 export class BuildSimulation{
  constructor(raw,{map=null}={}){
-  this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();this.impactApproaches=new WeakMap();this.pendingImpacts=new Map();
+  this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.spaceState='bound';this.spaceEscape=null;this.spaceDriftAngle=null;this.escapeThreshold=this.map?escapeAltitude(this.map):null;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();this.impactApproaches=new WeakMap();this.pendingImpacts=new Map();
   this.c=validateBuild(raw);this.facts=buildFacts(this.c);this.animal=critter(this.c.animal);
   const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
   this.world=new World(Vec2(0,-GRAVITY));this.time=0;this.phase='ready';this.release=null;this.failure='';this.events=[];this.trail=[];this.maxX=0;this.maxY=0;this.peakTension=0;this.peakStress=0;this.lastTension=0;this.wheels=[];this.wheelAxles=[];this.moving=[];this.elapsedSettled=0;this.accumulator=0;
@@ -210,7 +211,7 @@ export class BuildSimulation{
  bar(body,a,b,r){const dx=b.x-a.x,dy=b.y-a.y;body.createFixture(Box(Math.hypot(dx,dy)/(2*this.L),r/this.L,Vec2((a.x+b.x)/(2*this.L),(a.y+b.y)/(2*this.L)),Math.atan2(dy,dx)),{density:1,friction:.6,restitution:0,filterGroupIndex:-1});}
  setMass(b,kg){const mass=b.getMass(),ratio=kg/this.M/mass;for(let f=b.getFixtureList();f;f=f.getNext())f.setDensity(f.getDensity()*ratio);b.resetMassData();}
  vertices(b){const vs=[];for(let f=b.getFixtureList();f;f=f.getNext()){const sh=f.getShape();if(sh.getType()==='polygon')vs.push(...sh.m_vertices.map(v=>b.getWorldPoint(v)));}return vs;}
- real(b){const p=b.getPosition(),v=b.getLinearVelocity();return{x:p.x*this.L,y:p.y*this.L,vx:v.x*this.L/this.T,vy:v.y*this.L/this.T,angle:b.getAngle()};}
+ real(b){const p=b.getPosition(),v=b.getLinearVelocity();return{x:p.x*this.L,y:p.y*this.L,vx:v.x*this.L/this.T,vy:v.y*this.L/this.T,angle:b===this.shot&&this.spaceState==='escaped'&&Number.isFinite(this.spaceDriftAngle)?this.spaceDriftAngle:b.getAngle()};}
  tip(){const q=this.arm.getWorldPoint(Vec2(this.c.longArm/this.L,0));return{x:q.x*this.L,y:q.y*this.L};}
  counterPoint(){const p=this.counter===this.arm?this.arm.getWorldPoint(Vec2(-this.c.shortArm/this.L,0)):this.counter.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
  pivot(){if(this.beamBroken)return this.lastPivot;const p=this.axle?.getAnchorA()??this.arm.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
@@ -264,12 +265,52 @@ export class BuildSimulation{
   this.emptyCord=this.world.createJoint(RopeJoint({maxLength:this.c.slingLength/this.L,localAnchorA:Vec2(this.c.longArm/this.L,0)},this.arm,this.pouch));
   this.phase='flight';this.events.push({time:this.time,text:reason});
  }
+ /** Rehydrate only a validated completed crossing, never an in-progress flight.
+  * Its captured world descriptor keeps rewards valid after editor-map changes. */
+ restoreSpaceEscape(record){
+  const escape=validateSpaceEscape(record);
+  if(escape.animal!==this.animal.id||escape.grams!==this.animal.grams)throw Error('Space volunteer does not match this build.');
+  if(this.spaceState==='escaped'){
+   if(JSON.stringify(this.spaceEscape)===JSON.stringify(escape))return false;
+   throw Error('A different space run is already active.');
+  }
+  if(this.phase!=='ready'||this.release)throw Error('Restore space before starting a new launch.');
+  this.applySpaceEscape(escape);return true;
+ }
+ applySpaceEscape(record){
+  const escape=validateSpaceEscape(record),origin=this.map?.launch.y??0;
+  // Isolate the crossing packet from later world, body, UI or reward mutations.
+  for(const value of[escape.world,escape.payload,escape.release])Object.freeze(value);
+  this.spaceEscape=Object.freeze(escape);this.spaceState='escaped';this.phase='escaped';this.gravityFactor=0;
+  if(this.sling){this.world.destroyJoint(this.sling);this.sling=null;this.setMass(this.shot,this.payloadMass);}
+  if(!this.release)this.release={...escape.release,y:escape.release.y+escape.world.launchY-origin};
+  this.failure=escape.failure;this.maxX=escape.distance;this.maxY=escape.height;this.time=escape.time;this.lastTension=0;this.elapsedSettled=0;
+  const p=escape.payload;this.spaceDriftAngle=p.angle;this.shot.setType('dynamic');this.shot.setTransform(Vec2(p.x/this.L,(p.y+escape.world.launchY-origin)/this.L),p.angle);
+  this.shot.setLinearVelocity(Vec2(p.vx*this.T/this.L,p.vy*this.T/this.L));this.shot.setAngularVelocity(p.omega*this.T);this.shot.setGravityScale(0);
+  for(let f=this.shot.getFixtureList();f;f=f.getNext())f.setFilterMaskBits(0);
+  this.shotContacts.clear();this.pendingEncounters.length=0;this.pendingImpacts.clear();this.leafDepth=0;this.environmentChecks=0;
+  this.events.push({type:'space-escape',time:escape.time,altitude:escape.altitude,text:'Beyond the moon — free drift.'});
+ }
+ driftSpace(dt){
+  if(this.phase!=='escaped'||!Number.isFinite(dt)||dt<=0)return;
+  const h=Math.min(dt,.1),p=this.real(this.shot),omega=this.shot.getAngularVelocity()/this.T;
+  const x=p.x+p.vx*h,y=p.y+p.vy*h,angle=p.angle+omega*h,time=this.time+h;
+  // Constant velocity in actual zero gravity. Only an arithmetic overflow holds
+  // the final pose; rewards, contacts and the ordinary flight timeout stay fixed.
+  if(![x,y,angle,time].every(Number.isFinite))return;
+  // Planck's setTransform stores an equivalent angle in [-pi,pi]. Retain
+  // the analytical unwrapped angle so physical rotation stays continuous.
+  this.shot.setTransform(Vec2(x/this.L,y/this.L),angle);this.spaceDriftAngle=angle;this.time=time;
+  if(this.time-(this.lastTrail??-1)>.06){this.trail.push({x,y,t:this.time});this.lastTrail=this.time;if(this.trail.length>1200)this.trail.shift();}
+ }
  step(dt=1/60){
+  if(this.phase==='escaped'){this.driftSpace(dt);return;}
   if(!['swing','flight'].includes(this.phase))return;
   this.accumulator+=Math.min(dt,.1);const h=this.T/480;
-  let steps=0;while(this.accumulator>=h&&steps++<200){this.tick(h);this.accumulator-=h;if(!['swing','flight'].includes(this.phase))break;}
+  let steps=0;while(this.accumulator>=h&&steps++<200){this.tick(h);this.accumulator-=h;if(this.phase==='escaped'){const remaining=this.accumulator;this.accumulator=0;this.driftSpace(remaining);break;}if(!['swing','flight'].includes(this.phase))break;}
  }
  tick(h){
+  if(this.phase==='escaped'){this.driftSpace(h);return;}
   const c=this.c,dt=h/this.T;
   const total=(c.counterGrams+c.frameGrams+this.facts.beamGrams+this.animal.grams)/1000;
   const reaction=this.beamBroken?null:this.axle.getReactionForce(1/dt);
@@ -281,7 +322,18 @@ export class BuildSimulation{
   if(this.map&&this.release){this.gravityFactor=gravityScaleAt(p.y+this.map.launch.y,this.map);this.shot.setGravityScale(this.gravityFactor);}
   if(this.release&&(this.map?this.shotContacts.size>0:p.y<this.payloadRadius+.06*this.L)&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
   if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520*spaceScale(this.map)-p.y-this.map.launch.y)/(60*spaceScale(this.map)))):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
-  this.world.step(dt,32,12);this.time+=h;this.flushImpacts();
+  this.world.step(dt,32,12);this.time+=h;
+  if(this.map&&this.release&&this.phase==='flight'){
+   const q=this.real(this.shot),stable=[q.x,q.y,q.vx,q.vy,this.counterPoint().y].every(Number.isFinite)&&Math.abs(q.x)<=100000;
+   const crossing=stable?spaceCrossingFraction(p,q,this.escapeThreshold,this.map.launch.y):null;
+   if(crossing!==null){
+    const mix=key=>p[key]+(q[key]-p[key])*crossing,payload={x:mix('x'),y:this.escapeThreshold-this.map.launch.y,vx:mix('vx'),vy:mix('vy'),angle:mix('angle'),omega:this.shot.getAngularVelocity()/this.T};
+    this.applySpaceEscape({version:1,world:spaceWorldDescriptor(this.map),threshold:this.escapeThreshold,altitude:this.escapeThreshold,time:this.time-h+h*crossing,payload,
+     distance:Math.max(this.maxX,payload.x-this.startX),height:Math.max(this.maxY,payload.y),release:{...this.release},failure:this.failure,grams:this.animal.grams,animal:this.animal.id});
+    this.driftSpace(h*(1-crossing));return;
+   }
+  }
+  this.flushImpacts();
   if(this.pendingEncounters.length)this.applyEncounters();
   if(this.release&&this.environment){
    const result=this.environment.step(p,this.real(this.shot),this.animal);this.leafDepth=result.leafDepth;this.environmentChecks=result.checks;
@@ -311,6 +363,6 @@ export class BuildSimulation{
   if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&(this.map?this.shotContacts.size>0:q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L)?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>(this.map?Math.max(100,this.map.tree.height*.5):100))this.phase='finished';}
   else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
  }
- snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure};}
+ snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure,spaceState:this.spaceState,spaceEscape:this.spaceEscape?structuredClone(this.spaceEscape):null};}
 }
 export function runBuild(c,seconds=80){const sim=new BuildSimulation(c);sim.fire();for(let t=0;t<seconds&&['swing','flight'].includes(sim.phase);t+=1/60)sim.step(1/60);return sim;}

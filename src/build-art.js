@@ -1,11 +1,11 @@
-import {landingOpportunity} from './landing-opportunity.js?v=30';
+import {landingOpportunity} from './landing-opportunity.js?v=31';
 import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=25';
 import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=30';
+import {GRAVITY} from './build-physics.js?v=31';
 import {drawFlightAccents} from './flight-art.js?v=25';
 import {drawCounterweight} from './counterweight-art.js?v=25';
 import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=30';
-import {RopeVisual} from './rope-visual.js?v=30';
+import {RopeVisual} from './rope-visual.js?v=31';
 import {part,grams} from './build-catalog.js?v=30';
 import {drawGroveWorld} from './grove-art.js?v=27';
 import {createCritterPerformance} from './critter-performance.js?v=25';
@@ -161,7 +161,15 @@ export function createBuildRenderer(canvas){
  const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let zoomFactor=1,treeZoom=1,treeOverview=false,cameraUntil=0;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60,strandDt=1/60,lastDrawnSimTime=0;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const performanceState=createCritterPerformance(),landingCue=createLandingCue();let critterCel={pose:'ready',tier:0,hits:0,angle:0};const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
- function fitScene(sim){cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});cam.scale*=zoomFactor;fit=false;}
+ function fitScene(sim){
+  if(sim.spaceState==='escaped'&&sim.release&&!preview){
+   // A restored completion has no on-screen launcher-to-flight transition.
+   // Seed the existing centred, fully acquired framing before its first draw;
+   // subsequent draws use the player's normal motion preference and lead.
+   cam=groveFlightCamera({},sim.real(sim.shot),{width:W,height:H,animalLength:sim.animal.length/zoomFactor,dt:0,reducedMotion:true});
+  }else{cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});cam.scale*=zoomFactor;}
+  fit=false;
+ }
  function background(sim){
   if(sim.map){drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,editor:false});return;}
   const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#cedec5');grad.addColorStop(.65,'#dee4be');grad.addColorStop(1,'#b5c18d');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
@@ -356,7 +364,7 @@ export function createBuildRenderer(canvas){
   guidanceActive=!paused&&!!sim.loading?.hint&&sim.phase==='ready';
   preview=showPreview;windActive=winding||!!sim.winding;const now=performance.now()/1000;nowTime=now;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
   const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(!(lastSim===sim&&sim.release&&follow&&!preview))fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
-  if(lastSim!==sim){lastSim=sim;lastDrawnSimTime=sim.time;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);strandDt=paused?0:['swing','flight','finished'].includes(sim.phase)?Math.min(1/30,Math.max(0,sim.time-lastDrawnSimTime)):ropeDt;lastDrawnSimTime=sim.time;
+  if(lastSim!==sim){lastSim=sim;lastDrawnSimTime=sim.time;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);strandDt=paused?0:['swing','flight','finished','escaped'].includes(sim.phase)?Math.min(1/30,Math.max(0,sim.time-lastDrawnSimTime)):ropeDt;lastDrawnSimTime=sim.time;
   if(treeOverview&&sim.map&&!preview){const target=groveTreeCamera(sim.map,{width:W,height:H});target.scale*=treeZoom;const mix=reducedMotion||nowTime>=cameraUntil?1:1-Math.exp(-ropeDt*8);cam={x:cam.x+(target.x-cam.x)*mix,y:cam.y+(target.y-cam.y)*mix,scale:Math.exp(Math.log(cam.scale)*(1-mix)+Math.log(target.scale)*mix)};}
   else if(sim.release&&follow&&!preview){
    const payload=sim.real(sim.shot),landing=sim.phase==='flight'?imminentLanding(sim.map,payload,{radius:sim.animal.width*.5,gravity:GRAVITY*(sim.gravityFactor??1)}):null;

@@ -1,15 +1,67 @@
 import {PARTS,CRITTERS,STARTER,PREVIOUS_STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild} from './build-catalog.js?v=30';
 import {VOUCHERS,validateShop} from './build-shop.js?v=30';
+import {validateSpaceEscape} from './space-policy.js?v=31';
 export const SAVE_KEY='treetop-custom-workshop-v1';
-export function newProgress(){return{version:1,starterRevision:5,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[]};}
+export function newProgress(){return{version:1,starterRevision:5,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[],achievements:[],pendingSpace:null};}
 export function canBuild(state,build,creative=false){validateBuild(build);if(creative)return true;if(build.wind!==0||build.drag!==1)throw Error('Adventure uses calm air with air resistance. Reset Creative atmosphere settings first.');for(const[slot]of SLOTS)if(!state.owned.includes(build[slot]))throw Error(`Buy ${part(build[slot]).name} first.`);if(!state.animals.includes(build.animal))throw Error('Invite this volunteer in the shop first.');return true;}
 export function buy(state,id,animal=false){const product=animal?critter(id):part(id),key=animal?'animals':'owned';if(state[key].includes(id))throw Error('Already owned.');if(state.bells<product.price)throw Error('More Bells needed.');return {...state,bells:state.bells-product.price,[key]:[...state[key],id]};}
-export function rewards({distance=0,height=0,release,grams=25,failure=''}){
+const SPACE_ACHIEVEMENT='spaceEscape';
+const validShotId=id=>{if(typeof id!=='string'||!id.length||id.length>120)throw Error('Invalid shot id.');return id;};
+function achievementIds(raw){
+ const ids=raw===undefined?[]:raw;if(!Array.isArray(ids)||ids.length>1||ids.some(id=>id!==SPACE_ACHIEVEMENT)||new Set(ids).size!==ids.length)throw Error('Invalid achievements.');return [...ids];
+}
+function withSpaceAchievement(ids){return ids.includes(SPACE_ACHIEVEMENT)?ids:[...ids,SPACE_ACHIEVEMENT];}
+function minimalBuild(raw){if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(STARTER).some(key=>!Object.hasOwn(raw,key)))throw Error('Incomplete space build.');const c=validateBuild(raw);return Object.fromEntries(Object.keys(STARTER).map(key=>[key,c[key]]));}
+function validatePendingSpace(raw,state){
+ if(raw==null)return null;
+ if(typeof raw!=='object'||Array.isArray(raw))throw Error('Invalid pending space run.');
+ const id=validShotId(raw.id),build=minimalBuild(raw.build),spaceEscape=validateSpaceEscape(raw.spaceEscape);
+ if(build.animal!==spaceEscape.animal)throw Error('Space build volunteer does not match.');
+ canBuild(state,build);return{id,build,spaceEscape};
+}
+/** The crossing record is the sole reward input; drift never raises its totals. */
+export function pendingSpaceResult(packet){
+ const spaceEscape=validateSpaceEscape(packet?.spaceEscape);
+ return{distance:spaceEscape.distance,height:spaceEscape.height,release:{...spaceEscape.release},grams:spaceEscape.grams,animal:spaceEscape.animal,failure:spaceEscape.failure,spaceEscape};
+}
+/** Remember only an already completed escape, never arbitrary active physics. */
+export function markSpaceEscape(state,{id,result,build,spaceEscape},creative=false){
+ if(creative)return state;
+ validShotId(id);if(state.claimed.includes(id))return state;
+ if(result?.phase==='invalid')throw Error('An invalid run cannot escape.');
+ const packet=validatePendingSpace({id,build,spaceEscape},state),data=pendingSpaceResult(packet);
+ if(result){
+  for(const key of ['distance','height','grams','animal','failure'])if(result[key]!==undefined&&result[key]!==data[key])throw Error('Space result does not match the crossing.');
+  if(!result.release)throw Error('Space escape requires a released flight.');
+ }
+ if(state.pendingSpace){
+  const existing=validatePendingSpace(state.pendingSpace,state);
+  if(existing.id===id&&JSON.stringify(existing)===JSON.stringify(packet))return state;
+  throw Error('Collect the pending space run before starting another.');
+ }
+ return{...state,achievements:withSpaceAchievement(achievementIds(state.achievements)),pendingSpace:packet};
+}
+function normalRewards({distance=0,height=0,release,grams=25,failure=''}){
  if(!Number.isFinite(distance)||distance<0||!Number.isFinite(height)||height<0||!Number.isFinite(grams)||grams<=0)throw Error('Invalid shot result.');
  const d=Math.min(distance,20000),massBonus=Math.min(20,Math.max(0,Math.log10(grams/25))*3);
  return{bells:Math.floor(8+Math.sqrt(d)*7+(release?massBonus:0)),points:Math.round(d*10+Math.min(height,10000)*2),distance:d,height,release:!!release,failure};
 }
-export function bank(state,shotId,result,creative=false){if(creative||state.claimed.includes(shotId))return state;const reward=rewards(result);return{...state,bells:state.bells+reward.bells,points:state.points+reward.points,best:Math.max(state.best,reward.distance),launches:state.launches+1,history:[{...reward,animal:result.animal??'mouse',id:shotId},...state.history].slice(0,12),claimed:[...state.claimed,shotId].slice(-100)};}
+export function rewards(result){
+ if(!result.spaceEscape||result.phase==='invalid')return normalRewards(result);
+ const reward=normalRewards(pendingSpaceResult(result));
+ return{...reward,bells:reward.bells*7,points:reward.points*7,multiplier:7,spaceEscape:true};
+}
+export function bank(state,shotId,result,creative=false){
+ if(creative||state.claimed.includes(shotId))return state;
+ validShotId(shotId);
+ const matching=state.pendingSpace?.id===shotId,pending=matching?validatePendingSpace(state.pendingSpace,state):null,data=pending?pendingSpaceResult(pending):result;
+ if(data.phase==='invalid')return state;
+ const reward=rewards(data),bells=state.bells+reward.bells,points=state.points+reward.points,launches=state.launches+1;
+ if(![bells,points,launches].every(Number.isSafeInteger))throw Error('Progress total exceeds the supported range.');
+ const achievements=reward.spaceEscape?withSpaceAchievement(achievementIds(state.achievements)):achievementIds(state.achievements);
+ const animal=reward.spaceEscape?data.spaceEscape.animal:data.animal??'mouse';critter(animal);
+ return{...state,bells,points,best:Math.max(state.best,reward.distance),launches,achievements,pendingSpace:matching?null:state.pendingSpace??null,history:[{...reward,animal,id:shotId},...state.history].slice(0,12),claimed:[...state.claimed,shotId].slice(-100)};
+}
 export function validateProgress(raw){
  if(!raw||raw.version!==1)throw Error('Unsupported save.');
  for(const k of ['bells','points','launches'])if(!Number.isSafeInteger(raw[k])||raw[k]<0)throw Error('Invalid progress totals.');
@@ -32,7 +84,29 @@ export function validateProgress(raw){
  const owned=upgraded?[...new Set([...raw.owned,...STARTER_PARTS])]:raw.owned;
  const build=legacy||untouchedTower?{...STARTER,...(untouchedTower?{winch:raw.build.winch}:{}),name:raw.build.name,animal:raw.build.animal}:raw.build;
  const animals=wheelRevision?[...new Set([...raw.animals,...STARTER_ANIMALS])]:raw.animals;
- const s={...raw,starterRevision:5,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild)};canBuild(s,s.build);return s;
+ const s={...raw,starterRevision:5,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild),achievements:achievementIds(raw.achievements),pendingSpace:null};canBuild(s,s.build);
+ const pending=validatePendingSpace(raw.pendingSpace,s);if(pending){s.achievements=withSpaceAchievement(s.achievements);if(!s.claimed.includes(pending.id))s.pendingSpace=pending;}return s;
 }
-export function saveProgress(storage,state){storage.setItem(SAVE_KEY,JSON.stringify(validateProgress(state)));}
+export class StaleProgressError extends Error{
+ constructor(){super('Space progress changed in another tab. Reload before saving to keep its reward and achievement.');this.name='StaleProgressError';}
+}
+function protectSavedSpace(previous,next){
+ if(!previous.pendingSpace&&!previous.achievements.includes(SPACE_ACHIEVEMENT))return;
+ const stale=()=>{throw new StaleProgressError();};
+ if(!next.achievements.includes(SPACE_ACHIEVEMENT))stale();
+ const waiting=previous.pendingSpace?.id;
+ if(waiting&&next.pendingSpace?.id!==waiting&&!next.claimed.includes(waiting))stale();
+ if(next.pendingSpace&&previous.claimed.includes(next.pendingSpace.id))stale();
+ // Once a space completion is durable, an older collector must not roll back
+ // its claim or later earnings. Permit only the existing 100-ID window eviction
+ // justified by this caller's additional completed launches; never merge money.
+ const advances=next.launches-previous.launches;if(advances<0)stale();
+ const retained=previous.claimed.slice(Math.max(0,previous.claimed.length+advances-100));
+ if(retained.some(id=>!next.claimed.includes(id)))stale();
+}
+export function saveProgress(storage,state){
+ const next=validateProgress(state),raw=storage.getItem(SAVE_KEY);
+ if(raw!==null&&raw!==undefined)protectSavedSpace(validateProgress(JSON.parse(raw)),next);
+ storage.setItem(SAVE_KEY,JSON.stringify(next));
+}
 export function loadProgress(storage){const data=storage.getItem(SAVE_KEY);return data?validateProgress(JSON.parse(data)):newProgress();}

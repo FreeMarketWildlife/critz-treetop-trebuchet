@@ -1,4 +1,4 @@
-import {newProgress} from './build-progress.js?v=30';
+import {newProgress} from './build-progress.js?v=31';
 import {visitShop,purchaseOffer,rerollShop,openPack,choosePack} from './build-shop.js?v=30';
 
 // A separate, disposable shop ledger. Creative purchases exercise the same

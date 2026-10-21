@@ -1,4 +1,4 @@
-import {GRAVITY} from './build-physics.js?v=30';
+import {GRAVITY} from './build-physics.js?v=31';
 /** Presentation timing over the unmodified fixed-step mechanism solver.
  * A slower counterweight fall reveals real motion; no forces, transforms or
  * release velocities are assigned here. All feedback uses active playback time. */
@@ -12,7 +12,7 @@ export function swingPlaybackRate(sim,age){
 export function createLaunchFeel(){
  let current=null,clock=0,swingAge=0,releaseAge=null,releaseClock=null,freeze=0,rate=1,lastSeq=0,lastImpact=-Infinity,impactAge=10,impactPoint=null,impactStrength=0,creakBeat=0,swished=false;
  let samples=[],events=[];
- function reset(sim){current=sim;clock=0;swingAge=0;releaseAge=null;releaseClock=null;freeze=0;rate=1;lastSeq=0;lastImpact=-Infinity;impactAge=10;impactPoint=null;impactStrength=0;creakBeat=0;swished=false;samples=[];events=[];}
+ function reset(sim){current=sim;clock=0;swingAge=0;releaseAge=sim?.spaceState==='escaped'?1:null;releaseClock=sim?.spaceState==='escaped'?0:null;freeze=0;rate=1;lastSeq=0;lastImpact=-Infinity;impactAge=10;impactPoint=null;impactStrength=0;creakBeat=0;swished=false;samples=[];events=[];}
  function advance(sim,dt,{speed=1,paused=false}={}){
   if(current!==sim)reset(sim);events=[];
   if(paused||!Number.isFinite(dt)||dt<=0)return state();

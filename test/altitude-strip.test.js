@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {altitudeStripState,drawAltitudeStrip} from '../src/altitude-strip.js';
 import {createGroveMap,createLegacyGroveMap,gravityScaleAt,validateGroveMap} from '../src/grove-map.js';
+import {escapeAltitude} from '../src/space-policy.js';
 import {CRITTERS} from '../src/build-catalog.js';
 
 const current=createGroveMap(),legacy=createLegacyGroveMap(),mouse=CRITTERS[0];
@@ -67,4 +68,12 @@ test('narrow desktop and phone drawing reuses species portraits with finite boun
 test('invalid canvas dimensions cannot produce invalid geometry',()=>{
  for(const dimensions of[{width:0},{height:0},{width:NaN},{height:Infinity}])assert.throws(()=>drawAltitudeStrip(recordingCanvas().ctx,{map:current,altitude:600,...dimensions}),/Finite positive/);
  assert.throws(()=>altitudeStripState({altitude:600}),/authored Grove map/);
+});
+
+test('top landmark is the exact simulation escape boundary for every supported world descriptor',()=>{
+ for(const base of[current,legacy])for(const height of[600,1500,3000])for(const treeHeight of[350,800,1800]){
+  const map={...base,height,tree:{...base.tree,height:treeHeight}},top=escapeAltitude(map),s=state(top,map);
+  assert.equal(s.landmarks.top.altitude,top);assert.equal(s.fraction,.065);assert.match(s.label,/free-drift boundary/);
+  assert.equal(s.spaceState,'bound','height alone still cannot create the success state');
+ }
 });

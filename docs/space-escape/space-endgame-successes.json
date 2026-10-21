@@ -1,0 +1,293 @@
+{
+  "baseHead": "d8acb27",
+  "spaceWorkingTree": true,
+  "runsUsed": 21,
+  "maxRuns": 24,
+  "sourceHashes": {
+    "src/build-physics.js": "1a5d9d4e66c193733e3727573dd9577bfe073d3d",
+    "src/build-catalog.js": "c38596584bf9ad9e9e6f670646a732bc64bc7f29",
+    "src/grove-map.js": "47f4252e7c6dcc6d83757648aa5789738c8e0645",
+    "src/payload-loading.js": "ff99754745ff4d1e4e38246c45ebe8cd537837e2",
+    "src/space-policy.js": "1f7db6b888cd2c5119bf8e0f323a6f502b9bc206"
+  },
+  "recipes": [
+    {
+      "build": {
+        "name": "Continental elephant space -15",
+        "chassis": "anchored",
+        "arm": "colossus",
+        "frame": "leviathan",
+        "ballast": "continental",
+        "material": "steel",
+        "mount": "hinged",
+        "sling": "whale",
+        "rope": "titanCable",
+        "bearing": "precision",
+        "release": "polished",
+        "winch": "engine",
+        "animal": "elephant",
+        "longArm": 83.2,
+        "shortArm": 25.6,
+        "beamWidth": 3,
+        "pivotHeight": 220,
+        "baseWidth": 64,
+        "frameGrams": 1100000000,
+        "counterGrams": 15000000000,
+        "hanger": 16,
+        "slingLength": 76.8,
+        "pouchWidth": 28.16,
+        "pinAngle": -15,
+        "pinLength": 0.8,
+        "axleRadius": 0.8,
+        "cockAngle": 28,
+        "footFriction": 0.8,
+        "wheelRadius": 7.04,
+        "wheelGrams": 40000000,
+        "brake": 0.002,
+        "walkingLean": 22,
+        "braceCount": 2,
+        "hingeFriction": 0.008,
+        "wind": 0,
+        "drag": 1,
+        "trough": "runway",
+        "troughLength": 176,
+        "troughHeight": 1.92
+      },
+      "physical": true,
+      "creative": true,
+      "adventureOwnedAll": true,
+      "warnings": [],
+      "initialLoad": {
+        "loaded": true,
+        "seconds": 1.4166666666666665
+      },
+      "winding": {
+        "seconds": 8.883333333333354,
+        "draw": 1,
+        "loaded": true,
+        "heldSeconds": 0,
+        "reloadedDuringFullDraw": true,
+        "reloadSeconds": 1.9,
+        "stableLoadedSeconds": 0.5,
+        "motion": {
+          "vx": -3.197429949907522e-13,
+          "vy": 1.2789781280065802e-12,
+          "omega": -1.2588577268632294e-18
+        },
+        "position": {
+          "x": -30.14610930791148,
+          "y": 119.52147527390187
+        },
+        "target": {
+          "x": -30.146039725862742,
+          "y": 119.4999659762139
+        }
+      },
+      "fired": true,
+      "phase": "escaped",
+      "failure": "",
+      "release": {
+        "x": -47.52997403510476,
+        "y": 344.7816307697102,
+        "vx": 155.14372804720458,
+        "vy": 137.5353159108376,
+        "angle": 41.557071270069535,
+        "time": 3.646297589488719,
+        "reason": "Release ring cleared the pin",
+        "speed": 207.3295431796416,
+        "energy": 107463848.68769717
+      },
+      "peakAltitude": 3001.8492243661562,
+      "crossing": {
+        "time": 20.599999999999703,
+        "altitude": 3001.8492243661562,
+        "vx": 150.47725135923704,
+        "vy": 110.81847658274289,
+        "spaceEscape": {
+          "version": 1,
+          "world": {
+            "version": 3,
+            "height": 3000,
+            "treeHeight": 800,
+            "launchY": 600
+          },
+          "threshold": 3000,
+          "altitude": 3000,
+          "time": 20.58331303205735,
+          "payload": {
+            "x": 2502.0140818164277,
+            "y": 2400,
+            "vx": 150.47725135923704,
+            "vy": 110.81847658274289,
+            "angle": -96.77657750091346,
+            "omega": -5.795228172934154
+          },
+          "distance": 2532.1601911243392,
+          "height": 2400,
+          "release": {
+            "x": -47.52997403510476,
+            "y": 344.7816307697102,
+            "vx": 155.14372804720458,
+            "vy": 137.5353159108376,
+            "time": 3.646297589488719,
+            "speed": 207.3295431796416,
+            "angle": 41.557071270069535,
+            "energy": 107463848.68769717,
+            "reason": "Release ring cleared the pin"
+          },
+          "failure": "",
+          "grams": 5000000,
+          "animal": "elephant"
+        }
+      },
+      "time": 20.599999999999703,
+      "end": {
+        "x": 2504.5250908859125,
+        "y": 2401.8492243661562,
+        "vx": 150.47725135923704,
+        "vy": 110.81847658274289,
+        "angle": -96.87328228765381
+      },
+      "contactIds": []
+    },
+    {
+      "build": {
+        "name": "Continental elephant space -30",
+        "chassis": "anchored",
+        "arm": "colossus",
+        "frame": "leviathan",
+        "ballast": "continental",
+        "material": "steel",
+        "mount": "hinged",
+        "sling": "whale",
+        "rope": "titanCable",
+        "bearing": "precision",
+        "release": "polished",
+        "winch": "engine",
+        "animal": "elephant",
+        "longArm": 83.2,
+        "shortArm": 25.6,
+        "beamWidth": 3,
+        "pivotHeight": 220,
+        "baseWidth": 64,
+        "frameGrams": 1100000000,
+        "counterGrams": 15000000000,
+        "hanger": 16,
+        "slingLength": 76.8,
+        "pouchWidth": 28.16,
+        "pinAngle": -30,
+        "pinLength": 0.8,
+        "axleRadius": 0.8,
+        "cockAngle": 28,
+        "footFriction": 0.8,
+        "wheelRadius": 7.04,
+        "wheelGrams": 40000000,
+        "brake": 0.002,
+        "walkingLean": 22,
+        "braceCount": 2,
+        "hingeFriction": 0.008,
+        "wind": 0,
+        "drag": 1,
+        "trough": "runway",
+        "troughLength": 176,
+        "troughHeight": 1.92
+      },
+      "physical": true,
+      "creative": true,
+      "adventureOwnedAll": true,
+      "warnings": [],
+      "initialLoad": {
+        "loaded": true,
+        "seconds": 1.4166666666666665
+      },
+      "winding": {
+        "seconds": 8.883333333333354,
+        "draw": 1,
+        "loaded": true,
+        "heldSeconds": 0,
+        "reloadedDuringFullDraw": true,
+        "reloadSeconds": 1.9,
+        "stableLoadedSeconds": 0.5,
+        "motion": {
+          "vx": -3.197429949907522e-13,
+          "vy": 1.2789781280065802e-12,
+          "omega": -1.2588577268632294e-18
+        },
+        "position": {
+          "x": -30.14610930791148,
+          "y": 119.52147527390187
+        },
+        "target": {
+          "x": -30.146039725862742,
+          "y": 119.4999659762139
+        }
+      },
+      "fired": true,
+      "phase": "escaped",
+      "failure": "",
+      "release": {
+        "x": -16.23754053065747,
+        "y": 363.1930428305718,
+        "vx": 201.75489519468076,
+        "vy": 85.96388623907761,
+        "angle": 23.077922644479656,
+        "time": 3.81625213815133,
+        "reason": "Release ring cleared the pin",
+        "speed": 219.30532932954844,
+        "energy": 120237068.68085423
+      },
+      "peakAltitude": 3000.7482542991365,
+      "crossing": {
+        "time": 37.216666666665844,
+        "altitude": 3000.7482542991365,
+        "vx": 195.08523554857385,
+        "vy": 40.36079871996574,
+        "spaceEscape": {
+          "version": 1,
+          "world": {
+            "version": 3,
+            "height": 3000,
+            "treeHeight": 800,
+            "launchY": 600
+          },
+          "threshold": 3000,
+          "altitude": 3000,
+          "time": 37.19812753159253,
+          "payload": {
+            "x": 6498.037978459907,
+            "y": 2400,
+            "vx": 195.08523554857385,
+            "vy": 40.36079871996574,
+            "angle": -262.0770855595272,
+            "omega": -7.855948106432663
+          },
+          "distance": 6528.184087767819,
+          "height": 2400,
+          "release": {
+            "x": -16.23754053065747,
+            "y": 363.1930428305718,
+            "vx": 201.75489519468076,
+            "vy": 85.96388623907761,
+            "time": 3.81625213815133,
+            "speed": 219.30532932954844,
+            "angle": 23.077922644479656,
+            "energy": 120237068.68085423,
+            "reason": "Release ring cleared the pin"
+          },
+          "failure": "",
+          "grams": 5000000,
+          "animal": "elephant"
+        }
+      },
+      "time": 37.216666666665844,
+      "end": {
+        "x": 6501.654689992552,
+        "y": 2400.7482542991365,
+        "vx": 195.08523554857385,
+        "vy": 40.36079871996574,
+        "angle": -262.22272804260126
+      },
+      "contactIds": []
+    }
+  ]
+}
