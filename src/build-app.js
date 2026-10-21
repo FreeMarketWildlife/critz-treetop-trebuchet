@@ -1,3 +1,5 @@
+import {installPauseMenu} from './pause-menu.js';
+import {createWeaponHud} from './weapon-hud.js';
 import {jungleLayerAt} from './grove-jungle.js?v=17';
 import {createLaunchFeel} from './launch-feel.js?v=17';
 import {createPayloadLoading} from './payload-loading.js?v=17';
@@ -72,7 +74,7 @@ function refreshFacts(){
  for(const key of ['wheelRadius','wheelGrams','brake'])$(`tune-${key}`).closest('label').hidden=draft.chassis!=='wheels';
  syncPreview();$('tune-walkingLean').closest('label').hidden=draft.chassis!=='walking';for(const key of ['hanger','hingeFriction'])$(`tune-${key}`).closest('label').hidden=draft.mount!=='hinged'||draft.chassis==='floating';
 }
-function applyBuild({quiet=false}={}){try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});sim.setDraw(0);sim.loading=createPayloadLoading(sim);launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Pause';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
+function applyBuild({quiet=false}={}){try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});weaponHud.reset();sim.setDraw(0);sim.loading=createPayloadLoading(sim);launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
 function switchMode(next){if(editorSession&&!next)return;if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every volunteer. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
 function drawHudCritter(){currentCel=hudPerformance.update(sim);const canvas=$('hudCritter'),c=canvas.getContext('2d');if(canvas.width!==200){canvas.width=200;canvas.height=140;}c.setTransform(2,0,0,2,0,0);c.clearRect(0,0,100,70);drawCritter(c,sim.animal,50,36,76,0,!!sim.release,undefined,currentCel);canvas.dataset.pose=currentCel.pose;canvas.setAttribute('aria-label',`${sim.animal.name}: ${critterPoseName(currentCel)}`);}
 const hold=createHoldControl({
@@ -84,7 +86,7 @@ const hold=createHoldControl({
 function beginHold(id){
  sound.unlock();
  if(paused||document.hidden||document.querySelector('dialog[open]'))return false;
- if(!sim.loading.loaded){toast('You need something to launch!');sim.loading.requestHint();dirty=true;return false;}
+ if(!sim.loading.loaded)return false;
  if(sim.phase==='ready'&&sim.facts.warnings.some(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'))){sim.fire();updateReadouts();dirty=true;return false;}
  return hold.begin(id);
 }
@@ -100,10 +102,10 @@ function updateReadouts(){
  $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?(feelFrame.swingAge<.5?'Counterweight dropping…':feelFrame.swingAge<1?'Sling picking up speed…':'Here we go…'):s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:'Nice experiment.';
  $('launchStatus').textContent=paused?'Tap Resume when you’re ready.':winding?(full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release whenever you like`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Pick up the head, body or tail. Enter loads with the keyboard.';
  if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'DROP INTO THE BASKET':'LOAD THE SLING';
- $('loadingTip').hidden=paused||!!document.querySelector('dialog[open]')||sim.phase!=='ready'||!sim.loading.hint;
+ $('loadingTip').hidden=true;
  const pct=Math.round((sim.drawFraction??0)*100);$('launchButton').disabled=paused||sim.phase!=='ready'||(!winding&&!sim.loading.loaded);$('launchButtonText').textContent=winding?`Release to launch · ${pct}%`:sim.loading.loaded?'Hold to crank & launch':'Load basket first';$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
  $('sceneHint').textContent=`${sim.animal.name} · ${grams(sim.animal.grams)}${sim.release?' · '+critterPoseName(currentCel):''}`;
- $('launchPrompt').hidden=resultShown;$('collectShop').hidden=false;$('collectShop').textContent=creative?'Try the shop →':'Collect & visit shop →';
+ $('launchPrompt').hidden=resultShown||paused||sim.phase!=='ready'||(!sim.loading.loaded&&!winding);$('collectShop').hidden=false;$('collectShop').textContent=creative?'Try the shop →':'Collect & visit shop →';
  $('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);$('stage').dataset.build=sim.c.name;$('stage').dataset.axleHeight=String(sim.c.pivotHeight);$('stage').dataset.animal=sim.animal.id;$('stage').dataset.altitude=altitude.toFixed(2);$('stage').dataset.zone=zone.id;$('stage').dataset.mapObjects=String(groveMap.objects.length);$('stage').dataset.creative=String(creative);$('stage').dataset.combo=String(combo);
  if(['finished','invalid'].includes(s.phase)&&!resultShown)showResult();
 }
@@ -188,16 +190,18 @@ $('wind').onchange=()=>{if(creative)draft.wind=$('wind').valueAsNumber;};$('drag
 $('treeCamera').onclick=()=>{hold.cancel();cancelLoading();const on=renderer.overview();$('treeCamera').setAttribute('aria-pressed',String(on));dirty=true;};
 for(const [id,factor]of[['gameZoomOut',.7],['gameZoomIn',1/.7]])$(id).onclick=()=>{renderer.zoomBy(factor);dirty=true;};
 const stage=$('stage');
+const weaponHud=createWeaponHud({stage,renderer,getSim:()=>sim,isBlocked:()=>paused||document.hidden||!!document.querySelector('dialog[open]'),onFire:e=>{dirty=true;cue(e.hit?'bumper':'click');}});
 stage.addEventListener('wheel',e=>{e.preventDefault();hold.cancel();cancelLoading();renderer.zoomBy(Math.exp(-e.deltaY*.0015));dirty=true;},{passive:false});
 let loadPointer=null;
 function pointerPoint(e){const b=stage.getBoundingClientRect();return renderer.unproject(e.clientX-b.left,e.clientY-b.top);}
 function cancelLoading(){if(loadPointer!==null){sim?.loading.cancel();loadPointer=null;dirty=true;}}
 stage.addEventListener('pointerdown',e=>{
  if(e.button!==0||!e.isPrimary)return;e.preventDefault();
- if(!paused&&!winding&&sim.phase==='ready'&&!document.querySelector('dialog[open]')){
+ if(sim.phase==='flight'){const r=stage.getBoundingClientRect();weaponHud.fire([e.clientX-r.left,e.clientY-r.top]);return;}
+ if(!paused&&sim.phase==='ready'&&!document.querySelector('dialog[open]')){
   const point=pointerPoint(e);sim.loading.activity();
   if(sim.loading.begin(point,Math.min(sim.animal.length*.15,8/renderer.camera.scale))){
-   loadPointer=e.pointerId;stage.setPointerCapture(e.pointerId);stage.focus({preventScroll:true});dirty=true;updateReadouts();return;
+   hold.cancel();loadPointer=e.pointerId;stage.setPointerCapture(e.pointerId);stage.focus({preventScroll:true});dirty=true;updateReadouts();return;
   }
  }
  if(beginHold(e.pointerId)){stage.setPointerCapture(e.pointerId);stage.focus({preventScroll:true});}
@@ -221,13 +225,14 @@ stage.addEventListener('contextmenu',e=>e.preventDefault());
 document.addEventListener('pointerdown',()=>{sound.unlock();},{capture:true});
 document.addEventListener('click',e=>{if(e.target.closest('button')&&!e.target.closest('#soundToggle'))cue('click');});
 document.addEventListener('keydown',e=>{
+ if(!e.repeat&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){if(['Digit1','Digit2','Digit3'].includes(e.code)){weaponHud.select(['slingshot','staff','air'][Number(e.code.slice(-1))-1]);e.preventDefault();}if(e.code==='KeyF'){weaponHud.fire();e.preventDefault();}}
  if(e.code==='Enter'&&document.activeElement===stage&&!paused&&sim.phase==='ready'&&!sim.loading.loaded&&!sim.loading.dragging&&!document.querySelector('dialog[open]')){e.preventDefault();sim.loading.loadKeyboard();dirty=true;cue('ready');updateReadouts();}
 
  if(e.code==='Space'&&!['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!e.repeat)beginHold('space');}
- if(e.code==='Escape'&&!document.querySelector('dialog[open]')){if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else if(['swing','flight'].includes(sim.phase))$('pause').click();}
+ if(e.code==='Escape'&&!document.querySelector('dialog[open]')){if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else $('pause').click();}
 });
 document.addEventListener('keyup',e=>{if(e.code==='Space'){if(hold.active)e.preventDefault();hold.end('space');}});
-function interrupt(){cancelLoading();hold.cancel();soundQueue.length=0;sound.pause();if(['swing','flight'].includes(sim?.phase)){paused=true;$('pause').textContent='Resume';$('pause').setAttribute('aria-pressed','true');}lastTime=0;dirty=true;}
+function interrupt(){cancelLoading();hold.cancel();soundQueue.length=0;sound.pause();if(['swing','flight'].includes(sim?.phase)){paused=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','true');}lastTime=0;dirty=true;}
 window.addEventListener('blur',interrupt);document.addEventListener('visibilitychange',()=>{if(document.hidden)interrupt();lastTime=0;});
 new ResizeObserver(()=>{dirty=true;renderer.fit(false);}).observe(stage);
 new ResizeObserver(()=>{dirty=true;previewRenderer.fit();}).observe($('previewStage'));
@@ -248,6 +253,7 @@ function frame(timestamp){
   const milestone=Math.floor(sim.maxX/Math.max(10,sim.c.longArm*10));if(milestone>scoreStep){scoreStep=milestone;cue('coin',{intensity:.45});}
  }
  if(!document.hidden){for(let i=soundQueue.length-1;i>=0;i--)if(timestamp>=soundQueue[i].at){cue(soundQueue[i].name);soundQueue.splice(i,1);}}
+ weaponHud.draw(active?delta:0);
  $('loadingTip').hidden=!active||sim.phase!=='ready'||!sim.loading.hint;
  const running=active&&(sim.loading.animating||winding||['swing','flight'].includes(sim.phase));
  const animating=(active&&feelFrame.animating)||renderer.needsAnimation()||previewRenderer.needsAnimation();
@@ -265,8 +271,9 @@ window.addEventListener('message',event=>{
  if(!editorSession||event.source!==window.parent||event.origin!==location.origin||event.data?.type!=='grove-playtest-map')return;
  try{groveMap=validateGroveMap(event.data.map);applyBuild({quiet:true});window.parent.postMessage({type:'grove-playtest-loaded',objects:groveMap.objects.length},location.origin);}catch(error){toast(`Map rejected: ${error.message}`);}
 });
+const pauseMenu=installPauseMenu({open(){cancelLoading();hold.cancel();paused=true;dirty=true;soundQueue.length=0;sound.pause();updateReadouts();},resume(){paused=false;lastTime=0;dirty=true;sound.unlock();updateReadouts();}});
 populate();applyBuild({quiet:true});
 if(params.get('creative')==='1')switchMode(true);
 if(editorSession){saving=false;$('saveEnabled').checked=false;$('saveEnabled').disabled=true;$('adventureMode').disabled=true;$('saveStatus').textContent='Editor playtest: Adventure progress is untouched.';window.parent.postMessage({type:'grove-playtest-ready'},location.origin);}
 persist();requestAnimationFrame(frame);
-window.treetop=Object.freeze({snapshot:()=>structuredClone({...sim.snapshot(),creative,bells:state.bells,build:sim.c,winding,draw:sim.drawFraction,drawCount,audio:sound.getStatus(),performance:{...currentCel},crank:crankState(sim),loading:{loaded:sim.loading.loaded,dragging:sim.loading.dragging,animal:renderer.project(sim.real(sim.shot)),target:renderer.project(sim.loading.target())}}),getProgress:()=>structuredClone(state)});
+window.treetop=Object.freeze({snapshot:()=>structuredClone({...sim.snapshot(),creative,weapons:weaponHud.snapshot(),bells:state.bells,build:sim.c,winding,draw:sim.drawFraction,drawCount,audio:sound.getStatus(),performance:{...currentCel},crank:crankState(sim),loading:{loaded:sim.loading.loaded,dragging:sim.loading.dragging,returning:sim.loading.returning,home:renderer.project(sim.loading.home()),animal:renderer.project(sim.real(sim.shot)),target:renderer.project(sim.loading.target())}}),getProgress:()=>structuredClone(state)});

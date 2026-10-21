@@ -14,9 +14,7 @@ test('a tail grip stays at the picked point, swings about it and cancellation re
 test('missed drops fall physically; no proximity snap, and keyboard assist is explicit',()=>{
  const s=setup(),l=s.loading;l.begin(l.position);l.move({x:-.9,y:1});advance(l,.8);const p=l.position;l.drop();assert.deepEqual(l.position,p);advance(l,.15);assert.equal(l.loaded,false);assert.ok(l.position.y<p.y);assert.equal(s.fire(),false);assert.ok(l.loadKeyboard());assert.equal(l.loaded,false);assert.ok(l.position.y>l.target().y);advance(l,2);assert.equal(l.loaded,true);assert.ok(Math.hypot(l.position.x-l.target().x,l.position.y-l.target().y)>1e-6);
 });
-test('drag tip starts after five active seconds, stops while dragging and can be requested by an empty launch',()=>{
- const l=setup().loading;advance(l,4.9);assert.equal(l.hint,false);advance(l,.2);assert.equal(l.hint,true);l.begin(l.position);assert.equal(l.hint,false);l.cancel();assert.equal(l.hint,false);l.requestHint();assert.equal(l.hint,true);l.loadKeyboard();assert.equal(l.hint,false);advance(l,2);assert.equal(l.loaded,true);
-});
+test('loading stays quiet during idle and empty launch attempts',()=>{const l=setup().loading;advance(l,8);assert.equal(l.hint,false);l.requestHint();assert.equal(l.hint,false);});
 test('only untouched previous towers migrate to the compact starter; custom geometry and progress survive',()=>{
  const raw={...newProgress(),starterRevision:3,bells:123,build:{...PREVIOUS_STARTER},blueprints:[{...PREVIOUS_STARTER,name:'My tower'}]};const a=validateProgress(raw);assert.equal(a.build.pivotHeight,1.2);assert.equal(a.bells,123);assert.equal(a.blueprints[0].pivotHeight,3);assert.equal(a.starterRevision,5);const b=validateProgress({...raw,build:{...PREVIOUS_STARTER,pinAngle:-43}});assert.equal(b.build.pivotHeight,3);assert.equal(b.build.pinAngle,-43);assert.deepEqual(validateProgress(a),a);
 });
