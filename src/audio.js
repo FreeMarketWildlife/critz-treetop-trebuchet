@@ -40,7 +40,9 @@ export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, v
       shell: { frequency: 280 + strength * 90, endFrequency: 180, harmony: 2.7, noise: .045, type: 'triangle', bend: 1.06 },
       bumper: { frequency: 330 + strength * 80, endFrequency: 140, harmony: 1.5, noise: .035, duration: .23, bend: 1.5 },
     };
-    cue = { ...cue, ...(Object.hasOwn(materials, material) ? materials[material] : materials.wood) };
+    // The current Grove solver labels its forest floor and stone surfaces stone.
+    const materialKey = material === 'stone' ? 'ground' : material;
+    cue = { ...cue, ...(Object.hasOwn(materials, materialKey) ? materials[materialKey] : materials.wood) };
     // Optional gameplay mass changes timbre, never sound amplitude/physics.
     const pitchScale = Math.pow(clamp(mass, .15, 8), -.16);
     cue.frequency *= pitchScale; cue.endFrequency *= pitchScale;
@@ -51,7 +53,7 @@ export function soundSpec(event, intensity = 1, { material = 'wood', mass = 1, v
 
 /** Call unlock directly from a click/touch/key gesture. Unsupported/blocked audio fails silently. */
 export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
-  let context, master, noiseBuffer, muted = false, volume = .55, pendingUnlock,lastCue=null;
+  let context, master, noiseBuffer, muted = false, volume = .55, wantsRunning = false, transition, generation = 0, lastCue = null;
   const voices = new Set(), lastPlayed = new Map(), sequence = new Map();
   const limit = Math.round(clamp(maxVoices, 1, 16));
   function stopVoice(voice) {
@@ -60,27 +62,52 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
     for (const node of voice.nodes) { try { node.disconnect(); } catch {} }
   }
   function hush() { for (const voice of [...voices]) stopVoice(voice); }
-  async function unlock() {
-    if (pendingUnlock) return pendingUnlock;
-    pendingUnlock = (async () => {
+  // Resume/suspend are asynchronous. One transition follows the latest intent;
+  // a disposed context can never resume work in a later context's generation.
+  function synchronizeContext() {
+    const ctx = context, epoch = generation;
+    if (!ctx) return Promise.resolve(false);
+    if (transition?.context === ctx && transition.generation === epoch) return transition.promise;
+    const task = { context:ctx, generation:epoch, promise:null }; transition = task;
+    task.promise = (async () => {
       try {
-        if (!context) {
-          const Factory = globalThis.AudioContext || globalThis.webkitAudioContext;
-          if (!contextFactory && !Factory) return false;
-          context = contextFactory ? contextFactory() : new Factory({ latencyHint: 'interactive' });
-          master = context.createGain(); master.gain.value = muted ? 0 : volume;
-          // Headroom limits summed cue amplitude even at maximum voice count.
-          master.gain.value /= Math.sqrt(limit);
-          master.connect(context.destination);
-          noiseBuffer = context.createBuffer(1, context.sampleRate, context.sampleRate);
-          const data = noiseBuffer.getChannelData(0); let seed = 271828;
-          for (let i = 0; i < data.length; i++) { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; data[i] = seed / 2147483648 - 1; }
+        while (context === ctx && generation === epoch) {
+          const run = wantsRunning;
+          if (run && ctx.state === 'suspended') await ctx.resume();
+          else if (!run && ctx.state === 'running' && ctx.suspend) await ctx.suspend();
+          else return run && ctx.state === 'running';
+          if (context !== ctx || generation !== epoch) return false;
+          if (wantsRunning === run) return run && ctx.state === 'running';
         }
-        if (context.state === 'suspended') await context.resume();
-        return context.state === 'running';
-      } catch { return false; }
+        return false;
+      } catch { return context === ctx && generation === epoch && wantsRunning && ctx.state === 'running'; }
+      finally { if (transition === task) transition = null; }
     })();
-    try { return await pendingUnlock; } finally { pendingUnlock = null; }
+    return task.promise;
+  }
+  async function unlock() {
+    wantsRunning = true;
+    try {
+      if (!context) {
+        const Factory = globalThis.AudioContext || globalThis.webkitAudioContext;
+        if (!contextFactory && !Factory) return false;
+        // Create and begin resuming directly in the caller's gesture turn.
+        const next = contextFactory ? contextFactory() : new Factory({ latencyHint:'interactive' });
+        try {
+          const gain = next.createGain();
+          // Headroom limits summed cue amplitude even at maximum voice count.
+          gain.gain.value = (muted ? 0 : volume) / Math.sqrt(limit); gain.connect(next.destination);
+          const buffer = next.createBuffer(1, next.sampleRate, next.sampleRate);
+          const data = buffer.getChannelData(0); let seed = 271828;
+          for (let i = 0; i < data.length; i++) { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; data[i] = seed / 2147483648 - 1; }
+          context = next; master = gain; noiseBuffer = buffer;
+        } catch {
+          try { await next.close(); } catch {}
+          return false;
+        }
+      }
+      return await synchronizeContext();
+    } catch { return false; }
   }
   function updateGain() {
     if (master) master.gain.setTargetAtTime((muted ? 0 : volume) / Math.sqrt(limit), context.currentTime, .015);
@@ -125,11 +152,11 @@ export function createAudio({ contextFactory, maxVoices = 10 } = {}) {
   }
   return {
     unlock, play,
-    async pause(){hush();if(context?.state==='running'&&context.suspend)try{await context.suspend();}catch{}},
+    pause(){wantsRunning = false; hush(); return synchronizeContext();},
     getStatus(){return {muted,volume,contextState:context?.state??'not-started',voices:voices.size,lastCue};},
     setMuted(value) { muted = Boolean(value); updateGain(); if (muted) hush(); },
     setVolume(value) { volume = clamp(value, 0, 1); updateGain(); if (!volume) hush(); },
     // Optional lifecycle hook for a disposed game; re-unlock can recreate its context.
-    dispose() { hush(); const old = context; context = master = noiseBuffer = undefined; lastPlayed.clear();sequence.clear();lastCue=null; if (old) return old.close().catch(() => {}); },
+    dispose() { wantsRunning = false; generation++; hush(); const old = context; context = master = noiseBuffer = undefined; transition = null; lastPlayed.clear();sequence.clear();lastCue=null; if (old) try { return Promise.resolve(old.close()).catch(() => {}); } catch {} },
   };
 }

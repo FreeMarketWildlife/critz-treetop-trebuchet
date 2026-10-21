@@ -1,0 +1,92 @@
+[
+  {
+    "case": "fresh storage",
+    "revision": 7,
+    "objects": 499,
+    "writes": 0
+  },
+  {
+    "case": "revision 2",
+    "untouchedReturnsRevision7": true,
+    "untouchedRawUnchanged": true,
+    "editedCasesPreserved": 10,
+    "writes": 0
+  },
+  {
+    "case": "revision 3",
+    "untouchedReturnsRevision7": true,
+    "untouchedRawUnchanged": true,
+    "editedCasesPreserved": 10,
+    "writes": 0
+  },
+  {
+    "case": "revision 4",
+    "untouchedReturnsRevision7": true,
+    "untouchedRawUnchanged": true,
+    "editedCasesPreserved": 10,
+    "writes": 0
+  },
+  {
+    "case": "revision 5",
+    "untouchedReturnsRevision7": true,
+    "untouchedRawUnchanged": true,
+    "editedCasesPreserved": 10,
+    "writes": 0
+  },
+  {
+    "case": "revision 6",
+    "untouchedReturnsRevision7": true,
+    "untouchedRawUnchanged": true,
+    "editedCasesPreserved": 10,
+    "writes": 0
+  },
+  {
+    "case": "revision 7",
+    "untouchedReturnsRevision7": true,
+    "untouchedRawUnchanged": true,
+    "editedCasesPreserved": 10,
+    "writes": 0
+  },
+  {
+    "case": "invalid/unsupported raw bytes",
+    "cases": 9,
+    "readWrites": 0,
+    "invalidSaveWrites": 0,
+    "explicitValidSaveReplacesRaw": true
+  },
+  {
+    "case": "denied read",
+    "fallback": true
+  },
+  {
+    "case": "reset/cancel/undo/redo actual handlers",
+    "cancelWrites": 0,
+    "confirmedCanonical": true,
+    "undoRestoresLocal": true,
+    "redoRestoresDefault": true
+  },
+  {
+    "case": "shared actual handlers",
+    "openSaveResetUndoWrites": 0,
+    "returnRestoresLocal": true,
+    "unsavedDraftRestored": true,
+    "editCopyExplicitlyWrites": true,
+    "editCopyUndoRestoresPriorLocal": true
+  },
+  {
+    "case": "invalid shared token",
+    "currentDraftUnchanged": true,
+    "rawUnchanged": true
+  },
+  {
+    "case": "shared generation races actual handler",
+    "latestWins": true,
+    "removedHashCancelsPendingDecode": true,
+    "writes": 0
+  },
+  {
+    "case": "custom revision metadata",
+    "missingAnd8And100Preserved": true,
+    "writes": 0
+  }
+]
