@@ -1,4 +1,4 @@
-import {WEAPONS,createFlightWeapons} from './flight-weapons.js?v=23';
+import {WEAPONS,createFlightWeapons} from './flight-weapons.js?v=24';
 export function flightMotionCaption(sim){
  if(sim?.phase!=='flight'||!sim.release)return 'Lift + speed';
  const p=sim.real(sim.shot);if(![p.vx,p.vy].every(Number.isFinite)||Math.hypot(p.vx,p.vy)<2)return 'Lift + speed';

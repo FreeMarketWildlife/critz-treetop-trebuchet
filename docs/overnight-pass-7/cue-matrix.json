@@ -1,0 +1,2010 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "none",
+    "enabled": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439186,
+    "wallSeconds": 5.383,
+    "distance": 12.100185,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "launch-bough",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "none",
+    "enabled": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439186,
+    "wallSeconds": 5.383,
+    "distance": 12.100185,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 40,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0.74
+      },
+      {
+        "id": "launch-bough",
+        "lead": 0.104
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286254,
+    "wallSeconds": 12.35,
+    "distance": 46.320615,
+    "zoomVariation": 0.363793,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286254,
+    "wallSeconds": 12.35,
+    "distance": 46.320615,
+    "zoomVariation": 0.363793,
+    "visibleCueFrames": 138,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0.965
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0.74
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.526
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "staff",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.833972,
+    "wallSeconds": 14.883,
+    "distance": 55.854988,
+    "zoomVariation": 0.860535,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "staff",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.833972,
+    "wallSeconds": 14.883,
+    "distance": 55.854988,
+    "zoomVariation": 0.860535,
+    "visibleCueFrames": 145,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 1.23
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.734
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0.747
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0.265
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "air",
+    "enabled": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973463,
+    "wallSeconds": 12.067,
+    "distance": 43.170227,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "air",
+    "enabled": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973463,
+    "wallSeconds": 12.067,
+    "distance": 43.170227,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 170,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0.735
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0.732
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.432
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "none",
+    "enabled": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896185,
+    "wallSeconds": 12.017,
+    "distance": 40.181532,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "none",
+    "enabled": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896185,
+    "wallSeconds": 12.017,
+    "distance": 40.181532,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 166,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0.73
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0.384
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0.388
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0.738
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.332
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.118
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561366,
+    "wallSeconds": 15.7,
+    "distance": 78.755597,
+    "zoomVariation": 0.44638,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561366,
+    "wallSeconds": 15.7,
+    "distance": 78.755597,
+    "zoomVariation": 0.44638,
+    "visibleCueFrames": 147,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0.731
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.726
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.439
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.735
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.19
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.139
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "staff",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506461,
+    "wallSeconds": 14.5,
+    "distance": 74.389224,
+    "zoomVariation": 0.581583,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "staff",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506461,
+    "wallSeconds": 14.5,
+    "distance": 74.389224,
+    "zoomVariation": 0.581583,
+    "visibleCueFrames": 81,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0.746
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.741
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.129
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "air",
+    "enabled": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001382,
+    "wallSeconds": 13.017,
+    "distance": 53.252036,
+    "zoomVariation": 0.645056,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-2",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "air",
+    "enabled": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001382,
+    "wallSeconds": 13.017,
+    "distance": 53.252036,
+    "zoomVariation": 0.645056,
+    "visibleCueFrames": 79,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-2",
+        "lead": 0.742
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0.735
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "none",
+    "enabled": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.474914,
+    "wallSeconds": 17.633,
+    "distance": 75.109682,
+    "zoomVariation": 0.488545,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-2",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-3",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "none",
+    "enabled": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.474914,
+    "wallSeconds": 17.633,
+    "distance": 75.109682,
+    "zoomVariation": 0.488545,
+    "visibleCueFrames": 218,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-skip-2",
+        "lead": 0.742
+      },
+      {
+        "id": "opening-skip-3",
+        "lead": 0.745
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.736
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.736
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.481
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "slingshot",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073166,
+    "wallSeconds": 15.15,
+    "distance": 75.676739,
+    "zoomVariation": 0.411547,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "slingshot",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073166,
+    "wallSeconds": 15.15,
+    "distance": 75.676739,
+    "zoomVariation": 0.411547,
+    "visibleCueFrames": 125,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0.734
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.727
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.747
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.267
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "staff",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.294893,
+    "wallSeconds": 16.417,
+    "distance": 76.972361,
+    "zoomVariation": 0.499972,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "staff",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.294893,
+    "wallSeconds": 16.417,
+    "distance": 76.972361,
+    "zoomVariation": 0.499972,
+    "visibleCueFrames": 120,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0.742
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.742
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.742
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.151
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "air",
+    "enabled": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291455,
+    "wallSeconds": 11.317,
+    "distance": 44.704254,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "air",
+    "enabled": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291455,
+    "wallSeconds": 11.317,
+    "distance": 44.704254,
+    "zoomVariation": 0.280556,
+    "visibleCueFrames": 60,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.74
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.288
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.236
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "none",
+    "enabled": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439186,
+    "wallSeconds": 5.383,
+    "distance": 12.100185,
+    "zoomVariation": 0.677711,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "launch-bough",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "none",
+    "enabled": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439186,
+    "wallSeconds": 5.383,
+    "distance": 12.100185,
+    "zoomVariation": 0.677711,
+    "visibleCueFrames": 40,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0.74
+      },
+      {
+        "id": "launch-bough",
+        "lead": 0.104
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286254,
+    "wallSeconds": 12.35,
+    "distance": 46.320615,
+    "zoomVariation": 0.760948,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286254,
+    "wallSeconds": 12.35,
+    "distance": 46.320615,
+    "zoomVariation": 0.760948,
+    "visibleCueFrames": 138,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0.965
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0.74
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.526
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "staff",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.833972,
+    "wallSeconds": 14.883,
+    "distance": 55.854988,
+    "zoomVariation": 1.25769,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "staff",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.833972,
+    "wallSeconds": 14.883,
+    "distance": 55.854988,
+    "zoomVariation": 1.25769,
+    "visibleCueFrames": 145,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 1.23
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.734
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0.747
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0.265
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "air",
+    "enabled": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973463,
+    "wallSeconds": 12.067,
+    "distance": 43.170227,
+    "zoomVariation": 0.677711,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "air",
+    "enabled": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973463,
+    "wallSeconds": 12.067,
+    "distance": 43.170227,
+    "zoomVariation": 0.677711,
+    "visibleCueFrames": 170,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0.735
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0.732
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.432
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "none",
+    "enabled": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896185,
+    "wallSeconds": 12.017,
+    "distance": 40.181532,
+    "zoomVariation": 0.820164,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "none",
+    "enabled": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896185,
+    "wallSeconds": 12.017,
+    "distance": 40.181532,
+    "zoomVariation": 0.820164,
+    "visibleCueFrames": 166,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "launch-bough",
+        "lead": 0.73
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0.384
+      },
+      {
+        "id": "opening-skip-1",
+        "lead": 0.388
+      },
+      {
+        "id": "opening-rescue-mat",
+        "lead": 0.738
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.332
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.118
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561366,
+    "wallSeconds": 15.7,
+    "distance": 78.755597,
+    "zoomVariation": 1.05842,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561366,
+    "wallSeconds": 15.7,
+    "distance": 78.755597,
+    "zoomVariation": 1.05842,
+    "visibleCueFrames": 147,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0.731
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.726
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.439
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.735
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.19
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.139
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "staff",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506461,
+    "wallSeconds": 14.5,
+    "distance": 74.389224,
+    "zoomVariation": 1.19505,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "staff",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506461,
+    "wallSeconds": 14.5,
+    "distance": 74.389224,
+    "zoomVariation": 1.19505,
+    "visibleCueFrames": 81,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0.746
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.741
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.129
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "air",
+    "enabled": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001382,
+    "wallSeconds": 13.017,
+    "distance": 53.252036,
+    "zoomVariation": 1.254534,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-2",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "air",
+    "enabled": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001382,
+    "wallSeconds": 13.017,
+    "distance": 53.252036,
+    "zoomVariation": 1.254534,
+    "visibleCueFrames": 79,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-2",
+        "lead": 0.742
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0.735
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "none",
+    "enabled": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.474914,
+    "wallSeconds": 17.633,
+    "distance": 75.109682,
+    "zoomVariation": 1.065479,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-2",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-3",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "none",
+    "enabled": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.474914,
+    "wallSeconds": 17.633,
+    "distance": 75.109682,
+    "zoomVariation": 1.065479,
+    "visibleCueFrames": 218,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-1",
+        "lead": 0.737
+      },
+      {
+        "id": "opening-skip-2",
+        "lead": 0.742
+      },
+      {
+        "id": "opening-skip-3",
+        "lead": 0.745
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.736
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.736
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.481
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "slingshot",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073166,
+    "wallSeconds": 15.15,
+    "distance": 75.676739,
+    "zoomVariation": 1.024658,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "slingshot",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073166,
+    "wallSeconds": 15.15,
+    "distance": 75.676739,
+    "zoomVariation": 1.024658,
+    "visibleCueFrames": 125,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-3",
+        "lead": 0.734
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.727
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.747
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.267
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "staff",
+    "enabled": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.294893,
+    "wallSeconds": 16.417,
+    "distance": 76.972361,
+    "zoomVariation": 1.113557,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "staff",
+    "enabled": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.294893,
+    "wallSeconds": 16.417,
+    "distance": 76.972361,
+    "zoomVariation": 1.113557,
+    "visibleCueFrames": 120,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-skip-4",
+        "lead": 0.742
+      },
+      {
+        "id": "opening-skip-4",
+        "lead": 0.742
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.742
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0.151
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "air",
+    "enabled": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291455,
+    "wallSeconds": 11.317,
+    "distance": 44.704254,
+    "zoomVariation": 0.893681,
+    "visibleCueFrames": 0,
+    "modes": [],
+    "leads": [
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "air",
+    "enabled": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291455,
+    "wallSeconds": 11.317,
+    "distance": 44.704254,
+    "zoomVariation": 0.893681,
+    "visibleCueFrames": 60,
+    "modes": [
+      "edge",
+      "surface"
+    ],
+    "leads": [
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.74
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.288
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0.236
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      },
+      {
+        "id": "opening-rest-terrace",
+        "lead": 0
+      }
+    ]
+  }
+]

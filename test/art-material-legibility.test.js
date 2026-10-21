@@ -59,3 +59,10 @@ test('bark depth light follows the face normal with a warm lit shoulder and quie
  assert.ok(Math.abs((x1-x0)*tangent[0]+(y1-y0)*tangent[1])<1e-6,'lighting is perpendicular to the editable face');
  assert.ok(luminance(stops[0][1])>luminance(stops.at(-1)[1])*3,'broad rounded depth stays visible without band texture');
 });
+
+
+test('curved leaf midribs keep identical world segments while the camera moves',()=>{
+ const points=[{x:0,y:0},{x:18,y:3},{x:18,y:2.5},{x:0,y:-.5}],scale=80;
+ const segments=x=>render('leaf',points,scale,x).strokes.filter(s=>s.color==='#b5cc8b').map(s=>s.path.map(([op,...v])=>[op,...v.map((n,i)=>Math.round((i%2?(422-n)/scale:(n-195)/scale+x)*1e6)/1e6)]));
+ const a=segments(4),b=segments(5);assert.ok(a.length&&b.length);assert.ok(a.some(p=>b.some(q=>JSON.stringify(p)===JSON.stringify(q))),'overlapping views retain identical curved midrib geometry');
+});

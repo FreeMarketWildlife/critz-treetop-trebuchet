@@ -1,9 +1,9 @@
-import {addCritterFixtures} from './critter-body.js?v=23';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=23';
+import {addCritterFixtures} from './critter-body.js?v=24';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=24';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=23';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=23';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=23';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=24';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=24';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=24';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;

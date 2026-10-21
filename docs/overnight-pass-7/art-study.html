@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Grimroot Grove · fixed renderer study</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#93ada0;color:#31483a;font:13px system-ui}canvas{display:block;width:100vw;height:100dvh}header{position:fixed;top:12px;left:12px;padding:9px 12px;background:#f1ebd5e8;border-radius:8px;max-width:calc(100vw - 24px)}label{display:block;font-weight:700;margin-bottom:4px}select{font:inherit;color:inherit;background:#faf4df;border:1px solid #829179;border-radius:4px;max-width:100%;padding:4px}small{display:block;margin-top:4px}</style>
+<header><label for="scene">Grimroot Grove · material study</label><select id="scene"><option value="0">Amber seed garden · first skip</option><option value="1">Waxleaf sweep · second skip</option><option value="2">Fern spring · third skip</option><option value="3">Canopy exit · moss log</option></select><button id="measure" type="button">Measure drawing</button><output id="cost"></output><small>Fixed view · actual shared renderer · no gameplay</small></header><canvas id="study"></canvas>
+<script type="module">
+import {drawCritter} from '../../src/build-art.js?v=24';
+import {CRITTERS} from '../../src/build-catalog.js?v=24';
+import {drawGroveWorld} from '../../src/grove-art.js?v=24';
+import {createGroveMap} from '../../src/grove-map.js?v=24';
+const map=createGroveMap(),mouse=CRITTERS.find(a=>a.id==='mouse'),e=document.getElementById('study'),menu=document.getElementById('scene');
+const measure=document.getElementById('measure'),cost=document.getElementById('cost');
+const views=[{x:25,y:-4.8},{x:35.5,y:-11.15},{x:44.7,y:-18.2},{x:73,y:-60.8}];
+function paint(){const w=e.clientWidth,h=e.clientHeight,dpr=devicePixelRatio,c=e.getContext('2d'),camera={...views[+menu.value],scale:145.1667};if(e.width!==w*dpr||e.height!==h*dpr){e.width=w*dpr;e.height=h*dpr;}c.setTransform(dpr,0,0,dpr,0,0);drawGroveWorld(c,{camera,width:w,height:h,map,time:3});drawCritter(c,mouse,w*.42,h*.33,mouse.length*camera.scale,-.35,true,mouse.width*camera.scale,{pose:'flying',airPose:'dive',flex:{head:0,tail:0},tier:0});drawGroveWorld(c,{camera,width:w,height:h,map,time:3,foreground:true});e.dataset.scene=menu.selectedOptions[0].textContent;e.dataset.dimensions=JSON.stringify([w,h]);}
+measure.onclick=()=>{measure.disabled=true;cost.textContent='Measuring…';const times=[],initial=menu.value;let n=0;function frame(){menu.value=String(n%4);const start=performance.now();paint();times.push(performance.now()-start);n++;if(n<120)requestAnimationFrame(frame);else{menu.value=initial;paint();times.sort((a,b)=>a-b);const result={width:e.clientWidth,height:e.clientHeight,samples:times.length,p50:+times[60].toFixed(3),p95:+times[114].toFixed(3),max:+times.at(-1).toFixed(3)};e.dataset.cost=JSON.stringify(result);cost.textContent=' Draw p95 '+result.p95+' ms';measure.disabled=false;}}requestAnimationFrame(frame);};
+menu.addEventListener('change',paint);window.addEventListener('resize',paint);paint();
+</script>

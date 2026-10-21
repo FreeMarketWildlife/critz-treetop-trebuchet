@@ -1,0 +1,10 @@
+{
+  "baselineSha": "613949b7643aa3207fbf5bdef5784b3cbea681aa",
+  "cases": 48,
+  "exactRowsEqual": true,
+  "allFinished": true,
+  "maxWallSeconds": 17.633,
+  "canonicalMapRevision": 7,
+  "canonicalMapObjects": 499,
+  "testsPassed": 488
+}

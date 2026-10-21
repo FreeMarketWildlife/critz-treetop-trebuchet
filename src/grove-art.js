@@ -1,9 +1,10 @@
-import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=23';
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=23';
-import {drawForestForeground} from './grove-jungle-art.js?v=23';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=23';
-import {pointInPolygon} from './grove-geometry.js?v=23';
-import {enemyRecipe} from './grove-map.js?v=23';
+import {drawBotanicalBumper} from './grove-botanical-art.js?v=24';
+import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=24';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=24';
+import {drawForestForeground} from './grove-jungle-art.js?v=24';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=24';
+import {pointInPolygon} from './grove-geometry.js?v=24';
+import {enemyRecipe} from './grove-map.js?v=24';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#302d2b';
@@ -82,7 +83,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
    }
    c.restore();continue;
   }
-  if(o.type==='circle'){const p=project(o.x,o.y),r=(o.radius??1)*s;ellipse(c,...p,r,r,colors[0],INK,2.5);ellipse(c,p[0]-r*.15,p[1]-r*.16,r*.64,r*.58,colors[1],INK,1.4);ellipse(c,...p,r*.2,r*.2,'#f0dc9c',INK,1.5);if(o.material==='bumper'){for(let j=0;j<8;j++){const a=j*TAU/8;line(c,[[p[0]+Math.cos(a)*r*.8,p[1]+Math.sin(a)*r*.8],[p[0]+Math.cos(a)*r*.95,p[1]+Math.sin(a)*r*.95]],'#ffe8aa',2);}}}
+  if(o.type==='circle'){const p=project(o.x,o.y),r=(o.radius??1)*s;if(o.material==='bumper'){drawBotanicalBumper(c,o,{x:p[0],y:p[1],r,scale:s});c.restore();continue;}ellipse(c,...p,r,r,colors[0],INK,2.5);ellipse(c,p[0]-r*.15,p[1]-r*.16,r*.64,r*.58,colors[1],INK,1.4);ellipse(c,...p,r*.2,r*.2,'#f0dc9c',INK,1.5);}
   else if(o.points?.length){
    const pts=o.points.map(p=>project(p.x,p.y));c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);
    if(o.type==='polygon'&&((s<1.5&&o.id.startsWith('great-bough-'))||s<.65||(b.maxY-b.minY)*s<2||(b.maxX-b.minX)*s<9)){c.closePath();c.fillStyle=colors[0];c.fill();c.restore();continue;}
