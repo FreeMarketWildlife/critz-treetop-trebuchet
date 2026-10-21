@@ -1,6 +1,8 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createGroveMap,createOpeningGroveMap,validateGroveMap,readGroveMap,saveGroveMap,MAP_KEY} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,createOpeningGroveMap,validateGroveMap,readGroveMap,saveGroveMap,MAP_KEY} from '../src/grove-map.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
 function flight(map,draw){const s=new BuildSimulation(STARTER,{map});s.setDraw(draw);s.fire();for(let i=0;i<60*50&&s.phase!=='finished';i++)s.step(1/60);return s;}
@@ -11,13 +13,13 @@ test('landing landmarks are small editable backdrop shapes with no hidden contac
  assert.equal(map.starterRevision,7);assert.equal(landmarks.length,20);assert.equal(map.objects.length,before.objects.length+24);
  for(const o of landmarks){assert.equal(o.collision,false);assert.equal(o.layer,'back');assert.ok(['polygon','circle'].includes(o.type));if(o.type==='circle')assert.ok(o.radius<=.23);}
  for(const id of ['opening-skip-1','opening-skip-2','opening-skip-3','opening-skip-4','launch-bough'])assert.deepEqual(map.objects.find(o=>o.id===id),before.objects.find(o=>o.id===id));
- const values=new Map(),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v)};saveGroveMap(storage,map);assert.deepEqual(readGroveMap(storage),map);
+ const values=new Map(),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v)};saveGroveMap(storage,map);assert.deepEqual(readGroveMap(storage),validateGroveMap(createCurrentGroveMap()));assert.equal(storage.getItem(MAP_KEY),JSON.stringify(map),'read migration preserves the original saved bytes');
  const sim=new BuildSimulation(STARTER,{map});assert.equal(sim.mapBodies.length,map.objects.filter(o=>o.collision&&!['foliage','sap'].includes(o.material)).length);assert.equal(sim.worldObjects.filter(o=>o.id.startsWith('opening-landmark-')&&o.collision).length,0);
 });
 
 test('only an untouched revision-five opening receives landmarks and the low route',()=>{
  const old=createOpeningGroveMap(),raw=JSON.stringify(old);let value=raw,writes=0;const storage={getItem:()=>value,setItem:()=>writes++};
- assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(writes,0);assert.equal(value,raw);
+ assert.deepEqual(readGroveMap(storage),validateGroveMap(createCurrentGroveMap()));assert.equal(writes,0);assert.equal(value,raw);
  for(const edit of [m=>{m.name='My sunrise opening';},m=>{m.objects.find(o=>o.id==='opening-skip-1').points[0].y+=.02;},m=>{m.objects.find(o=>o.id==='opening-skip-2').bounce=.8;},m=>{m.objects.find(o=>o.material==='foliage').density+=.1;}]){
   const changed=structuredClone(old);edit(changed);value=JSON.stringify(changed);assert.deepEqual(readGroveMap(storage),validateGroveMap(changed));
  }

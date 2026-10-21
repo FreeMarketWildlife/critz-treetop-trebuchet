@@ -1,5 +1,5 @@
-import {escapeAltitude} from './space-policy.js?v=31';
-import {mapLevels,gravityScaleAt} from './grove-map.js?v=25';
+import {escapeAltitude} from './space-policy.js?v=35';
+import {mapLevels,gravityScaleAt} from './grove-map.js?v=35';
 
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const metres=v=>`${Math.abs(v)>=1e7?v.toExponential(1):Math.round(v).toLocaleString('en-US')} m`;
@@ -12,7 +12,7 @@ export function altitudeStripState({map,altitude,animal,spaceState='bound',gravi
  // Old custom maps can put a tall tree above the start of starlight. Keep the
  // tree centre in the middle and move the compression break above that crown.
  const skyBreak=Math.max(spaceStart,map.tree.height),top=escapeAltitude(map);
- const anchors=[{altitude:0,fraction:.94},{altitude:treeCenter,fraction:.5},{altitude:skyBreak,fraction:.24},{altitude:top,fraction:.065}];
+ const anchors=map.version===4?[{altitude:0,fraction:.94},{altitude:treeCenter,fraction:.5},{altitude:map.tree.height,fraction:.26},{altitude:spaceStart,fraction:.18},{altitude:top,fraction:.065}]:[{altitude:0,fraction:.94},{altitude:treeCenter,fraction:.5},{altitude:skyBreak,fraction:.24},{altitude:top,fraction:.065}];
  const fractionAt=y=>{
   if(y<=0)return anchors[0].fraction;if(y>=top)return anchors.at(-1).fraction;
   for(let i=1;i<anchors.length;i++)if(y<=anchors[i].altitude){const a=anchors[i-1],b=anchors[i],t=(y-a.altitude)/(b.altitude-a.altitude);return a.fraction+(b.fraction-a.fraction)*t;}

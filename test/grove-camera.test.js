@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {groveSetupCamera,groveFlightCamera,groveProject} from '../src/grove-camera.js';
+import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveProject} from '../src/grove-camera.js';
 import {STARTER,CRITTERS,scaledPreset} from '../src/build-catalog.js';
 test('release keeps its screen position and acquires exact position tracking without velocity input',()=>{
  for(const [width,height]of [[390,844],[1031,738],[320,667]])for(const animal of CRITTERS){
@@ -126,7 +126,45 @@ test('reduced motion changes scale immediately; invalid payload dimensions are r
 });
 
 test('whole-tree framing preserves physical proportions in portrait and landscape',async()=>{
- const {groveTreeCamera}=await import('../src/grove-camera.js');const {createGroveMap}=await import('../src/grove-map.js');const map=createGroveMap();for(const [width,height]of[[390,844],[1031,738]]){const c=groveTreeCamera(map,{width,height});assert.ok(map.tree.height*c.scale<height*.85);assert.ok(map.tree.crownRadius*2*c.scale<width);assert.equal((map.tree.trunkWidth*c.scale)/(map.tree.height*c.scale),280/800);assert.ok(c.scale<1);}
+ const {groveTreeCamera}=await import('../src/grove-camera.js');const {createV3GroveMap}=await import('../src/grove-map.js');const map=createV3GroveMap();for(const [width,height]of[[390,844],[1031,738]]){const c=groveTreeCamera(map,{width,height});assert.ok(map.tree.height*c.scale<height*.85);assert.ok(map.tree.crownRadius*2*c.scale<width);assert.equal((map.tree.trunkWidth*c.scale)/(map.tree.height*c.scale),280/800);assert.ok(c.scale<1);}
 });
 
 test('compact launcher occupies half the landscape height and over forty percent in portrait',()=>{for(const [width,height]of[[1031,738],[390,844],[320,667]]){const c=groveSetupCamera(STARTER,{width,height}),fraction=(STARTER.pivotHeight+STARTER.longArm*Math.sin(1))*c.scale/height;assert.ok(fraction>=.40&&fraction<=.501,`${width}: ${fraction}`);assert.ok(.18*c.scale>=Math.min(width,height)*.04,'mouse remains at least four percent of the shorter viewport dimension');}});
+
+
+test('sling tracking keeps the rig lens while smoothly acquiring the real payload before release',()=>{
+ for(const [width,height]of[[390,844],[1031,738]]){
+  const size={width,height},initial={x:-1,y:2,scale:80};let p={x:-2,y:.5};
+  const screen=groveProject(p,initial,width,height);let c=groveSwingCamera(initial,p,{...size,dt:0});
+  assert.deepEqual(groveProject(p,c,width,height),screen);
+  for(let i=1;i<=40;i++){
+   p={x:-2+i*.04,y:.5+i*.08};c=groveSwingCamera(c,p,size);
+   const point=groveProject(p,c,width,height);assert.equal(c.scale,initial.scale);
+   assert.ok(point.x>=Math.min(screen.x,width/2)-1e-10&&point.x<=Math.max(screen.x,width/2)+1e-10);
+   assert.ok(point.y>=Math.min(screen.y,height/2)-1e-10&&point.y<=Math.max(screen.y,height/2)+1e-10);
+   if(i>=33){assert.equal(c.x,p.x);assert.equal(c.y,p.y);}
+  }
+  const before=groveProject(p,c,width,height),flight=groveFlightCamera(c,p,{...size,animalLength:.18,dt:0});
+  assert.deepEqual(groveProject(p,flight,width,height),before);assert.equal(flight.followAcquisition.age,0);assert.equal(flight.scale,c.scale);
+ }
+});
+test('sling acquisition uses active time, survives resize and freezes all camera state while paused',()=>{
+ const size={width:390,height:844},p={x:-2,y:1},initial={x:0,y:2,scale:80};
+ const run=hz=>{let c=groveSwingCamera(initial,p,{...size,dt:0});for(let i=0;i<hz*.4;i++)c=groveSwingCamera(c,p,{...size,dt:1/hz});return c;};
+ const c=run(30),fast=run(120);for(const key of['x','y','scale'])assert.ok(Math.abs(c[key]-fast[key])<1e-10);
+ assert.deepEqual(groveSwingCamera(c,p,{...size,dt:0}),c);assert.deepEqual(groveSwingCamera(c,p,{...size,dt:NaN}),c);
+ const before=groveProject(p,c,390,844),resized=groveSwingCamera(c,p,{width:1031,height:738,dt:0}),after=groveProject(p,resized,1031,738);
+ assert.ok(Math.abs(before.x/390-after.x/1031)<1e-10);assert.ok(Math.abs(before.y/844-after.y/738)<1e-10);assert.deepEqual(resized.swingAcquisition,c.swingAcquisition);
+ const calm=groveSwingCamera(c,p,{...size,reducedMotion:true});assert.equal(calm.x,p.x);assert.equal(calm.y,p.y);assert.equal(calm.scale,c.scale);
+ assert.throws(()=>groveSwingCamera(c,{x:NaN,y:0},size));assert.throws(()=>groveSwingCamera({...c,scale:0},p,size));
+});
+
+test('the release frame continues sling motion instead of holding the previous camera for one frame',()=>{
+ const size={width:390,height:844},initial={x:0,y:2,scale:80};let p={x:-1,y:1},c=groveSwingCamera(initial,p,{...size,dt:0});
+ for(const elapsed of[.2,.6]){
+  c=groveSwingCamera(initial,p,{...size,dt:0});for(let i=0;i<Math.round(elapsed*60);i++)c=groveSwingCamera(c,p,size);
+  const next={x:p.x+.4,y:p.y+.3},continued=groveSwingCamera(c,next,size),expected=groveProject(next,continued,390,844),flight=groveFlightCamera(c,next,{...size,animalLength:.18}),actual=groveProject(next,flight,390,844);
+  assert.ok(Math.abs(actual.x-expected.x)<1e-10);assert.ok(Math.abs(actual.y-expected.y)<1e-10);assert.equal(flight.swingAcquisition,undefined);assert.equal(flight.followAcquisition.age,0);
+  if(elapsed>.55){assert.equal(flight.x,next.x);assert.equal(flight.y,next.y);}
+ }
+});

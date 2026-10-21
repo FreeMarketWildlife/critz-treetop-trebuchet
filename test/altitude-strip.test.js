@@ -1,14 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {altitudeStripState,drawAltitudeStrip} from '../src/altitude-strip.js';
-import {createGroveMap,createLegacyGroveMap,gravityScaleAt,validateGroveMap} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,createLegacyGroveMap,gravityScaleAt,validateGroveMap} from '../src/grove-map.js';
 import {escapeAltitude} from '../src/space-policy.js';
 import {CRITTERS} from '../src/build-catalog.js';
 
 const current=createGroveMap(),legacy=createLegacyGroveMap(),mouse=CRITTERS[0];
 const state=(altitude,map=current,extra={})=>altitudeStripState({map,altitude,animal:mouse,...extra});
 
-test('height strip uses actual canonical floor, tree centre, crown, starlight and map top',()=>{
+test('retained V3 height strip uses actual floor, tree centre, crown, starlight and map top',()=>{
  const s=state(600);assert.equal(s.landmarks.floor.altitude,0);assert.equal(s.landmarks.floor.fraction,.94);
  assert.equal(s.landmarks.tree.altitude,400);assert.equal(s.landmarks.tree.fraction,.5);
  assert.equal(s.landmarks.crown.altitude,800);assert.equal(s.landmarks.space.altitude,960);assert.equal(s.landmarks.top.altitude,3000);
@@ -76,4 +76,12 @@ test('top landmark is the exact simulation escape boundary for every supported w
   assert.equal(s.landmarks.top.altitude,top);assert.equal(s.fraction,.065);assert.match(s.label,/free-drift boundary/);
   assert.equal(s.spaceState,'bound','height alone still cannot create the success state');
  }
+});
+
+test('V4 strip expands the real 110m oak and keeps its55m centre in the middle below compressed sky',()=>{
+ const map=createCurrentGroveMap(),centre=state(55,map),crown=state(110,map);
+ assert.equal(centre.landmarks.tree.altitude,55);assert.equal(centre.fraction,.5);assert.equal(crown.landmarks.crown.altitude,110);assert.equal(crown.fraction,.26);
+ assert.equal(centre.landmarks.top.altitude,3000);assert.equal(centre.landmarks.space.altitude,960);
+ assert.equal(state(32,map).spaceState,'bound');assert.equal(state(3000,map,{spaceState:'escaped',gravityFactor:0}).status,'Free drift');
+ let previous=Infinity;for(let y=-10;y<=3500;y+=.5){const value=state(y,map).fraction;assert.ok(value<=previous&&value>=.065&&value<=.94);previous=value;}
 });

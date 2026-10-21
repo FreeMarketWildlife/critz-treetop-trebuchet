@@ -44,12 +44,14 @@ test('pause holds contact age, retry clears it, and integrated flight art emits 
  const c=canvas();drawFlightAccents(c.c,{sim:sim([hit(),hit({seq:2,id:'wood',material:'wood',strength:.4})]),project,scale:100,...viewport,reducedMotion:true});
  const words=c.calls.filter(c=>c[0]==='fillText');assert.equal(words.length,1);assert.equal(words[0][1],'BOING!');assert.equal(words[0][2],120);assert.equal(words[0][3],576);assert.equal(c.depth,0);
 });
-test('a natural starter bounce reads its real leaf contact without changing the physical run',()=>{
- const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.setDraw(1);s.fire();
- for(let i=0;i<1800&&!s.contactEvents.some(h=>h.id==='opening-skip-1');i++)s.step(1/60);
- const hit=s.contactEvents.find(h=>h.id==='opening-skip-1');assert.ok(hit);const before=JSON.stringify(s.snapshot()),events=JSON.stringify(s.contactEvents),omega=s.shot.getAngularVelocity();
- const feedback=recentContactFeedback(s);assert.equal(feedback.id,hit.id);assert.equal(feedback.x,hit.x);assert.equal(feedback.y,hit.y);assert.equal(feedback.word,'BOING!');
- assert.ok(Math.abs(hit.y-(-3.8-(hit.x-22)*.5))<.02,'the source lies on the actual editable contact face');
+test('a natural starter bounce reads its actual editable leaf face without changing the physical run',()=>{
+ const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.setDraw(1);s.fire();let feedback;
+ for(let i=0;i<1800&&!feedback;i++){s.step(1/60);const f=recentContactFeedback(s);if(f?.word==='BOING!'&&s.map.objects.find(o=>o.id===f.id)?.material==='leaf')feedback=f;}
+ assert.ok(feedback,'natural starter throw reaches a readable leaf impact');const hit=s.contactEvents.find(h=>h.seq===feedback.seq),object=s.map.objects.find(o=>o.id===hit.id);
+ const before=JSON.stringify(s.snapshot()),events=JSON.stringify(s.contactEvents),omega=s.shot.getAngularVelocity();
+ assert.equal(feedback.id,hit.id);assert.equal(feedback.x,hit.x);assert.equal(feedback.y,hit.y);assert.equal(feedback.word,'BOING!');
+ const distances=object.points.map((a,i)=>{const b=object.points[(i+1)%object.points.length],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((hit.x-a.x)*dx+(hit.y-a.y)*dy)/(dx*dx+dy*dy)));return Math.hypot(hit.x-a.x-dx*t,hit.y-a.y-dy*t);});
+ assert.ok(Math.min(...distances)<.025,'the source lies on the actual editable contact boundary');
  assert.equal(JSON.stringify(s.snapshot()),before);assert.equal(JSON.stringify(s.contactEvents),events);assert.equal(s.shot.getAngularVelocity(),omega);
 });
 

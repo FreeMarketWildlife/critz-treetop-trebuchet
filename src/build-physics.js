@@ -1,10 +1,11 @@
-import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=31';
-import {windingMinimum} from './winding-comfort.js?v=30';
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=35';
+import {windingMotion} from './winding-comfort.js?v=35';
+import {recipeDrawMinimum} from './scale-builds.js?v=35';
 import {addCritterFixtures} from './critter-body.js?v=25';
 import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=25';
 import * as P from '../vendor/planck/planck.mjs';
 import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=25';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=35';
 import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=25';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;
@@ -216,8 +217,18 @@ export class BuildSimulation{
  counterPoint(){const p=this.counter===this.arm?this.arm.getWorldPoint(Vec2(-this.c.shortArm/this.L,0)):this.counter.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
  pivot(){if(this.beamBroken)return this.lastPivot;const p=this.axle?.getAnchorA()??this.arm.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
  energy(){let E=0;for(const b of this.moving){const m=b.getMass()*this.M,v=b.getLinearVelocity(),w=b.getAngularVelocity()/this.T;E+=m*GRAVITY*b.getWorldCenter().y*this.L+.5*m*(v.x*v.x+v.y*v.y)*this.L+.5*(b.getInertia()-b.getMass()*b.getLocalCenter().lengthSquared())*this.M*this.L*this.L*w*w;}return E;}
+ preparationStatus(){
+  if(this.phase!=='ready')return{ready:false,code:'active',message:'Finish this experiment before winding again.'};
+  const draw=this.drawFraction??1;if(!Number.isFinite(draw)||draw<0||draw>1)return{ready:false,code:'draw-invalid',message:'Invalid winding position. Reset this experiment before launching.'};
+  if(this.loading?.assisting)return{ready:false,code:'carrying',message:'Keyboard lift in progress. Let the volunteer drop into the basket.'};
+  if(this.loading&&!this.loading.loaded)return{ready:false,code:this.loading.settling?'settling':'loading',message:this.loading.settling?'The volunteer is settling in the basket. Wait for support, then hold and release again.':'Load the basket and let the volunteer settle before winding.'};
+  const minimum=this.loading?recipeDrawMinimum(this.c):null;
+  if(minimum!==null&&draw+1e-9<minimum)return{ready:false,code:'draw',minimumDraw:minimum,message:`Keep cranking to at least ${Math.round(minimum*100)}% for this setup. The ratchet keeps your current draw.`};
+  return{ready:true,code:'ready',minimumDraw:minimum};
+ }
  fire(){
-  if(this.phase!=='ready'||this.loading&&(!this.loading.loaded||!this.loading.prepareLaunch()))return false;
+  if(!this.preparationStatus().ready)return false;
+  if(this.loading&&!this.loading.prepareLaunch())return false;
   const fatal=this.facts.warnings.filter(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'));
   if(fatal.length){this.failure=fatal[0];this.phase='invalid';return false;}
   for(const [b,type]of this.storeTypes){b.setType(type);b.setAwake(true);}
@@ -228,8 +239,9 @@ export class BuildSimulation{
  /** Quasi-static ratchet rigging. The winch supports the mechanism before the
   * latch opens. It changes gravitational potential, never launch velocity.
   * Rope and counterweight joints remain coincident, including floating rails. */
- setDraw(fraction){
-  if(this.phase!=='ready')return;
+ setDraw(fraction,{winding=false}={}){
+  if(this.phase!=='ready'||!Number.isFinite(fraction))return;
+  if(!winding)this.windAge=0;
   this.drawFraction=Math.max(0,Math.min(1,fraction));
   const c=this.c,angle=REST_ARM_ANGLE+(this.initialAngle-REST_ARM_ANGLE)*this.drawFraction;
   const pivot={...this.initialPivot};
@@ -246,15 +258,19 @@ export class BuildSimulation{
   if(!this.loading)this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
   this.startX=loaded.x;this.initialCounterY=this.counterPoint().y;
  }
+ beginWinding(){this.windAge=0;}
  wind(dt){
-  if(this.phase!=='ready')return;
+  if(this.phase!=='ready'||!Number.isFinite(dt)||dt<=0)return;
   const c=this.c,f=this.drawFraction??0,span=this.initialAngle-REST_ARM_ANGLE;
   // Bearing comfort sets the readable crank-rate governor; heavier loads additionally
   // respect motor power through d(mgh)/d(fraction). Ratchet holds at each stop.
   const angle=REST_ARM_ANGLE+span*f;
   const joulesPerFraction=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
-  const rate=Math.min(1/windingMinimum(c,{loaded:!!this.loading}),part(c.winch).power/Math.max(.01,joulesPerFraction));
-  this.setDraw(f+Math.max(0,Math.min(.1,dt))*rate);
+  const motion=windingMotion(c,{loaded:!!this.loading}),step=Math.max(0,Math.min(.1,dt));
+  this.windAge=(this.windAge??0)+step;
+  const ramp=motion.rampSeconds?Math.min(1,this.windAge/motion.rampSeconds):1;
+  const rate=Math.min(1/motion.minimumSeconds,part(c.winch).power/Math.max(.01,joulesPerFraction));
+  this.setDraw(f+step*rate*ramp,{winding:true});
  }
  detach(reason){
   if(!this.sling||this.release)return;

@@ -1,6 +1,8 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createGroveMap,createAncientGroveMap,validateGroveMap,readGroveMap,saveGroveMap,MAP_KEY} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,createAncientGroveMap,validateGroveMap,readGroveMap,saveGroveMap,MAP_KEY} from '../src/grove-map.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
 const store=()=>({values:new Map(),getItem(k){return this.values.get(k);},setItem(k,v){this.values.set(k,v);}});
@@ -8,17 +10,17 @@ function launch(map,animal='mouse'){
  const sim=new BuildSimulation({...STARTER,animal},{map});sim.setDraw(0);for(let i=0;i<110;i++)sim.wind(1/60);sim.fire();return sim;
 }
 
-test('fresh default and editor save share the same four authored spring mats',()=>{
+test('archived V3 spring mats save unchanged and migrate to the current default only on read',()=>{
  const map=validateGroveMap(createGroveMap()),storage=store(),skips=map.objects.filter(o=>o.id.startsWith('opening-skip-'));
  assert.equal(map.starterRevision,7);assert.equal(skips.length,4);assert.equal(map.launch.y,600);assert.equal(map.tree.height,800);
  for(const o of skips){assert.equal(o.type,'polygon');assert.equal(o.material,'leaf');assert.equal(o.bounce,.87);assert.equal(o.collision,true);assert.equal(o.layer,'world');}
  assert.deepEqual(map.objects.find(o=>o.id==='launch-bough'),validateGroveMap(createAncientGroveMap()).objects.find(o=>o.id==='launch-bough'));
- assert.deepEqual(saveGroveMap(storage,map),map);assert.deepEqual(readGroveMap(storage),map);assert.equal(storage.values.size,1);assert.ok(storage.values.has(MAP_KEY));
+ assert.deepEqual(saveGroveMap(storage,map),map);assert.deepEqual(readGroveMap(storage),validateGroveMap(createCurrentGroveMap()));assert.equal(storage.getItem(MAP_KEY),JSON.stringify(map),'read migration preserves the original saved bytes');assert.equal(storage.values.size,1);assert.ok(storage.values.has(MAP_KEY));
 });
 
 test('only an exact untouched ancient starter upgrades, preserving every authored edit',()=>{
  const previous=createAncientGroveMap(),storage=store(),raw=JSON.stringify(previous);storage.setItem(MAP_KEY,raw);
- assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.getItem(MAP_KEY),raw,'reading never writes over the old saved file');
+ assert.deepEqual(readGroveMap(storage),validateGroveMap(createCurrentGroveMap()));assert.equal(storage.getItem(MAP_KEY),raw,'reading never writes over the old saved file');
  for(const edit of [m=>{m.name='My evening route';},m=>{m.objects.find(o=>o.id==='stepping-bough-0').points[0].x+=.1;},m=>{m.objects.find(o=>o.material==='foliage').density+=1;},m=>{m.objects.find(o=>o.id==='returning-bough').bounce=.79;}]){
   const changed=structuredClone(previous);edit(changed);storage.setItem(MAP_KEY,JSON.stringify(changed));assert.deepEqual(readGroveMap(storage),validateGroveMap(changed));
  }

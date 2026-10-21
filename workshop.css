@@ -35,3 +35,12 @@
 .launcher-control{margin:8px auto;width:min(260px,80vw);pointer-events:auto}.launcher-control #launchButton{width:100%;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:11px 18px;border:2px solid #58412d;border-radius:11px;background:linear-gradient(#f8db8b,#dba24e);color:#3e3024;box-shadow:0 4px 0 #725334;font-size:15px;touch-action:none;user-select:none}.launcher-control #launchButton:active{transform:translateY(3px);box-shadow:0 1px 0 #725334}.launcher-control #launchButton:disabled{opacity:.6;cursor:default}.launcher-control .charge-track{width:100%;margin:8px 0!important;height:9px!important;box-sizing:border-box}.in-flight .launcher-control{display:none}.loading-tip{bottom:230px}.launcher-control #launchButton:focus-visible{outline:3px solid #fff1b3;outline-offset:3px}
 
 .preparing .weapon-tray{display:none}
+
+/* Shared Play surface: slim Y-only altitude map. */
+#altitudeStrip{display:block;position:absolute;right:9px;top:94px;width:44px;height:min(64dvh,540px);z-index:2;pointer-events:none;filter:drop-shadow(0 2px 2px #203c2a55)}
+@media(max-width:600px){#altitudeStrip{width:38px;right:7px;height:min(64dvh,510px)}}
+@media(max-height:420px){#altitudeStrip{top:76px;height:calc(100dvh - 92px)}}
+
+/* Three-card shop presentation; inventory remains in the Build tab. */
+#shopItems{grid-template-columns:repeat(3,minmax(0,1fr))}.shop-pages{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px}.shop-pages span{font-size:12px}.shop-pages button{min-height:40px}.workshop-panel .shop-card p{font-size:12px;line-height:1.5}.workshop-panel .shop-card .slot-tag{font-size:9px}
+@media(max-width:750px){#shopItems{grid-template-columns:1fr}.workshop-panel .shop-card p{font-size:12px}.workshop-panel .shop-card h3{font-size:16px}.workshop-panel .shop-card .buy{min-height:42px;font-size:13px}}

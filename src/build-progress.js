@@ -1,8 +1,8 @@
 import {PARTS,CRITTERS,STARTER,PREVIOUS_STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild} from './build-catalog.js?v=30';
-import {VOUCHERS,validateShop} from './build-shop.js?v=30';
-import {validateSpaceEscape} from './space-policy.js?v=31';
+import {VOUCHERS,validateShop} from './build-shop.js?v=35';
+import {validateSpaceEscape} from './space-policy.js?v=35';
 export const SAVE_KEY='treetop-custom-workshop-v1';
-export function newProgress(){return{version:1,starterRevision:5,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[],achievements:[],pendingSpace:null};}
+export function newProgress(){return{version:1,saveRevision:0,starterRevision:5,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[],achievements:[],pendingSpace:null};}
 export function canBuild(state,build,creative=false){validateBuild(build);if(creative)return true;if(build.wind!==0||build.drag!==1)throw Error('Adventure uses calm air with air resistance. Reset Creative atmosphere settings first.');for(const[slot]of SLOTS)if(!state.owned.includes(build[slot]))throw Error(`Buy ${part(build[slot]).name} first.`);if(!state.animals.includes(build.animal))throw Error('Invite this volunteer in the shop first.');return true;}
 export function buy(state,id,animal=false){const product=animal?critter(id):part(id),key=animal?'animals':'owned';if(state[key].includes(id))throw Error('Already owned.');if(state.bells<product.price)throw Error('More Bells needed.');return {...state,bells:state.bells-product.price,[key]:[...state[key],id]};}
 const SPACE_ACHIEVEMENT='spaceEscape';
@@ -64,6 +64,7 @@ export function bank(state,shotId,result,creative=false){
 }
 export function validateProgress(raw){
  if(!raw||raw.version!==1)throw Error('Unsupported save.');
+ const saveRevision=raw.saveRevision??0;if(!Number.isSafeInteger(saveRevision)||saveRevision<0)throw Error('Invalid save revision.');
  for(const k of ['bells','points','launches'])if(!Number.isSafeInteger(raw[k])||raw[k]<0)throw Error('Invalid progress totals.');
  if(!Number.isFinite(raw.best)||raw.best<0||raw.best>20000)throw Error('Invalid best distance.');
  if(!Array.isArray(raw.owned)||!Array.isArray(raw.animals)||!Array.isArray(raw.blueprints)||!Array.isArray(raw.claimed)||!Array.isArray(raw.history))throw Error('Invalid save collections.');
@@ -84,11 +85,11 @@ export function validateProgress(raw){
  const owned=upgraded?[...new Set([...raw.owned,...STARTER_PARTS])]:raw.owned;
  const build=legacy||untouchedTower?{...STARTER,...(untouchedTower?{winch:raw.build.winch}:{}),name:raw.build.name,animal:raw.build.animal}:raw.build;
  const animals=wheelRevision?[...new Set([...raw.animals,...STARTER_ANIMALS])]:raw.animals;
- const s={...raw,starterRevision:5,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild),achievements:achievementIds(raw.achievements),pendingSpace:null};canBuild(s,s.build);
+ const s={...raw,saveRevision,starterRevision:5,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild),achievements:achievementIds(raw.achievements),pendingSpace:null};canBuild(s,s.build);
  const pending=validatePendingSpace(raw.pendingSpace,s);if(pending){s.achievements=withSpaceAchievement(s.achievements);if(!s.claimed.includes(pending.id))s.pendingSpace=pending;}return s;
 }
 export class StaleProgressError extends Error{
- constructor(){super('Space progress changed in another tab. Reload before saving to keep its reward and achievement.');this.name='StaleProgressError';}
+ constructor(){super('Saved progress changed in another tab. Reload before saving to keep your purchases, rewards and achievements.');this.name='StaleProgressError';}
 }
 function protectSavedSpace(previous,next){
  if(!previous.pendingSpace&&!previous.achievements.includes(SPACE_ACHIEVEMENT))return;
@@ -104,9 +105,24 @@ function protectSavedSpace(previous,next){
  const retained=previous.claimed.slice(Math.max(0,previous.claimed.length+advances-100));
  if(retained.some(id=>!next.claimed.includes(id)))stale();
 }
-export function saveProgress(storage,state){
+/** Optimistic stale-tab guard. The synchronous read/write is not a cross-process
+ * atomic compare-and-swap; all writers would need a shared asynchronous lock
+ * for that stronger guarantee. Explicit validated imports can replace normal
+ * progress, but never bypass the existing space reward/achievement protections. */
+export function saveProgress(storage,state,{replace=false}={}){
  const next=validateProgress(state),raw=storage.getItem(SAVE_KEY);
- if(raw!==null&&raw!==undefined)protectSavedSpace(validateProgress(JSON.parse(raw)),next);
+ const previous=raw===null||raw===undefined?null:validateProgress(JSON.parse(raw));
+ if(previous){
+  protectSavedSpace(previous,next);
+  if(!replace&&next.saveRevision!==previous.saveRevision)throw new StaleProgressError();
+  if(JSON.stringify(previous)===JSON.stringify(next))return next;
+ }
+ const revision=(previous?.saveRevision??next.saveRevision)+1;
+ if(!Number.isSafeInteger(revision))throw Error('Save revision exceeds the supported range.');
+ next.saveRevision=revision;
  storage.setItem(SAVE_KEY,JSON.stringify(next));
+ // Only acknowledge the durable revision after a successful write. Immutable
+ // domain reducers retain it through their ordinary object spreads.
+ state.saveRevision=revision;return next;
 }
 export function loadProgress(storage){const data=storage.getItem(SAVE_KEY);return data?validateProgress(JSON.parse(data)):newProgress();}

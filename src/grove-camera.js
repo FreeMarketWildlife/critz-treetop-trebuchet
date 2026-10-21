@@ -17,6 +17,18 @@ export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0}=
 }
 const FOLLOW_ACQUIRE_SECONDS=.55;
 const ease=t=>t*t*(3-2*t),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+/** Keep the real sling payload in view before the pin opens. The setup lens
+ * stays fixed while its initial screen offset eases away, so the camera is
+ * already travelling with the volunteer when flight framing takes over. */
+export function groveSwingCamera(previous,payload,{width,height,dt=1/60,reducedMotion=false}={}){
+ if(![payload.x,payload.y,previous.x,previous.y,previous.scale,width,height].every(Number.isFinite)||previous.scale<=0||width<=0||height<=0)throw Error('Finite swing camera and positive dimensions required.');
+ const step=Number.isFinite(dt)?clamp(dt,0,.1):0,prior=previous.swingAcquisition;
+ const acquisition=prior?{...prior,age:Math.min(FOLLOW_ACQUIRE_SECONDS,prior.age+step)}:{
+  age:0,x:(previous.x-payload.x)*previous.scale/width,y:(previous.y-payload.y)*previous.scale/height
+ };
+ const remaining=reducedMotion?0:1-ease(acquisition.age/FOLLOW_ACQUIRE_SECONDS);
+ return{x:payload.x+acquisition.x*remaining*width/previous.scale,y:payload.y+acquisition.y*remaining*height/previous.scale,scale:previous.scale,swingAcquisition:reducedMotion?{...acquisition,age:FOLLOW_ACQUIRE_SECONDS}:acquisition};
+}
 // Exact bounded exponential response: the same elapsed time gives the same
 // lead at 30 or 120 Hz, including the rate-limited part of a large handoff.
 function approachLead(value,target,dt){
@@ -27,6 +39,9 @@ function approachLead(value,target,dt){
 }
 export function groveFlightCamera(previous,payload,{width,height,animalLength,dt=1/60,reducedMotion=false,landing=null}={}){
  if(![payload.x,payload.y,animalLength,width,height].every(Number.isFinite)||animalLength<=0||width<=0||height<=0)throw Error('Finite camera dimensions and positive animal length required.');
+ // Finish this frame's sling tracking before starting the flight handoff.
+ // Holding the previous camera at pin release would create a one-frame stall.
+ if(previous.swingAcquisition)previous=groveSwingCamera(previous,payload,{width,height,dt,reducedMotion});
  // Use travel measured in viewports per second, so a mouse and a whale get the
  // same framing response without changing their physical sizes or velocities.
  const baseScale=Math.min(width,height)*.085/animalLength;
@@ -85,7 +100,16 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
  return{x:payload.x+(acquisition.x*remaining+motion.x*blend)*width/scale,y:payload.y+(acquisition.y*remaining+motion.y*blend)*height/scale,scale,followAcquisition:acquisition,followMotion:motion,followLens:lens,followLanding:landingFocus};
 }
 export function groveProject(point,camera,width,height){return{x:width/2+(point.x-camera.x)*camera.scale,y:height/2-(point.y-camera.y)*camera.scale};}
+export function groveOverviewBounds(map){
+ const t=map.tree,r=t.crownRadius??t.trunkWidth*3.6;
+ if(map.version===4){
+  const radius=Math.max(r,t.trunkWidth*.5),padX=Math.max(3,radius*.10),padY=Math.max(4,t.height*.08);
+  return{minX:t.trunkX-radius-padX,maxX:t.trunkX+radius+padX,minY:-map.launch.y-padY,maxY:t.height-map.launch.y+padY};
+ }
+ // Saved giant-tree worlds retain their original overview and navigation.
+ return{minX:t.trunkX-r-40,maxX:Math.max(220,t.trunkX+r+40),minY:-map.launch.y-30,maxY:t.height-map.launch.y+55};
+}
 export function groveTreeCamera(map,{width,height}){
- const t=map.tree,r=t.crownRadius??t.trunkWidth*3.6,minX=t.trunkX-r-40,maxX=Math.max(220,t.trunkX+r+40),minY=-map.launch.y-30,maxY=t.height-map.launch.y+55;
+ const {minX,maxX,minY,maxY}=groveOverviewBounds(map);
  return{x:(minX+maxX)/2,y:(minY+maxY)/2,scale:Math.min(Math.max(160,width)*.9/(maxX-minX),Math.max(120,height)*.84/(maxY-minY))};
 }

@@ -7,7 +7,14 @@ export const JUNGLE_LAYERS=Object.freeze([
  {id:'understory',name:'Vines & understory',alt:140,low:70,high:230,color:'#466e50'},
  {id:'floor',name:'Roots & forest floor',alt:18,low:0,high:70,color:'#827647'}
 ].map(Object.freeze));
-export const jungleLayerAt=(altitude,map)=>map?.version===3?JUNGLE_LAYERS.find(l=>altitude>=l.low&&altitude<l.high):undefined;
+export const PROPORTIONED_JUNGLE_LAYERS=Object.freeze([
+ {id:'emergent',name:'Emergent crowns',alt:52,low:45,high:60,color:'#93a65e'},
+ {id:'canopy',name:'Amazon canopy',alt:32,low:20,high:45,color:'#5e8755'},
+ {id:'understory',name:'Vines & understory',alt:11,low:2,high:20,color:'#466e50'},
+ {id:'floor',name:'Roots & forest floor',alt:1,low:0,high:2,color:'#827647'}
+].map(Object.freeze));
+export const jungleLayersFor=map=>map?.version===4?PROPORTIONED_JUNGLE_LAYERS:JUNGLE_LAYERS;
+export const jungleLayerAt=(altitude,map)=>[3,4].includes(map?.version)?jungleLayersFor(map).find(l=>altitude>=l.low&&altitude<l.high):undefined;
 export function jungleStarterObjects(makeEnemy){
  const objects=[],origin=600;
  const poly=(id,name,points,material='wood',bounce=.45)=>objects.push({id,name,type:'polygon',points,collision:true,layer:'world',material,bounce});

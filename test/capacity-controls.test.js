@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {STARTER,PARTS,part} from '../src/build-catalog.js';
-import {fitEquipment} from '../src/build-equipment.js';
+import {fitEquipment,purchaseFit} from '../src/build-equipment.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {newProgress,canBuild} from '../src/build-progress.js';
 import {visitShop,purchaseOffer,choosePack} from '../src/build-shop.js';
@@ -69,8 +69,8 @@ function application(){
  const groups=Object.fromEntries(['frame','ballast'].map(slot=>['part-'+slot,{open:false,scrolled:false,scrollIntoView(){this.scrolled=true;}}]));
  const classes={add(){},remove(){}},nodes={...groups,workshopDialog:{open:true},buildTab:{click(){nodes.activeTab='build';}},fittedNotice:{textContent:'',classList:classes},previewStage:{classList:classes,offsetWidth:1}};
  const original={...newProgress(),bells:1000,points:18117,owned:[...new Set([...newProgress().owned,'timber','quarry'])]};
- const context={state:original,draft:{...original.build},creative:false,stage:{dataset:{}},renderer:{equipBurst(){}},previewRenderer:{equipBurst(){}},dirty:false,$:id=>nodes[id],fitEquipment,canBuild,
-  product:offer=>part(offer.id),syncPreview(next){context.preview=next;},cue(){},chime(){},toast(){},persist(){},purchaseOffer,choosePack,
+ const context={state:original,draft:{...original.build},creative:false,stage:{dataset:{}},renderer:{equipBurst(){}},previewRenderer:{equipBurst(){}},dirty:false,$:id=>nodes[id],fitEquipment,purchaseFit,canBuild,
+  product:offer=>part(offer.id),syncPreview(next){context.preview=next;},cue(){},chime(){},toast(){},persist(){return true;},persistShop(next){context.state=next;return true;},populate(){},purchaseOffer,choosePack,
  };
  context.applyBuild=()=>{canBuild(context.state,context.draft,context.creative);context.state={...context.state,build:{...context.draft}};};
  vm.createContext(context);

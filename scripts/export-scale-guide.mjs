@@ -1,0 +1,12 @@
+import {mkdir,writeFile} from 'node:fs/promises';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG} from '../src/world-scale.js';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const output=resolve(root,process.argv[2]??'docs/world-scale/images');
+await mkdir(output,{recursive:true});
+const inventory=scaleInventory(),panels=comparisonPanels(inventory);
+for(const panel of panels)await writeFile(resolve(output,panel.id+'.svg'),scalePanelSVG(panel.entries,{height:panel.height,title:panel.title,subtitle:panel.subtitle})+'\n');
+await writeFile(resolve(output,'map.svg'),authoredMapSVG()+'\n');
+await writeFile(resolve(output,'inventory.json'),JSON.stringify(inventory.map(({id,name,category,width,height,extent,measure,objectId,recipeId,animalId})=>({id,name,category,width,height,extent,measure,objectId,recipeId,animalId})),null,2)+'\n');
+console.log(`Exported ${panels.length+1} metre-scale figures and ${inventory.length} inventory records to ${output}`);

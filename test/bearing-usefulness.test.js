@@ -33,7 +33,7 @@ test('heavy-load preparation retains the wheel power limit rather than bypassing
 test('faster bearing preparation preserves a loose supported volunteer through full draw',()=>{
  for(const p of bearings){
   const sim=new BuildSimulation({...STARTER,bearing:p.id});sim.setDraw(0);sim.loading=createPayloadLoading(sim);sim.loading.loadKeyboard();
-  for(let i=0;i<120;i++)sim.loading.step(1/120);
+  for(let i=0;i<720&&!sim.loading.loaded;i++)sim.loading.step(1/120);assert.ok(sim.loading.loaded,p.id+' physical loading');
   while(sim.drawFraction<1){sim.wind(1/120);sim.loading.step(1/120);}
   for(let i=0;i<30;i++)sim.loading.step(1/120);
   assert.ok(sim.loading.loaded,p.id);const before=sim.loading.parts;

@@ -1,5 +1,7 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';import assert from 'node:assert/strict';
-import {createGroveMap,createCrownGroveMap,readGroveMap,validateGroveMap,enemyRecipe} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,createCrownGroveMap,readGroveMap,validateGroveMap,enemyRecipe} from '../src/grove-map.js';
 import {JUNGLE_LAYERS} from '../src/grove-jungle.js';
 import {BuildSimulation} from '../src/build-physics.js';import {STARTER,CRITTERS} from '../src/build-catalog.js';
 import {ORDINARY_LEAF_LENGTH,ordinaryLeafHalfLength} from '../src/grove-nature.js';
@@ -14,6 +16,6 @@ test('each botanical stratum has editable solid spring routes and a real collisi
  for(const o of map.objects.filter(o=>o.type==='enemy'))assert.equal(o.radius,enemyRecipe(o.kind).radius);
 });
 test('untouched crown layouts upgrade, while edited geometry, names and bounce settings survive',()=>{
- const previous=createCrownGroveMap(),read=value=>readGroveMap({getItem:()=>JSON.stringify(value)});assert.deepEqual(read(previous),validateGroveMap(createGroveMap()));
+ const previous=createCrownGroveMap(),read=value=>readGroveMap({getItem:()=>JSON.stringify(value)});assert.deepEqual(read(previous),validateGroveMap(createCurrentGroveMap()));
  for(const edit of[m=>m.objects[0].points[0].x-=.25,m=>m.name='My tree',m=>m.objects[0].bounce=.91]){const custom=structuredClone(previous);edit(custom);assert.deepEqual(read(custom),validateGroveMap(custom));}
 });

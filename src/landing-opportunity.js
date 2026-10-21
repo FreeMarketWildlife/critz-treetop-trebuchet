@@ -1,5 +1,5 @@
-import {GRAVITY} from './build-physics.js?v=31';
-import {gravityScaleAt,spaceScale} from './grove-map.js?v=25';
+import {GRAVITY} from './build-physics.js?v=35';
+import {gravityScaleAt,spaceScale} from './grove-map.js?v=35';
 import {objectBounds,pointInPolygon,polygonArea} from './grove-geometry.js?v=25';
 import {coveredDistance} from './grove-environment.js?v=25';
 // An opportunity is an advisory surface region, never an aiming solution.

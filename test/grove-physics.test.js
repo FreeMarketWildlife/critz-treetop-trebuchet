@@ -1,6 +1,8 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createGroveMap,validateGroveMap,saveGroveMap,readGroveMap,MAP_KEY,gravityScaleAt,createLegacyGroveMap,isUntouchedLegacyStarter,ENEMIES,enemyRecipe} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,validateGroveMap,saveGroveMap,readGroveMap,MAP_KEY,gravityScaleAt,createLegacyGroveMap,isUntouchedLegacyStarter,ENEMIES,enemyRecipe} from '../src/grove-map.js';
 import {triangulatePolygon,polygonArea,isSimplePolygon} from '../src/grove-geometry.js';
 import {BuildSimulation,GRAVITY,EARTH_GRAVITY} from '../src/build-physics.js';
 import {STARTER,scaledPreset} from '../src/build-catalog.js';
@@ -9,7 +11,7 @@ const shape=(type,values)=>({id:'test-shape',type,collision:true,layer:'world',m
 function flight(map,x,y,vx=0,vy=0){const s=new BuildSimulation({...STARTER,drag:0},{map});s.fire();s.shot.setPosition({x:x/s.L,y:y/s.L});s.shot.setLinearVelocity({x:vx*s.T/s.L,y:vy*s.T/s.L});s.detach('Test release');return s;}
 function advance(s,seconds){for(let i=0;i<seconds*60;i++)s.step(1/60);return s;}
 
-test('map defaults place the launch three quarters up an 800 m tree and retain gaps',()=>{
+test('retained V3 defaults place the launch three quarters up an 800 m tree and retain gaps',()=>{
  const m=validateGroveMap(createGroveMap());assert.equal(m.launch.y/m.tree.height,.75);
  const sim=new BuildSimulation(STARTER,{map:m});assert.equal(sim.groundY,-600);assert.equal(sim.terrainHeight(0,.1),0);assert.ok(sim.terrainHeight(30,.1)<-10);
  assert.equal(m.objects.find(o=>o.id==='far-bough').collision,false);assert.equal(sim.mapBodies.length,m.objects.filter(o=>o.collision&&!['foliage','sap'].includes(o.material)).length);
@@ -48,7 +50,7 @@ test('the lighter-gravity starter keeps an upward release and a bounded pinball 
  assert.ok(s.contactEvents.length<=64);assert.equal(new Set(s.contactEvents.map(e=>e.seq)).size,s.contactEvents.length);
 });
 test('invalid imports reject crossings, duplicates, unknown enemies and excess geometry before replacing a save',()=>{
- const storage={data:new Map(),getItem(k){return this.data.get(k);},setItem(k,v){this.data.set(k,v);}};const original=saveGroveMap(storage,createGroveMap()),raw=storage.getItem(MAP_KEY);
+ const storage={data:new Map(),getItem(k){return this.data.get(k);},setItem(k,v){this.data.set(k,v);}};const original=saveGroveMap(storage,createCurrentGroveMap()),raw=storage.getItem(MAP_KEY);
  const crossed=shape('polygon',{points:[{x:0,y:0},{x:4,y:4},{x:0,y:4},{x:4,y:0}]});assert.equal(isSimplePolygon(crossed.points),false);assert.throws(()=>saveGroveMap(storage,mapWith([crossed])));
  assert.throws(()=>validateGroveMap(mapWith([shape('circle',{x:NaN,y:0,radius:1})])));assert.throws(()=>validateGroveMap(mapWith([shape('enemy',{x:3,y:4,radius:1,kind:'unknown'})])));
  assert.throws(()=>validateGroveMap(mapWith([shape('circle',{x:3,y:4,radius:1}),shape('circle',{x:5,y:4,radius:1})])));
@@ -66,11 +68,11 @@ test('gravity is exactly ten percent lighter for hardware, atmosphere, transitio
  for(const altitude of [10,600,900,960,1040,2000]){const s=flight(mapWith([]),50,altitude-600);advance(s,.02);const a=-s.real(s.shot).vy/s.time;assert.ok(Math.abs(a-EARTH_GRAVITY*.9*gravityScaleAt(altitude))<.002,`${altitude}: ${a}`);assert.equal(s.world.getGravity().y,-GRAVITY);}
 });
 
-test('the crown starter is twenty times thicker, twice as tall and has editable routes and interactions',()=>{
+test('the retained V3 crown starter is twenty times thicker, twice as tall and has editable routes and interactions',()=>{
  const m=validateGroveMap(createGroveMap());assert.equal(m.tree.trunkWidth,14*20);assert.equal(m.tree.height,400*2);assert.equal(m.launch.y,600);assert.ok(m.objects.filter(o=>o.type==='enemy').length>=70);assert.ok(m.objects.filter(o=>o.material==='foliage').length>=90);assert.ok(m.objects.filter(o=>o.material==='sap').length>=5);assert.ok(m.objects.filter(o=>o.id.startsWith('great-bough')).length>=20);
 });
-test('old edited maps are preserved while an untouched starter gets the new crown',()=>{
- const old=createLegacyGroveMap(),storage={getItem:()=>JSON.stringify(old)};assert.equal(isUntouchedLegacyStarter(old),true);assert.equal(readGroveMap(storage).version,3);old.objects[0].points[0].x-=1;assert.equal(isUntouchedLegacyStarter(old),false);assert.deepEqual(readGroveMap(storage),validateGroveMap(old));
+test('old edited maps are preserved while an untouched starter gets the current proportioned world',()=>{
+ const old=createLegacyGroveMap(),storage={getItem:()=>JSON.stringify(old)};assert.equal(isUntouchedLegacyStarter(old),true);assert.equal(readGroveMap(storage).version,4);old.objects[0].points[0].x-=1;assert.equal(isUntouchedLegacyStarter(old),false);assert.deepEqual(readGroveMap(storage),validateGroveMap(old));
  const original=createLegacyGroveMap();original.objects.find(o=>o.id==='cloud-two').name='Raincloud';original.objects.find(o=>o.id==='floor-fungus').name='Round fungus';assert.equal(isUntouchedLegacyStarter(original),true);
  const changedType=createLegacyGroveMap();changedType.objects.find(o=>o.id==='first-beetle').kind='hopper';assert.equal(isUntouchedLegacyStarter(changedType),false);
  const changedTree=createLegacyGroveMap();changedTree.tree.trunkX=-20;assert.equal(isUntouchedLegacyStarter(changedTree),false);

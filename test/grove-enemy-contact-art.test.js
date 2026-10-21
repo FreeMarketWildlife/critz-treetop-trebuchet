@@ -1,7 +1,9 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {drawGroveEnemyContactBody,drawGroveWorld} from '../src/grove-art.js';
-import {createGroveMap,ENEMIES} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,ENEMIES} from '../src/grove-map.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
 

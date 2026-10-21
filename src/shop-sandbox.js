@@ -1,5 +1,5 @@
-import {newProgress} from './build-progress.js?v=31';
-import {visitShop,purchaseOffer,rerollShop,openPack,choosePack} from './build-shop.js?v=30';
+import {newProgress} from './build-progress.js?v=35';
+import {visitShop,purchaseOffer,rerollShop,openPack,choosePack} from './build-shop.js?v=35';
 
 // A separate, disposable shop ledger. Creative purchases exercise the same
 // stock, voucher and parcel rules without touching the Adventure save.

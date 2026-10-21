@@ -1,4 +1,4 @@
-import {mapLevels,spaceScale} from './grove-map.js?v=25';
+import {mapLevels,spaceScale} from './grove-map.js?v=35';
 import {critter} from './build-catalog.js?v=31';
 
 const finite=(value,low,high)=>Number.isFinite(value)&&value>=low&&value<=high;
@@ -6,7 +6,7 @@ const finite=(value,low,high)=>Number.isFinite(value)&&value>=low&&value<=high;
  * This is not a copy of the user's world or a claim about real lunar escape. */
 export function spaceWorldDescriptor(map){
  const version=map?.version,height=map?.height,treeHeight=map?.tree?.height??map?.treeHeight,launchY=map?.launch?.y??map?.launchY;
- if(![2,3].includes(version)||!finite(height,600,3000)||!finite(treeHeight,350,1800)||launchY!==(version===2?300:600))throw Error('Invalid space world.');
+ if(![2,3,4].includes(version)||(version===4?height!==3000:!finite(height,600,3000))||!finite(treeHeight,version===4?40:350,version===4?140:1800)||launchY!==(version===2?300:version===4?32:600))throw Error('Invalid space world.');
  return{version,height,treeHeight,launchY};
 }
 /** An authored arcade boundary, above the crown and the reduced-gravity field. */

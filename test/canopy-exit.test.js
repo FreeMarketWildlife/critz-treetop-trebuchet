@@ -1,6 +1,8 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createGroveMap,createLandmarkedGroveMap,validateGroveMap,readGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,createLandmarkedGroveMap,validateGroveMap,readGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
 import {createFlightWeapons} from '../src/flight-weapons.js';
@@ -25,7 +27,7 @@ test('the canopy exit is two passive editable logs with a real gap, preserving e
 
 test('only an exact untouched revision-six starter receives the canopy exit',()=>{
  const previous=createLandmarkedGroveMap(),raw=JSON.stringify(previous);let value=raw;const storage={getItem:k=>k===MAP_KEY?value:null,setItem:()=>assert.fail('reading must not write')};
- assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(value,raw);
+ assert.deepEqual(readGroveMap(storage),validateGroveMap(createCurrentGroveMap()));assert.equal(value,raw);
  for(const edit of [m=>{m.name='My fork';},m=>{m.objects.find(o=>o.id==='opening-skip-4').points[0].x+=.01;},m=>{m.objects.find(o=>o.id==='opening-rest-terrace').bounce=.5;},m=>{m.objects.find(o=>o.material==='foliage').density+=.1;}]){const changed=structuredClone(previous);edit(changed);value=JSON.stringify(changed);assert.deepEqual(readGroveMap(storage),validateGroveMap(changed));}
 });
 

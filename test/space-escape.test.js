@@ -1,9 +1,11 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER,scaledPreset,validateBuild} from '../src/build-catalog.js';
 import {createPayloadLoading} from '../src/payload-loading.js';
-import {createGroveMap,createLegacyGroveMap} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap,createLegacyGroveMap,createProportionedGroveMap} from '../src/grove-map.js';
 import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from '../src/space-policy.js';
 
 const map=createGroveMap();
@@ -97,19 +99,16 @@ test('ordinary weak through full launches retain the pre-space release and journ
  for(const[draw,time,speed,angle,distance,height,end,failure]of fixtures){const sim=new BuildSimulation(STARTER,{map});sim.setDraw(draw);sim.fire();for(let i=0;i<90*120&&['swing','flight'].includes(sim.phase);i++)sim.step(1/120);assert.equal(sim.phase,'finished');assert.equal(sim.spaceEscape,null);assert.equal(sim.spaceState,'bound');for(const[a,b]of[[sim.release.time,time],[sim.release.speed,speed],[sim.release.angle,angle],[sim.maxX,distance],[sim.maxY,height],[sim.time,end]])close(a,b,1e-9);assert.equal(sim.failure,failure);}
 });
 
-test('a catalogue-valid endgame machine reaches space through physical keyboard drops and powered winding',()=>{
- const build=validateBuild({...scaledPreset('whale'),name:'Continental elephant space -15',animal:'elephant',counterGrams:15e9,pivotHeight:220,beamWidth:3,pinAngle:-15});
- const sim=new BuildSimulation(build,{map});assert.deepEqual(sim.facts.warnings,[]);sim.setDraw(0);sim.loading=createPayloadLoading(sim);assert.equal(sim.loading.loadKeyboard(),true);
- let frames=0;while(!sim.loading.loaded&&frames++<360)sim.loading.step(1/60);assert.equal(sim.loading.loaded,true);
+for(const world of[map,createProportionedGroveMap()])test(`a catalogue-valid endgame machine reaches space with one physical drop on V${world.version}`,()=>{
+ const build=validateBuild({...scaledPreset('whale'),name:`Continental elephant space V${world.version}`,animal:'elephant',counterGrams:15e9,pivotHeight:220,beamWidth:3,pinAngle:world.version===4?5:-15});
+ const sim=new BuildSimulation(build,{map:world});assert.deepEqual(sim.facts.warnings,[]);sim.setDraw(0);sim.loading=createPayloadLoading(sim);assert.equal(sim.loading.loadKeyboard(),true);
+ let frames=0;while(!sim.loading.loaded&&frames++<1800)sim.loading.step(1/60);assert.equal(sim.loading.loaded,true);
  frames=0;while(sim.drawFraction<1&&frames++<3600){sim.wind(1/60);sim.loading.step(1/60);}assert.equal(sim.drawFraction,1);
- assert.equal(sim.loading.loaded,false,'this giant wind-up has temporarily lost basket support');
- const heldDraw=sim.drawFraction;assert.equal(sim.fire(),false);assert.equal(sim.phase,'ready');assert.equal(sim.drawFraction,heldDraw,'a refused release leaves the full-draw ratchet in place');
- // The giant moving basket can lose loose support while winding. The player
- // can physically re-drop with Enter while the full-draw ratchet holds.
- assert.equal(sim.loading.loadKeyboard(),true);let supported=0;frames=0;
+ assert.equal(sim.loading.loaded,true,'gentle cargo motion preserves loose support after winding');
+ let supported=0;frames=0;
  while(supported<30&&frames++<360){sim.loading.step(1/60);supported=sim.loading.loaded?supported+1:0;}
  assert.equal(supported,30);assert.equal(sim.fire(),true);
  frames=0;while(['swing','flight'].includes(sim.phase)&&frames++<60*60)sim.step(1/60);
- assert.equal(sim.phase,'escaped');assert.equal(sim.failure,'');assert.equal(sim.spaceEscape.altitude,3000);assert.ok(sim.release.speed>200&&sim.release.angle>35&&sim.release.angle<50);
- assert.ok(sim.spaceEscape.payload.vy>100);assert.equal(sim.gravityFactor,0);assert.equal(sim.contactEvents.length,0);assert.deepEqual(validateSpaceEscape(sim.spaceEscape),sim.spaceEscape);
+ assert.equal(sim.phase,'escaped');assert.equal(sim.failure,'');assert.equal(sim.spaceEscape.altitude,3000);assert.ok(world.version===4?sim.release.speed>180&&sim.release.angle>60&&sim.release.angle<70:sim.release.speed>200&&sim.release.angle>35&&sim.release.angle<50);
+ assert.ok(sim.spaceEscape.payload.vy>(world.version===4?20:100));assert.equal(sim.gravityFactor,0);assert.equal(sim.contactEvents.length,0);assert.deepEqual(validateSpaceEscape(sim.spaceEscape),sim.spaceEscape);
 });

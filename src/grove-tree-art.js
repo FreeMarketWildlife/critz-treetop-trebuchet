@@ -46,3 +46,52 @@ export function drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:
  // Small sprays break the crown's silhouette into individual leafy edges.
  if(s<5)for(let i=0;i<35;i++){const a=i*2.39996,rr=Math.sqrt((i+.5)/35),x=cx+Math.cos(a)*r*rr*.96,y=top-h*.18+Math.sin(a)*h*.19*rr;if(!visible(x,y,18,12))continue;foliageClump(c,project,x,y,12+i%5*2,5+i%3*2,i%3?'#6a9973':'#93b885','#c8dca3',i);}
 }
+
+// V4 oak: a 76 m broad crown over a 7 m basal trunk. These normalized
+// control points describe only foliage; no procedural solid boughs are added.
+const OAK_CROWN_PROFILE=Object.freeze([
+ ['M',-1,.44],['C',-1,.57,-.94,.62,-.86,.60],['C',-.97,.80,-.73,.91,-.61,.80],
+ ['C',-.65,.99,-.37,1,-.26,.90],['C',-.17,1,-.05,1,.08,1],['C',.20,1,.30,.93,.33,.84],
+ ['C',.45,.99,.68,.96,.68,.80],['C',.89,.88,.99,.69,.89,.58],['C',1,.60,1,.48,1,.40],
+ ['C',1,.28,.91,.25,.82,.30],['C',.87,.13,.67,.07,.58,.18],['C',.53,.04,.41,0,.30,0],
+ ['C',.16,0,.05,.14,-.04,.12],['C',-.22,.04,-.36,.01,-.48,.16],['C',-.61,.05,-.83,.14,-.79,.30],
+ ['C',-.92,.22,-1,.29,-1,.44],['Z']
+].map(Object.freeze));
+/** World-coordinate crown commands are also usable in a standalone scale
+ * comparison. All controls stay within the declared crown width/depth. */
+export function oakCrownCommands(tree,origin=0){
+ const radius=tree.crownRadius,depth=tree.crownDepth,bottom=tree.height-depth-origin;
+ return OAK_CROWN_PROFILE.map(([command,...values])=>[command,...values.map((v,i)=>i%2?bottom+v*depth:tree.trunkX+v*radius)]);
+}
+function oakPath(c,commands,project){
+ c.beginPath();for(const [command,...a]of commands){if(command==='Z'){c.closePath();continue;}const p=[];for(let i=0;i<a.length;i+=2)p.push(...project(a[i],a[i+1]));if(command==='M')c.moveTo(...p);else if(command==='L')c.lineTo(...p);else if(command==='Q')c.quadraticCurveTo(...p);else c.bezierCurveTo(...p);}
+}
+/** Exact tapered trunk in world metres; root spread is separately declared. */
+export function oakTrunkCommands(t,origin=0){
+ const x=t.trunkX,w=t.trunkWidth,h=t.height,y=-origin;
+ return[['M',x-w/2,y],['C',x-w*.40,y+h*.14,x-w*.36,y+h*.29,x-w*.31,y+h*.44],['C',x-w*.43,y+h*.56,x-w*.22,y+h*.65,x-w*.28,y+h*.75],['Q',x-w*.11,y+h*.78,x-w*.078,y+h*.855],['L',x+w*.071,y+h*.855],['C',x+w*.03,y+h*.73,x+w*.24,y+h*.65,x+w*.19,y+h*.55],['C',x+w*.31,y+h*.44,x+w*.34,y+h*.24,x+w/2,y],['Z']];
+}
+export function oakRootCommands(t,origin=0){
+ const x=t.trunkX,w=t.trunkWidth,y=-origin;
+ return[-1,1].flatMap(side=>Array.from({length:3},(_,i)=>{const start=x+side*w*(.24+i*.06),end=x+side*w*(.55+i*.075);return[['M',start,y+3.1-i*.6],['Q',start+side*w*.12,y+.8,end,y],['Q',end-side*.8,y-.10,x+side*w*.32,y],['Z']];}));
+}
+/** V4 only. The shared editor/runtime object painter supplies every solid
+ * oak-scaffold-* branch, so decoration cannot invent a landable-looking bough. */
+export function drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,height:H,camera}){
+ const cx=t.trunkX,w=t.trunkWidth,h=t.height,r=t.crownRadius,depth=t.crownDepth,root=-origin,commands=oakCrownCommands(t,origin);
+ const crownBottom=h-depth-origin,close=Math.max(0,Math.min(1,(s-8)/52));
+ c.save();c.globalAlpha*=1-close*.76;oakPath(c,commands,project);
+ const g=c.createLinearGradient(...project(cx,crownBottom),...project(cx,h-origin));g.addColorStop(0,'#315e50');g.addColorStop(.46,'#527b55');g.addColorStop(1,'#8ca76a');c.fillStyle=g;c.fill();c.save();c.clip();
+ // Broad crown volumes are leaf masses, not metre-long individual leaves.
+ for(let i=0;i<17;i++){const a=i*2.39996,q=Math.sqrt((i+.5)/17),x=cx+Math.cos(a)*r*q*.88,y=crownBottom+depth*(.52+Math.sin(a)*q*.46),rx=r*(.19+.035*Math.sin(i)),ry=depth*(.14+.025*Math.cos(i*1.7));foliageClump(c,project,x,y,rx,ry,['#668b5b','#486f50','#78965e','#527e57'][i%4],'#b6c78a',i,s<1.4);}
+ c.restore();c.restore();
+ // Root buttresses are a few metres across, rather than old 20–45 m fins.
+ for(const [i,commands]of oakRootCommands(t,origin).entries()){oakPath(c,commands,project);c.fillStyle=i%2?'#71543a':'#8c6945';c.fill();}
+ const left=cx-w/2,right=cx+w/2;
+ oakPath(c,oakTrunkCommands(t,origin),project);
+ const bark=c.createLinearGradient(...project(left,root),...project(right,root));bark.addColorStop(0,'#65503b');bark.addColorStop(.32,'#a27a4d');bark.addColorStop(.57,'#b68b59');bark.addColorStop(1,'#705039');c.fillStyle=bark;c.fill();c.save();c.clip();
+ for(let i=0;i<11;i++){const x=left+w*i/10;c.beginPath();c.moveTo(...project(x,root));c.bezierCurveTo(...project(x+Math.sin(i)*w*.06,root+h*.27),...project(cx+(x-cx)*.65,root+h*.53),...project(cx+(x-cx)*.22,root+h*.86));c.strokeStyle=i%3?'#715138':'#c09c66';c.lineWidth=Math.max(.45,Math.min(3,s*w*.012));c.stroke();}
+ if(s>12){const low=Math.max(root,camera.y-H/(2*s)-.2),high=Math.min(root+h*.86,camera.y+H/(2*s)+.2),xmin=Math.max(left,camera.x-W/(2*s)-.2),xmax=Math.min(right,camera.x+W/(2*s)+.2);let budget=42;
+  for(let x=Math.floor(xmin/.11)*.11;x<xmax&&budget-->0;x+=.11){const bend=Math.sin(x*27)*.035;c.beginPath();c.moveTo(...project(x,low));c.bezierCurveTo(...project(x+bend,low+(high-low)*.35),...project(x-bend,low+(high-low)*.7),...project(x+.014,high));c.strokeStyle=Math.sin(x*17)>0?'#be965e':'#725039';c.lineWidth=Math.max(.4,s*.006);c.stroke();}
+ }c.restore();
+}

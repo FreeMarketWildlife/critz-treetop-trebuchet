@@ -1,6 +1,6 @@
-import {windingMinimum} from './winding-comfort.js?v=30';
+import {windingMinimum,windingMotion} from './winding-comfort.js?v=35';
 import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
-import {GRAVITY} from './build-physics.js?v=31';
+import {GRAVITY} from './build-physics.js?v=35';
 const n=value=>Number(value.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6});
 const mass=g=>g>=1000000?n(g/1000000)+' t':g>=1000?n(g/1000)+' kg':n(g)+' g';
 /** What a purchased part changes, independent of a promised distance increase. */
@@ -27,7 +27,9 @@ export function equipmentUse(p,c){
  if(p.slot==='sling')return 'Now '+n(c.pouchWidth)+' m opening / '+n(c.slingLength)+' m cords. Cloth and cord mass still load the beam.';
  if(p.slot==='trough')return 'Tune the guide deck and cord length so the loaded pouch slides along the rail before lift-off.';
  if(p.slot==='release')return 'Compare release angle, then adjust the pin bend to shape the arc.';
+ if(p.slot==='bearing'&&windingMotion(c).travelLimited)return 'Large cargo limits the moving basket to a gentle pace. Bearings still reduce axle friction; current preparation is about '+n(preparationSeconds(c))+' s.';
  if(p.slot==='bearing')return 'Smoother cranking: '+n(windingMinimum(c))+' s light-load preparation. Heavy loads also depend on crank-wheel power.';
+ if(p.slot==='winch'&&windingMotion(c).travelLimited)return 'Cargo motion also limits this large basket. More wheel power helps only while counterweight power is the slower limit.';
  if(p.slot==='winch')return 'Bearings set the light-load pace ('+n(windingMinimum(c))+' s). More wheel power raises heavier loads faster.';
  return '';
 }
@@ -44,5 +46,5 @@ export function preparationSeconds(c,{loaded=true,samples=512}={}){
   const joules=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
   seconds+=Math.max(windingMinimum(c,{loaded}),joules/power)/samples;
  }
- return seconds;
+ return seconds+windingMotion(c,{loaded}).rampSeconds*.5;
 }

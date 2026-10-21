@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-import {createGroveMap,validateGroveMap} from '../src/grove-map.js';
+import {createGroveMap,validateGroveMap,MAP_KEY} from '../src/grove-map.js';
+import {createWorldSession} from '../src/world-session.js';
+import {editorMapStorage} from '../src/editor-storage.js';
 import {newProgress,saveProgress} from '../src/build-progress.js';
 import {loadAudioPreferences,saveAudioPreferences} from '../src/audio-preferences.js';
 const app=readFileSync(new URL('../src/build-app.js',import.meta.url),'utf8'),editor=readFileSync(new URL('../src/map-editor.js',import.meta.url),'utf8');
@@ -10,15 +12,13 @@ const line=(source,prefix)=>{const found=source.split('\n').find(s=>s.startsWith
 function ui(){const nodes=new Map();return id=>{if(!nodes.has(id))nodes.set(id,{checked:false,disabled:false,hidden:true,dataset:{},setAttribute(){},focus(){}});return nodes.get(id);};}
 function store(initial=[]){return{values:new Map(initial),writes:[],getItem(k){return this.values.get(k)??null;},setItem(k,v){this.writes.push([k,v]);this.values.set(k,v);}};}
 
-test('QA editor play and restart retain isolation while normal play remains a normal editor session',()=>{
- for(const qa of [false,true]){
-  const $=ui(),context={$,qa,doc:createGroveMap(),readOnly:false,validateGroveMap,save(){},finish(){},closePanels(){},closeDialog(){},editorInert(){},cue(){},status:message=>assert.fail(message)};
-  vm.createContext(context);const urlLine=editor.split('\n').find(s=>s.startsWith('const playtestUrl='));if(urlLine)vm.runInContext(urlLine,context);
-  vm.runInContext(line(editor,'function play(){'),context);vm.runInContext('play()',context);
-  const check=()=>{const url=new URL($('playFrame').src,'https://example.invalid/');assert.equal(url.searchParams.get('creative'),'1');assert.equal(url.searchParams.get('editor'),'1');assert.equal(url.searchParams.has('qa'),qa);};
-  check();$('playFrame').src='about:blank';
-  const start=editor.indexOf("$('restartPlay').onclick="),end=editor.indexOf("$('returnEditor').onclick=",start);assert.ok(start>=0&&end>start);
-  vm.runInContext(editor.slice(start,end),context);$('restartPlay').onclick();check();
+test('actual unified editor Save and Play handlers share the current world while preserving QA and read-only isolation',async()=>{
+ for(const qa of [false,true])for(const readOnly of [false,true]){
+  const personal=store([['treetop-custom-workshop-v1','personal progress'],['treetop-custom-save-enabled','false']]),session=store(),world=createWorldSession({storage:editorMapStorage(personal,session,{qa})}),doc={...createGroveMap(),name:'Current edited world'};
+  world.replace(doc,{readOnly,dirty:!readOnly});let played=0;const messages=[],$=ui(),context={$,qa,world,doc,readOnly,knownRevision:world.revision,unsaved:false,clone:structuredClone,validateGroveMap,finish(){},cancelDrawing(){},closePanels(){},closeDialog(){},status:message=>messages.push(message),onPlay(){played++;assert.equal(world.map.name,'Current edited world');}};
+  vm.createContext(context);vm.runInContext(line(editor,'function save(){'),context);vm.runInContext(line(editor,'function play(){'),context);vm.runInContext('play()',context);await Promise.resolve();
+  assert.equal(played,1);assert.equal(personal.getItem('treetop-custom-workshop-v1'),'personal progress');assert.equal(personal.getItem('treetop-custom-save-enabled'),'false');
+  assert.equal(personal.writes.length,qa||readOnly?0:1);assert.equal(session.writes.length,qa&&!readOnly?1:0);if(readOnly)assert.equal(personal.getItem(MAP_KEY),null);
  }
 });
 

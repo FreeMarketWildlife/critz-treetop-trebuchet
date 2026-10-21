@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {BuildSimulation,GRAVITY} from '../src/build-physics.js';
 import {STARTER,validateBuild,grams} from '../src/build-catalog.js';
-import {createGroveMap,levelAt,enemyRecipe} from '../src/grove-map.js';
+import {createGroveMap,createV3GroveMap,levelAt,enemyRecipe} from '../src/grove-map.js';
 import {jungleLayerAt} from '../src/grove-jungle.js';
 import {escapeAltitude} from '../src/space-policy.js';
 import {newProgress,canBuild,rewards,bank,markSpaceEscape,pendingSpaceResult,validateProgress,saveProgress,loadProgress,SAVE_KEY} from '../src/build-progress.js';
@@ -12,6 +12,9 @@ import {visitShop} from '../src/build-shop.js';
 import {createSandboxShop} from '../src/shop-sandbox.js';
 import {createLaunchFeel} from '../src/launch-feel.js';
 import {createPayloadLoading} from '../src/payload-loading.js';
+
+import {createWorldSession} from '../src/world-session.js';
+import {createWorldLinkLoader} from '../src/world-link.js';
 
 const source=readFileSync(new URL('../src/build-app.js',import.meta.url),'utf8');
 const copy=value=>structuredClone(value);
@@ -42,7 +45,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
  $('stage').clientWidth=1726;$('stage').clientHeight=819;$('stage').offsetWidth=1;$('speed').value='1';$('quality').value='auto';$('workshopDialog').open=false;
  const initial=copy(state);saveProgress(storage,initial);
  const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,
-  paused:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
+  paused:false,editingWorld:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
   lastTime:0,lastDraw:0,drawCount:0,refreshAt:0,lastZone:'grandfatherTree',labels:false,follow:true,landingMarks:true,previewSim:null,sessionLog:[],soundQueue:[],currentCel:{hits:0,pose:'flying'},
   BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
   visitShop:(s,seed)=>visitShop(s,seed??73),creativeShop:createSandboxShop(73),
@@ -52,7 +55,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
   launchFeel:createLaunchFeel(),weaponHud:{reset(){},draw(){}},sound:{getStatus:()=>({contextState:'running'}),play(){},pause(){},unlock(){}},
   document:{hidden:false,body:{classList:bodyClasses},querySelector:()=>null},requestAnimationFrame(){},drawHeightMap(){},drawHudCritter(){},
   hudPerformance:{update:()=>({hits:0,pose:'flying'})},critterPoseName:()=> 'Flying',cancelLoading(){},cue:name=>cues.push(name),chime:names=>chimes.push([...names]),toast:message=>messages.push(message),
-  populate(){context.populateCount++;$('buildName').value=context.draft.name;},populateCount:0};
+  linkRetries:0,loadPlayerWorld:async()=>{context.linkRetries++;},populate(){context.populateCount++;$('buildName').value=context.draft.name;},populateCount:0};
  context.launchFeel.reset(sim);context.feelFrame=context.launchFeel.state();
  vm.createContext(context);
  for(const name of['persist','pendingCollection','protectSpaceResult','applyBuild','updateModeUi','switchMode','updateReadouts','recordSpaceEscape','resultData','showResult','resumePendingSpace','collect','openWorkshop','frame'])vm.runInContext(functionSource(name),context);
@@ -87,7 +90,7 @@ test('actual Collect credits the frozen run once, clears pending and retries wit
  h.c.collect();assert.equal(h.c.state.bells,before.bells+reward.bells);assert.equal(h.c.state.points,before.points+reward.points);assert.equal(h.c.state.launches,1);assert.equal(h.c.state.pendingSpace,null);
  assert.deepEqual(h.c.state.claimed,['escape-ui']);assert.deepEqual(h.c.state.owned,before.owned);assert.deepEqual(h.c.state.blueprints,before.blueprints);
  assert.equal(h.c.sim.phase,'ready');assert.equal(h.c.sim.spaceState,'bound');assert.equal(h.c.resultShown,false);assert.equal(h.$('spaceRewardBadge').hidden,true);assert.equal(h.classes.has('space-escaped'),false);
- const paid=copy(h.c.state);h.c.collect();assert.deepEqual(copy(h.c.state),paid);assert.deepEqual(loadProgress(h.storage),paid);
+ assert.equal(h.c.linkRetries,1);const paid=copy(h.c.state);h.c.collect();assert.deepEqual(copy(h.c.state),paid);assert.deepEqual(loadProgress(h.storage),paid);
 });
 test('failed space-collection persistence rolls back ledger/log, keeps the result and permits one later successful collection',()=>{
  const h=setup();display(h);h.c.sessionLog=[{existing:'kept'}];const before=copy(h.c.state),log=copy(h.c.sessionLog),bytes=h.storage.getItem(SAVE_KEY),sim=h.c.sim,reward=rewards(h.c.resultData());
@@ -134,4 +137,25 @@ test('Creative escaped to pending-save import restores completed crossing instea
 test('an existing Adventure pending result blocks import before reading replacement bytes',async()=>{
  const h=setup();display(h);const before=copy(h.c.state),sim=h.c.sim,target={value:'backup.json',files:[{size:1,text:async()=>assert.fail('pending collection must block replacement read')}]};
  await h.$('importSave').onchange({target});assert.equal(target.value,'');assert.deepEqual(h.c.state,before);assert.equal(h.c.sim,sim);assert.match(h.messages.at(-1),/Collect your space rewards/);
+});
+
+test('ordinary collection also preserves the run and ledger when its durable save fails',()=>{
+ const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.phase='finished';s.maxX=40;s.maxY=8;
+ s.loading=createPayloadLoading(s);const h=setup({sim:s});display(h);const before=copy(h.c.state),log=copy(h.c.sessionLog),bytes=h.storage.getItem(SAVE_KEY),reward=rewards(h.c.resultData());
+ h.storage.failing=true;h.c.collect();assert.deepEqual(h.c.state,before);assert.deepEqual(copy(h.c.sessionLog),log);assert.equal(h.storage.getItem(SAVE_KEY),bytes);assert.equal(h.c.banked,false);assert.equal(h.c.resultShown,true);assert.equal(h.c.sim,s);
+ h.storage.failing=false;h.c.collect();assert.equal(h.c.state.bells,before.bells+reward.bells);assert.equal(h.c.state.points,before.points+reward.points);assert.equal(h.c.sim.phase,'ready');
+});
+
+test('shared world changes use the applied valid rig and preserve an invalid pending fine-tune draft',async()=>{
+ const local=createGroveMap(),world=createWorldSession({map:local}),s=new BuildSimulation(STARTER,{map:local}),h=setup({sim:s});
+ h.c.draft={...STARTER,pivotHeight:NaN};h.$('buildName').value='Unfinished experiment';h.c.location={hash:'#map=older'};h.c.runtimeWorldRevision=0;
+ h.c.playerWorldLinks=createWorldLinkLoader(world,{decode:async()=>createV3GroveMap(),canApply:()=>!h.c.protectSpaceResult()});
+ const start=source.indexOf('async function loadPlayerWorld(){'),end=source.indexOf('\n}',start)+2;vm.runInContext(source.slice(start,end),h.c);
+ await h.c.loadPlayerWorld();assert.equal(h.c.sim.map.version,3);assert.equal(h.c.groveMap.launch.y,h.c.sim.map.launch.y);assert.equal(h.c.runtimeWorldRevision,world.revision);assert.equal(h.c.sim.c.pivotHeight,STARTER.pivotHeight);assert.ok(Number.isNaN(h.c.draft.pivotHeight));assert.equal(h.$('buildName').value,'Unfinished experiment');
+ h.c.location.hash='';await h.c.loadPlayerWorld();assert.equal(h.c.sim.map.version,4);assert.equal(h.c.groveMap.launch.y,h.c.sim.map.launch.y);assert.equal(h.c.runtimeWorldRevision,world.revision);assert.ok(Number.isNaN(h.c.draft.pivotHeight));
+});
+
+test('Collect retries the applied rig while preserving an unfinished invalid build draft',()=>{
+ const h=setup();display(h);const original=h.c.sim.c,reward=rewards(h.c.resultData()),before=h.c.state.bells;h.c.draft={...original,pivotHeight:NaN};h.$('buildName').value='Work in progress';h.c.collect();
+ assert.equal(h.c.state.bells,before+reward.bells);assert.equal(h.c.sim.phase,'ready');assert.equal(h.c.sim.c.pivotHeight,original.pivotHeight);assert.equal(h.c.state.pendingSpace,null);assert.ok(Number.isNaN(h.c.draft.pivotHeight));assert.equal(h.$('buildName').value,'Work in progress');const paid=copy(h.c.state);h.c.collect();assert.deepEqual(copy(h.c.state),paid);
 });

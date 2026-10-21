@@ -1,28 +1,35 @@
-import {drawAltitudeStrip} from './altitude-strip.js?v=31';
+import {createWorldSession} from './world-session.js?v=35';
+import {editorMapStorage} from './editor-storage.js';
+import {createWorldLinkLoader} from './world-link.js?v=35';
+import {createScaleBuild} from './scale-builds.js?v=35';
+import {drawAltitudeStrip} from './altitude-strip.js?v=35';
 import {installPauseMenu} from './pause-menu.js';
 import {createWeaponHud} from './weapon-hud.js?v=25';
-import {jungleLayerAt} from './grove-jungle.js?v=25';
-import {createLaunchFeel} from './launch-feel.js?v=31';
-import {createPayloadLoading} from './payload-loading.js?v=31';
+import {jungleLayerAt} from './grove-jungle.js?v=35';
+import {createLaunchFeel} from './launch-feel.js?v=35';
+import {createPayloadLoading} from './payload-loading.js?v=35';
 import {crankState} from './crank-wheel.js?v=30';
 import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=30';
-import {fitEquipment} from './build-equipment.js?v=30';
+import {fitEquipment,purchaseFit} from './build-equipment.js?v=35';
 import {createCapacityControls} from './capacity-controls.js?v=30';
-import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=31';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=31';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=31';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=31';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=30';
-import {drawShopArt} from './shop-art.js?v=31';
+import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=35';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=35';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=35';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=35';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack,shopView} from './build-shop.js?v=35';
+import {drawShopArt} from './shop-art.js?v=35';
 import {createHoldControl} from './hold-control.js';
 import {createAudio} from './audio.js?v=28';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=25';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=35';
 import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=25';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=31';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=35';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
-const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
-let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
+const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1',authorMode=params.get('author')==='1'&&document.documentElement.dataset.authorTools==='local';
+let worldMapStorage;try{worldMapStorage=editorMapStorage(localStorage,sessionStorage,{qa});}catch{}
+const worldSession=createWorldSession({storage:worldMapStorage});
+let runtimeWorldRevision=worldSession.revision,editingWorld=false,pausedBeforeEdit=false;
+let groveMap=worldSession.map,creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
 let state=newProgress(),saving=!qa,creative=false,draft,creativeBuild={...STARTER},adventureBuild,sim,paused=false,labels=false,follow=true,landingMarks=true,shotId='',banked=false,resultShown=false,spaceRecorded=false,spaceAchievementNew=false,lastTime=0,refreshAt=0,winding=false,sessionLog=[],toastTimer,dirty=true,lastDraw=0,drawCount=0,ratchetStep=-1,readyCue=false,seenRelease=false,seenContacts=0,scoreStep=0,holdStart=0;
 const sound=createAudio({maxVoices:10}),soundQueue=[],hudPerformance=createCritterPerformance();let currentCel={pose:'ready',tier:0,hits:0,angle:0},soundedHits=0;
 let audioPrefs={muted:false,volume:.35};try{audioPrefs=loadAudioPreferences(localStorage);}catch{}sound.setMuted(audioPrefs.muted);sound.setVolume(audioPrefs.volume);
@@ -93,7 +100,7 @@ function refreshFacts(){
 }
 function pendingCollection(){return !creative&&!banked&&sim?.spaceState==='escaped'&&!!state.pendingSpace;}
 function protectSpaceResult(){if(!pendingCollection())return false;toast('Collect your space rewards before starting another experiment.');return true;}
-function applyBuild({quiet=false,restore=false}={}){if(!restore&&protectSpaceResult())return false;try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});weaponHud.reset();sim.setDraw(0);sim.loading=createPayloadLoading(sim);launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;spaceRecorded=false;spaceAchievementNew=false;document.body.classList.remove('space-escaped');$('spaceRewardBadge').hidden=true;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');return true;}catch(e){toast(e.message);return false;}}
+function applyBuild({quiet=false,restore=false,configuration}={}){if(!restore&&protectSpaceResult())return false;try{const pendingDraft=configuration?{build:draft,name:$('buildName').value}:null;$('arcAdvice').textContent='';const b=validateBuild(configuration??{...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});weaponHud.reset();sim.setDraw(0);sim.loading=createPayloadLoading(sim);launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;spaceRecorded=false;spaceAchievementNew=false;document.body.classList.remove('space-escaped');$('spaceRewardBadge').hidden=true;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}if(pendingDraft)draft=pendingDraft.build;populate();if(pendingDraft)$('buildName').value=pendingDraft.name;drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');return true;}catch(e){toast(e.message);return false;}}
 function updateModeUi(){document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every volunteer. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';}
 function switchMode(next){if(protectSpaceResult())return;if(editorSession&&!next)return;if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};updateModeUi();populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
 function drawHeightMap(){
@@ -108,14 +115,14 @@ function drawHeightMap(){
 }
 function drawHudCritter(){currentCel=hudPerformance.update(sim);const canvas=$('hudCritter'),c=canvas.getContext('2d');if(canvas.width!==200){canvas.width=200;canvas.height=140;}c.setTransform(2,0,0,2,0,0);c.clearRect(0,0,100,70);drawCritter(c,sim.animal,50,36,76,0,!!sim.release,undefined,currentCel);canvas.dataset.pose=currentCel.pose;canvas.setAttribute('aria-label',`${sim.animal.name}: ${critterPoseName(currentCel)}`);}
 const hold=createHoldControl({
- canStart:()=>!paused&&!document.hidden&&!document.querySelector('dialog[open]')&&sim?.phase==='ready'&&sim.loading.loaded&&!sim.loading.dragging,
- onStart(){winding=true;holdStart=performance.now();ratchetStep=-1;readyCue=false;document.body.classList.add('holding');dirty=true;cue('ratchet');},
- onRelease(){winding=false;document.body.classList.remove('holding');dirty=true;const elapsed=performance.now()-holdStart;if(elapsed<90){if(qa)stage.dataset.launchAttempt=JSON.stringify({elapsed,accepted:false,reason:'short-tap',draw:sim.drawFraction});sim.setDraw(0);return;}const loaded=sim.loading.loaded,draw=sim.drawFraction,accepted=sim.fire();if(qa)stage.dataset.launchAttempt=JSON.stringify({elapsed,loaded,draw,accepted,phase:sim.phase,supported:sim.loading.loaded});if(accepted){cue('unlatch');document.body.classList.add('in-flight');}else if(sim.phase==='ready')toast('The volunteer is still settling. Hold and release again once they’re supported.');updateReadouts();},
+ canStart:()=>!editingWorld&&!paused&&!document.hidden&&!document.querySelector('dialog[open]')&&sim?.phase==='ready'&&sim.loading.loaded&&!sim.loading.dragging,
+ onStart(){sim.beginWinding();winding=true;holdStart=performance.now();ratchetStep=-1;readyCue=false;document.body.classList.add('holding');dirty=true;cue('ratchet');},
+ onRelease(){winding=false;document.body.classList.remove('holding');dirty=true;const elapsed=performance.now()-holdStart;if(elapsed<90){if(qa)stage.dataset.launchAttempt=JSON.stringify({elapsed,accepted:false,reason:'short-tap',draw:sim.drawFraction});sim.setDraw(0);return;}const loaded=sim.loading.loaded,draw=sim.drawFraction,accepted=sim.fire();if(qa)stage.dataset.launchAttempt=JSON.stringify({elapsed,loaded,draw,accepted,phase:sim.phase,supported:sim.loading.loaded});if(accepted){cue('unlatch');document.body.classList.add('in-flight');}else if(sim.phase==='ready')toast(sim.preparationStatus().message??'The volunteer is still settling. Hold and release again once they’re supported.');updateReadouts();},
  onCancel(){winding=false;document.body.classList.remove('holding');sim?.setDraw(0);dirty=true;},
 });
 function beginHold(id){
  sound.unlock();
- if(paused||document.hidden||document.querySelector('dialog[open]'))return false;
+ if(editingWorld||paused||document.hidden||document.querySelector('dialog[open]'))return false;
  if(!sim.loading.loaded)return false;
  if(sim.phase==='ready'&&sim.facts.warnings.some(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'))){sim.fire();updateReadouts();dirty=true;return false;}
  return hold.begin(id);
@@ -127,13 +134,13 @@ function updateReadouts(){
  const audioState=sound.getStatus().contextState;if($('stage').dataset.audio!==audioState)$('stage').dataset.audio=audioState;
  $('distance').innerHTML=`${s.distance.toFixed(1)} <em>m</em>`;$('height').innerHTML=`${s.height.toFixed(1)} <em>m</em>`;$('velocity').innerHTML=`${s.release?s.release.speed.toFixed(1):'—'} <em>m/s</em>`;$('tension').innerHTML=`${Math.round(s.tension).toLocaleString()} <em>N</em>`;
  const names={ready:'A LITTLE WIND-UP…',swing:'COUNTERWEIGHT FALLING',flight:'SLING OPEN · IN FLIGHT',finished:'EXPERIMENT COMPLETE',invalid:'CHECK THIS BUILD',escaped:'BEYOND THE MOON · FREE DRIFT'};
- const full=(sim.drawFraction??0)>=.999;
+ const full=(sim.drawFraction??0)>=.999,preparation=sim.preparationStatus();
  $('phaseBadge').textContent=paused?'TAKE A BREATHER':winding?(full?'RATCHET LOCKED · FULL DRAW':'RAISING THE COUNTERWEIGHT'):names[s.phase];
- $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?(feelFrame.swingAge<.5?'Counterweight dropping…':feelFrame.swingAge<1?'Sling picking up speed…':'Here we go…'):s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:s.phase==='escaped'?'Zero gravity · collect whenever you’re ready':'Nice experiment.';
- $('launchStatus').textContent=s.phase==='escaped'?'Space reached. This run’s rewards are safely fixed at the boundary.':paused?'Tap Resume when you’re ready.':winding?(full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release whenever you like`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Pick up the head, body or tail. Enter loads with the keyboard.';
- if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'DROP INTO THE BASKET':'LOAD THE SLING';
+ $('holdHint').textContent=paused?'Paused':winding?(full&&preparation.ready?'Ready! Let go to fly.':preparation.code==='settling'?'Let the volunteer settle…':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.assisting?'Lifting the volunteer…':sim.loading.settling||sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?(feelFrame.swingAge<.5?'Counterweight dropping…':feelFrame.swingAge<1?'Sling picking up speed…':'Here we go…'):s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:s.phase==='escaped'?'Zero gravity · collect whenever you’re ready':'Nice experiment.';
+ $('launchStatus').textContent=s.phase==='escaped'?'Space reached. This run’s rewards are safely fixed at the boundary.':paused?'Tap Resume when you’re ready.':winding?(preparation.code==='draw'?preparation.message:preparation.code==='settling'?'The ratchet holds the draw while the volunteer settles.':full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release to launch`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.assisting?'Lifting the volunteer above the open basket for a physical drop.':sim.loading.settling?'Let the volunteer settle; wait for basket support.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Pick up the head, body or tail. Enter loads with the keyboard.';
+ if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'DROP INTO THE BASKET':sim.loading.assisting?'LIFTING THE VOLUNTEER':sim.loading.settling?'SETTLING IN THE BASKET':'LOAD THE SLING';
  $('loadingTip').hidden=true;
- const pct=Math.round((sim.drawFraction??0)*100);$('launchButton').disabled=paused||sim.phase!=='ready'||(!winding&&!sim.loading.loaded);$('launchButtonText').textContent=winding?`Release to launch · ${pct}%`:sim.loading.loaded?'Hold to crank & launch':'Load basket first';$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
+ const pct=Math.round((sim.drawFraction??0)*100);$('launchButton').disabled=paused||sim.phase!=='ready'||(!winding&&!sim.loading.loaded);$('launchButtonText').textContent=winding?(preparation.code==='draw'?`Keep cranking · ${pct}% / ${Math.round(preparation.minimumDraw*100)}%`:preparation.code==='settling'?'Basket settling…':`Release to launch · ${pct}%`):sim.loading.loaded?'Hold to crank & launch':'Load basket first';$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
  $('sceneHint').textContent=`${sim.animal.name} · ${grams(sim.animal.grams)}${sim.release?' · '+critterPoseName(currentCel):''}`;
  $('launchPrompt').hidden=resultShown||paused||sim.phase!=='ready'||(!sim.loading.loaded&&!winding);$('collectShop').hidden=false;$('collectShop').textContent=creative?'Try the shop →':'Collect & visit shop →';
  $('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);$('stage').dataset.build=sim.c.name;$('stage').dataset.axleHeight=String(sim.c.pivotHeight);$('stage').dataset.animal=sim.animal.id;$('stage').dataset.altitude=altitude.toFixed(2);$('stage').dataset.zone=zone.id;$('stage').dataset.mapObjects=String(groveMap.objects.length);$('stage').dataset.creative=String(creative);$('stage').dataset.combo=String(combo);
@@ -165,39 +172,85 @@ function resumePendingSpace(){
  launchFeel.reset(sim);feelFrame=launchFeel.state();renderer.clearLandingCue();document.body.classList.add('in-flight','space-escaped');
  updateReadouts();dirty=true;return true;
 }
-function collect(){if(!resultShown)return;if(!banked){const data=resultData(),before=state,oldLog=[...sessionLog];if(sim.phase!=='invalid'){sessionLog.unshift({...rewards(data),animal:sim.animal.id,build:sim.c.name,creative,releaseAngle:sim.release?.angle,releaseSpeed:sim.release?.speed});sessionLog=sessionLog.slice(0,20);state=bank(state,shotId,data,creative);if(!creative){state=visitShop(state,qa?42+state.launches:undefined);$('shopNew').hidden=false;chime(['coin','coin','purchase']);}if(!persist()&&!creative&&data.spaceEscape){state=before;sessionLog=oldLog;return;}}banked=true;if(creative)creativeShop=visitShop({...creativeShop,launches:creativeShop.launches+1});}applyBuild({quiet:true});}
+function collect(){if(!resultShown)return;if(!banked){const data=resultData(),before=state,oldLog=[...sessionLog];if(sim.phase!=='invalid'){sessionLog.unshift({...rewards(data),animal:sim.animal.id,build:sim.c.name,creative,releaseAngle:sim.release?.angle,releaseSpeed:sim.release?.speed});sessionLog=sessionLog.slice(0,20);state=bank(state,shotId,data,creative);if(!creative){state=visitShop(state,qa?42+state.launches:undefined);$('shopNew').hidden=false;}if(!persist()&&!creative){state=before;sessionLog=oldLog;return;}}banked=true;if(creative)creativeShop=visitShop({...creativeShop,launches:creativeShop.launches+1});else chime(['coin','coin','purchase']);}applyBuild({quiet:true,configuration:sim.c});void loadPlayerWorld();}
 function shopLedger(){return creative?creativeShop:state;}
+let shopPage=0,shopPageKey='';
+function persistShop(next){
+ const previous=state;state=next;
+ if(persist()===false){state=previous;return false;}
+ return true;
+}
+function rerollShopAction(){
+ try{
+  if(creative)creativeShop=sandboxTransaction(creativeShop,'reroll');
+  else if(!persistShop(rerollShop(state)))return;
+  shopPage=0;populate();cue('reroll');
+ }catch(error){toast(error.message);}
+}
 function shopCard(offer,{packChoice=false}={}){
  const ledger=shopLedger(),p=product(offer),owned=(offer.kind==='animal'?ledger.animals:offer.kind==='voucher'?ledger.vouchers:ledger.owned).includes(p.id);
  const card=el('article',undefined,`shop-card${owned&&!creative?' sold':''}`);card.dataset.item=p.id;
  const tag=el('div',offer.kind==='animal'?'VOLUNTEER':offer.kind==='voucher'?'GROVE VOUCHER':SLOTS.find(s=>s[0]===p.slot)?.[1],'slot-tag');tag.append(el('span',offer.kind==='voucher'?'✦':p.price>1000?'✦ RARE':'✧'));
  const art=el('canvas');art.setAttribute('aria-hidden','true');drawShopArt(art,p,offer.kind);
- const cost=priceFor(ledger,offer),button=el('button',packChoice?'Choose this card':creative?(offer.kind==='voucher'&&owned?'Perk active':'Fit · Free'):owned?'Yours forever':`${cost.toLocaleString()} Bells`,`buy${owned&&!creative?' owned':''}`);
+ const fit=purchaseFit(creative?draft:state.build,offer),cost=priceFor(ledger,offer),button=el('button',packChoice?'Choose this card':creative?(offer.kind==='voucher'&&owned?'Perk active':'Try · Free'):owned?'Yours forever':`${cost.toLocaleString()} Bells`,`buy${owned&&!creative?' owned':''}`);
  button.disabled=(owned&&(!creative||packChoice||offer.kind==='voucher'))||(!creative&&!packChoice&&ledger.bells<cost);
  button.setAttribute('aria-label',packChoice?`Choose ${p.name}`:creative?`Try ${p.name} free`:owned?`${p.name} owned`:`Buy ${p.name} for ${cost} Bells`);
+ const description=offer.kind==='animal'?`${grams(p.grams)} · ${dimensions(p)}.`:p.description+(offer.kind==='part'?' '+equipmentSpec(p):'');
  button.onclick=()=>{try{
-  if(creative){creativeShop=sandboxTransaction(creativeShop,packChoice?'choosePack':'purchase',offer);draft=fitEquipment(draft,offer);}
-  else{const next=packChoice?choosePack(state,p.id):purchaseOffer(state,offer),build=fitEquipment(state.build,offer);canBuild(next,build);state={...next,build};draft={...build};adventureBuild={...build};}
-  applyBuild({quiet:true});persist();cue('purchase');chime(['sparkle','score']);fitted(p.name,offer.kind==='animal'?'animal':p.slot);toast(`${p.name} ${offer.kind==='voucher'?'perk active!':'fitted to your trebuchet!'}`);
- }catch(e){toast(e.message);}};
- card.append(tag,art,el('h3',p.name),el('p',offer.kind==='animal'?`${grams(p.grams)} · ${dimensions(p)}. Fits immediately.`:p.description+(offer.kind==='part'?' '+equipmentSpec(p):'')),button);return card;
+  const before={...state.build},selection=purchaseFit(creative?draft:state.build,offer);
+  if(creative){creativeShop=sandboxTransaction(creativeShop,packChoice?'choosePack':'purchase',offer);draft={...selection.build};}
+  else{
+   const next=packChoice?choosePack(state,p.id):purchaseOffer(state,offer);canBuild(next,selection.build);
+   if(!persistShop({...next,build:{...selection.build}}))return;
+   draft={...selection.build};adventureBuild={...selection.build};
+  }
+  if(selection.fitted){
+   if(applyBuild({quiet:true})===false){
+    if(!creative){state={...state,build:before};draft={...before};adventureBuild={...before};if(persist()===false)return;}
+    populate();toast(`${p.name} is in your inventory. Fitting could not complete; choose it from Build.`);return;
+   }
+   fitted(p.name,offer.kind==='animal'?'animal':p.slot);
+  }else populate();
+  cue('purchase');chime(['sparkle','score']);
+  toast(offer.kind==='voucher'?`${p.name} perk active!`:selection.fitted?`${p.name} fitted to your trebuchet!`:`${p.name} added to your inventory. ${selection.reason}`);
+ }catch(error){toast(error.message);}};
+ card.append(tag,art,el('h3',p.name),el('p',description+(offer.kind==='voucher'?'':fit.fitted?' Fits your current build.':' '+fit.reason)),button);return card;
+}
+function parcelCard(ledger){
+ const shop=ledger.shop,card=el('article',undefined,'shop-card pack-card'),art=el('canvas');art.setAttribute('aria-hidden','true');drawShopArt(art,{},'pack');
+ const button=el('button',creative?'Open · Free':`Open · ${packPrice(ledger)} Bells`,'buy');
+ button.disabled=!shop.pack.length||shop.pack.every(p=>ledger.owned.includes(p.id))||(!creative&&ledger.bells<packPrice(ledger));
+ button.onclick=()=>{try{
+  if(creative)creativeShop=sandboxTransaction(creativeShop,'openPack');else if(!persistShop(openPack(state)))return;
+  cue('pack');populate();$('packChoices').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
+ }catch(error){toast(error.message);}};
+ card.append(el('div','MYSTERY PARTS','slot-tag'),art,el('h3','Tinker’s parcel'),el('p',`Unwrap ${shop.pack.length} equipment cards. Keep your favourite. A new parcel after each throw.`),button);return card;
 }
 function renderShop(){
  const ledger=shopLedger(),shop=ledger.shop;if(!shop)return;
+ const key=`${creative}:${shop.round}:${shop.seed}:${shop.packOpened}:${shop.packTaken}`;
+ if(key!==shopPageKey){shopPage=0;shopPageKey=key;}
+ const view=shopView(ledger,{page:shopPage});shopPage=view.page;
  $('shopWallet').textContent=creative?'∞':state.bells.toLocaleString();$('shopRound').textContent=creative?'CREATIVE DEAL':`VISIT ${shop.round+1}`;
- $('shopMessage').textContent=creative?'Try every card for free. Your Adventure Bells stay safe.':'Pick a card. Watch your trebuchet change.';
+ $('shopMessage').textContent=view.choosing?'Choose one parcel card. Your other finds are waiting.':creative?'Try cards for free. Owned equipment stays in Build.':'Three finds at a time. Your owned parts are always in Build.';
  const ctx=$('shopkeeper').getContext('2d');ctx.clearRect(0,0,160,110);drawCritter(ctx,critter('mouse'),78,60,104,0,false);
- $('shopItems').replaceChildren(...shop.offers.map(o=>shopCard(o)));
- if(!shop.offers.length)$('shopItems').append(el('p','The whole grove is in your collection. What will you build?','empty-shelf'));
+ $('voucherSlot').replaceChildren();$('packSlot').replaceChildren();$('voucherSlot').hidden=true;$('packSlot').hidden=true;
+ if($('voucherSlot').parentElement)$('voucherSlot').parentElement.hidden=true;
+ $('shopItems').hidden=view.choosing;$('packChoices').hidden=!view.choosing;
+ $('shopItems').replaceChildren();$('packCards').replaceChildren();
+ if(view.choosing){$('packCards').replaceChildren(...view.cards.map(o=>shopCard(o,{packChoice:true})));}
+ else{
+  $('shopItems').replaceChildren(...view.cards.map(o=>o.kind==='parcel'?parcelCard(ledger):shopCard(o)));
+  if(!view.total)$('shopItems').append(el('p','The whole grove is in your collection. Choose your equipment in Build.','empty-shelf'));
+  if(view.pages>1){
+   const navigation=el('nav',undefined,'shop-pages');navigation.setAttribute('aria-label','Shop pages');
+   const back=el('button','← Back','secondary'),more=el('button','More finds →','secondary');back.disabled=view.page===0;more.disabled=view.page===view.pages-1;
+   back.onclick=()=>{shopPage--;renderShop();};more.onclick=()=>{shopPage++;renderShop();};
+   navigation.append(back,el('span',`${view.page+1} / ${view.pages}`),more);$('shopItems').append(navigation);
+  }
+ }
  $('rerollShop').textContent=creative?'↻ Reroll · Free':`↻ Reroll · ${rerollPrice(state)} Bells`;
- $('rerollShop').disabled=!creative&&(state.bells<rerollPrice(state)||!shop.offers.some(o=>!(o.kind==='animal'?state.animals:state.owned).includes(o.id))&&state.owned.length===PARTS.length&&state.animals.length===CRITTERS.length);
- $('voucherSlot').replaceChildren();if(shop.voucher)$('voucherSlot').append(shopCard(shop.voucher));else $('voucherSlot').append(el('p','All grove perks collected. Thank you, friend!','empty-shelf'));
- const card=el('article',undefined,'shop-card pack-card'),art=el('canvas');art.setAttribute('aria-hidden','true');drawShopArt(art,{},'pack');
- const packButton=el('button',shop.packTaken?'Pack collected':shop.packOpened?'Choose your card below':creative?'Open · Free':`Open · ${packPrice(ledger)} Bells`,'buy');
- packButton.disabled=shop.packOpened||!shop.pack.length||shop.pack.every(p=>ledger.owned.includes(p.id))||(!creative&&ledger.bells<packPrice(ledger));
- packButton.onclick=()=>{try{if(creative)creativeShop=sandboxTransaction(creativeShop,'openPack');else state=openPack(state);persist();cue('pack');populate();$('packChoices').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});}catch(e){toast(e.message);}};
- card.append(el('div','MYSTERY PARTS','slot-tag'),art,el('h3','Tinker’s parcel'),el('p',`Unwrap ${shop.pack.length} equipment cards. Keep your favourite. A new parcel after each throw.`),packButton);$('packSlot').replaceChildren(card);
- $('packChoices').hidden=!shop.packOpened||shop.packTaken;$('packCards').replaceChildren(...(shop.packOpened&&!shop.packTaken?shop.pack.map(o=>shopCard(o,{packChoice:true})):[]));
+ $('rerollShop').disabled=view.choosing||!creative&&(state.bells<rerollPrice(state)||state.owned.length===PARTS.length&&state.animals.length===CRITTERS.length);
 }
 function renderBlueprints(){$('blueprintList').replaceChildren();if(!state.blueprints.length)$('blueprintList').append(el('p','Your saved experiments will appear here.','micro'));state.blueprints.forEach((b,i)=>{const row=el('div',undefined,'blueprint'),text=el('span',b.name);text.append(el('small',`${critter(b.animal).name} · ${part(b.chassis).name}`));const button=el('button','Load','secondary');button.addEventListener('click',()=>{try{canBuild(state,b,creative);draft={...b};populate();applyBuild();}catch(e){toast(e.message);}});const remove=el('button','×','text-button');remove.setAttribute('aria-label',`Delete ${b.name}`);remove.addEventListener('click',()=>{state={...state,blueprints:state.blueprints.filter((_,n)=>n!==i)};persist();renderBlueprints();});row.append(text,button,remove);$('blueprintList').append(row);});}
 function exportJSON(value,name){const a=el('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
@@ -225,7 +278,7 @@ for(const b of document.querySelectorAll('[data-tab]')){b.onkeydown=e=>{const ta
 function openDialog(id){if(id==='workshopDialog'&&protectSpaceResult())return;cancelLoading();hold.cancel();$(id).showModal();dirty=true;cue('click');}
 function openWorkshop(tab){if(protectSpaceResult())return;cancelLoading();hold.cancel();$(`${tab}Tab`).click();$('workshopDialog').showModal();syncPreview();previewRenderer.fit();dirty=true;cue('shop');if(tab==='shop')$('shopNew').hidden=true;}
 $('openBuild').onclick=()=>openWorkshop('build');$('openShop').onclick=()=>openWorkshop('shop');$('openBlueprints').onclick=()=>openWorkshop('blueprints');
-$('rerollShop').onclick=()=>{try{if(creative)creativeShop=sandboxTransaction(creativeShop,'reroll');else state=rerollShop(state);persist();populate();cue('reroll');}catch(e){toast(e.message);}};
+$('rerollShop').onclick=rerollShopAction;
 $('collectShop').onclick=()=>{collect();openWorkshop('shop');};
 $('helpOpen').onclick=()=>openDialog('helpDialog');$('settingsOpen').onclick=()=>openDialog('settingsDialog');$('compareOpen').onclick=()=>{hold.cancel();showLog();};
 for(const b of document.querySelectorAll('[data-close]'))b.onclick=()=>b.closest('dialog').close();
@@ -239,18 +292,18 @@ document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=do
 $('saveBlueprint').onclick=()=>{try{const b=validateBuild({...draft,name:$('buildName').value.trim()||'Untitled experiment'});if(state.blueprints.length>=20)throw Error('20 blueprints saved. Remove one to make room.');state={...state,blueprints:[...state.blueprints,b]};persist();renderBlueprints();toast('Blueprint saved.');}catch(e){toast(e.message);}};
 $('loadPreset').onclick=()=>{draft=scaledPreset(presetAnimal,presetChassis);populate();applyBuild();};$('exportBuild').onclick=()=>{try{exportJSON({type:'treetop-build',version:1,build:validateBuild(draft)},'treetop-blueprint.json');}catch(e){toast(e.message);}};
 $('importBuild').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;if(f.size>50000)throw Error('Blueprint is too large.');const data=JSON.parse(await f.text());if(data.type!=='treetop-build'||data.version!==1)throw Error('Choose a Treetop blueprint.');const b=validateBuild(data.build);canBuild(state,b,creative);draft=b;populate();applyBuild();}catch(e){toast(e.message);}finally{e.target.value='';}};
-$('saveEnabled').checked=saving&&!qa&&!editorSession;$('saveEnabled').disabled=qa||editorSession;$('saveEnabled').onchange=()=>{if(qa||editorSession){saving=false;$('saveEnabled').checked=false;return;}saving=$('saveEnabled').checked;try{localStorage.setItem('treetop-custom-save-enabled',String(saving));}catch{}if(saving)persist();else $('saveStatus').textContent='Saving is off. Existing saved progress remains untouched.';};$('exportSave').onclick=()=>exportJSON(state,'treetop-progress.json');$('importSave').onchange=async e=>{try{if(protectSpaceResult())return;const f=e.target.files[0];if(!f)return;if(f.size>150000)throw Error('Save is too large.');const next=validateProgress(JSON.parse(await f.text())),imported=visitShop(next);if(saving&&!qa&&!editorSession)saveProgress(localStorage,imported);state=imported;adventureBuild={...state.build};draft={...state.build};creative=false;updateModeUi();persist();populate();if(!resumePendingSpace())applyBuild({quiet:true,restore:true});toast('Adventure progress imported.');}catch(e){toast(`Import rejected: ${e.message}`);}finally{e.target.value='';}};
+$('saveEnabled').checked=saving&&!qa&&!editorSession;$('saveEnabled').disabled=qa||editorSession;$('saveEnabled').onchange=()=>{if(qa||editorSession){saving=false;$('saveEnabled').checked=false;return;}saving=$('saveEnabled').checked;try{localStorage.setItem('treetop-custom-save-enabled',String(saving));}catch{}if(saving)persist();else $('saveStatus').textContent='Saving is off. Existing saved progress remains untouched.';};$('exportSave').onclick=()=>exportJSON(state,'treetop-progress.json');$('importSave').onchange=async e=>{try{if(protectSpaceResult())return;const f=e.target.files[0];if(!f)return;if(f.size>150000)throw Error('Save is too large.');const next=validateProgress(JSON.parse(await f.text())),imported=visitShop(next);if(saving&&!qa&&!editorSession)saveProgress(localStorage,imported,{replace:true});state=imported;adventureBuild={...state.build};draft={...state.build};creative=false;updateModeUi();persist();populate();if(!resumePendingSpace())applyBuild({quiet:true,restore:true});toast('Adventure progress imported.');}catch(e){toast(`Import rejected: ${e.message}`);}finally{e.target.value='';}};
 $('wind').onchange=()=>{if(creative)draft.wind=$('wind').valueAsNumber;};$('drag').onchange=()=>{if(creative)draft.drag=Number($('drag').checked);};
 $('treeCamera').onclick=()=>{hold.cancel();cancelLoading();const on=renderer.overview();$('treeCamera').setAttribute('aria-pressed',String(on));dirty=true;};
 for(const [id,factor]of[['gameZoomOut',.7],['gameZoomIn',1/.7]])$(id).onclick=()=>{renderer.zoomBy(factor);dirty=true;};
 const stage=$('stage');
-const weaponHud=createWeaponHud({stage,renderer,getSim:()=>sim,isBlocked:()=>paused||document.hidden||!!document.querySelector('dialog[open]'),onFire:e=>{if(e.hit)renderer.clearLandingCue();dirty=true;cue(e.hit?'bumper':'click');}});
+const weaponHud=createWeaponHud({stage,renderer,getSim:()=>sim,isBlocked:()=>editingWorld||paused||document.hidden||!!document.querySelector('dialog[open]'),onFire:e=>{if(e.hit)renderer.clearLandingCue();dirty=true;cue(e.hit?'bumper':'click');}});
 stage.addEventListener('wheel',e=>{e.preventDefault();hold.cancel();cancelLoading();renderer.zoomBy(Math.exp(-e.deltaY*.0015));dirty=true;},{passive:false});
 let loadPointer=null;
 function pointerPoint(e){const b=stage.getBoundingClientRect();return renderer.unproject(e.clientX-b.left,e.clientY-b.top);}
-function cancelLoading(){if(loadPointer!==null){sim?.loading.cancel();loadPointer=null;dirty=true;}}
+function cancelLoading(){if(loadPointer!==null||sim?.loading.assisting){sim?.loading.cancel();loadPointer=null;dirty=true;}}
 stage.addEventListener('pointerdown',e=>{
- if(e.button!==0||!e.isPrimary)return;e.preventDefault();
+ if(editingWorld||e.button!==0||!e.isPrimary)return;e.preventDefault();
  if(sim.phase==='flight'){const r=stage.getBoundingClientRect();weaponHud.fire([e.clientX-r.left,e.clientY-r.top]);return;}
  if(!paused&&sim.phase==='ready'&&!document.querySelector('dialog[open]')){
   const point=pointerPoint(e);sim.loading.activity();
@@ -280,11 +333,12 @@ launchButton.addEventListener('blur',()=>{for(const code of ['Space','Enter'])ho
 stage.addEventListener('blur',()=>hold.cancel('space'));
 launchButton.addEventListener('click',e=>e.preventDefault());
 stage.addEventListener('contextmenu',e=>e.preventDefault());
-document.addEventListener('pointerdown',()=>{sound.unlock();},{capture:true});
-document.addEventListener('click',e=>{if(e.target.closest('button')&&!e.target.closest('#soundToggle'))cue('click');});
+document.addEventListener('pointerdown',()=>{if(!editingWorld)sound.unlock();},{capture:true});
+document.addEventListener('click',e=>{if(!editingWorld&&e.target.closest('button')&&!e.target.closest('#soundToggle'))cue('click');});
 document.addEventListener('keydown',e=>{
+ if(editingWorld)return;
  if(!e.repeat&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){if(['Digit1','Digit2','Digit3'].includes(e.code)){weaponHud.select(['slingshot','staff','air'][Number(e.code.slice(-1))-1]);e.preventDefault();}if(e.code==='KeyF'){weaponHud.fire();e.preventDefault();}}
- if(e.code==='Enter'&&document.activeElement===stage&&!paused&&sim.phase==='ready'&&!sim.loading.loaded&&!sim.loading.dragging&&!document.querySelector('dialog[open]')){e.preventDefault();sim.loading.loadKeyboard();dirty=true;cue('ready');updateReadouts();}
+ if(e.code==='Enter'&&document.activeElement===stage&&!paused&&sim.phase==='ready'&&!sim.loading.loaded&&!sim.loading.dragging&&!document.querySelector('dialog[open]')){e.preventDefault();sim.loading.loadKeyboard();dirty=true;cue('click');updateReadouts();}
 
  if(e.code==='Space'&&!['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!e.repeat)beginHold('space');}
  if(e.code==='Escape'&&!document.querySelector('dialog[open]')){if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else $('pause').click();}
@@ -297,11 +351,11 @@ new ResizeObserver(()=>{dirty=true;previewRenderer.fit();}).observe($('previewSt
 function frame(timestamp){
  const physicsBefore=sim.time;
  const delta=lastTime?Math.min((timestamp-lastTime)/1000,.05):0;lastTime=timestamp;
- const modal=!!document.querySelector('dialog[open]'),active=!paused&&!document.hidden&&!modal;
+ const modal=!!document.querySelector('dialog[open]'),active=!editingWorld&&!paused&&!document.hidden&&!modal;
  sim.winding=winding;
  if(active){
-  if(winding){sim.wind(delta);const tick=Math.floor((sim.drawFraction??0)*24);if(tick!==ratchetStep){cue('ratchet',{intensity:.6+tick/60});ratchetStep=tick;}if(sim.drawFraction>=1&&!readyCue){cue('ready');readyCue=true;}}
-  const wasLoaded=sim.loading.loaded;if(sim.loading.step(delta))dirty=true;if(!wasLoaded&&sim.loading.loaded){cue('ready');updateReadouts();}
+  if(winding){sim.wind(delta);const tick=Math.floor((sim.drawFraction??0)*24);if(tick!==ratchetStep){cue('ratchet',{intensity:.6+tick/60});ratchetStep=tick;}}
+  const wasLoaded=sim.loading.loaded;if(sim.loading.step(delta))dirty=true;if(!wasLoaded&&sim.loading.loaded){cue('ready');updateReadouts();}if(winding&&sim.drawFraction>=1&&sim.preparationStatus().ready&&!readyCue){cue('ready');readyCue=true;}
   if(!winding){feelFrame=launchFeel.advance(sim,delta,{speed:Number($('speed').value)});for(const event of feelFrame.events)cue(event.type==='release'?'releasePop':event.type,{intensity:event.intensity});}
   if(sim.release&&!seenRelease){seenRelease=true;cue('launch');document.body.classList.remove('launch-kick');void stage.offsetWidth;document.body.classList.add('launch-kick');}
   recordSpaceEscape();
@@ -329,11 +383,43 @@ function frame(timestamp){
 // A playtest accepts only its embedding editor, never arbitrary cross-origin messages.
 window.addEventListener('message',event=>{
  if(!editorSession||event.source!==window.parent||event.origin!==location.origin||event.data?.type!=='grove-playtest-map')return;
- try{groveMap=validateGroveMap(event.data.map);applyBuild({quiet:true});window.parent.postMessage({type:'grove-playtest-loaded',objects:groveMap.objects.length},location.origin);}catch(error){toast(`Map rejected: ${error.message}`);}
+ try{worldSession.replace(validateGroveMap(event.data.map),{dirty:false});groveMap=worldSession.map;applyBuild({quiet:true,configuration:sim.c});runtimeWorldRevision=worldSession.revision;window.parent.postMessage({type:'grove-playtest-loaded',objects:groveMap.objects.length},location.origin);}catch(error){toast(`Map rejected: ${error.message}`);}
 });
-const pauseMenu=installPauseMenu({open(){cancelLoading();hold.cancel();paused=true;dirty=true;soundQueue.length=0;sound.pause();updateReadouts();},resume(){paused=false;lastTime=0;dirty=true;sound.unlock();updateReadouts();}});
+const pauseMenu=installPauseMenu({open(){cancelLoading();hold.cancel();paused=true;dirty=true;soundQueue.length=0;sound.pause();updateReadouts();},resume(){paused=editingWorld;lastTime=0;dirty=true;if(!editingWorld)sound.unlock();updateReadouts();}});
+const playerWorldLinks=authorMode?null:createWorldLinkLoader(worldSession,{canApply:()=>!protectSpaceResult()});
+async function loadPlayerWorld(){
+ if(!playerWorldLinks)return;
+ try{
+  const result=await playerWorldLinks.load(location.hash);
+  if(result.changed){
+   cancelLoading();hold.cancel();groveMap=result.map;
+   if(applyBuild({quiet:true,configuration:sim.c})){runtimeWorldRevision=result.revision;toast(result.restored?'Your local world is back.':'Shared world loaded.');}
+  }
+ }catch(error){toast('Shared map could not open: '+error.message);}
+}
+if(playerWorldLinks)window.addEventListener('hashchange',()=>{void loadPlayerWorld();});
 populate();applyBuild({quiet:true});
 if(!resumePendingSpace()&&params.get('creative')==='1')switchMode(true);
+if(creative&&params.has('scaleBuild')){try{draft=createScaleBuild(params.get('scaleBuild'));populate();applyBuild({quiet:true});}catch(e){toast(e.message);}}
 if(editorSession){saving=false;$('saveEnabled').checked=false;$('saveEnabled').disabled=true;$('adventureMode').disabled=true;$('saveStatus').textContent='Editor playtest: Adventure progress is untouched.';window.parent.postMessage({type:'grove-playtest-ready'},location.origin);}
-persist();requestAnimationFrame(frame);
-window.treetop=Object.freeze({snapshot:()=>structuredClone({...sim.snapshot(),creative,weapons:weaponHud.snapshot(),bells:state.bells,build:sim.c,winding,draw:sim.drawFraction,drawCount,audio:sound.getStatus(),performance:{...currentCel},crank:crankState(sim),loading:{loaded:sim.loading.loaded,dragging:sim.loading.dragging,returning:sim.loading.returning,home:renderer.project(sim.loading.home()),animal:renderer.project(sim.real(sim.shot)),target:renderer.project(sim.loading.target())}}),getProgress:()=>structuredClone(state)});
+const {installWorldWorkshop}=authorMode?await import('./world-workshop.js?v=35'):{installWorldWorkshop:()=>Object.freeze({setMode:async()=>false})};
+const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMode,onError:error=>toast(error.message),
+ onEnterEdit(){
+  if(protectSpaceResult())return false;
+  pausedBeforeEdit=paused;editingWorld=true;cancelLoading();hold.cancel();paused=true;
+  soundQueue.length=0;sound.pause();for(const dialog of document.querySelectorAll('dialog[open]'))dialog.close();
+  lastTime=0;dirty=true;updateReadouts();return true;
+ },
+ onReturnToPlay({map,revision}){
+  if(revision!==runtimeWorldRevision){
+   const previous=groveMap;groveMap=map;
+   if(!applyBuild({quiet:true,configuration:sim.c})){groveMap=previous;return false;}
+   runtimeWorldRevision=revision;toast('Your edited world is ready. Map changes start a new throw.');
+  }
+  editingWorld=false;paused=pausedBeforeEdit;lastTime=0;dirty=true;
+  if(!paused)sound.unlock();updateReadouts();return true;
+ }
+});
+for(const button of document.querySelectorAll('[data-open-world-editor]'))button.onclick=()=>worldWorkshop.setMode('edit');
+void loadPlayerWorld();persist();requestAnimationFrame(frame);
+window.treetop=Object.freeze({snapshot:()=>structuredClone({...sim.snapshot(),worldMode:editingWorld?'edit':'play',worldRevision:runtimeWorldRevision,mapRevision:worldSession.revision,mapName:worldSession.map.name,creative,weapons:weaponHud.snapshot(),bells:state.bells,build:sim.c,winding,draw:sim.drawFraction,drawCount,audio:sound.getStatus(),performance:{...currentCel},crank:crankState(sim),loading:{loaded:sim.loading.loaded,assisting:sim.loading.assisting,dragging:sim.loading.dragging,returning:sim.loading.returning,home:renderer.project(sim.loading.home()),animal:renderer.project(sim.real(sim.shot)),target:renderer.project(sim.loading.target())}}),getProgress:()=>structuredClone(state)});

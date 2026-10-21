@@ -22,7 +22,7 @@ test('ordinary reward values and failure rewards retain their existing meaning',
  assert.equal(rewards({distance:100,height:10,release:true,grams:25,failure:'Sling cord snapped'}).bells,78);
 });
 test('escape multiplies the normal rounded Bells, mass bonus and points exactly seven times',()=>{
- for(const animal of ['mouse','rabbit','whale']){const event=crossing({animal,distance:123.456,height:2500.125}),base=rewards(normal(event)),reward=rewards(input(event));assert.equal(reward.bells,base.bells*7);assert.equal(reward.points,base.points*7);assert.equal(reward.distance,base.distance);assert.equal(reward.height,base.height);assert.equal(reward.multiplier,7);assert.equal(reward.spaceEscape,true);}
+ for(const animal of ['mouse','rabbit','whale']){const event=crossing({animal,distance:123.456,height:escapeAltitude(createGroveMap())-createGroveMap().launch.y}),base=rewards(normal(event)),reward=rewards(input(event));assert.equal(reward.bells,base.bells*7);assert.equal(reward.points,base.points*7);assert.equal(reward.distance,base.distance);assert.equal(reward.height,base.height);assert.equal(reward.multiplier,7);assert.equal(reward.spaceEscape,true);}
 });
 test('rewards use the validated frozen crossing rather than later drift or caller totals',()=>{
  const event=crossing(),expected=rewards(input(event));assert.deepEqual(rewards({...input(event),distance:99999,height:99999,grams:100000000,animal:'whale'}),expected);

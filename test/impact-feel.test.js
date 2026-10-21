@@ -1,8 +1,10 @@
+// Retained V3 world: these archived art/contact/journey regressions deliberately
+// keep their original geometry. V4 coverage lives in grove-proportioned and scale tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {BuildSimulation,GRAVITY} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
-import {createGroveMap} from '../src/grove-map.js';
+import {createV3GroveMap as createGroveMap} from '../src/grove-map.js';
 
 const bough={id:'bounce-bough',name:'Bounce bough',type:'polygon',points:[{x:15,y:0},{x:160,y:0},{x:160,y:-.5},{x:15,y:-.5}],material:'leaf',layer:'world',collision:true,bounce:.8};
 function flying({x=30,y=2,vx=10,vy=-7,objects=[bough]}={}){

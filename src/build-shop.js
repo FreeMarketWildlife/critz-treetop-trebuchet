@@ -94,3 +94,14 @@ export function validateShop(shop, launches) {
   if(shop.pack.length&&shop.packCost!==Math.max(15,Math.floor(Math.min(...shop.pack.map(p=>product(p).price))*.8)))throw Error('Invalid pack price.');
   return structuredClone(shop);
 }
+
+/** View navigation preserves the original stock and purchased extraShelf perk.
+ * Every fresh card (including volunteers, vouchers and parcels) shares the same
+ * three-card presentation. Paid parcel choices replace the deal view. */
+export function shopView(state,{page=0}={}){
+ const shop=state.shop;if(!shop)return{choosing:false,cards:[],page:0,pages:1,total:0};
+ if(shop.packOpened&&!shop.packTaken){const cards=shop.pack.filter(o=>!owned(state,o)).slice(0,3);return{choosing:true,cards,page:0,pages:1,total:cards.length};}
+ const stock=[...shop.offers.filter(o=>!owned(state,o)),...(shop.voucher&&!owned(state,shop.voucher)?[shop.voucher]:[]),...(!shop.packTaken&&shop.pack.some(o=>!owned(state,o))?[{kind:'parcel',id:'parcel'}]:[])];
+ const pages=Math.max(1,Math.ceil(stock.length/3)),current=Math.max(0,Math.min(pages-1,Number.isFinite(page)?Math.floor(page):0));
+ return{choosing:false,cards:stock.slice(current*3,current*3+3),page:current,pages,total:stock.length};
+}

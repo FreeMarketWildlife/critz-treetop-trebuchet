@@ -13,10 +13,10 @@ function setup(){
  const stage=target('CANVAS'),launchButton=target('BUTTON'),other=target('BUTTON'),window=target('WINDOW'),document=target('DOCUMENT');
  document.activeElement=stage;document.hidden=false;document.querySelector=()=>modal?{}:null;
  const sim={phase:'ready',loading:{loaded:true,dragging:false,loadKeyboard(){events.push('load');return true;}}};
- const hold=createHoldControl({canStart:()=>!context.paused&&!document.hidden&&!modal&&sim.phase==='ready'&&sim.loading.loaded&&!sim.loading.dragging,
+ const hold=createHoldControl({canStart:()=>!context.editingWorld&&!context.paused&&!document.hidden&&!modal&&sim.phase==='ready'&&sim.loading.loaded&&!sim.loading.dragging,
   onStart:()=>events.push('wind'),onRelease:()=>events.push('fire'),onCancel:()=>events.push('cancel')});
  const pause={click(){hold.cancel();modal=true;},setAttribute(){}},dialog={showModal(){modal=true;}};
- context={stage,launchButton,document,window,sim,hold,beginHold:id=>hold.begin(id),paused:false,loadPointer:null,
+ context={stage,launchButton,document,window,sim,hold,beginHold:id=>hold.begin(id),paused:false,editingWorld:false,loadPointer:null,
   sound:{unlock(){},pause(){}},soundQueue:[],weaponHud:{select(){},fire(){}},cancelLoading(){},updateReadouts(){},cue(){},
   $:id=>id==='pause'?pause:dialog};
  vm.createContext(context);
@@ -59,3 +59,5 @@ test('stage Space remains a launcher control and stage Enter remains an explicit
  const h=setup();h.down('Space');h.up('Enter');assert.equal(h.hold.active,true);h.up('Space');assert.deepEqual(h.events,['wind','fire']);
  h.sim.loading.loaded=false;h.down('Enter');h.up('Enter');assert.deepEqual(h.events,['wind','fire','load']);assert.equal(h.hold.active,false);
 });
+
+test('developer Edit mode ignores game loading and launch keys',()=>{const h=setup();h.context.editingWorld=true;h.sim.loading.loaded=false;h.down('Enter');h.up('Enter');h.down('Space');h.up('Space');assert.deepEqual(h.events,[]);assert.equal(h.hold.active,false);});

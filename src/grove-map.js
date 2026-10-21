@@ -1,5 +1,6 @@
+import {PROPORTIONED_TREE,PROPORTIONED_LAUNCH_Y,PROPORTIONED_LEVELS,proportionedV1StarterObjects,proportionedStarterObjects} from './grove-proportioned.js?v=35';
 import {ancientBough} from './grove-tree-layout.js?v=25';
-import {jungleStarterObjects} from './grove-jungle.js?v=25';
+import {jungleStarterObjects} from './grove-jungle.js?v=35';
 import {CROWN_TREE,crownStarterObjects,launchRunStarterObjects,openingLandmarkObjects,canopyExitObjects} from './grove-starter.js?v=25';
 import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=25';
 export {objectBounds} from './grove-geometry.js?v=25';
@@ -11,7 +12,7 @@ export const LEGACY_LEVELS=Object.freeze([
  {id:'openSky',name:'Open sky',low:360,high:480,color:'#a4d2df'},
  {id:'space',name:'Starlight',low:480,high:1500,color:'#b8a6df'}]);
 export const LEVELS=Object.freeze(LEGACY_LEVELS.map(l=>Object.freeze({...l,low:l.low*2,high:l.high*2})));
-export const mapLevels=map=>map?.version===2?LEGACY_LEVELS:LEVELS;
+export const mapLevels=map=>map?.version===2?LEGACY_LEVELS:map?.version===4?PROPORTIONED_LEVELS:LEVELS;
 export const spaceScale=map=>map?.version===2?1:2;
 // Original creatures reuse the established game's encounter vocabulary. These
 // are authored arcade encounters, not a simulation of animal biology.
@@ -66,7 +67,12 @@ export function createAncientGroveMap(){const base=createCrownGroveMap();
  return{...base,starterRevision:4,objects:[...objects,...jungleStarterObjects(enemy)]};}
 export function createOpeningGroveMap(){const base=createAncientGroveMap();return{...base,starterRevision:5,objects:launchRunStarterObjects(base,enemy)};}
 export function createLandmarkedGroveMap(){const base=createOpeningGroveMap();return{...base,starterRevision:6,objects:openingLandmarkObjects(base)};}
-export function createGroveMap(){const base=createLandmarkedGroveMap();return{...base,starterRevision:7,objects:canopyExitObjects(base)};}
+export function createV3GroveMap(){const base=createLandmarkedGroveMap();return{...base,starterRevision:7,objects:canopyExitObjects(base)};}
+export function createV4Revision1GroveMap(){return{version:4,starterRevision:1,name:'Grandfather Tree',width:20000,height:3000,launch:{x:0,y:PROPORTIONED_LAUNCH_Y},tree:{...PROPORTIONED_TREE},objects:proportionedV1StarterObjects(enemy)};}
+export function createProportionedGroveMap(){return{...createV4Revision1GroveMap(),starterRevision:2,objects:proportionedStarterObjects(enemy)};}
+export function isUntouchedV4Revision1Starter(map){return map.version===4&&map.starterRevision===1&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision1GroveMap()));}
+export function createGroveMap(){return createProportionedGroveMap();}
+export function isUntouchedV3Starter(map){return map.version===3&&map.starterRevision===7&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV3GroveMap()));}
 export function isUntouchedLandmarkedStarter(map){return map.version===3&&map.starterRevision===6&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createLandmarkedGroveMap()));}
 export function isUntouchedOpeningStarter(map){return map.version===3&&map.starterRevision===5&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createOpeningGroveMap()));}
 export function isUntouchedAncientStarter(map){return map.version===3&&map.starterRevision===4&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createAncientGroveMap()));}
@@ -74,9 +80,10 @@ export function isUntouchedCrownStarter(map){return map.version===3&&map.starter
 export function groveTreeBounds(map){const t=map.tree,r=t.crownRadius??t.trunkWidth*3.6;return{minX:t.trunkX-r-40,maxX:Math.max(220,t.trunkX+r+40),minY:-map.launch.y-20,maxY:t.height-map.launch.y+50};}
 const finite=(v,lo,hi)=>Number.isFinite(v)&&v>=lo&&v<=hi;
 export function validateGroveMap(value){
- if(!value||![2,3].includes(value.version)||typeof value.name!=='string'||!value.name.trim()||value.name.length>80||value.width!==20000||!finite(value.height,600,3000)||!Array.isArray(value.objects)||value.objects.length>2000)throw Error('Use a Grove map, with a name and no more than 2,000 objects.');
- if(value.launch?.x!==0||value.launch?.y!==(value.version===2?300:600))throw Error('The launch stays on its authored home branch.');
- if(!value.tree||!finite(value.tree.height,350,1800)||!finite(value.tree.trunkX,-1500,-5)||!finite(value.tree.trunkWidth,5,1000)||!finite(value.tree.doorX,-100,-3))throw Error('Invalid Grandfather Tree dimensions.');
+ const proportioned=value?.version===4;
+ if(!value||![2,3,4].includes(value.version)||typeof value.name!=='string'||!value.name.trim()||value.name.length>80||value.width!==20000||(proportioned?value.height!==3000:!finite(value.height,600,3000))||!Array.isArray(value.objects)||value.objects.length>2000)throw Error('Use a Grove map, with a name and no more than 2,000 objects.');
+ if(value.launch?.x!==0||value.launch?.y!==(value.version===2?300:value.version===4?PROPORTIONED_LAUNCH_Y:600))throw Error('The launch stays on its authored home branch.');
+ if(!value.tree||!finite(value.tree.height,value.version===4?40:350,value.version===4?140:1800)||!finite(value.tree.trunkX,-1500,-5)||!finite(value.tree.trunkWidth,value.version===4?.5:5,value.version===4?20:1000)||!finite(value.tree.doorX,-100,-3))throw Error('Invalid Grandfather Tree dimensions.');
  if(value.starterRevision!==undefined&&(!Number.isInteger(value.starterRevision)||value.starterRevision<1||value.starterRevision>100))throw Error('Invalid starter revision.');
  const seen=new Set();let vertexCount=0;
  const objects=value.objects.map(o=>{
@@ -98,9 +105,9 @@ export function validateGroveMap(value){
   if(o.material==='foliage'){const d=o.density??16;if(!finite(d,.1,180))throw Error('Leaf density must be 0.1–180.');n.density=d;}
   return n;
  });
- const tree={height:value.tree.height,trunkX:value.tree.trunkX,trunkWidth:value.tree.trunkWidth,doorX:value.tree.doorX};if(value.version===3){tree.crownRadius=value.tree.crownRadius??500;tree.crownDepth=value.tree.crownDepth??350;if(!finite(tree.crownRadius,100,1500)||!finite(tree.crownDepth,50,1200))throw Error('Invalid crown size.');}return{version:value.version,...(value.starterRevision?{starterRevision:value.starterRevision}:{}),name:value.name.trim(),width:20000,height:value.height,launch:{x:0,y:value.launch.y},tree,objects};
+ const tree={height:value.tree.height,trunkX:value.tree.trunkX,trunkWidth:value.tree.trunkWidth,doorX:value.tree.doorX};if(value.version===3||value.version===4){tree.crownRadius=value.tree.crownRadius??(value.version===4?PROPORTIONED_TREE.crownRadius:500);tree.crownDepth=value.tree.crownDepth??(value.version===4?PROPORTIONED_TREE.crownDepth:350);if(!finite(tree.crownRadius,value.version===4?5:100,value.version===4?80:1500)||!finite(tree.crownDepth,value.version===4?10:50,value.version===4?120:1200))throw Error('Invalid crown size.');}return{version:value.version,...(value.starterRevision?{starterRevision:value.starterRevision}:{}),name:value.name.trim(),width:20000,height:value.height,launch:{x:0,y:value.launch.y},tree,objects};
 }
-export function readGroveMap(storage){try{const raw=(storage??globalThis.localStorage)?.getItem(MAP_KEY);if(!raw)return null;const map=validateGroveMap(JSON.parse(raw));return (isUntouchedLegacyStarter(map)||isUntouchedCrownStarter(map)||isUntouchedAncientStarter(map)||isUntouchedOpeningStarter(map)||isUntouchedLandmarkedStarter(map))?createGroveMap():map;}catch{return null;}}
+export function readGroveMap(storage){try{const raw=(storage??globalThis.localStorage)?.getItem(MAP_KEY);if(!raw)return null;const map=validateGroveMap(JSON.parse(raw));return (isUntouchedLegacyStarter(map)||isUntouchedCrownStarter(map)||isUntouchedAncientStarter(map)||isUntouchedOpeningStarter(map)||isUntouchedLandmarkedStarter(map)||isUntouchedV3Starter(map)||isUntouchedV4Revision1Starter(map))?createGroveMap():map;}catch{return null;}}
 export function saveGroveMap(storage,value){const map=validateGroveMap(value);storage.setItem(MAP_KEY,JSON.stringify(map));return map;}
 
 export function isUntouchedLegacyStarter(map){

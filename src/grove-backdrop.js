@@ -1,12 +1,14 @@
+import {drawProportionedForestBackdrop} from './proportioned-forest-art.js?v=35';
 import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=25';
-import {drawAncientTree} from './grove-tree-art.js?v=25';
+import {drawAncientTree} from './grove-tree-art.js?v=35';
 import {drawJungleBackdrop} from './grove-jungle-art.js?v=25';
-import {spaceScale} from './grove-map.js?v=25';
+import {spaceScale} from './grove-map.js?v=35';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Every crown, trunk and forest tree is placed in metres. Parallax fades out
  * for wide views, where the whole silhouette must retain its true geometry. */
 export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0}){
+ if(map.version===4)return drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,map,time});
  const s=cam.scale,origin=map.launch.y,t=map.tree,k=spaceScale(map),alt=cam.y+origin,space=clamp((alt-890*k/2)/(210*k/2),0,1),dark=clamp((470*k/2-alt)/(350*k/2),0,1);
  const skyTop=blend('#8fbbb7','#183b43',dark),skyBottom=blend('#f3e7bb','#6e9e93',dark),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,blend(skyTop,'#222b52',space));g.addColorStop(1,blend(skyBottom,'#69749d',space));c.fillStyle=g;c.fillRect(0,0,W,H);
  const project=(x,y)=>[W/2+(x-cam.x)*s,H/2-(y-cam.y)*s],depth=clamp((s-1)/8,0,1);

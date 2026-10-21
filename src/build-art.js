@@ -1,15 +1,15 @@
-import {landingOpportunity} from './landing-opportunity.js?v=31';
+import {landingOpportunity} from './landing-opportunity.js?v=35';
 import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=25';
 import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=31';
-import {drawFlightAccents} from './flight-art.js?v=25';
+import {GRAVITY} from './build-physics.js?v=35';
+import {drawFlightAccents} from './flight-art.js?v=35';
 import {drawCounterweight} from './counterweight-art.js?v=25';
 import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=30';
-import {RopeVisual} from './rope-visual.js?v=31';
+import {RopeVisual} from './rope-visual.js?v=35';
 import {part,grams} from './build-catalog.js?v=30';
-import {drawGroveWorld} from './grove-art.js?v=27';
+import {drawGroveWorld} from './grove-art.js?v=35';
 import {createCritterPerformance} from './critter-performance.js?v=25';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=25';
+import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=35';
 const TAU=Math.PI*2;
 // These are finishes and attached fittings, not replacement collision geometry.
 // Capacity tiers keep the user's chosen dimensions; their cages/cloth identify
@@ -363,17 +363,17 @@ export function createBuildRenderer(canvas){
  function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false,winding=false,feel=null,landingMarks=true}={}){
   guidanceActive=!paused&&!!sim.loading?.hint&&sim.phase==='ready';
   preview=showPreview;windActive=winding||!!sim.winding;const now=performance.now()/1000;nowTime=now;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
-  const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(!(lastSim===sim&&sim.release&&follow&&!preview))fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
+  const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(!(lastSim===sim&&(sim.release||sim.phase==='swing')&&follow&&!preview))fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
   if(lastSim!==sim){lastSim=sim;lastDrawnSimTime=sim.time;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);strandDt=paused?0:['swing','flight','finished','escaped'].includes(sim.phase)?Math.min(1/30,Math.max(0,sim.time-lastDrawnSimTime)):ropeDt;lastDrawnSimTime=sim.time;
   if(treeOverview&&sim.map&&!preview){const target=groveTreeCamera(sim.map,{width:W,height:H});target.scale*=treeZoom;const mix=reducedMotion||nowTime>=cameraUntil?1:1-Math.exp(-ropeDt*8);cam={x:cam.x+(target.x-cam.x)*mix,y:cam.y+(target.y-cam.y)*mix,scale:Math.exp(Math.log(cam.scale)*(1-mix)+Math.log(target.scale)*mix)};}
+  else if(sim.phase==='swing'&&follow&&!preview){cam=groveSwingCamera(cam,sim.real(sim.shot),{width:W,height:H,dt:paused?0:ropeDt,reducedMotion});}
   else if(sim.release&&follow&&!preview){
    const payload=sim.real(sim.shot),landing=sim.phase==='flight'?imminentLanding(sim.map,payload,{radius:sim.animal.width*.5,gravity:GRAVITY*(sim.gravityFactor??1)}):null;
    cam=groveFlightCamera(cam,payload,{width:W,height:H,animalLength:sim.animal.length/zoomFactor,dt:paused?0:ropeDt,reducedMotion,landing});
    const landingPoint=landing?project(landing):null;canvas.dataset.landingView=landing?.id??'';canvas.dataset.landingPoint=landingPoint?JSON.stringify(landingPoint):'';canvas.dataset.landingVisible=String(!!landingPoint&&landingPoint[0]>=12&&landingPoint[0]<=W-12&&landingPoint[1]>=100&&landingPoint[1]<=H-32);
   }
-  if(sim.phase==='swing'&&!treeOverview&&!preview&&!reducedMotion&&feel){const setup=groveSetupCamera(sim.c,{width:W,height:H,counterRadius:sim.facts.counterRadius});cam.scale=setup.scale*zoomFactor*(1+.045*Math.min(1,feel.swingAge/1.2));}
   const steadyCam={...cam};if(feel&&!preview&&!reducedMotion){cam.x-=feel.shakeX/cam.scale;cam.y+=feel.shakeY/cam.scale;}
-  canvas.dataset.cameraScale=cam.scale.toFixed(4);canvas.dataset.cameraX=String(cam.x);canvas.dataset.cameraY=String(cam.y);canvas.dataset.cameraAcquire=String(cam.followAcquisition?.age??0);canvas.dataset.cameraMode=treeOverview&&!preview?'tree':sim.release&&follow&&!preview?'payload':'rig';
+  canvas.dataset.cameraScale=cam.scale.toFixed(4);canvas.dataset.cameraX=String(cam.x);canvas.dataset.cameraY=String(cam.y);canvas.dataset.cameraAcquire=String(cam.followAcquisition?.age??0);canvas.dataset.cameraMode=treeOverview&&!preview?'tree':follow&&!preview?(sim.release?'payload':sim.phase==='swing'?'sling':'rig'):'rig';
   critterCel=performanceState.update(sim);canvas.dataset.critterPose=critterCel.pose;canvas.dataset.critterHits=String(critterCel.hits);canvas.dataset.critterDamage=String(critterCel.tier);
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
@@ -397,5 +397,5 @@ export function createBuildRenderer(canvas){
   path(ctx,[[W-35-px,H-61],[W-35,H-61]],'#536849',1);path(ctx,[[W-35-px,H-65],[W-35-px,H-57]],'#536849',1);path(ctx,[[W-35,H-65],[W-35,H-57]],'#536849',1);ctx.fillStyle='#576d48';ctx.font='9px "DM Sans",sans-serif';ctx.textAlign='center';ctx.fillText(`${bar.toLocaleString('en-US',{maximumFractionDigits:2})} m`,W-35-px/2,H-70);
   }
  }
- return{draw,clearLandingCue:()=>landingCue.clear(),fit:(reset=true)=>{fit=reset||!lastSim?.release;if(reset){zoomFactor=1;treeZoom=1;treeOverview=false;}},overview(){treeOverview=!treeOverview;cameraUntil=performance.now()/1000+.7;if(!treeOverview)fit=true;return treeOverview;},zoomBy(factor){if(!Number.isFinite(factor)||factor<=0)return;if(treeOverview){cameraUntil=performance.now()/1000+.45;treeZoom=Math.max(.3,Math.min(10,treeZoom*factor));}else{const before=zoomFactor;zoomFactor=Math.max(.002,Math.min(4,zoomFactor*factor));cam.scale*=zoomFactor/before;}},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0||now<cameraUntil;},get camera(){return{...cam};}};
+ return{draw,clearLandingCue:()=>landingCue.clear(),fit:(reset=true)=>{fit=reset||!(lastSim?.release||lastSim?.phase==='swing');if(reset){zoomFactor=1;treeZoom=1;treeOverview=false;}},overview(){treeOverview=!treeOverview;cameraUntil=performance.now()/1000+.7;if(!treeOverview)fit=true;return treeOverview;},zoomBy(factor){if(!Number.isFinite(factor)||factor<=0)return;if(treeOverview){cameraUntil=performance.now()/1000+.45;treeZoom=Math.max(.3,Math.min(10,treeZoom*factor));}else{const before=zoomFactor;zoomFactor=Math.max(.002,Math.min(4,zoomFactor*factor));cam.scale*=zoomFactor/before;}},project,unproject:(x,y)=>({x:cam.x+(x-W/2)/cam.scale,y:cam.y-(y-H/2)/cam.scale}),equipBurst(slot){effects.push({slot,start:performance.now()/1000});if(effects.length>8)effects.shift();},needsAnimation(){const now=performance.now()/1000;effects=effects.filter(e=>now-e.start<1.2);return effects.length>0||now<cameraUntil;},get camera(){return{...cam};}};
 }
