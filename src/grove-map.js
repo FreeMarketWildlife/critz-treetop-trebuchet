@@ -1,8 +1,8 @@
-import {ancientBough} from './grove-tree-layout.js?v=24';
-import {jungleStarterObjects} from './grove-jungle.js?v=24';
-import {CROWN_TREE,crownStarterObjects,launchRunStarterObjects,openingLandmarkObjects,canopyExitObjects} from './grove-starter.js?v=24';
-import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=24';
-export {objectBounds} from './grove-geometry.js?v=24';
+import {ancientBough} from './grove-tree-layout.js?v=25';
+import {jungleStarterObjects} from './grove-jungle.js?v=25';
+import {CROWN_TREE,crownStarterObjects,launchRunStarterObjects,openingLandmarkObjects,canopyExitObjects} from './grove-starter.js?v=25';
+import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=25';
+export {objectBounds} from './grove-geometry.js?v=25';
 export const MAP_KEY='treetop-grove-map-v2';
 export const LEGACY_LEVELS=Object.freeze([
  {id:'forestFloor',name:'Forest floor',low:0,high:120,color:'#b98d64'},

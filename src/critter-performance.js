@@ -13,7 +13,7 @@ export function createCritterPerformance(){
   const acceleration=dt>0?clamp((omega-lastOmega)/dt,-40,40):0;
   for(const hit of sim.contactEvents??[]){
    if(hit.seq<=seq)continue;seq=hit.seq;
-   if(!released||hit.strength<.12||hit.time-(contacts.get(hit.id)??-Infinity)<.28)continue;
+   if(!released||['foliage','sap'].includes(hit.material)||hit.strength<.12||hit.time-(contacts.get(hit.id)??-Infinity)<.28)continue;
    contacts.set(hit.id,hit.time);hits++;lastHit=hit.time;impactKind=hits%2?'bonk-a':'bonk-b';
    const sign=hits%2?1:-1;headV+=sign*4.5;tailV-=sign*6;squashV+=8*Math.min(1.3,hit.strength);
   }

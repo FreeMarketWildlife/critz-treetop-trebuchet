@@ -1,15 +1,15 @@
-import {landingOpportunity} from './landing-opportunity.js?v=24';
-import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=24';
+import {landingOpportunity} from './landing-opportunity.js?v=25';
+import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=25';
 import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=24';
-import {drawFlightAccents} from './flight-art.js';
-import {drawCounterweight} from './counterweight-art.js?v=24';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=24';
-import {RopeVisual} from './rope-visual.js?v=24';
-import {part,grams} from './build-catalog.js?v=24';
-import {drawGroveWorld} from './grove-art.js?v=24';
-import {createCritterPerformance} from './critter-performance.js?v=24';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=24';
+import {GRAVITY} from './build-physics.js?v=25';
+import {drawFlightAccents} from './flight-art.js?v=25';
+import {drawCounterweight} from './counterweight-art.js?v=25';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=25';
+import {RopeVisual} from './rope-visual.js?v=25';
+import {part,grams} from './build-catalog.js?v=25';
+import {drawGroveWorld} from './grove-art.js?v=25';
+import {createCritterPerformance} from './critter-performance.js?v=25';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=25';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -311,7 +311,6 @@ export function createBuildRenderer(canvas){
   if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
   if(!preview)drawFlightAccents(ctx,{sim,project,width:W,height:H,scale:cam.scale,reducedMotion});
   drawEffects(sim);drawLaunchFeedback(sim,feel);
-  if(critterCel.pose.startsWith('bonk')&&!preview){const p=project(sim.real(sim.shot)),r=Math.max(15,Math.min(30,sim.animal.length*cam.scale*.65));ctx.save();ctx.globalAlpha=.85;ctx.fillStyle='#ffedab';ctx.strokeStyle='#9b7851';ctx.lineWidth=1.5;ctx.beginPath();for(let i=0;i<16;i++){const a=i*TAU/16,rr=r*(i%2?.72:1.15),x=p[0]+Math.cos(a)*rr,y=p[1]+Math.sin(a)*rr;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();ctx.font='bold 12px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.lineWidth=3;ctx.strokeStyle='#fff0ba';const word=critterCel.pose==='bonk-a'?'BONK!':'OOF!';ctx.strokeText(word,p[0],p[1]-r-8);ctx.fillStyle='#594e3e';ctx.fillText(word,p[0],p[1]-r-8);ctx.restore();}
   cam=steadyCam;
   // The optional parts overlay includes a scale bar in real world units.
   if(!preview&&labels){

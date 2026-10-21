@@ -1,0 +1,65 @@
+{
+  "revision": "7102a90",
+  "scope": "Read-only synthetic DOM state inspection, not native/browser visual QA",
+  "cooldown": {
+    "remaining": 0.0005,
+    "displayed": {
+      "verb": "Fire",
+      "caption": "Level · lift",
+      "disabled": false,
+      "aria": "Fire Slingshot"
+    },
+    "accepted": false
+  },
+  "cap": {
+    "before": {
+      "x": 0,
+      "y": 0,
+      "vx": 45,
+      "vy": 35
+    },
+    "displayed": {
+      "verb": "Fire",
+      "caption": "Rising · speed",
+      "disabled": false,
+      "aria": "Fire Slingshot"
+    },
+    "accepted": true,
+    "after": {
+      "x": 0,
+      "y": 0,
+      "vx": 45,
+      "vy": 35
+    },
+    "ammo": 2
+  },
+  "backwards": {
+    "displayed": {
+      "verb": "Fire",
+      "caption": "Rising · speed",
+      "disabled": false,
+      "aria": "Fire Slingshot"
+    },
+    "speedBefore": 20.615528128088304,
+    "speedAfter": 19.508011174899405
+  },
+  "miss": {
+    "hit": false,
+    "ammo": 2,
+    "displayed": {
+      "verb": "Wait",
+      "caption": "Ready soon",
+      "disabled": true,
+      "aria": "Wait Slingshot"
+    }
+  },
+  "pausedStaff": {
+    "displayed": {
+      "verb": "Cooling",
+      "caption": "Heat falling",
+      "disabled": true,
+      "aria": "Cooling Wizard Staff"
+    },
+    "heat": 1
+  }
+}

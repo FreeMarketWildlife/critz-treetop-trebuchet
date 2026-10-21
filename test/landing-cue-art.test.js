@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {layoutLandingCue,createLandingCue,drawLandingCue} from '../src/landing-cue-art.js';
-import {flightMotionCaption} from '../src/weapon-hud.js';
+import {flightEffectCaption} from '../src/weapon-hud.js';
 const size={width:390,height:844},p=[125,290];
 test('one tentative surface or edge mark stays inside phone/desktop view without covering HUD or critter',()=>{
  for(const {width,height}of[size,{width:1726,height:819}]){
@@ -36,8 +36,9 @@ test('cue drawing is hollow, bounded and leaves canvas state balanced',()=>{
  for(const mode of['edge','surface'])drawLandingCue(c,{mode,x:320,y:600,angle:.5,alpha:.7,normal:{x:.4,y:.9}});
  assert.equal(depth,0);assert.ok(calls.length<100);assert.ok(!calls.some(([k])=>['fill','fillText','fillRect'].includes(k)),'no filled target, instruction or countdown');
 });
-test('weapon caption describes current motion without claiming an optimal future action',()=>{
- const p={vx:8,vy:5},s={phase:'flight',release:{},real:()=>p};
- assert.equal(flightMotionCaption(s),'Rising · speed');p.vy=-5;assert.equal(flightMotionCaption(s),'Falling · lift');p.vy=0;assert.equal(flightMotionCaption(s),'Level · lift');
- p.vx=0;assert.equal(flightMotionCaption(s),'Lift + speed');s.phase='ready';assert.equal(flightMotionCaption(s),'Lift + speed');
+test('weapon caption describes available impulse directions without promising speed gain',()=>{
+ const p={vx:-20,vy:5},s={phase:'flight',release:{},real:()=>p};
+ assert.equal(flightEffectCaption(s),'Right + up');p.vx=40;assert.equal(flightEffectCaption(s),'Up');
+ p.vy=32;assert.equal(flightEffectCaption(s),'At limit');p.vx=8;assert.equal(flightEffectCaption(s),'Right');
+ s.phase='ready';assert.equal(flightEffectCaption(s),'In flight');
 });

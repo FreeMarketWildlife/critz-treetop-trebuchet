@@ -1,3 +1,9 @@
+# Overnight pass 8 checkpoint — October 21, 2026
+
+Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-8/implementation.md: 503 tests, 48 exact trajectory matches, fixed-contact external words, no field-induced bonk injuries/audio, exact Fire readiness and truthful impulse-direction captions. Map/launcher/physics/camera/saves unchanged. Mac remains locked: no browser/native/alternate route was attempted. Native verification of pass-7 midrib and pass-8 words/captions/audio, plus game QA phone-viewport cleanup, remain pending manual unlock/new evidence. No Sites operations. Next independent work can bound the previously observed immediate partial-draw loading refusal; do not retune from one sample. Highest-value later design check remains real novice impact/Fire/landing-mark comprehension. Keep localhost:8080 running and continue bounded overnight passes.
+
+---
+
 # Overnight pass 7 checkpoint — October 21, 2026
 
 Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-7/implementation.md: 488 tests, 48 exact prior-checkpoint trajectory matches, original organic blossom/crozier silhouettes, differentiated leaf destinations and open bark grain. Canonical revision 7 remains deeply identical at 499 pieces; launcher, physics, camera, time and saves preserved. Fresh reviewer supports corrected materials; next priority is novice interpretation of impact/flower overlap, Fire timing and landing marks, plus investigate immediate half-draw loading only if reproduced. Mac locked at final cleanup: continuing game QA tab still 390×844, default viewport reset and native recheck of the final fixed-world midrib correction pending manual unlock. Keep localhost:8080 running. Sites operations remain deferred pending parent/user approval. Continue bounded overnight passes.
