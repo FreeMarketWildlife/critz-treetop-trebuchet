@@ -1,5 +1,5 @@
-import {ancientBough} from './grove-tree-layout.js?v=18';
-import {foliageClump} from './grove-nature.js?v=18';
+import {ancientBough} from './grove-tree-layout.js?v=19';
+import {foliageClump} from './grove-nature.js?v=19';
 // A whole, branching tree, rather than a cylinder behind an oval. Coordinates
 // remain fixed at every camera scale, including the academy doorway at y=0.
 export function drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:H,camera}){
@@ -10,14 +10,14 @@ export function drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:
   for(let i=0;i<(front?31:24);i++){
    const a=i*2.39996,rr=Math.sqrt((i+.8)/(front?31:24)),x=cx+Math.cos(a)*r*rr*.86,y=top-h*.18+Math.sin(a)*h*.175*rr,rx=r*(.17+.025*Math.sin(i*1.7)),ry=h*(.072+.012*Math.cos(i*2));
    if(!visible(x,y,rx*1.15,ry*1.15))continue;
-   foliageClump(c,project,x,y,rx,ry,(front?['#5a793e','#6f8844','#82964d','#627f3e']:['#354f35','#405d39','#4c683b'])[i%(front?4:3)],front?'#a1ae64':'#647b46',i);
+   foliageClump(c,project,x,y,rx,ry,(front?['#3e7267','#4c8674','#6c9d7c','#4b7e69']:['#234e51','#315e5d','#416f64'])[i%(front?4:3)],front?'#bad19a':'#6e9980',i);
   }
  };
  crown(false);crown(true);
  // Graceful scaffold limbs taper into the spreading crown. Broad bases merge
  // into the trunk; forks are visible through deliberate gaps in the foliage.
  for(let side of[-1,1])for(let row=0;row<10;row++){
-  const points=ancientBough(t,origin,row,side);c.beginPath();points.forEach((p,i)=>i?c.lineTo(...project(p.x,p.y)):c.moveTo(...project(p.x,p.y)));c.closePath();c.fillStyle=row%2?'#746743':'#615c3d';c.fill();
+  const points=ancientBough(t,origin,row,side);c.beginPath();points.forEach((p,i)=>i?c.lineTo(...project(p.x,p.y)):c.moveTo(...project(p.x,p.y)));c.closePath();c.fillStyle=row%2?'#965f3c':'#754c38';c.fill();
  }
  // Flared buttresses rise out of the root mound. The right edge at launch
  // altitude stays exactly at trunkX+trunkWidth/2, beside the existing door.
@@ -28,21 +28,21 @@ export function drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:
  c.bezierCurveTo(...project(cx+w*.2,root+h*.78),...project(cx+w*.49,root+h*.86),...project(cx+w*.55,root+h*.91));
  c.bezierCurveTo(...project(cx+w*.53,root+h*.82),...project(right-3,root+h*.78),...project(right,0));
  c.bezierCurveTo(...project(right-7,root+h*.35),...project(right-10,root+55),...project(cx+w*1.03,root));c.closePath();
- const g=c.createLinearGradient(...project(left,0),...project(right,0));g.addColorStop(0,'#3e4934');g.addColorStop(.32,'#776441');g.addColorStop(.68,'#ac8f56');g.addColorStop(1,'#5b5837');c.fillStyle=g;c.fill();c.strokeStyle='#39472f';c.lineWidth=Math.min(3,Math.max(.8,s*.15));c.stroke();
+ const g=c.createLinearGradient(...project(left,0),...project(right,0));g.addColorStop(0,'#4f4235');g.addColorStop(.28,'#704b35');g.addColorStop(.29,'#a46b42');g.addColorStop(.69,'#b67c49');g.addColorStop(.70,'#8b5639');g.addColorStop(1,'#5b4434');c.fillStyle=g;c.fill();c.strokeStyle='#302d2b';c.lineWidth=Math.min(3,Math.max(.8,s*.15));c.stroke();
  c.save();c.clip();
  // Ridges twist and converge up the trunk, with moss gathering in the folds.
  for(let i=0;i<25;i++){
   const x=left+i*w/24,bend=Math.sin(i*1.9)*w*.05;
-  c.beginPath();c.moveTo(...project(x-w*.18*Math.sin(i),root));c.bezierCurveTo(...project(x+bend,root+h*.27),...project(x+w*.08,root+h*.53),...project(cx+w*.3+(x-cx)*.35,top-h*.09));c.strokeStyle=i%3?'#675b3b':'#b49d65';c.lineWidth=Math.max(.6,s*w*(i%3?.009:.006));c.stroke();
+  c.beginPath();c.moveTo(...project(x-w*.18*Math.sin(i),root));c.bezierCurveTo(...project(x+bend,root+h*.27),...project(x+w*.08,root+h*.53),...project(cx+w*.3+(x-cx)*.35,top-h*.09));c.strokeStyle=i%3?'#67432f':'#d19b5d';c.lineWidth=Math.max(.6,s*w*(i%3?.009:.006));c.stroke();
  }
  // Local bark detail is bounded by the viewport instead of covering 800 m.
- if(s>5){const low=Math.max(root,camera.y-H/(2*s)-2),high=Math.min(top,camera.y+H/(2*s)+2),xmin=Math.max(left,camera.x-W/(2*s)-2),xmax=Math.min(right,camera.x+W/(2*s)+2);for(let x=Math.floor(xmin/.7)*.7;x<xmax;x+=.7){c.beginPath();c.moveTo(...project(x,low));c.bezierCurveTo(...project(x+.18,low+(high-low)*.3),...project(x-.16,low+(high-low)*.7),...project(x+.1,high));c.strokeStyle=Math.sin(x*37)>0?'#998355':'#75633f';c.lineWidth=Math.max(.5,s*.017);c.stroke();}}
+ if(s>5){const low=Math.max(root,camera.y-H/(2*s)-2),high=Math.min(top,camera.y+H/(2*s)+2),xmin=Math.max(left,camera.x-W/(2*s)-2),xmax=Math.min(right,camera.x+W/(2*s)+2);for(let x=Math.floor(xmin/.7)*.7;x<xmax;x+=.7){c.beginPath();c.moveTo(...project(x,low));c.bezierCurveTo(...project(x+.18,low+(high-low)*.3),...project(x-.16,low+(high-low)*.7),...project(x+.1,high));c.strokeStyle=Math.sin(x*37)>0?'#c18b51':'#6c4733';c.lineWidth=Math.max(.5,s*.017);c.stroke();}}
  c.restore();
  for(let side of[-1,1])for(let i=0;i<5;i++){
   const end=cx+side*w*(.75+i*.17),start=cx+side*w*.15;
-  c.beginPath();c.moveTo(...project(start,root+h*(.22-i*.025)));c.bezierCurveTo(...project(start+side*w*.12,root+27),...project(end-side*23,root+13),...project(end,root));c.quadraticCurveTo(...project(end+side*36,root-1),...project(end+side*45,root));c.bezierCurveTo(...project(end-side*12,root+28),...project(start+side*10,root+50),...project(start,root+h*(.22-i*.025)));c.fillStyle=['#706442','#59603c','#8a794a'][i%3];c.fill();c.strokeStyle='#435137';c.lineWidth=Math.max(.5,Math.min(2,s*.16));c.stroke();
+  c.beginPath();c.moveTo(...project(start,root+h*(.22-i*.025)));c.bezierCurveTo(...project(start+side*w*.12,root+27),...project(end-side*23,root+13),...project(end,root));c.quadraticCurveTo(...project(end+side*36,root-1),...project(end+side*45,root));c.bezierCurveTo(...project(end-side*12,root+28),...project(start+side*10,root+50),...project(start,root+h*(.22-i*.025)));c.fillStyle=['#8b5939','#5f4d36','#ac7748'][i%3];c.fill();c.strokeStyle='#3b3830';c.lineWidth=Math.max(.5,Math.min(2,s*.16));c.stroke();
  }
  // Front foliage leaves the rooted trunk and structural forks exposed.
  // Small sprays break the crown's silhouette into individual leafy edges.
- if(s<5)for(let i=0;i<35;i++){const a=i*2.39996,rr=Math.sqrt((i+.5)/35),x=cx+Math.cos(a)*r*rr*.96,y=top-h*.18+Math.sin(a)*h*.19*rr;if(!visible(x,y,18,12))continue;foliageClump(c,project,x,y,12+i%5*2,5+i%3*2,i%3?'#81984e':'#a4af60','#b7bd77',i);}
+ if(s<5)for(let i=0;i<35;i++){const a=i*2.39996,rr=Math.sqrt((i+.5)/35),x=cx+Math.cos(a)*r*rr*.96,y=top-h*.18+Math.sin(a)*h*.19*rr;if(!visible(x,y,18,12))continue;foliageClump(c,project,x,y,12+i%5*2,5+i%3*2,i%3?'#6a9973':'#93b885','#c8dca3',i);}
 }

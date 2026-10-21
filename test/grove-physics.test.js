@@ -35,7 +35,7 @@ test('decorative foreground and background shapes never become hidden collision'
 });
 test('a falling critter continues below launch height and settles only against physical ground',()=>{
  const s=flight(mapWith([]),50,-1,0,-5);advance(s,1);assert.equal(s.phase,'flight');assert.ok(s.real(s.shot).y<-5);
- advance(s,35);assert.equal(s.phase,'finished');assert.ok(s.real(s.shot).y>=-600);assert.ok(s.real(s.shot).y<-599);assert.ok(s.contactEvents.some(e=>e.id==='forest-floor'));
+ advance(s,49);assert.equal(s.phase,'finished');assert.ok(s.real(s.shot).y>=-600);assert.ok(s.real(s.shot).y<-599);assert.ok(s.contactEvents.some(e=>e.id==='forest-floor'));
 });
 test('space only lowers released payload gravity; the launch mechanism keeps the global gravity',()=>{
  assert.equal(gravityScaleAt(300),1);assert.ok(Math.abs(gravityScaleAt(1200)-.14)<1e-10);

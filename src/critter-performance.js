@@ -19,7 +19,8 @@ export function createCritterPerformance(){
   }
   // Small damped springs flex around a single continuous painted silhouette.
   // They are secondary animation, not unreported collision bodies or forces.
-  const headTarget=clamp(-acceleration*.003-omega*.006,-.16,.16),tailTarget=clamp(acceleration*.006+omega*.01,-.3,.3);
+  const speed=Math.hypot(p.vx??0,p.vy??0),wind=released?clamp(speed/32,0,1):0;
+  const headTarget=clamp(-acceleration*.003-omega*.006+wind*.065,-.16,.16),tailTarget=clamp(acceleration*.006+omega*.01-wind*.16,-.3,.3);
   let remaining=Math.min(1,dt);while(remaining>0){const h=Math.min(1/240,remaining);remaining-=h;
    headV+=(90*(headTarget-head)-15*headV)*h;head=clamp(head+headV*h,-.32,.32);
    tailV+=(55*(tailTarget-tail)-10*tailV)*h;tail=clamp(tail+tailV*h,-.5,.5);
@@ -27,8 +28,9 @@ export function createCritterPerformance(){
   }
   lastTime=time;lastOmega=omega;
   const age=time-lastHit,tier=hits>=5?3:hits>=3?2:hits?1:0;
-  const pose=!released?'ready':sim.phase==='finished'&&hits?'dazed':age<.23?impactKind:age<.62?'stars':tier>1?'dazed':'flying';
-  return{pose,tier,hits,angle:-(p.angle??0),frame:time*8,impactAge:age,flex:{head,tail},squashX:1+squash,squashY:1/(1+squash)};
+  const pose=!released?'ready':sim.phase==='finished'&&hits?'dazed':age<.23?impactKind:age<.62?'stars':'flying';
+  const airPose=!released?'rest':p.vy>2?'rise':p.vy< -2?'dive':'float';
+  return{pose,tier,hits,airPose,wind,angle:-(p.angle??0),frame:time*8,impactAge:age,flex:{head,tail},squashX:1+squash,squashY:1/(1+squash)};
  }
  return{update};
 }

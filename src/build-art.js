@@ -1,26 +1,27 @@
 import {drawFlightAccents} from './flight-art.js';
-import {drawCounterweight} from './counterweight-art.js?v=18';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=18';
-import {RopeVisual} from './rope-visual.js?v=18';
-import {part,grams} from './build-catalog.js?v=18';
-import {drawGroveWorld} from './grove-art.js?v=18';
-import {createCritterPerformance} from './critter-performance.js?v=18';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=18';
+import {drawCounterweight} from './counterweight-art.js?v=19';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=19';
+import {RopeVisual} from './rope-visual.js?v=19';
+import {part,grams} from './build-catalog.js?v=19';
+import {drawGroveWorld} from './grove-art.js?v=19';
+import {createCritterPerformance} from './critter-performance.js?v=19';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=19';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
 export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,performance={}){
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(performance.squashX??1,performance.squashY??1);const bounds=animal.id==='whale'?[-68,-24,52,27]:animal.id==='elephant'?[-43,-42,62,41]:animal.id==='rabbit'?[-57,-56,52,32]:animal.id==='squirrel'?[-61,-48,52,32]:[-57,-33,52,32];const [x0,y0,x1,y1]=bounds;ctx.scale(size/(x1-x0),height===undefined?size/(x1-x0):height/(y1-y0));ctx.translate(-(x0+x1)/2,-(y0+y1)/2);ctx.lineJoin='round';
- const color=animal.color,id=animal.id,ink='#302d2b',pose=performance.pose??(air?'flying':'ready'),tier=performance.tier??0,bonk=pose.startsWith('bonk'),stars=pose==='stars',dazed=pose==='dazed',active=air&&pose!=='ready';
+ const id=animal.id,color=({mouse:'#b8998d',frog:'#71bb6c',chipmunk:'#c88443',squirrel:'#b77c4c',rabbit:'#b7b6c3',armadillo:'#b99575',fox:'#da824a',bear:'#9b7657',tiger:'#e6a94a',elephant:'#8fa8b0',whale:'#649aa9'})[id]??animal.color,ink='#302d2b',pose=performance.pose??(air?'flying':'ready'),tier=performance.tier??0,bonk=pose.startsWith('bonk'),stars=pose==='stars',dazed=pose==='dazed',active=air&&pose!=='ready';
  // Held silhouettes: paws out in flight, tucked on one hit, splayed on the next.
- const flex=performance.flex??{head:0,tail:0};
+ const flex=performance.flex??{head:0,tail:0},dive=performance.airPose==='dive',float=performance.airPose==='float';
  if(id==='whale'){
   ctx.beginPath();ctx.moveTo(-45,0);ctx.bezierCurveTo(-18,-28,42,-23,48,-3);ctx.bezierCurveTo(50,26,-15,25,-42,8);ctx.lineTo(-56,24);ctx.lineTo(-53,3);ctx.lineTo(-66,-8);ctx.lineTo(-47,-6);ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=2.5;ctx.stroke();ellipse(ctx,16,13,24,5,'#b7d1c5',null);path(ctx,bonk?[[-2,10],[-17,bonk&&pose==='bonk-a'?-3:27],[10,14]]:active?[[-2,10],[-18,24],[10,14]]:[[-2,10],[-13,24],[10,14]],'#547f8a',4);drawCritterFace(ctx,{x:36,y:-1,whale:true,pose,tier});
  }else{
   const elephant=id==='elephant',frog=id==='frog',rabbit=id==='rabbit',bear=id==='bear',tiger=id==='tiger';
   if(!frog&&!elephant){ctx.save();ctx.translate(-34,6);ctx.rotate(flex.tail??0);ctx.translate(34,-6);ctx.beginPath();ctx.moveTo(-34,6);ctx.quadraticCurveTo(-65,-(id==='squirrel'?50:3),-46,-(id==='squirrel'?35:9));ctx.strokeStyle=ink;ctx.lineWidth=id==='squirrel'?18:3.5;ctx.stroke();ctx.strokeStyle=color;ctx.lineWidth=id==='squirrel'?14:2;ctx.stroke();ctx.restore();}
-  for(const x of [-23,17]){const stride=pose==='walking'?Math.sin((performance.frame??0)+(x<0?0:Math.PI)):0;const limbY=pose==='walking'?22-Math.max(0,stride)*8:bonk?(pose==='bonk-a'?8:28):active?14:22,limbX=x+(pose==='walking'?stride*9:bonk?(x<0?-9:8):active?(x<0?-5:4):0);ellipse(ctx,limbX,limbY,elephant?9:8,elephant?17:8,color,ink,2.4);}
-  ellipse(ctx,-4,2,elephant?37:34,elephant?29:frog?20:24,color,ink,2.8);
+  for(const x of [-23,17]){const stride=pose==='walking'?Math.sin((performance.frame??0)+(x<0?0:Math.PI)):0;const limbY=pose==='walking'?22-Math.max(0,stride)*8:bonk?(pose==='bonk-a'?8:28):active?(dive?7:float?21:14):22,limbX=x+(pose==='walking'?stride*9:bonk?(x<0?-9:8):active?(x<0?-5:4):0);ellipse(ctx,limbX,limbY,elephant?9:8,elephant?17:8,color,ink,2.4);}
+  ellipse(ctx,-4,2,elephant?37:34,elephant?29:frog?20:24,color,ink,3.8);
+  ctx.save();ctx.beginPath();ctx.ellipse(-4,2,elephant?37:34,elephant?29:frog?20:24,0,0,TAU);ctx.clip();ctx.fillStyle=elephant?'#647e8d':frog?'#3d8d58':id==='mouse'?'#876e70':'#8c593c';ctx.beginPath();ctx.moveTo(-44,12);ctx.quadraticCurveTo(-3,22,36,2);ctx.lineTo(45,40);ctx.lineTo(-45,40);ctx.closePath();ctx.fill();ellipse(ctx,-13,-11,15,4,elephant?'#bed0cf':frog?'#b0d788':'#edc69a',null);ctx.restore();
   ellipse(ctx,-7,12,23,9,elephant?'#abb9af':id==='tiger'?'#f2c678':'#ddccaa',null);
   if(tiger)for(const x of [-28,-12,4])path(ctx,[[x,-19],[x+3,-5],[x-3,1]],'#73523c',4);
   if(id==='armadillo')for(const x of [-24,-14,-4,6]){ctx.beginPath();ctx.ellipse(x,0,10,22,0,-1.2,1.2);ctx.strokeStyle='#665e56';ctx.lineWidth=2;ctx.stroke();}
@@ -28,11 +29,11 @@ export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,perform
   ctx.save();ctx.translate(15,0);ctx.rotate(flex.head??0);ctx.translate(-15,0);
   if(rabbit){ellipse(ctx,25,-34,6,20,color,ink,2.4);ellipse(ctx,12,-31,7,18,color,ink,2.4);ellipse(ctx,25,-34,2,13,'#bd9683',null);}
   if(!frog&&!rabbit){ellipse(ctx,16,-20,elephant?15:9,elephant?20:11,color,ink,2.4);if(!elephant)ellipse(ctx,16,-21,4.5,6,'#d7a99c',null);}
-  ellipse(ctx,29,-6,elephant?20:19,elephant?24:18,color,ink,2.5);
+  ellipse(ctx,29,-6,elephant?20:19,elephant?24:18,color,ink,3.5);ellipse(ctx,36,2,10,6,elephant?'#b9cccb':frog?'#b4d88b':'#eed3ac',null);
   if(elephant){ellipse(ctx,13,-5,13,19,'#b1bcb0',ink,2);path(ctx,[[43,4],[49,25],[57,24]],ink,10);path(ctx,[[43,4],[49,25],[57,24]],color,6);path(ctx,[[38,9],[46,14],[47,10]],'#f3e1b9',3);}
   if(frog){ellipse(ctx,23,-21,7,9,color,ink,2);ellipse(ctx,38,-20,7,9,color,ink,2);}
   if(bear)ellipse(ctx,40,0,8,6,'#c2a382',null);
-  drawCritterFace(ctx,{x:frog?26:34,y:frog?-20:-10,pose,tier});ctx.restore();
+  drawCritterFace(ctx,{x:frog?26:34,y:frog?-20:-10,pose,tier,dive,float});ctx.restore();
   if(!frog&&!elephant)ellipse(ctx,46,0,4,3,ink,null);
   if(active){const pawY=bonk?(pose==='bonk-a'?-5:24):18;path(ctx,[[-16,8],[-29,pawY],[-39,pawY-3]],ink,5);path(ctx,[[-16,8],[-29,pawY],[-39,pawY-3]],color,2.7);if(!elephant){path(ctx,[[12,12],[19,pawY+5],[27,pawY+2]],ink,4);path(ctx,[[12,12],[19,pawY+5],[27,pawY+2]],color,2);}}
 
@@ -40,12 +41,13 @@ export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,perform
  if(stars||dazed)drawDizzyStars(ctx,tier,performance.frame??0);
  ctx.restore();
 }
-function drawCritterFace(ctx,{x,y,whale=false,pose,tier}){
- const ink='#302d2b',bonk=pose.startsWith('bonk'),dazed=pose==='stars'||pose==='dazed',active=pose!=='ready',eye=whale?4:5;
+function drawCritterFace(ctx,{x,y,whale=false,pose,tier,dive=false,float=false}){
+ const ink='#302d2b',bonk=pose.startsWith('bonk'),dazed=pose==='stars'||pose==='dazed',active=pose!=='ready',eye=whale?4.8:6.4;
  if(bonk){path(ctx,[[x-eye,y-eye],[x+eye,y+eye]],ink,2.5);path(ctx,[[x+eye,y-eye],[x-eye,y+eye]],ink,2.5);}
  else if(dazed){ctx.beginPath();for(let i=0;i<26;i++){const a=i*.46,r=.16*i;const xx=x+Math.cos(a)*r,yy=y+Math.sin(a)*r;i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy);}ctx.strokeStyle=ink;ctx.lineWidth=1.9;ctx.stroke();}
- else{ellipse(ctx,x,y,eye,eye*1.4,'#fffbed',ink,1.4);ellipse(ctx,x+1.5,y-.5,eye*.5,eye*.7,'#293e32',null);ellipse(ctx,x+2,y-2,1,1,'#fffbed',null);}
- const mx=x+(whale?1:1),my=y+(whale?10:16);
+ else{ellipse(ctx,x,y,eye,eye*1.4,'#fffbed',ink,1.4);ellipse(ctx,x+(dive?2.4:1.5),y+(dive?1:float?-1:-.5),eye*.5,eye*.7,'#293e32',null);ellipse(ctx,x+2,y-2,1,1,'#fffbed',null);}
+ if(active&&!bonk&&!dazed)path(ctx,[[x-eye-1,y-eye*1.5],[x,y-eye*(dive?1.8:1.7)],[x+eye,y-eye*1.4]],ink,1.8);
+ const mx=x+1,my=y+(whale?10:16);
  if(active){
   ellipse(ctx,mx,my,bonk?7:6,bonk?6.8:4.7,'#684b46',ink,1.5);
   if(!bonk||tier>=2){ctx.fillStyle='#fff6dc';ctx.beginPath();ctx.roundRect(mx-4.5,my-3.2,9,3.6,1);ctx.fill();if(tier>=2){ctx.fillStyle='#684b46';ctx.fillRect(mx-.7,my-3.6,tier>=3?3.6:2.2,4.4);}}

@@ -1,11 +1,12 @@
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=18';
-import {drawForestForeground} from './grove-jungle-art.js?v=18';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=18';
-import {pointInPolygon} from './grove-geometry.js?v=18';
-import {enemyRecipe} from './grove-map.js?v=18';
+import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=19';
+import {drawForestForeground} from './grove-jungle-art.js?v=19';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=19';
+import {pointInPolygon} from './grove-geometry.js?v=19';
+import {enemyRecipe} from './grove-map.js?v=19';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
-const TAU=Math.PI*2,INK='#374b3c';
+const TAU=Math.PI*2,INK='#302d2b';
 const ellipse=(c,x,y,rx,ry,fill,stroke=INK,line=2)=>{c.beginPath();c.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.lineWidth=line;c.strokeStyle=stroke;c.stroke();}};
 const line=(c,pts,color,w=2)=>{if(!pts.length)return;c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);c.strokeStyle=color;c.lineWidth=w;c.lineCap='round';c.lineJoin='round';c.stroke();};
 const objectCache=new WeakMap();
@@ -59,7 +60,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
  c.save();c.lineJoin='round';c.lineCap='round';
  if(!foreground)drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time});
  const visible={minX:cam.x-W/(2*s)-4,maxX:cam.x+W/(2*s)+4,minY:cam.y-H/(2*s)-4,maxY:cam.y+H/(2*s)+4};
- const palette={wood:['#746343','#8b9857'],leaf:['#739558','#bed58c'],stone:['#899b90','#c1ccc0'],bumper:['#c68c75','#ffe4a2'],foliage:['#789c59','#b8ce83'],sap:['#c9913a','#f7d98b']};
+ const palette={...GROVE_MATERIALS,foliage:['#789c59','#b8ce83'],sap:['#c9913a','#f7d98b']};
  let objects=map.objects??[];
  if(!editor){let cached=objectCache.get(map);if(!cached){cached=objects.map(o=>({o,b:objectBounds(o)})).sort((a,b)=>(a.o.layer==='back'?-1:0)-(b.o.layer==='back'?-1:0));objectCache.set(map,cached);}objects=cached;}else objects=objects.map(o=>({o,b:objectBounds(o)})).sort((a,b)=>(a.o.layer==='back'?-1:0)-(b.o.layer==='back'?-1:0));
  let leafBudget=160;
@@ -85,10 +86,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
   else if(o.points?.length){
    const pts=o.points.map(p=>project(p.x,p.y));c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);
    if(o.type==='polygon'&&((s<1.5&&o.id.startsWith('great-bough-'))||s<.65||(b.maxY-b.minY)*s<2||(b.maxX-b.minX)*s<9)){c.closePath();c.fillStyle=colors[0];c.fill();c.restore();continue;}
-   if(o.type==='polygon'){c.closePath();const by=project(0,b.maxY)[1],ey=project(0,b.minY)[1],bx=project(b.minX,0)[0],ex=project(b.maxX,0)[0];const wood=o.material==='wood',g=c.createLinearGradient(0,by,0,Math.max(by+.01,ey));g.addColorStop(0,wood?'#889451':colors[1]);g.addColorStop(.18,wood?'#897445':colors[0]);g.addColorStop(1,wood?'#4e4b34':colors[0]);c.fillStyle=g;c.fill();c.strokeStyle=INK;c.lineWidth=Math.min(2,Math.max(.45,(b.maxY-b.minY)*s*.08));c.stroke();c.save();c.clip();
-    const row=Math.max(13,Math.min(38,s*.3));for(let yy=Math.max(-row,by+row*.5);yy<Math.min(H+row,ey);yy+=row){line(c,[[Math.max(-30,bx),yy],[Math.min(W+30,ex),yy+Math.sin(yy)*3]],'#655738',1.5);}c.restore();
-    // Bright upper edges make the collision plane legible without wireframes.
-    for(let i=0;i<o.points.length;i++){const a=o.points[i],b=o.points[(i+1)%o.points.length];if(Math.abs(a.y-b.y)<Math.abs(a.x-b.x)*.65&&i===0)line(c,[project(a.x,a.y),project(b.x,b.y)],colors[1],Math.max(.45,Math.min(2,s*.035)));}
+   if(o.type==='polygon'){c.closePath();drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s});
    }else{c.strokeStyle=INK;c.lineWidth=Math.max(.6,Math.min(16,(o.width??.16)*s+.45));c.stroke();line(c,pts,colors[0],Math.max(.25,Math.min(13,(o.width??.16)*s)));}
   }
   // The authored opening's flexible stem mats have a warm, readable lip and

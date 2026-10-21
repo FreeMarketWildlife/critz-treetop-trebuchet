@@ -1,0 +1,360 @@
+{
+  "profile": {
+    "restitution": 0.58,
+    "friction": 0.16
+  },
+  "limitSeconds": 30,
+  "arrivals": [
+    {
+      "name": "weak",
+      "baseline": true,
+      "initial": {
+        "vx": 4,
+        "vy": -3,
+        "height": 0.6
+      },
+      "phase": "finished",
+      "time": 1.71974,
+      "failure": "",
+      "release": {
+        "time": 0,
+        "angle": -36.869898,
+        "speed": 5
+      },
+      "distance": 1.08663,
+      "contacts": 3,
+      "first": {
+        "time": 0.158236,
+        "vx": 0.673888,
+        "vy": 2.420841
+      },
+      "firstReboundHeight": 0.364706,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": [
+        0.22702,
+        0.161752,
+        0.01475
+      ]
+    },
+    {
+      "name": "weak",
+      "baseline": false,
+      "initial": {
+        "vx": 4,
+        "vy": -3,
+        "height": 0.6
+      },
+      "phase": "finished",
+      "time": 2.801631,
+      "failure": "",
+      "release": {
+        "time": 0,
+        "angle": -36.869898,
+        "speed": 5
+      },
+      "distance": 4.558499,
+      "contacts": 4,
+      "first": {
+        "time": 0.158236,
+        "vx": 2.853923,
+        "vy": 2.754215
+      },
+      "firstReboundHeight": 0.454912,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": [
+        0.511141,
+        0.48301,
+        0.220534,
+        0.134338
+      ]
+    },
+    {
+      "name": "medium",
+      "baseline": true,
+      "initial": {
+        "vx": 12,
+        "vy": -7,
+        "height": 0.6
+      },
+      "phase": "finished",
+      "time": 2.506012,
+      "failure": "",
+      "release": {
+        "time": 0,
+        "angle": -30.256437,
+        "speed": 13.892444
+      },
+      "distance": 8.055831,
+      "contacts": 4,
+      "first": {
+        "time": 0.082184,
+        "vx": 6.258336,
+        "vy": 3.614898
+      },
+      "firstReboundHeight": 0.774784,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": [
+        0.260103,
+        0.08106,
+        0.060846,
+        0.007807
+      ]
+    },
+    {
+      "name": "medium",
+      "baseline": false,
+      "initial": {
+        "vx": 12,
+        "vy": -7,
+        "height": 0.6
+      },
+      "phase": "finished",
+      "time": 6.52201,
+      "failure": "",
+      "release": {
+        "time": 0,
+        "angle": -30.256437,
+        "speed": 13.892444
+      },
+      "distance": 38.341592,
+      "contacts": 8,
+      "first": {
+        "time": 0.082184,
+        "vx": 9.961925,
+        "vy": 4.988253
+      },
+      "firstReboundHeight": 1.442491,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": [
+        0.615664,
+        0.538187,
+        0.522353,
+        0.379432,
+        0.348414,
+        0.231478,
+        0.211493,
+        0.194408
+      ]
+    },
+    {
+      "name": "strong",
+      "baseline": true,
+      "initial": {
+        "vx": 24,
+        "vy": -12,
+        "height": 0.6
+      },
+      "phase": "finished",
+      "time": 4.078556,
+      "failure": "",
+      "release": {
+        "time": 0,
+        "angle": -26.565051,
+        "speed": 26.832816
+      },
+      "distance": 31.967376,
+      "contacts": 4,
+      "first": {
+        "time": 0.049065,
+        "vx": 15.701583,
+        "vy": 3.964285
+      },
+      "firstReboundHeight": 0.919106,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": [
+        0.359735,
+        0.235589,
+        0.19917,
+        0.158416
+      ]
+    },
+    {
+      "name": "strong",
+      "baseline": false,
+      "initial": {
+        "vx": 24,
+        "vy": -12,
+        "height": 0.6
+      },
+      "phase": "finished",
+      "time": 10.109913,
+      "failure": "",
+      "release": {
+        "time": 0,
+        "angle": -26.565051,
+        "speed": 26.832816
+      },
+      "distance": 120.184002,
+      "contacts": 6,
+      "first": {
+        "time": 0.049065,
+        "vx": 20.857713,
+        "vy": 7.194063
+      },
+      "firstReboundHeight": 2.964282,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": [
+        0.667204,
+        0.520332,
+        0.450931,
+        0.415784,
+        0.396964,
+        0.386457
+      ]
+    }
+  ],
+  "mechanismDraws": [
+    {
+      "name": "weak",
+      "draw": 0.5,
+      "baseline": true,
+      "phase": "finished",
+      "time": 4.180367,
+      "failure": "",
+      "release": {
+        "time": 0.478387,
+        "angle": 43.172541,
+        "speed": 9.624478
+      },
+      "distance": 11.749108,
+      "contacts": 3,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "weak",
+      "draw": 0.5,
+      "baseline": false,
+      "phase": "finished",
+      "time": 5.263484,
+      "failure": "",
+      "release": {
+        "time": 0.478387,
+        "angle": 43.172541,
+        "speed": 9.624478
+      },
+      "distance": 12.369978,
+      "contacts": 5,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "medium",
+      "draw": 0.75,
+      "baseline": true,
+      "phase": "finished",
+      "time": 4.407294,
+      "failure": "",
+      "release": {
+        "time": 0.479614,
+        "angle": 29.943093,
+        "speed": 17.78029
+      },
+      "distance": 22.498004,
+      "contacts": 3,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "medium",
+      "draw": 0.75,
+      "baseline": false,
+      "phase": "finished",
+      "time": 5.987198,
+      "failure": "",
+      "release": {
+        "time": 0.479614,
+        "angle": 29.943093,
+        "speed": 17.78029
+      },
+      "distance": 27.703157,
+      "contacts": 7,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "strong",
+      "draw": 1,
+      "baseline": true,
+      "phase": "finished",
+      "time": 5.115062,
+      "failure": "",
+      "release": {
+        "time": 0.526226,
+        "angle": 38.944774,
+        "speed": 22.004893
+      },
+      "distance": 23.518108,
+      "contacts": 3,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "strong",
+      "draw": 1,
+      "baseline": false,
+      "phase": "finished",
+      "time": 5.956532,
+      "failure": "",
+      "release": {
+        "time": 0.526226,
+        "angle": 38.944774,
+        "speed": 22.004893
+      },
+      "distance": 27.00469,
+      "contacts": 4,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "poor-quarter-draw",
+      "draw": 0.25,
+      "baseline": true,
+      "phase": "finished",
+      "time": 2.734166,
+      "failure": "Sling cord snapped",
+      "release": {
+        "time": 1.004613,
+        "angle": -148.220021,
+        "speed": 3.427398
+      },
+      "distance": 1.665069,
+      "contacts": 0,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    },
+    {
+      "name": "poor-quarter-draw",
+      "draw": 0.25,
+      "baseline": false,
+      "phase": "finished",
+      "time": 2.734166,
+      "failure": "Sling cord snapped",
+      "release": {
+        "time": 1.004613,
+        "angle": -148.220021,
+        "speed": 3.427398
+      },
+      "distance": 1.665069,
+      "contacts": 0,
+      "first": null,
+      "firstReboundHeight": 0,
+      "maxPayloadEnergyRatio": 1,
+      "bounceEnergyRatios": []
+    }
+  ]
+}

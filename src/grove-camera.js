@@ -16,29 +16,40 @@ export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0}=
  return{x:(minX+maxX)/2,y:(H*.5-H*.77)/-scale,scale};
 }
 const FOLLOW_ACQUIRE_SECONDS=.55;
-const ease=t=>t*t*(3-2*t);
+const ease=t=>t*t*(3-2*t),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 export function groveFlightCamera(previous,payload,{width,height,animalLength,dt=1/60,reducedMotion=false}={}){
  if(![payload.x,payload.y,animalLength,width,height].every(Number.isFinite)||animalLength<=0||width<=0||height<=0)throw Error('Finite camera dimensions and positive animal length required.');
- // Seven percent keeps the smallest volunteers readable beside touch controls.
- const target=Math.min(width,height)*.07/animalLength;
+ // Use travel measured in viewports per second, so a mouse and a whale get the
+ // same framing response without changing their physical sizes or velocities.
+ const baseScale=Math.min(width,height)*.07/animalLength;
+ const vx=Number.isFinite(payload.vx)?payload.vx:0,vy=Number.isFinite(payload.vy)?payload.vy:0;
+ const screenVx=vx*baseScale/width,screenVy=vy*baseScale/height,speed=Math.hypot(screenVx,screenVy);
+ // Slow/weak throws are easy to read at nine percent. Strong throws open the
+ // lens to seven percent, retaining the touch-viewport readability floor.
+ const size=.09-.02*ease(clamp((speed-.3)/1.7,0,1)),target=Math.min(width,height)*size/animalLength;
  const step=Number.isFinite(dt)?Math.max(0,Math.min(.1,dt)):0;
  const priorScale=Number.isFinite(previous.scale)&&previous.scale>0?previous.scale:target;
  // Keep the volunteer at its release-frame screen position while the lens opens,
- // then ease that screen offset to zero. Following its real motion immediately
- // keeps even a tiny, fast volunteer visible; a finite acquisition avoids the
- // permanent positional lag of a camera chasing a moving world-space target.
+ // then ease into travel framing. Tracking its actual position immediately avoids
+ // permanent chase lag; presentation offsets never assign a physics transform.
  const prior=previous.followAcquisition;
  const acquisition=prior?{...prior,age:Math.min(FOLLOW_ACQUIRE_SECONDS,prior.age+step)}:{
   age:0,
   x:((Number.isFinite(previous.x)?previous.x:payload.x)-payload.x)*priorScale/width,
   y:((Number.isFinite(previous.y)?previous.y:payload.y)-payload.y)*priorScale/height
  };
- if(reducedMotion)return{x:payload.x,y:payload.y,scale:target,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS}};
+ if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0}};
+ // A bounded, eased lead reveals the next branch in the travel direction. Smooth
+ // the offset rather than body velocity so a rebound cannot jerk the camera or
+ // let the animal slide out of frame while tracking catches up.
+ const oldMotion=previous.followMotion??{x:0,y:0},leadMix=1-Math.exp(-step*4.5);
+ const leadX=.17*Math.tanh(screenVx*.24/.17),leadY=.10*Math.tanh(screenVy*.16/.10);
+ const motion={x:oldMotion.x+(leadX-oldMotion.x)*leadMix,y:oldMotion.y+(leadY-oldMotion.y)*leadMix};
  // Log interpolation handles the full mouse-to-whale range without a scale pop.
  const mix=1-Math.exp(-step*7);
  const scale=step===0?priorScale:Math.exp(Math.log(priorScale)*(1-mix)+Math.log(target)*mix);
- const remaining=1-ease(acquisition.age/FOLLOW_ACQUIRE_SECONDS);
- return{x:payload.x+acquisition.x*width*remaining/scale,y:payload.y+acquisition.y*height*remaining/scale,scale,followAcquisition:acquisition};
+ const blend=ease(acquisition.age/FOLLOW_ACQUIRE_SECONDS),remaining=1-blend;
+ return{x:payload.x+(acquisition.x*remaining+motion.x*blend)*width/scale,y:payload.y+(acquisition.y*remaining+motion.y*blend)*height/scale,scale,followAcquisition:acquisition,followMotion:motion};
 }
 export function groveProject(point,camera,width,height){return{x:width/2+(point.x-camera.x)*camera.scale,y:height/2-(point.y-camera.y)*camera.scale};}
 export function groveTreeCamera(map,{width,height}){

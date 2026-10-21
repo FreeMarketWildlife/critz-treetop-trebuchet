@@ -1,12 +1,16 @@
-import {addCritterFixtures} from './critter-body.js?v=18';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=18';
+import {addCritterFixtures} from './critter-body.js?v=19';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=19';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=18';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=18';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=18';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=19';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=19';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=19';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
+// Arcade material balance for the released critter on the ordinary forest floor.
+// Coefficients stay passive (<1 restitution); hardware and authored surfaces
+// retain their existing fixture materials and all launch contacts are unchanged.
+export const FOREST_FLOOR_RESPONSE=Object.freeze({restitution:.58,friction:.16});
 const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 /** Similarity units: x_real=L*x_solver, t_real=sqrt(L)*t_solver,
  * m_real=M*m_solver. Therefore g_solver=g_real, F_real=M*F_solver,
@@ -74,7 +78,7 @@ export class BuildSimulation{
   this.startX=this.shot.getPosition().x*this.L;this.initialCounterY=this.counterPoint().y;this.initialEnergy=this.energy();this.initialPivot={x:pivot.x*this.L,y:pivot.y*this.L};
   this.storeTypes=new Map();for(const bdy of this.moving){this.storeTypes.set(bdy,bdy.getType());bdy.setType('static');}
   this.world.on('begin-contact',contact=>this.onContact(contact));
-  this.world.on('pre-solve',contact=>this.observeImpact(contact));
+  this.world.on('pre-solve',contact=>{this.configureFlightContact(contact);this.observeImpact(contact);});
   this.world.on('post-solve',(contact,impulse)=>this.resolveImpact(contact,impulse));
   this.world.on('end-contact',contact=>{this.shotContacts.delete(contact);});
  }
@@ -117,6 +121,14 @@ export class BuildSimulation{
   if(!this.release)return;
   const other=a.getBody()===this.shot?b:a,o=other.getUserData()?.worldObject;
   if(o?.type==='enemy'&&this.time-(this.encounterTimes.get(o.id)??-100)>.7){this.encounterTimes.set(o.id,this.time);this.pendingEncounters.push(o);}
+ }
+ configureFlightContact(contact){
+  if(!this.release)return;
+  const a=contact.getFixtureA(),b=contact.getFixtureB();
+  const other=a.getBody()===this.shot?b:b.getBody()===this.shot?a:null;
+  if(other?.getUserData()?.worldObject?.type!=='ground')return;
+  contact.setRestitution(FOREST_FLOOR_RESPONSE.restitution);
+  contact.setFriction(FOREST_FLOOR_RESPONSE.friction);
  }
  observeImpact(contact){
   if(!this.release)return;

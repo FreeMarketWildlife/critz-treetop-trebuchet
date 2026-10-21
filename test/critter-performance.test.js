@@ -8,7 +8,7 @@ test('flight holds a cel, each meaningful hit selects a readable new reaction, t
  sim.time=1;sim.contactEvents=[hit(1,1)];const first=actor.update(sim);assert.equal(first.pose,'bonk-a');assert.equal(first.hits,1);
  sim.time=1.2;assert.equal(actor.update(sim).pose,'bonk-a');sim.time=1.3;assert.equal(actor.update(sim).pose,'stars');sim.time=1.7;assert.equal(actor.update(sim).pose,'flying');
  sim.time=2;sim.contactEvents.push(hit(2,2));assert.equal(actor.update(sim).pose,'bonk-b');
- for(let i=3;i<=5;i++){sim.time=i;sim.contactEvents.push(hit(i,i));actor.update(sim);}sim.time=6;const later=actor.update(sim);assert.equal(later.tier,3);assert.equal(later.pose,'dazed');
+ for(let i=3;i<=5;i++){sim.time=i;sim.contactEvents.push(hit(i,i));actor.update(sim);}sim.time=6;const later=actor.update(sim);assert.equal(later.tier,3);assert.equal(later.pose,'flying');
 });
 test('resting, duplicate fixture and pre-release contacts cannot stack injuries',()=>{
  const sim=fake(),actor=createCritterPerformance();sim.time=1;sim.contactEvents=[hit(1,1)];assert.equal(actor.update(sim).hits,0);sim.release={};sim.time=2;sim.contactEvents.push(hit(2,2),hit(3,2.01),hit(4,2.1,'branch',.01));assert.equal(actor.update(sim).hits,1);

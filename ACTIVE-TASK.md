@@ -1,3 +1,9 @@
+# Overnight pass 2 checkpoint — October 21, 2026
+
+Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-2/implementation.md for the 437-test checkpoint, native Mac desktop/phone throws, screenshots, passive ordinary-floor response and remaining framing/art limits. The canonical 475-piece revision-5 map, gravity-driven launcher, loose loading, weapons and personal saves are preserved. Sites publication is deferred: do not package/save/deploy without the parent/user release confirmation. Existing server stays running. Next focus: landing landmarks and small-species silhouettes, then portrait landing visibility; preserve .55-second release continuity and keep experimental guards disabled.
+
+---
+
 # Overnight improvement checkpoint — October 21, 2026
 
 Current work continues on codex/custom-trebuchet-workshop. Read docs/overnight-pass-1/implementation.md for tested changes, screenshots, model limits and next pass. Preserve the clean-play/weapon/loading work, new revision-5 shared default route, .55-second follow acquisition and current public Sites version-8 identity. Sites publication of this pass is pending a separate source-helper release action; no credential/access changes performed. Existing server and personal saves remain untouched. Focus next on clearer original world art and speed-aware post-launch framing, not experimental physics research.

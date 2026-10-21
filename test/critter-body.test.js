@@ -30,3 +30,9 @@ test('basket guidance stays absent during idle play and paused scenes',async()=>
  const original=Object.getOwnPropertyDescriptor(globalThis,'devicePixelRatio');Object.defineProperty(globalThis,'devicePixelRatio',{value:1,configurable:true});
  try{const s=new BuildSimulation(STARTER);s.setDraw(0);s.loading=createPayloadLoading(s);const r=createBuildRenderer(canvas);r.draw(s,{labels:false});assert.equal(canvas.dataset.loadingHint,'false');for(let i=0;i<730;i++)s.loading.step(1/120);assert.equal(s.loading.hint,false);r.draw(s,{labels:false});assert.equal(canvas.dataset.loadingHint,'false');r.draw(s,{labels:false,paused:true});assert.equal(canvas.dataset.loadingHint,'false');}finally{if(original)Object.defineProperty(globalThis,'devicePixelRatio',original);else delete globalThis.devicePixelRatio;}
 });
+
+test('flight gestures react to rise and dive while recovering expressions without losing bruises or body angle',()=>{
+ let velocity={vx:18,vy:8,angle:1.2};const s={time:0,T:1,phase:'flight',shot:{getAngularVelocity:()=>2},release:{time:0},contactEvents:[],real:()=>({...velocity})},actor=createCritterPerformance();let cel=actor.update(s);assert.equal(cel.airPose,'rise');assert.equal(cel.angle,-1.2);
+ for(let i=1;i<=3;i++){s.time=i;s.contactEvents.push({seq:i,id:'branch-'+i,time:i,strength:.7});cel=actor.update(s);}assert.equal(cel.tier,2);assert.ok(cel.pose.startsWith('bonk'));
+ velocity={vx:20,vy:-9,angle:4.7};s.time=4;cel=actor.update(s);assert.equal(cel.airPose,'dive');assert.equal(cel.pose,'flying');assert.equal(cel.tier,2);assert.equal(cel.angle,-4.7);assert.deepEqual(actor.update(s),cel,'paused gestures remain exactly frozen');
+});
