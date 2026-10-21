@@ -39,3 +39,11 @@ test('the maintained author template supplies every static tool control needed b
  for(const[,id]of source.matchAll(/\$\('([^']+)'\)/g))assert.ok(ids.has(id),'missing editor control '+id);
  assert.doesNotMatch(source,/document\.querySelector|document\.getElementById|document\.body/,'tools query only their scoped root');
 });
+
+// Sites canonicalizes /editor.html to /editor before JavaScript executes.
+test('hosted clean editor URLs leave the editor route once and preserve isolated author state',()=>{
+ for(const prefix of['/','/project/'])for(const entry of['editor.html','editor','editor/']){
+  const href=`https://critz-treetop-trebuchet.freemarketwildlife.chatgpt.site${prefix}${entry}?qa=1&editor=1&creative=1#map=abc`,url=new URL(editorAppUrl(href));
+  assert.equal(url.pathname,prefix+'index.html');assert.notEqual(url.pathname,new URL(href).pathname);assert.equal(url.searchParams.get('author'),'1');assert.equal(url.searchParams.get('mode'),'edit');assert.equal(url.searchParams.get('qa'),'1');assert.equal(url.searchParams.get('creative'),'1');assert.equal(url.searchParams.has('editor'),false);assert.equal(url.hash,'#map=abc');
+ }
+});
