@@ -1,9 +1,10 @@
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=12';
-import {groveTreeCamera} from './grove-camera.js?v=12';
-import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=12';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=12';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=12';
-import {createAudio} from './audio.js?v=12';
+import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=13';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=13';
+import {groveTreeCamera} from './grove-camera.js?v=13';
+import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=13';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=13';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=13';
+import {createAudio} from './audio.js?v=13';
 import {loadAudioPreferences} from './audio-preferences.js';
 const $=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d'),mini=$('minimap'),mc=mini.getContext('2d'),clone=v=>structuredClone(v);
 const sound=createAudio({maxVoices:4});try{const pref=loadAudioPreferences(localStorage);sound.setMuted(pref.muted);sound.setVolume(pref.volume*.65);}catch{}
@@ -37,7 +38,7 @@ const round=n=>Math.round(n*1000)/1000;
 function showVertex(){const o=object(),p=o?.points?.[vertex];if(!p)return;$('vertexX').value=round(p.x);$('vertexY').value=round(p.y+doc.launch.y);requestDraw();}
 function line(a,b,color,w=1){ctx.strokeStyle=color;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
 function strokeObject(o,color,w=1.5,fill=false){ctx.strokeStyle=color;ctx.fillStyle=fill?color:'transparent';ctx.lineWidth=w;ctx.beginPath();if(o.points){const a=project(o.points[0]);ctx.moveTo(a.x,a.y);for(const p of o.points.slice(1)){const q=project(p);ctx.lineTo(q.x,q.y);}if(o.type==='polygon')ctx.closePath();}else{const p=project(o);ctx.arc(p.x,p.y,o.radius*camera.scale,0,Math.PI*2);}if(fill)ctx.fill();ctx.stroke();}
-function drawRig(){if(camera.scale<5){const p=project({x:0,y:0});ctx.fillStyle='#f0d68a';ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fill();ctx.fillStyle='#f9f0c9';ctx.font='bold 9px Trebuchet MS';ctx.fillText('HOME · 3 m rig',p.x+7,p.y-7);return;}const p=(x,y)=>project({x,y});line(p(-1.2,0),p(0,3),'#54633d',5);line(p(0,3),p(1.2,0),'#54633d',5);line(p(-1.2,0),p(1.2,0),'#b3a06a',4);line(p(-2.4,1.6),p(.62,3.36),'#5b5a39',5);line(p(-2.4,1.6),p(-1.2,.17),'#dacb93',1.7);const c=p(.62,2.96);ctx.fillStyle='#778971';ctx.fillRect(c.x-5,c.y-6,10,11);const pp=p(0,3);ctx.fillStyle='#d9c680';ctx.beginPath();ctx.arc(pp.x,pp.y,3,0,Math.PI*2);ctx.fill();const label=p(-.5,4.1);ctx.fillStyle='#385b3e';ctx.textAlign='center';ctx.font='bold 9px Trebuchet MS';ctx.fillText('3 m STARTER',label.x,label.y);ctx.textAlign='left';}
+function drawRig(){const c=STARTER,p=(x,y)=>project({x,y});if(camera.scale<5){const q=p(0,0);ctx.fillStyle='#f0d68a';ctx.beginPath();ctx.arc(q.x,q.y,3,0,Math.PI*2);ctx.fill();ctx.fillStyle='#f9f0c9';ctx.font='bold 9px Trebuchet MS';ctx.fillText(`HOME · ${c.pivotHeight} m rig`,q.x+7,q.y-7);return;}line(p(-c.baseWidth/2,0),p(0,c.pivotHeight),'#54633d',4);line(p(0,c.pivotHeight),p(c.baseWidth/2,0),'#54633d',4);line(p(-c.baseWidth/2,0),p(c.baseWidth/2,0),'#b3a06a',3);const tx=c.longArm*Math.cos(REST_ARM_ANGLE),ty=c.pivotHeight+c.longArm*Math.sin(REST_ARM_ANGLE),sx=-c.shortArm*Math.cos(REST_ARM_ANGLE),sy=c.pivotHeight-c.shortArm*Math.sin(REST_ARM_ANGLE);line(p(tx,ty),p(sx,sy),'#5b5a39',4);line(p(tx,ty),p(tx+c.slingLength*.56,ty-c.slingLength*.8),'#dacb93',1.7);const q=p(sx,sy-c.hanger);ctx.fillStyle='#778971';ctx.fillRect(q.x-4,q.y-5,8,10);const label=p(0,ty+.25);ctx.fillStyle='#385b3e';ctx.textAlign='center';ctx.font='bold 9px Trebuchet MS';ctx.fillText(`${c.pivotHeight} m STARTER`,label.x,label.y);ctx.textAlign='left';}
 function draw(){if(!width||!height)return;ctx.setTransform(dpr,0,0,dpr,0,0);drawGroveWorld(ctx,{camera,width,height,map:doc,time:0,editor:true});drawRig();drawGroveWorld(ctx,{camera,width,height,map:doc,time:0,foreground:true,editor:true});
  const base=Number($('grid').value),step=base*2**Math.max(0,Math.ceil(Math.log2(32/(base*camera.scale)))),left=camera.x-width/(2*camera.scale),right=camera.x+width/(2*camera.scale),bottom=camera.y-height/(2*camera.scale),top=camera.y+height/(2*camera.scale);
  ctx.save();ctx.globalAlpha=.24;for(let x=Math.ceil(left/step)*step;x<=right;x+=step){const p=project({x,y:0});line({x:p.x,y:0},{x:p.x,y:height},'#60754e',.6);}for(let y=Math.ceil(bottom/step)*step;y<=top;y+=step){const p=project({x:0,y});line({x:0,y:p.y},{x:width,y:p.y},'#60754e',.6);}ctx.restore();

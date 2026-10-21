@@ -8,8 +8,12 @@ export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0}=
   const scale=Math.min(W*.87/wide,H*.64/rigHeight);
   return{x:-c.troughLength*.2,y:H*.22/scale,scale};
  }
- const scale=Math.min(H*.22/rigHeight,W*.54/Math.max(c.longArm+c.slingLength+c.shortArm,c.troughLength,3));
- return{x:W<600?-c.baseWidth*.5:c.baseWidth*.75,y:H*.16/scale,scale};
+ // Fit the mechanism, left stand and sling inside the area between HUD and dock.
+ const minX=-Math.max(c.longArm*.92,c.baseWidth*.9)-Math.max(.18,c.pouchWidth*.8),maxX=Math.max(c.baseWidth*.85,c.shortArm+counterRadius);
+ const high=Math.max(c.pivotHeight+c.longArm*Math.sin(1),c.pivotHeight+c.shortArm+counterRadius);
+ const scale=Math.min(H*.50/high,W*.90/(maxX-minX));
+ // Ground sits just above the bottom dock; the arm has room below the HUD.
+ return{x:(minX+maxX)/2,y:(H*.5-H*.77)/-scale,scale};
 }
 export function groveFlightCamera(previous,payload,{width,height,animalLength,dt=1/60,reducedMotion=false}={}){
  if(![payload.x,payload.y,animalLength,width,height].every(Number.isFinite)||animalLength<=0)throw Error('Finite camera dimensions and positive animal length required.');

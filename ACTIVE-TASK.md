@@ -1,3 +1,11 @@
+# Current update — close-up loading workshop, October 20, 2026
+
+User requested a much larger launch view, smaller starter relative to small volunteers, a visible wheel-to-sling cord, a left stand, point-specific ragdoll pickup/drop, five-second drag guidance and an empty-launch message. Implemented the 1.2 m / 6,000 g compact starter, roughly 40–50% viewport-height setup framing, jointed body/head/tail preparation physics and original segmented vector art. The pointer pin acts at the grabbed point; released parts fall and must settle in real basket contact. Seating transfers at rest to the established flight capsule. Enter remains an explicit accessibility alternative. Human operators remain absent.
+
+The hauling cord follows wheel → guide pulley → basket; free-span change determines drum rotation, and unlatch detaches the hauling hook. Gravity supplies launch energy. All 394 full-suite tests pass, with 32 final focused checks after the last UI/documentation changes. Local narrow-phone browser review verified quick manual basket loading, winding/release and “You need something to launch!” with immediate animated guidance. Only untouched prior starter recipes migrate; custom builds, blueprints, Bells and ownership persist. See docs/loading-workshop/implementation.md for model limits and evidence. Public publication pending final verification. Keep localhost:8080 running.
+
+---
+
 # Current update — Grandfather crown editor, October 20, 2026
 
 Implemented the user's 20× thicker / 2× taller tree: 280 m trunk, 800 m height, 600 m launch. New default has 267 editable pieces, 79 fixed-size enemies, 97 active leaf fields and seven sap patches. Branch drawing/extension, slopes, leaf-density presets, sap, explicit eraser and map JSON copy are available. Existing edited v2 maps remain intact; untouched old starters migrate. Explicit Load new starter is undoable.

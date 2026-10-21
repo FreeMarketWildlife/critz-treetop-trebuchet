@@ -1,8 +1,8 @@
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=12';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=13';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit} from './build-catalog.js?v=12';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=12';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=12';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=13';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=13';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=13';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
@@ -180,7 +180,7 @@ export class BuildSimulation{
  setDraw(fraction){
   if(this.phase!=='ready')return;
   this.drawFraction=Math.max(0,Math.min(1,fraction));
-  const c=this.c,angle=Math.PI-.4+(this.initialAngle-Math.PI+.4)*this.drawFraction;
+  const c=this.c,angle=REST_ARM_ANGLE+(this.initialAngle-REST_ARM_ANGLE)*this.drawFraction;
   const pivot={...this.initialPivot};
   if(this.carriage){
    const guideX=this.initialPivot.x-c.shortArm*Math.cos(this.initialAngle);
@@ -197,10 +197,10 @@ export class BuildSimulation{
  }
  wind(dt){
   if(this.phase!=='ready')return;
-  const c=this.c,f=this.drawFraction??0,span=this.initialAngle-Math.PI+.4;
+  const c=this.c,f=this.drawFraction??0,span=this.initialAngle-REST_ARM_ANGLE;
   // The rate governor makes small winches readable; heavier loads additionally
   // respect motor power through d(mgh)/d(fraction). Ratchet holds at each stop.
-  const angle=Math.PI-.4+span*f;
+  const angle=REST_ARM_ANGLE+span*f;
   const joulesPerFraction=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
   const rate=Math.min(1/1.65,part(c.winch).power/Math.max(.01,joulesPerFraction));
   this.setDraw(f+Math.max(0,Math.min(.1,dt))*rate);

@@ -77,3 +77,6 @@ The numerical archive includes exact floating-point hashes recorded on Apple Sil
 ## Front crank wheel and loading
 
 The front winding wheel replaces the operator. It winds clockwise while held and pays out counterclockwise with the actual gravity-driven arm motion after release. Wheel upgrades are sold in the existing winding-gear shop slot. Drag a volunteer onto the glowing pouch before winding; Enter loads it for keyboard play, and Space winds/releases. Mouse, tree frog and chipmunk start unlocked under a 150 g limit. See [implementation and model limits](docs/trebuchet-crank/implementation.md).
+
+
+The current close-up launch screen uses a compact 1.2 m starter and a left-hand volunteer stand. Drag any body region, drop into the basket, then hold to wind. A drag gesture appears after five idle seconds or an empty attempt. Loading uses jointed physics; seating transfers at rest into the launch capsule. See [loading implementation](docs/loading-workshop/implementation.md). The previous 3 m tower is retained for larger presets and existing custom builds.

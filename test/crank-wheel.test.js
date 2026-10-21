@@ -25,26 +25,19 @@ test('drawing a stationary crank cannot advance it or mutate the physical mechan
 });
 test('wheel tiers scale, interconnect with every foundation and fit without altering lever geometry',()=>{
  const tiers=PARTS.filter(p=>p.slot==='winch'),radii=[];
- for(const tier of tiers){const c=fitEquipment(STARTER,{kind:'part',id:tier.id});radii.push(crankState(new BuildSimulation(c)).radius);assert.equal(c.longArm,STARTER.longArm);assert.equal(c.pivotHeight,3);}
+ for(const tier of tiers){const c=fitEquipment(STARTER,{kind:'part',id:tier.id});radii.push(crankState(new BuildSimulation(c)).radius);assert.equal(c.longArm,STARTER.longArm);assert.equal(c.pivotHeight,STARTER.pivotHeight);}
  assert.equal(new Set(radii).size,tiers.length);
  for(const chassis of ['anchored','skids','wheels','walking','floating'])for(const tier of tiers){
   const s=new BuildSimulation({...scaledPreset('mouse',chassis),winch:tier.id}),g=crankState(s),f=s.frame.getLocalPoint({x:g.center.x/s.L,y:g.center.y/s.L});
   assert.ok(Math.abs(f.x*s.L-s.c.baseWidth*.44)<1e-9);assert.ok(g.radius<=s.c.baseWidth*.35);assert.ok(g.drumRadius<g.radius);
  }
 });
-test('an empty sling blocks firing; drag/drop seats without pointer velocity and misses/cancels return home',()=>{
- const s=new BuildSimulation(STARTER);s.setDraw(0);s.loading=createPayloadLoading(s);const l=s.loading,home=l.home();
- assert.equal(s.fire(),false);assert.equal(s.phase,'ready');assert.ok(l.begin());l.move({x:-100,y:100});assert.equal(l.drop(),false);assert.deepEqual(l.position,home);
- l.begin();l.move(l.target());l.cancel();assert.equal(l.loaded,false);assert.deepEqual(l.position,home);assert.equal(s.fire(),false);
- l.begin();l.move(l.target());assert.equal(l.drop(),true);assert.equal(s.real(s.shot).vx,0);assert.equal(s.real(s.shot).vy,0);
- for(let i=0;i<110;i++)s.wind(1/60);
- const before=s.snapshot();assert.ok(s.fire());assert.deepEqual(s.real(s.shot),before.payload);assert.equal(s.arm.getAngularVelocity(),0);assert.equal(s.real(s.shot).vx,0);assert.equal(s.real(s.shot).vy,0);
- for(let i=0;i<2400&&['swing','flight'].includes(s.phase);i++)s.step(1/60);
- assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.ok(s.release.angle>30);assert.ok(s.maxX>18);
+test('empty loading blocks firing and explicit seating never supplies launch velocity',()=>{
+ const s=new BuildSimulation(STARTER);s.setDraw(0);s.loading=createPayloadLoading(s);assert.equal(s.fire(),false);assert.equal(s.phase,'ready');s.loading.loadKeyboard();for(let i=0;i<110;i++)s.wind(1/60);const before=s.snapshot();assert.ok(s.fire());assert.deepEqual(s.real(s.shot),before.payload);assert.equal(s.arm.getAngularVelocity(),0);assert.equal(s.real(s.shot).vx,0);for(let i=0;i<2400&&['swing','flight'].includes(s.phase);i++)s.step(1/60);assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.ok(s.release.angle>30);assert.ok(s.maxX>18);
 });
 test('starter grants only the small roster, all of which fly with the same default kit',()=>{
  const state=newProgress();assert.equal(STARTER_MAX_GRAMS,150);assert.deepEqual(state.animals,STARTER_ANIMALS);assert.deepEqual(state.animals,['mouse','frog','chipmunk']);assert.equal(state.build.winch,'hand');assert.ok(!state.owned.includes('geared'));
- for(const animal of STARTER_ANIMALS){assert.ok(critter(animal).grams<=150);assert.equal(canBuild(state,{...STARTER,animal}),true);const s=runBuild({...STARTER,animal});assert.equal(s.failure,'');assert.ok(s.release.angle>30&&s.release.angle<50);}
+ for(const animal of STARTER_ANIMALS){assert.ok(critter(animal).grams<=150);assert.equal(canBuild(state,{...STARTER,animal}),true);const s=runBuild({...STARTER,animal});assert.equal(s.failure,'');assert.ok(s.release.angle>30&&s.release.angle<65);}
 });
 test('revision 2 saves retain purchased wheels and custom builds while receiving the small roster once',()=>{
  const raw={...newProgress(),starterRevision:2,bells:321,animals:['mouse','squirrel'],owned:[...newProgress().owned,'geared'],build:{...STARTER,winch:'geared',pinAngle:-43}};

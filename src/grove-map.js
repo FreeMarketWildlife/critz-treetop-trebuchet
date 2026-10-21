@@ -1,6 +1,6 @@
-import {CROWN_TREE,crownStarterObjects} from './grove-starter.js?v=12';
-import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=12';
-export {objectBounds} from './grove-geometry.js?v=12';
+import {CROWN_TREE,crownStarterObjects} from './grove-starter.js?v=13';
+import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=13';
+export {objectBounds} from './grove-geometry.js?v=13';
 export const MAP_KEY='treetop-grove-map-v2';
 export const LEGACY_LEVELS=Object.freeze([
  {id:'forestFloor',name:'Forest floor',low:0,high:120,color:'#b98d64'},

@@ -1,18 +1,18 @@
-import {createPayloadLoading} from './payload-loading.js?v=12';
-import {crankState} from './crank-wheel.js?v=12';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=12';
-import {fitEquipment} from './build-equipment.js?v=12';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=12';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=12';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=12';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=12';
-import {drawShopArt} from './shop-art.js?v=12';
+import {createPayloadLoading} from './payload-loading.js?v=13';
+import {crankState} from './crank-wheel.js?v=13';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=13';
+import {fitEquipment} from './build-equipment.js?v=13';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=13';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=13';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=13';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=13';
+import {drawShopArt} from './shop-art.js?v=13';
 import {createHoldControl} from './hold-control.js';
-import {createAudio} from './audio.js?v=12';
+import {createAudio} from './audio.js?v=13';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=12';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=12';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=12';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=13';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=13';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=13';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -81,12 +81,13 @@ const hold=createHoldControl({
 });
 function beginHold(id){
  sound.unlock();
- if(!sim.loading.loaded){toast('Drag your volunteer into the glowing sling first. Keyboard: Enter loads the sling.');return false;}
+ if(paused||document.hidden||document.querySelector('dialog[open]'))return false;
+ if(!sim.loading.loaded){toast('You need something to launch!');sim.loading.requestHint();dirty=true;return false;}
  if(sim.phase==='ready'&&sim.facts.warnings.some(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'))){sim.fire();updateReadouts();dirty=true;return false;}
  return hold.begin(id);
 }
 function updateReadouts(){
- drawHudCritter();const s=sim.snapshot();const altitude=s.payload.y+groveMap.launch.y,zone=levelAt(altitude,groveMap);
+ drawHudCritter();const s=sim.snapshot();const altitude=s.payload.y+groveMap.launch.y,zone=levelAt(altitude,groveMap);document.body.classList.toggle('preparing',sim.phase==='ready');
  $('regionName').textContent=zone.name.toUpperCase();$('regionGravity').textContent=`${Math.max(0,altitude).toFixed(1)} m altitude · ${`${(GRAVITY*(sim.release?sim.gravityFactor:1)).toFixed(2)} m/s²`}`;
  $('bumperCombo').hidden=combo===0;$('bumperCombo').textContent=`✦ ${combo} ${combo===1?'BOUNCE':'BOUNCES'}`;
  const audioState=sound.getStatus().contextState;if($('stage').dataset.audio!==audioState)$('stage').dataset.audio=audioState;
@@ -94,9 +95,9 @@ function updateReadouts(){
  const names={ready:'A LITTLE WIND-UP…',swing:'COUNTERWEIGHT FALLING',flight:'SLING OPEN · IN FLIGHT',finished:'EXPERIMENT COMPLETE',invalid:'CHECK THIS BUILD'};
  const full=(sim.drawFraction??0)>=.999;
  $('phaseBadge').textContent=paused?'TAKE A BREATHER':winding?(full?'RATCHET LOCKED · FULL DRAW':'RAISING THE COUNTERWEIGHT'):names[s.phase];
- $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':'Drag your critter into the sling'):s.phase==='swing'?'Here we go…':s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:'Nice experiment.';
- $('launchStatus').textContent=paused?'Tap Resume when you’re ready.':winding?(full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release whenever you like`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Drop on the glowing pouch, then hold to crank. Enter loads with the keyboard.';
- if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'SEAT YOUR VOLUNTEER':'LOAD THE SLING';
+ $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?'Here we go…':s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:'Nice experiment.';
+ $('launchStatus').textContent=paused?'Tap Resume when you’re ready.':winding?(full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release whenever you like`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Pick up the head, body or tail. Enter loads with the keyboard.';
+ if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'DROP INTO THE BASKET':'LOAD THE SLING';
  const pct=Math.round((sim.drawFraction??0)*100);$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
  $('sceneHint').textContent=`${sim.animal.name} · ${grams(sim.animal.grams)}${sim.release?' · '+critterPoseName(currentCel):''}`;
  $('launchPrompt').hidden=resultShown;$('collectShop').hidden=false;$('collectShop').textContent=creative?'Try the shop →':'Collect & visit shop →';
@@ -147,7 +148,7 @@ function renderPresets(){
  $('presetChassis').replaceChildren(...PARTS.filter(p=>p.slot==='chassis').map(p=>choiceCard(p,'part',p.id===presetChassis,()=>{presetChassis=p.id;renderPresets();})));
 }
 renderPresets();
-$('restoreStarter').onclick=()=>{draft={...STARTER};$('buildName').value=draft.name;applyBuild({quiet:true});fitted('3 m Acorn Flyer');};
+$('restoreStarter').onclick=()=>{draft={...STARTER};$('buildName').value=draft.name;applyBuild({quiet:true});fitted(`${STARTER.pivotHeight.toFixed(1)} m Acorn Flyer`);};
 $('tuneArc').onclick=async()=>{
  const fingerprint=JSON.stringify(draft),c={...draft};$('tuneArc').disabled=true;$('arcAdvice').textContent='Trying release-pin settings on this exact build…';let best;
  try{
@@ -191,8 +192,8 @@ function cancelLoading(){if(loadPointer!==null){sim?.loading.cancel();loadPointe
 stage.addEventListener('pointerdown',e=>{
  if(e.button!==0||!e.isPrimary)return;e.preventDefault();
  if(!paused&&!winding&&sim.phase==='ready'&&!document.querySelector('dialog[open]')){
-  const b=stage.getBoundingClientRect(),p=renderer.project(sim.real(sim.shot));
-  if(Math.hypot(e.clientX-b.left-p[0],e.clientY-b.top-p[1])<=Math.max(24,sim.animal.length*renderer.camera.scale*.65)&&sim.loading.begin()){
+  const point=pointerPoint(e);sim.loading.activity();
+  if(sim.loading.begin(point,Math.min(sim.animal.length*.15,8/renderer.camera.scale))){
    loadPointer=e.pointerId;stage.setPointerCapture(e.pointerId);stage.focus({preventScroll:true});dirty=true;updateReadouts();return;
   }
  }
@@ -200,7 +201,7 @@ stage.addEventListener('pointerdown',e=>{
 });
 stage.addEventListener('pointermove',e=>{if(e.pointerId===loadPointer){sim.loading.move(pointerPoint(e));dirty=true;}});
 stage.addEventListener('pointerup',e=>{
- if(e.pointerId===loadPointer){sim.loading.move(pointerPoint(e));const seated=sim.loading.drop(24/renderer.camera.scale);loadPointer=null;dirty=true;cue(seated?'ready':'click');updateReadouts();}
+ if(e.pointerId===loadPointer){sim.loading.move(pointerPoint(e));const seated=sim.loading.drop();loadPointer=null;dirty=true;cue(seated?'ready':'click');updateReadouts();}
  else hold.end(e.pointerId);
  if(stage.hasPointerCapture(e.pointerId))stage.releasePointerCapture(e.pointerId);
 });
@@ -210,7 +211,7 @@ stage.addEventListener('contextmenu',e=>e.preventDefault());
 document.addEventListener('pointerdown',()=>{sound.unlock();},{capture:true});
 document.addEventListener('click',e=>{if(e.target.closest('button')&&!e.target.closest('#soundToggle'))cue('click');});
 document.addEventListener('keydown',e=>{
- if(e.code==='Enter'&&document.activeElement===stage&&!paused&&sim.phase==='ready'&&!sim.loading.loaded&&!sim.loading.dragging&&!document.querySelector('dialog[open]')){e.preventDefault();sim.loading.begin();sim.loading.move(sim.loading.target());sim.loading.drop();dirty=true;cue('ready');updateReadouts();}
+ if(e.code==='Enter'&&document.activeElement===stage&&!paused&&sim.phase==='ready'&&!sim.loading.loaded&&!sim.loading.dragging&&!document.querySelector('dialog[open]')){e.preventDefault();sim.loading.loadKeyboard();dirty=true;cue('ready');updateReadouts();}
 
  if(e.code==='Space'&&!['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!e.repeat)beginHold('space');}
  if(e.code==='Escape'&&!document.querySelector('dialog[open]')){if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else if(['swing','flight'].includes(sim.phase))$('pause').click();}
@@ -225,6 +226,7 @@ function frame(timestamp){
  const modal=!!document.querySelector('dialog[open]'),active=!paused&&!document.hidden&&!modal;
  sim.winding=winding;
  if(active){
+  const wasLoaded=sim.loading.loaded;if(sim.loading.step(delta))dirty=true;if(!wasLoaded&&sim.loading.loaded){cue('ready');updateReadouts();}
   if(winding){sim.wind(delta);const tick=Math.floor((sim.drawFraction??0)*24);if(tick!==ratchetStep){cue('ratchet',{intensity:.6+tick/60});ratchetStep=tick;}if(sim.drawFraction>=1&&!readyCue){cue('ready');readyCue=true;}}
   else {let remaining=delta*Number($('speed').value);while(remaining>0){const step=Math.min(.05,remaining);sim.step(step);remaining-=step;}}
   if(sim.release&&!seenRelease){seenRelease=true;cue('launch');document.body.classList.remove('launch-kick');void stage.offsetWidth;document.body.classList.add('launch-kick');}
@@ -236,7 +238,7 @@ function frame(timestamp){
   const milestone=Math.floor(sim.maxX/Math.max(10,sim.c.longArm*10));if(milestone>scoreStep){scoreStep=milestone;cue('coin',{intensity:.45});}
  }
  if(!document.hidden){for(let i=soundQueue.length-1;i>=0;i--)if(timestamp>=soundQueue[i].at){cue(soundQueue[i].name);soundQueue.splice(i,1);}}
- const running=active&&(sim.loading.dragging||winding||['swing','flight'].includes(sim.phase));
+ const running=active&&(sim.loading.animating||winding||['swing','flight'].includes(sim.phase));
  const animating=renderer.needsAnimation()||previewRenderer.needsAnimation();
  const refresh=dirty||running||(!resultShown&&['finished','invalid'].includes(sim.phase));
  const low=$('quality').value==='low',interval=low?1000/30:1000/60;

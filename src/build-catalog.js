@@ -42,13 +42,16 @@ export const CRITTERS=[
 ];
 // Prototype balance, not world canon: all three small volunteers fit the starter.
 export const STARTER_MAX_GRAMS=150;
+export const REST_ARM_ANGLE=Math.PI-1;
 export const STARTER_ANIMALS=CRITTERS.filter(a=>a.grams<=STARTER_MAX_GRAMS).map(a=>a.id);
 export const part=id=>{const p=PARTS.find(p=>p.id===id);if(!p)throw Error(`Unknown part: ${id}`);return p;};
 export const critter=id=>{const c=CRITTERS.find(c=>c.id===id);if(!c)throw Error(`Unknown volunteer: ${id}`);return c;};
 export const LEGACY_STARTER={name:'Little acorn',chassis:'anchored',arm:'twig',frame:'sapling',ballast:'pebble',material:'stone',mount:'fixed',sling:'pocket',rope:'twine',bearing:'woodAxle',release:'nail',winch:'hand',animal:'mouse',longArm:1.25,shortArm:.32,beamWidth:.025,pivotHeight:1.05,baseWidth:.85,frameGrams:1800,counterGrams:2000,hanger:.22,slingLength:1.1,pouchWidth:.16,pinAngle:-30,pinLength:.035,axleRadius:.012,cockAngle:28,footFriction:.8,wheelRadius:.13,wheelGrams:150,brake:.002,walkingLean:22,braceCount:1,hingeFriction:.008,wind:0,drag:1};
 // A complete, tuned kit is granted at the beginning; upgrades still have shop prices.
-// 3 m means ground to axle. The moving arm sweeps above the tower.
-export const STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ballast:'boulder',mount:'hinged',bearing:'bronze',release:'polished',winch:'hand',trough:'runway',longArm:2.6,shortArm:.65,beamWidth:.04,pivotHeight:3,baseWidth:2,frameGrams:9000,counterGrams:18000,hanger:.4,slingLength:2.4,pouchWidth:.2,cockAngle:55,pinAngle:-45,braceCount:2,troughLength:4,troughHeight:.06};
+// Retained 3 m tower recipe for older custom saves and larger volunteers.
+export const PREVIOUS_STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ballast:'boulder',mount:'hinged',bearing:'bronze',release:'polished',winch:'hand',trough:'runway',longArm:2.6,shortArm:.65,beamWidth:.04,pivotHeight:3,baseWidth:2,frameGrams:9000,counterGrams:18000,hanger:.4,slingLength:2.4,pouchWidth:.2,cockAngle:55,pinAngle:-45,braceCount:2,troughLength:4,troughHeight:.06};
+// Compact kit for tiny volunteers; larger recipes retain the original tower.
+export const STARTER={...PREVIOUS_STARTER,name:'Acorn Flyer',longArm:1.04,shortArm:.26,beamWidth:.02,pivotHeight:1.2,baseWidth:.8,frameGrams:1500,counterGrams:6000,hanger:.16,slingLength:.96,troughLength:1.6,troughHeight:.035,pinLength:.018,axleRadius:.008,pinAngle:-40};
 export const STARTER_PARTS=[...new Set([...PARTS.filter(p=>p.price===0).map(p=>p.id),...SLOTS.map(([slot])=>STARTER[slot])])];
 export const dimensions=a=>`${Number((a.length*100).toFixed(1))} × ${Number((a.width*100).toFixed(1))} cm`;
 export function drawLimit(c,pivotY=c.pivotHeight,deckY=c.troughHeight){return Math.min(c.cockAngle,Math.asin(Math.max(0,Math.min(1,(pivotY-deckY-c.beamWidth/2-.025)/c.longArm)))*180/Math.PI);}
@@ -93,7 +96,7 @@ export function buildFacts(c){
 export function scaledPreset(animal='mouse',chassis='anchored'){
  const profiles={mouse:{},frog:{animal:'frog'},chipmunk:{animal:'chipmunk'},squirrel:{animal:'squirrel',sling:'pouch',pouchWidth:.4,rope:'hemp',counterGrams:30000,pinAngle:-60,beamWidth:.05},rabbit:{animal:'rabbit',cockAngle:28,sling:'pouch',pouchWidth:.55,rope:'hemp',ballast:'quarry',counterGrams:150000,arm:'oak',frame:'timber',longArm:3,shortArm:.8,pivotHeight:2.7,slingLength:2.7,beamWidth:.1,frameGrams:30000,baseWidth:2,pinAngle:-45},armadillo:{},fox:{}};
  const heavy={tiger:[3,220000,6500000],bear:[3,250000,7500000],elephant:[9,5000000,200000000],whale:[32,100000000,5000000000]};
- let c={...STARTER,...profiles[animal],animal,chassis};
+ let c={...(STARTER_ANIMALS.includes(animal)?STARTER:PREVIOUS_STARTER),...profiles[animal],animal,chassis};
  if(['armadillo','fox'].includes(animal))c={...c,...profiles.rabbit,animal,sling:'cradle',rope:'cable',pouchWidth:1,beamWidth:.1,mount:'fixed',counterGrams:200000,pinAngle:-45};
  if(heavy[animal]){const [k,,mass]=heavy[animal];c={...c,cockAngle:28,arm:animal==='whale'?'colossus':'ironwood',frame:animal==='whale'?'leviathan':'giant',ballast:'continental',material:'steel',mount:'hinged',sling:animal==='whale'?'whale':animal==='elephant'?'elephant':'hammock',rope:'titanCable',bearing:'precision',release:'polished',winch:'engine',longArm:k*2.6,shortArm:k*.8,pivotHeight:k*2.7,baseWidth:k*2,beamWidth:k*.19,frameGrams:mass*.22,counterGrams:mass,hanger:k*.5,slingLength:k*2.4,pouchWidth:k*.88,axleRadius:k*.025,pinLength:k*.025,pinAngle:animal==='tiger'?-40:-45,wheelRadius:k*.22,wheelGrams:mass*.008};}
  if(heavy[animal]){c.troughLength=heavy[animal][0]*5.5;c.troughHeight=heavy[animal][0]*.06;}

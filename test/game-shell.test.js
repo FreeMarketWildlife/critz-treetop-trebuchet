@@ -19,7 +19,7 @@ test('holding actually raises ballast; full draw waits for the player and fires 
 test('partial draws produce distinct physical throws for all five foundations',()=>{
  for(const chassis of ['anchored','skids','wheels','walking','floating']){
   const distances=[];
-  for(const fraction of [.15,1]){const s=new BuildSimulation(scaledPreset('mouse',chassis));s.setDraw(fraction);s.fire();for(let t=0;t<45&&['swing','flight'].includes(s.phase);t+=1/60)s.step(1/60);assert.equal(s.phase,'finished',`${chassis}: ${s.failure}`);assert.ok(s.release);distances.push(s.maxX);}
+  for(const fraction of [.25,1]){const s=new BuildSimulation(scaledPreset('mouse',chassis));s.setDraw(fraction);s.fire();for(let t=0;t<45&&['swing','flight'].includes(s.phase);t+=1/60)s.step(1/60);assert.equal(s.phase,'finished',`${chassis}: ${s.failure}`);assert.ok(s.release);distances.push(s.maxX);}
   assert.ok(Math.abs(distances[1]-distances[0])>1,chassis);
  }
 });

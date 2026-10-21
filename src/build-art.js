@@ -1,10 +1,10 @@
-import {drawCounterweight} from './counterweight-art.js?v=12';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=12';
-import {RopeVisual} from './rope-visual.js?v=12';
-import {part,grams} from './build-catalog.js?v=12';
-import {drawGroveWorld} from './grove-art.js?v=12';
-import {createCritterPerformance} from './critter-performance.js?v=12';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=12';
+import {drawCounterweight} from './counterweight-art.js?v=13';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=13';
+import {RopeVisual} from './rope-visual.js?v=13';
+import {part,grams} from './build-catalog.js?v=13';
+import {drawGroveWorld} from './grove-art.js?v=13';
+import {createCritterPerformance} from './critter-performance.js?v=13';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=13';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -104,6 +104,7 @@ export function createBuildRenderer(canvas){
   const c=sim.c,wood=part(c.arm).color,frame=sim.frame;
   for(let f=frame.getFixtureList();f;f=f.getNext())if(f!==sim.troughFixture)polygon(frame,f,'#ad814c');
   trough(sim);
+  if(sim.loading&&!preview)drawLoadingStand(sim);
   // Grain follows actual frame members.
   const fp=pt=>{const q=frame.getWorldPoint({x:pt.x/sim.L,y:pt.y/sim.L});return{x:q.x*sim.L,y:q.y*sim.L};};
   if(c.chassis==='anchored')for(const x of [-c.baseWidth/2,c.baseWidth/2]){const a=fp({x,y:.04}),b={x:a.x-.08*c.pivotHeight,y:-.12*c.pivotHeight};line(a,b,'#5a6c50',Math.max(2,cam.scale*c.beamWidth*.4));}
@@ -120,7 +121,8 @@ export function createBuildRenderer(canvas){
   if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1,'#c1d3b1');
    ctx.save();ctx.translate(...p);ctx.beginPath();const pw=Math.max(9,c.pouchWidth*cam.scale*.65);ctx.moveTo(-pw,-4);ctx.quadraticCurveTo(-pw,physicalSize*.4,0,physicalSize*.39);ctx.quadraticCurveTo(pw,physicalSize*.4,pw,-4);ctx.lineTo(pw*.7,2);ctx.quadraticCurveTo(0,physicalSize*.22,-pw*.7,2);ctx.closePath();ctx.fillStyle='#759381';ctx.strokeStyle='#3e5e47';ctx.lineWidth=2;ctx.fill();ctx.stroke();ctx.restore();
   }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,'#c1d3b1',true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
-  drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,sim.loading?.dragging?sim.loading.angle:critterCel.angle,!!sim.release,sim.animal.width*cam.scale,critterCel);
+  if(sim.loading&&!sim.loading.loaded&&!preview)drawLoadingCritter(sim);
+  else drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,critterCel.angle,!!sim.release,sim.animal.width*cam.scale,critterCel);
   trough(sim,true);
   drawCrankWheel(ctx,sim,project,cam.scale);
   if(sim.loading&&!sim.loading.loaded&&!preview)loadingCues(sim);
@@ -130,12 +132,29 @@ export function createBuildRenderer(canvas){
   if(labels&&!sim.release&&!preview){annotation(cw,grams(c.counterGrams),24,-55);annotation({x:(tip.x+payload.x)/2,y:(tip.y+payload.y)/2},`${c.slingLength.toFixed(2)} m sling`,-150,-33);if(W>550)annotation(pivot,part(c.chassis).name,35,-25);if(physicalSize<25)annotation(payload,`${sim.animal.name} · ${grams(sim.animal.grams)}`,35,-25);}
   if(sim.release){const origin=project(sim.release);if(origin[0]>0&&origin[0]<W){ellipse(ctx,...origin,5,5,'#f0cb78','#926d38',1.5);ctx.font='9px "DM Sans",sans-serif';ctx.fillStyle='#687848';ctx.textAlign='left';ctx.fillText('RELEASE',origin[0]+9,origin[1]-7);}}
  }
+ function drawLoadingStand(sim){
+  const s=sim.loading.stand,a={x:s.x-s.width*.5,y:s.y},b={x:s.x+s.width*.5,y:s.y};
+  for(const x of [s.x-s.width*.34,s.x+s.width*.34])timber({x,y:sim.supportHeight(x)+.02},{x,y:s.y},s.height*.25,'#947447');
+  timber(a,b,s.height*.45,'#d4ad69');
+  const p=project({x:s.x,y:s.y-s.height*.35});ctx.font='bold 9px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.fillStyle='#514a32';ctx.fillText('VOLUNTEER',p[0],p[1]+15);
+ }
+ function drawLoadingCritter(sim){
+  const size=sim.animal.length*cam.scale,h=sim.animal.width*cam.scale;
+  for(const p of sim.loading.parts){ctx.save();ctx.translate(...project(p));ctx.rotate(-p.angle);ctx.beginPath();ctx.rect((p.a-p.offset-.012)*size,-h*.7,(p.b-p.a+.024)*size,h*1.4);ctx.clip();drawCritter(ctx,sim.animal,-p.offset*size,0,size,0,false,h,{pose:'ready'});ctx.restore();}
+  const grip=sim.loading.grip;if(grip){const p=project(grip),q=project(grip.cursor);if(Math.hypot(p[0]-q[0],p[1]-q[1])>3){ctx.save();ctx.setLineDash([3,3]);path(ctx,[p,q],'#f6d782',1.5);ctx.restore();}ellipse(ctx,...p,4.5,4.5,'#ffe4a5','#715637',1.5);ellipse(ctx,...p,1.5,1.5,'#6a603e',null);}
+ }
  function loadingCues(sim){
   const target=project(sim.loading.target()),animal=project(sim.real(sim.shot)),held=sim.loading.dragging;
-  ctx.save();ctx.setLineDash([4,4]);ellipse(ctx,...target,Math.max(15,sim.c.pouchWidth*cam.scale*.8),12,'#ffe5a438','#e5ba63',2);ctx.setLineDash([]);
-  if(!held){ellipse(ctx,...animal,Math.max(19,sim.animal.length*cam.scale*.65),Math.max(15,sim.animal.width*cam.scale),'#ffe8a124','#f5d58b',1.5);}
+  ctx.save();ctx.setLineDash([4,4]);ellipse(ctx,...target,Math.max(12,sim.c.pouchWidth*cam.scale*.65),Math.max(7,sim.animal.width*cam.scale*.55),'#ffe5a418','#e5ba63',1.5);ctx.setLineDash([]);
   ctx.font='bold 12px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.lineWidth=3;ctx.strokeStyle='#fff0cc';ctx.fillStyle='#3b3428';
-  const text=held?'Drop into the sling':'Drag into the sling';ctx.strokeText(text,held?target[0]:animal[0],(held?target[1]:animal[1])-27);ctx.fillText(text,held?target[0]:animal[0],(held?target[1]:animal[1])-27);ctx.restore();
+  if(held){ctx.strokeText('Drop into the basket',target[0],target[1]-26);ctx.fillText('Drop into the basket',target[0],target[1]-26);}
+  if(sim.loading.hint){
+   const phase=sim.loading.hintPhase,t=reducedMotion?.55:Math.max(0,Math.min(1,(phase-.08)/.65)),ease=t*t*(3-2*t),x=animal[0]+(target[0]-animal[0])*ease,y=animal[1]+(target[1]-animal[1])*ease-Math.sin(t*Math.PI)*Math.min(65,H*.1);
+   ctx.globalAlpha=reducedMotion?.8:Math.min(1,phase*10,(1-phase)*7);ctx.setLineDash([4,6]);ctx.beginPath();ctx.moveTo(...animal);ctx.quadraticCurveTo((animal[0]+target[0])/2,Math.min(animal[1],target[1])-70,...target);ctx.strokeStyle='#ffe6a5';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);
+   // A cursor paw, not an in-world operator or human hand.
+   ellipse(ctx,x,y,8,6,'#fff0c2','#6e6746',1.5);for(let i=0;i<3;i++)ellipse(ctx,x-7+i*7,y-8-Math.abs(i-1)*2,3,3.5,'#fff0c2','#6e6746',1);
+   const labelY=Math.max(H*.38,Math.min(target[1],animal[1])-30);ctx.strokeText('Drag → drop',W/2,labelY);ctx.fillStyle='#3b3428';ctx.fillText('Drag → drop',W/2,labelY);
+  }ctx.restore();
  }
  function effectAnchor(sim,slot){
   if(['ballast','material','mount'].includes(slot))return sim.counterPoint();
@@ -161,7 +180,7 @@ export function createBuildRenderer(canvas){
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   mechanism(sim,labels);
-  const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);
+  const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);canvas.dataset.loadingHint=String(sim.loading?.hint??false);canvas.dataset.grabPart=sim.loading?.grip?.part??'';canvas.dataset.loadingParts=JSON.stringify(sim.loading?.parts.map(p=>({...p,screen:project(p)}))??[]);canvas.dataset.loadingGrip=JSON.stringify(sim.loading?.grip?project(sim.loading.grip):null);
   canvas.dataset.animalPoint=JSON.stringify(project(sim.real(sim.shot)));canvas.dataset.slingPoint=JSON.stringify(project(sim.loading?.target()??sim.real(sim.shot)));
 
   if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
