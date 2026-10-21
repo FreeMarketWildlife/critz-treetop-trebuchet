@@ -1,6 +1,8 @@
-import {CROWN_TREE,crownStarterObjects} from './grove-starter.js?v=15';
-import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=15';
-export {objectBounds} from './grove-geometry.js?v=15';
+import {ancientBough} from './grove-tree-layout.js?v=16';
+import {jungleStarterObjects} from './grove-jungle.js?v=16';
+import {CROWN_TREE,crownStarterObjects} from './grove-starter.js?v=16';
+import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=16';
+export {objectBounds} from './grove-geometry.js?v=16';
 export const MAP_KEY='treetop-grove-map-v2';
 export const LEGACY_LEVELS=Object.freeze([
  {id:'forestFloor',name:'Forest floor',low:0,high:120,color:'#b98d64'},
@@ -50,7 +52,19 @@ export function createLegacyGroveMap(){return{
   enemy('canopy-pod','pod',39,-82),enemy('canopy-bug','vinebug',80,-118),enemy('floor-fungus','ancient-fungus',53,-292),
   enemy('star-yokai','yokai',62,208),enemy('ring-piece','fragment',112,250)
  ]};}
-export function createGroveMap(){const base=createLegacyGroveMap();return{...base,version:3,starterRevision:3,height:3000,launch:{x:0,y:600},tree:{...CROWN_TREE},objects:crownStarterObjects(base,enemy)};}
+export function createCrownGroveMap(){const base=createLegacyGroveMap();return{...base,version:3,starterRevision:3,height:3000,launch:{x:0,y:600},tree:{...CROWN_TREE},objects:crownStarterObjects(base,enemy)};}
+export function createGroveMap(){const base=createCrownGroveMap();
+ // Preserve the previous starter generator for exact, non-destructive upgrade
+ // detection. Only a fresh/untouched starter gets the new branching routes.
+ const oldBough=o=>/^(great-bough|crown-fork|bough-friend|bough-sap)-/.test(o.id),objects=base.objects.filter(o=>!oldBough(o));
+ for(let row=0;row<10;row++)for(const side of[-1,1]){
+  const points=ancientBough(base.tree,base.launch.y,row,side),id=`great-bough-${row}-${side}`;
+  // Keep the launch shaft clear; a segment behind it is scenery, not a wall.
+  const outside=points.filter(p=>side<0?p.x<-120:p.x>120);
+  objects.push({id,name:`Ancient ${side<0?'west':'east'} bough ${row+1}`,type:'polygon',points:outside.length>=3?outside:points,collision:outside.length>=3,layer:outside.length>=3?'world':'back',material:'wood',bounce:.35});
+ }
+ return{...base,starterRevision:4,objects:[...objects,...jungleStarterObjects(enemy)]};}
+export function isUntouchedCrownStarter(map){return map.version===3&&map.starterRevision===3&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createCrownGroveMap()));}
 export function groveTreeBounds(map){const t=map.tree,r=t.crownRadius??t.trunkWidth*3.6;return{minX:t.trunkX-r-40,maxX:Math.max(220,t.trunkX+r+40),minY:-map.launch.y-20,maxY:t.height-map.launch.y+50};}
 const finite=(v,lo,hi)=>Number.isFinite(v)&&v>=lo&&v<=hi;
 export function validateGroveMap(value){
@@ -80,7 +94,7 @@ export function validateGroveMap(value){
  });
  const tree={height:value.tree.height,trunkX:value.tree.trunkX,trunkWidth:value.tree.trunkWidth,doorX:value.tree.doorX};if(value.version===3){tree.crownRadius=value.tree.crownRadius??500;tree.crownDepth=value.tree.crownDepth??350;if(!finite(tree.crownRadius,100,1500)||!finite(tree.crownDepth,50,1200))throw Error('Invalid crown size.');}return{version:value.version,...(value.starterRevision?{starterRevision:value.starterRevision}:{}),name:value.name.trim(),width:20000,height:value.height,launch:{x:0,y:value.launch.y},tree,objects};
 }
-export function readGroveMap(storage){try{const raw=(storage??globalThis.localStorage)?.getItem(MAP_KEY);if(!raw)return null;const map=validateGroveMap(JSON.parse(raw));return isUntouchedLegacyStarter(map)?createGroveMap():map;}catch{return null;}}
+export function readGroveMap(storage){try{const raw=(storage??globalThis.localStorage)?.getItem(MAP_KEY);if(!raw)return null;const map=validateGroveMap(JSON.parse(raw));return (isUntouchedLegacyStarter(map)||isUntouchedCrownStarter(map))?createGroveMap():map;}catch{return null;}}
 export function saveGroveMap(storage,value){const map=validateGroveMap(value);storage.setItem(MAP_KEY,JSON.stringify(map));return map;}
 
 export function isUntouchedLegacyStarter(map){

@@ -1,19 +1,20 @@
-import {createLaunchFeel} from './launch-feel.js?v=15';
-import {createPayloadLoading} from './payload-loading.js?v=15';
-import {crankState} from './crank-wheel.js?v=15';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=15';
-import {fitEquipment} from './build-equipment.js?v=15';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=15';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=15';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=15';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=15';
-import {drawShopArt} from './shop-art.js?v=15';
+import {jungleLayerAt} from './grove-jungle.js?v=16';
+import {createLaunchFeel} from './launch-feel.js?v=16';
+import {createPayloadLoading} from './payload-loading.js?v=16';
+import {crankState} from './crank-wheel.js?v=16';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=16';
+import {fitEquipment} from './build-equipment.js?v=16';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=16';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=16';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=16';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=16';
+import {drawShopArt} from './shop-art.js?v=16';
 import {createHoldControl} from './hold-control.js';
-import {createAudio} from './audio.js?v=15';
+import {createAudio} from './audio.js?v=16';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=15';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=15';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=15';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=16';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=16';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=16';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -89,7 +90,7 @@ function beginHold(id){
 }
 function updateReadouts(){
  drawHudCritter();const s=sim.snapshot();const altitude=s.payload.y+groveMap.launch.y,zone=levelAt(altitude,groveMap);document.body.classList.toggle('preparing',sim.phase==='ready');document.body.classList.toggle('swinging',sim.phase==='swing');
- $('regionName').textContent=zone.name.toUpperCase();$('regionGravity').textContent=`${Math.max(0,altitude).toFixed(1)} m altitude · ${`${(GRAVITY*(sim.release?sim.gravityFactor:1)).toFixed(2)} m/s²`}`;
+ $('regionName').textContent=(jungleLayerAt(altitude,groveMap)?.name??zone.name).toUpperCase();$('regionGravity').textContent=`${Math.max(0,altitude).toFixed(1)} m altitude · ${`${(GRAVITY*(sim.release?sim.gravityFactor:1)).toFixed(2)} m/s²`}`;
  $('bumperCombo').hidden=combo===0;$('bumperCombo').textContent=`✦ ${combo} ${combo===1?'BOUNCE':'BOUNCES'}`;
  const audioState=sound.getStatus().contextState;if($('stage').dataset.audio!==audioState)$('stage').dataset.audio=audioState;
  $('distance').innerHTML=`${s.distance.toFixed(1)} <em>m</em>`;$('height').innerHTML=`${s.height.toFixed(1)} <em>m</em>`;$('velocity').innerHTML=`${s.release?s.release.speed.toFixed(1):'—'} <em>m/s</em>`;$('tension').innerHTML=`${Math.round(s.tension).toLocaleString()} <em>N</em>`;

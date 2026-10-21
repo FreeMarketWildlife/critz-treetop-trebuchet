@@ -1,3 +1,11 @@
+# Current update — ancient tree, jungle strata and leaf scale, October 20, 2026
+
+Completed the user’s combined tree/jungle/leaf-scale revision. The forked 800 m tree has curved boughs, layered crown and buttress roots; rainforest depths and four botanical strata add 487 editable starter pieces, including collidable lianas, spring boughs, fungi and logs. Ordinary leaves are 10–18 cm beside the 18 cm mouse. Existing edited geometry and saves are preserved. New starter revision 4 only replaces an untouched revision 3. Front crank, gravity-driven throw, jointed loading and character models are retained.
+
+Full suite 405/405; final focused 7/7. Live Creative throw verified 39.1°, 28.6 m and five bounces; 487-piece editor bridge works, no reported browser errors. Ten live runtime modules have exact source parity. Published Sites version 8, source 87c20586ed7d1616e0b09522cf149cb2a97a8a80, deployment appgdep_6ad83f0fb5908191b2049572403f42e2. See docs/ancient-tree/implementation.md and screenshots. Keep localhost:8080 running. Public editor left ready.
+
+---
+
 # Current update — slower swing and release feel, October 20, 2026
 
 User authorized a slower, more satisfying swing, committing/pushing all work and updating the live link. Implemented launch-feel.js as playback timing over the unchanged fixed-step solver. Starter swing is 1.375 screen seconds versus 0.525 physical seconds, with exact 39.0796° / 21.9969 m/s release parity. The clock ramps naturally, uses gentler slowdown for giant rigs, and recovers normal pace for stalled builds. Release holds 45 ms before easing flight back; meaningful impacts get bounded 25–50 ms beats. No gravity, masses, forces, geometry or velocities are replaced.

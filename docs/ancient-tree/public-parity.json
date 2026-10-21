@@ -1,0 +1,52 @@
+[
+  {
+    "path": "src/grove-map.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-art.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-backdrop.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-tree-art.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-tree-layout.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-jungle.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-jungle-art.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/grove-nature.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/map-editor.js",
+    "status": 200,
+    "match": true
+  },
+  {
+    "path": "src/build-app.js",
+    "status": 200,
+    "match": true
+  }
+]

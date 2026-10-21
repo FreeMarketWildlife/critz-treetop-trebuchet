@@ -20,3 +20,6 @@ Close-up loading release: **version 6**, source `7394726e0b8375555e25fd3356e1cc3
 
 
 Slower swing release: **version 7**, source `53db1df9bec0eb543d844e686a6fa8e6b72726e8`, deployment `appgdep_6ad822d332408191bed16420f65c38af`. The public game verified a 1.375-second swing, exact physical release parity and new release/audio feedback. Five key module fetches returned 200 with exact parity; no new hosted errors. Full suite 401/401. All implementation and prior local game work were committed and pushed to `origin/codex/custom-trebuchet-workshop` (implementation `abb600b`). Evidence and model limits: docs/swing-workshop/implementation.md.
+
+
+Ancient tree / jungle / leaf-scale release: **version 8**, source `87c20586ed7d1616e0b09522cf149cb2a97a8a80`, deployment `appgdep_6ad83f0fb5908191b2049572403f42e2`. Retained public project/audience. Ten key world/editor/app module hashes match local source. Public 487-piece Creative bridge completed a 39.1° mouse throw, 28.6 m and five bounces; no reported browser errors. Full suite 405/405, final focused 7/7. Saved edited maps remain intact; untouched crown starters upgrade. Evidence and model limits: docs/ancient-tree/implementation.md.

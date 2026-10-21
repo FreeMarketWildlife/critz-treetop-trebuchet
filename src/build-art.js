@@ -1,10 +1,10 @@
-import {drawCounterweight} from './counterweight-art.js?v=15';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=15';
-import {RopeVisual} from './rope-visual.js?v=15';
-import {part,grams} from './build-catalog.js?v=15';
-import {drawGroveWorld} from './grove-art.js?v=15';
-import {createCritterPerformance} from './critter-performance.js?v=15';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=15';
+import {drawCounterweight} from './counterweight-art.js?v=16';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=16';
+import {RopeVisual} from './rope-visual.js?v=16';
+import {part,grams} from './build-catalog.js?v=16';
+import {drawGroveWorld} from './grove-art.js?v=16';
+import {createCritterPerformance} from './critter-performance.js?v=16';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=16';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -104,7 +104,7 @@ export function createBuildRenderer(canvas){
   const c=sim.c,wood=part(c.arm).color,frame=sim.frame;
   for(let f=frame.getFixtureList();f;f=f.getNext())if(f!==sim.troughFixture)polygon(frame,f,'#ad814c');
   trough(sim);
-  if(sim.loading&&!preview)drawLoadingStand(sim);
+  if(sim.loading&&!preview&&sim.c.pivotHeight*cam.scale>14)drawLoadingStand(sim);
   // Grain follows actual frame members.
   const fp=pt=>{const q=frame.getWorldPoint({x:pt.x/sim.L,y:pt.y/sim.L});return{x:q.x*sim.L,y:q.y*sim.L};};
   if(c.chassis==='anchored')for(const x of [-c.baseWidth/2,c.baseWidth/2]){const a=fp({x,y:.04}),b={x:a.x-.08*c.pivotHeight,y:-.12*c.pivotHeight};line(a,b,'#5a6c50',Math.max(2,cam.scale*c.beamWidth*.4));}
@@ -125,7 +125,7 @@ export function createBuildRenderer(canvas){
   else drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,critterCel.angle,!!sim.release,sim.animal.width*cam.scale,critterCel);
   trough(sim,true);
   drawCrankWheel(ctx,sim,project,cam.scale);
-  if(sim.loading&&!sim.loading.loaded&&!preview)loadingCues(sim);
+  if(sim.loading&&!sim.loading.loaded&&!preview&&sim.c.pivotHeight*cam.scale>14)loadingCues(sim);
   if(preview&&H>250){
    const a=project({x:-c.baseWidth*.75,y:0}),b=project({x:-c.baseWidth*.75,y:c.pivotHeight});path(ctx,[a,b],'#66774f',1);for(const pt of[a,b])path(ctx,[[pt[0]-4,pt[1]],[pt[0]+4,pt[1]]],'#66774f',1.5);ctx.fillStyle='#4a613d';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='left';ctx.textAlign='right';ctx.fillText(`${c.pivotHeight.toFixed(2)} m`,a[0]-7,(a[1]+b[1])/2);
   }

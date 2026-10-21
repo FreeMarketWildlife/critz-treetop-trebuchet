@@ -1,6 +1,8 @@
-import {drawGroveBackdrop} from './grove-backdrop.js?v=15';
-import {pointInPolygon} from './grove-geometry.js?v=15';
-import {enemyRecipe} from './grove-map.js?v=15';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=16';
+import {drawForestForeground} from './grove-jungle-art.js?v=16';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=16';
+import {pointInPolygon} from './grove-geometry.js?v=16';
+import {enemyRecipe} from './grove-map.js?v=16';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#374b3c';
@@ -57,7 +59,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
  c.save();c.lineJoin='round';c.lineCap='round';
  if(!foreground)drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time});
  const visible={minX:cam.x-W/(2*s)-4,maxX:cam.x+W/(2*s)+4,minY:cam.y-H/(2*s)-4,maxY:cam.y+H/(2*s)+4};
- const palette={wood:['#a6814c','#d4b371'],leaf:['#739558','#bed58c'],stone:['#899b90','#c1ccc0'],bumper:['#c68c75','#ffe4a2'],foliage:['#789c59','#b8ce83'],sap:['#c9913a','#f7d98b']};
+ const palette={wood:['#746343','#8b9857'],leaf:['#739558','#bed58c'],stone:['#899b90','#c1ccc0'],bumper:['#c68c75','#ffe4a2'],foliage:['#789c59','#b8ce83'],sap:['#c9913a','#f7d98b']};
  let objects=map.objects??[];
  if(!editor){let cached=objectCache.get(map);if(!cached){cached=objects.map(o=>({o,b:objectBounds(o)})).sort((a,b)=>(a.o.layer==='back'?-1:0)-(b.o.layer==='back'?-1:0));objectCache.set(map,cached);}objects=cached;}else objects=objects.map(o=>({o,b:objectBounds(o)})).sort((a,b)=>(a.o.layer==='back'?-1:0)-(b.o.layer==='back'?-1:0));
  let leafBudget=160;
@@ -67,29 +69,32 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
   c.save();if(o.collision===false)c.globalAlpha=editor?.55:layer==='back'?.52:.7;
   if(o.type==='enemy'){const p=project(o.x,o.y),size=(o.radius??.5)*2*s;if(size<12){ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;}
   const colors=palette[o.material]??palette.wood;
+  if(o.material==='foliage'&&!editor&&s<6){c.restore();continue;}
   if(['foliage','sap'].includes(o.material)){
    const sap=o.material==='sap',p=project((b.minX+b.maxX)/2,(b.minY+b.maxY)/2);
    c.beginPath();if(o.points){o.points.forEach((q,i)=>{const p=project(q.x,q.y);i?c.lineTo(...p):c.moveTo(...p);});c.closePath();}else c.ellipse(...p,o.radius*s,o.radius*s,0,0,TAU);
-   c.globalAlpha*=sap?.82:editor?.28:.18;c.fillStyle=colors[0];c.fill();c.globalAlpha=sap?.9:editor?.5:.4;c.strokeStyle=colors[1];c.lineWidth=sap?2:1;c.stroke();c.globalAlpha=1;
+   c.globalAlpha*=sap?.82:editor?.18:.055;c.fillStyle=colors[0];c.fill();if(sap||editor){c.globalAlpha=sap?.9:.2;c.strokeStyle=colors[1];c.lineWidth=sap?2:.65;c.stroke();}c.globalAlpha=1;
    if(sap){const r=Math.min(20,(b.maxX-b.minX)*s*.18);ellipse(c,p[0]-r*.8,p[1]-r*.45,Math.max(1,r),Math.max(.8,r*.3),'#ffe5a0',null);ellipse(c,p[0]+r,p[1]+r*.2,Math.max(1,r*.3),Math.max(1,r*.3),'#ffefb7',null);}
-   else if(s>1.5){const x0=Math.max(b.minX,visible.minX),x1=Math.min(b.maxX,visible.maxX),y0=Math.max(b.minY,visible.minY),y1=Math.min(b.maxY,visible.maxY),spacing=Math.max(.65,Math.sqrt((x1-x0)*(y1-y0)/26));let count=0;
-    for(let x=Math.ceil(x0/spacing)*spacing;x<=x1&&count<32&&leafBudget>0;x+=spacing)for(let y=Math.ceil(y0/spacing)*spacing;y<=y1&&count<32&&leafBudget>0;y+=spacing){const inside=o.points?pointInPolygon({x,y},o.points):Math.hypot(x-o.x,y-o.y)<o.radius;if(!inside)continue;const pp=project(x,y),seed=Math.sin(x*12.9+y*7.3);leaf(c,...pp,Math.max(2,Math.min(65,s*(.2+(seed+1)*.12))),seed*2,seed>0?'#8eaf67':'#779b58');count++;leafBudget--;}
-    if(count===0&&leafBudget>0){leaf(c,...p,Math.max(2,Math.min(65,(b.maxX-b.minX)*s*.4)),.3,'#8eaf67');leafBudget--;}
+   else if(s*.18>1.1){const x0=Math.max(b.minX,visible.minX),x1=Math.min(b.maxX,visible.maxX),y0=Math.max(b.minY,visible.minY),y1=Math.min(b.maxY,visible.maxY),spacing=Math.max(.65,Math.sqrt((x1-x0)*(y1-y0)/26));let count=0;
+    for(let x=Math.ceil(x0/spacing)*spacing;x<=x1&&count<32&&leafBudget>0;x+=spacing)for(let y=Math.ceil(y0/spacing)*spacing;y<=y1&&count<32&&leafBudget>0;y+=spacing){const inside=o.points?pointInPolygon({x,y},o.points):Math.hypot(x-o.x,y-o.y)<o.radius;if(!inside)continue;const pp=project(x,y),seed=Math.sin(x*12.9+y*7.3);leaf(c,...pp,s*ordinaryLeafHalfLength(seed),seed*2,seed>0?'#8eaf67':'#779b58');count++;leafBudget--;}
+    if(count===0&&leafBudget>0){leaf(c,...p,s*ordinaryLeafHalfLength(0),.3,'#8eaf67');leafBudget--;}
    }
    c.restore();continue;
   }
   if(o.type==='circle'){const p=project(o.x,o.y),r=(o.radius??1)*s;ellipse(c,...p,r,r,colors[0],INK,2.5);ellipse(c,p[0]-r*.15,p[1]-r*.16,r*.64,r*.58,colors[1],INK,1.4);ellipse(c,...p,r*.2,r*.2,'#f0dc9c',INK,1.5);if(o.material==='bumper'){for(let j=0;j<8;j++){const a=j*TAU/8;line(c,[[p[0]+Math.cos(a)*r*.8,p[1]+Math.sin(a)*r*.8],[p[0]+Math.cos(a)*r*.95,p[1]+Math.sin(a)*r*.95]],'#ffe8aa',2);}}}
   else if(o.points?.length){
    const pts=o.points.map(p=>project(p.x,p.y));c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);
-   if(o.type==='polygon'){c.closePath();c.fillStyle=colors[0];c.fill();c.strokeStyle=INK;c.lineWidth=2.5;c.stroke();c.save();c.clip();const by=project(0,b.maxY)[1],ey=project(0,b.minY)[1],bx=project(b.minX,0)[0],ex=project(b.maxX,0)[0];
-    const row=Math.max(13,Math.min(38,s*.3));for(let yy=Math.max(-row,by+row*.5);yy<Math.min(H+row,ey);yy+=row){line(c,[[Math.max(-30,bx),yy],[Math.min(W+30,ex),yy+Math.sin(yy)*3]],'#775c3730',1.5);}c.restore();
+   if(o.type==='polygon'&&((s<1.5&&o.id.startsWith('great-bough-'))||s<.65||(b.maxY-b.minY)*s<2||(b.maxX-b.minX)*s<9)){c.closePath();c.fillStyle=colors[0];c.fill();c.restore();continue;}
+   if(o.type==='polygon'){c.closePath();const by=project(0,b.maxY)[1],ey=project(0,b.minY)[1],bx=project(b.minX,0)[0],ex=project(b.maxX,0)[0];const wood=o.material==='wood',g=c.createLinearGradient(0,by,0,Math.max(by+.01,ey));g.addColorStop(0,wood?'#889451':colors[1]);g.addColorStop(.18,wood?'#897445':colors[0]);g.addColorStop(1,wood?'#4e4b34':colors[0]);c.fillStyle=g;c.fill();c.strokeStyle=INK;c.lineWidth=Math.min(2,Math.max(.45,(b.maxY-b.minY)*s*.08));c.stroke();c.save();c.clip();
+    const row=Math.max(13,Math.min(38,s*.3));for(let yy=Math.max(-row,by+row*.5);yy<Math.min(H+row,ey);yy+=row){line(c,[[Math.max(-30,bx),yy],[Math.min(W+30,ex),yy+Math.sin(yy)*3]],'#655738',1.5);}c.restore();
     // Bright upper edges make the collision plane legible without wireframes.
-    for(let i=0;i<o.points.length;i++){const a=o.points[i],b=o.points[(i+1)%o.points.length];if(Math.abs(a.y-b.y)<Math.abs(a.x-b.x)*.65)line(c,[project(a.x,a.y),project(b.x,b.y)],colors[1],Math.max(2,Math.min(5,s*.07)));}
-   }else{c.strokeStyle=INK;c.lineWidth=Math.max(4,Math.min(16,(o.width??.16)*s+3));c.stroke();line(c,pts,colors[0],Math.max(2,Math.min(13,(o.width??.16)*s)));}
+    for(let i=0;i<o.points.length;i++){const a=o.points[i],b=o.points[(i+1)%o.points.length];if(Math.abs(a.y-b.y)<Math.abs(a.x-b.x)*.65&&i===0)line(c,[project(a.x,a.y),project(b.x,b.y)],colors[1],Math.max(.45,Math.min(2,s*.035)));}
+   }else{c.strokeStyle=INK;c.lineWidth=Math.max(.6,Math.min(16,(o.width??.16)*s+.45));c.stroke();line(c,pts,colors[0],Math.max(.25,Math.min(13,(o.width??.16)*s)));}
   }
   c.restore();
  }
- // Thin foreground leaves frame the world without hiding the flight center.
- if(foreground&&!editor&&alt>map.tree.height*.55&&alt<map.tree.height){c.globalAlpha=.45;for(let i=0;i<4;i++){const xx=(i%2?W+12:-12)-Math.sin(cam.x*.03+i)*8,yy=H*(.2+i*.19)+Math.sin(cam.y*.012+i)*28;leaf(c,xx,yy,35+i*9,i%2?2.5:.2,'#507954');}c.globalAlpha=1;}
+ if(foreground)drawForestForeground(c,{project,camera:cam,scale:s,width:W,height:H,origin:map.launch.y});
+ // Foreground decoration uses the same metre scale as the flight layer.
+ // Never paste fixed-size leaves around the screen: they destroy scale cues.
  c.restore();
 }

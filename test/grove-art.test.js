@@ -23,3 +23,12 @@ test('equipment feedback expires without drawing a closed preview canvas',()=>{
  Object.defineProperty(globalThis,'performance',{value:{now:()=>ms},configurable:true});
  try{const c=checkedCanvas();const renderer=createBuildRenderer({getContext:()=>c.ctx});renderer.equipBurst('ballast');assert.equal(renderer.needsAnimation(),true);ms=1199;assert.equal(renderer.needsAnimation(),true);ms=1201;assert.equal(renderer.needsAnimation(),false);renderer.equipBurst('rope');assert.equal(renderer.needsAnimation(),true);ms=5000;assert.equal(renderer.needsAnimation(),false);}finally{Object.defineProperty(globalThis,'performance',original);}
 });
+
+test('real crown and jungle altitudes stay bounded without mutating editable geometry',()=>{
+ const map=createGroveMap(),before=JSON.stringify(map);
+ for(const altitude of[0,18,140,285,385,600,800])for(const scale of[.3,1,4,43,210]){
+  const c=checkedCanvas();for(const foreground of[false,true])drawGroveWorld(c.ctx,{camera:{x:100,y:altitude-map.launch.y,scale},width:1031,height:738,map,foreground});
+  assert.ok(c.commands<10000,`${altitude} m / ${scale} px per metre: ${c.commands} commands`);
+ }
+ assert.equal(JSON.stringify(map),before);
+});

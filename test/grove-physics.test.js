@@ -44,7 +44,7 @@ test('space only lowers released payload gravity; the launch mechanism keeps the
 test('the lighter-gravity starter keeps an upward release and a bounded pinball journey',()=>{
  const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.setDraw(0);for(let i=0;i<110;i++)s.wind(1/60);s.fire();advance(s,40);
  assert.equal(s.failure,'');assert.equal(s.phase,'finished');assert.ok(s.release.angle>38&&s.release.angle<40);assert.ok(s.release.speed>21&&s.release.speed<23);
- assert.ok(s.contactEvents.some(e=>e.id==='great-bough-5-1'));assert.ok(s.real(s.shot).y<-15);
+ assert.ok(s.contactEvents.some(e=>e.id==='lower-canopy-one'),'a real canopy surface catches the starter flight');assert.ok(s.real(s.shot).y<-15);
  assert.ok(s.contactEvents.length<=64);assert.equal(new Set(s.contactEvents.map(e=>e.seq)).size,s.contactEvents.length);
 });
 test('invalid imports reject crossings, duplicates, unknown enemies and excess geometry before replacing a save',()=>{
