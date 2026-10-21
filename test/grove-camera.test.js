@@ -19,7 +19,7 @@ test('release keeps its screen position and acquires exact position tracking wit
    assert.ok(next<=distance+1e-7);distance=next;
    if(i>=34)assert.deepEqual(p,{x:width/2,y:height/2});
   }
-  assert.ok(Math.abs(camera.scale*animal.length/Math.min(width,height)-.09)<1e-8);
+  assert.ok(Math.abs(camera.scale*animal.length/Math.min(width,height)-.10)<1e-8);
  }
 });
 test('acquisition follows active time across frame rates and is stable while paused',()=>{
@@ -45,18 +45,18 @@ test('resizing preserves acquisition progress and normalized framing, then compl
 });
 test('strong flight reveals upcoming terrain while weak flight keeps the critter larger',()=>{
  for(const [width,height]of[[390,844],[1031,738],[320,667]])for(const animalLength of [.18,30]){
-  const size={width,height,animalLength},scale=Math.min(width,height)*.07/animalLength;
+  const size={width,height,animalLength},scale=Math.min(width,height)*.085/animalLength;
   const settle=(vx,vy)=>{const p={x:50,y:30,vx,vy};let c=groveFlightCamera({x:50,y:30,scale},p,{...size,dt:0});for(let i=0;i<240;i++)c=groveFlightCamera(c,p,{...size,dt:1/60});return{c,p,screen:groveProject(p,c,width,height)};};
   const weak=settle(0,0),strong=settle(width/scale*8,-height/scale*3);
-  assert.ok(Math.abs(weak.c.scale*animalLength/Math.min(width,height)-.09)<1e-4);
-  assert.ok(Math.abs(strong.c.scale*animalLength/Math.min(width,height)-.07)<1e-9);
+  assert.ok(Math.abs(weak.c.scale*animalLength/Math.min(width,height)-.10)<1e-4);
+  assert.ok(Math.abs(strong.c.scale*animalLength/Math.min(width,height)-.085)<1e-9);
   assert.ok(strong.screen.x>width*.329&&strong.screen.x<width*.34,'forward flight leaves more room ahead');
   assert.ok(strong.screen.y>height*.39&&strong.screen.y<height*.405,'falling flight reveals the next surface below');
   assert.equal(weak.screen.x,width/2);assert.equal(weak.screen.y,height/2);
  }
 });
 test('rebound reversals ease look-ahead without clipping or positional chase lag',()=>{
- const size={width:390,height:844,animalLength:.18},base=390*.07/.18;
+ const size={width:390,height:844,animalLength:.18},base=390*.085/.18;
  let p={x:0,y:0,vx:390/base*8,vy:844/base*3},c=groveFlightCamera({x:0,y:0,scale:base},p,{...size,dt:0});
  for(let i=0;i<120;i++){p={...p,x:p.x+p.vx/60,y:p.y+p.vy/60};c=groveFlightCamera(c,p,size);}
  const before=groveProject(p,c,390,844);
@@ -81,29 +81,29 @@ test('moving framing pauses, resizes and uses reduced-motion centered readabilit
  const before=groveProject(p,c,390,844),resized=groveFlightCamera(c,p,{width:1031,height:738,animalLength:.18,dt:0}),after=groveProject(p,resized,1031,738);
  assert.ok(Math.abs(before.x/390-after.x/1031)<1e-10);assert.ok(Math.abs(before.y/844-after.y/738)<1e-10);
  const calm=groveFlightCamera(c,p,{...size,reducedMotion:true});
- assert.equal(calm.x,p.x);assert.equal(calm.y,p.y);assert.deepEqual(calm.followMotion,{x:0,y:0});assert.equal(calm.scale,390*.07/.18);
+ assert.equal(calm.x,p.x);assert.equal(calm.y,p.y);assert.deepEqual(calm.followMotion,{x:0,y:0});assert.equal(calm.scale,390*.085/.18);
 });
 test('repeated landing approaches hold one lens instead of pumping on every rebound',()=>{
  const size={width:390,height:844,animalLength:.18},p={x:10,y:2,vx:16,vy:-10},landing={id:'mat',x:12.8,y:-1,eta:.3};
- let c={x:p.x,y:p.y,scale:390*.07/.18},last=c.scale,variation=0,reversals=0,lastDirection=0;
+ let c={x:p.x,y:p.y,scale:390*.085/.18},last=c.scale,variation=0,reversals=0,lastDirection=0;
  for(let repeat=0;repeat<4;repeat++)for(let i=0;i<72;i++){
   c=groveFlightCamera(c,p,{...size,landing:i<24?{...landing,eta:.3-i/120,x:landing.x-i*.03}:null});
   const direction=Math.sign(c.scale-last);variation+=Math.abs(Math.log(c.scale/last));
   if(Math.abs(c.scale-last)>1e-7){if(lastDirection&&direction!==lastDirection)reversals++;lastDirection=direction;}last=c.scale;
  }
- assert.equal(reversals,0);assert.ok(variation<.31,'four landings use one lens opening');
- assert.ok(c.scale*.18>=20.27&&c.scale*.18<20.30);
+ assert.equal(reversals,0);assert.ok(variation<.25,'four landings use one lens opening');
+ assert.ok(c.scale*.18>=26.12&&c.scale*.18<26.15);
  const held=c;for(let i=0;i<12;i++)c=groveFlightCamera(c,p,{...size,landing:null});
  assert.equal(c.followLens.size,held.followLens.size);assert.ok(c.scale<=held.scale+1e-8);
  // After a truly quiet gap, recovery is slower than the approach opening.
  for(let i=0;i<90;i++)c=groveFlightCamera(c,p,{...size,landing:null});
- assert.ok(c.scale*.18>20.3&&c.scale*.18<25);
+ assert.ok(c.scale*.18>26.15&&c.scale*.18<31);
  for(let i=0;i<600;i++)c=groveFlightCamera(c,p,{...size,landing:null});
- assert.ok(Math.abs(c.scale*.18-27.3)<.01);
+ assert.ok(Math.abs(c.scale*.18-33.15)<.01);
 });
 test('forecast dropouts and changing target IDs use a bounded handoff and pause all metadata',()=>{
  const size={width:390,height:844,animalLength:.18},p={x:10,y:2,vx:16,vy:-10},a={id:'a',x:13,y:-1,eta:.3},b={id:'b',x:7,y:4,eta:.2};
- let c={x:p.x,y:p.y,scale:390*.07/.18};for(let i=0;i<80;i++)c=groveFlightCamera(c,p,{...size,landing:a});
+ let c={x:p.x,y:p.y,scale:390*.085/.18};for(let i=0;i<80;i++)c=groveFlightCamera(c,p,{...size,landing:a});
  const held=c;assert.deepEqual(groveFlightCamera(c,p,{...size,landing:b,dt:0}),c);
  for(let i=0;i<4;i++){const before=c.followMotion;c=groveFlightCamera(c,p,{...size,landing:b});assert.equal(c.followLanding.id,'a');assert.ok(Math.abs(c.followMotion.x-before.x)<=.7/60+1e-10);assert.ok(Math.abs(c.followMotion.y-before.y)<=.7/60+1e-10);}
  c=groveFlightCamera(c,p,{...size,landing:b});assert.equal(c.followLanding.id,'b');
@@ -121,7 +121,7 @@ test('setup and preview frame physically scaled complete rigs without distorting
 });
 test('reduced motion changes scale immediately; invalid payload dimensions are rejected',()=>{
  const c=groveFlightCamera({scale:3},{x:12,y:-50},{width:1000,height:600,animalLength:.2,reducedMotion:true});
- assert.ok(Math.abs(c.scale-210)<1e-9);assert.equal(c.y,-50);
+ assert.ok(Math.abs(c.scale-255)<1e-9);assert.equal(c.y,-50);
  assert.throws(()=>groveFlightCamera({scale:1},{x:0,y:NaN},{width:1000,height:600,animalLength:.2}));
 });
 

@@ -11,6 +11,7 @@ export function createFlightWeapons(){
  return {reset,select(id){if(WEAPONS.some(w=>w.id===id))selected=id;},
   update(dt){heat=Math.max(0,heat-Math.max(0,dt)*.22);if(heat<=.15)locked=false;},
   snapshot(){return {selected,ammo:{...ammo},heat,locked};},
+  cooldownRemaining(time){return Math.max(0,next-time);},
   fire(sim,aim,target,{blocked=false}={}){
    const w=WEAPONS.find(w=>w.id===selected);
    if(blocked||sim.phase!=='flight'||!sim.release||sim.time<next||ammo[w.id]<=0||(w.id==='staff'&&locked)||![...aim,...target].every(Number.isFinite))return null;

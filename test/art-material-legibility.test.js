@@ -45,3 +45,9 @@ test('leaf ribs stay anchored to the map as the camera moves',()=>{
  const ribs=x=>render('leaf',points,scale,x).strokes.filter(s=>s.color==='#425f42').map(s=>s.path.map(([op,px,py])=>[op,Math.round(((px-195)/scale+x)*1e6)/1e6,Math.round(((422-py)/scale)*1e6)/1e6]));
  const a=ribs(4),b=ribs(5);assert.ok(a.length&&b.length);assert.ok(a.some(p=>b.some(q=>JSON.stringify(p)===JSON.stringify(q))),'overlapping views retain an identical physical rib');
 });
+
+test('wide bark faces remain bounded and fissures stay fixed under camera movement',()=>{
+ const points=[{x:-500,y:0},{x:20000,y:0},{x:20000,y:-3},{x:-500,y:-3}],scale=80;
+ const fissures=x=>{const c=render('wood',points,scale,x);assert.ok(c.calls.length<220,`wide bark stays bounded: ${c.calls.length}`);return c.strokes.filter(s=>s.color==='#513a2e').map(s=>s.path.map(([op,...v])=>[op,...v.map((n,i)=>Math.round((i%2?(422-n)/scale:(n-195)/scale+x)*1e6)/1e6)]));};
+ const a=fissures(4),b=fissures(5);assert.ok(a.length&&b.length);assert.ok(a.some(p=>b.some(q=>JSON.stringify(p)===JSON.stringify(q))),'bark scales do not slide with the camera');
+});

@@ -50,16 +50,16 @@ test('late canopy-exit weapon use lands instead of falling into a long lower-wor
 });
 
 /** Retained difficult UI-cadence fixtures: actions are accepted on an outer
- * frame crossing the requested physical time. Different tempo policies can
- * cross on different ticks; this verifies completion, not tempo determinism. */
-test('broader prepared weapon schedules settle under both outer-frame tempo cadences',()=>{
- for(const anticipation of[false,true])for(const draw of[.5,.75,1])for(const weapon of['none','slingshot','staff','air']){
+ * frame crossing the requested physical time. Physical elapsed time cools
+ * weapons just as in the app; this verifies a bounded set of complete runs. */
+test('broader prepared weapon schedules settle with the live outer-frame cadence',()=>{
+ for(const draw of[.5,.75,1])for(const weapon of['none','slingshot','staff','air']){
   const sim=new BuildSimulation(STARTER,{map:createGroveMap()}),feel=createLaunchFeel(),weapons=createFlightWeapons();sim.setDraw(draw);sim.fire();if(weapon!=='none')weapons.select(weapon);
   let wall=0,shots=0;while(['swing','flight'].includes(sim.phase)&&wall<30){
-   feel.advance(sim,1/60,{anticipation});wall+=1/60;weapons.update(1/60);
+   const previousTime=sim.time;feel.advance(sim,1/60);wall+=1/60;weapons.update(sim.time-previousTime);
    if(weapon!=='none'&&sim.release&&shots<(weapon==='air'?1:3)&&sim.time>=sim.release.time+1.6+shots*.7)if(weapons.fire(sim,[0,0],[0,0]))shots++;
   }
-  assert.equal(sim.failure,'');assert.equal(sim.phase,'finished',`${draw}/${weapon}/anticipation=${anticipation}: ${wall}s`);assert.ok(wall<25,`${draw}/${weapon}/${anticipation}: ${wall}s`);
+  assert.equal(sim.failure,'');assert.equal(sim.phase,'finished',`${draw}/${weapon}: ${wall}s`);assert.ok(wall<25,`${draw}/${weapon}: ${wall}s`);
   assert.equal(shots,weapon==='none'?0:weapon==='air'?1:3);
  }
 });

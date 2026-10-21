@@ -29,18 +29,18 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
  if(![payload.x,payload.y,animalLength,width,height].every(Number.isFinite)||animalLength<=0||width<=0||height<=0)throw Error('Finite camera dimensions and positive animal length required.');
  // Use travel measured in viewports per second, so a mouse and a whale get the
  // same framing response without changing their physical sizes or velocities.
- const baseScale=Math.min(width,height)*.07/animalLength;
+ const baseScale=Math.min(width,height)*.085/animalLength;
  const vx=Number.isFinite(payload.vx)?payload.vx:0,vy=Number.isFinite(payload.vy)?payload.vy:0;
  const screenVx=vx*baseScale/width,screenVy=vy*baseScale/height,speed=Math.hypot(screenVx,screenVy);
- // Slow/weak throws are easy to read at nine percent. Strong throws open the
- // lens to seven percent during ordinary travel.
- const size=.09-.02*ease(clamp((speed-.3)/1.7,0,1));
+ // Slow/weak throws are easy to read at ten percent. Strong throws open the
+ // lens to eight and a half percent during ordinary travel.
+ const size=.10-.015*ease(clamp((speed-.3)/1.7,0,1));
  // Briefly open the lens for an imminent landing. Keep a readable body and
  // both regions in one physical transform; no inset, arrow or future route.
  const validLanding=landing&&[landing.x,landing.y,landing.eta].every(Number.isFinite)&&landing.eta>=0&&landing.eta<=.65;
  const step=Number.isFinite(dt)?Math.max(0,Math.min(.1,dt)):0,minDimension=Math.min(width,height);
  const dx=validLanding?landing.x-payload.x:0,dy=validLanding?landing.y-payload.y:0;
- const contextSize=validLanding?Math.min(size,Math.max(.052,Math.min(width*.60/(Math.abs(dx)+animalLength*2),height*.50/(Math.abs(dy)+animalLength*2))*animalLength/minDimension)):size;
+ const contextSize=validLanding?Math.min(size,Math.max(.067,Math.min(width*.60/(Math.abs(dx)+animalLength*2),height*.50/(Math.abs(dy)+animalLength*2))*animalLength/minDimension)):size;
  const oldLens=previous.followLens??{size,hold:0},lens={size:oldLens.size,hold:Math.max(0,oldLens.hold-step)};
  // An approaching face can open the lens, but never close it on every frame as
  // distance shrinks. Keep that local framing through the rebound and nearby next
@@ -68,7 +68,7 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
   x:((Number.isFinite(previous.x)?previous.x:payload.x)-payload.x)*priorScale/width,
   y:((Number.isFinite(previous.y)?previous.y:payload.y)-payload.y)*priorScale/height
  };
- if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0},followLens:{size:.07,hold:0},followLanding:null};
+ if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0},followLens:{size:.085,hold:0},followLanding:null};
  // A bounded, eased lead reveals the next branch in the travel direction. Smooth
  // the offset rather than body velocity so a rebound cannot jerk the camera or
  // let the animal slide out of frame while tracking catches up.

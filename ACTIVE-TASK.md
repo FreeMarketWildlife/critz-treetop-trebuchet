@@ -1,3 +1,9 @@
+# Overnight pass 5 checkpoint — October 21, 2026
+
+Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-5/implementation.md for the 470-test checkpoint, 48 fixed-input comparisons, phone-scale starter silhouettes, 26.13 px context floor, coherent woodland parallax/bark, and explicit Fire purpose/availability. Automatic landing slowdown was removed after a real frame-cadence path regression; preserve original swing/release/impact beats. Canonical revision-7 map remains 499 pieces. Next priority: intentional weapon timing and destination identity earlier in the arc, plus less repetitive major botanical silhouettes. Preserve physical loading/rotation, saves, weapons and disabled experimental guards. Sites packaging/save/deploy remains deferred pending parent/user approval. Keep localhost:8080 running.
+
+---
+
 # Overnight pass 4 checkpoint — October 21, 2026
 
 Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-4/implementation.md for 463 tests, 48 fixed-input comparisons, calmer lens hold, 20.28 px phone floor, bounded .62 approach playback, accessible Fire/F parity, and canonical revision-7 passive exit (499 pieces). Two widened logs catch reproduced long staff descents while retaining a 2 m fork and 3.7 s air pause; no physical truncation or launcher retune. Next priority: large-scale woodland light/material separation and first-time weapon/timing clarity. Preserve saves, loose loading, weapons, .55 release continuity, and disabled experimental guards. Sites packaging/save/deploy remains deferred pending parent/user approval. Keep localhost:8080 running.

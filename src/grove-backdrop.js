@@ -1,7 +1,7 @@
-import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=21';
-import {drawAncientTree} from './grove-tree-art.js?v=21';
-import {drawJungleBackdrop} from './grove-jungle-art.js?v=21';
-import {spaceScale} from './grove-map.js?v=21';
+import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=22';
+import {drawAncientTree} from './grove-tree-art.js?v=22';
+import {drawJungleBackdrop} from './grove-jungle-art.js?v=22';
+import {spaceScale} from './grove-map.js?v=22';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Every crown, trunk and forest tree is placed in metres. Parallax fades out
@@ -19,26 +19,32 @@ export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0}){
   drawJungleBackdrop(c,{project,camera:cam,scale:s,width:W,height:H,origin,parallax:depth});
   // Whole-tree views retain its real silhouette. At mouse scale the immense
   // crown is a distant mass, so transparent cool colour keeps local solids clear.
-  const close=clamp((s-3)/24,0,1);c.save();c.globalAlpha=1-close*.68;
+  const close=clamp((s-3)/24,0,1);c.save();c.globalAlpha=1-close*.92;
   drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:H,camera:cam});c.restore();
-  // A quiet pool of canopy light separates small volunteers from the enormous
-  // crown behind them. Atmosphere is screen-space; actual trees stay in metres.
-  if(s>6&&space<.1){const light=c.createRadialGradient(W*.54,H*.38,0,W*.54,H*.38,Math.max(W,H)*.76);light.addColorStop(0,'#fff0c856');light.addColorStop(.5,'#e6eac01c');light.addColorStop(1,'#b5dbcc00');c.fillStyle=light;c.fillRect(0,0,W,H);}
-  // Long, clearly distant lianas provide a calm directional silhouette at
-  // critter scale. Their fixed canopy lattice uses slower parallax, never the
-  // strong flat upper lip reserved for real collision surfaces.
-  if(s>12&&alt>25&&alt<t.height-20){
-   const par=.16,spacing=3.7,x0=Math.floor((cam.x*par-W/(2*s)-2)/spacing)*spacing;
-   let count=0;for(let x=x0;x<cam.x*par+W/(2*s)+2&&count<5;x+=spacing,count++){
-    const seed=Math.sin(x*14.73),xx=x+cam.x*(1-par),anchorY=Math.floor((cam.y*par+H/(2*s))/6)*6+cam.y*(1-par)+2;
-    c.save();c.globalAlpha=.12;c.beginPath();c.moveTo(...project(xx,anchorY));c.bezierCurveTo(...project(xx+.6*seed,anchorY-2),...project(xx-.35,anchorY-4),...project(xx+.3*seed,anchorY-6.5));c.strokeStyle='#29565a';c.lineWidth=Math.max(.7,s*.028);c.stroke();
-    for(let j=1;j<4;j++){const yy=anchorY-j*1.55,pp=project(xx+Math.sin(j+seed)*.18,yy);c.save();c.translate(...pp);c.scale(s,s);c.rotate((j%2?-1:1)*.8);drawCanopySpray(c,.045,j%4,seed);c.restore();}c.restore();
-   }
-  }
+  // Broad, cool distant trunks and crown arches give close canopy views a
+  // woodland structure. Slow, fixed-world parallax keeps them behind the play
+  // plane; soft curves have neither the dark outline nor flat lip of terrain.
+  const canopy=clamp((s-10)/18,0,1)*clamp((alt-280*k/2)/(100*k/2),0,1)*clamp((t.height+35-alt)/70,0,1);
+  if(canopy>0){for(let layer=0;layer<2;layer++){
+   const par=.09+layer*.065,ds=s*par,baseStep=13+layer*4;
+   // Both apparent size and camera motion use the distant projection. A
+   // skipped-cell LOD keeps broad views sparse without changing world anchors.
+   const step=baseStep*Math.max(1,Math.ceil(W/(ds*baseStep*4))),vertical=22*Math.max(1,Math.ceil(H/(ds*22*3)));
+   const x0=Math.floor((cam.x-W/(2*ds)-7)/step)*step,y0=Math.floor((cam.y-H/(2*ds)-14)/vertical)*vertical;
+   let budget=40;c.save();c.globalAlpha=canopy*(layer?.22:.16);
+   const p=(x,y)=>[W/2+(x-cam.x)*ds,H/2-(y-cam.y)*ds];
+   for(let x=x0;x<cam.x+W/(2*ds)+7&&budget>0;x+=step)for(let y=y0;y<cam.y+H/(2*ds)+14&&budget>0;y+=vertical){
+    const xx=x+Math.sin(x*3.1+y)*2,yy=y+Math.sin(x+y*.7)*2,q=p(xx,yy);
+    if(q[0]+7*ds<0||q[0]-7*ds>W||q[1]+12*ds<0||q[1]-14*ds>H)continue;
+    // Tree bases reach the actual world floor, never a floating screen cut.
+    c.beginPath();c.moveTo(...p(xx-.65,-origin));c.bezierCurveTo(...p(xx-.8,yy-5),...p(xx+.4,yy+2),...p(xx-1.3,yy+7));c.quadraticCurveTo(...p(xx-2.5,yy+10),...p(xx-4.5,yy+12));c.quadraticCurveTo(...p(xx-1,yy+10),...p(xx-.1,yy+8));c.quadraticCurveTo(...p(xx+1,yy+10),...p(xx+3.2,yy+12));c.quadraticCurveTo(...p(xx+1.7,yy+7),...p(xx+1,yy+3));c.bezierCurveTo(...p(xx+.8,yy-3),...p(xx+.35,yy-6),...p(xx+.75,-origin));c.closePath();c.fillStyle=layer?'#285f5b':'#4d8075';c.fill();
+    c.beginPath();c.moveTo(...p(xx-5,yy+8));c.bezierCurveTo(...p(xx-7,yy+11),...p(xx-4,yy+13),...p(xx-1,yy+12.5));c.bezierCurveTo(...p(xx+2,yy+15),...p(xx+6,yy+12),...p(xx+5.2,yy+9.8));c.bezierCurveTo(...p(xx+4,yy+6),...p(xx+.8,yy+7.2),...p(xx,yy+8));c.bezierCurveTo(...p(xx-2,yy+7),...p(xx-4,yy+6.8),...p(xx-5,yy+8));c.closePath();c.fillStyle=layer?'#3d776b':'#6b9987';c.fill();budget--;
+   }c.restore();
+  }}
   const radius=t.crownRadius??t.trunkWidth*3.6,half=(t.crownDepth??t.height*.44)/2,cy=t.height-half-origin,cx=t.trunkX;
   // Sparse botanical accents occupy stable world cells. Different fronds,
   // curled tips and seed sprays replace a screen-wide repeated leaf wallpaper.
-  if(s>6){const area=W*H/(s*s),step=.95*Math.max(1,Math.ceil(Math.sqrt(area/14)/.95));let budget=14;
+  if(s>6&&alt<350*k/2){const area=W*H/(s*s),step=.95*Math.max(1,Math.ceil(Math.sqrt(area/14)/.95));let budget=14;
    const x0=Math.floor((cam.x-W/(2*s))/step)*step,y0=Math.floor((cam.y-H/(2*s))/step)*step;
    for(let x=x0;x<cam.x+W/(2*s)+step*.3&&budget>0;x+=step)for(let y=y0;y<cam.y+H/(2*s)+step*.3&&budget>0;y+=step){
     const inCrown=((x-cx)/radius)**2+((y-cy)/half)**2<1,inWoods=y+origin>2&&y+origin<350*k/2;if(!inCrown&&!inWoods)continue;

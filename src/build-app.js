@@ -1,22 +1,22 @@
 import {installPauseMenu} from './pause-menu.js';
-import {createWeaponHud} from './weapon-hud.js?v=21';
-import {jungleLayerAt} from './grove-jungle.js?v=21';
-import {createLaunchFeel} from './launch-feel.js?v=21';
-import {createPayloadLoading} from './payload-loading.js?v=21';
-import {crankState} from './crank-wheel.js?v=21';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=21';
-import {fitEquipment} from './build-equipment.js?v=21';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=21';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=21';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=21';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=21';
-import {drawShopArt} from './shop-art.js?v=21';
+import {createWeaponHud} from './weapon-hud.js?v=22';
+import {jungleLayerAt} from './grove-jungle.js?v=22';
+import {createLaunchFeel} from './launch-feel.js?v=22';
+import {createPayloadLoading} from './payload-loading.js?v=22';
+import {crankState} from './crank-wheel.js?v=22';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=22';
+import {fitEquipment} from './build-equipment.js?v=22';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=22';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=22';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=22';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=22';
+import {drawShopArt} from './shop-art.js?v=22';
 import {createHoldControl} from './hold-control.js';
-import {createAudio} from './audio.js?v=21';
+import {createAudio} from './audio.js?v=22';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=21';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=21';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=21';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=22';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=22';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=22';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -237,6 +237,7 @@ window.addEventListener('blur',interrupt);document.addEventListener('visibilityc
 new ResizeObserver(()=>{dirty=true;renderer.fit(false);}).observe(stage);
 new ResizeObserver(()=>{dirty=true;previewRenderer.fit();}).observe($('previewStage'));
 function frame(timestamp){
+ const physicsBefore=sim.time;
  const delta=lastTime?Math.min((timestamp-lastTime)/1000,.05):0;lastTime=timestamp;
  const modal=!!document.querySelector('dialog[open]'),active=!paused&&!document.hidden&&!modal;
  sim.winding=winding;
@@ -262,7 +263,7 @@ function frame(timestamp){
   if($('workshopDialog').open&&previewSim)previewRenderer.draw(previewSim,{labels:true,follow:false,paused:true,preview:true,pixelRatio:low?1:2});
   renderer.draw(sim,{labels,follow,paused:paused||modal,feel:feelFrame,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);stage.dataset.playbackRate=feelFrame.rate.toFixed(3);stage.dataset.swingPlayback=feelFrame.swingAge.toFixed(3);stage.dataset.releasePlayback=feelFrame.releaseClock?.toFixed(3)??'';stage.dataset.presentationTime=feelFrame.clock.toFixed(3);
  }
- weaponHud.draw(active?delta:0);
+ weaponHud.draw(active?delta:0,active?Math.max(0,sim.time-physicsBefore):0);
  if(refresh&&timestamp-refreshAt>110){updateReadouts();refreshAt=timestamp;}
  requestAnimationFrame(frame);
 }

@@ -1,18 +1,21 @@
 import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=21';
+import {GRAVITY} from './build-physics.js?v=22';
 import {drawFlightAccents} from './flight-art.js';
-import {drawCounterweight} from './counterweight-art.js?v=21';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=21';
-import {RopeVisual} from './rope-visual.js?v=21';
-import {part,grams} from './build-catalog.js?v=21';
-import {drawGroveWorld} from './grove-art.js?v=21';
-import {createCritterPerformance} from './critter-performance.js?v=21';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=21';
+import {drawCounterweight} from './counterweight-art.js?v=22';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=22';
+import {RopeVisual} from './rope-visual.js?v=22';
+import {part,grams} from './build-catalog.js?v=22';
+import {drawGroveWorld} from './grove-art.js?v=22';
+import {createCritterPerformance} from './critter-performance.js?v=22';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=22';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
 export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,performance={}){
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(performance.squashX??1,performance.squashY??1);
+ // At phone scale, subpixel painted detail becomes grey noise. Use the same
+ // physical length/height and body angle with a simpler, stronger silhouette.
+ if(air&&size<=40&&Number.isFinite(height)&&['mouse','frog','chipmunk'].includes(animal.id)){drawSmallCritter(ctx,animal,size,height,performance);ctx.restore();return;}
  const bounds=animal.id==='whale'?[-68,-24,52,27]:animal.id==='elephant'?[-43,-42,62,41]:animal.id==='rabbit'?[-57,-56,52,32]:animal.id==='squirrel'?[-61,-48,52,32]:[-57,-33,52,32];
  const [x0,y0,x1,y1]=bounds;ctx.scale(size/(x1-x0),height===undefined?size/(x1-x0):height/(y1-y0));ctx.translate(-(x0+x1)/2,-(y0+y1)/2);ctx.lineJoin='round';
  const id=animal.id,color=({mouse:'#b8998d',frog:'#71bb6c',chipmunk:'#c88443',squirrel:'#b77c4c',rabbit:'#b7b6c3',armadillo:'#b99575',fox:'#da824a',bear:'#9b7657',tiger:'#e6a94a',elephant:'#8fa8b0',whale:'#649aa9'})[id]??animal.color,ink='#302d2b',cream='#f5dfb3';
@@ -87,6 +90,43 @@ export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,perform
  }
  if(stars||dazed)drawDizzyStars(ctx,tier,performance.frame??0);
  ctx.restore();
+}
+/** Pixel-detail variant inside the existing physical silhouette. Coordinates
+ * are screen projections of the compound torso/head/tail proportions, not an
+ * enlarged sprite or a portrait. Stroke widths stay legible under thin bodies. */
+function drawSmallCritter(c,animal,w,h,performance){
+ const id=animal.id,frog=id==='frog',chip=id==='chipmunk',ink='#252a26',rim='#fff2d1',cream='#ffe8b9',color=frog?'#65b34e':chip?'#c5823d':'#bc927c';
+ const bonk=String(performance.pose).startsWith('bonk'),dazed=['stars','dazed'].includes(performance.pose),flex=performance.flex??{};
+ const oval=(x,y,rx,ry,fill)=>{c.beginPath();c.ellipse(x*w,y*h,rx*w,ry*h,0,0,TAU);c.fillStyle=fill;c.fill();c.strokeStyle=rim;c.lineWidth=1.5;c.stroke();c.strokeStyle=ink;c.lineWidth=.8;c.stroke();};
+ const mark=(points,stroke,width)=>path(c,points.map(([x,y])=>[x*w,y*h]),stroke,width);
+ // Tail and folded haunch are species cues; no one-pixel grain or fur hatching.
+ c.save();c.translate(-.34*w,.06*h);c.rotate(flex.tail??0);c.translate(.34*w,-.06*h);
+ if(chip){oval(-.405,-.07,.095,.30,color);mark([[-.42,.12],[-.43,-.05],[-.42,-.24]],cream,.8);}
+ else if(!frog){mark([[-.34,.03],[-.44,.19],[-.49,.13],[-.49,-.02]],rim,1.6);mark([[-.34,.03],[-.44,.19],[-.49,.13],[-.49,-.02]],ink,.8);}
+ c.restore();
+ if(frog){oval(-.31,.26,.19,.24,'#559e43');mark([[-.27,.27],[-.43,.41],[-.49,.35]],cream,1);}
+ else oval(-.20,.31,.10,.11,color);
+ oval(-.06,0,frog?.34:chip?.32:.31,.36,color);
+ // A single light belly and bold chipmunk stripe survive a twenty-pixel stamp.
+ c.beginPath();c.ellipse(-.07*w,.16*h,.235*w,.16*h,0,0,TAU);c.fillStyle=cream;c.fill();
+ if(chip){mark([[-.31,-.14],[-.09,-.25],[.10,-.18]],ink,1.7);mark([[-.31,-.14],[-.09,-.25],[.10,-.18]],cream,.8);}
+ c.save();c.translate(.15*w,0);c.rotate(flex.head??0);c.translate(-.15*w,0);
+ if(!frog){oval(.20,-.38,.07,.12,color);}
+ oval(frog?.27:.30,frog?-.15:-.06,frog?.23:.20,frog?.35:.34,frog?'#81c45c':color);
+ if(frog)oval(.18,-.36,.085,.12,'#81c45c');
+ // One large readable eye on rodents; the frog keeps its unmistakable eye pair.
+ for(const x of frog?[.18,.36]:[.34]){
+  const y=frog?-.33:-.13,rx=frog?.055:.061,ry=frog?.135:.18;
+  c.beginPath();c.ellipse(x*w,y*h,rx*w,ry*h,0,0,TAU);c.fillStyle='#fffbed';c.fill();
+  if(bonk){mark([[x-rx*.7,y-ry*.7],[x+rx*.7,y+ry*.7]],ink,.7);mark([[x+rx*.7,y-ry*.7],[x-rx*.7,y+ry*.7]],ink,.7);}
+  else{c.beginPath();c.ellipse((x+.019)*w,(y+(dazed?.05:0))*h,.023*w,.10*h,0,0,TAU);c.fillStyle=ink;c.fill();}
+ }
+ if(!frog){c.beginPath();c.ellipse(.485*w,.02*h,.024*w,.07*h,0,0,TAU);c.fillStyle=ink;c.fill();}
+ const mouthX=frog?.30:.36,mouthY=frog?.17:.19;
+ if(bonk||dazed){c.beginPath();c.ellipse(mouthX*w,mouthY*h,.044*w,.095*h,0,0,TAU);c.fillStyle=ink;c.fill();}
+ else mark([[mouthX-.035,mouthY-.015],[mouthX,mouthY+.025],[mouthX+.045,mouthY-.03]],ink,.65);
+ if((performance.tier??0)>=2){mark([[.19,-.20],[.26,-.12]],cream,1.05);}
+ c.restore();
 }
 function drawCritterFace(ctx,{x,y,whale=false,pose,tier,dive=false,float=false,fox=false,frog=false}){
  const ink='#302d2b',bonk=pose.startsWith('bonk'),dazed=pose==='stars'||pose==='dazed',active=pose!=='ready',eye=whale?4.8:fox?5.8:6.4;

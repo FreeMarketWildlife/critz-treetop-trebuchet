@@ -28,19 +28,30 @@ test('quiet leaves and sap cannot trigger camera impact or hit pause; stalled sw
 
 test('a held release beat also freezes display-rope inertia, not just its gravity',async()=>{const{RopeVisual}=await import('../src/rope-visual.js');const r=new RopeVisual(),a={x:0,y:2},b={x:1,y:1};for(let i=0;i<10;i++)r.update(a,b,2,1/60);const before=JSON.stringify(r.points);r.update(a,b,2,0);assert.equal(JSON.stringify(r.points),before);});
 
-test('landing anticipation adds active time without changing any physical throw outcome',()=>{
- const run=anticipation=>{const s=start(STARTER,{map:createGroveMap()}),f=createLaunchFeel(),marks=[];let wall=0,minRate=1;
-  while(s.phase!=='finished'&&wall<30){const q=f.advance(s,1/120,{anticipation});wall+=1/120;if(s.phase==='flight')minRate=Math.min(minRate,q.approachRate);for(const t of[3.15,3.60])if(s.time>=t&&!marks.some(m=>m.t===t))marks.push({t,wall});}
-  return{s,f,wall,minRate,window:marks[1].wall-marks[0].wall};};
- const before=run(false),after=run(true);assert.equal(after.s.phase,'finished');assert.equal(after.s.failure,'');
- for(const key of['time','angle','speed','energy','vx','vy'])assert.ok(Math.abs(after.s.release[key]-before.s.release[key])<1e-10,key);
- for(const key of['x','y','vx','vy','angle'])assert.ok(Math.abs(after.s.real(after.s.shot)[key]-before.s.real(before.s.shot)[key])<1e-8,key);
- assert.ok(Math.abs(after.s.maxX-before.s.maxX)<1e-8);assert.equal(after.s.contactEvents.length,before.s.contactEvents.length);
- assert.ok(after.window>before.window*1.3,`${after.window} vs ${before.window}: time to act grows`);
- assert.ok(after.wall>before.wall&&after.wall-before.wall<4,'anticipation stays bounded across the whole run');
- assert.ok(after.minRate>=.6199&&after.minRate<.7);assert.ok(after.f.state().approachRate>.95,'the quiet aftermath is not prolonged in slow motion');
+test('approaching substantial landings keeps ordinary free flight at the selected playback speed',async()=>{
+ const {imminentLanding}=await import('../src/landing-view.js');
+ for(const draw of[.5,.75,1]){
+  const s=new BuildSimulation(STARTER,{map:createGroveMap()}),f=createLaunchFeel();s.setDraw(draw);s.fire();let approaches=0;
+  for(let i=0;i<30*120&&s.phase!=='finished';i++){
+   const before=f.state(),p=s.real(s.shot),incoming=s.release&&imminentLanding(s.map,p,{radius:s.animal.width*.5});
+   const q=f.advance(s,1/120);
+   if(before.releaseAge>.35&&before.freeze===0&&incoming&&incoming.eta>.08&&p.vy< -2){assert.equal(q.rate,1,'a landing forecast cannot automatically drag the flight');approaches++;}
+  }
+  assert.equal(s.phase,'finished');assert.ok(approaches>10,'the fixture exercises actual descending landing approaches');
+ }
 });
-test('pause during an approaching landing freezes its tempo state as well as the body',()=>{
- const s=start(STARTER,{map:createGroveMap()}),f=createLaunchFeel();for(let i=0;i<600&&f.state().approachRate>.8;i++)f.advance(s,1/120);
- assert.ok(f.state().approachRate<.8);const before=JSON.stringify(s.snapshot()),q=f.state();f.advance(s,.1,{paused:true});assert.equal(JSON.stringify(s.snapshot()),before);assert.deepEqual(f.state(),{...q,events:[]});
+test('pause freezes an impact beat and retry clears its presentation state',()=>{
+ const s=start(STARTER,{map:createGroveMap()}),f=createLaunchFeel();for(let i=0;i<20*120&&f.state().freeze===0;i++)f.advance(s,1/120);
+ assert.ok(f.state().freeze>0);const state=f.state(),body=s.snapshot();assert.deepEqual(f.advance(s,.5,{paused:true}),{...state,events:[]});assert.deepEqual(s.snapshot(),body);
+ f.advance(new BuildSimulation(STARTER),.01);assert.equal(f.state().freeze,0);assert.equal(f.state().releaseAge,null);assert.equal(f.state().impact,0);
+});
+test('fixed physical-tick weapon inputs keep heat and the full outcome coherent across presentation beats',async()=>{
+ const {createFlightWeapons}=await import('../src/flight-weapons.js');
+ const run=(draw,presentation)=>{
+  const s=new BuildSimulation(STARTER,{map:createGroveMap()}),f=createLaunchFeel(),weapons=createFlightWeapons(),inputs=[];weapons.select('staff');s.setDraw(draw);s.fire();
+  const tick=s.tick.bind(s);s.tick=h=>{weapons.update(h);if(s.release&&inputs.length<3&&s.time>=s.release.time+1.6+inputs.length*.7){const e=weapons.fire(s,[0,0],[0,0]);if(e)inputs.push({time:e.time,heat:weapons.snapshot().heat});}tick(h);};
+  for(let i=0;i<30*120&&s.phase!=='finished';i++){if(presentation)f.advance(s,1/120);else s.step(1/120);}
+  assert.equal(s.phase,'finished');assert.equal(inputs.length,3);return{release:s.release,end:s.real(s.shot),time:s.time,distance:s.maxX,inputs,heat:weapons.snapshot().heat};
+ };
+ for(const draw of[.5,.75,1])assert.deepEqual(run(draw,true),run(draw,false),'presentation beats cannot move prepared physical action ticks or cool the staff faster');
 });
