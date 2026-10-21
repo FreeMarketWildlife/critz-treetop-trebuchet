@@ -4,7 +4,7 @@ import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=25';
 import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=25';
 import {groveTreeCamera} from './grove-camera.js?v=25';
 import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=25';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=25';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=27';
 import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=25';
 import {createAudio} from './audio.js?v=25';
 import {loadAudioPreferences} from './audio-preferences.js';

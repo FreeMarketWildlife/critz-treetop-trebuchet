@@ -1,0 +1,228 @@
+{
+  "summary": [
+    {
+      "name": "mouse-half",
+      "phase": "finished",
+      "time": 4.439186468783265,
+      "predictions": 27,
+      "paired": 27,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.05544406073786856,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-three-quarter",
+      "phase": "finished",
+      "time": 10.896184968831552,
+      "predictions": 108,
+      "paired": 108,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.08071312232803723,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-full",
+      "phase": "finished",
+      "time": 16.47491391606241,
+      "predictions": 124,
+      "paired": 124,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.06800623479554858,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "frog-full",
+      "phase": "finished",
+      "time": 12.955702537520965,
+      "predictions": 85,
+      "paired": 85,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.03765382774094023,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "chipmunk-full",
+      "phase": "finished",
+      "time": 5.2708439503624325,
+      "predictions": 27,
+      "paired": 27,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.12103044915952478,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "squirrel-full",
+      "phase": "finished",
+      "time": 17.530939688283244,
+      "predictions": 127,
+      "paired": 127,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.1558554194717254,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "rabbit-full",
+      "phase": "finished",
+      "time": 11.74791666666616,
+      "predictions": 47,
+      "paired": 47,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.150478744751806,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-headwind",
+      "phase": "flight",
+      "time": 23.999083520802824,
+      "predictions": 9,
+      "paired": 9,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.028759919637029428,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-tailwind",
+      "phase": "finished",
+      "time": 11.161137794821375,
+      "predictions": 34,
+      "paired": 34,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.07687684529207918,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-no-drag",
+      "phase": "finished",
+      "time": 10.271828540920348,
+      "predictions": 37,
+      "paired": 37,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.05763438859227199,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-extreme-free-flight",
+      "phase": "finished",
+      "time": 9.267215742375601,
+      "predictions": 38,
+      "paired": 38,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.04833326769174794,
+      "wrongExamples": [],
+      "outsideExamples": []
+    },
+    {
+      "name": "mouse-leftward-free-flight",
+      "phase": "finished",
+      "time": 5.4707852033084565,
+      "predictions": 42,
+      "paired": 42,
+      "wrong": 0,
+      "outside": 0,
+      "maxError": 0.08862260391337592,
+      "wrongExamples": [],
+      "outsideExamples": []
+    }
+  ],
+  "directions": [
+    {
+      "target": [
+        2000,
+        300
+      ],
+      "cue": {
+        "x": 366,
+        "y": 344.1621621621622,
+        "angle": -0.02702044918726479,
+        "mode": "edge"
+      },
+      "dot": 1850.675552332175
+    },
+    {
+      "target": [
+        -1500,
+        500
+      ],
+      "cue": {
+        "x": 23.999999999999986,
+        "y": 361.45454545454544,
+        "angle": 3.050932766389048,
+        "mode": "edge"
+      },
+      "dot": 1656.804152578089
+    },
+    {
+      "target": [
+        100,
+        2000
+      ],
+      "cue": {
+        "x": 135.87878787878788,
+        "y": 816,
+        "angle": 1.601090086713672,
+        "mode": "edge"
+      },
+      "dot": 1650.7574019219178
+    },
+    {
+      "target": [
+        220,
+        -300
+      ],
+      "cue": {
+        "x": 177.35384615384615,
+        "y": 96,
+        "angle": -1.4635174711464938,
+        "mode": "edge"
+      },
+      "dot": 653.7583651472461
+    },
+    {
+      "target": [
+        2000,
+        2000
+      ],
+      "cue": {
+        "x": 366,
+        "y": 542.6486486486486,
+        "angle": 0.7283173809911837,
+        "mode": "edge"
+      },
+      "dot": 2478.911051248108
+    },
+    {
+      "target": [
+        -1500,
+        -1000
+      ],
+      "cue": {
+        "x": 23.999999999999986,
+        "y": 246.9090909090909,
+        "angle": -2.4558631426835067,
+        "mode": "edge"
+      },
+      "dot": 2131.9005605327843
+    }
+  ]
+}

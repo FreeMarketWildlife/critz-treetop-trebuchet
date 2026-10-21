@@ -1,0 +1,15 @@
+import {createGroveMap,saveGroveMap,readGroveMap,MAP_KEY} from '../../src/grove-map.js';
+import {BuildSimulation} from '../../src/build-physics.js';
+import {STARTER} from '../../src/build-catalog.js';
+import assert from 'node:assert/strict';
+const m=createGroveMap(),o=m.objects.find(o=>o.id==='floor-fungus');
+const s=new BuildSimulation({...STARTER,drag:0},{map:{...m,objects:[o]}});
+s.fire();s.shot.setPosition({x:o.x/s.L,y:(o.y+o.radius+.25)/s.L});s.shot.setAngle(0);s.shot.setLinearVelocity({x:0,y:-3*s.T/s.L});s.shot.setAngularVelocity(0);s.detach('Surface audit');
+for(let i=0;i<240&&!s.contactEvents.length;i++)s.step(1/240);
+const t=(-324+Math.sqrt(324**2+4*27*171))/(2*27),capTop=9-171*t+162*t*t+9*t*t*t-1.5,paintedTop=o.y-capTop*2*o.radius/100;
+const e=s.contactEvents.find(e=>e.id===o.id);
+assert.ok(e);assert.ok(e.y-paintedTop>.32);
+const storage={data:new Map(),getItem(k){return this.data.get(k)??null;},setItem(k,v){this.data.set(k,v);}};
+saveGroveMap(storage,m);assert.deepEqual(readGroveMap(storage),m);assert.deepEqual([...storage.data.keys()],[MAP_KEY]);
+const edited=structuredClone(m);edited.objects.find(o=>o.id==='opening-skip-1').points[0].x+=.01;saveGroveMap(storage,edited);assert.deepEqual(readGroveMap(storage),edited);
+console.log(JSON.stringify({fixtureType:s.mapBodies[0].getFixtureList().getShape().getType(),object:o,physicalTop:o.y+o.radius,paintedTopIncludingStroke:paintedTop,contact:e,contactAbovePaint:e.y-paintedTop,mapRoundtrip:true,editedMapPreserved:true},null,2));

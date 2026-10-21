@@ -15,6 +15,16 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),mix=(a,b,t)=>a+(b-a)*t;
 const blend=(a,b,t)=>{const v=x=>[parseInt(x.slice(1,3),16),parseInt(x.slice(3,5),16),parseInt(x.slice(5,7),16)];return'#'+v(a).map((n,i)=>Math.round(mix(n,v(b)[i],t)).toString(16).padStart(2,'0')).join('');};
 function leaf(c,x,y,s,angle,color){c.save();c.translate(x,y);c.rotate(angle);c.beginPath();c.moveTo(-s,0);c.quadraticCurveTo(-s*.2,-s*.7,s,0);c.quadraticCurveTo(s*.1,s*.8,-s,0);c.fillStyle=color;c.fill();c.strokeStyle=INK;c.lineWidth=Math.max(.7,s*.055);c.stroke();line(c,[[-s*.7,0],[s*.65,0]],'#cee09d',Math.max(.7,s*.04));c.restore();}
 function cloud(c,x,y,s,alpha=1){c.save();c.globalAlpha*=alpha;ellipse(c,x,y,s*1.4,s*.36,'#f5f4df',null);ellipse(c,x-s*.5,y-s*.14,s*.62,s*.44,'#f5f4df',null);ellipse(c,x+s*.13,y-s*.32,s*.7,s*.58,'#f8f7e8',null);ellipse(c,x+s*.7,y-s*.04,s*.67,s*.4,'#f5f4df',null);line(c,[[x-s*.8,y+s*.18],[x+s*.8,y+s*.18]],'#c7ded4',Math.max(1,s*.06));c.restore();}
+/** The live Grove uses circular enemy contacts. Give that whole physical
+ * body a quiet painted surface; the illustration alone can leave invisible
+ * contact above a mushroom cap or beside a narrow leaf. Palette portraits and
+ * decorative world enemies keep their existing unframed silhouettes. */
+export function drawGroveEnemyContactBody(c,kind,x,y,r){
+ if(![x,y,r].every(Number.isFinite)||r<=0)return false;
+ const color=enemyRecipe(kind)?.color??'#ba844c',edge=Math.min(2.2,Math.max(.45,r*.045),r*.28);
+ c.save();c.beginPath();c.arc(x,y,r<2?r:r-edge/2,0,TAU);c.fillStyle=r<2?color:blend(color,'#d8d2ad',.68);c.fill();
+ if(r>=2){c.strokeStyle=INK;c.lineWidth=edge;c.stroke();}c.restore();return true;
+}
 /** Original illustrated encounter models. size means diameter in screen px. */
 export function drawGroveEnemy(c,kind,x,y,size,time=0){
  const recipe=enemyRecipe(kind),name=String(recipe?.model??kind??'beetle').toLowerCase();c.save();c.translate(x,y);c.scale(Math.max(.001,size)/100,Math.max(.001,size)/100);c.lineJoin='round';c.lineCap='round';
@@ -69,7 +79,11 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
   const layer=o.layer??'world';if((layer==='front')!==foreground)continue;
   if(b.maxX<visible.minX||b.minX>visible.maxX||b.maxY<visible.minY||b.minY>visible.maxY)continue;
   c.save();if(o.collision===false)c.globalAlpha=editor?.55:layer==='back'?(o.material==='wood'?.52-.32*clamp((s-3)/24,0,1):.52):.7;
-  if(o.type==='enemy'){const p=project(o.x,o.y),size=(o.radius??.5)*2*s;if(size<12){ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;}
+  if(o.type==='enemy'){const p=project(o.x,o.y),r=(o.radius??.5)*s,size=r*2;
+   if(o.collision)drawGroveEnemyContactBody(c,o.kind,...p,r);
+   if(size<12){if(o.collision){if(size>=4)ellipse(c,...p,r*.58,r*.48,enemyRecipe(o.kind)?.color??'#ba844c',null);}else ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}
+   else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;
+  }
   const colors=palette[o.material]??palette.wood;
   if(o.material==='foliage'&&!editor&&s<6){c.restore();continue;}
   if(['foliage','sap'].includes(o.material)){

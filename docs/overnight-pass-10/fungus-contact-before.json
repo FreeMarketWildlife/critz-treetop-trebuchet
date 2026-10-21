@@ -1,0 +1,37 @@
+{
+  "fixtureType": "circle",
+  "object": {
+    "id": "floor-fungus",
+    "type": "enemy",
+    "kind": "ancient-fungus",
+    "name": "Ancient round fungus",
+    "x": 53,
+    "y": -592,
+    "radius": 1.2,
+    "collision": true,
+    "layer": "world",
+    "material": "bumper",
+    "bounce": 0.88
+  },
+  "physicalTop": -590.8,
+  "paintedTopIncludingStroke": -591.1268269799307,
+  "contact": {
+    "seq": 1,
+    "id": "floor-fungus",
+    "kind": "ancient-fungus",
+    "material": "bumper",
+    "x": 52.989228935628105,
+    "y": -590.8002919650105,
+    "normal": {
+      "x": -0.008977709558543972,
+      "y": 0.9999596995534782
+    },
+    "normalSpeed": 3.60612457961062,
+    "velocityChange": 6.0252853024664175,
+    "strength": 0.4246248096620486,
+    "time": 0.06991810685842877
+  },
+  "contactAbovePaint": 0.3265350149201822,
+  "mapRoundtrip": true,
+  "editedMapPreserved": true
+}

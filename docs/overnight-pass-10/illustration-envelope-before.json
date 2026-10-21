@@ -1,0 +1,114 @@
+[
+  {
+    "kind": "beetle",
+    "radius": 0.08,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 62,
+    "conservativeGlobalArtTopNormalized": -46.25,
+    "physicalTopToPaintedTopMeters": 0.006
+  },
+  {
+    "kind": "hopper",
+    "radius": 0.07,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 59,
+    "conservativeGlobalArtTopNormalized": -39,
+    "physicalTopToPaintedTopMeters": 0.0154
+  },
+  {
+    "kind": "cloud",
+    "radius": 0.275,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 63,
+    "conservativeGlobalArtTopNormalized": -30.11690442377284,
+    "physicalTopToPaintedTopMeters": 0.10935702566924937
+  },
+  {
+    "kind": "bird",
+    "radius": 0.15,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 60,
+    "conservativeGlobalArtTopNormalized": -31.5,
+    "physicalTopToPaintedTopMeters": 0.0555
+  },
+  {
+    "kind": "pod",
+    "radius": 0.11,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 62,
+    "conservativeGlobalArtTopNormalized": -44.65372811472079,
+    "physicalTopToPaintedTopMeters": 0.011761798147614258
+  },
+  {
+    "kind": "vinebug",
+    "radius": 0.06,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 62,
+    "conservativeGlobalArtTopNormalized": -46.25,
+    "physicalTopToPaintedTopMeters": 0.0045
+  },
+  {
+    "kind": "skid",
+    "radius": 0.15,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 62,
+    "conservativeGlobalArtTopNormalized": -18.440043684914073,
+    "physicalTopToPaintedTopMeters": 0.09467986894525778
+  },
+  {
+    "kind": "fungus",
+    "radius": 0.2,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 62,
+    "conservativeGlobalArtTopNormalized": -36.375,
+    "physicalTopToPaintedTopMeters": 0.0545
+  },
+  {
+    "kind": "yokai",
+    "radius": 0.25,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 60,
+    "conservativeGlobalArtTopNormalized": -41.42798527259332,
+    "physicalTopToPaintedTopMeters": 0.04286007363703341
+  },
+  {
+    "kind": "fragment",
+    "radius": 0.18,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 64,
+    "conservativeGlobalArtTopNormalized": -39.84450261114654,
+    "physicalTopToPaintedTopMeters": 0.03655979059987246
+  },
+  {
+    "kind": "elder-beetle",
+    "radius": 0.3,
+    "pointAt95PercentTopPainted": true,
+    "unpaintedBoundarySamplesOf64": 55,
+    "conservativeGlobalArtTopNormalized": -67.25,
+    "physicalTopToPaintedTopMeters": 0
+  },
+  {
+    "kind": "royal-hopper",
+    "radius": 0.24,
+    "pointAt95PercentTopPainted": true,
+    "unpaintedBoundarySamplesOf64": 52,
+    "conservativeGlobalArtTopNormalized": -59.25,
+    "physicalTopToPaintedTopMeters": 0
+  },
+  {
+    "kind": "crown-cloud",
+    "radius": 1.2,
+    "pointAt95PercentTopPainted": true,
+    "unpaintedBoundarySamplesOf64": 56,
+    "conservativeGlobalArtTopNormalized": -59.25,
+    "physicalTopToPaintedTopMeters": 0
+  },
+  {
+    "kind": "ancient-fungus",
+    "radius": 1.2,
+    "pointAt95PercentTopPainted": false,
+    "unpaintedBoundarySamplesOf64": 59,
+    "conservativeGlobalArtTopNormalized": -36.375,
+    "physicalTopToPaintedTopMeters": 0.32699999999999996
+  }
+]

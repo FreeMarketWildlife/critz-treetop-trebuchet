@@ -1,0 +1,125 @@
+[
+  {
+    "miss": false,
+    "velocityBefore": {
+      "x": 30,
+      "y": 3.4999999999999996,
+      "vx": 8,
+      "vy": -1,
+      "angle": 0
+    },
+    "velocityAfter": {
+      "x": 30,
+      "y": 3.4999999999999996,
+      "vx": 11.25,
+      "vy": 3.999999999999999,
+      "angle": 0
+    },
+    "before": {
+      "id": "clear-ledge",
+      "x": 36.22722100319286,
+      "y": 0,
+      "eta": 0.7777754378990824,
+      "etaMin": 0.7719833818413859,
+      "etaMax": 0.7835674939567788,
+      "kind": "polygon",
+      "material": "wood",
+      "normal": {
+        "x": 0,
+        "y": 1
+      },
+      "spread": 0.14562884599290032,
+      "advisory": true,
+      "confidence": "advisory"
+    },
+    "after": null,
+    "cueBefore": {
+      "x": 312.2722100319286,
+      "y": 235,
+      "angle": 0,
+      "mode": "surface",
+      "id": "clear-ledge",
+      "alpha": 0.85,
+      "normal": {
+        "x": 0,
+        "y": 1
+      }
+    },
+    "cueAfter": null
+  },
+  {
+    "miss": true,
+    "velocityBefore": {
+      "x": 30,
+      "y": 3.4999999999999996,
+      "vx": 8,
+      "vy": -1,
+      "angle": 0
+    },
+    "velocityAfter": {
+      "x": 30,
+      "y": 3.4999999999999996,
+      "vx": 8,
+      "vy": -1,
+      "angle": 0
+    },
+    "before": {
+      "id": "clear-ledge",
+      "x": 36.22722100319286,
+      "y": 0,
+      "eta": 0.7777754378990824,
+      "etaMin": 0.7719833818413859,
+      "etaMax": 0.7835674939567788,
+      "kind": "polygon",
+      "material": "wood",
+      "normal": {
+        "x": 0,
+        "y": 1
+      },
+      "spread": 0.14562884599290032,
+      "advisory": true,
+      "confidence": "advisory"
+    },
+    "after": {
+      "id": "clear-ledge",
+      "x": 36.22722100319286,
+      "y": 0,
+      "eta": 0.7777754378990824,
+      "etaMin": 0.7719833818413859,
+      "etaMax": 0.7835674939567788,
+      "kind": "polygon",
+      "material": "wood",
+      "normal": {
+        "x": 0,
+        "y": 1
+      },
+      "spread": 0.14562884599290032,
+      "advisory": true,
+      "confidence": "advisory"
+    },
+    "cueBefore": {
+      "x": 312.2722100319286,
+      "y": 235,
+      "angle": 0,
+      "mode": "surface",
+      "id": "clear-ledge",
+      "alpha": 0.85,
+      "normal": {
+        "x": 0,
+        "y": 1
+      }
+    },
+    "cueAfter": {
+      "x": 312.2722100319286,
+      "y": 235,
+      "angle": 0,
+      "mode": "surface",
+      "id": "clear-ledge",
+      "alpha": 0.85,
+      "normal": {
+        "x": 0,
+        "y": 1
+      }
+    }
+  }
+]
