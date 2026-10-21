@@ -1,5 +1,7 @@
 # Close-up loading workshop
 
+Earlier implementation record. The later [loose loading and smooth tumbling revision](../loose-tumbling/implementation.md) supersedes descriptions of centered seating, a locked payload, and permanent basket highlights below.
+
 The current starter is 1.2 m to the axle with a 1.04 m / 0.26 m lever, 0.96 m sling, 6,000 g hinged ballast, 20 mm oak beam and 1.6 m guide rail. It retains the 150 g capacity and three small starter volunteers. The mouse benchmark releases at 39.08° / 22.00 m/s; the chipmunk at 59.28° / 14.58 m/s. Larger preset recipes keep the preceding tower dimensions. Only untouched old starter recipes migrate (including the earlier free geared-wheel variant, while retaining that wheel); custom geometry, purchased parts, Bells and saved blueprints are retained.
 
 The beam rests higher before winding, giving the launch view a taller silhouette. Setup frames it at roughly 40–50% of viewport height, bounded by the available width in portrait, with ground at 77% height. The stand is physically to the left of the machine. Animals, frame, stand and ropes share one metre scale. Flight still follows the actual released capsule.

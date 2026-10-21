@@ -1,4 +1,4 @@
-import {GRAVITY} from './build-physics.js?v=16';
+import {GRAVITY} from './build-physics.js?v=17';
 /** Presentation timing over the unmodified fixed-step mechanism solver.
  * A slower counterweight fall reveals real motion; no forces, transforms or
  * release velocities are assigned here. All feedback uses active playback time. */
@@ -21,7 +21,7 @@ export function createLaunchFeel(){
    if(sim.phase==='swing')swingAge+=h;
    if(freeze>0){const stopped=Math.min(h,freeze);freeze-=stopped;if(stopped===h){rate=0;continue;}rate=1;sim.step((h-stopped)*rate);}
    else{rate=sim.phase==='swing'?swingPlaybackRate(sim,swingAge):releaseAge!==null&&releaseAge<.28?.62+.38*smooth(releaseAge/.28):1;sim.step(h*rate);}
-   if(sim.release&&releaseAge===null){releaseAge=0;releaseClock=clock;freeze=.045;events.push({type:'release',intensity:1});}
+   if(sim.release&&releaseAge===null){releaseAge=0;releaseClock=clock;events.push({type:'release',intensity:1});}
   }
   if(sim.phase==='swing'){
    const c=sim.counterPoint();if(!samples.length||clock-samples.at(-1).at>.045){samples.push({...c,at:clock});if(samples.length>14)samples.shift();}

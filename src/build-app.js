@@ -1,20 +1,20 @@
-import {jungleLayerAt} from './grove-jungle.js?v=16';
-import {createLaunchFeel} from './launch-feel.js?v=16';
-import {createPayloadLoading} from './payload-loading.js?v=16';
-import {crankState} from './crank-wheel.js?v=16';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=16';
-import {fitEquipment} from './build-equipment.js?v=16';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=16';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=16';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=16';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=16';
-import {drawShopArt} from './shop-art.js?v=16';
+import {jungleLayerAt} from './grove-jungle.js?v=17';
+import {createLaunchFeel} from './launch-feel.js?v=17';
+import {createPayloadLoading} from './payload-loading.js?v=17';
+import {crankState} from './crank-wheel.js?v=17';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=17';
+import {fitEquipment} from './build-equipment.js?v=17';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=17';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=17';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=17';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=17';
+import {drawShopArt} from './shop-art.js?v=17';
 import {createHoldControl} from './hold-control.js';
-import {createAudio} from './audio.js?v=16';
+import {createAudio} from './audio.js?v=17';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=16';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=16';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=16';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=17';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=17';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=17';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -100,7 +100,8 @@ function updateReadouts(){
  $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?(feelFrame.swingAge<.5?'Counterweight dropping…':feelFrame.swingAge<1?'Sling picking up speed…':'Here we go…'):s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:'Nice experiment.';
  $('launchStatus').textContent=paused?'Tap Resume when you’re ready.':winding?(full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release whenever you like`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Pick up the head, body or tail. Enter loads with the keyboard.';
  if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'DROP INTO THE BASKET':'LOAD THE SLING';
- const pct=Math.round((sim.drawFraction??0)*100);$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
+ $('loadingTip').hidden=paused||!!document.querySelector('dialog[open]')||sim.phase!=='ready'||!sim.loading.hint;
+ const pct=Math.round((sim.drawFraction??0)*100);$('launchButton').disabled=paused||sim.phase!=='ready'||(!winding&&!sim.loading.loaded);$('launchButtonText').textContent=winding?`Release to launch · ${pct}%`:sim.loading.loaded?'Hold to crank & launch':'Load basket first';$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
  $('sceneHint').textContent=`${sim.animal.name} · ${grams(sim.animal.grams)}${sim.release?' · '+critterPoseName(currentCel):''}`;
  $('launchPrompt').hidden=resultShown;$('collectShop').hidden=false;$('collectShop').textContent=creative?'Try the shop →':'Collect & visit shop →';
  $('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);$('stage').dataset.build=sim.c.name;$('stage').dataset.axleHeight=String(sim.c.pivotHeight);$('stage').dataset.animal=sim.animal.id;$('stage').dataset.altitude=altitude.toFixed(2);$('stage').dataset.zone=zone.id;$('stage').dataset.mapObjects=String(groveMap.objects.length);$('stage').dataset.creative=String(creative);$('stage').dataset.combo=String(combo);
@@ -209,6 +210,13 @@ stage.addEventListener('pointerup',e=>{
 });
 stage.addEventListener('pointercancel',e=>{if(e.pointerId===loadPointer)cancelLoading();hold.cancel(e.pointerId);});
 stage.addEventListener('lostpointercapture',e=>{if(e.pointerId===loadPointer)cancelLoading();hold.cancel(e.pointerId);});
+const launchButton=$('launchButton');
+launchButton.addEventListener('pointerdown',e=>{if(e.button!==0||!e.isPrimary)return;e.preventDefault();if(beginHold(e.pointerId))launchButton.setPointerCapture(e.pointerId);});
+launchButton.addEventListener('pointerup',e=>{hold.end(e.pointerId);if(launchButton.hasPointerCapture(e.pointerId))launchButton.releasePointerCapture(e.pointerId);});
+for(const type of ['pointercancel','lostpointercapture'])launchButton.addEventListener(type,e=>hold.cancel(e.pointerId));
+launchButton.addEventListener('keydown',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();if(!e.repeat)beginHold('launcher-key');}});
+launchButton.addEventListener('keyup',e=>{if(['Space','Enter'].includes(e.code)){e.preventDefault();hold.end('launcher-key');}});
+launchButton.addEventListener('click',e=>e.preventDefault());
 stage.addEventListener('contextmenu',e=>e.preventDefault());
 document.addEventListener('pointerdown',()=>{sound.unlock();},{capture:true});
 document.addEventListener('click',e=>{if(e.target.closest('button')&&!e.target.closest('#soundToggle'))cue('click');});
@@ -228,9 +236,9 @@ function frame(timestamp){
  const modal=!!document.querySelector('dialog[open]'),active=!paused&&!document.hidden&&!modal;
  sim.winding=winding;
  if(active){
-  const wasLoaded=sim.loading.loaded;if(sim.loading.step(delta))dirty=true;if(!wasLoaded&&sim.loading.loaded){cue('ready');updateReadouts();}
   if(winding){sim.wind(delta);const tick=Math.floor((sim.drawFraction??0)*24);if(tick!==ratchetStep){cue('ratchet',{intensity:.6+tick/60});ratchetStep=tick;}if(sim.drawFraction>=1&&!readyCue){cue('ready');readyCue=true;}}
-  else {feelFrame=launchFeel.advance(sim,delta,{speed:Number($('speed').value)});for(const event of feelFrame.events)cue(event.type==='release'?'releasePop':event.type,{intensity:event.intensity});}
+  const wasLoaded=sim.loading.loaded;if(sim.loading.step(delta))dirty=true;if(!wasLoaded&&sim.loading.loaded){cue('ready');updateReadouts();}
+  if(!winding){feelFrame=launchFeel.advance(sim,delta,{speed:Number($('speed').value)});for(const event of feelFrame.events)cue(event.type==='release'?'releasePop':event.type,{intensity:event.intensity});}
   if(sim.release&&!seenRelease){seenRelease=true;cue('launch');document.body.classList.remove('launch-kick');void stage.offsetWidth;document.body.classList.add('launch-kick');}
   const contacts=(sim.contactEvents??[]).filter(e=>e.seq>seenContactSequence);
   for(const hit of contacts){seenContactSequence=hit.seq;if(hit.material==='foliage'||hit.material==='sap'){cue(hit.material==='foliage'?'rustle':'sap',{intensity:hit.material==='foliage'?.22:.65});dirty=true;continue;}const bumper=!!enemyRecipe(hit.kind)||hit.material==='bumper';combo=sim.time-lastBumperAt<5?combo+1:1;lastBumperAt=sim.time;cue(bumper?'bumper':'impact',{material:hit.material??'wood',mass:Math.max(.15,Math.log10(sim.animal.grams)),intensity:Math.min(1,.35+(hit.strength??1)*.6),variant:(combo-1)%4});if(bumper)chime(['coin']);dirty=true;}
@@ -240,6 +248,7 @@ function frame(timestamp){
   const milestone=Math.floor(sim.maxX/Math.max(10,sim.c.longArm*10));if(milestone>scoreStep){scoreStep=milestone;cue('coin',{intensity:.45});}
  }
  if(!document.hidden){for(let i=soundQueue.length-1;i>=0;i--)if(timestamp>=soundQueue[i].at){cue(soundQueue[i].name);soundQueue.splice(i,1);}}
+ $('loadingTip').hidden=!active||sim.phase!=='ready'||!sim.loading.hint;
  const running=active&&(sim.loading.animating||winding||['swing','flight'].includes(sim.phase));
  const animating=(active&&feelFrame.animating)||renderer.needsAnimation()||previewRenderer.needsAnimation();
  const refresh=dirty||running||(!resultShown&&['finished','invalid'].includes(sim.phase));

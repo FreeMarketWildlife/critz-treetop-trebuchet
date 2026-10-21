@@ -24,7 +24,7 @@ test('a ground-loaded pouch winds and fires without penetrating the rail or endi
  assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.ok(s.release.time>.1);assert.ok(s.maxX>5);
 });
 test('payload collision extents use the same metre dimensions as the art',()=>{
- for(const a of CRITTERS){const s=new BuildSimulation(scaledPreset(a.id));let min=Infinity,max=-Infinity;for(let f=s.shot.getFixtureList();f;f=f.getNext()){const sh=f.getShape();if(sh.getType()==='circle'){min=Math.min(min,(sh.getCenter().x-sh.getRadius())*s.L);max=Math.max(max,(sh.getCenter().x+sh.getRadius())*s.L);}}
+ for(const a of CRITTERS){const s=new BuildSimulation(scaledPreset(a.id));let min=Infinity,max=-Infinity;for(let f=s.shot.getFixtureList();f;f=f.getNext()){const sh=f.getShape();if(sh.getType()==='polygon'){for(const p of sh.m_vertices){min=Math.min(min,p.x*s.L);max=Math.max(max,p.x*s.L);}}}
  assert.ok(Math.abs(max-min-a.length)<1e-8,a.id);assert.equal(s.payloadRadius*2,a.width);}
 });
 test('trough supports the loaded projectile; changing its friction changes the physical shot',()=>{

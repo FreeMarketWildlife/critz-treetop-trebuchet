@@ -23,7 +23,7 @@ test('fixed and hinged counterweights move on different paths; hinge has an inde
  const a=new BuildSimulation({...STARTER,mount:'fixed'}),b=new BuildSimulation({...STARTER,mount:'hinged',hanger:.2});a.fire();b.fire();for(let i=0;i<200;i++){a.step(1/120);b.step(1/120);}assert.equal(a.counter,a.arm);assert.notEqual(b.counter,b.arm);assert.ok(Math.abs(a.counterPoint().x-b.counterPoint().x)>.005);assert.ok(Math.abs(b.counter.getAngle()-b.arm.getAngle())>1);
 });
 test('release carries measured velocity directly into ballistic flight under Earth gravity',()=>{
- const s=new BuildSimulation({...STARTER,drag:0,pinAngle:-30});s.fire();while(!s.release&&s.phase==='swing')s.step(1/1000);assert.ok(s.release);const a=s.real(s.shot),time=s.time;for(let i=0;i<20;i++)s.step(1/1000);const dt=s.time-time,b=s.real(s.shot);approx(b.vx,a.vx,1e-8);approx(b.vy,a.vy-GRAVITY*dt,1e-8);approx(b.x,a.x+a.vx*dt,1e-8);assert.equal(s.sling,null);assert.ok(s.emptyCord);assert.ok(s.pouch);
+ const s=new BuildSimulation({...STARTER,drag:0,pinAngle:-30});s.fire();while(!s.release&&s.phase==='swing')s.step(1/1000);assert.ok(s.release);const state=()=>{const p=s.shot.getWorldCenter();return{...s.real(s.shot),x:p.x*s.L,y:p.y*s.L};};const a=state(),time=s.time;for(let i=0;i<20;i++)s.step(1/1000);const dt=s.time-time,b=state();approx(b.vx,a.vx,1e-8);approx(b.vy,a.vy-GRAVITY*dt,1e-8);approx(b.x,a.x+a.vx*dt,1e-8);assert.equal(s.sling,null);assert.ok(s.emptyCord);assert.ok(s.pouch);
 });
 test('release angle, pin length and axle loss materially affect the shot',()=>{
  const a=runBuild(STARTER),b=runBuild({...STARTER,pinAngle:25}),c=runBuild({...STARTER,pinLength:.15}),d=runBuild({...STARTER,bearing:'precision'});

@@ -1,8 +1,9 @@
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=16';
+import {addCritterFixtures} from './critter-body.js?v=17';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=17';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=16';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=16';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=16';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=17';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=17';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=17';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
@@ -67,9 +68,7 @@ export class BuildSimulation{
   this.payloadRadius=payloadRadius;
   const loaded=this.loadingPosition(tip);
   this.shot=this.body(loaded.x,loaded.y,0,this.payloadMass+pouchMass,'payload');
-  const half=Math.max(0,this.animal.length/2-payloadRadius)/this.L,pr=payloadRadius/this.L,payloadFixture={density:1,friction:.32,restitution:.32,filterGroupIndex:-1,filterCategoryBits:4};
-  if(half>0)this.shot.createFixture(Box(half,pr),payloadFixture);
-  for(const x of half>0?[-half,half]:[0])this.shot.createFixture(Circle(Vec2(x,0),pr),payloadFixture);
+  this.bodyProfile=addCritterFixtures(this.shot,this.animal,{lengthScale:this.L,massScale:this.M,mass:this.payloadMass+pouchMass,options:{friction:.32,restitution:.32,filterGroupIndex:-1,filterCategoryBits:4}});
   this.setMass(this.shot,this.payloadMass+pouchMass);this.shot.setBullet(true);
   this.sling=this.world.createJoint(RopeJoint({maxLength:c.slingLength/this.L,localAnchorA:Vec2(c.longArm/this.L,0),localAnchorB:Vec2(0,0)},this.arm,this.shot));
   this.startX=this.shot.getPosition().x*this.L;this.initialCounterY=this.counterPoint().y;this.initialEnergy=this.energy();this.initialPivot={x:pivot.x*this.L,y:pivot.y*this.L};
@@ -167,10 +166,11 @@ export class BuildSimulation{
  pivot(){if(this.beamBroken)return this.lastPivot;const p=this.axle?.getAnchorA()??this.arm.getPosition();return{x:p.x*this.L,y:p.y*this.L};}
  energy(){let E=0;for(const b of this.moving){const m=b.getMass()*this.M,v=b.getLinearVelocity(),w=b.getAngularVelocity()/this.T;E+=m*GRAVITY*b.getWorldCenter().y*this.L+.5*m*(v.x*v.x+v.y*v.y)*this.L+.5*(b.getInertia()-b.getMass()*b.getLocalCenter().lengthSquared())*this.M*this.L*this.L*w*w;}return E;}
  fire(){
-  if(this.phase!=='ready'||this.loading&&!this.loading.loaded)return false;
+  if(this.phase!=='ready'||this.loading&&(!this.loading.loaded||!this.loading.prepareLaunch()))return false;
   const fatal=this.facts.warnings.filter(w=>w.includes('exceeds')||w.includes('too small')||w.includes('starts below'));
   if(fatal.length){this.failure=fatal[0];this.phase='invalid';return false;}
   for(const [b,type]of this.storeTypes){b.setType(type);b.setAwake(true);}
+  if(this.loading){const motion=this.loading.motion;this.shot.setLinearVelocity(Vec2(motion.vx*this.T/this.L,motion.vy*this.T/this.L));this.shot.setAngularVelocity(motion.omega*this.T);}
   if(['anchored','floating'].includes(this.c.chassis))this.frame.setType('static');
   this.phase='swing';this.initialEnergy=this.energy();this.events.push({time:0,text:'Trigger withdrawn. Gravity takes over.'});return true;
  }
@@ -192,7 +192,7 @@ export class BuildSimulation{
    this.counter.setTransform(Vec2((pivot.x-c.shortArm*Math.cos(angle))/this.L,(pivot.y-c.shortArm*Math.sin(angle)-(c.chassis==='floating'?0:c.hanger))/this.L),0);
   }
   const loaded=this.loadingPosition(this.tip());
-  if(!this.loading||this.loading.loaded)this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
+  if(!this.loading)this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
   this.startX=loaded.x;this.initialCounterY=this.counterPoint().y;
  }
  wind(dt){
@@ -202,7 +202,7 @@ export class BuildSimulation{
   // respect motor power through d(mgh)/d(fraction). Ratchet holds at each stop.
   const angle=REST_ARM_ANGLE+span*f;
   const joulesPerFraction=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
-  const rate=Math.min(1/1.65,part(c.winch).power/Math.max(.01,joulesPerFraction));
+  const rate=Math.min(1/(this.loading?3:1.65),part(c.winch).power/Math.max(.01,joulesPerFraction));
   this.setDraw(f+Math.max(0,Math.min(.1,dt))*rate);
  }
  detach(reason){
