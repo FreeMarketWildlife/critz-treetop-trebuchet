@@ -1,10 +1,10 @@
-import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=13';
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=13';
-import {groveTreeCamera} from './grove-camera.js?v=13';
-import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=13';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=13';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=13';
-import {createAudio} from './audio.js?v=13';
+import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=14';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=14';
+import {groveTreeCamera} from './grove-camera.js?v=14';
+import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=14';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=14';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=14';
+import {createAudio} from './audio.js?v=14';
 import {loadAudioPreferences} from './audio-preferences.js';
 const $=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d'),mini=$('minimap'),mc=mini.getContext('2d'),clone=v=>structuredClone(v);
 const sound=createAudio({maxVoices:4});try{const pref=loadAudioPreferences(localStorage);sound.setMuted(pref.muted);sound.setVolume(pref.volume*.65);}catch{}

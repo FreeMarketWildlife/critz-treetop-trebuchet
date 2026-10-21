@@ -1,5 +1,5 @@
 import {World,Vec2,Box,Edge,RevoluteJoint} from '../vendor/planck/planck.mjs';
-import {GRAVITY} from './build-physics.js?v=13';
+import {GRAVITY} from './build-physics.js?v=14';
 /** A small similarity-scaled preparation world. Jointed volunteer parts collide
  * with the stand, branch and open basket. Pointer force acts at the picked point.
  * The held volunteer can enter from the front (basket contacts are enabled on

@@ -1,10 +1,10 @@
-import {drawCounterweight} from './counterweight-art.js?v=13';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=13';
-import {RopeVisual} from './rope-visual.js?v=13';
-import {part,grams} from './build-catalog.js?v=13';
-import {drawGroveWorld} from './grove-art.js?v=13';
-import {createCritterPerformance} from './critter-performance.js?v=13';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=13';
+import {drawCounterweight} from './counterweight-art.js?v=14';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=14';
+import {RopeVisual} from './rope-visual.js?v=14';
+import {part,grams} from './build-catalog.js?v=14';
+import {drawGroveWorld} from './grove-art.js?v=14';
+import {createCritterPerformance} from './critter-performance.js?v=14';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=14';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
