@@ -2594,6 +2594,16 @@
     "objectId": "route-forest-bough-13-1"
   },
   {
+    "id": "object-route-rare-bough-55-3",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.018110681290139,
+    "height": 0.958468461288696,
+    "extent": 7.018110681290139,
+    "measure": "Physical polygon · leaf",
+    "objectId": "route-rare-bough-55-3"
+  },
+  {
     "id": "object-route-forest-bough-0-2",
     "name": "Forest branch",
     "category": "World solids",
@@ -2622,6 +2632,126 @@
     "extent": 7.019148890195424,
     "measure": "Physical polygon · wood",
     "objectId": "route-forest-bough-12-2"
+  },
+  {
+    "id": "object-route-rare-bough-58-2",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.02033971793503,
+    "height": 1.0581978061615303,
+    "extent": 7.02033971793503,
+    "measure": "Physical polygon · leaf",
+    "objectId": "route-rare-bough-58-2"
+  },
+  {
+    "id": "object-route-rare-bough-56-2",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.024760434521738,
+    "height": 1.257566401502011,
+    "extent": 7.024760434521738,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-56-2"
+  },
+  {
+    "id": "object-route-rare-bough-57-2",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.024760434521738,
+    "height": 1.257566401502018,
+    "extent": 7.024760434521738,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-57-2"
+  },
+  {
+    "id": "object-route-rare-bough-57-1",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.042655259392546,
+    "height": 1.6132762969627734,
+    "extent": 7.042655259392546,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-57-1"
+  },
+  {
+    "id": "object-route-rare-bough-58-1",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.045572576798975,
+    "height": 1.712672025061842,
+    "extent": 7.045572576798975,
+    "measure": "Physical polygon · leaf",
+    "objectId": "route-rare-bough-58-1"
+  },
+  {
+    "id": "object-route-rare-bough-55-0",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.046549531063036,
+    "height": 1.47153893120106,
+    "extent": 7.046549531063036,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-55-0"
+  },
+  {
+    "id": "object-route-rare-bough-57-0",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.052951736214396,
+    "height": 1.5851247334621803,
+    "extent": 7.052951736214396,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-57-0"
+  },
+  {
+    "id": "object-route-rare-bough-58-0",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.056873679190119,
+    "height": 1.6843683959503721,
+    "extent": 7.056873679190119,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-58-0"
+  },
+  {
+    "id": "object-route-rare-bough-55-1",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.063735301672196,
+    "height": 2.2230735558526717,
+    "extent": 7.063735301672196,
+    "measure": "Physical polygon · leaf",
+    "objectId": "route-rare-bough-55-1"
+  },
+  {
+    "id": "object-route-rare-bough-56-1",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.06373530167221,
+    "height": 2.2230735558526717,
+    "extent": 7.06373530167221,
+    "measure": "Physical polygon · leaf",
+    "objectId": "route-rare-bough-56-1"
+  },
+  {
+    "id": "object-route-rare-bough-55-2",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.06499971139057,
+    "height": 2.052776655407783,
+    "extent": 7.06499971139057,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-55-2"
+  },
+  {
+    "id": "object-route-rare-bough-56-0",
+    "name": "Rare emergent bough",
+    "category": "World solids",
+    "width": 7.083652583444746,
+    "height": 2.292784042056631,
+    "extent": 7.083652583444746,
+    "measure": "Physical polygon · wood",
+    "objectId": "route-rare-bough-56-0"
   },
   {
     "id": "object-opening-skip-4",
@@ -3212,6 +3342,46 @@
     "extent": 17.195202748726906,
     "measure": "Physical polygon · wood",
     "objectId": "oak-scaffold-3-west"
+  },
+  {
+    "id": "object-amazon-tree-55-crown",
+    "name": "Rare emergent crown · background",
+    "category": "World scenery",
+    "width": 18,
+    "height": 16,
+    "extent": 18,
+    "measure": "Scenery polygon · foliage",
+    "objectId": "amazon-tree-55-crown"
+  },
+  {
+    "id": "object-amazon-tree-56-crown",
+    "name": "Rare emergent crown · background",
+    "category": "World scenery",
+    "width": 18,
+    "height": 16,
+    "extent": 18,
+    "measure": "Scenery polygon · foliage",
+    "objectId": "amazon-tree-56-crown"
+  },
+  {
+    "id": "object-amazon-tree-57-crown",
+    "name": "Rare emergent crown · background",
+    "category": "World scenery",
+    "width": 18,
+    "height": 16,
+    "extent": 18,
+    "measure": "Scenery polygon · foliage",
+    "objectId": "amazon-tree-57-crown"
+  },
+  {
+    "id": "object-amazon-tree-58-crown",
+    "name": "Rare emergent crown · background",
+    "category": "World scenery",
+    "width": 18,
+    "height": 16,
+    "extent": 18,
+    "measure": "Scenery polygon · foliage",
+    "objectId": "amazon-tree-58-crown"
   },
   {
     "id": "object-oak-scaffold-0-east",
@@ -4347,6 +4517,82 @@
     "height": 60,
     "extent": 60,
     "measure": "60 m total height"
+  },
+  {
+    "id": "tree-amazon-tree-58",
+    "name": "Rare Amazon emergent",
+    "category": "Trees",
+    "width": 18,
+    "height": 85,
+    "extent": 85,
+    "measure": "85 m total height"
+  },
+  {
+    "id": "object-amazon-tree-58-trunk",
+    "name": "Rare emergent · 85m · background",
+    "category": "World scenery",
+    "width": 2,
+    "height": 85,
+    "extent": 85,
+    "measure": "Scenery polygon · wood",
+    "objectId": "amazon-tree-58-trunk"
+  },
+  {
+    "id": "tree-amazon-tree-55",
+    "name": "Rare Amazon emergent",
+    "category": "Trees",
+    "width": 18,
+    "height": 88.5,
+    "extent": 88.5,
+    "measure": "88.5 m total height"
+  },
+  {
+    "id": "tree-amazon-tree-56",
+    "name": "Rare Amazon emergent",
+    "category": "Trees",
+    "width": 18,
+    "height": 88.5,
+    "extent": 88.5,
+    "measure": "88.5 m total height"
+  },
+  {
+    "id": "tree-amazon-tree-57",
+    "name": "Rare Amazon emergent",
+    "category": "Trees",
+    "width": 18,
+    "height": 88.5,
+    "extent": 88.5,
+    "measure": "88.5 m total height"
+  },
+  {
+    "id": "object-amazon-tree-55-trunk",
+    "name": "Rare emergent · 88.5m · background",
+    "category": "World scenery",
+    "width": 2.1999999999999886,
+    "height": 88.5,
+    "extent": 88.5,
+    "measure": "Scenery polygon · wood",
+    "objectId": "amazon-tree-55-trunk"
+  },
+  {
+    "id": "object-amazon-tree-56-trunk",
+    "name": "Rare emergent · 88.5m · background",
+    "category": "World scenery",
+    "width": 2.1000000000000227,
+    "height": 88.5,
+    "extent": 88.5,
+    "measure": "Scenery polygon · wood",
+    "objectId": "amazon-tree-56-trunk"
+  },
+  {
+    "id": "object-amazon-tree-57-trunk",
+    "name": "Rare emergent · 88.5m · background",
+    "category": "World scenery",
+    "width": 2.1999999999999886,
+    "height": 88.5,
+    "extent": 88.5,
+    "measure": "Scenery polygon · wood",
+    "objectId": "amazon-tree-57-trunk"
   },
   {
     "id": "grandfather-oak",

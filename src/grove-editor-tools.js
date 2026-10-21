@@ -1,4 +1,4 @@
-import {validateGroveMap,objectBounds,enemyRecipe} from './grove-map.js?v=35';
+import {validateGroveMap,objectBounds,enemyRecipe} from './grove-map.js?v=36';
 const clone=v=>structuredClone(v);
 export function createEditorHistory(initial,limit=80){
  let states=[clone(initial)],index=0;
@@ -20,4 +20,4 @@ export function simplifyStroke(points,tolerance){
 }
 export function insertVertex(o,index){if(!o.points)return o;const end=o.type==='polygon'?(index+1)%o.points.length:Math.min(index+1,o.points.length-1),a=o.points[index],b=o.points[end];if(index===end)throw Error('Select a segment before inserting a point.');const points=o.points.map(p=>({...p}));points.splice(index+1,0,{x:(a.x+b.x)/2,y:(a.y+b.y)/2});return {...o,points};}
 export function removeVertex(o,index){const minimum=o.type==='polygon'?3:2;if(!o.points||o.points.length<=minimum)throw Error(`This shape needs at least ${minimum} points.`);return {...o,points:o.points.filter((_,i)=>i!==index).map(p=>({...p}))};}
-export {encodeMapLink,decodeMapLink} from './map-link-codec.js?v=35';
+export {encodeMapLink,decodeMapLink} from './map-link-codec.js?v=36';

@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "status": "Code-level evidence from the V4 revision-2 source; native desktop/phone acceptance is pending. See release-readiness.md for release status.",
+  "status": "Code-level evidence; native browser acceptance pending; see release-readiness.md for release status",
   "map": {
     "version": 4,
-    "starterRevision": 2,
+    "starterRevision": 3,
     "launch": {
       "x": 0,
       "y": 32
@@ -16,7 +16,7 @@
       "crownRadius": 38,
       "crownDepth": 64
     },
-    "canonicalSha256": "14b1519ec2191432a6109472fcb9698d553d6132f1478c513f08f9c7953565c2"
+    "canonicalSha256": "06e741415ebe9f37514fb943a548e0d9e56ac7e11c3a58f7f8fc9a1e07569817"
   },
   "protocol": {
     "preparationStep": 0.008333333333333333,
@@ -1011,9 +1011,9 @@
       "ropeLimit": 2500000,
       "peakStress": 33685512.38962727,
       "beamFailureStress": 320000000,
-      "distance": 338.24547353325863,
-      "maxHeightAboveFloor": 70.18095852775085,
-      "completionSeconds": 19.960806475161945,
+      "distance": 182.3574187126648,
+      "maxHeightAboveFloor": 72.47191085384931,
+      "completionSeconds": 26.071325993557625,
       "phase": "finished",
       "failure": "",
       "preReleaseContacts": []
@@ -1075,9 +1075,9 @@
       "ropeLimit": 1500000000,
       "peakStress": 123610403.29956828,
       "beamFailureStress": 320000000,
-      "distance": 222.62360020192494,
-      "maxHeightAboveFloor": 93.32596171647631,
-      "completionSeconds": 25.102862275934005,
+      "distance": 258.2910243675765,
+      "maxHeightAboveFloor": 96.06091867447756,
+      "completionSeconds": 27.939048645868798,
       "phase": "finished",
       "failure": "",
       "preReleaseContacts": []
@@ -1107,9 +1107,9 @@
       "ropeLimit": 1500000000,
       "peakStress": 188532566.90249407,
       "beamFailureStress": 320000000,
-      "distance": 325.5412941691081,
+      "distance": 301.62324118570257,
       "maxHeightAboveFloor": 98.2030225413961,
-      "completionSeconds": 18.603862352867342,
+      "completionSeconds": 18.822395976011396,
       "phase": "finished",
       "failure": "",
       "preReleaseContacts": []
@@ -1139,9 +1139,9 @@
       "ropeLimit": 1500000000,
       "peakStress": 281447755.9346082,
       "beamFailureStress": 320000000,
-      "distance": 274.29603897512214,
+      "distance": 325.96763750409485,
       "maxHeightAboveFloor": 101.84045993049494,
-      "completionSeconds": 22.608728533529035,
+      "completionSeconds": 19.069433984782936,
       "phase": "finished",
       "failure": "",
       "preReleaseContacts": []

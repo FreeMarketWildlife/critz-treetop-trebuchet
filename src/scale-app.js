@@ -1,7 +1,9 @@
-import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG,formatMetres} from './world-scale.js?v=35';
+import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG,formatMetres} from './world-scale.js?v=36';
 import {SCALE_BUILDS,scaleBuildFacts} from './scale-builds.js?v=35';
 const $=id=>document.getElementById(id),el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node;};
 const inventory=scaleInventory();
+const forestTrees=inventory.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak'),ordinary=forestTrees.filter(e=>e.height<=60),rare=forestTrees.filter(e=>e.height>60);
+if(ordinary.length){const range=[Math.min(...ordinary.map(e=>e.height)),Math.max(...ordinary.map(e=>e.height))];$('forestScaleStat').replaceChildren(el('b',`${range[0]}–${range[1]} m`),document.createTextNode(' forest'+(rare.length?` · rare to ${formatMetres(Math.max(...rare.map(e=>e.height)))}`:'')));}
 $('mapArt').innerHTML=authoredMapSVG();
 for(const panel of comparisonPanels(inventory)){
  const section=el('section');section.id=panel.id;const wrap=el('div');wrap.className='art-wrap';wrap.tabIndex=0;wrap.setAttribute('aria-label',panel.title+'. Scroll sideways for the full comparison.');wrap.innerHTML=scalePanelSVG(panel.entries,{title:panel.title,subtitle:panel.subtitle,height:panel.height});section.append(wrap);$('panels').append(section);
@@ -22,4 +24,4 @@ function render(){
 }
 $('search').addEventListener('input',render);$('category').addEventListener('change',render);render();
 
-if(document.documentElement.dataset.authorTools==='local'&&new URLSearchParams(location.search).get('author')==='1')$('authorWorkshopLink').hidden=false;
+if(['local','explicit'].includes(document.documentElement.dataset.authorTools)&&new URLSearchParams(location.search).get('author')==='1')$('authorWorkshopLink').hidden=false;

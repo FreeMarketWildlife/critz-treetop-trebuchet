@@ -1,11 +1,11 @@
-import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=35';
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=36';
 import {windingMotion} from './winding-comfort.js?v=35';
 import {recipeDrawMinimum} from './scale-builds.js?v=35';
 import {addCritterFixtures} from './critter-body.js?v=25';
 import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=25';
 import * as P from '../vendor/planck/planck.mjs';
 import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=35';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=36';
 import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=25';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
 export const EARTH_GRAVITY=9.80665;

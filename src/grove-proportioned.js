@@ -85,7 +85,7 @@ export function proportionedV1StarterObjects(makeEnemy){
 
 /** Revision two broadens actual flight routes with small, real branches. The
  * original generator remains callable for non-destructive migration detection. */
-export function proportionedStarterObjects(makeEnemy){
+export function proportionedV2StarterObjects(makeEnemy){
  const objects=proportionedV1StarterObjects(makeEnemy),floor=-PROPORTIONED_LAUNCH_Y;
  const poly=(id,name,points,material='wood',bounce=.55,extra={})=>objects.push({id,name,type:'polygon',points,collision:true,layer:'world',material,bounce,...extra});
  const limb=(id,name,x,y,length,rise=0,width=.2,material='wood',bounce=.58)=>poly(id,name,branchPolygon(point(x,y),point(x+length,y+rise),width,width*.6),material,bounce);
@@ -129,6 +129,31 @@ export function proportionedStarterObjects(makeEnemy){
  // assign flight velocity or change any encounter size or launcher contact.
  for(const[i,x,y,height]of[[0,41.2,-12.2,30],[1,57.7,13.1,60],[2,112.1,11.6,45],[3,177.1,18.4,60],[4,324.8,-19.7,30],[5,293.6,-18.9,30],[6,320.5,4.6,45],[7,350,8.1,45],[8,146.5,24.9,60],[9,218.1,17.1,60],[10,250.7,21.1,60],[11,255.8,13.5,60]]){
   tree(43+i,x+2,height,1.05);limb(`route-descent-fork-${i}`,i>=8?'Sturdy landing fork':'Forest descent fork',x,y,7,-.08,.2,i>=8?'wood':'leaf',i>=8?.38:.68);
+ }
+ return objects;
+}
+
+/** Four rare emergents join the upper prepared-flight route. The height ceiling
+ * is anchored to the measured 88.5m Dinizia excelsa; crown/branch dimensions
+ * and positions below are authored game geometry, not botanical measurements.
+ * https://www.botanic.cam.ac.uk/expedition-finds-the-tallest-tree-in-the-amazon/
+ * Trunks/crowns are background props; every supporting bough is its editable
+ * visible polygon. No collision wall, scaled encounter or extra impulse. */
+export function proportionedStarterObjects(makeEnemy){
+ const objects=proportionedV2StarterObjects(makeEnemy),floor=-PROPORTIONED_LAUNCH_Y;
+ const poly=(id,name,points,material,bounce,extra={})=>objects.push({id,name,type:'polygon',points,collision:true,layer:'world',material,bounce,...extra});
+ const bough=(id,name,x,y,endX,endY,width=.32,material='wood',bounce=.58)=>poly(id,name,branchPolygon(point(x,y),point(endX,endY),width,width*.45),material,bounce);
+ const back={collision:false,layer:'back',bounce:0};
+ for(const[i,x,height,diameter,branches]of[
+  [55,96,88.5,2.2,[[0,-1,36.8,6,38,.38,'wood',.58],[1,0,40.5,-7,42.5,.32,'leaf',.72],[2,0,52.8,-7,54.6,.36,'wood',.38],[3,0,54.6,7,55.4,.22,'leaf',.55]]],
+  [56,182,88.5,2.1,[[0,-1,41,6,43,.42,'wood',.58],[1,0,48.2,-7,50.2,.32,'leaf',.72],[2,0,54.2,7,55.3,.22,'wood',.38]]],
+  [57,240,88.5,2.2,[[0,0,39.2,7,40.5,.4,'wood',.38],[1,0,47.1,-7,48.5,.3,'wood',.38],[2,0,54.5,7,55.6,.22,'wood',.38]]],
+  [58,310,85,2,[[0,0,36.8,7,38.2,.4,'wood',.38],[1,0,44,-7,45.5,.3,'leaf',.55],[2,0,51.6,7,52.5,.22,'leaf',.55]]]
+ ]){
+  const top=height-32;
+  poly(`amazon-tree-${i}-trunk`,`Rare emergent · ${height}m · background`,[point(x-diameter/2,floor),point(x+diameter/2,floor),point(x+.15,top),point(x-.15,top)],'wood',0,back);
+  poly(`amazon-tree-${i}-crown`,'Rare emergent crown · background',ellipse(x,top-8,9,8),'foliage',0,{...back,density:.5});
+  for(const[j,dx,y,endDx,endY,width,material,bounce]of branches)bough(`route-rare-bough-${i}-${j}`,'Rare emergent bough',x+dx,y,x+endDx,endY,width,material,bounce);
  }
  return objects;
 }

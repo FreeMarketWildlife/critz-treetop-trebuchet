@@ -83,3 +83,7 @@ test('valid custom scenery edits and zero-height chains remain inspectable witho
  const svg=scalePanelSVG([horizontal]);assert.doesNotMatch(svg,/NaN|Infinity/);assert.ok(svg.length<10000);assert.match(svg,/polyline/);
  assert.ok(rows.some(e=>e.objectId==='amazon-tree-0-trunk'),'unpaired trunk remains individually inventoried');
 });
+
+test('world comparison includes the tallest rare rooted emergent without overflowing the shared metre panel',()=>{
+ const rows=scaleInventory(),rare=rows.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak'&&e.height>60),panel=comparisonPanels(rows).find(p=>p.id==='world');assert.equal(rare.length,4);assert.ok(rare.every(e=>e.height<=88.5));assert.ok(panel.entries.some(e=>e.category==='Trees'&&e.height===88.5));assert.match(panel.subtitle,/rare emergents/);assert.doesNotMatch(scalePanelSVG(panel.entries,{height:panel.height}),/NaN|Infinity/);
+});

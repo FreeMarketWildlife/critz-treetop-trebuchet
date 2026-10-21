@@ -1,31 +1,31 @@
-import {createWorldSession} from './world-session.js?v=35';
+import {createWorldSession} from './world-session.js?v=36';
 import {editorMapStorage} from './editor-storage.js';
-import {createWorldLinkLoader} from './world-link.js?v=35';
+import {createWorldLinkLoader} from './world-link.js?v=36';
 import {createScaleBuild} from './scale-builds.js?v=35';
-import {drawAltitudeStrip} from './altitude-strip.js?v=35';
+import {drawAltitudeStrip} from './altitude-strip.js?v=36';
 import {installPauseMenu} from './pause-menu.js';
 import {createWeaponHud} from './weapon-hud.js?v=25';
 import {jungleLayerAt} from './grove-jungle.js?v=35';
-import {createLaunchFeel} from './launch-feel.js?v=35';
-import {createPayloadLoading} from './payload-loading.js?v=35';
+import {createLaunchFeel} from './launch-feel.js?v=36';
+import {createPayloadLoading} from './payload-loading.js?v=36';
 import {crankState} from './crank-wheel.js?v=30';
 import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=30';
 import {fitEquipment,purchaseFit} from './build-equipment.js?v=35';
 import {createCapacityControls} from './capacity-controls.js?v=30';
-import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=35';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=35';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=35';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=35';
+import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=36';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=36';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=36';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=36';
 import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack,shopView} from './build-shop.js?v=35';
-import {drawShopArt} from './shop-art.js?v=35';
+import {drawShopArt} from './shop-art.js?v=36';
 import {createHoldControl} from './hold-control.js';
 import {createAudio} from './audio.js?v=28';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=35';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=36';
 import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=25';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=35';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=36';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
-const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1',authorMode=params.get('author')==='1'&&document.documentElement.dataset.authorTools==='local';
+const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1',authorMode=params.get('author')==='1'&&['local','explicit'].includes(document.documentElement.dataset.authorTools);
 let worldMapStorage;try{worldMapStorage=editorMapStorage(localStorage,sessionStorage,{qa});}catch{}
 const worldSession=createWorldSession({storage:worldMapStorage});
 let runtimeWorldRevision=worldSession.revision,editingWorld=false,pausedBeforeEdit=false;
@@ -402,7 +402,7 @@ populate();applyBuild({quiet:true});
 if(!resumePendingSpace()&&params.get('creative')==='1')switchMode(true);
 if(creative&&params.has('scaleBuild')){try{draft=createScaleBuild(params.get('scaleBuild'));populate();applyBuild({quiet:true});}catch(e){toast(e.message);}}
 if(editorSession){saving=false;$('saveEnabled').checked=false;$('saveEnabled').disabled=true;$('adventureMode').disabled=true;$('saveStatus').textContent='Editor playtest: Adventure progress is untouched.';window.parent.postMessage({type:'grove-playtest-ready'},location.origin);}
-const {installWorldWorkshop}=authorMode?await import('./world-workshop.js?v=35'):{installWorldWorkshop:()=>Object.freeze({setMode:async()=>false})};
+const {installWorldWorkshop}=authorMode?await import('./world-workshop.js?v=36'):{installWorldWorkshop:()=>Object.freeze({setMode:async()=>false})};
 const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMode,onError:error=>toast(error.message),
  onEnterEdit(){
   if(protectSpaceResult())return false;

@@ -1,13 +1,13 @@
-import {landingOpportunity} from './landing-opportunity.js?v=35';
+import {landingOpportunity} from './landing-opportunity.js?v=36';
 import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=25';
 import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=35';
-import {drawFlightAccents} from './flight-art.js?v=35';
+import {GRAVITY} from './build-physics.js?v=36';
+import {drawFlightAccents} from './flight-art.js?v=36';
 import {drawCounterweight} from './counterweight-art.js?v=25';
 import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=30';
-import {RopeVisual} from './rope-visual.js?v=35';
+import {RopeVisual} from './rope-visual.js?v=36';
 import {part,grams} from './build-catalog.js?v=30';
-import {drawGroveWorld} from './grove-art.js?v=35';
+import {drawGroveWorld} from './grove-art.js?v=36';
 import {createCritterPerformance} from './critter-performance.js?v=25';
 import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=35';
 const TAU=Math.PI*2;

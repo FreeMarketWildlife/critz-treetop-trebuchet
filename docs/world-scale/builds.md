@@ -70,11 +70,11 @@ One physical Enter drop per case, powered winding, at least 0.25 s continuous ob
 | large | 40% | 2.358 s | 13.576 m/s / 39.919° | 303997.856 N | 128.970 m | 58.445 m | 17.142 s |
 | large | 60% | 3.283 s | 36.722 m/s / 10.600° | 35909.842 N | 243.813 m | 56.888 m | 16.249 s |
 | large | 80% | 4.217 s | 52.500 m/s / 8.217° | 66606.501 N | 87.277 m | 57.369 m | 17.142 s |
-| large | 100% | 5.142 s | 67.288 m/s / 15.496° | 108856.270 N | 338.245 m | 70.181 m | 19.961 s |
+| large | 100% | 5.142 s | 67.288 m/s / 15.496° | 108856.270 N | 182.357 m | 72.472 m | 26.071 s |
 | elephant | 60% | 6.075 s | 29.283 m/s / 39.712° | 2269703.756 N | 150.196 m | 82.655 m | 22.998 s |
-| elephant | 75% | 7.467 s | 42.300 m/s / 32.921° | 1834356.568 N | 222.624 m | 93.326 m | 25.103 s |
-| elephant | 90% | 8.858 s | 54.551 m/s / 32.237° | 2861974.538 N | 325.541 m | 98.203 m | 18.604 s |
-| elephant | 100% | 9.792 s | 61.823 m/s / 35.197° | 4332679.034 N | 274.296 m | 101.840 m | 22.609 s |
+| elephant | 75% | 7.467 s | 42.300 m/s / 32.921° | 1834356.568 N | 258.291 m | 96.061 m | 27.939 s |
+| elephant | 90% | 8.858 s | 54.551 m/s / 32.237° | 2861974.538 N | 301.623 m | 98.203 m | 18.822 s |
+| elephant | 100% | 9.792 s | 61.823 m/s / 35.197° | 4332679.034 N | 325.968 m | 101.840 m | 19.069 s |
 
 Every case finishes normally with a clean forward/upward pin release, finite state and forces below its actual cord/beam limits. All use one drop and finish winding supported. No pre-release arm/counter/payload world contacts occur except the intended home branch.
 
@@ -84,6 +84,6 @@ Every case finishes normally with a clean forward/upward pin release, finite sta
 
 The previous measurements are retained in [archive/full-draw-first-pass.json](archive/full-draw-first-pass.json) and its accompanying report. They describe the superseded first checkpoint and must not be presented as current values.
 
-Native phone/desktop comfort, art clearance and held-input acceptance remain pending because this task currently has no supported browser-control tool. Custom maps can deliberately obstruct a rig; arbitrary altered geometry is not certified. The authored forest now continues to 733 m. Measured longest contact gaps still reach 3.75 s for Bear and 5.40 s for Elephant, so the roughly one-second goal remains unmet. The 220 m endgame space rig is a separate fantasy blueprint, not one of these four ordinary grove-scale machines. The old −15° variant peaks around 993 m on the lower V4 deck; the optional [V4 +5° blueprint](v4-space-blueprint.json) reaches the actual 3,000 m boundary with one drop and no injected velocity. Its native acceptance remains pending. See the release checklist for GitHub/CI/publication state.
+Native phone/desktop comfort, art clearance and held-input acceptance remain pending because this task currently has no supported browser-control tool. Custom maps can deliberately obstruct a rig; arbitrary altered geometry is not certified. The authored forest now continues to 733 m. Current no-weapon full-draw longest contact gaps reach 3.23 s for Bear and 4.68 s for Elephant; some weapon trajectories reach 8.43 s. See [all 28 before/after routes](upper-route-comparison.json), so the roughly one-second goal remains unmet. The 220 m endgame space rig is a separate fantasy blueprint, not one of these four ordinary grove-scale machines. The old −15° variant peaks around 993 m on the lower V4 deck; the optional [V4 +5° blueprint](v4-space-blueprint.json) reaches the actual 3,000 m boundary with one drop and no injected velocity. Its native acceptance remains pending. See the release checklist for GitHub/CI/publication state.
 
 The complete suite is run against the final source after integration; see the release checklist for the exact result.

@@ -1,6 +1,6 @@
 import {windingMinimum,windingMotion} from './winding-comfort.js?v=35';
 import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
-import {GRAVITY} from './build-physics.js?v=35';
+import {GRAVITY} from './build-physics.js?v=36';
 const n=value=>Number(value.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6});
 const mass=g=>g>=1000000?n(g/1000000)+' t':g>=1000?n(g/1000)+' kg':n(g)+' g';
 /** What a purchased part changes, independent of a promised distance increase. */

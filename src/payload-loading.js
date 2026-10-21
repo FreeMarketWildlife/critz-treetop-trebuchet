@@ -1,7 +1,7 @@
 import {critterBodyProfile} from './critter-body.js?v=25';
 import {World,Vec2,Box,Edge,RevoluteJoint,MouseJoint} from '../vendor/planck/planck.mjs';
 import {LOADING_LINEAR_DAMPING} from './winding-comfort.js?v=35';
-import {GRAVITY} from './build-physics.js?v=35';
+import {GRAVITY} from './build-physics.js?v=36';
 /** Jointed preparation bodies remain free on real basket contacts, including
  * after a successful drop and while winding. `loaded` only observes support;
  * it never welds, centers, replaces or freezes the ragdoll. */
