@@ -1,4 +1,4 @@
-import {branchPolygon,slopedPlatform} from './grove-branches.js?v=20';
+import {branchPolygon,slopedPlatform} from './grove-branches.js?v=21';
 export const CROWN_TREE=Object.freeze({height:800,trunkX:-145,trunkWidth:280,doorX:-8,crownRadius:500,crownDepth:350});
 const ellipsePoints=(x,y,rx,ry)=>Array.from({length:12},(_,i)=>({x:x+Math.cos(i*Math.PI/6)*rx,y:y+Math.sin(i*Math.PI/6)*ry}));
 export function crownStarterObjects(base,makeEnemy){
@@ -102,5 +102,19 @@ export function openingLandmarkObjects(base){
  // It rejoins a broad terrace rather than adding another long empty fall.
  poly('opening-rescue-mat','Low route · fern spring',[{x:30.5,y:-13.5},{x:34.5,y:-15.5},{x:34.5,y:-15.95},{x:30.5,y:-13.95}],'leaf',true,.84);
  poly('opening-rest-terrace','Low route · mossy landing terrace',[{x:37,y:-24},{x:48,y:-24},{x:48,y:-24.65},{x:37,y:-24.65}],'wood',true,.62);
+ return objects;
+}
+
+/** A quiet landing after the four spring mats. Two shallow, passive logs
+ * catch coast/weapon trajectories before overlapping lower foliage turns
+ * them into a long vertical fall. The west log also catches the low leftward
+ * staff path; a real two-metre fork remains open between the logs. */
+export function canopyExitObjects(base){
+ const objects=base.objects.map(o=>({...o}));
+ for(const [side,x,y,endX,endY]of[['west',22,-55+(38-22)*1.5/28,66,-56.5],['east',68,-61+(70-68)*2/30,100,-63]])objects.push({
+  id:`canopy-exit-${side}-log`,name:`Canopy exit · ${side} moss log`,type:'polygon',
+  points:[{x,y},{x:endX,y:endY},{x:endX,y:endY-.8},{x:endX-3,y:endY-1.2},{x:x+4,y:y-1.2},{x,y:y-.6}],
+  collision:true,layer:'world',material:'wood',bounce:.42
+ });
  return objects;
 }

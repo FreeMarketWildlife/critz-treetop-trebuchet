@@ -8,7 +8,7 @@ const near=(a,b,label)=>assert.ok(Math.abs(a-b)<1e-8,`${label}: ${a} / ${b}`);
 
 test('landing landmarks are small editable backdrop shapes with no hidden contact',()=>{
  const map=validateGroveMap(createGroveMap()),before=validateGroveMap(createOpeningGroveMap()),landmarks=map.objects.filter(o=>o.id.startsWith('opening-landmark-'));
- assert.equal(map.starterRevision,6);assert.equal(landmarks.length,20);assert.equal(map.objects.length,before.objects.length+22);
+ assert.equal(map.starterRevision,7);assert.equal(landmarks.length,20);assert.equal(map.objects.length,before.objects.length+24);
  for(const o of landmarks){assert.equal(o.collision,false);assert.equal(o.layer,'back');assert.ok(['polygon','circle'].includes(o.type));if(o.type==='circle')assert.ok(o.radius<=.23);}
  for(const id of ['opening-skip-1','opening-skip-2','opening-skip-3','opening-skip-4','launch-bough'])assert.deepEqual(map.objects.find(o=>o.id===id),before.objects.find(o=>o.id===id));
  const values=new Map(),storage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v)};saveGroveMap(storage,map);assert.deepEqual(readGroveMap(storage),map);
@@ -30,10 +30,10 @@ test('the low route replaces a medium throw’s empty fall with distinct physica
  assert.ok(after.time<12,'the alternative route settles instead of adding a long vertical tail');assert.ok(events.every(e=>!e.id.startsWith('opening-landmark-')));
 });
 
-test('landmarks and the optional low path leave weak/full journeys and every release intact',()=>{
+test('the landing route leaves weak journeys, four opening rebounds and every release intact',()=>{
  for(const draw of[.5,.75,1]){
   const a=flight(createOpeningGroveMap(),draw),b=flight(createGroveMap(),draw);assert.equal(b.failure,'');assert.equal(b.phase,'finished');
   for(const key of['x','y','vx','vy','angle','speed','time','energy'])near(a.release[key],b.release[key],`${draw} release ${key}`);
-  if(draw!==.75){near(a.maxX,b.maxX,`${draw} range`);near(a.time,b.time,`${draw} duration`);assert.deepEqual(a.contactEvents.map(e=>e.id),b.contactEvents.map(e=>e.id));}
+  if(draw===.5){near(a.maxX,b.maxX,`${draw} range`);near(a.time,b.time,`${draw} duration`);assert.deepEqual(a.contactEvents.map(e=>e.id),b.contactEvents.map(e=>e.id));}if(draw===1){assert.deepEqual(a.contactEvents.slice(0,4).map(e=>e.id),b.contactEvents.slice(0,4).map(e=>e.id));assert.ok(b.time<25);}
  }
 });

@@ -1,3 +1,9 @@
+# Overnight pass 4 checkpoint — October 21, 2026
+
+Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-4/implementation.md for 463 tests, 48 fixed-input comparisons, calmer lens hold, 20.28 px phone floor, bounded .62 approach playback, accessible Fire/F parity, and canonical revision-7 passive exit (499 pieces). Two widened logs catch reproduced long staff descents while retaining a 2 m fork and 3.7 s air pause; no physical truncation or launcher retune. Next priority: large-scale woodland light/material separation and first-time weapon/timing clarity. Preserve saves, loose loading, weapons, .55 release continuity, and disabled experimental guards. Sites packaging/save/deploy remains deferred pending parent/user approval. Keep localhost:8080 running.
+
+---
+
 # Overnight pass 3 checkpoint — October 21, 2026
 
 Continue on codex/custom-trebuchet-workshop. Read docs/overnight-pass-3/implementation.md: 450-test checkpoint, earlier landing context, canonical revision-6 map (497 editable pieces), lower medium route, distinct species silhouettes, actual Mac desktop/phone/editor checks, and measured settling diagnosis. Long extreme falls contain real decaying rebounds; no physics truncation was justified. Next focus: the full-throw gap after mat four and subjective camera breathing/weapon timing. Preserve launcher, .55-second release acquisition, saves, weapons and disabled experimental guards. Sites packaging/save/deploy remains deferred pending parent/user release approval. Keep localhost:8080 running.

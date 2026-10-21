@@ -27,3 +27,20 @@ test('quiet leaves and sap cannot trigger camera impact or hit pause; stalled sw
 });
 
 test('a held release beat also freezes display-rope inertia, not just its gravity',async()=>{const{RopeVisual}=await import('../src/rope-visual.js');const r=new RopeVisual(),a={x:0,y:2},b={x:1,y:1};for(let i=0;i<10;i++)r.update(a,b,2,1/60);const before=JSON.stringify(r.points);r.update(a,b,2,0);assert.equal(JSON.stringify(r.points),before);});
+
+test('landing anticipation adds active time without changing any physical throw outcome',()=>{
+ const run=anticipation=>{const s=start(STARTER,{map:createGroveMap()}),f=createLaunchFeel(),marks=[];let wall=0,minRate=1;
+  while(s.phase!=='finished'&&wall<30){const q=f.advance(s,1/120,{anticipation});wall+=1/120;if(s.phase==='flight')minRate=Math.min(minRate,q.approachRate);for(const t of[3.15,3.60])if(s.time>=t&&!marks.some(m=>m.t===t))marks.push({t,wall});}
+  return{s,f,wall,minRate,window:marks[1].wall-marks[0].wall};};
+ const before=run(false),after=run(true);assert.equal(after.s.phase,'finished');assert.equal(after.s.failure,'');
+ for(const key of['time','angle','speed','energy','vx','vy'])assert.ok(Math.abs(after.s.release[key]-before.s.release[key])<1e-10,key);
+ for(const key of['x','y','vx','vy','angle'])assert.ok(Math.abs(after.s.real(after.s.shot)[key]-before.s.real(before.s.shot)[key])<1e-8,key);
+ assert.ok(Math.abs(after.s.maxX-before.s.maxX)<1e-8);assert.equal(after.s.contactEvents.length,before.s.contactEvents.length);
+ assert.ok(after.window>before.window*1.3,`${after.window} vs ${before.window}: time to act grows`);
+ assert.ok(after.wall>before.wall&&after.wall-before.wall<4,'anticipation stays bounded across the whole run');
+ assert.ok(after.minRate>=.6199&&after.minRate<.7);assert.ok(after.f.state().approachRate>.95,'the quiet aftermath is not prolonged in slow motion');
+});
+test('pause during an approaching landing freezes its tempo state as well as the body',()=>{
+ const s=start(STARTER,{map:createGroveMap()}),f=createLaunchFeel();for(let i=0;i<600&&f.state().approachRate>.8;i++)f.advance(s,1/120);
+ assert.ok(f.state().approachRate<.8);const before=JSON.stringify(s.snapshot()),q=f.state();f.advance(s,.1,{paused:true});assert.equal(JSON.stringify(s.snapshot()),before);assert.deepEqual(f.state(),{...q,events:[]});
+});

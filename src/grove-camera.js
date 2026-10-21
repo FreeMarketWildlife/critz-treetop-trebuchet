@@ -17,6 +17,14 @@ export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0}=
 }
 const FOLLOW_ACQUIRE_SECONDS=.55;
 const ease=t=>t*t*(3-2*t),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+// Exact bounded exponential response: the same elapsed time gives the same
+// lead at 30 or 120 Hz, including the rate-limited part of a large handoff.
+function approachLead(value,target,dt){
+ const delta=target-value,distance=Math.abs(delta),threshold=.7/4.5;
+ if(distance<=threshold)return value+delta*(1-Math.exp(-dt*4.5));
+ const linearTime=(distance-threshold)/.7;
+ return dt<=linearTime?value+Math.sign(delta)*.7*dt:target-Math.sign(delta)*threshold*Math.exp(-(dt-linearTime)*4.5);
+}
 export function groveFlightCamera(previous,payload,{width,height,animalLength,dt=1/60,reducedMotion=false,landing=null}={}){
  if(![payload.x,payload.y,animalLength,width,height].every(Number.isFinite)||animalLength<=0||width<=0||height<=0)throw Error('Finite camera dimensions and positive animal length required.');
  // Use travel measured in viewports per second, so a mouse and a whale get the
@@ -26,16 +34,31 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
  const screenVx=vx*baseScale/width,screenVy=vy*baseScale/height,speed=Math.hypot(screenVx,screenVy);
  // Slow/weak throws are easy to read at nine percent. Strong throws open the
  // lens to seven percent during ordinary travel.
- const size=.09-.02*ease(clamp((speed-.3)/1.7,0,1)),normalScale=Math.min(width,height)*size/animalLength;
+ const size=.09-.02*ease(clamp((speed-.3)/1.7,0,1));
  // Briefly open the lens for an imminent landing. Keep a readable body and
  // both regions in one physical transform; no inset, arrow or future route.
  const validLanding=landing&&[landing.x,landing.y,landing.eta].every(Number.isFinite)&&landing.eta>=0&&landing.eta<=.65;
+ const step=Number.isFinite(dt)?Math.max(0,Math.min(.1,dt)):0,minDimension=Math.min(width,height);
  const dx=validLanding?landing.x-payload.x:0,dy=validLanding?landing.y-payload.y:0;
- const floorScale=Math.min(width,height)*.045/animalLength;
- const fitScale=validLanding?Math.min(width*.60/(Math.abs(dx)+animalLength*2),height*.50/(Math.abs(dy)+animalLength*2)):normalScale;
- const target=validLanding?Math.min(normalScale,Math.max(floorScale,fitScale)):normalScale;
- const step=Number.isFinite(dt)?Math.max(0,Math.min(.1,dt)):0;
+ const contextSize=validLanding?Math.min(size,Math.max(.052,Math.min(width*.60/(Math.abs(dx)+animalLength*2),height*.50/(Math.abs(dy)+animalLength*2))*animalLength/minDimension)):size;
+ const oldLens=previous.followLens??{size,hold:0},lens={size:oldLens.size,hold:Math.max(0,oldLens.hold-step)};
+ // An approaching face can open the lens, but never close it on every frame as
+ // distance shrinks. Keep that local framing through the rebound and nearby next
+ // approach; small forecast changes do not restart a visible zoom cycle.
+ if(step>0&&validLanding){lens.hold=1.65;if(contextSize<lens.size*.96)lens.size=contextSize;}
+ else if(step>0&&lens.hold===0){const recovery=1-Math.exp(-step*.85);lens.size=Math.exp(Math.log(lens.size)*(1-recovery)+Math.log(size)*recovery);}
+ const target=minDimension*lens.size/animalLength;
  const priorScale=Number.isFinite(previous.scale)&&previous.scale>0?previous.scale:target;
+ // A forecast can briefly switch faces around a joint or disappear between
+ // samples. Confirm a new ID before handing off and bridge only a tenth of a
+ // second of missing data; this never extends the forecast's local horizon.
+ const oldFocus=previous.followLanding,focus=oldFocus?{...oldFocus}:null;
+ let landingFocus=focus;
+ if(step>0&&validLanding){
+  if(!focus||focus.missing>.10)landingFocus={id:landing.id,x:landing.x,y:landing.y,eta:landing.eta,missing:0,candidate:null,candidateAge:0};
+  else if(focus.id===landing.id){Object.assign(focus,{x:landing.x,y:landing.y,eta:landing.eta,missing:0,candidate:null,candidateAge:0});}
+  else{focus.missing+=step;focus.candidateAge=focus.candidate===landing.id?focus.candidateAge+step:step;focus.candidate=landing.id;if(focus.candidateAge>=.08)landingFocus={id:landing.id,x:landing.x,y:landing.y,eta:landing.eta,missing:0,candidate:null,candidateAge:0};}
+ }else if(step>0&&focus){focus.missing+=step;if(focus.missing>.10)landingFocus=null;}
  // Keep the volunteer at its release-frame screen position while the lens opens,
  // then ease into travel framing. Tracking its actual position immediately avoids
  // permanent chase lag; presentation offsets never assign a physics transform.
@@ -45,20 +68,21 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
   x:((Number.isFinite(previous.x)?previous.x:payload.x)-payload.x)*priorScale/width,
   y:((Number.isFinite(previous.y)?previous.y:payload.y)-payload.y)*priorScale/height
  };
- if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0}};
+ if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0},followLens:{size:.07,hold:0},followLanding:null};
  // A bounded, eased lead reveals the next branch in the travel direction. Smooth
  // the offset rather than body velocity so a rebound cannot jerk the camera or
  // let the animal slide out of frame while tracking catches up.
- const oldMotion=previous.followMotion??{x:0,y:0},leadMix=1-Math.exp(-step*4.5);
+ const oldMotion=previous.followMotion??{x:0,y:0};
  const travelX=.17*Math.tanh(screenVx*.24/.17),travelY=.10*Math.tanh(screenVy*.16/.10);
- const leadX=validLanding?clamp(dx*target/width*.48,-.28,.28):travelX;
- const leadY=validLanding?clamp(dy*target/height*.48,-.22,.16):travelY;
- const motion={x:oldMotion.x+(leadX-oldMotion.x)*leadMix,y:oldMotion.y+(leadY-oldMotion.y)*leadMix};
+ const leadX=landingFocus?clamp((landingFocus.x-payload.x)*target/width*.60,-.24,.24):travelX;
+ const leadY=landingFocus?clamp((landingFocus.y-payload.y)*target/height*.60,-.24,.16):travelY;
+ // A suddenly different forecast cannot pan faster than .7 of a viewport/sec.
+ const motion={x:approachLead(oldMotion.x,leadX,step),y:approachLead(oldMotion.y,leadY,step)};
  // Log interpolation handles the full mouse-to-whale range without a scale pop.
- const mix=1-Math.exp(-step*7);
+ const mix=1-Math.exp(-step*(target<priorScale?7:1.5));
  const scale=step===0?priorScale:Math.exp(Math.log(priorScale)*(1-mix)+Math.log(target)*mix);
  const blend=ease(acquisition.age/FOLLOW_ACQUIRE_SECONDS),remaining=1-blend;
- return{x:payload.x+(acquisition.x*remaining+motion.x*blend)*width/scale,y:payload.y+(acquisition.y*remaining+motion.y*blend)*height/scale,scale,followAcquisition:acquisition,followMotion:motion};
+ return{x:payload.x+(acquisition.x*remaining+motion.x*blend)*width/scale,y:payload.y+(acquisition.y*remaining+motion.y*blend)*height/scale,scale,followAcquisition:acquisition,followMotion:motion,followLens:lens,followLanding:landingFocus};
 }
 export function groveProject(point,camera,width,height){return{x:width/2+(point.x-camera.x)*camera.scale,y:height/2-(point.y-camera.y)*camera.scale};}
 export function groveTreeCamera(map,{width,height}){

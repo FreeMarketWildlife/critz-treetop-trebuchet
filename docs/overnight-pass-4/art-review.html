@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>Pass 4 — live art functions</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f3e9c9;color:#302d2b;font:16px system-ui}header{padding:18px 28px 12px}h1{font-size:25px;margin:0 0 4px}p{margin:0}main{padding:0 24px 24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}section{border:2px solid #5e6a4e;border-radius:14px;overflow:hidden;background:#fff5d9}h2{font-size:15px;padding:9px 14px;margin:0;background:#e1d8ad}canvas{display:block;width:100%;height:260px}footer{padding:0 28px 18px;font-size:13px}</style>
+<header><h1>Grimroot Grove · pass 4 art review</h1><p>Original illustration rendered by the game’s current drawing functions.</p></header>
+<main><section><h2>Volunteer motion · rising, diving, recovering</h2><canvas id="critters"></canvas></section><section><h2>Folded opening mat · existing physical face</h2><canvas id="route"></canvas></section><section><h2>Ancient bark · shared canonical tree at broad scale</h2><canvas id="tree"></canvas></section><section><h2>Passive canopy exit · two catch logs, open fork</h2><canvas id="floor"></canvas></section></main>
+<footer>This is an art inspection sheet, not a separate game or world. Geometry, palettes and rendering functions are imported from the working game. Launch and angular motion remain physical.</footer>
+<script type="module">
+import {drawCritter} from '../../src/build-art.js?v=21';
+import {CRITTERS} from '../../src/build-catalog.js?v=21';
+import {drawGroveWorld} from '../../src/grove-art.js?v=21';
+import {createGroveMap} from '../../src/grove-map.js?v=21';
+const map=createGroveMap();
+const setup=id=>{const e=document.getElementById(id);e.width=e.clientWidth*devicePixelRatio;e.height=260*devicePixelRatio;const c=e.getContext('2d');c.scale(devicePixelRatio,devicePixelRatio);return[c,e.clientWidth,260]};
+const [c,W,H]=setup('critters');c.fillStyle='#f5eac9';c.fillRect(0,0,W,H);
+for(const [i,id]of ['mouse','frog','fox'].entries()){const x=W*(i+.5)/3;drawCritter(c,CRITTERS.find(a=>a.id===id),x,115,Math.min(174,W*.23),[-.2,.6,-.35][i],true,undefined,{pose:'flying',tier:i===2?2:0,airPose:['rise','dive','float'][i],flex:{head:.06,tail:-.15}});c.font='15px system-ui';c.textAlign='center';c.fillStyle='#4d6048';c.fillText(['Rise · paws tucked','Dive · eyes forward','Recover · marks remain'][i],x,223);}
+for(const[id,camera]of [['route',{x:25,y:-5.55,scale:70}],['tree',{x:-175,y:-82,scale:.52}],['floor',{x:66,y:-58,scale:9}]]){const[c,width,height]=setup(id);drawGroveWorld(c,{camera,width,height,map,time:3});drawGroveWorld(c,{camera,width,height,map,time:3,foreground:true});}
+</script>

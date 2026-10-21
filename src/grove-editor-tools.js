@@ -1,4 +1,4 @@
-import {validateGroveMap,objectBounds,enemyRecipe} from './grove-map.js?v=20';
+import {validateGroveMap,objectBounds,enemyRecipe} from './grove-map.js?v=21';
 const clone=v=>structuredClone(v);
 export function createEditorHistory(initial,limit=80){
  let states=[clone(initial)],index=0;

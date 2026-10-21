@@ -1,7 +1,7 @@
 /** Original material illustration follows the exact editable polygon silhouette.
  * A bounded number of knots, facets and edge tufts is decoration, never terrain. */
 const INK='#302d2b',clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-export const GROVE_MATERIALS={wood:['#a5663e','#d6a15a'],leaf:['#9b6740','#b5cc78'],stone:['#617b80','#b3c7bb'],bumper:['#bd6a4e','#f2cf79']};
+export const GROVE_MATERIALS={wood:['#a5663e','#d6a15a'],leaf:['#738d52','#c2d58c'],stone:['#617b80','#b3c7bb'],bumper:['#bd6a4e','#f2cf79']};
 const stroke=(c,pts,color,width)=>{c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.stroke();};
 export function drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s}){
  const colors=GROVE_MATERIALS[o.material]??GROVE_MATERIALS.wood,pts=o.points.map(p=>project(p.x,p.y));
@@ -9,8 +9,22 @@ export function drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s}){
  if(s<3){c.strokeStyle=INK;c.lineWidth=.65;c.stroke();return;}
  c.save();c.clip();
  const left=Math.max(-40,project(b.minX,0)[0]),right=Math.min(W+40,project(b.maxX,0)[0]),top=project(0,b.maxY)[1],bottom=project(0,b.minY)[1],thick=bottom-top;
- c.fillStyle=o.material==='stone'?'#425f68':o.material==='bumper'?'#833f39':'#70462f';c.fillRect(left,top+thick*.67,Math.max(0,right-left),Math.max(0,thick*.33));
- if(o.material==='stone'){
+ if(o.material!=='leaf'){c.fillStyle=o.material==='stone'?'#425f68':o.material==='bumper'?'#833f39':'#70462f';c.fillRect(left,top+thick*.67,Math.max(0,right-left),Math.max(0,thick*.33));}
+ if(o.material==='leaf'){
+  // Flexible leaf faces use broad folds and a few veins, not timber grain.
+  // Every mark stays clipped to the editable shape, with metre-anchored ribs.
+  const a=o.points[0],z=o.points[1],dx=z.x-a.x,slope=Math.abs(dx)>.001?(z.y-a.y)/dx:0;
+  const depth=Math.max(.08,...o.points.map(p=>a.y+(p.x-a.x)*slope-p.y)),at=(x,d)=>project(x,a.y+(x-a.x)*slope-d);
+  const worldLeft=Math.max(b.minX,b.minX+(left-project(b.minX,0)[0])/s),worldRight=Math.min(b.maxX,worldLeft+(right-left)/s);
+  const band=(from,to,color)=>{const ps=[at(worldLeft,from),at(worldRight,from),at(worldRight,to),at(worldLeft,to)];c.beginPath();ps.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle=color;c.fill();};
+  band(0,depth*.25,'#9eb36b');band(depth*.62,depth*2,'#405f42');
+  stroke(c,[at(worldLeft,depth*.45),at(worldRight,depth*.45)],'#c2d58c',clamp(s*.04,1.1,3));
+  if(depth*s>5){const spacing=Math.max(1.5,(b.maxX-b.minX)/8);let ribs=0;
+   for(let x=Math.ceil(worldLeft/spacing)*spacing;x<worldRight&&ribs<8;x+=spacing,ribs++){
+    stroke(c,[at(x-spacing*.24,depth*.1),at(x,depth*.45),at(x-spacing*.21,depth*.86)],'#425f42',clamp(s*.018,.8,1.9));
+   }
+  }
+ }else if(o.material==='stone'){
   const step=Math.max(28,Math.min(90,s*.45));let count=0;for(let x=Math.floor(left/step)*step;x<right&&count<24;x+=step,count++){
    const y=top+thick*(.22+.18*Math.sin(x*.3));c.beginPath();c.moveTo(x,y);c.lineTo(x+step*.58,y-thick*.1);c.lineTo(x+step*.83,y+thick*.35);c.lineTo(x+step*.2,y+thick*.18);c.closePath();c.fillStyle=count%2?'#809b9c':'#6d888c';c.fill();stroke(c,[[x,y],[x+step*.58,y-thick*.1]],'#aec7bb',1.2);
   }
@@ -33,6 +47,5 @@ export function drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s}){
  for(let i=0;i<o.points.length;i++){
   const a=o.points[i],z=o.points[(i+1)%o.points.length],dx=z.x-a.x,dy=z.y-a.y;if(dx*(area<0?1:-1)<=0||Math.abs(dy)>Math.abs(dx)*1.2)continue;
   const p=project(a.x,a.y),q=project(z.x,z.y);stroke(c,[p,q],colors[1],clamp(s*.07,1.5,6));
-  if(o.material==='leaf'&&s>12){const length=Math.hypot(q[0]-p[0],q[1]-p[1]),n=Math.min(10,Math.floor(length/28));for(let j=0;j<n;j++){const t=(j+.45)/Math.max(1,n),x=p[0]+(q[0]-p[0])*t,y=p[1]+(q[1]-p[1])*t;stroke(c,[[x-3,y],[x-5,y-6],[x,y-2],[x+5,y-8],[x+4,y]],'#c8d991',1.8);}}
  }
 }

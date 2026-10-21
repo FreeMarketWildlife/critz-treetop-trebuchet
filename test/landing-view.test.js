@@ -19,10 +19,10 @@ test('reverse landings, sloped faces, ground and circles stay bounded to the imm
  assert.equal(imminentLanding(map([]),{x:0,y:0,vx:NaN,vy:0}),null);
 });
 test('imminent landing context includes the critter and nearby ground while preserving scale and paused framing',()=>{
- const size={width:390,height:844,animalLength:.18},p={x:10,y:2,vx:16,vy:-10},landing={x:12.8,y:-1,eta:.3};
+ const size={width:390,height:844,animalLength:.18},p={x:10,y:2,vx:16,vy:-10},landing={x:12,y:-1,eta:.3};
  let c={x:10,y:2,scale:151.6666666667};for(let i=0;i<150;i++)c=groveFlightCamera(c,p,{...size,landing});
  const animal=groveProject(p,c,390,844),ground=groveProject(landing,c,390,844);
- assert.ok(c.scale*.18>=17.54&&c.scale*.18<20,'the brief context lens keeps a readable physical body');
+ assert.ok(c.scale*.18>=20.27&&c.scale*.18<21,'the brief context lens keeps a readable physical body');
  assert.ok(animal.x>70&&animal.x<170);assert.ok(animal.y>140&&animal.y<600);
  assert.ok(ground.x>30&&ground.x<370);assert.ok(ground.y>150&&ground.y<760);
  assert.deepEqual(groveFlightCamera(c,p,{...size,landing,dt:0}),c);

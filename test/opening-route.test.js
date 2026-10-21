@@ -10,7 +10,7 @@ function launch(map,animal='mouse'){
 
 test('fresh default and editor save share the same four authored spring mats',()=>{
  const map=validateGroveMap(createGroveMap()),storage=store(),skips=map.objects.filter(o=>o.id.startsWith('opening-skip-'));
- assert.equal(map.starterRevision,6);assert.equal(skips.length,4);assert.equal(map.launch.y,600);assert.equal(map.tree.height,800);
+ assert.equal(map.starterRevision,7);assert.equal(skips.length,4);assert.equal(map.launch.y,600);assert.equal(map.tree.height,800);
  for(const o of skips){assert.equal(o.type,'polygon');assert.equal(o.material,'leaf');assert.equal(o.bounce,.87);assert.equal(o.collision,true);assert.equal(o.layer,'world');}
  assert.deepEqual(map.objects.find(o=>o.id==='launch-bough'),validateGroveMap(createAncientGroveMap()).objects.find(o=>o.id==='launch-bough'));
  assert.deepEqual(saveGroveMap(storage,map),map);assert.deepEqual(readGroveMap(storage),map);assert.equal(storage.values.size,1);assert.ok(storage.values.has(MAP_KEY));

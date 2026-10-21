@@ -1,0 +1,2158 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "none",
+    "improved": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439,
+    "wallSeconds": 5.383,
+    "distance": 12.1,
+    "minBodyPixels": 19.01,
+    "zoomVariation": 1.169,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.268,
+        "wallPreview": 0.55
+      },
+      {
+        "id": "launch-bough",
+        "time": 2.926,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "none",
+    "improved": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439,
+    "wallSeconds": 5.767,
+    "distance": 12.1,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.299,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.268,
+        "wallPreview": 0.817
+      },
+      {
+        "id": "launch-bough",
+        "time": 2.926,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286,
+    "wallSeconds": 12.35,
+    "distance": 46.321,
+    "minBodyPixels": 18.09,
+    "zoomVariation": 3.643,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.494,
+        "wallPreview": 0.333
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.833,
+        "wallPreview": 0.483
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.855,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.318,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.774,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 10.078,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286,
+    "wallSeconds": 13.783,
+    "distance": 46.321,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.403,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.494,
+        "wallPreview": 0.55
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.833,
+        "wallPreview": 0.75
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.855,
+        "wallPreview": 0.817
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.318,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.774,
+        "wallPreview": 0.783
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 10.078,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "staff",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.834,
+    "wallSeconds": 14.883,
+    "distance": 55.855,
+    "minBodyPixels": 17.82,
+    "zoomVariation": 3.368,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.759,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.126,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 11.295,
+        "wallPreview": 0.4
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.288,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.667,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.855,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "staff",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.834,
+    "wallSeconds": 16.3,
+    "distance": 55.855,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 1.032,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.759,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.126,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 11.295,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.288,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.667,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.855,
+        "wallPreview": 0.717
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "air",
+    "improved": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973,
+    "wallSeconds": 12.067,
+    "distance": 43.17,
+    "minBodyPixels": 18.23,
+    "zoomVariation": 3.937,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.946,
+        "wallPreview": 0.45
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.872,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.769,
+        "wallPreview": 0.533
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.083,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.502,
+        "wallPreview": 0.35
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.684,
+        "wallPreview": 0.483
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.928,
+        "wallPreview": 0.617
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.5,
+    "weapon": "air",
+    "improved": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973,
+    "wallSeconds": 13.45,
+    "distance": 43.17,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.299,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.946,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.872,
+        "wallPreview": 0.817
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.769,
+        "wallPreview": 0.85
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.083,
+        "wallPreview": 0.667
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.502,
+        "wallPreview": 0.733
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.684,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.928,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "none",
+    "improved": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896,
+    "wallSeconds": 12.017,
+    "distance": 40.182,
+    "minBodyPixels": 18.38,
+    "zoomVariation": 3.695,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.808,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 3.525,
+        "wallPreview": 0.567
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 4.259,
+        "wallPreview": 0.533
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.742,
+        "wallPreview": 0.533
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.535,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.642,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.353,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "none",
+    "improved": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896,
+    "wallSeconds": 13.417,
+    "distance": 40.182,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.299,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.808,
+        "wallPreview": 0.583
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 3.525,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 4.259,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.742,
+        "wallPreview": 0.867
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.535,
+        "wallPreview": 0.817
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.642,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.353,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561,
+    "wallSeconds": 15.7,
+    "distance": 78.756,
+    "minBodyPixels": 17.82,
+    "zoomVariation": 4.778,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 5.643,
+        "wallPreview": 0.467
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 7.462,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.13,
+        "wallPreview": 0.483
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.616,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.362,
+        "wallPreview": 0.433
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.027,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.495,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561,
+    "wallSeconds": 17.367,
+    "distance": 78.756,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.518,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 5.643,
+        "wallPreview": 0.717
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 7.462,
+        "wallPreview": 0.85
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.13,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.616,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.362,
+        "wallPreview": 0.467
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.027,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.495,
+        "wallPreview": 0.717
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "staff",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506,
+    "wallSeconds": 14.5,
+    "distance": 74.389,
+    "minBodyPixels": 17.79,
+    "zoomVariation": 2.002,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.107,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.443,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.118,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.438,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "staff",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506,
+    "wallSeconds": 15.417,
+    "distance": 74.389,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.683,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.107,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.443,
+        "wallPreview": 0.6
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.118,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.438,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "air",
+    "improved": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001,
+    "wallSeconds": 13.017,
+    "distance": 53.252,
+    "minBodyPixels": 17.81,
+    "zoomVariation": 1.965,
+    "contacts": [
+      {
+        "id": "opening-skip-2",
+        "time": 5.021,
+        "wallPreview": 0.467
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 9.953,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.621,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.885,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 0.75,
+    "weapon": "air",
+    "improved": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001,
+    "wallSeconds": 13.917,
+    "distance": 53.252,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.758,
+    "contacts": [
+      {
+        "id": "opening-skip-2",
+        "time": 5.021,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 9.953,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.621,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.885,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "none",
+    "improved": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.475,
+    "wallSeconds": 17.633,
+    "distance": 75.11,
+    "minBodyPixels": 17.82,
+    "zoomVariation": 4.448,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.603,
+        "wallPreview": 0.483
+      },
+      {
+        "id": "opening-skip-2",
+        "time": 5.284,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "opening-skip-3",
+        "time": 7.214,
+        "wallPreview": 0.533
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.364,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.089,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.437,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.802,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "none",
+    "improved": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.475,
+    "wallSeconds": 19.8,
+    "distance": 75.11,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.574,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.603,
+        "wallPreview": 0.75
+      },
+      {
+        "id": "opening-skip-2",
+        "time": 5.284,
+        "wallPreview": 0.783
+      },
+      {
+        "id": "opening-skip-3",
+        "time": 7.214,
+        "wallPreview": 0.867
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.364,
+        "wallPreview": 0.8
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.089,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.437,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.802,
+        "wallPreview": 0.75
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "slingshot",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073,
+    "wallSeconds": 15.15,
+    "distance": 75.677,
+    "minBodyPixels": 17.83,
+    "zoomVariation": 2.795,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 6.432,
+        "wallPreview": 0.433
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.335,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.624,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.627,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.995,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.147,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "slingshot",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073,
+    "wallSeconds": 16.483,
+    "distance": 75.677,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.471,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 6.432,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.335,
+        "wallPreview": 0.833
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.624,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.627,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.995,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.147,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "staff",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.295,
+    "wallSeconds": 16.417,
+    "distance": 76.972,
+    "minBodyPixels": 17.82,
+    "zoomVariation": 3.272,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.792,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.297,
+        "wallPreview": 0.6
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.069,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.847,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.133,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.314,
+        "wallPreview": 0.717
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "staff",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.295,
+    "wallSeconds": 17.717,
+    "distance": 76.972,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.581,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.792,
+        "wallPreview": 0.6
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.297,
+        "wallPreview": 0.967
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.069,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.847,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.133,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.314,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "air",
+    "improved": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291,
+    "wallSeconds": 11.317,
+    "distance": 44.704,
+    "minBodyPixels": 17.82,
+    "zoomVariation": 1.367,
+    "contacts": [
+      {
+        "id": "opening-rest-terrace",
+        "time": 6.472,
+        "wallPreview": 0.417
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.507,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.4,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.837,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.122,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "draw": 1,
+    "weapon": "air",
+    "improved": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291,
+    "wallSeconds": 11.783,
+    "distance": 44.704,
+    "minBodyPixels": 20.28,
+    "zoomVariation": 0.3,
+    "contacts": [
+      {
+        "id": "opening-rest-terrace",
+        "time": 6.472,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.507,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.4,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.837,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.122,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "none",
+    "improved": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439,
+    "wallSeconds": 5.383,
+    "distance": 12.1,
+    "minBodyPixels": 37.5,
+    "zoomVariation": 1.355,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.268,
+        "wallPreview": 0.333
+      },
+      {
+        "id": "launch-bough",
+        "time": 2.926,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "none",
+    "improved": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 4.439,
+    "wallSeconds": 5.767,
+    "distance": 12.1,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.35,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.268,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "launch-bough",
+        "time": 2.926,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286,
+    "wallSeconds": 12.35,
+    "distance": 46.321,
+    "minBodyPixels": 37.13,
+    "zoomVariation": 4.834,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.494,
+        "wallPreview": 0.55
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.833,
+        "wallPreview": 0.233
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.855,
+        "wallPreview": 0.25
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.318,
+        "wallPreview": 0.45
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.774,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 10.078,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "slingshot",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 11.286,
+    "wallSeconds": 13.783,
+    "distance": 46.321,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.454,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.494,
+        "wallPreview": 0.85
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.833,
+        "wallPreview": 0.35
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.855,
+        "wallPreview": 0.367
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.318,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.774,
+        "wallPreview": 0.783
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 10.078,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "staff",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.834,
+    "wallSeconds": 14.883,
+    "distance": 55.855,
+    "minBodyPixels": 37.03,
+    "zoomVariation": 3.97,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.759,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.126,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 11.295,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.288,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.667,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.855,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "staff",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.834,
+    "wallSeconds": 16.3,
+    "distance": 55.855,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 1.083,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.759,
+        "wallPreview": 0.817
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.126,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 11.295,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.288,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.667,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 12.855,
+        "wallPreview": 0.717
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "air",
+    "improved": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973,
+    "wallSeconds": 12.067,
+    "distance": 43.17,
+    "minBodyPixels": 37.17,
+    "zoomVariation": 5.613,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.946,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.872,
+        "wallPreview": 0.25
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.769,
+        "wallPreview": 0.267
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.083,
+        "wallPreview": 0.483
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.502,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.684,
+        "wallPreview": 0.733
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.928,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.5,
+    "weapon": "air",
+    "improved": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.973,
+    "wallSeconds": 13.45,
+    "distance": 43.17,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.35,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.946,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.872,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.769,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.083,
+        "wallPreview": 0.517
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.502,
+        "wallPreview": 0.733
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.684,
+        "wallPreview": 0.767
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.928,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "none",
+    "improved": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896,
+    "wallSeconds": 12.017,
+    "distance": 40.182,
+    "minBodyPixels": 37.21,
+    "zoomVariation": 5.625,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.808,
+        "wallPreview": 0.233
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 3.525,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 4.259,
+        "wallPreview": 0.583
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.742,
+        "wallPreview": 0.267
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.535,
+        "wallPreview": 0.267
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.642,
+        "wallPreview": 0.55
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.353,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "none",
+    "improved": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.896,
+    "wallSeconds": 13.417,
+    "distance": 40.182,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.421,
+    "contacts": [
+      {
+        "id": "launch-bough",
+        "time": 2.808,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 3.525,
+        "wallPreview": 0.733
+      },
+      {
+        "id": "opening-skip-1",
+        "time": 4.259,
+        "wallPreview": 0.783
+      },
+      {
+        "id": "opening-rescue-mat",
+        "time": 5.742,
+        "wallPreview": 0.4
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.535,
+        "wallPreview": 0.367
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.642,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.353,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561,
+    "wallSeconds": 15.7,
+    "distance": 78.756,
+    "minBodyPixels": 37.01,
+    "zoomVariation": 4.257,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 5.643,
+        "wallPreview": 0.217
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 7.462,
+        "wallPreview": 0.267
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.13,
+        "wallPreview": 0.583
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.616,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.362,
+        "wallPreview": 0.617
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.027,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.495,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "slingshot",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.561,
+    "wallSeconds": 17.367,
+    "distance": 78.756,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.688,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 5.643,
+        "wallPreview": 0.333
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 7.462,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.13,
+        "wallPreview": 0.883
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.616,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.362,
+        "wallPreview": 0.717
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.027,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.495,
+        "wallPreview": 0.717
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "staff",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506,
+    "wallSeconds": 14.5,
+    "distance": 74.389,
+    "minBodyPixels": 37.01,
+    "zoomVariation": 2.238,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.107,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.443,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.118,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.438,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "staff",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 13.506,
+    "wallSeconds": 15.417,
+    "distance": 74.389,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.853,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.107,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.443,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.118,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.438,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "air",
+    "improved": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001,
+    "wallSeconds": 13.017,
+    "distance": 53.252,
+    "minBodyPixels": 37.01,
+    "zoomVariation": 2.362,
+    "contacts": [
+      {
+        "id": "opening-skip-2",
+        "time": 5.021,
+        "wallPreview": 0.217
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 9.953,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.621,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.885,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 0.75,
+    "weapon": "air",
+    "improved": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 12.001,
+    "wallSeconds": 13.917,
+    "distance": 53.252,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.927,
+    "contacts": [
+      {
+        "id": "opening-skip-2",
+        "time": 5.021,
+        "wallPreview": 0.333
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 9.953,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.621,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-west-log",
+        "time": 10.885,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "none",
+    "improved": false,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.475,
+    "wallSeconds": 17.633,
+    "distance": 75.11,
+    "minBodyPixels": 37.01,
+    "zoomVariation": 6.505,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.603,
+        "wallPreview": 0.25
+      },
+      {
+        "id": "opening-skip-2",
+        "time": 5.284,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "opening-skip-3",
+        "time": 7.214,
+        "wallPreview": 0.267
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.364,
+        "wallPreview": 0.25
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.089,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.437,
+        "wallPreview": 0.467
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.802,
+        "wallPreview": 0.7
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "none",
+    "improved": true,
+    "shots": 0,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 16.475,
+    "wallSeconds": 19.8,
+    "distance": 75.11,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.732,
+    "contacts": [
+      {
+        "id": "opening-skip-1",
+        "time": 3.603,
+        "wallPreview": 0.35
+      },
+      {
+        "id": "opening-skip-2",
+        "time": 5.284,
+        "wallPreview": 0.45
+      },
+      {
+        "id": "opening-skip-3",
+        "time": 7.214,
+        "wallPreview": 0.4
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.364,
+        "wallPreview": 0.367
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.089,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.437,
+        "wallPreview": 0.5
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.802,
+        "wallPreview": 0.75
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "slingshot",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073,
+    "wallSeconds": 15.15,
+    "distance": 75.677,
+    "minBodyPixels": 37.03,
+    "zoomVariation": 3.44,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 6.432,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.335,
+        "wallPreview": 0.25
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.624,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.627,
+        "wallPreview": 0.633
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.995,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.147,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "slingshot",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 14.073,
+    "wallSeconds": 16.483,
+    "distance": 75.677,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.649,
+    "contacts": [
+      {
+        "id": "opening-skip-3",
+        "time": 6.432,
+        "wallPreview": 0.3
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 8.335,
+        "wallPreview": 0.383
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 11.624,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.627,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 12.995,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.147,
+        "wallPreview": 0.683
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "staff",
+    "improved": false,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.295,
+    "wallSeconds": 16.417,
+    "distance": 76.972,
+    "minBodyPixels": 37.03,
+    "zoomVariation": 3.522,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.792,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.297,
+        "wallPreview": 0.367
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.069,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.847,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.133,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.314,
+        "wallPreview": 0.717
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "staff",
+    "improved": true,
+    "shots": 3,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 15.295,
+    "wallSeconds": 17.717,
+    "distance": 76.972,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.759,
+    "contacts": [
+      {
+        "id": "opening-skip-4",
+        "time": 7.792,
+        "wallPreview": 0.267
+      },
+      {
+        "id": "opening-skip-4",
+        "time": 9.297,
+        "wallPreview": 0.567
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.069,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 13.847,
+        "wallPreview": 0.667
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.133,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "canopy-exit-east-log",
+        "time": 14.314,
+        "wallPreview": 0.733
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "air",
+    "improved": false,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291,
+    "wallSeconds": 11.317,
+    "distance": 44.704,
+    "minBodyPixels": 37.01,
+    "zoomVariation": 2.108,
+    "contacts": [
+      {
+        "id": "opening-rest-terrace",
+        "time": 6.472,
+        "wallPreview": 0.2
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.507,
+        "wallPreview": 0.583
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.4,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.837,
+        "wallPreview": 0.683
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.122,
+        "wallPreview": 0.65
+      }
+    ]
+  },
+  {
+    "width": 1726,
+    "height": 819,
+    "draw": 1,
+    "weapon": "air",
+    "improved": true,
+    "shots": 1,
+    "phase": "finished",
+    "failure": "",
+    "physicalSeconds": 10.291,
+    "wallSeconds": 11.783,
+    "distance": 44.704,
+    "minBodyPixels": 42.59,
+    "zoomVariation": 0.478,
+    "contacts": [
+      {
+        "id": "opening-rest-terrace",
+        "time": 6.472,
+        "wallPreview": 0.283
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 7.507,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.4,
+        "wallPreview": 0.65
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 8.837,
+        "wallPreview": 0.7
+      },
+      {
+        "id": "opening-rest-terrace",
+        "time": 9.122,
+        "wallPreview": 0.65
+      }
+    ]
+  }
+]

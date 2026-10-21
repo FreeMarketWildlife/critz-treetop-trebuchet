@@ -1,22 +1,22 @@
 import {installPauseMenu} from './pause-menu.js';
-import {createWeaponHud} from './weapon-hud.js';
-import {jungleLayerAt} from './grove-jungle.js?v=20';
-import {createLaunchFeel} from './launch-feel.js?v=20';
-import {createPayloadLoading} from './payload-loading.js?v=20';
-import {crankState} from './crank-wheel.js?v=20';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=20';
-import {fitEquipment} from './build-equipment.js?v=20';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=20';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=20';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=20';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=20';
-import {drawShopArt} from './shop-art.js?v=20';
+import {createWeaponHud} from './weapon-hud.js?v=21';
+import {jungleLayerAt} from './grove-jungle.js?v=21';
+import {createLaunchFeel} from './launch-feel.js?v=21';
+import {createPayloadLoading} from './payload-loading.js?v=21';
+import {crankState} from './crank-wheel.js?v=21';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=21';
+import {fitEquipment} from './build-equipment.js?v=21';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=21';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=21';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=21';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=21';
+import {drawShopArt} from './shop-art.js?v=21';
 import {createHoldControl} from './hold-control.js';
-import {createAudio} from './audio.js?v=20';
+import {createAudio} from './audio.js?v=21';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=20';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=20';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=20';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=21';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=21';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=21';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -253,7 +253,6 @@ function frame(timestamp){
   const milestone=Math.floor(sim.maxX/Math.max(10,sim.c.longArm*10));if(milestone>scoreStep){scoreStep=milestone;cue('coin',{intensity:.45});}
  }
  if(!document.hidden){for(let i=soundQueue.length-1;i>=0;i--)if(timestamp>=soundQueue[i].at){cue(soundQueue[i].name);soundQueue.splice(i,1);}}
- weaponHud.draw(active?delta:0);
  $('loadingTip').hidden=!active||sim.phase!=='ready'||!sim.loading.hint;
  const running=active&&(sim.loading.animating||winding||['swing','flight'].includes(sim.phase));
  const animating=(active&&feelFrame.animating)||renderer.needsAnimation()||previewRenderer.needsAnimation();
@@ -263,6 +262,7 @@ function frame(timestamp){
   if($('workshopDialog').open&&previewSim)previewRenderer.draw(previewSim,{labels:true,follow:false,paused:true,preview:true,pixelRatio:low?1:2});
   renderer.draw(sim,{labels,follow,paused:paused||modal,feel:feelFrame,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);stage.dataset.playbackRate=feelFrame.rate.toFixed(3);stage.dataset.swingPlayback=feelFrame.swingAge.toFixed(3);stage.dataset.releasePlayback=feelFrame.releaseClock?.toFixed(3)??'';stage.dataset.presentationTime=feelFrame.clock.toFixed(3);
  }
+ weaponHud.draw(active?delta:0);
  if(refresh&&timestamp-refreshAt>110){updateReadouts();refreshAt=timestamp;}
  requestAnimationFrame(frame);
 }
