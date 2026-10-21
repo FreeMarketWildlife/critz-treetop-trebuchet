@@ -11,6 +11,14 @@ import {drawGroveWorld} from './grove-art.js?v=27';
 import {createCritterPerformance} from './critter-performance.js?v=25';
 import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=25';
 const TAU=Math.PI*2;
+// These are finishes and attached fittings, not replacement collision geometry.
+// Capacity tiers keep the user's chosen dimensions; their cages/cloth identify
+// the fitted capacity without pretending an empty larger basket adds mass.
+const FRAME_FINISH={sapling:'#ad814c',timber:'#94613c',braced:'#806347',giant:'#718781',leviathan:'#526d70'};
+const FRAME_TIER={sapling:0,timber:1,braced:2,giant:3,leviathan:4};
+const BALLAST_TIER={pebble:0,boulder:1,quarry:2,mountain:3,continental:4};
+const POUCH_FINISH={pocket:'#759381',pouch:'#c2a46e',cradle:'#758266',hammock:'#b08c59',elephant:'#936a51',whale:'#648b93'};
+const ROPE_FINISH={twine:['#e0d4a0','#c1d3b1',1.8],hemp:['#bd9c63','#dec18a',2.4],cable:['#96b4ae','#d0dfd0',2.1],titanCable:['#6e8f9a','#c8d6d9',3.1]};
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
 export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,performance={}){
@@ -182,47 +190,110 @@ export function createBuildRenderer(canvas){
   const shape=fixture.getShape();ctx.lineWidth=2;ctx.strokeStyle=outline;ctx.fillStyle=fill;
   if(shape.getType()==='circle'){const w=body.getWorldPoint(shape.getCenter()),p=project({x:w.x*lastSim.L,y:w.y*lastSim.L});const r=shape.getRadius()*lastSim.L*cam.scale;ctx.beginPath();ctx.arc(p[0],p[1],Math.max(.5,r),0,TAU);}else{const pts=shape.m_vertices.map(v=>{const q=body.getWorldPoint(v);return project({x:q.x*lastSim.L,y:q.y*lastSim.L});});ctx.beginPath();ctx.moveTo(...pts[0]);for(const p of pts.slice(1))ctx.lineTo(...p);ctx.closePath();}
   ctx.fill();ctx.stroke();
+  // All treatment is clipped to the existing member. No painted cross-brace
+  // appears where the physics has none, including on a leaning/moving frame.
+  const tier=FRAME_TIER[lastSim.c.frame];
+  if(tier){ctx.save();ctx.clip();const h=lastSim.c.pivotHeight,span=h*cam.scale,point=(x,y)=>{const p=body.getWorldPoint({x:x/lastSim.L,y:y/lastSim.L});return project({x:p.x*lastSim.L,y:p.y*lastSim.L});};
+   for(let i=0;i<tier+1;i++){const y=h*(i+1)/(tier+2);path(ctx,[point(-h,y),point(h,y)],tier<3?'#dbbd82':'#d0d8bd',Math.max(1,span*.015));}
+   if(tier>=2){for(const side of [-1,1])path(ctx,[point(side*h*.10,h),point(side*h*.18,0)],tier===2?'#493f30':'#344e4b',Math.max(1,span*.009));}
+   if(tier===4)path(ctx,[point(-h,h*.20),point(0,h*.76),point(h,h*.20)],'#adba9e',Math.max(1,span*.008));
+   ctx.restore();
+  }
  }
  function timber(a,b,width,color){line(a,b,'#444a34',Math.max(4,width*cam.scale+3));line(a,b,color,Math.max(2,width*cam.scale));const p=project(a),q=project(b);path(ctx,[[p[0],p[1]-Math.max(1,width*cam.scale*.2)],[q[0],q[1]-Math.max(1,width*cam.scale*.2)]],'#e1b16b',Math.max(.7,width*cam.scale*.09));}
  function annotation(p,text,dx,dy){const [x,y]=project(p),xx=Math.max(15,Math.min(W-190,x+dx)),yy=Math.max(88,Math.min(H-80,y+dy));path(ctx,[[x,y],[xx,yy+9],[xx+8,yy+9]],'#61754e88',1);ctx.font='10px "DM Sans",sans-serif';const width=Math.min(190,ctx.measureText(text).width+18);ctx.fillStyle='#f4f4dfec';ctx.beginPath();ctx.roundRect(xx+5,yy-3,width,24,5);ctx.fill();ctx.fillStyle='#5a6d45';ctx.textAlign='left';ctx.fillText(text,xx+14,yy+12);}
- function rope(a,b,length,index=0,color='#e0d4a0',free=false){
+ function rope(a,b,length,index=0,free=false){
   const ps=cords[index].update(a,b,length,strandDt,x=>lastSim.supportHeight(x)+.006*lastSim.L,{pinA:!free});
-  const points=ps.map(project);path(ctx,points,'#4b5337',3.5);path(ctx,points,color,1.8);
+  const points=ps.map(project),finish=ROPE_FINISH[lastSim.c.rope],width=finish[2];path(ctx,points,'#394738',width+1.7);path(ctx,points,finish[index],width);
+  if(['cable','titanCable'].includes(lastSim.c.rope)){
+   path(ctx,points,'#eef0d9',lastSim.c.rope==='cable'?.65:.8);
+   if(lastSim.c.rope==='titanCable')for(let i=3;i<points.length-1;i+=6){const a=points[i-1],b=points[i+1],p=points[i],d=Math.hypot(b[0]-a[0],b[1]-a[1])||1,dx=-(b[1]-a[1])/d*2,dy=(b[0]-a[0])/d*2;path(ctx,[[p[0]-dx,p[1]-dy],[p[0]+dx,p[1]+dy]],'#364d51',1.2);}
+  }
  }
  function trough(sim,front=false){
   const c=sim.c,a=sim.railPoint(-c.troughLength*.75),b=sim.railPoint(c.troughLength*.25),dy=front?-.04:.025;
-  timber({x:a.x,y:a.y+dy},{x:b.x,y:b.y+dy},Math.max(.025,c.troughHeight*.5),front?'#c7a062':'#e3c48c');
-  if(!front){for(let i=0;i<=8;i++){const x=a.x+(b.x-a.x)*i/8,y=a.y+(b.y-a.y)*i/8;line({x,y:y-.04},{x,y:y+.06},'#695a3b',1.3);}}
+  const waxed=c.trough==='waxedRunway';
+  timber({x:a.x,y:a.y+dy},{x:b.x,y:b.y+dy},Math.max(.025,c.troughHeight*.5),waxed?(front?'#86a995':'#b2c6a0'):(front?'#c7a062':'#e3c48c'));
+  if(!front){const slats=waxed?3:8;for(let i=0;i<=slats;i++){const x=a.x+(b.x-a.x)*i/slats,y=a.y+(b.y-a.y)*i/slats;line({x,y:y-.04},{x,y:y+.06},waxed?'#577969':'#695a3b',1.3);}
+   if(waxed)line({x:a.x,y:a.y+.015},{x:b.x,y:b.y+.015},'#f4edb8',2);
+  }
+ }
+ function beamFinish(sim,a,b){
+  const p=project(a),q=project(b),length=Math.hypot(q[0]-p[0],q[1]-p[1]),w=sim.c.beamWidth*cam.scale,id=sim.c.arm;
+  if(length<2||w<.2)return;
+  ctx.save();ctx.translate(...p);ctx.rotate(Math.atan2(q[1]-p[1],q[0]-p[0]));ctx.beginPath();ctx.rect(0,-w/2,length,w);ctx.clip();
+  if(id==='laminated')for(const y of [-.30,0,.30])path(ctx,[[0,y*w],[length,y*w]],'#6d4e31',Math.max(.65,w*.08));
+  else if(id==='colossus'){const n=8;for(let i=0;i<n;i++)path(ctx,[[length*i/n,-w*.42],[length*(i+.5)/n,w*.42],[length*(i+1)/n,-w*.42]],'#d0d7b7',Math.max(.75,w*.12));}
+  else if(id==='ironwood')for(const t of [.14,.48,.82]){path(ctx,[[length*t,-w*.5],[length*t,w*.5]],'#b5b7a2',Math.max(1.1,w*.30));path(ctx,[[length*t,-w*.28],[length*t,w*.28]],'#3f4b40',Math.max(.7,w*.10));}
+  else{const count=id==='twig'?2:3;for(let i=0;i<count;i++){const x=length*(i+1)/(count+1);ellipse(ctx,x,0,Math.max(2,length*.016),Math.max(.45,w*.24),id==='twig'?'#775738':'#6e4931',null);}}
+  ctx.restore();
+ }
+ function capacityCage(sim,point,radius){
+  const r=Math.max(1,radius),tier=BALLAST_TIER[sim.c.ballast];ctx.save();ctx.translate(...point);ctx.rotate(-sim.real(sim.counter).angle);ctx.beginPath();ctx.arc(0,0,r*.94,0,TAU);ctx.clip();
+  const strap=tier<2?'#b88c51':tier===2?'#879d8c':tier===3?'#b4bfa3':'#91b8b1',ink='#354437',width=Math.max(1,r*.12);
+  for(let i=0;i<=tier;i++){const x=r*(i-(tier/2))*1.35/(tier+1);path(ctx,[[x,-r],[x,r]],ink,width+1);path(ctx,[[x,-r],[x,r]],strap,width);}
+  if(tier>=2){path(ctx,[[-r,0],[r,0]],ink,width+1);path(ctx,[[-r,0],[r,0]],strap,width);}
+  if(tier>=3)for(const x of [-.50,.50])for(const y of [-.47,.47])ellipse(ctx,x*r,y*r,Math.max(1,r*.075),Math.max(1,r*.075),'#e0d7ac',ink,.7);
+  if(tier===4)path(ctx,[[-r*.6,0],[0,-r*.65],[r*.6,0],[0,r*.65],[-r*.6,0]],'#e2e7cf',Math.max(.8,r*.07));
+  ctx.restore();
+ }
+ function axleHardware(sim){
+  const p=project(sim.pivot()),r=Math.max(5,sim.c.axleRadius*cam.scale*2),id=sim.c.bearing,ink='#304639';
+  ellipse(ctx,...p,r,r,id==='woodAxle'?'#94683e':id==='bronze'?'#c59950':id==='bearings'?'#a4b8ad':'#688f93',ink,1.8);
+  if(id==='woodAxle')path(ctx,[[p[0]-r*.6,p[1]-r*.35],[p[0]+r*.6,p[1]+r*.35]],'#d6b47a',1.1);
+  else{const n=id==='bronze'?4:id==='bearings'?8:6;for(let i=0;i<n;i++){const a=i*TAU/n;ellipse(ctx,p[0]+Math.cos(a)*r*.64,p[1]+Math.sin(a)*r*.64,Math.max(.75,r*.12),Math.max(.75,r*.12),id==='bronze'?'#675b40':'#344f49',null);}
+   if(id==='precision')ellipse(ctx,...p,r*.83,r*.83,null,'#d9d7aa',.7);
+  }
+  ellipse(ctx,...p,Math.max(1.2,r*.23),Math.max(1.2,r*.23),'#e0dcc0',ink,.8);
+ }
+ function releaseHardware(sim,tip,end){
+  const id=sim.c.release;line(tip,end,'#30473d',4.3);line(tip,end,id==='nail'?'#976e48':id==='polished'?'#e2ca88':'#9cbcb4',id==='nail'?2.2:2.7);
+  const p=project(end);if(id==='rollerPin'){ellipse(ctx,...p,2.8,2.8,'#cbd4bb','#354e43',1);ellipse(ctx,...p,.8,.8,'#354e43',null);}
+  else if(id==='polished'){const a=project(tip);path(ctx,[[a[0],a[1]-.6],[p[0],p[1]-.6]],'#fff1bd',.7);}
+ }
+ function pouchPaint(id,left,right,top,bottom){
+  ctx.fillStyle=POUCH_FINISH[id];ctx.strokeStyle='#354e3e';ctx.lineWidth=2;ctx.fill();ctx.stroke();ctx.save();ctx.clip();
+  const w=right-left,h=Math.max(3,bottom-top),mid=(left+right)/2,ink='#3a5140',light=id==='whale'?'#c2d6c5':'#e5d3a1';
+  if(id==='pocket'){path(ctx,[[mid,top],[mid,bottom]],light,1.2);for(const y of [.30,.62])path(ctx,[[left,top+h*(y-.22)],[mid,top+h*y],[right,top+h*(y-.22)]],light,.8);}
+  else if(id==='pouch'){for(let i=1;i<7;i++){const x=left+w*i/7;path(ctx,[[x,top+h*.14],[x+w*.05,top+h*.29]],ink,.9);}ctx.fillStyle='#e4d2a6';ctx.fillRect(mid-w*.13,top+h*.34,w*.26,h*.36);}
+  else if(id==='cradle'){for(const t of [.23,.5,.77])path(ctx,[[left+w*t,top],[left+w*t,bottom]],light,1.7);path(ctx,[[left,top+h*.67],[right,top+h*.67]],ink,1.3);}
+  else if(id==='hammock'){for(let i=-2;i<6;i++)path(ctx,[[left+w*i/4,top],[left+w*(i+2)/4,bottom]],light,1);}
+  else if(id==='elephant'){path(ctx,[[left,top],[right,bottom]],ink,Math.max(2,h*.24));path(ctx,[[right,top],[left,bottom]],ink,Math.max(2,h*.24));path(ctx,[[mid,top],[mid,bottom]],light,Math.max(1,h*.11));}
+  else{for(let i=-2;i<7;i++){path(ctx,[[left+w*i/5,top],[left+w*(i+2)/5,bottom]],light,.9);path(ctx,[[left+w*i/5,bottom],[left+w*(i+2)/5,top]],light,.9);}}
+  ctx.restore();
  }
  function mechanism(sim,labels){
   const c=sim.c,wood=part(c.arm).color,frame=sim.frame;
-  for(let f=frame.getFixtureList();f;f=f.getNext())if(f!==sim.troughFixture)polygon(frame,f,'#ad814c');
+  for(let f=frame.getFixtureList();f;f=f.getNext())if(f!==sim.troughFixture)polygon(frame,f,FRAME_FINISH[c.frame]);
   trough(sim);
   if(sim.loading&&!preview&&sim.c.pivotHeight*cam.scale>14)drawLoadingStand(sim);
   // Grain follows actual frame members.
   const fp=pt=>{const q=frame.getWorldPoint({x:pt.x/sim.L,y:pt.y/sim.L});return{x:q.x*sim.L,y:q.y*sim.L};};
   if(c.chassis==='anchored')for(const x of [-c.baseWidth/2,c.baseWidth/2]){const a=fp({x,y:.04}),b={x:a.x-.08*c.pivotHeight,y:-.12*c.pivotHeight};line(a,b,'#5a6c50',Math.max(2,cam.scale*c.beamWidth*.4));}
+  if(c.chassis==='skids')for(const side of [-1,1]){const a=fp({x:side*c.baseWidth*.18,y:c.pivotHeight*.025}),b=fp({x:side*c.baseWidth*.49,y:c.pivotHeight*.025});line(a,b,'#57472e',Math.max(2,c.pivotHeight*cam.scale*.018));}
+  if(c.chassis==='walking')for(const x of [-c.baseWidth*.48,c.baseWidth*.48]){const p=project(fp({x,y:c.pivotHeight*.025}));ellipse(ctx,...p,Math.max(2,c.pivotHeight*cam.scale*.018),Math.max(1,c.pivotHeight*cam.scale*.008),'#c7a25e','#4a4932',1);}
   if(c.chassis==='floating'){line({x:-c.baseWidth/2,y:c.pivotHeight},{x:c.baseWidth/2,y:c.pivotHeight},'#788c7d',6);const cw=sim.counterPoint();line({x:cw.x,y:0},{x:cw.x,y:c.pivotHeight+c.shortArm},'#697c6b',4);}
   for(const wheel of sim.wheels){const q=sim.real(wheel),p=project(q),r=c.wheelRadius*cam.scale;ellipse(ctx,...p,r,r,'#b2874b','#445039',3);ellipse(ctx,...p,r*.74,r*.74,'#d2ac6b','#697148',2);for(let i=0;i<6;i++){const a=q.angle+i*TAU/6;path(ctx,[p,[p[0]+Math.cos(a)*r*.72,p[1]-Math.sin(a)*r*.72]],'#796842',Math.max(1,r*.08));}ellipse(ctx,...p,r*.14,r*.14,'#667f65',null);}
   const transform=p=>{const q=sim.arm.getWorldPoint({x:p.x/sim.L,y:p.y/sim.L});return{x:q.x*sim.L,y:q.y*sim.L};};
-  const tip=sim.tip(),short=transform({x:-c.shortArm,y:0}),pivot=sim.pivot(),cw=sim.counterPoint();timber(short,tip,c.beamWidth,wood);
+  const tip=sim.tip(),short=transform({x:-c.shortArm,y:0}),pivot=sim.pivot(),cw=sim.counterPoint();timber(short,tip,c.beamWidth,wood);beamFinish(sim,short,tip);
   if(c.mount==='hinged'&&c.chassis!=='floating')timber(short,cw,c.beamWidth*.3,'#7a8972');
   const cp=project(cw),r=sim.facts.counterRadius*cam.scale;
-  drawCounterweight(ctx,{point:cp,radius:r,angle:sim.real(sim.counter).angle,material:c.material});
-  const pp=project(pivot);ellipse(ctx,...pp,Math.max(5,c.axleRadius*cam.scale*2),Math.max(5,c.axleRadius*cam.scale*2),'#607b66','#364e3d',2);ellipse(ctx,...pp,2,2,'#c8d3ac',null);
-  const pinEnd={x:tip.x+Math.cos(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength,y:tip.y+Math.sin(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength};line(tip,pinEnd,'#496c66',4);
+  drawCounterweight(ctx,{point:cp,radius:r,angle:sim.real(sim.counter).angle,material:c.material});capacityCage(sim,cp,r);
+  const pinEnd={x:tip.x+Math.cos(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength,y:tip.y+Math.sin(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength};releaseHardware(sim,tip,pinEnd);
   const animalPoint=sim.real(sim.shot),payload=sim.loading&&sim.phase==='ready'?sim.loading.target():animalPoint,p=project(payload),physicalSize=sim.animal.length*cam.scale;
-  if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1,'#c1d3b1');
+  if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1);
    if(sim.loading&&sim.phase==='ready'&&!preview){
     const b=sim.loading.basketShape,lt=project({x:b.left,y:b.rim}),rt=project({x:b.right,y:b.rim}),lb=project({x:b.left,y:b.bottom}),rb=project({x:b.right,y:b.bottom});
-    ctx.beginPath();ctx.moveTo(...lt);ctx.quadraticCurveTo(lb[0],lb[1]+3,(lb[0]+rb[0])/2,lb[1]+3);ctx.quadraticCurveTo(rb[0],rb[1]+3,...rt);ctx.closePath();ctx.fillStyle='#759381';ctx.strokeStyle='#3e5e47';ctx.lineWidth=2;ctx.fill();ctx.stroke();
+    ctx.beginPath();ctx.moveTo(...lt);ctx.quadraticCurveTo(lb[0],lb[1]+3,(lb[0]+rb[0])/2,lb[1]+3);ctx.quadraticCurveTo(rb[0],rb[1]+3,...rt);ctx.closePath();pouchPaint(c.sling,lt[0],rt[0],lt[1],Math.max(lb[1],rb[1])+3);
    }else{
-   ctx.save();ctx.translate(...p);ctx.beginPath();const pw=Math.max(9,c.pouchWidth*cam.scale*.65);ctx.moveTo(-pw,-4);ctx.quadraticCurveTo(-pw,physicalSize*.4,0,physicalSize*.39);ctx.quadraticCurveTo(pw,physicalSize*.4,pw,-4);ctx.lineTo(pw*.7,2);ctx.quadraticCurveTo(0,physicalSize*.22,-pw*.7,2);ctx.closePath();ctx.fillStyle='#759381';ctx.strokeStyle='#3e5e47';ctx.lineWidth=2;ctx.fill();ctx.stroke();ctx.restore();}
-  }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,'#c1d3b1',true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#a6baa0',3);}
+   ctx.save();ctx.translate(...p);ctx.beginPath();const pw=Math.max(9,c.pouchWidth*cam.scale*.65);ctx.moveTo(-pw,-4);ctx.quadraticCurveTo(-pw,physicalSize*.4,0,physicalSize*.39);ctx.quadraticCurveTo(pw,physicalSize*.4,pw,-4);ctx.lineTo(pw*.7,2);ctx.quadraticCurveTo(0,physicalSize*.22,-pw*.7,2);ctx.closePath();pouchPaint(c.sling,-pw,pw,-4,physicalSize*.4);ctx.restore();}
+  }else if(sim.pouch){const pouch=sim.real(sim.pouch);rope(tip,pouch,c.slingLength);rope(tip,pouch,c.slingLength,1,true);const a=project(pouch),t=Math.min(1,(sim.time-sim.release.time)*4),pw=Math.max(8,c.pouchWidth*cam.scale*.5);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],'#3f624d',6);path(ctx,[[a[0]-pw,a[1]],[a[0],a[1]+pw*.55],[a[0]+pw*(1+t),a[1]+pw*t]],POUCH_FINISH[c.sling],3);}
   if(sim.loading&&sim.phase==='ready'&&!preview)drawLoadingCritter(sim);
   else drawCritter(ctx,sim.animal,...project(animalPoint),physicalSize,critterCel.angle,!!sim.release,sim.animal.width*cam.scale,critterCel);
   trough(sim,true);
   drawCrankWheel(ctx,sim,project,cam.scale);
+  // The winding quadrant otherwise completely occludes the small axle cap.
+  axleHardware(sim);
   if(guidanceActive&&sim.phase==='ready'&&!preview&&sim.c.pivotHeight*cam.scale>14)loadingCues(sim);
   if(preview&&H>250){
    const a=project({x:-c.baseWidth*.75,y:0}),b=project({x:-c.baseWidth*.75,y:c.pivotHeight});path(ctx,[a,b],'#66774f',1);for(const pt of[a,b])path(ctx,[[pt[0]-4,pt[1]],[pt[0]+4,pt[1]]],'#66774f',1.5);ctx.fillStyle='#4a613d';ctx.font='bold 11px Trebuchet MS';ctx.textAlign='left';ctx.textAlign='right';ctx.fillText(`${c.pivotHeight.toFixed(2)} m`,a[0]-7,(a[1]+b[1])/2);

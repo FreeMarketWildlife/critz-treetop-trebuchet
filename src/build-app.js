@@ -1,3 +1,4 @@
+import {drawAltitudeStrip} from './altitude-strip.js?v=29';
 import {installPauseMenu} from './pause-menu.js';
 import {createWeaponHud} from './weapon-hud.js?v=25';
 import {jungleLayerAt} from './grove-jungle.js?v=25';
@@ -6,11 +7,12 @@ import {createPayloadLoading} from './payload-loading.js?v=25';
 import {crankState} from './crank-wheel.js?v=25';
 import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=25';
 import {fitEquipment} from './build-equipment.js?v=25';
+import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=29';
 import{BuildSimulation,GRAVITY}from'./build-physics.js?v=25';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=27';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=29';
 import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=25';
 import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=25';
-import {drawShopArt} from './shop-art.js?v=27';
+import {drawShopArt} from './shop-art.js?v=29';
 import {createHoldControl} from './hold-control.js';
 import {createAudio} from './audio.js?v=28';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
@@ -42,15 +44,15 @@ function populate(){
   const box=el('details',undefined,'part-group'),summary=el('summary'),p=part(draft[slot]),art=el('canvas');drawShopArt(art,p);art.setAttribute('aria-hidden','true');
   const text=el('span');text.append(el('small',title),el('strong',p.name));summary.append(art,text,el('span','⌄','part-chevron'));
   const choices=el('div',undefined,'part-options');for(const option of PARTS.filter(p=>p.slot===slot&&equippedValue(p.id)))choices.append(choiceCard(option,'part',option.id===p.id,()=>selectEquipment({kind:'part',id:option.id})));
-  box.append(summary,el('p',p.description),choices);$('buildParts').append(box);
+  box.append(summary,el('p',p.description),el('p',equipmentSpec(p),'equipment-spec'),choices);const use=equipmentUse(p,draft);if(use)box.append(el('p',use,'micro'));$('buildParts').append(box);
  }
- $('tuningFields').replaceChildren();for(const[key,title,unit,min,max,step,slot]of TUNING){const label=el('label',undefined,'tune-row');label.append(el('span',title));const input=el('input');input.type='number';input.id=`tune-${key}`;input.min=min;input.max=max;input.step=step;input.value=draft[key];input.setAttribute('aria-label',`${title}${unit?` (${unit})`:''}`);input.addEventListener('change',()=>{draft[key]=input.valueAsNumber;refreshFacts();});label.append(input,el('span',unit));$('tuningFields').append(label);}
+ $('tuningFields').replaceChildren();for(const[key,title,unit,min,max,step,slot]of TUNING){const label=el('label',undefined,'tune-row');label.append(el('span',title));const input=el('input');input.type='number';input.id=`tune-${key}`;input.min=min;input.max=Math.min(max,tuningLimit(draft,key)??max);input.step=step;input.value=draft[key];input.setAttribute('aria-label',`${title}${unit?` (${unit})`:''}`);input.addEventListener('change',()=>{draft[key]=input.valueAsNumber;refreshFacts();});label.append(input,el('span',unit));$('tuningFields').append(label);}
  $('buildName').value=draft.name;$('wind').value=draft.wind;$('drag').checked=!!draft.drag;
  $('ownedCount').textContent=creative?'ALL PARTS UNLOCKED':`${state.owned.length} parts owned`;$('wallet').textContent=creative?'∞':state.bells.toLocaleString();$('best').innerHTML=`${state.best.toFixed(1)} <em>m</em>`;
  $('creativePresets').hidden=!creative;$('creativeWeather').hidden=!creative;refreshFacts();renderShop();renderBlueprints();
 }
 function choiceCard(p,kind,selected,onSelect){
- const button=el('button',undefined,'equipment-choice'),art=el('canvas');drawShopArt(art,p,kind);art.setAttribute('aria-hidden','true');button.setAttribute('aria-pressed',String(selected));button.setAttribute('aria-label',`Fit ${p.name}`);button.append(art,el('span',p.name));if(kind==='animal')button.append(el('small',`${grams(p.grams)} · ${dimensions(p)}`));button.onclick=onSelect;return button;
+ const button=el('button',undefined,'equipment-choice'),art=el('canvas');drawShopArt(art,p,kind);art.setAttribute('aria-hidden','true');button.setAttribute('aria-pressed',String(selected));button.setAttribute('aria-label',`Fit ${p.name}`);button.append(art,el('span',p.name));if(kind==='part')button.append(el('small',equipmentSpec(p)));if(kind==='animal')button.append(el('small',`${grams(p.grams)} · ${dimensions(p)}`));button.onclick=onSelect;return button;
 }
 function fitted(name,slot='frame'){
  renderer.equipBurst(slot);previewRenderer.equipBurst(slot);stage.dataset.lastFitted=slot;
@@ -66,8 +68,9 @@ function syncPreview(){
 function refreshFacts(){
  dirty=true;
  const a=critter(draft.animal);$('animalMass').textContent=`${grams(a.grams)} · ${dimensions(a)} (L × W)`;const pc=$('portrait').getContext('2d');pc.clearRect(0,0,108,88);drawCritter(pc,a,52,48,73,0,false);
+ for(const[key,,,min,max]of TUNING){const input=$('tune-'+key);if(input)input.max=Math.min(max,tuningLimit(draft,key)??max);}
  const f=buildFacts(draft);$('ratio').textContent=`${f.ratio.toFixed(2)} : 1`;$('beamMass').textContent=grams(f.beamGrams);$('capacity').textContent=grams(f.capacity);
- const work=draft.counterGrams/1000*GRAVITY*draft.shortArm*(1+Math.sin(draft.cockAngle*Math.PI/180));const prep=Math.max(1.65,work/part(draft.winch).power);$('prepTime').textContent=prep<60?`${prep.toFixed(1)} s`:`${(prep/60).toFixed(1)} min`;
+ const prep=preparationSeconds(draft);$('prepTime').textContent=prep<60?'~'+prep.toFixed(1)+' s':'~'+(prep/60).toFixed(1)+' min';
  $('buildWarnings').replaceChildren();let err='';try{validateBuild(draft);canBuild(state,draft,creative);}catch(e){err=e.message;}
  for(const w of [...(err?[err]:[]),...f.warnings])$('buildWarnings').append(el('p',w,'warning'));
  $('apply').disabled=!!err;
@@ -76,11 +79,20 @@ function refreshFacts(){
 }
 function applyBuild({quiet=false}={}){try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});weaponHud.reset();sim.setDraw(0);sim.loading=createPayloadLoading(sim);launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
 function switchMode(next){if(editorSession&&!next)return;if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every volunteer. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
+function drawHeightMap(){
+ const canvas=$('altitudeStrip'),box=canvas.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1);
+ if(!(box.width>0&&box.height>0))return;
+ const width=Math.round(box.width*dpr),height=Math.round(box.height*dpr);
+ if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
+ const context=canvas.getContext('2d');context.setTransform(dpr,0,0,dpr,0,0);
+ const model=drawAltitudeStrip(context,{width:box.width,height:box.height,map:groveMap,altitude:sim.real(sim.shot).y+groveMap.launch.y,animal:sim.animal,spaceState:sim.spaceState??'bound',gravityFactor:sim.release?sim.gravityFactor:1,drawMarker:drawCritter});
+ canvas.setAttribute('aria-label',model.label);canvas.dataset.altitude=String(model.altitude);canvas.dataset.position=String(model.fraction);canvas.dataset.spaceState=model.spaceState;
+}
 function drawHudCritter(){currentCel=hudPerformance.update(sim);const canvas=$('hudCritter'),c=canvas.getContext('2d');if(canvas.width!==200){canvas.width=200;canvas.height=140;}c.setTransform(2,0,0,2,0,0);c.clearRect(0,0,100,70);drawCritter(c,sim.animal,50,36,76,0,!!sim.release,undefined,currentCel);canvas.dataset.pose=currentCel.pose;canvas.setAttribute('aria-label',`${sim.animal.name}: ${critterPoseName(currentCel)}`);}
 const hold=createHoldControl({
  canStart:()=>!paused&&!document.hidden&&!document.querySelector('dialog[open]')&&sim?.phase==='ready'&&sim.loading.loaded&&!sim.loading.dragging,
  onStart(){winding=true;holdStart=performance.now();ratchetStep=-1;readyCue=false;document.body.classList.add('holding');dirty=true;cue('ratchet');},
- onRelease(){winding=false;document.body.classList.remove('holding');dirty=true;if(performance.now()-holdStart<90){sim.setDraw(0);return;}if(sim.fire()){cue('unlatch');document.body.classList.add('in-flight');}updateReadouts();},
+ onRelease(){winding=false;document.body.classList.remove('holding');dirty=true;const elapsed=performance.now()-holdStart;if(elapsed<90){if(qa)stage.dataset.launchAttempt=JSON.stringify({elapsed,accepted:false,reason:'short-tap',draw:sim.drawFraction});sim.setDraw(0);return;}const loaded=sim.loading.loaded,draw=sim.drawFraction,accepted=sim.fire();if(qa)stage.dataset.launchAttempt=JSON.stringify({elapsed,loaded,draw,accepted,phase:sim.phase,supported:sim.loading.loaded});if(accepted){cue('unlatch');document.body.classList.add('in-flight');}else if(sim.phase==='ready')toast('The volunteer is still settling. Hold and release again once they’re supported.');updateReadouts();},
  onCancel(){winding=false;document.body.classList.remove('holding');sim?.setDraw(0);dirty=true;},
 });
 function beginHold(id){
@@ -126,7 +138,7 @@ function shopCard(offer,{packChoice=false}={}){
   else{const next=packChoice?choosePack(state,p.id):purchaseOffer(state,offer),build=fitEquipment(state.build,offer);canBuild(next,build);state={...next,build};draft={...build};adventureBuild={...build};}
   applyBuild({quiet:true});persist();cue('purchase');chime(['sparkle','score']);fitted(p.name,offer.kind==='animal'?'animal':p.slot);toast(`${p.name} ${offer.kind==='voucher'?'perk active!':'fitted to your trebuchet!'}`);
  }catch(e){toast(e.message);}};
- card.append(tag,art,el('h3',p.name),el('p',offer.kind==='animal'?`${grams(p.grams)} · ${dimensions(p)}. Fits immediately.`:p.description),button);return card;
+ card.append(tag,art,el('h3',p.name),el('p',offer.kind==='animal'?`${grams(p.grams)} · ${dimensions(p)}. Fits immediately.`:p.description+(offer.kind==='part'?' '+equipmentSpec(p):'')),button);return card;
 }
 function renderShop(){
  const ledger=shopLedger(),shop=ledger.shop;if(!shop)return;
@@ -265,7 +277,7 @@ function frame(timestamp){
  const low=$('quality').value==='low',interval=low?1000/30:1000/60;
  if((dirty||running||animating)&&timestamp-lastDraw>=interval-.5&&!document.hidden){
   if($('workshopDialog').open&&previewSim)previewRenderer.draw(previewSim,{labels:true,follow:false,paused:true,preview:true,pixelRatio:low?1:2});
-  renderer.draw(sim,{labels,follow,landingMarks,paused:paused||modal,feel:feelFrame,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);stage.dataset.playbackRate=feelFrame.rate.toFixed(3);stage.dataset.swingPlayback=feelFrame.swingAge.toFixed(3);stage.dataset.releasePlayback=feelFrame.releaseClock?.toFixed(3)??'';stage.dataset.presentationTime=feelFrame.clock.toFixed(3);
+  drawHeightMap();renderer.draw(sim,{labels,follow,landingMarks,paused:paused||modal,feel:feelFrame,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);stage.dataset.playbackRate=feelFrame.rate.toFixed(3);stage.dataset.swingPlayback=feelFrame.swingAge.toFixed(3);stage.dataset.releasePlayback=feelFrame.releaseClock?.toFixed(3)??'';stage.dataset.presentationTime=feelFrame.clock.toFixed(3);
  }
  weaponHud.draw(active?delta:0,active?Math.max(0,sim.time-physicsBefore):0);
  if(refresh&&timestamp-refreshAt>110){updateReadouts();refreshAt=timestamp;}

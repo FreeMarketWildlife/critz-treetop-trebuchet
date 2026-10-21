@@ -1,3 +1,13 @@
+# Current workshop altitude model
+
+The current custom-workshop runtime uses the shared Grove map in src/grove-map.js and src/build-physics.js. Its default is a 3,000 m authored range, 800 m Grandfather Tree and 600 m launch branch. Gravity begins fading at 900 m and reaches 14% at 1,040 m. There is no current zero-gravity escape state and no death ceiling at 600 m. Flight may exceed the authored map range; normal settling and the existing bounded run timer still end runs.
+
+The right-edge height strip uses the actual current or custom map. Floor is near its bottom, tree centre in the middle, and the upper sky is visibly compressed. Marker height is clamped at chart edges with an arrow and honest numeric/accessible reading; horizontal travel does not move it. Heights alone never label a critter as escaped.
+
+The earlier mechanism-lab design below is preserved for historical context. Its 600 m death rule and 300 m launch do **not** describe the current custom-workshop game.
+
+---
+
 # Grimroot to Kronos
 
 The playable vertical map is 0–600 gameplay metres. Five 120 m bands put the Grandfather Tree's center at exactly 300 m, with two areas above and two below. This is deliberately compressed geography, not a claim about Libriam's atmosphere or tree height.

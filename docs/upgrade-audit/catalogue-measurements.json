@@ -1,0 +1,6061 @@
+{
+  "method": {
+    "kind": "bounded deterministic Node comparisons",
+    "baselineSeconds": 12,
+    "intendedSeconds": 30,
+    "map": false,
+    "loading": false,
+    "weapons": false,
+    "personalStorage": false,
+    "limits": "Distances are observations at cutoff, not guaranteed final ranges. Controlled direct placement excludes the loose UI loading variation. Capacity envelope construction is not a certified tuned launch."
+  },
+  "counts": {
+    "parts": 48,
+    "slots": 12
+  },
+  "baseline": {
+    "phase": "finished",
+    "failure": "",
+    "release": {
+      "speed": 22.004892711000338,
+      "angle": 38.94477444048693,
+      "time": 0.5262257516187019,
+      "reason": "Release ring cleared the pin"
+    },
+    "distanceAtCutoff": 27.004690155431224,
+    "beamGrams": 364.00000000000006,
+    "pouchGrams": 25.04,
+    "counterRadius": 0.08095300210017602,
+    "peakTension": 44.89180765017974,
+    "peakStress": 36564570.33464019,
+    "frameX": 0
+  },
+  "rows": [
+    {
+      "id": "anchored",
+      "slot": "chassis",
+      "name": "Root anchors",
+      "price": 0,
+      "specification": {
+        "id": "anchored",
+        "slot": "chassis",
+        "name": "Root anchors",
+        "price": 0,
+        "description": "A fixed axle. No chassis recoil; all reaction goes into the branch."
+      },
+      "mechanism": "Physical ground contacts, recoil and axle/carriage constraints.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "skids",
+      "slot": "chassis",
+      "name": "Timber skids",
+      "price": 45,
+      "specification": {
+        "id": "skids",
+        "slot": "chassis",
+        "name": "Timber skids",
+        "price": 45,
+        "description": "An unanchored frame. Foot friction decides whether it slides or tips."
+      },
+      "mechanism": "Physical ground contacts, recoil and axle/carriage constraints.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 23.064630859150892,
+          "angle": 37.71588842043086,
+          "time": 0.5286790185260153,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 26.489252891799183,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 53.32097215841333,
+        "peakStress": 43139318.65106239,
+        "frameX": -0.0026548582923838332
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress",
+        "frameX"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "skids",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 23.064630859150892,
+            "angle": 37.71588842043086,
+            "time": 0.5286790185260153,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 26.489252891799183,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 53.32097215841333,
+          "peakStress": 43139318.65106239,
+          "frameX": -0.0026548582923838332
+        }
+      }
+    },
+    {
+      "id": "wheels",
+      "slot": "chassis",
+      "name": "Rolling chassis",
+      "price": 110,
+      "specification": {
+        "id": "wheels",
+        "slot": "chassis",
+        "name": "Rolling chassis",
+        "price": 110,
+        "description": "Two turning wheels let the entire machine recoil. Brake and wheel size matter."
+      },
+      "mechanism": "Physical ground contacts, recoil and axle/carriage constraints.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 23.09362783093021,
+          "angle": 44.82993760244278,
+          "time": 0.5078262498138514,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 29.666544370509314,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 31.547535453950836,
+        "peakStress": 26156038.021581646,
+        "frameX": -0.22280479545620724
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress",
+        "frameX"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "wheels",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 23.09362783093021,
+            "angle": 44.82993760244278,
+            "time": 0.5078262498138514,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 29.666544370509314,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 31.547535453950836,
+          "peakStress": 26156038.021581646,
+          "frameX": -0.22280479545620724
+        }
+      }
+    },
+    {
+      "id": "walking",
+      "slot": "chassis",
+      "name": "Walking triangle",
+      "price": 240,
+      "specification": {
+        "id": "walking",
+        "slot": "chassis",
+        "name": "Walking triangle",
+        "price": 240,
+        "description": "A rocking support with changing ground contacts. Tune lean, foot grip and proportions."
+      },
+      "mechanism": "Physical ground contacts, recoil and axle/carriage constraints.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.43578543837199,
+          "angle": 45.05918500927681,
+          "time": 0.5139594170821349,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 30.74621638559737,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 56.97848607868053,
+        "peakStress": 45992179.5088708,
+        "frameX": 0.5252581584503467
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress",
+        "frameX"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "walking",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.43578543837199,
+            "angle": 45.05918500927681,
+            "time": 0.5139594170821349,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 30.74621638559737,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 56.97848607868053,
+          "peakStress": 45992179.5088708,
+          "frameX": 0.5252581584503467
+        }
+      }
+    },
+    {
+      "id": "floating",
+      "slot": "chassis",
+      "name": "Floating axle rails",
+      "price": 420,
+      "specification": {
+        "id": "floating",
+        "slot": "chassis",
+        "name": "Floating axle rails",
+        "price": 420,
+        "description": "A horizontal rolling axle and a vertically guided counterweight."
+      },
+      "mechanism": "Physical ground contacts, recoil and axle/carriage constraints.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 24.154634107867654,
+          "angle": 39.68508132344527,
+          "time": 0.5164126839894483,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 31.204682562380334,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 39.542441598405084,
+        "peakStress": 32392064.814255957,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "floating",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 24.154634107867654,
+            "angle": 39.68508132344527,
+            "time": 0.5164126839894483,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 31.204682562380334,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 39.542441598405084,
+          "peakStress": 32392064.814255957,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "twig",
+      "slot": "arm",
+      "name": "Willow beam",
+      "price": 0,
+      "specification": {
+        "id": "twig",
+        "slot": "arm",
+        "name": "Willow beam",
+        "price": 0,
+        "description": "Set both lever lengths and the beam thickness. Mass and bending strength follow its geometry.",
+        "maxLength": 2.2,
+        "density": 500,
+        "strength": 32000000,
+        "color": "#ba804a"
+      },
+      "mechanism": "Density changes distributed beam mass/inertia; strength controls overload; maxLength validates geometry.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "length": 2.2
+        },
+        "currentSettings": {
+          "length": 1.3
+        },
+        "expandedSettings": {
+          "arm": "twig",
+          "frame": "leviathan",
+          "longArm": 1.4080000000000004,
+          "shortArm": 0.3520000000000001,
+          "pivotHeight": 1.4960000000000002
+        },
+        "physical": {
+          "beamGrams": 352.0000000000001,
+          "tipDistance": 1.4080000000000004
+        },
+        "previousPart": null,
+        "previousRejectsExpanded": null
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 23.04252213120859,
+          "angle": 38.207521551436884,
+          "time": 0.5016930825455679,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 31.643727466413186,
+        "beamGrams": 260,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 36.32090500339449,
+        "peakStress": 29879266.270147696,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "beamGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "twig",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 23.04252213120859,
+            "angle": 38.207521551436884,
+            "time": 0.5016930825455679,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 31.643727466413186,
+          "beamGrams": 260,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 36.32090500339449,
+          "peakStress": 29879266.270147696,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "oak",
+      "slot": "arm",
+      "name": "Oak beam",
+      "price": 65,
+      "specification": {
+        "id": "oak",
+        "slot": "arm",
+        "name": "Oak beam",
+        "price": 65,
+        "description": "Set both lever lengths and the beam thickness. Mass and bending strength follow its geometry.",
+        "maxLength": 7,
+        "density": 700,
+        "strength": 55000000,
+        "color": "#9d6138"
+      },
+      "mechanism": "Density changes distributed beam mass/inertia; strength controls overload; maxLength validates geometry.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "length": 7
+        },
+        "currentSettings": {
+          "length": 1.3
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "longArm": 4.48,
+          "shortArm": 1.12,
+          "pivotHeight": 4.760000000000001
+        },
+        "physical": {
+          "beamGrams": 1568.0000000000002,
+          "tipDistance": 4.4799999999999995
+        },
+        "previousPart": "twig",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "laminated",
+      "slot": "arm",
+      "name": "Laminated beam",
+      "price": 260,
+      "specification": {
+        "id": "laminated",
+        "slot": "arm",
+        "name": "Laminated beam",
+        "price": 260,
+        "description": "Set both lever lengths and the beam thickness. Mass and bending strength follow its geometry.",
+        "maxLength": 20,
+        "density": 580,
+        "strength": 90000000,
+        "color": "#c28e53"
+      },
+      "mechanism": "Density changes distributed beam mass/inertia; strength controls overload; maxLength validates geometry.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "length": 20
+        },
+        "currentSettings": {
+          "length": 1.3
+        },
+        "expandedSettings": {
+          "arm": "laminated",
+          "frame": "leviathan",
+          "longArm": 12.8,
+          "shortArm": 3.2,
+          "pivotHeight": 13.6
+        },
+        "physical": {
+          "beamGrams": 3712,
+          "tipDistance": 12.799999999999999
+        },
+        "previousPart": "oak",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.59624219333149,
+          "angle": 38.63937664442748,
+          "time": 0.5115061501748215,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 25.278525029406982,
+        "beamGrams": 301.6,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 43.88400638630337,
+        "peakStress": 35778485.348816626,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "beamGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "laminated",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.59624219333149,
+            "angle": 38.63937664442748,
+            "time": 0.5115061501748215,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 25.278525029406982,
+          "beamGrams": 301.6,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 43.88400638630337,
+          "peakStress": 35778485.348816626,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "ironwood",
+      "slot": "arm",
+      "name": "Ironwood beam",
+      "price": 1100,
+      "specification": {
+        "id": "ironwood",
+        "slot": "arm",
+        "name": "Ironwood beam",
+        "price": 1100,
+        "description": "Set both lever lengths and the beam thickness. Mass and bending strength follow its geometry.",
+        "maxLength": 65,
+        "density": 850,
+        "strength": 160000000,
+        "color": "#714c3d"
+      },
+      "mechanism": "Density changes distributed beam mass/inertia; strength controls overload; maxLength validates geometry.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "length": 65
+        },
+        "currentSettings": {
+          "length": 1.3
+        },
+        "expandedSettings": {
+          "arm": "ironwood",
+          "frame": "leviathan",
+          "longArm": 41.6,
+          "shortArm": 10.4,
+          "pivotHeight": 44.199999999999996
+        },
+        "physical": {
+          "beamGrams": 17680,
+          "tipDistance": 41.6
+        },
+        "previousPart": "laminated",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 21.19567515794389,
+          "angle": 39.69192338952705,
+          "time": 0.5446252534235524,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 30.527518879129392,
+        "beamGrams": 442.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 34.06132287059994,
+        "peakStress": 28116792.206567943,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "beamGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "bear",
+        "build": {
+          "name": "Brown bear anchored",
+          "chassis": "anchored",
+          "arm": "ironwood",
+          "frame": "giant",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "hammock",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "bear",
+          "longArm": 7.800000000000001,
+          "shortArm": 2.4000000000000004,
+          "beamWidth": 0.5700000000000001,
+          "pivotHeight": 8.100000000000001,
+          "baseWidth": 6,
+          "frameGrams": 1650000,
+          "counterGrams": 7500000,
+          "hanger": 1.5,
+          "slingLength": 7.199999999999999,
+          "pouchWidth": 2.64,
+          "pinAngle": -45,
+          "pinLength": 0.07500000000000001,
+          "axleRadius": 0.07500000000000001,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.66,
+          "wheelGrams": 60000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 16.5,
+          "troughHeight": 0.18
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 14.776509639524264,
+            "angle": 43.16057765760245,
+            "time": 2.647107960691396,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 86.65565702133935,
+          "beamGrams": 2816883.0000000014,
+          "pouchGrams": 41000,
+          "counterRadius": 0.6109903238485185,
+          "peakTension": 101551.80774516704,
+          "peakStress": 26435154.457640495,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "colossus",
+      "slot": "arm",
+      "name": "Colossus truss",
+      "price": 4800,
+      "specification": {
+        "id": "colossus",
+        "slot": "arm",
+        "name": "Colossus truss",
+        "price": 4800,
+        "description": "Set both lever lengths and the beam thickness. Mass and bending strength follow its geometry.",
+        "maxLength": 160,
+        "density": 450,
+        "strength": 260000000,
+        "color": "#678e87"
+      },
+      "mechanism": "Density changes distributed beam mass/inertia; strength controls overload; maxLength validates geometry.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "length": 160
+        },
+        "currentSettings": {
+          "length": 1.3
+        },
+        "expandedSettings": {
+          "arm": "colossus",
+          "frame": "leviathan",
+          "longArm": 102.4,
+          "shortArm": 25.6,
+          "pivotHeight": 108.8
+        },
+        "physical": {
+          "beamGrams": 23040.000000000004,
+          "tipDistance": 102.39999999999999
+        },
+        "previousPart": "ironwood",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 23.29584304825034,
+          "angle": 39.10175379949091,
+          "time": 0.4943332818236279,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.77571823555881,
+        "beamGrams": 234.00000000000003,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 33.87826160886321,
+        "peakStress": 27974004.4224133,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "beamGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "whale",
+        "build": {
+          "name": "Blue whale anchored",
+          "chassis": "anchored",
+          "arm": "colossus",
+          "frame": "leviathan",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "whale",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "whale",
+          "longArm": 83.2,
+          "shortArm": 25.6,
+          "beamWidth": 6.08,
+          "pivotHeight": 86.4,
+          "baseWidth": 64,
+          "frameGrams": 1100000000,
+          "counterGrams": 5000000000,
+          "hanger": 16,
+          "slingLength": 76.8,
+          "pouchWidth": 28.16,
+          "pinAngle": -45,
+          "pinLength": 0.8,
+          "axleRadius": 0.8,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 7.04,
+          "wheelGrams": 40000000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 176,
+          "troughHeight": 1.92
+        },
+        "result": {
+          "phase": "flight",
+          "failure": "",
+          "release": {
+            "speed": 71.7038920032228,
+            "angle": 40.144768811629405,
+            "time": 7.548284082663646,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 957.7504292488826,
+          "beamGrams": 1809874944.0000005,
+          "pouchGrams": 1384000,
+          "counterRadius": 5.3374921105697055,
+          "peakTension": 44094466.34517475,
+          "peakStress": 102461071.4743981,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "sapling",
+      "slot": "frame",
+      "name": "Sapling A-frame",
+      "price": 0,
+      "specification": {
+        "id": "sapling",
+        "slot": "frame",
+        "name": "Sapling A-frame",
+        "price": 0,
+        "description": "Set axle height, base width, ballast and bracing. Wide feet resist tipping.",
+        "maxHeight": 3,
+        "maxMass": 10000
+      },
+      "mechanism": "Capacity permits taller/heavier player-authored frames; actual height/mass/brace values create geometry/inertia. Selecting ID alone does not auto-resize.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "height": 3,
+          "mass": 10000
+        },
+        "currentSettings": {
+          "height": 1.2,
+          "mass": 1500
+        },
+        "expandedSettings": {
+          "pivotHeight": 2.4000000000000004,
+          "frameGrams": 8000
+        },
+        "physical": {
+          "pivotHeight": 2.4000000000000004,
+          "frameGrams": 7999.999999999999
+        },
+        "previousPart": null,
+        "previousRejectsExpanded": null
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "timber",
+      "slot": "frame",
+      "name": "Timber tower",
+      "price": 80,
+      "specification": {
+        "id": "timber",
+        "slot": "frame",
+        "name": "Timber tower",
+        "price": 80,
+        "description": "Set axle height, base width, ballast and bracing. Wide feet resist tipping.",
+        "maxHeight": 10,
+        "maxMass": 100000
+      },
+      "mechanism": "Capacity permits taller/heavier player-authored frames; actual height/mass/brace values create geometry/inertia. Selecting ID alone does not auto-resize.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "height": 10,
+          "mass": 100000
+        },
+        "currentSettings": {
+          "height": 1.2,
+          "mass": 1500
+        },
+        "expandedSettings": {
+          "frame": "timber",
+          "pivotHeight": 8,
+          "frameGrams": 80000
+        },
+        "physical": {
+          "pivotHeight": 8,
+          "frameGrams": 80000.00000000001
+        },
+        "previousPart": "sapling",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "rabbit",
+        "build": {
+          "name": "Rabbit anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "timber",
+          "ballast": "quarry",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pouch",
+          "rope": "hemp",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "rabbit",
+          "longArm": 3,
+          "shortArm": 0.8,
+          "beamWidth": 0.1,
+          "pivotHeight": 2.7,
+          "baseWidth": 2,
+          "frameGrams": 30000,
+          "counterGrams": 150000,
+          "hanger": 0.4,
+          "slingLength": 2.7,
+          "pouchWidth": 0.55,
+          "pinAngle": -45,
+          "pinLength": 0.035,
+          "axleRadius": 0.012,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 4,
+          "troughHeight": 0.06
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 20.163098527297777,
+            "angle": 40.40640913015668,
+            "time": 1.0625000000000002,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 69.44942651376067,
+          "beamGrams": 26600.000000000004,
+          "pouchGrams": 278,
+          "counterRadius": 0.2367080141024981,
+          "peakTension": 917.7465518205574,
+          "peakStress": 17472644.31277003,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "braced",
+      "slot": "frame",
+      "name": "Braced tower",
+      "price": 300,
+      "specification": {
+        "id": "braced",
+        "slot": "frame",
+        "name": "Braced tower",
+        "price": 300,
+        "description": "Set axle height, base width, ballast and bracing. Wide feet resist tipping.",
+        "maxHeight": 30,
+        "maxMass": 3000000
+      },
+      "mechanism": "Capacity permits taller/heavier player-authored frames; actual height/mass/brace values create geometry/inertia. Selecting ID alone does not auto-resize.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "height": 30,
+          "mass": 3000000
+        },
+        "currentSettings": {
+          "height": 1.2,
+          "mass": 1500
+        },
+        "expandedSettings": {
+          "frame": "braced",
+          "pivotHeight": 24,
+          "frameGrams": 2400000
+        },
+        "physical": {
+          "pivotHeight": 24,
+          "frameGrams": 2400000
+        },
+        "previousPart": "timber",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "bear",
+        "build": {
+          "name": "Brown bear anchored",
+          "chassis": "anchored",
+          "arm": "ironwood",
+          "frame": "braced",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "hammock",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "bear",
+          "longArm": 7.800000000000001,
+          "shortArm": 2.4000000000000004,
+          "beamWidth": 0.5700000000000001,
+          "pivotHeight": 8.100000000000001,
+          "baseWidth": 6,
+          "frameGrams": 1650000,
+          "counterGrams": 7500000,
+          "hanger": 1.5,
+          "slingLength": 7.199999999999999,
+          "pouchWidth": 2.64,
+          "pinAngle": -45,
+          "pinLength": 0.07500000000000001,
+          "axleRadius": 0.07500000000000001,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.66,
+          "wheelGrams": 60000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 16.5,
+          "troughHeight": 0.18
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 14.776509639524264,
+            "angle": 43.16057765760245,
+            "time": 2.647107960691396,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 86.65565702133935,
+          "beamGrams": 2816883.0000000014,
+          "pouchGrams": 41000,
+          "counterRadius": 0.6109903238485185,
+          "peakTension": 101551.80774516704,
+          "peakStress": 26435154.457640495,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "giant",
+      "slot": "frame",
+      "name": "Giant gantry",
+      "price": 1400,
+      "specification": {
+        "id": "giant",
+        "slot": "frame",
+        "name": "Giant gantry",
+        "price": 1400,
+        "description": "Set axle height, base width, ballast and bracing. Wide feet resist tipping.",
+        "maxHeight": 100,
+        "maxMass": 100000000
+      },
+      "mechanism": "Capacity permits taller/heavier player-authored frames; actual height/mass/brace values create geometry/inertia. Selecting ID alone does not auto-resize.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "height": 100,
+          "mass": 100000000
+        },
+        "currentSettings": {
+          "height": 1.2,
+          "mass": 1500
+        },
+        "expandedSettings": {
+          "frame": "giant",
+          "pivotHeight": 80,
+          "frameGrams": 80000000
+        },
+        "physical": {
+          "pivotHeight": 80,
+          "frameGrams": 80000000
+        },
+        "previousPart": "braced",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "elephant",
+        "build": {
+          "name": "Elephant anchored",
+          "chassis": "anchored",
+          "arm": "ironwood",
+          "frame": "giant",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "elephant",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "elephant",
+          "longArm": 23.400000000000002,
+          "shortArm": 7.2,
+          "beamWidth": 1.71,
+          "pivotHeight": 24.3,
+          "baseWidth": 18,
+          "frameGrams": 44000000,
+          "counterGrams": 200000000,
+          "hanger": 4.5,
+          "slingLength": 21.599999999999998,
+          "pouchWidth": 7.92,
+          "pinAngle": -45,
+          "pinLength": 0.225,
+          "axleRadius": 0.225,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 1.98,
+          "wheelGrams": 1600000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 49.5,
+          "troughHeight": 0.54
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 32.74572816939994,
+            "angle": 41.835253696392556,
+            "time": 4.241637913294757,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 359.26079887945355,
+          "beamGrams": 76055841,
+          "pouchGrams": 188000,
+          "counterRadius": 1.8253966249301667,
+          "peakTension": 2550193.9507379886,
+          "peakStress": 73894023.12094703,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "leviathan",
+      "slot": "frame",
+      "name": "Leviathan gantry",
+      "price": 5000,
+      "specification": {
+        "id": "leviathan",
+        "slot": "frame",
+        "name": "Leviathan gantry",
+        "price": 5000,
+        "description": "Set axle height, base width, ballast and bracing. Wide feet resist tipping.",
+        "maxHeight": 220,
+        "maxMass": 2000000000
+      },
+      "mechanism": "Capacity permits taller/heavier player-authored frames; actual height/mass/brace values create geometry/inertia. Selecting ID alone does not auto-resize.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "height": 220,
+          "mass": 2000000000
+        },
+        "currentSettings": {
+          "height": 1.2,
+          "mass": 1500
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "pivotHeight": 176,
+          "frameGrams": 1600000000
+        },
+        "physical": {
+          "pivotHeight": 176,
+          "frameGrams": 1600000000
+        },
+        "previousPart": "giant",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "whale",
+        "build": {
+          "name": "Blue whale anchored",
+          "chassis": "anchored",
+          "arm": "colossus",
+          "frame": "leviathan",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "whale",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "whale",
+          "longArm": 83.2,
+          "shortArm": 25.6,
+          "beamWidth": 6.08,
+          "pivotHeight": 86.4,
+          "baseWidth": 64,
+          "frameGrams": 1100000000,
+          "counterGrams": 5000000000,
+          "hanger": 16,
+          "slingLength": 76.8,
+          "pouchWidth": 28.16,
+          "pinAngle": -45,
+          "pinLength": 0.8,
+          "axleRadius": 0.8,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 7.04,
+          "wheelGrams": 40000000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 176,
+          "troughHeight": 1.92
+        },
+        "result": {
+          "phase": "flight",
+          "failure": "",
+          "release": {
+            "speed": 71.7038920032228,
+            "angle": 40.144768811629405,
+            "time": 7.548284082663646,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 957.7504292488826,
+          "beamGrams": 1809874944.0000005,
+          "pouchGrams": 1384000,
+          "counterRadius": 5.3374921105697055,
+          "peakTension": 44094466.34517475,
+          "peakStress": 102461071.4743981,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "pebble",
+      "slot": "ballast",
+      "name": "Pebble basket",
+      "price": 0,
+      "specification": {
+        "id": "pebble",
+        "slot": "ballast",
+        "name": "Pebble basket",
+        "price": 0,
+        "description": "Buy more counterweight capacity, then choose the actual fill mass.",
+        "maxMass": 5000
+      },
+      "mechanism": "Capacity permits a larger counterweight fill; actual counterGrams drives mass/energy. Selecting ID alone does not auto-fill.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 5000
+        },
+        "currentSettings": {
+          "mass": 5000
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "ballast": "pebble",
+          "material": "steel",
+          "pivotHeight": 200,
+          "counterGrams": 4000
+        },
+        "physical": {
+          "counterGrams": 4000
+        },
+        "previousPart": null,
+        "previousRejectsExpanded": null
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 19.961248957093336,
+          "angle": 42.96529872593432,
+          "time": 0.5507584206918359,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 21.880489552661103,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.07617969162234721,
+        "peakTension": 51.332496878505275,
+        "peakStress": 41330147.87148411,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "counterRadius",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "pebble",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 5000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 19.961248957093336,
+            "angle": 42.96529872593432,
+            "time": 0.5507584206918359,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 21.880489552661103,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.07617969162234721,
+          "peakTension": 51.332496878505275,
+          "peakStress": 41330147.87148411,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "boulder",
+      "slot": "ballast",
+      "name": "Boulder basket",
+      "price": 55,
+      "specification": {
+        "id": "boulder",
+        "slot": "ballast",
+        "name": "Boulder basket",
+        "price": 55,
+        "description": "Buy more counterweight capacity, then choose the actual fill mass.",
+        "maxMass": 100000
+      },
+      "mechanism": "Capacity permits a larger counterweight fill; actual counterGrams drives mass/energy. Selecting ID alone does not auto-fill.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 100000
+        },
+        "currentSettings": {
+          "mass": 6000
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "material": "steel",
+          "pivotHeight": 200,
+          "counterGrams": 80000
+        },
+        "physical": {
+          "counterGrams": 79999.99999999999
+        },
+        "previousPart": "pebble",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "quarry",
+      "slot": "ballast",
+      "name": "Quarry basket",
+      "price": 220,
+      "specification": {
+        "id": "quarry",
+        "slot": "ballast",
+        "name": "Quarry basket",
+        "price": 220,
+        "description": "Buy more counterweight capacity, then choose the actual fill mass.",
+        "maxMass": 2000000
+      },
+      "mechanism": "Capacity permits a larger counterweight fill; actual counterGrams drives mass/energy. Selecting ID alone does not auto-fill.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 2000000
+        },
+        "currentSettings": {
+          "mass": 6000
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "ballast": "quarry",
+          "material": "steel",
+          "pivotHeight": 200,
+          "counterGrams": 1600000
+        },
+        "physical": {
+          "counterGrams": 1599999.9999999998
+        },
+        "previousPart": "boulder",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "rabbit",
+        "build": {
+          "name": "Rabbit anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "timber",
+          "ballast": "quarry",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pouch",
+          "rope": "hemp",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "rabbit",
+          "longArm": 3,
+          "shortArm": 0.8,
+          "beamWidth": 0.1,
+          "pivotHeight": 2.7,
+          "baseWidth": 2,
+          "frameGrams": 30000,
+          "counterGrams": 150000,
+          "hanger": 0.4,
+          "slingLength": 2.7,
+          "pouchWidth": 0.55,
+          "pinAngle": -45,
+          "pinLength": 0.035,
+          "axleRadius": 0.012,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 4,
+          "troughHeight": 0.06
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 20.163098527297777,
+            "angle": 40.40640913015668,
+            "time": 1.0625000000000002,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 69.44942651376067,
+          "beamGrams": 26600.000000000004,
+          "pouchGrams": 278,
+          "counterRadius": 0.2367080141024981,
+          "peakTension": 917.7465518205574,
+          "peakStress": 17472644.31277003,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "mountain",
+      "slot": "ballast",
+      "name": "Mountain ballast",
+      "price": 950,
+      "specification": {
+        "id": "mountain",
+        "slot": "ballast",
+        "name": "Mountain ballast",
+        "price": 950,
+        "description": "Buy more counterweight capacity, then choose the actual fill mass.",
+        "maxMass": 100000000
+      },
+      "mechanism": "Capacity permits a larger counterweight fill; actual counterGrams drives mass/energy. Selecting ID alone does not auto-fill.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 100000000
+        },
+        "currentSettings": {
+          "mass": 6000
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "ballast": "mountain",
+          "material": "steel",
+          "pivotHeight": 200,
+          "counterGrams": 80000000
+        },
+        "physical": {
+          "counterGrams": 80000000
+        },
+        "previousPart": "quarry",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "bear",
+        "build": {
+          "name": "Brown bear anchored",
+          "chassis": "anchored",
+          "arm": "ironwood",
+          "frame": "giant",
+          "ballast": "mountain",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "hammock",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "bear",
+          "longArm": 7.800000000000001,
+          "shortArm": 2.4000000000000004,
+          "beamWidth": 0.5700000000000001,
+          "pivotHeight": 8.100000000000001,
+          "baseWidth": 6,
+          "frameGrams": 1650000,
+          "counterGrams": 7500000,
+          "hanger": 1.5,
+          "slingLength": 7.199999999999999,
+          "pouchWidth": 2.64,
+          "pinAngle": -45,
+          "pinLength": 0.07500000000000001,
+          "axleRadius": 0.07500000000000001,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.66,
+          "wheelGrams": 60000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 16.5,
+          "troughHeight": 0.18
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 14.776509639524264,
+            "angle": 43.16057765760245,
+            "time": 2.647107960691396,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 86.65565702133935,
+          "beamGrams": 2816883.0000000014,
+          "pouchGrams": 41000,
+          "counterRadius": 0.6109903238485185,
+          "peakTension": 101551.80774516704,
+          "peakStress": 26435154.457640495,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "continental",
+      "slot": "ballast",
+      "name": "Continental ballast",
+      "price": 4200,
+      "specification": {
+        "id": "continental",
+        "slot": "ballast",
+        "name": "Continental ballast",
+        "price": 4200,
+        "description": "Buy more counterweight capacity, then choose the actual fill mass.",
+        "maxMass": 15000000000
+      },
+      "mechanism": "Capacity permits a larger counterweight fill; actual counterGrams drives mass/energy. Selecting ID alone does not auto-fill.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 15000000000
+        },
+        "currentSettings": {
+          "mass": 6000
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "ballast": "continental",
+          "material": "steel",
+          "pivotHeight": 200,
+          "counterGrams": 12000000000
+        },
+        "physical": {
+          "counterGrams": 12000000000.000002
+        },
+        "previousPart": "mountain",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "whale",
+        "build": {
+          "name": "Blue whale anchored",
+          "chassis": "anchored",
+          "arm": "colossus",
+          "frame": "leviathan",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "whale",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "whale",
+          "longArm": 83.2,
+          "shortArm": 25.6,
+          "beamWidth": 6.08,
+          "pivotHeight": 86.4,
+          "baseWidth": 64,
+          "frameGrams": 1100000000,
+          "counterGrams": 5000000000,
+          "hanger": 16,
+          "slingLength": 76.8,
+          "pouchWidth": 28.16,
+          "pinAngle": -45,
+          "pinLength": 0.8,
+          "axleRadius": 0.8,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 7.04,
+          "wheelGrams": 40000000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 176,
+          "troughHeight": 1.92
+        },
+        "result": {
+          "phase": "flight",
+          "failure": "",
+          "release": {
+            "speed": 71.7038920032228,
+            "angle": 40.144768811629405,
+            "time": 7.548284082663646,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 957.7504292488826,
+          "beamGrams": 1809874944.0000005,
+          "pouchGrams": 1384000,
+          "counterRadius": 5.3374921105697055,
+          "peakTension": 44094466.34517475,
+          "peakStress": 102461071.4743981,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "stone",
+      "slot": "material",
+      "name": "River stone",
+      "price": 0,
+      "specification": {
+        "id": "stone",
+        "slot": "material",
+        "name": "River stone",
+        "price": 0,
+        "description": "2,700,000 g/m³. A lumpy, bulky weight.",
+        "density": 2700
+      },
+      "mechanism": "Density changes counterweight radius/contact geometry and inertia at identical mass.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "sand",
+      "slot": "material",
+      "name": "Sand basket",
+      "price": 35,
+      "specification": {
+        "id": "sand",
+        "slot": "material",
+        "name": "Sand basket",
+        "price": 35,
+        "description": "1,600,000 g/m³. The same mass needs a larger basket.",
+        "density": 1600
+      },
+      "mechanism": "Density changes counterweight radius/contact geometry and inertia at identical mass.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.12022087311486,
+          "angle": 38.186958897948124,
+          "time": 0.5286790185260153,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 26.547984375674808,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.09637866052035246,
+        "peakTension": 34.84495928393792,
+        "peakStress": 28728028.60897157,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "counterRadius",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "sand",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.12022087311486,
+            "angle": 38.186958897948124,
+            "time": 0.5286790185260153,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 26.547984375674808,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.09637866052035246,
+          "peakTension": 34.84495928393792,
+          "peakStress": 28728028.60897157,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "steel",
+      "slot": "material",
+      "name": "Steel plates",
+      "price": 150,
+      "specification": {
+        "id": "steel",
+        "slot": "material",
+        "name": "Steel plates",
+        "price": 150,
+        "description": "7,850,000 g/m³. Compact ballast with a different moment of inertia.",
+        "density": 7850
+      },
+      "mechanism": "Density changes counterweight radius/contact geometry and inertia at identical mass.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 21.774494303996782,
+          "angle": 40.28142471292564,
+          "time": 0.5237724847113885,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 31.629621081205137,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.056719317292414785,
+        "peakTension": 54.41402058648636,
+        "peakStress": 43991896.42495935,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "counterRadius",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 21.774494303996782,
+            "angle": 40.28142471292564,
+            "time": 0.5237724847113885,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 31.629621081205137,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.056719317292414785,
+          "peakTension": 54.41402058648636,
+          "peakStress": 43991896.42495935,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "runway",
+      "slot": "trough",
+      "name": "Timber launch rail",
+      "price": 0,
+      "specification": {
+        "id": "runway",
+        "slot": "trough",
+        "name": "Timber launch rail",
+        "price": 0,
+        "description": "A low wooden trough supports the loaded pouch and guides its first slide.",
+        "friction": 0.24
+      },
+      "mechanism": "Selected fixture friction affects the pouch slide before lift-off.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "waxedRunway",
+      "slot": "trough",
+      "name": "Waxed launch rail",
+      "price": 85,
+      "specification": {
+        "id": "waxedRunway",
+        "slot": "trough",
+        "name": "Waxed launch rail",
+        "price": 85,
+        "description": "A smooth lined trough reduces the friction before lift-off.",
+        "friction": 0.06
+      },
+      "mechanism": "Selected fixture friction affects the pouch slide before lift-off.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.00055145011934,
+          "angle": 38.936368561003604,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.782923244506193,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 54.27929864216096,
+        "peakStress": 43886813.308385536,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "waxedRunway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.00055145011934,
+            "angle": 38.936368561003604,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.782923244506193,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 54.27929864216096,
+          "peakStress": 43886813.308385536,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "fixed",
+      "slot": "mount",
+      "name": "Fixed weight",
+      "price": 0,
+      "specification": {
+        "id": "fixed",
+        "slot": "mount",
+        "name": "Fixed weight",
+        "price": 0,
+        "description": "Rigidly attached to the short arm; its mass and inertia turn with the beam."
+      },
+      "mechanism": "Fixed mass on arm versus separate hinged pendulum (floating chassis has its own guided weight).",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 19.99012189636519,
+          "angle": 38.49947925764302,
+          "time": 0.5838775239405668,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 24.863853589727945,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 22.933336958197064,
+        "peakStress": 19436963.194893707,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "fixed",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 19.99012189636519,
+            "angle": 38.49947925764302,
+            "time": 0.5838775239405668,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 24.863853589727945,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 22.933336958197064,
+          "peakStress": 19436963.194893707,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "hinged",
+      "slot": "mount",
+      "name": "Swinging hanger",
+      "price": 90,
+      "specification": {
+        "id": "hinged",
+        "slot": "mount",
+        "name": "Swinging hanger",
+        "price": 90,
+        "description": "An independent pendulum. Hanger length and hinge friction change the energy transfer."
+      },
+      "mechanism": "Fixed mass on arm versus separate hinged pendulum (floating chassis has its own guided weight).",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "pocket",
+      "slot": "sling",
+      "name": "Leaf pocket",
+      "price": 0,
+      "specification": {
+        "id": "pocket",
+        "slot": "sling",
+        "name": "Leaf pocket",
+        "price": 0,
+        "description": "Larger cargo needs a larger pouch. Extra cloth adds moving mass.",
+        "capacity": 150,
+        "width": 0.22,
+        "maxLength": 3,
+        "mass": 2
+      },
+      "mechanism": "Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 150,
+          "width": 0.22,
+          "length": 3
+        },
+        "currentSettings": {
+          "mass": 25,
+          "width": 0.2,
+          "length": 0.96
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "pivotHeight": 2.64,
+          "slingLength": 2.4000000000000004,
+          "pouchWidth": 0.17600000000000002
+        },
+        "physical": {
+          "ropeMaxLength": 2.4000000000000004,
+          "pouchGrams": 59.60000000000001
+        },
+        "previousPart": null,
+        "previousRejectsExpanded": null
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "pouch",
+      "slot": "sling",
+      "name": "Canvas pouch",
+      "price": 60,
+      "specification": {
+        "id": "pouch",
+        "slot": "sling",
+        "name": "Canvas pouch",
+        "price": 60,
+        "description": "Larger cargo needs a larger pouch. Extra cloth adds moving mass.",
+        "capacity": 3000,
+        "width": 0.75,
+        "maxLength": 10,
+        "mass": 35
+      },
+      "mechanism": "Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 3000,
+          "width": 0.75,
+          "length": 10
+        },
+        "currentSettings": {
+          "mass": 25,
+          "width": 0.2,
+          "length": 0.96
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "sling": "pouch",
+          "pivotHeight": 8.8,
+          "slingLength": 8,
+          "pouchWidth": 0.6000000000000001
+        },
+        "physical": {
+          "ropeMaxLength": 8,
+          "pouchGrams": 227
+        },
+        "previousPart": "pocket",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 18.41523187075295,
+          "angle": 50.83469750096726,
+          "time": 0.5483051537845225,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 24.894100188687524,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 58.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 67.10747533522695,
+        "peakStress": 53892791.12897701,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "rabbit",
+        "build": {
+          "name": "Rabbit anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "timber",
+          "ballast": "quarry",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pouch",
+          "rope": "hemp",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "rabbit",
+          "longArm": 3,
+          "shortArm": 0.8,
+          "beamWidth": 0.1,
+          "pivotHeight": 2.7,
+          "baseWidth": 2,
+          "frameGrams": 30000,
+          "counterGrams": 150000,
+          "hanger": 0.4,
+          "slingLength": 2.7,
+          "pouchWidth": 0.55,
+          "pinAngle": -45,
+          "pinLength": 0.035,
+          "axleRadius": 0.012,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 4,
+          "troughHeight": 0.06
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 20.163098527297777,
+            "angle": 40.40640913015668,
+            "time": 1.0625000000000002,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 69.44942651376067,
+          "beamGrams": 26600.000000000004,
+          "pouchGrams": 278,
+          "counterRadius": 0.2367080141024981,
+          "peakTension": 917.7465518205574,
+          "peakStress": 17472644.31277003,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "cradle",
+      "slot": "sling",
+      "name": "Deep cradle",
+      "price": 200,
+      "specification": {
+        "id": "cradle",
+        "slot": "sling",
+        "name": "Deep cradle",
+        "price": 200,
+        "description": "Larger cargo needs a larger pouch. Extra cloth adds moving mass.",
+        "capacity": 20000,
+        "width": 1.7,
+        "maxLength": 25,
+        "mass": 250
+      },
+      "mechanism": "Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 20000,
+          "width": 1.7,
+          "length": 25
+        },
+        "currentSettings": {
+          "mass": 25,
+          "width": 0.2,
+          "length": 0.96
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "sling": "cradle",
+          "pivotHeight": 22,
+          "slingLength": 20,
+          "pouchWidth": 1.36
+        },
+        "physical": {
+          "ropeMaxLength": 20,
+          "pouchGrams": 730
+        },
+        "previousPart": "pouch",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "Beam overloaded",
+        "release": {
+          "speed": 0.6953913422222925,
+          "angle": 158.24484368425215,
+          "time": 0.0625583061364889,
+          "reason": "Beam overloaded — throw interrupted"
+        },
+        "distanceAtCutoff": 0.0016294215253144784,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 273.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 144.87609888081514,
+        "peakStress": 114552317.49453577,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "failure",
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "fox",
+        "build": {
+          "name": "Fox anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "timber",
+          "ballast": "quarry",
+          "material": "stone",
+          "mount": "fixed",
+          "sling": "cradle",
+          "rope": "cable",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "fox",
+          "longArm": 3,
+          "shortArm": 0.8,
+          "beamWidth": 0.1,
+          "pivotHeight": 2.7,
+          "baseWidth": 2,
+          "frameGrams": 30000,
+          "counterGrams": 200000,
+          "hanger": 0.4,
+          "slingLength": 2.7,
+          "pouchWidth": 1,
+          "pinAngle": -45,
+          "pinLength": 0.035,
+          "axleRadius": 0.012,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 4,
+          "troughHeight": 0.06
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 15.134320902692249,
+            "angle": 43.651438854421244,
+            "time": 1.1875000000000064,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 39.66238284381526,
+          "beamGrams": 26600.000000000004,
+          "pouchGrams": 2140,
+          "counterRadius": 0.260530880598924,
+          "peakTension": 4276.340650857484,
+          "peakStress": 78245073.5554347,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "hammock",
+      "slot": "sling",
+      "name": "Great hammock",
+      "price": 650,
+      "specification": {
+        "id": "hammock",
+        "slot": "sling",
+        "name": "Great hammock",
+        "price": 650,
+        "description": "Larger cargo needs a larger pouch. Extra cloth adds moving mass.",
+        "capacity": 500000,
+        "width": 4,
+        "maxLength": 65,
+        "mass": 5000
+      },
+      "mechanism": "Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 500000,
+          "width": 4,
+          "length": 65
+        },
+        "currentSettings": {
+          "mass": 25,
+          "width": 0.2,
+          "length": 0.96
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "sling": "hammock",
+          "pivotHeight": 57.2,
+          "slingLength": 52,
+          "pouchWidth": 3.2
+        },
+        "physical": {
+          "ropeMaxLength": 52,
+          "pouchGrams": 6248
+        },
+        "previousPart": "cradle",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "Sling cord snapped",
+        "release": {
+          "speed": 0.0452467601655846,
+          "angle": 115.10947248740261,
+          "time": 0.0625583061364889,
+          "reason": "Cord overload — uncontrolled release"
+        },
+        "distanceAtCutoff": 0.001674037272868023,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 5023.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 245.54838415308052,
+        "peakStress": 193076700.00690278,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "failure",
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "bear",
+        "build": {
+          "name": "Brown bear anchored",
+          "chassis": "anchored",
+          "arm": "ironwood",
+          "frame": "giant",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "hammock",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "bear",
+          "longArm": 7.800000000000001,
+          "shortArm": 2.4000000000000004,
+          "beamWidth": 0.5700000000000001,
+          "pivotHeight": 8.100000000000001,
+          "baseWidth": 6,
+          "frameGrams": 1650000,
+          "counterGrams": 7500000,
+          "hanger": 1.5,
+          "slingLength": 7.199999999999999,
+          "pouchWidth": 2.64,
+          "pinAngle": -45,
+          "pinLength": 0.07500000000000001,
+          "axleRadius": 0.07500000000000001,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.66,
+          "wheelGrams": 60000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 16.5,
+          "troughHeight": 0.18
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 14.776509639524264,
+            "angle": 43.16057765760245,
+            "time": 2.647107960691396,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 86.65565702133935,
+          "beamGrams": 2816883.0000000014,
+          "pouchGrams": 41000,
+          "counterRadius": 0.6109903238485185,
+          "peakTension": 101551.80774516704,
+          "peakStress": 26435154.457640495,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "elephant",
+      "slot": "sling",
+      "name": "Elephant harness",
+      "price": 2200,
+      "specification": {
+        "id": "elephant",
+        "slot": "sling",
+        "name": "Elephant harness",
+        "price": 2200,
+        "description": "Larger cargo needs a larger pouch. Extra cloth adds moving mass.",
+        "capacity": 8000000,
+        "width": 9,
+        "maxLength": 120,
+        "mass": 80000
+      },
+      "mechanism": "Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 8000000,
+          "width": 9,
+          "length": 120
+        },
+        "currentSettings": {
+          "mass": 25,
+          "width": 0.2,
+          "length": 0.96
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "sling": "elephant",
+          "pivotHeight": 105.6,
+          "slingLength": 96,
+          "pouchWidth": 7.2
+        },
+        "physical": {
+          "ropeMaxLength": 96,
+          "pouchGrams": 82304
+        },
+        "previousPart": "hammock",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "Sling cord snapped",
+        "release": {
+          "speed": 0.05004096984661798,
+          "angle": 28.912482567257385,
+          "time": 0.0625583061364889,
+          "reason": "Cord overload — uncontrolled release"
+        },
+        "distanceAtCutoff": 0.0022503586905485706,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 80023.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 255.3037750476207,
+        "peakStress": 200685904.90464413,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "failure",
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "elephant",
+        "build": {
+          "name": "Elephant anchored",
+          "chassis": "anchored",
+          "arm": "ironwood",
+          "frame": "giant",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "elephant",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "elephant",
+          "longArm": 23.400000000000002,
+          "shortArm": 7.2,
+          "beamWidth": 1.71,
+          "pivotHeight": 24.3,
+          "baseWidth": 18,
+          "frameGrams": 44000000,
+          "counterGrams": 200000000,
+          "hanger": 4.5,
+          "slingLength": 21.599999999999998,
+          "pouchWidth": 7.92,
+          "pinAngle": -45,
+          "pinLength": 0.225,
+          "axleRadius": 0.225,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 1.98,
+          "wheelGrams": 1600000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 49.5,
+          "troughHeight": 0.54
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 32.74572816939994,
+            "angle": 41.835253696392556,
+            "time": 4.241637913294757,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 359.26079887945355,
+          "beamGrams": 76055841,
+          "pouchGrams": 188000,
+          "counterRadius": 1.8253966249301667,
+          "peakTension": 2550193.9507379886,
+          "peakStress": 73894023.12094703,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "whale",
+      "slot": "sling",
+      "name": "Whale hammock",
+      "price": 6500,
+      "specification": {
+        "id": "whale",
+        "slot": "sling",
+        "name": "Whale hammock",
+        "price": 6500,
+        "description": "Larger cargo needs a larger pouch. Extra cloth adds moving mass.",
+        "capacity": 150000000,
+        "width": 32,
+        "maxLength": 230,
+        "mass": 1000000
+      },
+      "mechanism": "Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": {
+        "limits": {
+          "mass": 150000000,
+          "width": 32,
+          "length": 230
+        },
+        "currentSettings": {
+          "mass": 25,
+          "width": 0.2,
+          "length": 0.96
+        },
+        "expandedSettings": {
+          "frame": "leviathan",
+          "sling": "whale",
+          "pivotHeight": 202.4,
+          "slingLength": 184,
+          "pouchWidth": 25.6
+        },
+        "physical": {
+          "ropeMaxLength": 184,
+          "pouchGrams": 1004416
+        },
+        "previousPart": "elephant",
+        "previousRejectsExpanded": true
+      },
+      "baseline": {
+        "phase": "finished",
+        "failure": "Sling cord snapped",
+        "release": {
+          "speed": 0.05317869270886226,
+          "angle": 25.91169868876182,
+          "time": 0.0625583061364889,
+          "reason": "Cord overload — uncontrolled release"
+        },
+        "distanceAtCutoff": 0.002337610083848529,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 1000023.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 255.92352062974146,
+        "peakStress": 201169306.4586983,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "failure",
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "whale",
+        "build": {
+          "name": "Blue whale anchored",
+          "chassis": "anchored",
+          "arm": "colossus",
+          "frame": "leviathan",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "whale",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "whale",
+          "longArm": 83.2,
+          "shortArm": 25.6,
+          "beamWidth": 6.08,
+          "pivotHeight": 86.4,
+          "baseWidth": 64,
+          "frameGrams": 1100000000,
+          "counterGrams": 5000000000,
+          "hanger": 16,
+          "slingLength": 76.8,
+          "pouchWidth": 28.16,
+          "pinAngle": -45,
+          "pinLength": 0.8,
+          "axleRadius": 0.8,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 7.04,
+          "wheelGrams": 40000000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 176,
+          "troughHeight": 1.92
+        },
+        "result": {
+          "phase": "flight",
+          "failure": "",
+          "release": {
+            "speed": 71.7038920032228,
+            "angle": 40.144768811629405,
+            "time": 7.548284082663646,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 957.7504292488826,
+          "beamGrams": 1809874944.0000005,
+          "pouchGrams": 1384000,
+          "counterRadius": 5.3374921105697055,
+          "peakTension": 44094466.34517475,
+          "peakStress": 102461071.4743981,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "twine",
+      "slot": "rope",
+      "name": "Braided twine",
+      "price": 0,
+      "specification": {
+        "id": "twine",
+        "slot": "rope",
+        "name": "Braided twine",
+        "price": 0,
+        "description": "Breaking load and cord mass both matter. A snapped sling releases wherever it is.",
+        "strength": 150,
+        "linearGrams": 12
+      },
+      "mechanism": "Distributed cord mass is lumped into pouch mass; strength controls tension failure.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "hemp",
+      "slot": "rope",
+      "name": "Hemp cord",
+      "price": 70,
+      "specification": {
+        "id": "hemp",
+        "slot": "rope",
+        "name": "Hemp cord",
+        "price": 70,
+        "description": "Breaking load and cord mass both matter. A snapped sling releases wherever it is.",
+        "strength": 12000,
+        "linearGrams": 45
+      },
+      "mechanism": "Distributed cord mass is lumped into pouch mass; strength controls tension failure.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 15.868155672320883,
+          "angle": 60.19151956927364,
+          "time": 0.5679312890430297,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 12.07609753239987,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 88.39999999999999,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 83.90630167109035,
+        "peakStress": 66995875.670950465,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "rabbit",
+        "build": {
+          "name": "Rabbit anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "timber",
+          "ballast": "quarry",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pouch",
+          "rope": "hemp",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "rabbit",
+          "longArm": 3,
+          "shortArm": 0.8,
+          "beamWidth": 0.1,
+          "pivotHeight": 2.7,
+          "baseWidth": 2,
+          "frameGrams": 30000,
+          "counterGrams": 150000,
+          "hanger": 0.4,
+          "slingLength": 2.7,
+          "pouchWidth": 0.55,
+          "pinAngle": -45,
+          "pinLength": 0.035,
+          "axleRadius": 0.012,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 4,
+          "troughHeight": 0.06
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 20.163098527297777,
+            "angle": 40.40640913015668,
+            "time": 1.0625000000000002,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 69.44942651376067,
+          "beamGrams": 26600.000000000004,
+          "pouchGrams": 278,
+          "counterRadius": 0.2367080141024981,
+          "peakTension": 917.7465518205574,
+          "peakStress": 17472644.31277003,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "cable",
+      "slot": "rope",
+      "name": "Steel cable",
+      "price": 500,
+      "specification": {
+        "id": "cable",
+        "slot": "rope",
+        "name": "Steel cable",
+        "price": 500,
+        "description": "Breaking load and cord mass both matter. A snapped sling releases wherever it is.",
+        "strength": 2500000,
+        "linearGrams": 350
+      },
+      "mechanism": "Distributed cord mass is lumped into pouch mass; strength controls tension failure.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "Beam overloaded",
+        "release": {
+          "speed": 0.3768600098614662,
+          "angle": 156.18861197596306,
+          "time": 0.0625583061364889,
+          "reason": "Beam overloaded — throw interrupted"
+        },
+        "distanceAtCutoff": 0.0016294308312491679,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 674,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 193.61532853047524,
+        "peakStress": 152568916.62127066,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "failure",
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "fox",
+        "build": {
+          "name": "Fox anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "timber",
+          "ballast": "quarry",
+          "material": "stone",
+          "mount": "fixed",
+          "sling": "cradle",
+          "rope": "cable",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "fox",
+          "longArm": 3,
+          "shortArm": 0.8,
+          "beamWidth": 0.1,
+          "pivotHeight": 2.7,
+          "baseWidth": 2,
+          "frameGrams": 30000,
+          "counterGrams": 200000,
+          "hanger": 0.4,
+          "slingLength": 2.7,
+          "pouchWidth": 1,
+          "pinAngle": -45,
+          "pinLength": 0.035,
+          "axleRadius": 0.012,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 4,
+          "troughHeight": 0.06
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 15.134320902692249,
+            "angle": 43.651438854421244,
+            "time": 1.1875000000000064,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 39.66238284381526,
+          "beamGrams": 26600.000000000004,
+          "pouchGrams": 2140,
+          "counterRadius": 0.260530880598924,
+          "peakTension": 4276.340650857484,
+          "peakStress": 78245073.5554347,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "titanCable",
+      "slot": "rope",
+      "name": "Titan cable",
+      "price": 2500,
+      "specification": {
+        "id": "titanCable",
+        "slot": "rope",
+        "name": "Titan cable",
+        "price": 2500,
+        "description": "Breaking load and cord mass both matter. A snapped sling releases wherever it is.",
+        "strength": 1500000000,
+        "linearGrams": 2500
+      },
+      "mechanism": "Distributed cord mass is lumped into pouch mass; strength controls tension failure.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "Beam overloaded",
+        "release": {
+          "speed": 0.047480490494361385,
+          "angle": 117.89202674797245,
+          "time": 0.0625583061364889,
+          "reason": "Beam overloaded — throw interrupted"
+        },
+        "distanceAtCutoff": 0.0016733571207901976,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 4802,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 245.07086910760432,
+        "peakStress": 192704238.27143136,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "failure",
+        "release",
+        "distanceAtCutoff",
+        "pouchGrams",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "whale",
+        "build": {
+          "name": "Blue whale anchored",
+          "chassis": "anchored",
+          "arm": "colossus",
+          "frame": "leviathan",
+          "ballast": "continental",
+          "material": "steel",
+          "mount": "hinged",
+          "sling": "whale",
+          "rope": "titanCable",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "whale",
+          "longArm": 83.2,
+          "shortArm": 25.6,
+          "beamWidth": 6.08,
+          "pivotHeight": 86.4,
+          "baseWidth": 64,
+          "frameGrams": 1100000000,
+          "counterGrams": 5000000000,
+          "hanger": 16,
+          "slingLength": 76.8,
+          "pouchWidth": 28.16,
+          "pinAngle": -45,
+          "pinLength": 0.8,
+          "axleRadius": 0.8,
+          "cockAngle": 28,
+          "footFriction": 0.8,
+          "wheelRadius": 7.04,
+          "wheelGrams": 40000000,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 176,
+          "troughHeight": 1.92
+        },
+        "result": {
+          "phase": "flight",
+          "failure": "",
+          "release": {
+            "speed": 71.7038920032228,
+            "angle": 40.144768811629405,
+            "time": 7.548284082663646,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 957.7504292488826,
+          "beamGrams": 1809874944.0000005,
+          "pouchGrams": 1384000,
+          "counterRadius": 5.3374921105697055,
+          "peakTension": 44094466.34517475,
+          "peakStress": 102461071.4743981,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "woodAxle",
+      "slot": "bearing",
+      "name": "Wooden axle",
+      "price": 0,
+      "specification": {
+        "id": "woodAxle",
+        "slot": "bearing",
+        "name": "Wooden axle",
+        "price": 0,
+        "description": "Bearing friction resists rotation; axle diameter affects friction torque.",
+        "friction": 0.022
+      },
+      "mechanism": "Coulomb axle torque uses selected friction × reaction load × axle radius.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 21.99075652828093,
+          "angle": 39.061085823701106,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.963869946197807,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 45.5380554241399,
+        "peakStress": 37068643.59832911,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "woodAxle",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 21.99075652828093,
+            "angle": 39.061085823701106,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.963869946197807,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 45.5380554241399,
+          "peakStress": 37068643.59832911,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "bronze",
+      "slot": "bearing",
+      "name": "Bronze bushings",
+      "price": 70,
+      "specification": {
+        "id": "bronze",
+        "slot": "bearing",
+        "name": "Bronze bushings",
+        "price": 70,
+        "description": "Bearing friction resists rotation; axle diameter affects friction torque.",
+        "friction": 0.009
+      },
+      "mechanism": "Coulomb axle torque uses selected friction × reaction load × axle radius.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "bearings",
+      "slot": "bearing",
+      "name": "Roller bearings",
+      "price": 350,
+      "specification": {
+        "id": "bearings",
+        "slot": "bearing",
+        "name": "Roller bearings",
+        "price": 350,
+        "description": "Bearing friction resists rotation; axle diameter affects friction torque.",
+        "friction": 0.002
+      },
+      "mechanism": "Coulomb axle torque uses selected friction × reaction load × axle radius.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.012505566256944,
+          "angle": 38.88213294571244,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 29.735460357409032,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.54401342827415,
+        "peakStress": 36293290.84155383,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bearings",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.012505566256944,
+            "angle": 38.88213294571244,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 29.735460357409032,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.54401342827415,
+          "peakStress": 36293290.84155383,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "precision",
+      "slot": "bearing",
+      "name": "Precision bearings",
+      "price": 1500,
+      "specification": {
+        "id": "precision",
+        "slot": "bearing",
+        "name": "Precision bearings",
+        "price": 1500,
+        "description": "Bearing friction resists rotation; axle diameter affects friction torque.",
+        "friction": 0.0005
+      },
+      "mechanism": "Coulomb axle torque uses selected friction × reaction load × axle radius.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.014136989587367,
+          "angle": 38.86870864888598,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.613928386077202,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.469502970120836,
+        "peakStress": 36235172.684194244,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff",
+        "peakTension",
+        "peakStress"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "precision",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.014136989587367,
+            "angle": 38.86870864888598,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.613928386077202,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.469502970120836,
+          "peakStress": 36235172.684194244,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "nail",
+      "slot": "release",
+      "name": "Bent release nail",
+      "price": 0,
+      "specification": {
+        "id": "nail",
+        "slot": "release",
+        "name": "Bent release nail",
+        "price": 0,
+        "description": "Adjust the pin angle and length. The ring slips when tension pulls along the pin.",
+        "friction": 0.16
+      },
+      "mechanism": "Resolved ring pull minus selected friction × normal drives release travel.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.135044342263186,
+          "angle": 32.31604153157741,
+          "time": 0.5335855523406421,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 28.92131914682284,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "nail",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.135044342263186,
+            "angle": 32.31604153157741,
+            "time": 0.5335855523406421,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 28.92131914682284,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "polished",
+      "slot": "release",
+      "name": "Polished release pin",
+      "price": 75,
+      "specification": {
+        "id": "polished",
+        "slot": "release",
+        "name": "Polished release pin",
+        "price": 75,
+        "description": "Less ring friction changes release timing.",
+        "friction": 0.04
+      },
+      "mechanism": "Resolved ring pull minus selected friction × normal drives release travel.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "rollerPin",
+      "slot": "release",
+      "name": "Roller release finger",
+      "price": 360,
+      "specification": {
+        "id": "rollerPin",
+        "slot": "release",
+        "name": "Roller release finger",
+        "price": 360,
+        "description": "A very low friction release with a wider tuning range.",
+        "friction": 0.008
+      },
+      "mechanism": "Resolved ring pull minus selected friction × normal drives release travel.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 21.949607665663933,
+          "angle": 41.095905906483125,
+          "time": 0.5237724847113885,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 25.592001235495548,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [
+        "release",
+        "distanceAtCutoff"
+      ],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "rollerPin",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 21.949607665663933,
+            "angle": 41.095905906483125,
+            "time": 0.5237724847113885,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 25.592001235495548,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      }
+    },
+    {
+      "id": "hand",
+      "slot": "winch",
+      "name": "Acorn crank wheel",
+      "price": 0,
+      "specification": {
+        "id": "hand",
+        "slot": "winch",
+        "name": "Acorn crank wheel",
+        "price": 0,
+        "description": "Front-mounted winding wheel. Hold to crank clockwise; release to freewheel counterclockwise as the ballast falls. Larger geared drums raise heavier loads faster.",
+        "power": 100,
+        "radiusRatio": 0.12,
+        "drumRatio": 0.24,
+        "gearing": 3,
+        "spokes": 6,
+        "color": "#bb793e"
+      },
+      "mechanism": "Preparation power cap controls raising speed, limited by a three-second loading governor; launch at identical draw receives no energy multiplier.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "hand",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      },
+      "wind": {
+        "light": {
+          "drawAfterOneSecond": 0.33333333333333315,
+          "power": 100,
+          "counterGrams": 6000,
+          "shortArm": 0.26
+        },
+        "heavy": {
+          "drawAfterOneSecond": 1.1004873626132219e-7,
+          "power": 100,
+          "counterGrams": 5000000000,
+          "shortArm": 25.6
+        }
+      }
+    },
+    {
+      "id": "geared",
+      "slot": "winch",
+      "name": "Brass geared wheel",
+      "price": 100,
+      "specification": {
+        "id": "geared",
+        "slot": "winch",
+        "name": "Brass geared wheel",
+        "price": 100,
+        "description": "Front-mounted winding wheel. Hold to crank clockwise; release to freewheel counterclockwise as the ballast falls. Larger geared drums raise heavier loads faster.",
+        "power": 2500,
+        "radiusRatio": 0.145,
+        "drumRatio": 0.22,
+        "gearing": 5,
+        "spokes": 8,
+        "color": "#d2a24e"
+      },
+      "mechanism": "Preparation power cap controls raising speed, limited by a three-second loading governor; launch at identical draw receives no energy multiplier.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "geared",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      },
+      "wind": {
+        "light": {
+          "drawAfterOneSecond": 0.33333333333333315,
+          "power": 2500,
+          "counterGrams": 6000,
+          "shortArm": 0.26
+        },
+        "heavy": {
+          "drawAfterOneSecond": 0.0000027512101233691852,
+          "power": 2500,
+          "counterGrams": 5000000000,
+          "shortArm": 25.6
+        }
+      }
+    },
+    {
+      "id": "capstan",
+      "slot": "winch",
+      "name": "Iron capstan wheel",
+      "price": 700,
+      "specification": {
+        "id": "capstan",
+        "slot": "winch",
+        "name": "Iron capstan wheel",
+        "price": 700,
+        "description": "Front-mounted winding wheel. Hold to crank clockwise; release to freewheel counterclockwise as the ballast falls. Larger geared drums raise heavier loads faster.",
+        "power": 500000,
+        "radiusRatio": 0.18,
+        "drumRatio": 0.26,
+        "gearing": 7,
+        "spokes": 8,
+        "color": "#819b91"
+      },
+      "mechanism": "Preparation power cap controls raising speed, limited by a three-second loading governor; launch at identical draw receives no energy multiplier.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "capstan",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      },
+      "wind": {
+        "light": {
+          "drawAfterOneSecond": 0.33333333333333315,
+          "power": 500000,
+          "counterGrams": 6000,
+          "shortArm": 0.26
+        },
+        "heavy": {
+          "drawAfterOneSecond": 0.0005498991080657139,
+          "power": 500000,
+          "counterGrams": 5000000000,
+          "shortArm": 25.6
+        }
+      }
+    },
+    {
+      "id": "engine",
+      "slot": "winch",
+      "name": "Gantry winding wheel",
+      "price": 3000,
+      "specification": {
+        "id": "engine",
+        "slot": "winch",
+        "name": "Gantry winding wheel",
+        "price": 3000,
+        "description": "Front-mounted winding wheel. Hold to crank clockwise; release to freewheel counterclockwise as the ballast falls. Larger geared drums raise heavier loads faster.",
+        "power": 500000000,
+        "radiusRatio": 0.21,
+        "drumRatio": 0.28,
+        "gearing": 9,
+        "spokes": 10,
+        "color": "#677e87"
+      },
+      "mechanism": "Preparation power cap controls raising speed, limited by a three-second loading governor; launch at identical draw receives no energy multiplier.",
+      "purchase": {
+        "owned": true,
+        "equipped": true,
+        "paidExactly": true,
+        "previousOwnershipPreserved": true,
+        "totalsPreserved": true,
+        "saveRoundTrip": true,
+        "sourceUnchanged": true,
+        "shopPurchase": true,
+        "settingsPreserved": true
+      },
+      "capacity": null,
+      "baseline": {
+        "phase": "finished",
+        "failure": "",
+        "release": {
+          "speed": 22.004892711000338,
+          "angle": 38.94477444048693,
+          "time": 0.5262257516187019,
+          "reason": "Release ring cleared the pin"
+        },
+        "distanceAtCutoff": 27.004690155431224,
+        "beamGrams": 364.00000000000006,
+        "pouchGrams": 25.04,
+        "counterRadius": 0.08095300210017602,
+        "peakTension": 44.89180765017974,
+        "peakStress": 36564570.33464019,
+        "frameX": 0
+      },
+      "changedBaselineFields": [],
+      "intended": {
+        "animal": "mouse",
+        "build": {
+          "name": "Field mouse anchored",
+          "chassis": "anchored",
+          "arm": "oak",
+          "frame": "sapling",
+          "ballast": "boulder",
+          "material": "stone",
+          "mount": "hinged",
+          "sling": "pocket",
+          "rope": "twine",
+          "bearing": "bronze",
+          "release": "polished",
+          "winch": "engine",
+          "animal": "mouse",
+          "longArm": 1.04,
+          "shortArm": 0.26,
+          "beamWidth": 0.02,
+          "pivotHeight": 1.2,
+          "baseWidth": 0.8,
+          "frameGrams": 1500,
+          "counterGrams": 6000,
+          "hanger": 0.16,
+          "slingLength": 0.96,
+          "pouchWidth": 0.2,
+          "pinAngle": -40,
+          "pinLength": 0.018,
+          "axleRadius": 0.008,
+          "cockAngle": 55,
+          "footFriction": 0.8,
+          "wheelRadius": 0.13,
+          "wheelGrams": 150,
+          "brake": 0.002,
+          "walkingLean": 22,
+          "braceCount": 2,
+          "hingeFriction": 0.008,
+          "wind": 0,
+          "drag": 1,
+          "trough": "runway",
+          "troughLength": 1.6,
+          "troughHeight": 0.035
+        },
+        "result": {
+          "phase": "finished",
+          "failure": "",
+          "release": {
+            "speed": 22.004892711000338,
+            "angle": 38.94477444048693,
+            "time": 0.5262257516187019,
+            "reason": "Release ring cleared the pin"
+          },
+          "distanceAtCutoff": 27.004690155431224,
+          "beamGrams": 364.00000000000006,
+          "pouchGrams": 25.04,
+          "counterRadius": 0.08095300210017602,
+          "peakTension": 44.89180765017974,
+          "peakStress": 36564570.33464019,
+          "frameX": 0
+        }
+      },
+      "wind": {
+        "light": {
+          "drawAfterOneSecond": 0.33333333333333315,
+          "power": 500000000,
+          "counterGrams": 6000,
+          "shortArm": 0.26
+        },
+        "heavy": {
+          "drawAfterOneSecond": 0.33333333333333315,
+          "power": 500000000,
+          "counterGrams": 5000000000,
+          "shortArm": 25.6
+        }
+      }
+    }
+  ],
+  "bearings": [
+    {
+      "animal": "mouse",
+      "id": "woodAxle",
+      "axleRadius": 0.008,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 21.99075652828093,
+        "angle": 39.061085823701106,
+        "time": 0.5262257516187019,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 27.963869946197807,
+      "beamGrams": 364.00000000000006,
+      "pouchGrams": 25.04,
+      "counterRadius": 0.08095300210017602,
+      "peakTension": 45.5380554241399,
+      "peakStress": 37068643.59832911,
+      "frameX": 0
+    },
+    {
+      "animal": "mouse",
+      "id": "bronze",
+      "axleRadius": 0.008,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 22.004892711000338,
+        "angle": 38.94477444048693,
+        "time": 0.5262257516187019,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 27.004690155431224,
+      "beamGrams": 364.00000000000006,
+      "pouchGrams": 25.04,
+      "counterRadius": 0.08095300210017602,
+      "peakTension": 44.89180765017974,
+      "peakStress": 36564570.33464019,
+      "frameX": 0
+    },
+    {
+      "animal": "mouse",
+      "id": "bearings",
+      "axleRadius": 0.008,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 22.012505566256944,
+        "angle": 38.88213294571244,
+        "time": 0.5262257516187019,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 29.735460357409032,
+      "beamGrams": 364.00000000000006,
+      "pouchGrams": 25.04,
+      "counterRadius": 0.08095300210017602,
+      "peakTension": 44.54401342827415,
+      "peakStress": 36293290.84155383,
+      "frameX": 0
+    },
+    {
+      "animal": "mouse",
+      "id": "precision",
+      "axleRadius": 0.008,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 22.014136989587367,
+        "angle": 38.86870864888598,
+        "time": 0.5262257516187019,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 27.613928386077202,
+      "beamGrams": 364.00000000000006,
+      "pouchGrams": 25.04,
+      "counterRadius": 0.08095300210017602,
+      "peakTension": 44.469502970120836,
+      "peakStress": 36235172.684194244,
+      "frameX": 0
+    },
+    {
+      "animal": "bear",
+      "id": "woodAxle",
+      "axleRadius": 0.07500000000000001,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 14.736909271342565,
+        "angle": 43.11443536577991,
+        "time": 2.650467234753187,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 87.91508186017934,
+      "beamGrams": 2816883.0000000014,
+      "pouchGrams": 41000,
+      "counterRadius": 0.6109903238485185,
+      "peakTension": 109464.13258037763,
+      "peakStress": 28434672.810320433,
+      "frameX": 0
+    },
+    {
+      "animal": "bear",
+      "id": "bronze",
+      "axleRadius": 0.07500000000000001,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 14.765060410297096,
+        "angle": 43.24988193351072,
+        "time": 2.647107960691396,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 88.15759851554823,
+      "beamGrams": 2816883.0000000014,
+      "pouchGrams": 41000,
+      "counterRadius": 0.6109903238485185,
+      "peakTension": 104679.49466607085,
+      "peakStress": 27225550.141593445,
+      "frameX": 0
+    },
+    {
+      "animal": "bear",
+      "id": "bearings",
+      "axleRadius": 0.07500000000000001,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 14.77454476767557,
+        "angle": 43.17652362797224,
+        "time": 2.647107960691396,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 102.87369451184429,
+      "beamGrams": 2816883.0000000014,
+      "pouchGrams": 41000,
+      "counterRadius": 0.6109903238485185,
+      "peakTension": 102103.71054206303,
+      "peakStress": 26574625.446796305,
+      "frameX": 0
+    },
+    {
+      "animal": "bear",
+      "id": "precision",
+      "axleRadius": 0.07500000000000001,
+      "phase": "finished",
+      "failure": "",
+      "release": {
+        "speed": 14.776509639524264,
+        "angle": 43.16057765760245,
+        "time": 2.647107960691396,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 86.65565702133935,
+      "beamGrams": 2816883.0000000014,
+      "pouchGrams": 41000,
+      "counterRadius": 0.6109903238485185,
+      "peakTension": 101551.80774516704,
+      "peakStress": 26435154.457640495,
+      "frameX": 0
+    },
+    {
+      "animal": "whale",
+      "id": "woodAxle",
+      "axleRadius": 0.8,
+      "phase": "flight",
+      "failure": "",
+      "release": {
+        "speed": 71.57760453872913,
+        "angle": 40.4049106134327,
+        "time": 7.548284082663646,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 971.1362989501847,
+      "beamGrams": 1809874944.0000005,
+      "pouchGrams": 1384000,
+      "counterRadius": 5.3374921105697055,
+      "peakTension": 47765598.83076521,
+      "peakStress": 110614943.60738647,
+      "frameX": 0
+    },
+    {
+      "animal": "whale",
+      "id": "bronze",
+      "axleRadius": 0.8,
+      "phase": "flight",
+      "failure": "",
+      "release": {
+        "speed": 71.65400415562708,
+        "angle": 40.24766847306681,
+        "time": 7.548284082663646,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 954.1807705174436,
+      "beamGrams": 1809874944.0000005,
+      "pouchGrams": 1384000,
+      "counterRadius": 5.3374921105697055,
+      "peakTension": 45545646.22207199,
+      "peakStress": 105684255.38416722,
+      "frameX": 0
+    },
+    {
+      "animal": "whale",
+      "id": "bearings",
+      "axleRadius": 0.8,
+      "phase": "flight",
+      "failure": "",
+      "release": {
+        "speed": 71.6950866112222,
+        "angle": 40.16293470546768,
+        "time": 7.548284082663646,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 961.2103185823378,
+      "beamGrams": 1809874944.0000005,
+      "pouchGrams": 1384000,
+      "counterRadius": 5.3374921105697055,
+      "peakTension": 44350538.085685655,
+      "peakStress": 103029826.8209276,
+      "frameX": 0
+    },
+    {
+      "animal": "whale",
+      "id": "precision",
+      "axleRadius": 0.8,
+      "phase": "flight",
+      "failure": "",
+      "release": {
+        "speed": 71.7038920032228,
+        "angle": 40.144768811629405,
+        "time": 7.548284082663646,
+        "reason": "Release ring cleared the pin"
+      },
+      "distanceAtCutoff": 957.7504292488826,
+      "beamGrams": 1809874944.0000005,
+      "pouchGrams": 1384000,
+      "counterRadius": 5.3374921105697055,
+      "peakTension": 44094466.34517475,
+      "peakStress": 102461071.4743981,
+      "frameX": 0
+    }
+  ]
+}
