@@ -2,23 +2,24 @@ import {drawAltitudeStrip} from './altitude-strip.js?v=29';
 import {installPauseMenu} from './pause-menu.js';
 import {createWeaponHud} from './weapon-hud.js?v=25';
 import {jungleLayerAt} from './grove-jungle.js?v=25';
-import {createLaunchFeel} from './launch-feel.js?v=25';
-import {createPayloadLoading} from './payload-loading.js?v=25';
-import {crankState} from './crank-wheel.js?v=25';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=25';
-import {fitEquipment} from './build-equipment.js?v=25';
-import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=29';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=25';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=29';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=25';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=25';
-import {drawShopArt} from './shop-art.js?v=29';
+import {createLaunchFeel} from './launch-feel.js?v=30';
+import {createPayloadLoading} from './payload-loading.js?v=30';
+import {crankState} from './crank-wheel.js?v=30';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=30';
+import {fitEquipment} from './build-equipment.js?v=30';
+import {createCapacityControls} from './capacity-controls.js?v=30';
+import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=30';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=30';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=30';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=30';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=30';
+import {drawShopArt} from './shop-art.js?v=30';
 import {createHoldControl} from './hold-control.js';
 import {createAudio} from './audio.js?v=28';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
 import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=25';
 import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=25';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=25';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=30';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -32,19 +33,21 @@ try{if(!qa){saving=localStorage.getItem('treetop-custom-save-enabled')!=='false'
 state=visitShop(state,qa?42+state.launches:undefined);
 adventureBuild={...state.build};draft={...state.build};
 const renderer=createBuildRenderer($('stage')),previewRenderer=createBuildRenderer($('previewStage')),launchFeel=createLaunchFeel();let feelFrame=launchFeel.state();
-let previewSim,previewKey='',presetAnimal='mouse',presetChassis='anchored';
+let previewSim,previewKey='',presetAnimal='mouse',presetChassis='anchored',capacityAdjusters=[];
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,5200);}
 function persist(){if(!saving||qa||editorSession)return;try{saveProgress(localStorage,state);$('saveStatus').textContent='Adventure progress saved locally. Your original prototype save is kept separately.';}catch(e){$('saveStatus').textContent=`Saving unavailable: ${e.message}. Export a backup to keep your work.`;toast('Progress is in this session. Browser storage is unavailable; export a backup.');}}
 function equippedValue(id){return creative||state.owned.includes(id);}
 function populate(){
  $('animal').replaceChildren(...CRITTERS.filter(a=>creative||state.animals.includes(a.id)).map(a=>choiceCard(a,'animal',a.id===draft.animal,()=>selectEquipment({kind:'animal',id:a.id}))));
  $('animalName').textContent=critter(draft.animal).name;
- $('buildParts').replaceChildren();
+ $('buildParts').replaceChildren();capacityAdjusters=[];
  for(const[slot,title]of SLOTS){
-  const box=el('details',undefined,'part-group'),summary=el('summary'),p=part(draft[slot]),art=el('canvas');drawShopArt(art,p);art.setAttribute('aria-hidden','true');
+  const box=el('details',undefined,'part-group'),summary=el('summary'),p=part(draft[slot]),art=el('canvas');box.id='part-'+slot;drawShopArt(art,p);art.setAttribute('aria-hidden','true');
   const text=el('span');text.append(el('small',title),el('strong',p.name));summary.append(art,text,el('span','⌄','part-chevron'));
   const choices=el('div',undefined,'part-options');for(const option of PARTS.filter(p=>p.slot===slot&&equippedValue(p.id)))choices.append(choiceCard(option,'part',option.id===p.id,()=>selectEquipment({kind:'part',id:option.id})));
-  box.append(summary,el('p',p.description),el('p',equipmentSpec(p),'equipment-spec'),choices);const use=equipmentUse(p,draft);if(use)box.append(el('p',use,'micro'));$('buildParts').append(box);
+  box.append(summary,el('p',p.description),el('p',equipmentSpec(p),'equipment-spec'));const use=equipmentUse(p,draft);if(use)box.append(el('p',use,'micro'));
+  const controls=createCapacityControls({document,slot,getBuild:()=>draft,onPreview:previewCapacity,onApply:next=>applyCapacity(slot,next,p.name)});
+  if(controls){capacityAdjusters.push(controls);box.append(controls.element);}box.append(choices);$('buildParts').append(box);
  }
  $('tuningFields').replaceChildren();for(const[key,title,unit,min,max,step,slot]of TUNING){const label=el('label',undefined,'tune-row');label.append(el('span',title));const input=el('input');input.type='number';input.id=`tune-${key}`;input.min=min;input.max=Math.min(max,tuningLimit(draft,key)??max);input.step=step;input.value=draft[key];input.setAttribute('aria-label',`${title}${unit?` (${unit})`:''}`);input.addEventListener('change',()=>{draft[key]=input.valueAsNumber;refreshFacts();});label.append(input,el('span',unit));$('tuningFields').append(label);}
  $('buildName').value=draft.name;$('wind').value=draft.wind;$('drag').checked=!!draft.drag;
@@ -54,19 +57,29 @@ function populate(){
 function choiceCard(p,kind,selected,onSelect){
  const button=el('button',undefined,'equipment-choice'),art=el('canvas');drawShopArt(art,p,kind);art.setAttribute('aria-hidden','true');button.setAttribute('aria-pressed',String(selected));button.setAttribute('aria-label',`Fit ${p.name}`);button.append(art,el('span',p.name));if(kind==='part')button.append(el('small',equipmentSpec(p)));if(kind==='animal')button.append(el('small',`${grams(p.grams)} · ${dimensions(p)}`));button.onclick=onSelect;return button;
 }
+function previewCapacity(next){syncPreview(next);}
+function applyCapacity(slot,next,name){
+ canBuild(state,next,creative);draft=next;applyBuild({quiet:true});fitted(name,slot);
+ $('fittedNotice').textContent=slot==='frame'?'✓ Frame adjustments applied':'✓ Counterweight fill applied';
+}
+function revealCapacity(slot){
+ if(!['frame','ballast'].includes(slot)||!$('workshopDialog').open)return;
+ $('buildTab').click();const group=$('part-'+slot);if(!group)return;
+ group.open=true;group.scrollIntoView({block:'start',behavior:'auto'});
+}
 function fitted(name,slot='frame'){
  renderer.equipBurst(slot);previewRenderer.equipBurst(slot);stage.dataset.lastFitted=slot;
- $('fittedNotice').textContent=`✓ ${name} fitted`;$('fittedNotice').classList.remove('pop');$('previewStage').classList.remove('equip-pop');void $('fittedNotice').offsetWidth;$('fittedNotice').classList.add('pop');$('previewStage').classList.add('equip-pop');dirty=true;
+ $('fittedNotice').textContent=`✓ ${name} fitted`+(slot==='frame'?' · Adjust axle height or frame mass below.':slot==='ballast'?' · Set your basket fill below.':'');$('fittedNotice').classList.remove('pop');$('previewStage').classList.remove('equip-pop');void $('fittedNotice').offsetWidth;$('fittedNotice').classList.add('pop');$('previewStage').classList.add('equip-pop');dirty=true;revealCapacity(slot);
 }
 function selectEquipment(offer){try{draft=fitEquipment(draft,offer);applyBuild({quiet:true});cue('purchase');fitted(product(offer).name,offer.kind==='animal'?'animal':product(offer).slot);}catch(e){toast(e.message);}}
-function syncPreview(){
- try{const c=validateBuild(draft),key=JSON.stringify(c);if(key!==previewKey){previewSim=new BuildSimulation(c);previewSim.setDraw(1);previewKey=key;}
+function syncPreview(build=draft){
+ try{const c=validateBuild(build),key=JSON.stringify(c);if(key!==previewKey){previewSim=new BuildSimulation(c);previewSim.setDraw(1);previewKey=key;}
  const warnings=buildFacts(c).warnings;$('previewWarning').textContent=warnings[0]??'';$('previewWarning').hidden=!warnings.length;
  $('previewName').textContent=c.name;$('previewHeight').textContent=`↕ ${c.pivotHeight.toFixed(2)} m to axle`;$('previewWeight').textContent=`◆ ${grams(c.counterGrams)} ballast`;$('previewAnimal').textContent=`${critter(c.animal).name} · ${dimensions(critter(c.animal))}`;
  }catch{}dirty=true;
 }
 function refreshFacts(){
- dirty=true;
+ dirty=true;for(const controls of capacityAdjusters)controls.sync(draft);
  const a=critter(draft.animal);$('animalMass').textContent=`${grams(a.grams)} · ${dimensions(a)} (L × W)`;const pc=$('portrait').getContext('2d');pc.clearRect(0,0,108,88);drawCritter(pc,a,52,48,73,0,false);
  for(const[key,,,min,max]of TUNING){const input=$('tune-'+key);if(input)input.max=Math.min(max,tuningLimit(draft,key)??max);}
  const f=buildFacts(draft);$('ratio').textContent=`${f.ratio.toFixed(2)} : 1`;$('beamMass').textContent=grams(f.beamGrams);$('capacity').textContent=grams(f.capacity);

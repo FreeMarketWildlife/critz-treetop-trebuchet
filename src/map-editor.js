@@ -1,6 +1,6 @@
 import {editorMapStorage} from './editor-storage.js';
 import {JUNGLE_LAYERS,jungleLayerAt} from './grove-jungle.js?v=25';
-import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=25';
+import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=30';
 import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=25';
 import {groveTreeCamera} from './grove-camera.js?v=25';
 import {MAP_KEY,LEVELS,mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,saveGroveMap,objectBounds} from './grove-map.js?v=25';

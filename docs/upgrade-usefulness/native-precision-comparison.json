@@ -1,0 +1,10 @@
+{
+  "before": {
+    "attempt": "{\"elapsed\":1003.4000000953674,\"loaded\":true,\"draw\":0.33330000000000753,\"accepted\":true,\"phase\":\"swing\",\"supported\":true}",
+    "draw": "33"
+  },
+  "after": {
+    "attempt": "{\"elapsed\":1002.5,\"loaded\":true,\"draw\":0.5001000000000003,\"accepted\":true,\"phase\":\"swing\",\"supported\":true}",
+    "draw": "50"
+  }
+}

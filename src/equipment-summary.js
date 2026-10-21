@@ -1,5 +1,6 @@
-import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=25';
-import {GRAVITY} from './build-physics.js?v=25';
+import {windingMinimum} from './winding-comfort.js?v=30';
+import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
+import {GRAVITY} from './build-physics.js?v=30';
 const n=value=>Number(value.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6});
 const mass=g=>g>=1000000?n(g/1000000)+' t':g>=1000?n(g/1000)+' kg':n(g)+' g';
 /** What a purchased part changes, independent of a promised distance increase. */
@@ -13,10 +14,10 @@ export function equipmentSpec(p){
  case 'mount':return p.id==='fixed'?'Weight turns with beam':'Independent hanging weight';
  case 'sling':return mass(p.capacity)+' volunteer · '+n(p.width)+' m opening · '+n(p.maxLength)+' m cords · '+mass(p.mass)+' cloth';
  case 'rope':return n(p.strength)+' N breaking load · '+mass(p.linearGrams)+'/m per cord';
- case 'bearing':return 'Friction coefficient '+n(p.friction)+' · lower resists less';
+ case 'bearing':return n(windingMinimum({bearing:p.id}))+' s light-load winding · friction '+n(p.friction);
  case 'release':return 'Ring friction '+n(p.friction)+' · changes release timing';
  case 'winch':return n(p.power)+' W · load-limited winding, no launch boost';
- case 'trough':return 'Rail friction '+n(p.friction)+' · guides the loaded pouch';
+ case 'trough':return 'Rail friction '+n(p.friction)+' · for ground-loaded sliding launches';
  default:throw Error('Unsupported equipment slot');
  }
 }
@@ -24,7 +25,10 @@ export function equipmentUse(p,c){
  if(p.slot==='frame')return 'Now '+n(c.pivotHeight)+' m / '+mass(c.frameGrams)+'. Capacity leaves dimensions unchanged; adjust below.';
  if(p.slot==='ballast')return 'Now filled with '+mass(c.counterGrams)+'. Capacity does not add weight; set the fill below.';
  if(p.slot==='sling')return 'Now '+n(c.pouchWidth)+' m opening / '+n(c.slingLength)+' m cords. Cloth and cord mass still load the beam.';
- if(p.slot==='winch')return 'Light loads share a 3-second governor. More power helps heavier loads; release uses gravity.';
+ if(p.slot==='trough')return 'Tune the guide deck and cord length so the loaded pouch slides along the rail before lift-off.';
+ if(p.slot==='release')return 'Compare release angle, then adjust the pin bend to shape the arc.';
+ if(p.slot==='bearing')return 'Smoother cranking: '+n(windingMinimum(c))+' s light-load preparation. Heavy loads also depend on crank-wheel power.';
+ if(p.slot==='winch')return 'Bearings set the light-load pace ('+n(windingMinimum(c))+' s). More wheel power raises heavier loads faster.';
  return '';
 }
 export function tuningLimit(c,key){
@@ -38,7 +42,7 @@ export function preparationSeconds(c,{loaded=true,samples=512}={}){
  for(let i=0;i<samples;i++){
   const angle=REST_ARM_ANGLE+span*(i+.5)/samples;
   const joules=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
-  seconds+=Math.max(loaded?3:1.65,joules/power)/samples;
+  seconds+=Math.max(windingMinimum(c,{loaded}),joules/power)/samples;
  }
  return seconds;
 }

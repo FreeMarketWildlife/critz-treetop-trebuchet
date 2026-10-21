@@ -1,7 +1,8 @@
+import {windingMinimum} from './winding-comfort.js?v=30';
 import {addCritterFixtures} from './critter-body.js?v=25';
 import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=25';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=25';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
 import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=25';
 import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=25';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
@@ -247,11 +248,11 @@ export class BuildSimulation{
  wind(dt){
   if(this.phase!=='ready')return;
   const c=this.c,f=this.drawFraction??0,span=this.initialAngle-REST_ARM_ANGLE;
-  // The rate governor makes small winches readable; heavier loads additionally
+  // Bearing comfort sets the readable crank-rate governor; heavier loads additionally
   // respect motor power through d(mgh)/d(fraction). Ratchet holds at each stop.
   const angle=REST_ARM_ANGLE+span*f;
   const joulesPerFraction=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
-  const rate=Math.min(1/(this.loading?3:1.65),part(c.winch).power/Math.max(.01,joulesPerFraction));
+  const rate=Math.min(1/windingMinimum(c,{loaded:!!this.loading}),part(c.winch).power/Math.max(.01,joulesPerFraction));
   this.setDraw(f+Math.max(0,Math.min(.1,dt))*rate);
  }
  detach(reason){
