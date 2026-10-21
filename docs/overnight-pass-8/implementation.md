@@ -43,7 +43,7 @@ After unlock:
 1. Recheck the pass-7 fixed-world midrib correction in desktop/phone play, which was made after the last native captures.
 2. Recheck these new contact words at real mat/wood/enemy/snare contacts, both viewport sizes, camera movement, pause/retry and screen edges. Confirm that the removed moving burst and new source word improve the reading without covering the critter or feeling too quiet.
 3. Verify capability caption wrapping/accessibility and actual Fire/aim, cooldown, heat and cap states in native Chrome. Audition field feedback to confirm no extra bonk over sap/rustle.
-4. Restore the continuing game QA tab's 390×844 phone override to its default viewport. The editor override was reset in pass 7. Preserve unrelated tabs/settings and localhost:8080 PID 32791.
+4. Restore the continuing game QA tab's 390×844 phone override to its default viewport. The editor override was reset in pass 7. Preserve unrelated tabs/settings. A final read-only process/port check found the previous localhost:8080 server PID 32791 and port listener absent. This pass did not start, stop or restart it; restoring the local game preview server for native QA is also pending unlock.
 
 Personal saves and legacy 18,117 points / 89 Bells were untouched. No public publication was attempted; Sites remains pending parent/user approval. The current code can be committed as a tested checkpoint, with native visual/gameplay acceptance explicitly outstanding.
 
