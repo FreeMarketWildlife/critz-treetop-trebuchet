@@ -1,4 +1,4 @@
-import {GRAVITY} from './build-physics.js?v=19';
+import {GRAVITY} from './build-physics.js?v=20';
 /** Presentation timing over the unmodified fixed-step mechanism solver.
  * A slower counterweight fall reveals real motion; no forces, transforms or
  * release velocities are assigned here. All feedback uses active playback time. */

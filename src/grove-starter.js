@@ -1,4 +1,4 @@
-import {branchPolygon,slopedPlatform} from './grove-branches.js?v=19';
+import {branchPolygon,slopedPlatform} from './grove-branches.js?v=20';
 export const CROWN_TREE=Object.freeze({height:800,trunkX:-145,trunkWidth:280,doorX:-8,crownRadius:500,crownDepth:350});
 const ellipsePoints=(x,y,rx,ry)=>Array.from({length:12},(_,i)=>({x:x+Math.cos(i*Math.PI/6)*rx,y:y+Math.sin(i*Math.PI/6)*ry}));
 export function crownStarterObjects(base,makeEnemy){
@@ -79,5 +79,28 @@ export function launchRunStarterObjects(base,makeEnemy){
  // A visible choice beyond the four skips: the friendly waxleaf and pod can
  // rescue a lower approach; the sap patch is off the main landing faces.
  objects.push(makeEnemy('opening-exit-pod','pod',65,-40),makeEnemy('opening-exit-skid','skid',72,-47));
+ return objects;
+}
+
+/** Small original landmarks, authored as ordinary editable shapes. Back-layer
+ * stalks and seedpods never become hidden hitboxes or future-route markers. */
+export function openingLandmarkObjects(base){
+ const objects=base.objects.map(o=>({...o}));
+ const poly=(id,name,points,material,collision=false,bounce=0)=>objects.push({id,name,type:'polygon',points,collision,layer:collision?'world':'back',material,bounce});
+ for(const [i,x,y,lean]of[[1,24.7,-5.15,-.18],[2,35.5,-11.75,.22]]){
+  const stem=[{x:x-.075,y:y-.35},{x:x+.03,y:y-.38},{x:x+lean+.09,y:y+.62},{x:x+lean+.01,y:y+.65}];
+  poly(`opening-landmark-${i}-stem`,'Amber seedpod stalk',stem,'wood');
+  for(const[j,dx,dy,r]of[[0,lean,.78,.23],[1,lean-.28,.53,.15],[2,lean+.27,.4,.13]])objects.push({id:`opening-landmark-${i}-pod-${j}`,name:'Amber seedpod · backdrop',type:'circle',x:x+dx,y:y+dy,radius:r,collision:false,layer:'back',material:'bumper',bounce:0});
+  // Each leaflet stays near mouse length. The fan is a cluster, not one giant
+  // leaf; its distinct silhouette gives the landing a little local identity.
+  for(const side of[-1,1])for(let j=0;j<3;j++){
+   const cx=x+side*(.12+j*.13),cy=y+.03+j*.14;
+   poly(`opening-landmark-${i}-leaf-${side}-${j}`,'Fern leaflet · backdrop',[{x:cx-side*.075,y:cy-.02},{x:cx+side*.055,y:cy+.085},{x:cx+side*.08,y:cy+.025},{x:cx-side*.035,y:cy-.035}],'leaf');
+  }
+ }
+ // A lower alternative for medium throws that slip past the second main mat.
+ // It rejoins a broad terrace rather than adding another long empty fall.
+ poly('opening-rescue-mat','Low route · fern spring',[{x:30.5,y:-13.5},{x:34.5,y:-15.5},{x:34.5,y:-15.95},{x:30.5,y:-13.95}],'leaf',true,.84);
+ poly('opening-rest-terrace','Low route · mossy landing terrace',[{x:37,y:-24},{x:48,y:-24},{x:48,y:-24.65},{x:37,y:-24.65}],'wood',true,.62);
  return objects;
 }

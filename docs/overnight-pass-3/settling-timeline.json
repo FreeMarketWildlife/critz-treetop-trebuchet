@@ -1,0 +1,314 @@
+{
+  "limitSeconds": 55,
+  "tests": [
+    {
+      "name": "high-fall",
+      "input": {
+        "height": 599,
+        "down": 5
+      },
+      "phase": "finished",
+      "time": 43.984622,
+      "failure": "",
+      "firstContact": 11.097353,
+      "lastCenterSpeedAboveOne": 42.903958,
+      "lastCenterSpeedAboveSettleThreshold": 43.182404,
+      "lastRimSpeedAboveOne": 0,
+      "aftermathAfterLastOne": 1.080664,
+      "aftermathAfterLastSettleThreshold": 0.802218,
+      "highSpinSlowCenterSeconds": 0,
+      "restDwell": 0.800992,
+      "impacts": [
+        {
+          "index": 1,
+          "time": 11.099806,
+          "normalSpeed": 102.94507,
+          "postContactSpeed": 59.686488,
+          "omega": 0,
+          "nextApexHeight": 201.971479
+        },
+        {
+          "index": 2,
+          "time": 24.628346,
+          "normalSpeed": 59.70538,
+          "postContactSpeed": 34.618294,
+          "omega": 0,
+          "nextApexHeight": 67.955678
+        },
+        {
+          "index": 3,
+          "time": 32.473894,
+          "normalSpeed": 34.626391,
+          "postContactSpeed": 20.083307,
+          "omega": 0,
+          "nextApexHeight": 22.867212
+        },
+        {
+          "index": 4,
+          "time": 37.024704,
+          "normalSpeed": 20.082075,
+          "postContactSpeed": 11.647604,
+          "omega": 0,
+          "nextApexHeight": 7.709754
+        },
+        {
+          "index": 5,
+          "time": 39.665646,
+          "normalSpeed": 11.650483,
+          "postContactSpeed": 6.746454,
+          "omega": 0,
+          "nextApexHeight": 2.611159
+        },
+        {
+          "index": 6,
+          "time": 41.198938,
+          "normalSpeed": 6.753878,
+          "postContactSpeed": 3.901876,
+          "omega": 0,
+          "nextApexHeight": 0.897391
+        },
+        {
+          "index": 7,
+          "time": 42.08702,
+          "normalSpeed": 3.925502,
+          "postContactSpeed": 2.28307,
+          "omega": 0,
+          "nextApexHeight": 0.318705
+        },
+        {
+          "index": 8,
+          "time": 42.607113,
+          "normalSpeed": 2.27478,
+          "postContactSpeed": 1.303999,
+          "omega": 0,
+          "nextApexHeight": 0.124526
+        },
+        {
+          "index": 9,
+          "time": 42.907638,
+          "normalSpeed": 1.315953,
+          "postContactSpeed": 0.747879,
+          "omega": 0,
+          "nextApexHeight": 0.059638
+        },
+        {
+          "index": 10,
+          "time": 43.083047,
+          "normalSpeed": 0.767795,
+          "postContactSpeed": 0.429948,
+          "omega": 0,
+          "nextApexHeight": 0.037599
+        }
+      ]
+    },
+    {
+      "name": "tiny-drop",
+      "input": {
+        "down": 0.3,
+        "spin": 3
+      },
+      "phase": "finished",
+      "time": 0.809578,
+      "failure": "",
+      "firstContact": 0,
+      "lastCenterSpeedAboveOne": 0,
+      "lastCenterSpeedAboveSettleThreshold": 0.00736,
+      "lastRimSpeedAboveOne": 0,
+      "aftermathAfterLastOne": 0.809578,
+      "aftermathAfterLastSettleThreshold": 0.802218,
+      "highSpinSlowCenterSeconds": 0,
+      "restDwell": 0.800992,
+      "impacts": []
+    },
+    {
+      "name": "recoverable-hop",
+      "input": {
+        "height": 0.05,
+        "down": -3
+      },
+      "phase": "finished",
+      "time": 2.189541,
+      "failure": "",
+      "firstContact": 0.688141,
+      "lastCenterSpeedAboveOne": 1.083117,
+      "lastCenterSpeedAboveSettleThreshold": 1.387322,
+      "lastRimSpeedAboveOne": 1.11133,
+      "aftermathAfterLastOne": 1.106423,
+      "aftermathAfterLastSettleThreshold": 0.802218,
+      "highSpinSlowCenterSeconds": 0,
+      "restDwell": 0.800992,
+      "impacts": [
+        {
+          "index": 1,
+          "time": 0.690595,
+          "normalSpeed": 3.062699,
+          "postContactSpeed": 1.427217,
+          "omega": -32.449339,
+          "nextApexHeight": 0.191678
+        },
+        {
+          "index": 2,
+          "time": 1.032825,
+          "normalSpeed": 0.667985,
+          "postContactSpeed": 1.023747,
+          "omega": -25.717188,
+          "nextApexHeight": 0.084578
+        },
+        {
+          "index": 3,
+          "time": 1.194741,
+          "normalSpeed": 0.831415,
+          "postContactSpeed": 0.373622,
+          "omega": 5.315387,
+          "nextApexHeight": 0.049845
+        }
+      ]
+    },
+    {
+      "name": "slow-center-spinning-whale",
+      "input": {
+        "animal": "whale",
+        "spin": 0.5
+      },
+      "phase": "finished",
+      "time": 2.336896,
+      "failure": "",
+      "firstContact": 0.010971,
+      "lastCenterSpeedAboveOne": 0.032914,
+      "lastCenterSpeedAboveSettleThreshold": 1.535988,
+      "lastRimSpeedAboveOne": 1.481131,
+      "aftermathAfterLastOne": 2.303982,
+      "aftermathAfterLastSettleThreshold": 0.800908,
+      "highSpinSlowCenterSeconds": 0.645833,
+      "restDwell": 0.800908,
+      "impacts": [
+        {
+          "index": 1,
+          "time": 0.010971,
+          "normalSpeed": 4.8708,
+          "postContactSpeed": 1.274566,
+          "omega": 0.128451,
+          "nextApexHeight": 2.772807
+        }
+      ]
+    },
+    {
+      "name": "hard-spinning-whale",
+      "input": {
+        "animal": "whale",
+        "height": 10,
+        "down": 5,
+        "spin": 4
+      },
+      "phase": "finished",
+      "time": 11.673509,
+      "failure": "",
+      "firstContact": 0.197484,
+      "lastCenterSpeedAboveOne": 8.162679,
+      "lastCenterSpeedAboveSettleThreshold": 10.872601,
+      "lastRimSpeedAboveOne": 10.86163,
+      "aftermathAfterLastOne": 3.51083,
+      "aftermathAfterLastSettleThreshold": 0.800908,
+      "highSpinSlowCenterSeconds": 0.679167,
+      "restDwell": 0.800908,
+      "impacts": [
+        {
+          "index": 1,
+          "time": 0.197484,
+          "normalSpeed": 35.108788,
+          "postContactSpeed": 18.523185,
+          "omega": -0.29015,
+          "nextApexHeight": 28.172482
+        },
+        {
+          "index": 2,
+          "time": 4.498251,
+          "normalSpeed": 22.717736,
+          "postContactSpeed": 10.745271,
+          "omega": 2.162203,
+          "nextApexHeight": 6.029488
+        },
+        {
+          "index": 3,
+          "time": 4.772534,
+          "normalSpeed": 33.627946,
+          "postContactSpeed": 4.489826,
+          "omega": -1.764068,
+          "nextApexHeight": 3.398397
+        },
+        {
+          "index": 4,
+          "time": 4.937104,
+          "normalSpeed": 14.110249,
+          "postContactSpeed": 9.111859,
+          "omega": -0.065198,
+          "nextApexHeight": 7.808225
+        },
+        {
+          "index": 5,
+          "time": 6.802233,
+          "normalSpeed": 8.096775,
+          "postContactSpeed": 3.314012,
+          "omega": 0.920432,
+          "nextApexHeight": 4.47638
+        },
+        {
+          "index": 6,
+          "time": 7.197201,
+          "normalSpeed": 15.215634,
+          "postContactSpeed": 2.23014,
+          "omega": -0.865894,
+          "nextApexHeight": 2.88524
+        },
+        {
+          "index": 7,
+          "time": 7.372743,
+          "normalSpeed": 8.739781,
+          "postContactSpeed": 3.729427,
+          "omega": 0.186617,
+          "nextApexHeight": 3.494879
+        },
+        {
+          "index": 8,
+          "time": 8.151708,
+          "normalSpeed": 5.140472,
+          "postContactSpeed": 2.327194,
+          "omega": -0.206925,
+          "nextApexHeight": 2.863359
+        },
+        {
+          "index": 9,
+          "time": 8.447934,
+          "normalSpeed": 1.034846,
+          "postContactSpeed": 0.849185,
+          "omega": -0.286351,
+          "nextApexHeight": 2.750186
+        },
+        {
+          "index": 10,
+          "time": 8.645418,
+          "normalSpeed": 1.506919,
+          "postContactSpeed": 0.872816,
+          "omega": -0.085993,
+          "nextApexHeight": 2.801167
+        },
+        {
+          "index": 11,
+          "time": 8.919702,
+          "normalSpeed": 0.649052,
+          "postContactSpeed": 0.233516,
+          "omega": 0.115031,
+          "nextApexHeight": 2.745188
+        },
+        {
+          "index": 12,
+          "time": 9.193986,
+          "normalSpeed": 0.604785,
+          "postContactSpeed": 0.2952,
+          "omega": 0.16882,
+          "nextApexHeight": 2.769659
+        }
+      ]
+    }
+  ]
+}

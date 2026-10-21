@@ -1,9 +1,9 @@
 import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js';
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=19';
-import {drawForestForeground} from './grove-jungle-art.js?v=19';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=19';
-import {pointInPolygon} from './grove-geometry.js?v=19';
-import {enemyRecipe} from './grove-map.js?v=19';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=20';
+import {drawForestForeground} from './grove-jungle-art.js?v=20';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=20';
+import {pointInPolygon} from './grove-geometry.js?v=20';
+import {enemyRecipe} from './grove-map.js?v=20';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#302d2b';

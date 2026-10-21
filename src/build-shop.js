@@ -1,4 +1,4 @@
-import {PARTS, CRITTERS, STARTER_PARTS, part, critter} from './build-catalog.js?v=19';
+import {PARTS, CRITTERS, STARTER_PARTS, part, critter} from './build-catalog.js?v=20';
 
 export const VOUCHERS = [
   {id:'luckyPenny',name:'Lucky penny',price:80,description:'Rerolls start at 3 Bells instead of 5. A little luck goes a long way.',slot:'voucher'},
