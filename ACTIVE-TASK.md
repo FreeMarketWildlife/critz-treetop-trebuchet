@@ -1,3 +1,11 @@
+# Current update — slower swing and release feel, October 20, 2026
+
+User authorized a slower, more satisfying swing, committing/pushing all work and updating the live link. Implemented launch-feel.js as playback timing over the unchanged fixed-step solver. Starter swing is 1.375 screen seconds versus 0.525 physical seconds, with exact 39.0796° / 21.9969 m/s release parity. The clock ramps naturally, uses gentler slowdown for giant rigs, and recovers normal pace for stalled builds. Release holds 45 ms before easing flight back; meaningful impacts get bounded 25–50 ms beats. No gravity, masses, forces, geometry or velocities are replaced.
+
+Original wood creaks, sling swish and release pop accompany a small camera push, actual counterweight trail, golden launch fan, tiny camera impulse and impact ring. Reduced motion suppresses moving effects; pauses/dialogs freeze timing and ropes. Fixed a zero-time rope-inertia leak and idle rendering while feedback is paused. Existing loading, wheel direction, maps, shop and saves remain. Full suite 401/401; focused timing/audio tests pass. Local phone-width browser verified 1.374 s actual swing, paused crank/time parity and release effects. Details and evidence: docs/swing-workshop/implementation.md. Publication and GitHub synchronization are being completed. Keep localhost:8080 running.
+
+---
+
 # Current update — close-up loading workshop, October 20, 2026
 
 User requested a much larger launch view, smaller starter relative to small volunteers, a visible wheel-to-sling cord, a left stand, point-specific ragdoll pickup/drop, five-second drag guidance and an empty-launch message. Implemented the 1.2 m / 6,000 g compact starter, roughly 40–50% viewport-height setup framing, jointed body/head/tail preparation physics and original segmented vector art. The pointer pin acts at the grabbed point; released parts fall and must settle in real basket contact. Seating transfers at rest to the established flight capsule. Enter remains an explicit accessibility alternative. Human operators remain absent.

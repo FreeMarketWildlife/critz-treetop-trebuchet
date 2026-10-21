@@ -1,10 +1,10 @@
-import {drawCounterweight} from './counterweight-art.js?v=14';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=14';
-import {RopeVisual} from './rope-visual.js?v=14';
-import {part,grams} from './build-catalog.js?v=14';
-import {drawGroveWorld} from './grove-art.js?v=14';
-import {createCritterPerformance} from './critter-performance.js?v=14';
-import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=14';
+import {drawCounterweight} from './counterweight-art.js?v=15';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=15';
+import {RopeVisual} from './rope-visual.js?v=15';
+import {part,grams} from './build-catalog.js?v=15';
+import {drawGroveWorld} from './grove-art.js?v=15';
+import {createCritterPerformance} from './critter-performance.js?v=15';
+import {groveSetupCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=15';
 const TAU=Math.PI*2;
 const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}};
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
@@ -56,7 +56,7 @@ function drawDizzyStars(ctx,tier,frame){
  const ink='#8b764e';for(let i=0;i<3;i++){const a=i*Math.PI*2/3+(frame%4)*Math.PI/12,x=13+Math.cos(a)*24,y=-24+Math.sin(a)*8,r=3.4+(tier>2?1:0);ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+r*.4,y-r*.3);ctx.lineTo(x+r,y);ctx.lineTo(x+r*.35,y+r*.35);ctx.lineTo(x,y+r);ctx.lineTo(x-r*.35,y+r*.35);ctx.lineTo(x-r,y);ctx.lineTo(x-r*.4,y-r*.3);ctx.closePath();ctx.fillStyle=i%2?'#f4d476':'#fff0b4';ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=1;ctx.stroke();}
 }
 export function createBuildRenderer(canvas){
- const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let zoomFactor=1,treeZoom=1,treeOverview=false,cameraUntil=0;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const performanceState=createCritterPerformance();let critterCel={pose:'ready',tier:0,hits:0,angle:0};const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
+ const ctx=canvas.getContext('2d');let cam={x:0,y:2,scale:100},lastSim=null,fit=true;let zoomFactor=1,treeZoom=1,treeOverview=false,cameraUntil=0;let W=1000,H=600,preview=false,ropeTime=0,ropeDt=1/60,strandDt=1/60,lastDrawnSimTime=0;let cords=[new RopeVisual(),new RopeVisual()];let effects=[],nowTime=0,windActive=false;const performanceState=createCritterPerformance();let critterCel={pose:'ready',tier:0,hits:0,angle:0};const reducedMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches??false;
  function project(p){return[W/2+(p.x-cam.x)*cam.scale,H/2-(p.y-cam.y)*cam.scale];}
  function line(a,b,color,width=2){path(ctx,[project(a),project(b)],color,width);}
  function fitScene(sim){cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});cam.scale*=zoomFactor;fit=false;}
@@ -92,7 +92,7 @@ export function createBuildRenderer(canvas){
  function timber(a,b,width,color){line(a,b,'#444a34',Math.max(4,width*cam.scale+3));line(a,b,color,Math.max(2,width*cam.scale));const p=project(a),q=project(b);path(ctx,[[p[0],p[1]-Math.max(1,width*cam.scale*.2)],[q[0],q[1]-Math.max(1,width*cam.scale*.2)]],'#e1b16b',Math.max(.7,width*cam.scale*.09));}
  function annotation(p,text,dx,dy){const [x,y]=project(p),xx=Math.max(15,Math.min(W-190,x+dx)),yy=Math.max(88,Math.min(H-80,y+dy));path(ctx,[[x,y],[xx,yy+9],[xx+8,yy+9]],'#61754e88',1);ctx.font='10px "DM Sans",sans-serif';const width=Math.min(190,ctx.measureText(text).width+18);ctx.fillStyle='#f4f4dfec';ctx.beginPath();ctx.roundRect(xx+5,yy-3,width,24,5);ctx.fill();ctx.fillStyle='#5a6d45';ctx.textAlign='left';ctx.fillText(text,xx+14,yy+12);}
  function rope(a,b,length,index=0,color='#e0d4a0',free=false){
-  const ps=cords[index].update(a,b,length,ropeDt,x=>lastSim.supportHeight(x)+.006*lastSim.L,{pinA:!free});
+  const ps=cords[index].update(a,b,length,strandDt,x=>lastSim.supportHeight(x)+.006*lastSim.L,{pinA:!free});
   const points=ps.map(project);path(ctx,points,'#4b5337',3.5);path(ctx,points,color,1.8);
  }
  function trough(sim,front=false){
@@ -169,23 +169,42 @@ export function createBuildRenderer(canvas){
   effects=effects.filter(e=>nowTime-e.start<1.2);
   for(const e of effects){const age=(nowTime-e.start)/1.2,p=project(effectAnchor(sim,e.slot));ctx.save();ctx.globalAlpha=1-age;const spread=(reducedMotion?12:12+age*58);for(let i=0;i<12;i++){const a=i*TAU/12+.2,xx=p[0]+Math.cos(a)*spread,yy=p[1]+Math.sin(a)*spread-age*15,r=(1-age)*(i%3+2.5);ctx.fillStyle=i%2?'#fff0a1':'#e7b95d';ctx.beginPath();ctx.moveTo(xx,yy-r*1.6);ctx.lineTo(xx+r*.5,yy-r*.4);ctx.lineTo(xx+r*1.4,yy);ctx.lineTo(xx+r*.4,yy+r*.4);ctx.lineTo(xx,yy+r*1.5);ctx.lineTo(xx-r*.4,yy+r*.4);ctx.lineTo(xx-r*1.4,yy);ctx.lineTo(xx-r*.4,yy-r*.4);ctx.closePath();ctx.fill();}ellipse(ctx,...p,6+age*40,6+age*40,null,'#f8eab0',2*(1-age));ctx.restore();}
  }
- function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false,winding=false}={}){
+ function drawSwingTrail(sim,feel){
+  if(!feel||reducedMotion||preview)return;
+  for(const p of feel.trail){ctx.save();ctx.globalAlpha=p.alpha;const r=Math.max(3,sim.facts.counterRadius*cam.scale*.75);ellipse(ctx,...project(p),r,r,'#f2cf79',null);ctx.restore();}
+ }
+ function drawLaunchFeedback(sim,feel){
+  if(!feel||preview)return;
+  if(sim.release&&feel.releaseAge!==null&&feel.releaseAge<.32){
+   const t=feel.releaseAge/.32,p=project(sim.release),angle=Math.atan2(-sim.release.vy,sim.release.vx);ctx.save();ctx.globalAlpha=(1-t)*.8;
+   if(reducedMotion){ellipse(ctx,...p,9,9,'#fff0b744','#e7bf68',1.5);}
+   else{const radius=12+t*43;for(let i=0;i<10;i++){const a=angle+Math.PI+(i-4.5)*.18,dx=Math.cos(a),dy=Math.sin(a),jitter=7*Math.sin(i*3.7);path(ctx,[[p[0]+dx*(radius*.4)+jitter,p[1]+dy*radius*.4],[p[0]+dx*radius+jitter,p[1]+dy*radius]],i%2?'#fff0ad':'#dfb35e',2-t);}
+    ctx.beginPath();ctx.arc(...p,6+t*30,angle+Math.PI*.45,angle+Math.PI*1.55);ctx.strokeStyle='#f6db8f';ctx.lineWidth=3*(1-t)+.5;ctx.stroke();}
+   ctx.restore();
+  }
+  if(feel.impact>0&&feel.impactPoint){const p=project(feel.impactPoint),r=reducedMotion?10:9+feel.impactAge*90;ctx.save();ctx.globalAlpha=feel.impact*.55;ellipse(ctx,...p,r,r,'#ffe8a41a','#f7d87f',1.7);ctx.restore();}
+ }
+ function draw(sim,{labels=true,follow=true,paused=false,pixelRatio=2,preview:showPreview=false,winding=false,feel=null}={}){
   preview=showPreview;windActive=winding||!!sim.winding;const now=performance.now()/1000;nowTime=now;ropeDt=Math.min(1/30,now-ropeTime||1/60);ropeTime=now;
   const bounds=canvas.getBoundingClientRect();W=Math.max(160,bounds.width);H=Math.max(120,bounds.height);const dpr=Math.min(pixelRatio,devicePixelRatio||1);if(canvas.width!==Math.round(W*dpr)||canvas.height!==Math.round(H*dpr)){canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);fit=true;}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineCap='round';ctx.lineJoin='round';
-  if(lastSim!==sim){lastSim=sim;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);
+  if(lastSim!==sim){lastSim=sim;lastDrawnSimTime=sim.time;fit=true;cords=[new RopeVisual(),new RopeVisual()];}if(fit)fitScene(sim);strandDt=paused?0:['swing','flight','finished'].includes(sim.phase)?Math.min(1/30,Math.max(0,sim.time-lastDrawnSimTime)):ropeDt;lastDrawnSimTime=sim.time;
   if(treeOverview&&sim.map&&!preview){const target=groveTreeCamera(sim.map,{width:W,height:H});target.scale*=treeZoom;const mix=reducedMotion||nowTime>=cameraUntil?1:1-Math.exp(-ropeDt*8);cam={x:cam.x+(target.x-cam.x)*mix,y:cam.y+(target.y-cam.y)*mix,scale:Math.exp(Math.log(cam.scale)*(1-mix)+Math.log(target.scale)*mix)};}
   else if(sim.release&&follow&&!preview){cam=groveFlightCamera(cam,sim.real(sim.shot),{width:W,height:H,animalLength:sim.animal.length/zoomFactor,dt:paused?0:ropeDt,reducedMotion});}
+  if(sim.phase==='swing'&&!treeOverview&&!preview&&!reducedMotion&&feel){const setup=groveSetupCamera(sim.c,{width:W,height:H,counterRadius:sim.facts.counterRadius});cam.scale=setup.scale*zoomFactor*(1+.045*Math.min(1,feel.swingAge/1.2));}
+  const steadyCam={...cam};if(feel&&!preview&&!reducedMotion){cam.x-=feel.shakeX/cam.scale;cam.y+=feel.shakeY/cam.scale;}
   canvas.dataset.cameraScale=cam.scale.toFixed(4);canvas.dataset.cameraMode=treeOverview&&!preview?'tree':sim.release&&follow&&!preview?'payload':'rig';
   critterCel=performanceState.update(sim);canvas.dataset.critterPose=critterCel.pose;canvas.dataset.critterHits=String(critterCel.hits);canvas.dataset.critterDamage=String(critterCel.tier);
   background(sim);
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
+  drawSwingTrail(sim,feel);
   mechanism(sim,labels);
   const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);canvas.dataset.loadingHint=String(sim.loading?.hint??false);canvas.dataset.grabPart=sim.loading?.grip?.part??'';canvas.dataset.loadingParts=JSON.stringify(sim.loading?.parts.map(p=>({...p,screen:project(p)}))??[]);canvas.dataset.loadingGrip=JSON.stringify(sim.loading?.grip?project(sim.loading.grip):null);
   canvas.dataset.animalPoint=JSON.stringify(project(sim.real(sim.shot)));canvas.dataset.slingPoint=JSON.stringify(project(sim.loading?.target()??sim.real(sim.shot)));
 
   if(sim.map)drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,foreground:true});
-  drawEffects(sim);
+  drawEffects(sim);drawLaunchFeedback(sim,feel);
   if(critterCel.pose.startsWith('bonk')&&!preview){const p=project(sim.real(sim.shot)),r=Math.max(15,Math.min(30,sim.animal.length*cam.scale*.65));ctx.save();ctx.globalAlpha=.85;ctx.fillStyle='#ffedab';ctx.strokeStyle='#9b7851';ctx.lineWidth=1.5;ctx.beginPath();for(let i=0;i<16;i++){const a=i*TAU/16,rr=r*(i%2?.72:1.15),x=p[0]+Math.cos(a)*rr,y=p[1]+Math.sin(a)*rr;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();ctx.stroke();ctx.font='bold 12px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.lineWidth=3;ctx.strokeStyle='#fff0ba';const word=critterCel.pose==='bonk-a'?'BONK!':'OOF!';ctx.strokeText(word,p[0],p[1]-r-8);ctx.fillStyle='#594e3e';ctx.fillText(word,p[0],p[1]-r-8);ctx.restore();}
+  cam=steadyCam;
   // The optional parts overlay includes a scale bar in real world units.
   if(!preview){
   const desired=90/cam.scale,n=10**Math.floor(Math.log10(desired)),bar=n*(desired/n>=5?5:desired/n>=2?2:1),px=bar*cam.scale;

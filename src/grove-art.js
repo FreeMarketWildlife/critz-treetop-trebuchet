@@ -1,6 +1,6 @@
-import {drawGroveBackdrop} from './grove-backdrop.js?v=14';
-import {pointInPolygon} from './grove-geometry.js?v=14';
-import {enemyRecipe} from './grove-map.js?v=14';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=15';
+import {pointInPolygon} from './grove-geometry.js?v=15';
+import {enemyRecipe} from './grove-map.js?v=15';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#374b3c';

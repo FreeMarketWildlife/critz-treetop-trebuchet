@@ -1,18 +1,19 @@
-import {createPayloadLoading} from './payload-loading.js?v=14';
-import {crankState} from './crank-wheel.js?v=14';
-import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=14';
-import {fitEquipment} from './build-equipment.js?v=14';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=14';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=14';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=14';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=14';
-import {drawShopArt} from './shop-art.js?v=14';
+import {createLaunchFeel} from './launch-feel.js?v=15';
+import {createPayloadLoading} from './payload-loading.js?v=15';
+import {crankState} from './crank-wheel.js?v=15';
+import{PARTS,SLOTS,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=15';
+import {fitEquipment} from './build-equipment.js?v=15';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=15';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=15';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards}from'./build-progress.js?v=15';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack} from './build-shop.js?v=15';
+import {drawShopArt} from './shop-art.js?v=15';
 import {createHoldControl} from './hold-control.js';
-import {createAudio} from './audio.js?v=14';
+import {createAudio} from './audio.js?v=15';
 import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=14';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=14';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=14';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=15';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=15';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=15';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1';
 let groveMap=(qa?null:readGroveMap())??createGroveMap(),creativeShop=createSandboxShop(qa?73:undefined),seenContactSequence=0,combo=0,lastBumperAt=-Infinity,lastZone='grandfatherTree';
@@ -25,7 +26,7 @@ function saveSound(){if(!qa)try{saveAudioPreferences(localStorage,audioPrefs);}c
 try{if(!qa){saving=localStorage.getItem('treetop-custom-save-enabled')!=='false';if(saving)state=loadProgress(localStorage);}}catch(e){toast(`Save could not be loaded. A fresh session is open; your stored data was kept. ${e.message}`);saving=false;}
 state=visitShop(state,qa?42+state.launches:undefined);
 adventureBuild={...state.build};draft={...state.build};
-const renderer=createBuildRenderer($('stage')),previewRenderer=createBuildRenderer($('previewStage'));
+const renderer=createBuildRenderer($('stage')),previewRenderer=createBuildRenderer($('previewStage')),launchFeel=createLaunchFeel();let feelFrame=launchFeel.state();
 let previewSim,previewKey='',presetAnimal='mouse',presetChassis='anchored';
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,5200);}
 function persist(){if(!saving||qa||editorSession)return;try{saveProgress(localStorage,state);$('saveStatus').textContent='Adventure progress saved locally. Your original prototype save is kept separately.';}catch(e){$('saveStatus').textContent=`Saving unavailable: ${e.message}. Export a backup to keep your work.`;toast('Progress is in this session. Browser storage is unavailable; export a backup.');}}
@@ -70,7 +71,7 @@ function refreshFacts(){
  for(const key of ['wheelRadius','wheelGrams','brake'])$(`tune-${key}`).closest('label').hidden=draft.chassis!=='wheels';
  syncPreview();$('tune-walkingLean').closest('label').hidden=draft.chassis!=='walking';for(const key of ['hanger','hingeFriction'])$(`tune-${key}`).closest('label').hidden=draft.mount!=='hinged'||draft.chassis==='floating';
 }
-function applyBuild({quiet=false}={}){try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});sim.setDraw(0);sim.loading=createPayloadLoading(sim);paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Pause';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
+function applyBuild({quiet=false}={}){try{$('arcAdvice').textContent='';const b=validateBuild({...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});sim.setDraw(0);sim.loading=createPayloadLoading(sim);launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;$('resultCard').hidden=true;$('pause').textContent='Pause';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}populate();drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');}catch(e){toast(e.message);}}
 function switchMode(next){if(editorSession&&!next)return;if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every volunteer. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
 function drawHudCritter(){currentCel=hudPerformance.update(sim);const canvas=$('hudCritter'),c=canvas.getContext('2d');if(canvas.width!==200){canvas.width=200;canvas.height=140;}c.setTransform(2,0,0,2,0,0);c.clearRect(0,0,100,70);drawCritter(c,sim.animal,50,36,76,0,!!sim.release,undefined,currentCel);canvas.dataset.pose=currentCel.pose;canvas.setAttribute('aria-label',`${sim.animal.name}: ${critterPoseName(currentCel)}`);}
 const hold=createHoldControl({
@@ -87,7 +88,7 @@ function beginHold(id){
  return hold.begin(id);
 }
 function updateReadouts(){
- drawHudCritter();const s=sim.snapshot();const altitude=s.payload.y+groveMap.launch.y,zone=levelAt(altitude,groveMap);document.body.classList.toggle('preparing',sim.phase==='ready');
+ drawHudCritter();const s=sim.snapshot();const altitude=s.payload.y+groveMap.launch.y,zone=levelAt(altitude,groveMap);document.body.classList.toggle('preparing',sim.phase==='ready');document.body.classList.toggle('swinging',sim.phase==='swing');
  $('regionName').textContent=zone.name.toUpperCase();$('regionGravity').textContent=`${Math.max(0,altitude).toFixed(1)} m altitude · ${`${(GRAVITY*(sim.release?sim.gravityFactor:1)).toFixed(2)} m/s²`}`;
  $('bumperCombo').hidden=combo===0;$('bumperCombo').textContent=`✦ ${combo} ${combo===1?'BOUNCE':'BOUNCES'}`;
  const audioState=sound.getStatus().contextState;if($('stage').dataset.audio!==audioState)$('stage').dataset.audio=audioState;
@@ -95,7 +96,7 @@ function updateReadouts(){
  const names={ready:'A LITTLE WIND-UP…',swing:'COUNTERWEIGHT FALLING',flight:'SLING OPEN · IN FLIGHT',finished:'EXPERIMENT COMPLETE',invalid:'CHECK THIS BUILD'};
  const full=(sim.drawFraction??0)>=.999;
  $('phaseBadge').textContent=paused?'TAKE A BREATHER':winding?(full?'RATCHET LOCKED · FULL DRAW':'RAISING THE COUNTERWEIGHT'):names[s.phase];
- $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?'Here we go…':s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:'Nice experiment.';
+ $('holdHint').textContent=paused?'Paused':winding?(full?'Ready! Let go to fly.':'Keep holding…'):s.phase==='ready'?(sim.loading.loaded?'Hold anywhere to crank':sim.loading.falling?'Let them settle into the basket':'Drag your volunteer into the basket'):s.phase==='swing'?(feelFrame.swingAge<.5?'Counterweight dropping…':feelFrame.swingAge<1?'Sling picking up speed…':'Here we go…'):s.phase==='flight'?`${s.distance.toFixed(1)} metres & counting`:'Nice experiment.';
  $('launchStatus').textContent=paused?'Tap Resume when you’re ready.':winding?(full?'The winch holds it here until you let go.':`${Math.round((sim.drawFraction??0)*100)}% draw · release whenever you like`):s.failure||s.release?(s.failure||`${s.release.speed.toFixed(1)} m/s off the sling · ${s.release.angle.toFixed(0)}° release`):s.phase==='swing'?'Let gravity do its thing.':sim.loading.loaded?'Clockwise to wind · release to fly.':'Pick up the head, body or tail. Enter loads with the keyboard.';
  if(sim.phase==='ready'&&!sim.loading.loaded)$('phaseBadge').textContent=sim.loading.dragging?'DROP INTO THE BASKET':'LOAD THE SLING';
  const pct=Math.round((sim.drawFraction??0)*100);$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
@@ -228,7 +229,7 @@ function frame(timestamp){
  if(active){
   const wasLoaded=sim.loading.loaded;if(sim.loading.step(delta))dirty=true;if(!wasLoaded&&sim.loading.loaded){cue('ready');updateReadouts();}
   if(winding){sim.wind(delta);const tick=Math.floor((sim.drawFraction??0)*24);if(tick!==ratchetStep){cue('ratchet',{intensity:.6+tick/60});ratchetStep=tick;}if(sim.drawFraction>=1&&!readyCue){cue('ready');readyCue=true;}}
-  else {let remaining=delta*Number($('speed').value);while(remaining>0){const step=Math.min(.05,remaining);sim.step(step);remaining-=step;}}
+  else {feelFrame=launchFeel.advance(sim,delta,{speed:Number($('speed').value)});for(const event of feelFrame.events)cue(event.type==='release'?'releasePop':event.type,{intensity:event.intensity});}
   if(sim.release&&!seenRelease){seenRelease=true;cue('launch');document.body.classList.remove('launch-kick');void stage.offsetWidth;document.body.classList.add('launch-kick');}
   const contacts=(sim.contactEvents??[]).filter(e=>e.seq>seenContactSequence);
   for(const hit of contacts){seenContactSequence=hit.seq;if(hit.material==='foliage'||hit.material==='sap'){cue(hit.material==='foliage'?'rustle':'sap',{intensity:hit.material==='foliage'?.22:.65});dirty=true;continue;}const bumper=!!enemyRecipe(hit.kind)||hit.material==='bumper';combo=sim.time-lastBumperAt<5?combo+1:1;lastBumperAt=sim.time;cue(bumper?'bumper':'impact',{material:hit.material??'wood',mass:Math.max(.15,Math.log10(sim.animal.grams)),intensity:Math.min(1,.35+(hit.strength??1)*.6),variant:(combo-1)%4});if(bumper)chime(['coin']);dirty=true;}
@@ -239,12 +240,12 @@ function frame(timestamp){
  }
  if(!document.hidden){for(let i=soundQueue.length-1;i>=0;i--)if(timestamp>=soundQueue[i].at){cue(soundQueue[i].name);soundQueue.splice(i,1);}}
  const running=active&&(sim.loading.animating||winding||['swing','flight'].includes(sim.phase));
- const animating=renderer.needsAnimation()||previewRenderer.needsAnimation();
+ const animating=(active&&feelFrame.animating)||renderer.needsAnimation()||previewRenderer.needsAnimation();
  const refresh=dirty||running||(!resultShown&&['finished','invalid'].includes(sim.phase));
  const low=$('quality').value==='low',interval=low?1000/30:1000/60;
  if((dirty||running||animating)&&timestamp-lastDraw>=interval-.5&&!document.hidden){
   if($('workshopDialog').open&&previewSim)previewRenderer.draw(previewSim,{labels:true,follow:false,paused:true,preview:true,pixelRatio:low?1:2});
-  renderer.draw(sim,{labels,follow,paused:paused||modal,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);
+  renderer.draw(sim,{labels,follow,paused:paused||modal,feel:feelFrame,pixelRatio:low?1:$('quality').value==='high'?2:Math.min(2,Math.sqrt(1800000/(stage.clientWidth*stage.clientHeight)))});dirty=false;lastDraw=timestamp;drawCount++;stage.dataset.renderedFrames=String(drawCount);stage.dataset.playbackRate=feelFrame.rate.toFixed(3);stage.dataset.swingPlayback=feelFrame.swingAge.toFixed(3);stage.dataset.releasePlayback=feelFrame.releaseClock?.toFixed(3)??'';stage.dataset.presentationTime=feelFrame.clock.toFixed(3);
  }
  if(refresh&&timestamp-refreshAt>110){updateReadouts();refreshAt=timestamp;}
  requestAnimationFrame(frame);

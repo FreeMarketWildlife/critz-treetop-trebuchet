@@ -1,7 +1,7 @@
 /** A gravity-draped, inextensible display strand. The solver's unilateral rope
  * joint supplies actual tension; this lightweight Verlet strand only renders
  * slack, settling and the free release tail. It adds no forces to the throw. */
-import {GRAVITY} from './build-physics.js?v=14';
+import {GRAVITY} from './build-physics.js?v=15';
 export class RopeVisual {
  constructor(count=18){this.count=count;this.points=[];}
  reset(a,b,length){
@@ -11,6 +11,7 @@ export class RopeVisual {
  update(a,b,length,dt=1/60,floor=()=>0,{pinA=true}={}){
   if(!this.points.length||pinA&&Math.hypot(this.points[0].x-a.x,this.points[0].y-a.y)>length*.6)this.reset(a,b,length);
   const ps=this.points,n=this.count,span=Math.max(length,Math.hypot(b.x-a.x,b.y-a.y))/n,h=Math.min(1/30,Math.max(0,dt));
+  if(h===0){if(pinA)Object.assign(ps[0],a);Object.assign(ps[n],b);return ps;}
   for(let i=pinA?1:0;i<n;i++){const p=ps[i],vx=(p.x-p.px)*.94,vy=(p.y-p.py)*.94;p.px=p.x;p.py=p.y;p.x+=vx;p.y+=vy-GRAVITY*h*h;}
   for(let pass=0;pass<18;pass++){
    if(pinA)Object.assign(ps[0],a);Object.assign(ps[n],b);
