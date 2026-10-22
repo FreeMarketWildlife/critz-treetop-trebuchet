@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {PARTS,SLOTS,STARTER,part} from '../src/build-catalog.js';
 import {runCatalogueAudit} from '../scripts/audit-catalogue.mjs';
 import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {windingMinimum,BEARING_WINDING_SECONDS} from '../src/winding-comfort.js';
 const auditPromise=runCatalogueAudit();
 test('catalogue audit covers every real persisted part and all equipment slots',async()=>{const a=await auditPromise;assert.equal(a.rows.length,PARTS.length);assert.deepEqual(a.rows.map(r=>r.id),PARTS.map(p=>p.id));assert.equal(new Set(a.rows.map(r=>r.id)).size,PARTS.length);assert.deepEqual(new Set(a.rows.map(r=>r.slot)),new Set(SLOTS.map(([s])=>s)));});
@@ -24,8 +25,30 @@ test('every bearing tier lowers friction torque and has a measured effect at thr
 test('larger cloth/cord is a moving mass tradeoff, not an unconditional distance bonus',async()=>{const a=await auditPromise;for(const slot of ['sling','rope']){const rows=a.rows.filter(r=>r.slot===slot);for(let i=1;i<rows.length;i++)assert.ok(rows[i].baseline.pouchGrams>rows[i-1].baseline.pouchGrams);assert.ok(rows.some(r=>r.baseline.failure));assert.ok(rows.every(r=>r.intended.result.release));}});
 
 test('waxed rail meaningfully reduces actual sliding contact loss in a supported ground-loaded rig',async()=>{const rows=(await auditPromise).relevantMechanics.trough.filter(r=>r.profile==='ground-loaded'),wood=rows.find(r=>r.id==='runway'),wax=rows.find(r=>r.id==='waxedRunway');for(const r of rows){assert.equal(r.failure,'');assert.ok(r.release);assert.ok(r.rail.postSolveCalls>100);assert.ok(r.rail.slidingContactSeconds>1);}assert.ok(wax.rail.estimatedWorkJ<wood.rail.estimatedWorkJ*.6);assert.ok(wax.rail.tangentialImpulseNs<wood.rail.tangentialImpulseNs*.6);assert.ok(wax.release.speed>wood.release.speed);});
-test('each release finger changes measured ring timing and outgoing angle at fixed geometry',async()=>{const rows=(await auditPromise).relevantMechanics.release;assert.equal(rows.length,3);for(const r of rows)assert.equal(r.failure,'');for(let i=1;i<rows.length;i++){assert.ok(rows[i].release.time<rows[i-1].release.time);assert.ok(rows[i].release.angle>rows[i-1].release.angle+2);}});
+test('release fingers affect timing and arc on current starter and supported fixed-geometry rigs',async()=>{
+ const all=(await auditPromise).relevantMechanics.release;
+ for(const profile of['starter','ground-loaded','rabbit']){
+  const rows=all.filter(r=>r.profile===profile);assert.equal(rows.length,3);
+  for(const r of rows){assert.equal(r.failure,'',profile+'/'+r.id);assert.ok(r.release);}
+  for(let i=1;i<rows.length;i++){assert.ok(part(rows[i].id).friction<part(rows[i-1].id).friction);assert.ok(rows[i].release.time<rows[i-1].release.time,profile+' earlier ring release');assert.ok(Math.abs(rows[i].release.angle-rows[i-1].release.angle)>1e-6,profile+' distinct arc');}
+ }
+});
 test('ballast materials change physical fixture bulk and inertia at the identical fill mass',async()=>{const rows=(await auditPromise).relevantMechanics.material,stone=rows.find(r=>r.id==='stone'),sand=rows.find(r=>r.id==='sand'),steel=rows.find(r=>r.id==='steel');for(const r of rows){assert.equal(r.failure,'');assert.equal(r.build.counterGrams,STARTER.counterGrams);}assert.ok(steel.counter.fixtureRadius<stone.counter.fixtureRadius*.72);assert.ok(steel.counter.inertiaKgM2<stone.counter.inertiaKgM2*.72);assert.ok(sand.counter.fixtureRadius>stone.counter.fixtureRadius*1.18);assert.ok(sand.counter.inertiaKgM2>stone.counter.inertiaKgM2*1.3);});
 
 test('bearing comfort gives every higher tier a player-relevant preparation benefit while preserving bronze',async()=>{const rows=(await auditPromise).rows.filter(r=>r.slot==='bearing');assert.equal(windingMinimum(STARTER),3);for(let i=0;i<rows.length;i++){const r=rows[i],minimum=BEARING_WINDING_SECONDS[r.id];assert.equal(r.wind.light.minimumSeconds,minimum);assert.ok(Math.abs(r.wind.light.drawAfterOneSecond-1/minimum)<1e-9,r.id);if(i)assert.ok(r.wind.light.drawAfterOneSecond>rows[i-1].wind.light.drawAfterOneSecond);assert.equal(windingMinimum({...STARTER,bearing:r.id},{loaded:false}),1.65);}assert.ok(rows.find(r=>r.id==='precision').wind.light.drawAfterOneSecond>=rows.find(r=>r.id==='bronze').wind.light.drawAfterOneSecond*1.49);});
-test('preparation-only usefulness preserves all 48 archived full-draw starter and supported trajectories exactly',async()=>{const a=await auditPromise,old=JSON.parse(await readFile(new URL('../docs/upgrade-audit/catalogue-measurements.json',import.meta.url),'utf8'));for(const prior of old.rows){const current=a.rows.find(r=>r.id===prior.id);assert.ok(current,prior.id);assert.deepEqual(current.baseline,prior.baseline,prior.id+' direct full-draw trajectory');assert.deepEqual(current.intended.result,prior.intended.result,prior.id+' supported full-draw trajectory');}});
+test('current geometry and source fingerprints define this audit; archived trajectories retain their original provenance',async()=>{
+ const a=await auditPromise;assert.deepEqual(a.method.baselineBuild,STARTER);assert.equal(a.method.sourceStable,true,'do not certify measurements across concurrent source edits');
+ const expected={'upgrade-audit':'9a86d653e9fb391354f5919e16f688d8e28e1a6696e55de1cc51e526ea932868','upgrade-usefulness':'6c1b71b712b58e494ab5a2f37120ccf0ae02512377828b02790a61cda3074468'};
+ for(const[folder,sha256]of Object.entries(expected)){
+  const bytes=await readFile(new URL('../docs/'+folder+'/catalogue-measurements.json',import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),sha256,'preserve historical '+folder+' evidence');
+  const old=JSON.parse(bytes);assert.deepEqual(old.rows.map(r=>r.id),PARTS.map(p=>p.id));assert.equal(a.method.archives.find(r=>r.path==='docs/'+folder+'/catalogue-measurements.json').sha256,sha256);
+ }
+});
+test('every current part reaches a distinct non-colour mechanism variant at desktop and phone dimensions',async()=>{
+ const a=await auditPromise;assert.equal(a.visuals.length,PARTS.length);
+ for(const viewport of['phone','desktop'])for(const[slot]of SLOTS){const rows=a.visuals.filter(r=>r.slot===slot);assert.equal(new Set(rows.map(r=>r.views[viewport].geometrySha256)).size,rows.length,slot+'/'+viewport);for(const row of rows){const v=row.views[viewport];assert.equal(v.finite,true);assert.equal(v.balanced,true);assert.equal(v.simulationUnchanged,true);assert.ok(v.commandCount<6500);}}
+});
+test('moving hardware tradeoffs are distinguished from missing mechanical connections and unsafe automatic fitting',async()=>{
+ const a=await auditPromise;assert.deepEqual(a.findings,[],'known failing direct starter hardware must remain inventory-only on purchase');for(const row of a.rows){assert.equal(row.starterCompatibility.needsLargerRig,!!row.baseline.failure);assert.equal(row.intended.result.failure,'');if(row.starterCompatibility.needsLargerRig)assert.equal(row.starterCompatibility.autoFits,false,row.id+' unsafe automatic fit');}
+ for(const issue of a.findings){const row=a.rows.find(r=>r.id===issue.id);assert.equal(row.starterCompatibility.autoFits,true);assert.equal(row.starterCompatibility.needsLargerRig,true);assert.equal(issue.kind,'unsafe-starter-auto-fit');}
+});

@@ -35,7 +35,7 @@ test('all frame/basket upgrades expose actual limits and preserve chosen setting
 });
 test('basket preview leaves equipped fill alone until explicit apply, then changes only fill',()=>{
  const original={...STARTER,ballast:'quarry'},c=setup('ballast',original);
- c.change('counterGrams','12000');assert.equal(c.preview.counterGrams,12000);assert.equal(c.draft.counterGrams,6000);assert.equal(c.equipped.counterGrams,6000);assert.equal(c.applies,0);assert.match(c.status.textContent,/Preview only/);
+ c.change('counterGrams','12000');assert.equal(c.preview.counterGrams,12000);assert.equal(c.draft.counterGrams,STARTER.counterGrams);assert.equal(c.equipped.counterGrams,STARTER.counterGrams);assert.equal(c.applies,0);assert.match(c.status.textContent,/Preview only/);
  c.button.emit('click');assert.equal(c.applies,1);assert.deepEqual(c.equipped,{...original,counterGrams:12000});
  const sim=new BuildSimulation(c.equipped);assert.equal(sim.c.counterGrams,12000);assert.ok(sim.facts.counterRadius>new BuildSimulation(original).facts.counterRadius);
 });
@@ -99,9 +99,9 @@ test('capacity reveal never opens workshop controls on the playfield',()=>{
 test('actual capacity preview cannot leak into an unrelated equipment selection before Apply',()=>{
  const h=application(),original=structuredClone(h.context.state);
  h.context.previewCapacity(capacityAdjustedBuild(h.context.draft,'ballast',{counterGrams:12000}));
- assert.equal(h.context.preview.counterGrams,12000);assert.equal(h.context.draft.counterGrams,6000);assert.deepEqual(h.context.state,original);
+ assert.equal(h.context.preview.counterGrams,12000);assert.equal(h.context.draft.counterGrams,STARTER.counterGrams);assert.deepEqual(h.context.state,original);
  h.context.selectEquipment({kind:'part',id:'timber'});
- assert.equal(h.context.state.build.counterGrams,6000);assert.equal(h.context.state.build.frame,'timber');
+ assert.equal(h.context.state.build.counterGrams,STARTER.counterGrams);assert.equal(h.context.state.build.frame,'timber');
 });
 test('actual capacity apply validates ownership and changes only explicitly requested capacity fields',()=>{
  const h=application(),before=structuredClone(h.context.state);

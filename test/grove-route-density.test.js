@@ -32,7 +32,7 @@ function run(revision,id,draw,weapon='none'){
 test('revision-one default stays exact and only untouched copies migrate without writes',()=>{
  const previous=createV4Revision1GroveMap(),raw=JSON.stringify(previous),storage=store(raw);
  assert.equal(createHash('sha256').update(raw).digest('hex'),'2ed10782a59f071793c0e734bfa0b373b8b25a1d34528e41486f94e26b7a2b94');
- assert.equal(previous.objects.length,93);assert.equal(createGroveMap().starterRevision,4);assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.raw,raw);assert.equal(storage.writes,0);
+ assert.equal(previous.objects.length,93);assert.equal(createGroveMap().starterRevision,10);assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.raw,raw);assert.equal(storage.writes,0);
  for(const edit of[m=>{m.name='My authored grove';},m=>{m.objects[0].points[0].x-=.01;},m=>{m.objects[0].bounce=.42;},m=>{m.objects[0].collision=false;},m=>{m.objects.pop();},m=>{m.tree.height=105;}]){const changed=structuredClone(previous);edit(changed);const s=store(JSON.stringify(changed)),before=s.raw;assert.deepEqual(readGroveMap(s),validateGroveMap(changed));assert.equal(s.raw,before);assert.equal(s.writes,0);}
  const invalid=store('{broken');assert.equal(readGroveMap(invalid),null);assert.equal(invalid.raw,'{broken');assert.equal(invalid.writes,0);
  const saved=store();saveGroveMap(saved,createGroveMap());assert.deepEqual(readGroveMap(saved),validateGroveMap(createGroveMap()));
@@ -40,21 +40,30 @@ test('revision-one default stays exact and only untouched copies migrate without
 
 test('new route uses short real boughs, ordinary forest scales and unchanged species sizes',()=>{
  const m=validateGroveMap(createGroveMap()),oldIds=new Set(createV4Revision1GroveMap().objects.map(o=>o.id));
- assert.equal(m.tree.height,110);assert.equal(m.tree.trunkWidth,7);assert.equal(m.launch.y,32);
+ assert.equal(m.tree.height,75);assert.equal(m.tree.trunkWidth,7);assert.equal(m.launch.y,32);
  for(const o of m.objects){assert.ok(objectBounds(o).minY>=-32-1e-9);if(o.type==='enemy')assert.equal(o.radius,enemyRecipe(o.kind).radius);if(!oldIds.has(o.id)&&o.collision&&o.type==='polygon'){assert.ok(Math.hypot(o.points[1].x-o.points[0].x,o.points[1].y-o.points[0].y)<8);assert.ok(o.bounce<=.81);}}
- for(const o of m.objects.filter(o=>/^amazon-tree-\d+-trunk$/.test(o.id)&&!oldIds.has(o.id))){const height=objectBounds(o).maxY+32;assert.ok((height>=30&&height<=45)||height===60||(/^amazon-tree-(55|56|57|58)-trunk$/.test(o.id)&&height<=88.5));assert.equal(o.collision,false);}
- assert.ok(m.objects.some(o=>o.id==='route-upper-bay-10-a'));assert.ok(!m.objects.some(o=>o.id.startsWith('route-cloud-bank-')));
+ for(const o of m.objects.filter(o=>/^amazon-tree-\d+-crown$/.test(o.id))){const height=objectBounds(o).maxY+32;assert.ok(height>=25&&height<=30);assert.equal(o.collision,false);}
+ assert.ok(m.objects.some(o=>o.id==='oak-limb-west-low'));assert.ok(m.objects.some(o=>o.id==='jungle-limb-26-2'));assert.ok(!m.objects.some(o=>o.id.startsWith('route-cloud-bank-')));
 });
 
 for(const {id,minimumDraw}of SCALE_BUILDS)for(const draw of[...new Set([minimumDraw,.75,1])])test(`${id}/${draw}: actual carried launch keeps clearance and reaches a natural finish`,()=>{const r=run(4,id,draw);assert.ok(r.s.time-r.s.release.time<45);});
 
-for(const draw of[.75,1])test(`starter/${draw}: early top landings and continued contacts replace the empty opening`,()=>{
- const before=run(1,'small',draw),after=run(4,'small',draw);
- assert.ok(after.contacts[0].time-after.s.release.time<1.5);assert.ok(after.props.size>=5);assert.ok(after.props.size>before.props.size);assert.ok(after.maxGap<2.75);assert.ok(after.s.maxX>50);
+// The user replaced the old 110 m dense staircase world and 1.2 m launcher
+// with a natural 75 m oak / 25–30 m jungle and a 0.6 m starter. Do not retain
+// obsolete five-prop / 50 m promises as if this were still the same level.
+// These are current physical-contact checks, not completion of the one-second
+// encounter goal. The separately reported 76-case benchmark remains unmet.
+for(const draw of[.75,1])test(`starter/${draw}: current authored branch produces distinct resolved upward contacts`,()=>{
+ const r=run(4,'small',draw),first=r.contacts[0];assert.ok(first.time-r.s.release.time<1.7);
+ assert.ok(first.normal.y>.5&&first.normalSpeed>1&&first.velocityChange>.35);
+ assert.ok(r.contacts.length>=2);assert.ok(r.maxGap<4);assert.ok(r.s.maxX>5);
+ for(const hit of r.contacts.filter(e=>e.id!=='forest-floor')){const source=r.s.map.objects.find(o=>o.id===hit.id);assert.ok(source?.collision,hit.id);assert.ok(!['foliage','sap'].includes(source.material));}
 });
-
-for(const id of['medium','large'])for(const draw of[.75,1])test(`${id}/${draw}: upgraded flight encounters the authored forest instead of bare floor`,()=>{
- const before=run(1,id,draw),after=run(4,id,draw);assert.ok(after.props.size>=3);assert.ok(after.props.size>=before.props.size);assert.ok(after.maxGap<4);assert.ok(after.maxGap<before.maxGap);
+for(const id of['medium','large'])for(const draw of[.75,1])test(`${id}/${draw}: upgraded current-world flight resolves actual grove contacts and useful forward travel`,()=>{
+ const r=run(4,id,draw),worldContacts=r.contacts.filter(e=>e.id!=='forest-floor');assert.ok(worldContacts.length>0);
+ assert.ok(worldContacts.some(e=>e.normal.y>.5&&e.normalSpeed>1&&e.velocityChange>.35));
+ for(const hit of worldContacts){const source=r.s.map.objects.find(o=>o.id===hit.id);assert.ok(source?.collision,hit.id);}
+ assert.ok(r.s.maxX>50);assert.ok(r.maxGap<10,'bounded physical run; the much stricter one-second density goal is still open');
 });
 
 for(const id of['small','medium','large','elephant'])for(const draw of[.75,1])for(const weapon of['air','staff'])test(`${id}/${draw}/${weapon}: bounded flight interventions still finish`,()=>{

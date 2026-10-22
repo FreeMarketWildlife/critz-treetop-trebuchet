@@ -24,11 +24,11 @@ export const PARTS=[
  item('nail','release','Bent release nail',0,'Adjust the pin angle and length. The ring slips when tension pulls along the pin.',{friction:.16}),
  item('polished','release','Polished release pin',75,'Less ring friction changes release timing.',{friction:.04}),
  item('rollerPin','release','Roller release finger',360,'A low-friction roller lets the ring clear sooner. Adjust the pin bend to shape the release arc.',{friction:.008}),
- ...[['hand','Acorn crank wheel',0,100,.12,.24,3,6,'#bb793e'],['geared','Brass geared wheel',100,2500,.145,.22,5,8,'#d2a24e'],['capstan','Iron capstan wheel',700,500000,.18,.26,7,8,'#819b91'],['engine','Gantry winding wheel',3000,500000000,.21,.28,9,10,'#677e87']].map(([id,name,price,power,radiusRatio,drumRatio,gearing,spokes,color])=>item(id,'winch',name,price,'Front-mounted winding wheel. Hold to crank clockwise; release to freewheel counterclockwise as the ballast falls. Larger geared drums raise heavier loads faster.',{power,radiusRatio,drumRatio,gearing,spokes,color})),
+ ...[['hand','Acorn crank wheel',0,100,.12,.24,3,6,'#bb793e'],['geared','Brass geared wheel',100,2500,.145,.22,5,8,'#d2a24e'],['capstan','Iron capstan wheel',700,500000,.18,.26,7,8,'#819b91'],['engine','Gantry winding wheel',3000,500000000,.21,.28,9,10,'#677e87']].map(([id,name,price,power,radiusRatio,drumRatio,gearing,spokes,color])=>item(id,'winch',name,price,'Front-mounted winding wheel. Hold to crank counterclockwise; release to freewheel clockwise as the ballast falls. Larger geared drums raise heavier loads faster.',{power,radiusRatio,drumRatio,gearing,spokes,color})),
 ];
 export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight capacity'],['material','Ballast material'],['mount','Counterweight joint'],['sling','Pouch'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Crank wheel'],['trough','Launch trough']];
 export const CRITTERS=[
- {id:'mouse',name:'Field mouse',grams:25,length:0.18,width:0.055,color:'#b0a19a',price:0},
+ {id:'mouse',name:'Field mouse',grams:25,length:0.18,width:0.035,color:'#b0a19a',price:0},
  {id:'frog',name:'Tree frog',grams:30,length:0.08,width:0.05,color:'#8ab667',price:20},
  {id:'chipmunk',name:'Chipmunk',grams:100,length:0.26,width:0.09,color:'#c58a53',price:40},
  {id:'squirrel',name:'Squirrel',grams:500,length:0.45,width:0.14,color:'#b18361',price:90},
@@ -40,18 +40,20 @@ export const CRITTERS=[
  {id:'elephant',name:'Elephant',grams:5000000,length:6,width:2.6,color:'#9daaaa',price:2600},
  {id:'whale',name:'Blue whale',grams:100000000,length:24,width:4.5,color:'#6d9ca9',price:7000},
 ];
-// Prototype balance, not world canon: all three small volunteers fit the starter.
+// Prototype balance, not world canon: all three small critters fit the starter.
 export const STARTER_MAX_GRAMS=150;
 export const REST_ARM_ANGLE=Math.PI-1;
 export const STARTER_ANIMALS=CRITTERS.filter(a=>a.grams<=STARTER_MAX_GRAMS).map(a=>a.id);
 export const part=id=>{const p=PARTS.find(p=>p.id===id);if(!p)throw Error(`Unknown part: ${id}`);return p;};
-export const critter=id=>{const c=CRITTERS.find(c=>c.id===id);if(!c)throw Error(`Unknown volunteer: ${id}`);return c;};
+export const critter=id=>{const c=CRITTERS.find(c=>c.id===id);if(!c)throw Error(`Unknown critter: ${id}`);return c;};
 export const LEGACY_STARTER={name:'Little acorn',chassis:'anchored',arm:'twig',frame:'sapling',ballast:'pebble',material:'stone',mount:'fixed',sling:'pocket',rope:'twine',bearing:'woodAxle',release:'nail',winch:'hand',animal:'mouse',longArm:1.25,shortArm:.32,beamWidth:.025,pivotHeight:1.05,baseWidth:.85,frameGrams:1800,counterGrams:2000,hanger:.22,slingLength:1.1,pouchWidth:.16,pinAngle:-30,pinLength:.035,axleRadius:.012,cockAngle:28,footFriction:.8,wheelRadius:.13,wheelGrams:150,brake:.002,walkingLean:22,braceCount:1,hingeFriction:.008,wind:0,drag:1};
 // A complete, tuned kit is granted at the beginning; upgrades still have shop prices.
-// Retained 3 m tower recipe for older custom saves and larger volunteers.
+// Retained 3 m tower recipe for older custom saves and larger critters.
 export const PREVIOUS_STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ballast:'boulder',mount:'hinged',bearing:'bronze',release:'polished',winch:'hand',trough:'runway',longArm:2.6,shortArm:.65,beamWidth:.04,pivotHeight:3,baseWidth:2,frameGrams:9000,counterGrams:18000,hanger:.4,slingLength:2.4,pouchWidth:.2,cockAngle:55,pinAngle:-45,braceCount:2,troughLength:4,troughHeight:.06};
-// Compact kit for tiny volunteers; larger recipes retain the original tower.
-export const STARTER={...PREVIOUS_STARTER,name:'Acorn Flyer',longArm:1.04,shortArm:.26,beamWidth:.02,pivotHeight:1.2,baseWidth:.8,frameGrams:1500,counterGrams:6000,hanger:.16,slingLength:.96,troughLength:1.6,troughHeight:.035,pinLength:.018,axleRadius:.008,pinAngle:-40};
+// Compact kit for tiny critters; larger recipes retain the original tower.
+export const COMPACT_STARTER={...PREVIOUS_STARTER,name:'Acorn Flyer',longArm:1.04,shortArm:.26,beamWidth:.02,pivotHeight:1.2,baseWidth:.8,frameGrams:1500,counterGrams:6000,hanger:.16,slingLength:.96,troughLength:1.6,troughHeight:.035,pinLength:.018,axleRadius:.008,pinAngle:-40};
+// Mouse-sized stock rig. Custom dimensions are never scaled on load.
+export const STARTER={...COMPACT_STARTER,longArm:.52,shortArm:.13,beamWidth:.014,pivotHeight:.60,baseWidth:.40,frameGrams:400,counterGrams:2000,hanger:.08,slingLength:.48,troughLength:.80,troughHeight:.02,pouchWidth:.20,pinLength:.009,axleRadius:.004,pinAngle:-65,wheelRadius:.065,wheelGrams:40};
 export const STARTER_PARTS=[...new Set([...PARTS.filter(p=>p.price===0).map(p=>p.id),...SLOTS.map(([slot])=>STARTER[slot])])];
 export const dimensions=a=>`${Number((a.length*100).toFixed(1))} × ${Number((a.width*100).toFixed(1))} cm`;
 export function drawLimit(c,pivotY=c.pivotHeight,deckY=c.troughHeight){return Math.min(c.cockAngle,Math.asin(Math.max(0,Math.min(1,(pivotY-deckY-c.beamWidth/2-.025)/c.longArm)))*180/Math.PI);}
@@ -87,7 +89,7 @@ export function buildFacts(c){
  const initialCounterY=c.pivotHeight+c.shortArm*Math.sin(drawLimit(c)*Math.PI/180)-(c.mount==='hinged'&&c.chassis!=='floating'?c.hanger:0);
  if(initialCounterY<counterRadius)warnings.push('The counterweight starts below the deck. Raise the axle or reduce its size.');
  if(a.grams>s.capacity)warnings.push(`${a.name} exceeds this pouch’s ${grams(s.capacity)} capacity.`);
- if(c.pouchWidth<a.length*.7)warnings.push('The pouch opening is too small for this volunteer.');
+ if(c.pouchWidth<a.length*.7)warnings.push('The pouch opening is too small for this critter.');
  if(drawLimit(c)<c.cockAngle)warnings.push('The rail limits draw-down to '+drawLimit(c).toFixed(1)+'°. Raise the axle for more travel.');
  if(c.pivotHeight<c.shortArm+(c.mount==='hinged'?c.hanger:0)+counterRadius)warnings.push('The counterweight may hit the deck before completing its fall.');
  if(c.counterGrams*c.shortArm<(a.grams*c.longArm+beamGrams*(c.longArm-c.shortArm)/2))warnings.push('The payload side may overpower the counterweight. Expect a stall or backward motion.');

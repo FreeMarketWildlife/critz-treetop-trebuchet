@@ -1,3 +1,4 @@
+function compactPath(points,tolerance){if(points.length<3)return points;const a=points[0],b=points.at(-1),dx=b[0]-a[0],dy=b[1]-a[1],dd=dx*dx+dy*dy;let worst=tolerance*tolerance,index=-1;for(let i=1;i<points.length-1;i++){const p=points[i],t=dd?Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/dd)):0,ex=p[0]-a[0]-t*dx,ey=p[1]-a[1]-t*dy,d=ex*ex+ey*ey;if(d>worst){worst=d;index=i;}}return index<0?[a,b]:[...compactPath(points.slice(0,index+1),tolerance).slice(0,-1),...compactPath(points.slice(index),tolerance)];}
 /** Original material illustration follows the exact editable polygon silhouette.
  * Broad bark seams, leaf folds and stone facets are decoration, never terrain. */
 const INK='#302d2b',clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -5,6 +6,19 @@ export const GROVE_MATERIALS={wood:['#a5663e','#d6a15a'],leaf:['#738d52','#c2d58
 const stroke=(c,pts,color,width)=>{c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.stroke();};
 export function drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s}){
  const colors=GROVE_MATERIALS[o.material]??GROVE_MATERIALS.wood,pts=o.points.map(p=>project(p.x,p.y));
+ if(/^(oak-limb-|jungle-limb-)/.test(o.id)&&pts.length===26){
+  // Follow curved wood grain along the actual ribbon. Leave the root cap
+  // unoutlined so forks blend into their parent instead of looking bolted on.
+  const upper=[],lower=[],grain=[];
+  for(let i=0;i<13;i++){const a=pts[i],b=pts[25-i],lo=a[1]>b[1]?a:b,hi=lo===a?b:a;upper.push(hi);lower.push(lo);grain.push([hi[0]*.65+lo[0]*.35,hi[1]*.65+lo[1]*.35]);}
+  const tolerance=s<8?.25:0,outline=tolerance?[...compactPath(pts.slice(0,13),tolerance),...compactPath(pts.slice(13),tolerance)]:pts,g=tolerance?compactPath(grain,tolerance):grain,l=tolerance?compactPath(lower,tolerance):lower;
+  c.beginPath();outline.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle='#96734b';c.fill();
+  c.beginPath();g.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));for(const p of [...l].reverse())c.lineTo(...p);c.closePath();c.fillStyle='#654b33';c.fill();
+  stroke(c,outline,'#3d382b',clamp(s*.025,.45,1.4));
+  if(s>2.5)stroke(c,g,'#c0a06b',clamp(s*.018,.35,1.2));
+  return;
+ }
+
  c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle=colors[0];c.fill();
  if(s<3){c.strokeStyle=INK;c.lineWidth=.65;c.stroke();return;}
  c.save();c.clip();

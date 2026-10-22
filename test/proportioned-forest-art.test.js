@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {drawGroveBackdrop} from '../src/grove-backdrop.js';
 import {drawProportionedForestBackdrop,proportionedForestCrowns} from '../src/proportioned-forest-art.js';
 import {oakCrownCommands,oakTrunkCommands,oakRootCommands} from '../src/grove-tree-art.js';
-import {createProportionedGroveMap} from '../src/grove-map.js';
+import {createProportionedGroveMap,createV4Revision7GroveMap} from '../src/grove-map.js';
 import {jungleLayerAt,jungleLayersFor,JUNGLE_LAYERS} from '../src/grove-jungle.js';
 function recorder(){
  const calls=[],styles={globalAlpha:1},stack=[];
@@ -27,24 +27,27 @@ test('V2 and V3 forest draw commands remain byte-for-byte identical at overview 
  }
 });
 const points=commands=>commands.flatMap(([, ...a])=>Array.from({length:a.length/2},(_,i)=>({x:a[i*2],y:a[i*2+1]})));
-test('the shared oak vectors obey actual 110m height, 76m crown and 7m basal trunk',()=>{
+test('the shared oak vectors obey the actual 75 m height, 72 m crown and 7 m basal trunk',()=>{
  const map=createProportionedGroveMap(),t=map.tree,origin=map.launch.y,crown=points(oakCrownCommands(t,origin)),trunk=points(oakTrunkCommands(t,origin)),roots=oakRootCommands(t,origin).flatMap(points);
- assert.equal(Math.max(...crown.map(p=>p.y))+origin,110);assert.equal(Math.min(...crown.map(p=>p.y))+origin,46);
- assert.equal(Math.max(...crown.map(p=>p.x))-Math.min(...crown.map(p=>p.x)),76);
+ assert.equal(Math.max(...crown.map(p=>p.y))+origin,75);assert.equal(Math.min(...crown.map(p=>p.y))+origin,30);
+ assert.equal(Math.max(...crown.map(p=>p.x))-Math.min(...crown.map(p=>p.x)),72);
  assert.equal(trunk.filter(p=>p.y===-origin).reduce((range,p)=>[Math.min(range[0],p.x),Math.max(range[1],p.x)],[Infinity,-Infinity]).reduce((a,b)=>b-a),7);
  assert.ok(Math.max(...roots.map(p=>p.x))-Math.min(...roots.map(p=>p.x))<=9.81,'root spread is about ten metres, not giant old fins');
  for(const p of[...crown,...trunk,...roots])assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y));
 });
-test('V4 tree masses derive only from canonical 35–60m forest props and track editor edits',()=>{
+test('V4 tree masses derive only from canonical 25–30 m forest props and track editor edits',()=>{
  const map=createProportionedGroveMap(),bounds=proportionedForestCrowns(map);assert.equal(bounds.length,map.objects.filter(o=>/^amazon-tree-\d+-crown$/.test(o.id)&&o.collision===false).length);
- assert.deepEqual(bounds.slice(0,4).map(b=>b.maxY+map.launch.y),[40,35,45,60]);
- assert.deepEqual(bounds.slice(0,4).map(b=>b.maxX-b.minX),[12,11,14,16]);
+ assert.deepEqual(bounds.slice(0,4).map(b=>b.maxY+map.launch.y),[25,28.5,26.5,30]);
+ for(const b of bounds)assert.ok(b.maxY+map.launch.y>=25&&b.maxY+map.launch.y<=30,b.id);
+ bounds.slice(0,4).forEach((b,i)=>assert.ok(Math.abs(b.maxX-b.minX-[9,9.9,10.8,11.7][i])<1e-12));
  const crown=map.objects.find(o=>o.id==='amazon-tree-1-crown');for(const p of crown.points)p.y+=3;
- assert.equal(proportionedForestCrowns(map)[1].maxY+map.launch.y,38,'mutable editor props do not retain cached old heights');
+ assert.equal(proportionedForestCrowns(map)[1].maxY+map.launch.y,31.5,'mutable editor props do not retain cached old heights');
 });
 test('V4 botanical strata match real canopy heights while legacy palette and labels stay unchanged',()=>{
- const map=createProportionedGroveMap();assert.deepEqual(jungleLayersFor(map).map(l=>[l.low,l.high]),[[45,60],[20,45],[2,20],[0,2]]);
- assert.equal(jungleLayerAt(32,map).id,'canopy');assert.equal(jungleLayerAt(47,map).id,'emergent');assert.equal(jungleLayerAt(70,map),undefined);
+ const map=createProportionedGroveMap();assert.deepEqual(jungleLayersFor(map).map(l=>[l.low,l.high]),[[25,30],[15,25],[2,15],[0,2]]);
+ assert.equal(jungleLayerAt(21,map).id,'canopy');assert.equal(jungleLayerAt(28,map).id,'emergent');assert.equal(jungleLayerAt(32,map),undefined);
+ const historic=createV4Revision7GroveMap();assert.deepEqual(jungleLayersFor(historic).map(l=>[l.low,l.high]),[[45,60],[20,45],[2,20],[0,2]]);
+ assert.deepEqual(proportionedForestCrowns(historic).slice(0,4).map(b=>b.maxY+historic.launch.y),[40,35,45,60]);
  assert.equal(jungleLayersFor({version:3}),JUNGLE_LAYERS);assert.equal(jungleLayersFor({version:2}),JUNGLE_LAYERS);assert.equal(jungleLayerAt(32,{version:2}),undefined);
 });
 test('V4 actual backdrop is finite and bounded on phone/desktop, close/overview/floor/space and edited maps',()=>{

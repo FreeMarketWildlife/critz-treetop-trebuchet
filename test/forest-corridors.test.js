@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {createGroveMap,createV4Revision3GroveMap,readGroveMap,validateGroveMap,objectBounds,MAP_KEY} from '../src/grove-map.js';
+import {createGroveMap,createV4Revision3GroveMap,createV4Revision4GroveMap,readGroveMap,validateGroveMap,objectBounds,MAP_KEY} from '../src/grove-map.js';
 import {FOREST_CASES,run,quietMetrics} from '../scripts/measure-forest-corridors.mjs';
-const previous=createV4Revision3GroveMap(),current=createGroveMap(),cache=new Map();
+const previous=createV4Revision3GroveMap(),current=createV4Revision4GroveMap(),cache=new Map();
 const store=raw=>({raw,writes:0,getItem(k){assert.equal(k,MAP_KEY);return this.raw;},setItem(){this.writes++;assert.fail('reading a map must never write');}});
 function comparison(c){
  const key=[c.id,c.draw,c.weapon].join('/');if(cache.has(key))return cache.get(key);
@@ -11,7 +11,7 @@ function comparison(c){
 }
 test('released revision3 stays byte exact; only untouched defaults migrate without overwriting saved maps',()=>{
  const raw=JSON.stringify(previous);assert.equal(createHash('sha256').update(raw).digest('hex'),'06e741415ebe9f37514fb943a548e0d9e56ac7e11c3a58f7f8fc9a1e07569817');
- const s=store(raw);assert.deepEqual(readGroveMap(s),validateGroveMap(current));assert.equal(s.raw,raw);assert.equal(s.writes,0);assert.equal(current.starterRevision,4);
+ const s=store(raw);assert.deepEqual(readGroveMap(s),validateGroveMap(createGroveMap()));assert.equal(s.raw,raw);assert.equal(s.writes,0);assert.equal(current.starterRevision,4);
  for(const edit of[m=>{m.name='My grove';},m=>{m.objects.pop();},m=>{m.objects[0].points[0].x-=.01;},m=>{m.objects[0].bounce=.47;},m=>{m.objects[0].collision=false;}]){const m=structuredClone(previous);edit(m);const bytes=JSON.stringify(m),s=store(bytes);assert.deepEqual(readGroveMap(s),validateGroveMap(m));assert.equal(s.raw,bytes);assert.equal(s.writes,0);}
 });
 test('the only new map object is a visible tapered passive fork attached inside an existing45m tree',()=>{

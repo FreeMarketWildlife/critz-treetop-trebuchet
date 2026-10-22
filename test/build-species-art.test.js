@@ -1,3 +1,4 @@
+import {critterHitboxBounds} from '../src/critter-body.js';
 import test from'node:test';import assert from'node:assert/strict';
 import{drawCritter}from'../src/build-art.js';import{CRITTERS}from'../src/build-catalog.js';
 function recordedCanvas(){
@@ -19,7 +20,7 @@ test('all eleven build volunteers preserve physical-angle transforms, finite sil
 test('ready species fit the existing display bounds and have distinct geometry without relying on colour',()=>{
  const signatures=new Set();
  for(const animal of CRITTERS){const c=recordedCanvas(),size=100,h=size*animal.width/animal.length;drawCritter(c.ctx,animal,0,0,size,0,false,h,{pose:'ready'});
-  assert.ok(c.box[0]>=-size*.56&&c.box[2]<=size*.56,`${animal.id} horizontal silhouette ${c.box}`);assert.ok(c.box[1]>=-h*.64&&c.box[3]<=h*.64,`${animal.id} vertical silhouette ${c.box}`);
+  const bounds=critterHitboxBounds(animal),minX=animal.id==='mouse'?bounds.minX/animal.length-.03:-.56,maxX=animal.id==='mouse'?bounds.maxX/animal.length+.03:.56;assert.ok(c.box[0]>=size*minX&&c.box[2]<=size*maxX,`${animal.id} horizontal silhouette ${c.box}`);assert.ok(c.box[1]>=-h*.64&&c.box[3]<=h*.64,`${animal.id} vertical silhouette ${c.box}`);
   signatures.add(JSON.stringify(c.geometry));
  }
  assert.equal(signatures.size,11);
@@ -31,11 +32,14 @@ test('phone starters keep their physical size and angle while using crisp low-de
   const animal=CRITTERS.find(a=>a.id===id),h=size*animal.width/animal.length,c=recordedCanvas(),state={pose:'flying',airPose:'dive',flex:{head:.08,tail:-.1},tier:0};
   drawCritter(c.ctx,animal,0,0,size,0,true,h,state);
   assert.equal(c.balance,0);assert.ok(c.commands<230,`${id}: simplified phone drawing stays inexpensive`);
-  assert.ok(c.box[0]>=-size*.56-1&&c.box[2]<=size*.56+1,'an outline does not independently enlarge the body');
+  assert.ok(c.box[0]>=-size*(id==='mouse'?.71:.56)-1&&c.box[2]<=size*(id==='mouse'?.35:.56)+1,'an outline does not independently enlarge the body');
   assert.ok(c.box[1]>=-h*.65-1&&c.box[3]<=h*.65+1,'height continues to match the physical width');
+  if(id==='mouse'){assert.ok(c.styles.some(([k,v])=>k==='strokeStyle'&&v==='#332c2b'));}
+  else{
   assert.ok(c.styles.some(([k,v])=>k==='strokeStyle'&&v==='#fff2d1'),'pale contour separates the body from dark timber');
   assert.ok(c.styles.some(([k,v])=>k==='strokeStyle'&&v==='#252a26'),'dark contour survives light fog');
   assert.ok(c.styles.some(([k,v])=>k==='lineWidth'&&v===.8),'thin-body outlines use a uniform legible pixel width');
+  }
   if(size===26.13)signatures.add(JSON.stringify(c.geometry));
   const rotated=recordedCanvas();drawCritter(rotated.ctx,animal,0,0,size,1.37,true,h,state);assert.equal(rotated.geometry.find(g=>g[0]==='rotate')[1],1.37);
   const impact=recordedCanvas();drawCritter(impact.ctx,animal,0,0,size,1.37,true,h,{...state,pose:'bonk-a',tier:2});assert.notDeepEqual(impact.geometry,rotated.geometry,'eyes and mouth react without replacing physical rotation');

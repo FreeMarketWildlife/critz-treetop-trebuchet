@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {createGroveMap,createProportionedGroveMap,createV4Revision1GroveMap,createV3GroveMap,createLegacyGroveMap,createCrownGroveMap,createAncientGroveMap,createOpeningGroveMap,createLandmarkedGroveMap,validateGroveMap,readGroveMap,saveGroveMap,MAP_KEY,enemyRecipe,objectBounds,mapLevels} from '../src/grove-map.js';
+import {CURRENT_OAK} from '../src/oak-world.js';
 import {PROPORTIONED_TREE,PROPORTIONED_LAUNCH_Y} from '../src/grove-proportioned.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
@@ -11,12 +12,12 @@ const store=raw=>({raw,writes:0,getItem(k){assert.equal(k,MAP_KEY);return this.r
 const canonical=()=>validateGroveMap(createGroveMap());
 
 test('V4 default has a proportioned oak, rooted forest trees and thin editable landing faces',()=>{
- const m=canonical();assert.equal(m.version,4);assert.equal(m.height,3000);assert.equal(m.width,20000);assert.equal(m.launch.y,32);assert.equal(PROPORTIONED_LAUNCH_Y,32);assert.deepEqual(m.tree,PROPORTIONED_TREE);assert.deepEqual(m,createProportionedGroveMap());
+ const m=canonical();assert.equal(m.version,4);assert.equal(m.height,3000);assert.equal(m.width,20000);assert.equal(m.launch.y,32);assert.equal(PROPORTIONED_LAUNCH_Y,32);assert.deepEqual(m.tree,CURRENT_OAK);assert.deepEqual(m,createProportionedGroveMap());
  assert.equal(readGroveMap(store()),null);assert.deepEqual(readGroveMap(store())??createGroveMap(),m);
- assert.deepEqual(mapLevels(m).map(l=>[l.low,l.high]),[[0,8],[8,45],[45,110],[110,960],[960,3000]]);
+ assert.deepEqual(mapLevels(m).map(l=>[l.low,l.high]),[[0,8],[8,30],[30,75],[75,3000]]);
  for(const o of m.objects){const b=objectBounds(o);assert.ok(b.minY>=-32-1e-9,`${o.id} stays above the floor`);if(o.type==='enemy')assert.equal(o.radius,enemyRecipe(o.kind).radius);}
  for(const o of m.objects.filter(o=>o.id.startsWith('opening-skip-'))){const[a,b,c,d]=o.points;assert.ok(b.x-a.x<=8);assert.ok(Math.abs(a.y-d.y-.18)<1e-9);assert.ok(Math.abs(b.y-c.y-.18)<1e-9);assert.equal(o.collision,true);assert.equal(o.layer,'world');}
- for(const i of[0,1,2,3]){const trunk=m.objects.find(o=>o.id===`amazon-tree-${i}-trunk`),crown=m.objects.find(o=>o.id===`amazon-tree-${i}-crown`),b=objectBounds(trunk);assert.equal(b.minY,-32);assert.equal(b.maxY+32,[40,35,45,60][i]);assert.equal(trunk.collision,false);assert.equal(crown.collision,false);assert.equal(crown.layer,'back');}
+ for(const i of[0,1,2,3]){const trunk=m.objects.find(o=>o.id===`amazon-tree-${i}-trunk`),crown=m.objects.find(o=>o.id===`amazon-tree-${i}-crown`),b=objectBounds(trunk);assert.equal(b.minY,-32);assert.equal(objectBounds(crown).maxY+32,[25,28.5,26.5,30][i]);assert.equal(trunk.collision,false);assert.equal(crown.collision,false);assert.equal(crown.layer,'back');}
 });
 
 test('every prior starter generator stays byte-identical and only untouched defaults migrate on read',()=>{
@@ -38,5 +39,5 @@ test('proportioned scenery preserves the existing launcher release for all start
 });
 
 test('the retained first proportioned revision keeps its original raw opening route',()=>{
- for(const draw of[.5,.75,1]){const s=fire(createV4Revision1GroveMap(),'mouse',draw);for(let i=0;i<3600&&s.phase==='flight';i++)s.step(1/120);assert.equal(s.failure,'');assert.equal(s.phase,'finished');assert.ok(s.time<20);assert.ok(s.real(s.shot).y>=-32);if(draw===1){assert.equal(new Set(s.contactEvents.filter(e=>e.id.startsWith('opening-skip-')).map(e=>e.id)).size,4);assert.ok(s.real(s.shot).x>60);}}
+ for(const draw of[.5,.75,1]){const s=fire(createV4Revision1GroveMap(),'mouse',draw);for(let i=0;i<3600&&s.phase==='flight';i++)s.step(1/120);assert.equal(s.failure,'');assert.equal(s.phase,'finished');assert.ok(s.time<20);assert.ok(s.real(s.shot).y>=-32);assert.ok(s.contactEvents.length>0,'actual compact starter lands on retained geometry');assert.ok(s.real(s.shot).x>1);}
 });

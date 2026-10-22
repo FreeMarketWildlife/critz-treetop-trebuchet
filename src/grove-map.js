@@ -1,9 +1,10 @@
-import {PROPORTIONED_TREE,PROPORTIONED_LAUNCH_Y,PROPORTIONED_LEVELS,proportionedV1StarterObjects,proportionedV2StarterObjects,proportionedV3StarterObjects,proportionedStarterObjects} from './grove-proportioned.js?v=38';
-import {ancientBough} from './grove-tree-layout.js?v=25';
-import {jungleStarterObjects} from './grove-jungle.js?v=35';
-import {CROWN_TREE,crownStarterObjects,launchRunStarterObjects,openingLandmarkObjects,canopyExitObjects} from './grove-starter.js?v=25';
-import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=25';
-export {objectBounds} from './grove-geometry.js?v=25';
+import {CURRENT_OAK,naturalOakObjects} from './oak-world.js?v=49';
+import {PROPORTIONED_TREE,PROPORTIONED_LAUNCH_Y,PROPORTIONED_LEVELS,proportionedV1StarterObjects,proportionedV2StarterObjects,proportionedV3StarterObjects,proportionedV4StarterObjects,proportionedStarterObjects,oakLaunchBayObjects} from './grove-proportioned.js?v=49';
+import {ancientBough} from './grove-tree-layout.js?v=49';
+import {jungleStarterObjects} from './grove-jungle.js?v=49';
+import {CROWN_TREE,crownStarterObjects,launchRunStarterObjects,openingLandmarkObjects,canopyExitObjects} from './grove-starter.js?v=49';
+import {isSimplePolygon,objectBounds} from './grove-geometry.js?v=49';
+export {objectBounds} from './grove-geometry.js?v=49';
 export const MAP_KEY='treetop-grove-map-v2';
 export const LEGACY_LEVELS=Object.freeze([
  {id:'forestFloor',name:'Forest floor',low:0,high:120,color:'#b98d64'},
@@ -12,7 +13,12 @@ export const LEGACY_LEVELS=Object.freeze([
  {id:'openSky',name:'Open sky',low:360,high:480,color:'#a4d2df'},
  {id:'space',name:'Starlight',low:480,high:1500,color:'#b8a6df'}]);
 export const LEVELS=Object.freeze(LEGACY_LEVELS.map(l=>Object.freeze({...l,low:l.low*2,high:l.high*2})));
-export const mapLevels=map=>map?.version===2?LEGACY_LEVELS:map?.version===4?PROPORTIONED_LEVELS:LEVELS;
+export const mapLevels=map=>map?.version===2?LEGACY_LEVELS:map?.version===4?[
+ {id:'forestFloor',name:'Forest floor',low:0,high:8,color:'#b98d64'},
+ {id:'jungleCanopy',name:'Lower canopy',low:8,high:(map.tree?.height??map.treeHeight??74)-(map.tree?.crownDepth??56),color:'#78a976'},
+ {id:'grandfatherTree',name:'Oak crown',low:(map.tree?.height??map.treeHeight??74)-(map.tree?.crownDepth??56),high:map.tree?.height??map.treeHeight??74,color:'#b3cf79'},
+ {id:'space',name:'Sky to starlight',low:map.tree?.height??map.treeHeight??74,high:3000,color:'#626c9a'}
+]:LEVELS;
 export const spaceScale=map=>map?.version===2?1:2;
 // Original creatures reuse the established game's encounter vocabulary. These
 // are authored arcade encounters, not a simulation of animal biology.
@@ -71,10 +77,29 @@ export function createV3GroveMap(){const base=createLandmarkedGroveMap();return{
 export function createV4Revision1GroveMap(){return{version:4,starterRevision:1,name:'Grandfather Tree',width:20000,height:3000,launch:{x:0,y:PROPORTIONED_LAUNCH_Y},tree:{...PROPORTIONED_TREE},objects:proportionedV1StarterObjects(enemy)};}
 export function createV4Revision2GroveMap(){return{...createV4Revision1GroveMap(),starterRevision:2,objects:proportionedV2StarterObjects(enemy)};}
 export function createV4Revision3GroveMap(){return{...createV4Revision1GroveMap(),starterRevision:3,objects:proportionedV3StarterObjects(enemy)};}
-export function createProportionedGroveMap(){return{...createV4Revision1GroveMap(),starterRevision:4,objects:proportionedStarterObjects(enemy)};}
+export function createV4Revision4GroveMap(){return{...createV4Revision1GroveMap(),starterRevision:4,objects:proportionedV4StarterObjects(enemy)};}
+export function createV4Revision5GroveMap(){return{...createV4Revision1GroveMap(),starterRevision:5,objects:proportionedStarterObjects(enemy)};}
+export function createV4Revision6GroveMap(){
+ const map=createV4Revision5GroveMap();
+ // Keep the home branch and all authored forest routes fixed. Only the oak's
+ // upper scaffolds follow its shorter crown; custom documents stay untouched.
+ map.tree={...map.tree,height:74,crownDepth:56};map.starterRevision=6;
+ map.objects=map.objects.map(o=>/^oak-/.test(o.id)&&o.points?{...o,points:o.points.map(p=>({...p,y:p.y*40/78}))}:o);
+ return map;
+}
+export function createV4Revision7GroveMap(){const map=createV4Revision6GroveMap();return{...map,starterRevision:7,objects:oakLaunchBayObjects(map)};}
+export function createV4Revision8GroveMap(){const prior=createV4Revision7GroveMap();return{...prior,starterRevision:8,tree:{...CURRENT_OAK},objects:naturalOakObjects(prior,enemy,8)};}
+export function createV4Revision9GroveMap(){const prior=createV4Revision7GroveMap();return{...prior,starterRevision:9,tree:{...CURRENT_OAK},objects:naturalOakObjects(prior,enemy,9)};}
+export function isUntouchedV4Revision9Starter(map){return map.version===4&&map.starterRevision===9&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision9GroveMap()));}
+export function createProportionedGroveMap(){const prior=createV4Revision7GroveMap();return{...prior,starterRevision:10,tree:{...CURRENT_OAK},objects:naturalOakObjects(prior,enemy)};}
+export function isUntouchedV4Revision8Starter(map){return map.version===4&&map.starterRevision===8&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision8GroveMap()));}
+export function isUntouchedV4Revision7Starter(map){return map.version===4&&map.starterRevision===7&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision7GroveMap()));}
+export function isUntouchedV4Revision6Starter(map){return map.version===4&&map.starterRevision===6&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision6GroveMap()));}
+export function isUntouchedV4Revision5Starter(map){return map.version===4&&map.starterRevision===5&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision5GroveMap()));}
 export function isUntouchedV4Revision1Starter(map){return map.version===4&&map.starterRevision===1&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision1GroveMap()));}
 export function isUntouchedV4Revision2Starter(map){return map.version===4&&map.starterRevision===2&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision2GroveMap()));}
 export function isUntouchedV4Revision3Starter(map){return map.version===4&&map.starterRevision===3&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision3GroveMap()));}
+export function isUntouchedV4Revision4Starter(map){return map.version===4&&map.starterRevision===4&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV4Revision4GroveMap()));}
 export function createGroveMap(){return createProportionedGroveMap();}
 export function isUntouchedV3Starter(map){return map.version===3&&map.starterRevision===7&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createV3GroveMap()));}
 export function isUntouchedLandmarkedStarter(map){return map.version===3&&map.starterRevision===6&&JSON.stringify(validateGroveMap(map))===JSON.stringify(validateGroveMap(createLandmarkedGroveMap()));}
@@ -111,7 +136,7 @@ export function validateGroveMap(value){
  });
  const tree={height:value.tree.height,trunkX:value.tree.trunkX,trunkWidth:value.tree.trunkWidth,doorX:value.tree.doorX};if(value.version===3||value.version===4){tree.crownRadius=value.tree.crownRadius??(value.version===4?PROPORTIONED_TREE.crownRadius:500);tree.crownDepth=value.tree.crownDepth??(value.version===4?PROPORTIONED_TREE.crownDepth:350);if(!finite(tree.crownRadius,value.version===4?5:100,value.version===4?80:1500)||!finite(tree.crownDepth,value.version===4?10:50,value.version===4?120:1200))throw Error('Invalid crown size.');}return{version:value.version,...(value.starterRevision?{starterRevision:value.starterRevision}:{}),name:value.name.trim(),width:20000,height:value.height,launch:{x:0,y:value.launch.y},tree,objects};
 }
-export function readGroveMap(storage){try{const raw=(storage??globalThis.localStorage)?.getItem(MAP_KEY);if(!raw)return null;const map=validateGroveMap(JSON.parse(raw));return (isUntouchedLegacyStarter(map)||isUntouchedCrownStarter(map)||isUntouchedAncientStarter(map)||isUntouchedOpeningStarter(map)||isUntouchedLandmarkedStarter(map)||isUntouchedV3Starter(map)||isUntouchedV4Revision1Starter(map)||isUntouchedV4Revision2Starter(map)||isUntouchedV4Revision3Starter(map))?createGroveMap():map;}catch{return null;}}
+export function readGroveMap(storage){try{const raw=(storage??globalThis.localStorage)?.getItem(MAP_KEY);if(!raw)return null;const map=validateGroveMap(JSON.parse(raw));return (isUntouchedLegacyStarter(map)||isUntouchedCrownStarter(map)||isUntouchedAncientStarter(map)||isUntouchedOpeningStarter(map)||isUntouchedLandmarkedStarter(map)||isUntouchedV3Starter(map)||isUntouchedV4Revision1Starter(map)||isUntouchedV4Revision2Starter(map)||isUntouchedV4Revision3Starter(map)||isUntouchedV4Revision4Starter(map)||isUntouchedV4Revision5Starter(map)||isUntouchedV4Revision6Starter(map)||isUntouchedV4Revision7Starter(map)||isUntouchedV4Revision8Starter(map)||isUntouchedV4Revision9Starter(map))?createGroveMap():map;}catch{return null;}}
 export function saveGroveMap(storage,value){const map=validateGroveMap(value);storage.setItem(MAP_KEY,JSON.stringify(map));return map;}
 
 export function isUntouchedLegacyStarter(map){

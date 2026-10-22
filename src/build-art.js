@@ -1,15 +1,18 @@
-import {landingOpportunity} from './landing-opportunity.js?v=38';
-import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=25';
-import {imminentLanding} from './landing-view.js';
-import {GRAVITY} from './build-physics.js?v=38';
-import {drawFlightAccents} from './flight-art.js?v=38';
-import {drawCounterweight} from './counterweight-art.js?v=25';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=30';
-import {RopeVisual} from './rope-visual.js?v=38';
-import {part,grams} from './build-catalog.js?v=30';
-import {drawGroveWorld} from './grove-art.js?v=38';
-import {createCritterPerformance} from './critter-performance.js?v=25';
-import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=35';
+import {drawMouse} from './mouse-art.js?v=49';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=49';
+import {critterHitboxBounds} from './critter-body.js?v=49';
+import {landingOpportunity} from './landing-opportunity.js?v=49';
+import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=49';
+import {imminentLanding} from './landing-view.js?v=49';
+import {GRAVITY} from './build-physics.js?v=49';
+import {drawFlightAccents} from './flight-art.js?v=49';
+import {drawCounterweight} from './counterweight-art.js?v=49';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=49';
+import {RopeVisual} from './rope-visual.js?v=49';
+import {part,grams} from './build-catalog.js?v=49';
+import {drawGroveWorld} from './grove-art.js?v=49';
+import {createCritterPerformance} from './critter-performance.js?v=49';
+import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=49';
 const TAU=Math.PI*2;
 // These are finishes and attached fittings, not replacement collision geometry.
 // Capacity tiers keep the user's chosen dimensions; their cages/cloth identify
@@ -23,6 +26,7 @@ const ellipse=(ctx,x,y,rx,ry,color,stroke='#3d4938',lw=2)=>{ctx.beginPath();ctx.
 const path=(ctx,points,color,width)=>{ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();};
 export function drawCritter(ctx,animal,x,y,size,angle=0,air=false,height,performance={}){
  ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(performance.squashX??1,performance.squashY??1);
+ if(animal.id==='mouse'){drawMouse(ctx,size,height??size*animal.width/animal.length,{...performance,pose:performance.pose??(air?'flying':'ready')});ctx.restore();return;}
  // At phone scale, subpixel painted detail becomes grey noise. Use the same
  // physical length/height and body angle with a simpler, stronger silhouette.
  if(air&&size<=40&&Number.isFinite(height)&&['mouse','frog','chipmunk'].includes(animal.id)){drawSmallCritter(ctx,animal,size,height,performance);ctx.restore();return;}
@@ -166,12 +170,12 @@ export function createBuildRenderer(canvas){
    // A restored completion has no on-screen launcher-to-flight transition.
    // Seed the existing centred, fully acquired framing before its first draw;
    // subsequent draws use the player's normal motion preference and lead.
-   cam=groveFlightCamera({},sim.real(sim.shot),{width:W,height:H,animalLength:sim.animal.length/zoomFactor,dt:0,reducedMotion:true});
-  }else{cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius});cam.scale*=zoomFactor;}
+   cam=groveFlightCamera({},sim.real(sim.shot),{width:W,height:H,hitboxLongestSide:critterHitboxBounds(sim.animal).longestSide/zoomFactor,dt:0,reducedMotion:true});
+  }else{cam=groveSetupCamera(sim.c,{width:W,height:H,preview,counterRadius:sim.facts.counterRadius,door:sim.critterDoor});cam.scale*=zoomFactor;}
   fit=false;
  }
  function background(sim){
-  if(sim.map){drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,editor:false});return;}
+  if(sim.map){drawGroveWorld(ctx,{camera:cam,width:W,height:H,map:sim.map,time:sim.time,editor:false,showDoor:!sim.critterDoor});if(sim.critterDoor)drawCritterDoor(ctx,sim.critterDoor,p=>project(p),cam.scale,{open:sim.phase==='ready'&&sim.loading?.returning});return;}
   const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'#cedec5');grad.addColorStop(.65,'#dee4be');grad.addColorStop(1,'#b5c18d');ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
   // The same authored clearing and tree silhouettes at every launch; camera parallax only.
   ctx.globalAlpha=.18;
@@ -313,12 +317,14 @@ export function createBuildRenderer(canvas){
   const s=sim.loading.stand,a={x:s.x-s.width*.5,y:s.y},b={x:s.x+s.width*.5,y:s.y};
   for(const x of [s.x-s.width*.34,s.x+s.width*.34])timber({x,y:sim.supportHeight(x)+.02},{x,y:s.y},s.height*.25,'#947447');
   timber(a,b,s.height*.45,'#d4ad69');
-  const p=project({x:s.x,y:s.y-s.height*.35});ctx.font='bold 9px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.fillStyle='#514a32';ctx.fillText('VOLUNTEER',p[0],p[1]+15);
+  const p=project({x:s.x,y:s.y-s.height*.35});ctx.font='bold 9px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.fillStyle='#514a32';ctx.fillText('CRITTER',p[0],p[1]+15);
  }
  function drawLoadingCritter(sim){
   const size=sim.animal.length*cam.scale,h=sim.animal.width*cam.scale;
+  ctx.save();if(sim.critterDoor){const edge=project({x:sim.critterDoor.x-sim.critterDoor.width/2,y:0})[0];ctx.beginPath();ctx.rect(edge,0,Math.max(0,W-edge),H);ctx.clip();}
   for(const p of sim.loading.parts){ctx.save();ctx.translate(...project(p));ctx.rotate(-p.angle);ctx.beginPath();ctx.rect((p.a-p.offset-.012)*size,-h*.7,(p.b-p.a+.024)*size,h*1.4);ctx.clip();drawCritter(ctx,sim.animal,-p.offset*size,0,size,0,false,h,{pose:sim.loading.returning?'walking':'ready',frame:sim.loading.walkPhase});ctx.restore();}
   const grip=sim.loading.grip;if(grip){const p=project(grip),q=project(grip.cursor);if(Math.hypot(p[0]-q[0],p[1]-q[1])>3){ctx.save();ctx.setLineDash([3,3]);path(ctx,[p,q],'#f6d782',1.5);ctx.restore();}ellipse(ctx,...p,4.5,4.5,'#ffe4a5','#715637',1.5);ellipse(ctx,...p,1.5,1.5,'#6a603e',null);}
+  ctx.restore();
  }
  function loadingCues(sim){
   const target=project(sim.loading.target()),animal=project(sim.real(sim.shot)),held=sim.loading.dragging;
@@ -369,7 +375,7 @@ export function createBuildRenderer(canvas){
   else if(sim.phase==='swing'&&follow&&!preview){cam=groveSwingCamera(cam,sim.real(sim.shot),{width:W,height:H,dt:paused?0:ropeDt,reducedMotion});}
   else if(sim.release&&follow&&!preview){
    const payload=sim.real(sim.shot),landing=sim.phase==='flight'?imminentLanding(sim.map,payload,{radius:sim.animal.width*.5,gravity:GRAVITY*(sim.gravityFactor??1)}):null;
-   cam=groveFlightCamera(cam,payload,{width:W,height:H,animalLength:sim.animal.length/zoomFactor,dt:paused?0:ropeDt,reducedMotion,landing});
+   cam=groveFlightCamera(cam,payload,{width:W,height:H,hitboxLongestSide:critterHitboxBounds(sim.animal).longestSide/zoomFactor,dt:paused?0:ropeDt,reducedMotion,landing});
    const landingPoint=landing?project(landing):null;canvas.dataset.landingView=landing?.id??'';canvas.dataset.landingPoint=landingPoint?JSON.stringify(landingPoint):'';canvas.dataset.landingVisible=String(!!landingPoint&&landingPoint[0]>=12&&landingPoint[0]<=W-12&&landingPoint[1]>=100&&landingPoint[1]<=H-32);
   }
   const steadyCam={...cam};if(feel&&!preview&&!reducedMotion){cam.x-=feel.shakeX/cam.scale;cam.y+=feel.shakeY/cam.scale;}

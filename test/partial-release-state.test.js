@@ -13,7 +13,7 @@ function transientSupportLoss(){
 }
 const state=l=>({parts:l.parts,position:l.position,angle:l.angle,motion:l.motion});
 function reseat(sim,l){for(let i=0;i<240;i++){l.step(1/120);assert.equal(sim.phase,'ready','settling cannot launch automatically');}assert.equal(l.loaded,true);}
-function arm(sim,l){sim.beginWinding();while(sim.drawFraction<.5){sim.wind(1/120);l.step(1/120);}for(let i=0;i<30;i++)l.step(1/120);assert.equal(l.loaded,true);}
+function arm(sim,l){sim.beginWinding();while(sim.drawFraction<sim.preparationStatus().minimumDraw){sim.wind(1/120);l.step(1/120);}for(let i=0;i<30;i++)l.step(1/120);assert.equal(l.loaded,true);}
 test('unsupported and unarmed partial draws are distinct refusals; continuing the retained ratchet accepts fresh supported input',()=>{
  const {sim,loading}=transientSupportLoss(),before=state(loading),shot=sim.real(sim.shot),draw=sim.drawFraction;
  assert.equal(sim.fire(),false);assert.equal(sim.phase,'ready');assert.equal(sim.release,null);assert.deepEqual(state(loading),before);assert.deepEqual(sim.real(sim.shot),shot);assert.equal(sim.drawFraction,draw);
@@ -27,6 +27,6 @@ test('actual release handler explains settling and minimum draw separately and n
  const messages=[],cues=[],classes=new Set(['holding']),context={sim,qa:true,stage:{dataset:{}},performance:{now:()=>650},holdStart:0,winding:true,dirty:false,document:{body:{classList:{add:x=>classes.add(x),remove:x=>classes.delete(x)}}},toast:x=>messages.push(x),cue:x=>cues.push(x),updateReadouts(){}};
  vm.createContext(context);const handler=vm.runInContext('({'+source.slice(start,end)+'})',context).onRelease,before=state(loading),draw=sim.drawFraction;
  handler();assert.equal(classes.has('in-flight'),false);assert.match(messages[0],/settling/i);assert.deepEqual(cues,[]);assert.equal(JSON.parse(context.stage.dataset.launchAttempt).accepted,false);assert.equal(sim.drawFraction,draw);assert.deepEqual(state(loading),before);
- reseat(sim,loading);handler();assert.match(messages[1],/at least 40%/);assert.equal(sim.phase,'ready');assert.deepEqual(cues,[]);assert.equal(sim.drawFraction,draw);
+ reseat(sim,loading);handler();assert.match(messages[1],/at least 70%/);assert.equal(sim.phase,'ready');assert.deepEqual(cues,[]);assert.equal(sim.drawFraction,draw);
  arm(sim,loading);context.winding=true;handler();assert.equal(sim.phase,'swing');assert.equal(classes.has('in-flight'),true);assert.deepEqual(cues,['unlatch']);assert.equal(messages.length,2);assert.equal(JSON.parse(context.stage.dataset.launchAttempt).accepted,true);
 });

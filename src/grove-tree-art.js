@@ -1,5 +1,5 @@
-import {ancientBough} from './grove-tree-layout.js?v=25';
-import {foliageClump} from './grove-nature.js?v=25';
+import {ancientBough} from './grove-tree-layout.js?v=49';
+import {foliageClump} from './grove-nature.js?v=49';
 // A whole, branching tree, rather than a cylinder behind an oval. Coordinates
 // remain fixed at every camera scale, including the academy doorway at y=0.
 export function drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:H,camera}){
@@ -66,10 +66,11 @@ export function oakCrownCommands(tree,origin=0){
 function oakPath(c,commands,project){
  c.beginPath();for(const [command,...a]of commands){if(command==='Z'){c.closePath();continue;}const p=[];for(let i=0;i<a.length;i+=2)p.push(...project(a[i],a[i+1]));if(command==='M')c.moveTo(...p);else if(command==='L')c.lineTo(...p);else if(command==='Q')c.quadraticCurveTo(...p);else c.bezierCurveTo(...p);}
 }
-/** Exact tapered trunk in world metres; root spread is separately declared. */
+/** Tapered trunk and upper leader in world metres. The leader reaches crown
+ * scaffold roots; this drawing adds no collision surface. Roots are separate. */
 export function oakTrunkCommands(t,origin=0){
  const x=t.trunkX,w=t.trunkWidth,h=t.height,y=-origin;
- return[['M',x-w/2,y],['C',x-w*.40,y+h*.14,x-w*.36,y+h*.29,x-w*.31,y+h*.44],['C',x-w*.43,y+h*.56,x-w*.22,y+h*.65,x-w*.28,y+h*.75],['Q',x-w*.11,y+h*.78,x-w*.078,y+h*.855],['L',x+w*.071,y+h*.855],['C',x+w*.03,y+h*.73,x+w*.24,y+h*.65,x+w*.19,y+h*.55],['C',x+w*.31,y+h*.44,x+w*.34,y+h*.24,x+w/2,y],['Z']];
+ return[['M',x-w/2,y],['C',x-w*.40,y+h*.14,x-w*.36,y+h*.29,x-w*.31,y+h*.44],['C',x-w*.43,y+h*.56,x-w*.22,y+h*.65,x-w*.28,y+h*.75],['Q',x-w*.11,y+h*.90,x-w*.078,y+h*.97],['L',x+w*.071,y+h*.97],['C',x+w*.03,y+h*.73,x+w*.24,y+h*.65,x+w*.19,y+h*.55],['C',x+w*.31,y+h*.44,x+w*.34,y+h*.24,x+w/2,y],['Z']];
 }
 export function oakRootCommands(t,origin=0){
  const x=t.trunkX,w=t.trunkWidth,y=-origin;
@@ -80,11 +81,13 @@ export function oakRootCommands(t,origin=0){
 export function drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,height:H,camera}){
  const cx=t.trunkX,w=t.trunkWidth,h=t.height,r=t.crownRadius,depth=t.crownDepth,root=-origin,commands=oakCrownCommands(t,origin);
  const crownBottom=h-depth-origin,close=Math.max(0,Math.min(1,(s-8)/52));
+ if(t.height===75)drawOakCrownVolumes(c,{project,tree:t,origin,scale:s,close,width:W,height:H});
+ else{
  c.save();c.globalAlpha*=1-close*.76;oakPath(c,commands,project);
  const g=c.createLinearGradient(...project(cx,crownBottom),...project(cx,h-origin));g.addColorStop(0,'#315e50');g.addColorStop(.46,'#527b55');g.addColorStop(1,'#8ca76a');c.fillStyle=g;c.fill();c.save();c.clip();
- // Broad crown volumes are leaf masses, not metre-long individual leaves.
  for(let i=0;i<17;i++){const a=i*2.39996,q=Math.sqrt((i+.5)/17),x=cx+Math.cos(a)*r*q*.88,y=crownBottom+depth*(.52+Math.sin(a)*q*.46),rx=r*(.19+.035*Math.sin(i)),ry=depth*(.14+.025*Math.cos(i*1.7));foliageClump(c,project,x,y,rx,ry,['#668b5b','#486f50','#78965e','#527e57'][i%4],'#b6c78a',i,s<1.4);}
  c.restore();c.restore();
+ }
  // Root buttresses are a few metres across, rather than old 20–45 m fins.
  for(const [i,commands]of oakRootCommands(t,origin).entries()){oakPath(c,commands,project);c.fillStyle=i%2?'#71543a':'#8c6945';c.fill();}
  const left=cx-w/2,right=cx+w/2;
@@ -94,4 +97,31 @@ export function drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,hei
  if(s>12){const low=Math.max(root,camera.y-H/(2*s)-.2),high=Math.min(root+h*.86,camera.y+H/(2*s)+.2),xmin=Math.max(left,camera.x-W/(2*s)-.2),xmax=Math.min(right,camera.x+W/(2*s)+.2);let budget=42;
   for(let x=Math.floor(xmin/.11)*.11;x<xmax&&budget-->0;x+=.11){const bend=Math.sin(x*27)*.035;c.beginPath();c.moveTo(...project(x,low));c.bezierCurveTo(...project(x+bend,low+(high-low)*.35),...project(x-bend,low+(high-low)*.7),...project(x+.014,high));c.strokeStyle=Math.sin(x*17)>0?'#be965e':'#725039';c.lineWidth=Math.max(.4,s*.006);c.stroke();}
  }c.restore();
+}
+
+/** Leaf volumes follow the actual limb fans. Unequal overlapping domes leave
+ * sky windows between the scaffolds; cool rear fans recede behind warm ones.
+ * These are masses of thousands of leaves, never giant individual leaves. */
+export function oakCrownVolumes(tree,origin=0){
+ const k=tree.height/75,x=tree.trunkX;
+ // Broad foreshortened fans toward/away from the viewing plane complete the
+ // rounded crown without creating extra physical branch surfaces.
+ const fans=[[-21,46,10,7,0],[-27,55,8,8,0],[-18,63,10,8,0],[-8,68,9,6,0],[5,67,9,8,0],[19,63,10,8,0],[27,54,9,8,0],[23,45,10,7,0],[-12,43,9,5,1],[11,50,10,6,1],[-8,58,9,6,1],[7,61,8,6,1],[-3,70,7,5,1]];
+ return fans.map(([dx,h,rx,ry,front],i)=>({x:x+dx*k,y:h*k-origin,rx:rx*k,ry:ry*k,front,seed:i}));
+}
+export function drawOakCrownVolumes(c,{project,tree,origin,scale:s,close=0,width:W=Infinity,height:H=Infinity}){
+ const clump=(x,y,rx,ry,fill,light,seed)=>{const p=project(x,y),pad=1.25;if(p[0]+rx*s*1.15+pad<0||p[0]-rx*s*1.15-pad>W||p[1]+ry*s*1.15+pad<0||p[1]-ry*s*1.15-pad>H)return;if(Math.min(rx,ry)*s<1){c.beginPath();const q=project(x,y);c.ellipse(q[0],q[1],rx*s,ry*s,0,0,Math.PI*2);c.fillStyle=fill;c.fill();return;}foliageClump(c,project,x,y,rx,ry,fill,light,seed,Math.min(rx,ry)*s<8);};
+ c.save();c.globalAlpha*=1-close*.82;
+ for(const v of oakCrownVolumes(tree,origin)){
+  // A shaded underside and a sunward upper shoulder make each fan a volume.
+  const dark=v.front?'#536d46':'#426b55',mid=v.front?'#6f8d50':'#507b59',light=v.front?'#9caf67':'#7b9b67';
+  clump(v.x,v.y,v.rx,v.ry,dark,dark,v.seed);
+  clump(v.x-v.rx*.1,v.y+v.ry*.12,v.rx*.96,v.ry*.90,mid,mid,v.seed+2);
+  // Smaller leaf pillows break up the smooth dome; the lower edge stays dark.
+  for(let j=0;j<7;j++){
+   const a=j*2.399+v.seed*.71,q=Math.sqrt((j+.4)/7),xx=v.x+Math.cos(a)*v.rx*q*.72,yy=v.y+v.ry*(.23+Math.sin(a)*q*.52);
+   clump(xx,yy,v.rx*(.24+.035*Math.sin(j+v.seed)),v.ry*(.3+.04*Math.cos(j)),j%3?mid:light,mid,v.seed*7+j);
+  }
+ }
+ c.restore();
 }

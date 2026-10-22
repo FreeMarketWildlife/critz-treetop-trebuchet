@@ -1,10 +1,10 @@
-import {STARTER,SLOTS,part,validateBuild,buildFacts,scaledPreset} from './build-catalog.js?v=32';
+import {STARTER,SLOTS,part,validateBuild,buildFacts,scaledPreset} from './build-catalog.js?v=49';
 
 // Optional named recipes, never a starter migration or a purchase. Every value
 // is real solver geometry/mass; comparison views must use one shared scale.
 const recipe=(id,label,build,minimumDraw)=>Object.freeze({id,label,minimumDraw,name:build.name,build:Object.freeze(validateBuild(build))});
 export const SCALE_BUILDS=Object.freeze([
- recipe('small','Small',{...STARTER},.4),
+ recipe('small','Small',{...STARTER},.7),
  recipe('medium','Medium',{...scaledPreset('rabbit'),name:'Oak field launcher',winch:'geared',counterGrams:480000,shortArm:.75,pivotHeight:45/13,baseWidth:30/13,beamWidth:.10532489417670134,cockAngle:55,pinAngle:-40,pinLength:.05192307692307692,axleRadius:.023076923076923078,hanger:.46153846153846156,troughLength:60/13,troughHeight:.10096153846153846},.4),
  recipe('large','Large',{...scaledPreset('bear'),name:'Braced bear launcher',frame:'braced',ballast:'mountain',winch:'capstan',rope:'cable',counterGrams:60000000},.4),
  recipe('elephant','Elephant',{

@@ -28,7 +28,7 @@ test('V4 overview fits the physical oak floor, crown and width on phone and desk
    const q=groveProject(p,c,size.width,size.height);assert.ok(q.x>=size.width*.04&&q.x<=size.width*.96);assert.ok(q.y>=size.height*.07&&q.y<=size.height*.93);
   }
   const crownPixels=2*r*c.scale,treePixels=map.tree.height*c.scale;
-  assert.ok(Math.abs(crownPixels/treePixels-76/110)<1e-12);assert.ok(crownPixels>=size.width*.35,'the camera has no inherited220m empty side');assert.ok(treePixels>=size.height*.53);
+  assert.ok(Math.abs(crownPixels/treePixels-72/75)<1e-12);assert.ok(crownPixels>=size.width*.35,'the camera has no inherited220m empty side');assert.ok(treePixels>=size.height*.35);
  }
  assert.equal(JSON.stringify(map),before);
 });
@@ -41,7 +41,7 @@ test('V2 and V3 overview snapshots retain their exact inherited framing',()=>{
 test('first editor frame shows the whole V4 tree and readouts derive from the loaded world',()=>{
  for(const make of [createGroveMap,createLegacyGroveMap,createV3GroveMap]){
   const doc=make(),before=JSON.stringify(doc),h=editor(doc);h.context.resize();
-  if(doc.version===4){assert.deepEqual(h.camera,groveTreeCamera(doc,{width:390,height:844}));assert.match(h.$('launchLandmark').textContent,/32 m · 110 m TREE/);assert.doesNotMatch(h.$('mapDescription').textContent,/800|600|75%/);}
+  if(doc.version===4){assert.deepEqual(h.camera,groveTreeCamera(doc,{width:390,height:844}));assert.match(h.$('launchLandmark').textContent,/32 m · 75 m TREE/);assert.doesNotMatch(h.$('mapDescription').textContent,/800|600|75%/);}
   else{assert.equal(h.camera.x,3);assert.equal(h.camera.y,2);assert.equal(h.camera.scale,13);}
   assert.equal(h.$('jumpY').min,0);assert.equal(h.$('jumpY').max,doc.height);assert.equal(h.$('jumpX').max,doc.width);
   assert.match(h.$('mapDescription').textContent,new RegExp(String(doc.tree.height)+' m tree'));assert.equal(JSON.stringify(doc),before);
@@ -51,7 +51,7 @@ test('V4 minimap uses the same proportional bounds and altitude offset for navig
  const doc=createGroveMap(),h=editor(doc);h.context.resize();const b=h.context.miniBounds(),physical=groveOverviewBounds(doc);
  assert.equal(b.minX,physical.minX);assert.equal(b.spanX,physical.maxX-physical.minX);assert.equal(b.minAltitude,physical.minY+doc.launch.y);assert.equal(b.spanY,physical.maxY-physical.minY);
  const navigate=(x,altitude)=>h.mini.onpointerdown({clientX:10+(x-b.minX)/b.spanX*180,clientY:20+(1-(altitude-b.minAltitude)/b.spanY)*120});
- for(const altitude of [0,32,110]){navigate(doc.tree.trunkX,altitude);assert.ok(Math.abs(h.camera.y+doc.launch.y-altitude)<1e-10);assert.ok(Math.abs(h.camera.x-doc.tree.trunkX)<1e-10);}
+ for(const altitude of [0,32,75,110]){navigate(doc.tree.trunkX,altitude);assert.ok(Math.abs(h.camera.y+doc.launch.y-altitude)<1e-10);assert.ok(Math.abs(h.camera.x-doc.tree.trunkX)<1e-10);}
  for(const layer of [...mapLevels(doc),...jungleLayersFor(doc)]){h.context.setLevel(layer);assert.ok(Number.isFinite(h.camera.scale)&&h.camera.scale>0);assert.ok(h.camera.y+doc.launch.y>=0&&h.camera.y+doc.launch.y<=doc.height);}
 });
 test('saved custom legacy geometry is unchanged by editor views or navigation',()=>{
@@ -69,6 +69,6 @@ test('editor botanical layer cards use the loaded map helper instead of giant-tr
   const doc=make(),h=editor(doc);h.context.levelPalette();
   const text=node=>[node.textContent,...(node.children??[]).flatMap(text)],labels=text(h.$('levels'));
   for(const layer of jungleLayersFor(doc))assert.ok(labels.includes(String(layer.low)+'–'+layer.high+' m · bounce routes'));
-  if(doc.version===4){assert.ok(labels.includes('0–2 m · bounce routes'));assert.ok(labels.includes('2–20 m · bounce routes'));assert.ok(!labels.includes('340–480 m · bounce routes'));}
+  if(doc.version===4){assert.ok(labels.includes('0–2 m · bounce routes'));assert.ok(labels.includes('2–15 m · bounce routes'));assert.ok(!labels.includes('340–480 m · bounce routes'));}
  }
 });

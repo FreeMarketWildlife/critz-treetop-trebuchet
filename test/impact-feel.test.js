@@ -20,7 +20,11 @@ test('a compound-body bounce emits one cue at the resolved surface with real nor
  assert.ok(Math.abs(hit.normal.x)<1e-12&&Math.abs(hit.normal.y-1)<1e-12);assert.ok(hit.normalSpeed>8&&hit.normalSpeed<11);assert.ok(hit.velocityChange>7);assert.ok(hit.strength>.6&&hit.strength<1);
 });
 test('fast sliding and resting support cannot count fixture seams as new bounce chains',()=>{
- const s=advance(flying({y:.043,vx:18,vy:0}),.65);
+ const s=flying({y:0,vx:18,vy:0});
+ // Start on the current compound body's actual underside, rather than the
+ // old mouse's hard-coded half-height (which is now a real falling drop).
+ s.shot.setAngle(0);let bottom=Infinity;for(let f=s.shot.getFixtureList();f;f=f.getNext())for(const v of f.getShape().m_vertices)bottom=Math.min(bottom,v.y*s.L);
+ const at=s.shot.getPosition();s.shot.setPosition({x:at.x,y:(-bottom+.001)/s.L});advance(s,.65);
  assert.ok(s.real(s.shot).x>40,'the body really slid at speed along the branch');assert.ok(s.shotContacts.size>0);
  assert.equal(s.contacts??0,0);assert.equal(s.contactEvents.length,0);
  advance(s,5);assert.equal(s.contactEvents.length,0,'quiet support remains quiet after long sliding');

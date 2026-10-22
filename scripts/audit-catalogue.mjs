@@ -1,11 +1,13 @@
 /** Bounded, storage-free audit. No browser, network, personal save or release actions. */
-import {PARTS,SLOTS,STARTER,PREVIOUS_STARTER,scaledPreset,validateBuild,part} from '../src/build-catalog.js';
-import {fitEquipment} from '../src/build-equipment.js';
+import {PARTS,SLOTS,STARTER,PREVIOUS_STARTER,scaledPreset,validateBuild,buildFacts,part} from '../src/build-catalog.js';
+import {fitEquipment,purchaseFit} from '../src/build-equipment.js';
 import {BuildSimulation,runBuild} from '../src/build-physics.js';
 import {windingMinimum} from '../src/winding-comfort.js';
 import {newProgress,buy,canBuild,saveProgress,loadProgress} from '../src/build-progress.js';
 import {purchaseOffer,priceFor} from '../src/build-shop.js';
-import {writeFile,mkdir} from 'node:fs/promises';
+import {writeFile,mkdir,readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {createBuildRenderer} from '../src/build-art.js';
 import {pathToFileURL} from 'node:url';
 
 export const CATALOGUE_IDS=Object.freeze(PARTS.map(p=>p.id));
@@ -84,21 +86,58 @@ export function releaseMechanicsProof(c){
 }
 export function relevantMechanicComparisons(){
  const trough=[];for(const [profile,b]of [['starter',STARTER],['ground-loaded',{...PREVIOUS_STARTER,longArm:4,shortArm:.65,cockAngle:80,slingLength:3}],['rabbit',scaledPreset('rabbit')]])for(const id of ['runway','waxedRunway'])trough.push({profile,id,...releaseMechanicsProof({...b,trough:id})});
- const release=PARTS.filter(p=>p.slot==='release').map(p=>({id:p.id,...releaseMechanicsProof({...STARTER,release:p.id})}));
+ const release=[];for(const [profile,b]of [['starter',STARTER],['ground-loaded',{...PREVIOUS_STARTER,longArm:4,shortArm:.65,cockAngle:80,slingLength:3}],['rabbit',scaledPreset('rabbit')]])for(const p of PARTS.filter(p=>p.slot==='release'))release.push({profile,id:p.id,...releaseMechanicsProof({...b,release:p.id})});
  const material=PARTS.filter(p=>p.slot==='material').map(p=>({id:p.id,...releaseMechanicsProof({...STARTER,material:p.id})}));
  return{trough,release,material};
 }
 
+const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
+const AUDITED_SOURCE=['src/build-catalog.js','src/build-physics.js','src/build-equipment.js','src/winding-comfort.js','src/payload-loading.js','src/build-art.js','src/critter-body.js','src/mouse-art.js','src/crank-wheel.js','src/rope-visual.js','src/critter-performance.js','src/flight-art.js','scripts/audit-catalogue.mjs'];
+async function sourceFingerprint(){return Object.fromEntries(await Promise.all(AUDITED_SOURCE.map(async path=>[path,digest(await readFile(new URL('../'+path,import.meta.url)))])));}
+async function archiveProvenance(){return Promise.all(['upgrade-audit','upgrade-usefulness'].map(async folder=>{
+ const path=`docs/${folder}/catalogue-measurements.json`,bytes=await readFile(new URL('../'+path,import.meta.url)),record=JSON.parse(bytes);
+ return{path,sha256:digest(bytes),parts:record.rows.length,role:'Historical measurements only; not the current starter acceptance target'};
+}));}
+/** Record the actual mechanism painter at unchanged selected geometry. Distinct
+ * non-colour commands establish connected variants, not novice recognition or
+ * native viewport acceptance. The renderer must not mutate solver state. */
+export function catalogueVisualProof(){
+ const oldClock=Object.getOwnPropertyDescriptor(globalThis,'performance'),oldDpr=Object.getOwnPropertyDescriptor(globalThis,'devicePixelRatio');
+ Object.defineProperty(globalThis,'performance',{value:{now:()=>0},configurable:true});Object.defineProperty(globalThis,'devicePixelRatio',{value:1,configurable:true});
+ try{return PARTS.map(p=>{
+  const build=fitEquipment(STARTER,{kind:'part',id:p.id}),views={};
+  for(const [name,size]of [['phone',{width:390,height:844}],['desktop',{width:1726,height:875}]]){
+   const sim=new BuildSimulation(build),before=JSON.stringify(sim.snapshot()),calls=[],styles={},stack=[];let depth=0;
+   const record=(name,args)=>{for(const n of args.flat())if(typeof n==='number'&&!Number.isFinite(n))throw Error(p.id+' non-finite '+name);calls.push([name,...args]);};
+   const ctx=new Proxy({}, {get(_,key){
+    if(key in styles)return styles[key];
+    if(key==='createLinearGradient'||key==='createRadialGradient')return(...args)=>{record(key,args);return{addColorStop(...values){record('addColorStop',values);}};};
+    if(key==='measureText')return text=>({width:String(text).length*5});
+    if(key==='save')return()=>{depth++;stack.push({...styles});record(key,[]);};
+    if(key==='restore')return()=>{if(depth<=0)throw Error('Unbalanced renderer restore');depth--;const prior=stack.pop();for(const k of Object.keys(styles))delete styles[k];Object.assign(styles,prior);record(key,[]);};
+    return(...args)=>record(key,args);
+   },set(_,key,value){styles[key]=value;record(`set:${String(key)}`,[value]);return true;}});
+   createBuildRenderer({dataset:{},getContext:()=>ctx,getBoundingClientRect:()=>size}).draw(sim,{labels:false,pixelRatio:1,preview:true});
+   const geometry=calls.filter(row=>!['set:fillStyle','set:strokeStyle'].includes(row[0]));
+   views[name]={width:size.width,height:size.height,commandCount:calls.length,geometrySha256:digest(JSON.stringify(geometry)),finite:true,balanced:depth===0,simulationUnchanged:JSON.stringify(sim.snapshot())===before};
+  }
+  return{id:p.id,slot:p.slot,views};
+ });}finally{Object.defineProperty(globalThis,'performance',oldClock);if(oldDpr)Object.defineProperty(globalThis,'devicePixelRatio',oldDpr);else delete globalThis.devicePixelRatio;}
+}
+
 export async function runCatalogueAudit(){
- const baseline=summary(runBuild(STARTER,12)),rows=[];
+ const sourceBefore=await sourceFingerprint(),baseline=summary(runBuild(STARTER,12)),rows=[];
  for(const p of PARTS){
   const fitted=fitEquipment(STARTER,{kind:'part',id:p.id}),direct=summary(runBuild(fitted,12)),intended=intendedBuild(p),fit=summary(runBuild(intended,30));
   const changed=Object.keys(direct).filter(k=>JSON.stringify(direct[k])!==JSON.stringify(baseline[k]));
-  rows.push({id:p.id,slot:p.slot,name:p.name,price:p.price,specification:{...p},mechanism:mechanism[p.slot],purchase:purchaseProof(p),capacity:capacityProof(p),baseline:direct,changedBaselineFields:changed,intended:{animal:intended.animal,build:intended,result:fit},...(p.slot==='winch'?{wind:{light:await windProof(p.id),heavy:await windProof(p.id,{heavy:true})}}:p.slot==='bearing'?{wind:{light:await windProof(STARTER.winch,{bearing:p.id}),heavy:await windProof(STARTER.winch,{bearing:p.id,heavy:true})}}:{})});
+  const safe=purchaseFit(STARTER,{kind:'part',id:p.id}),warnings=buildFacts(fitted).warnings;
+  rows.push({id:p.id,slot:p.slot,name:p.name,price:p.price,starterCompatibility:{autoFits:safe.fitted,reason:safe.reason,warnings,movingHardwareGrams:direct.pouchGrams,critterGrams:25,needsLargerRig:!!direct.failure},specification:{...p},mechanism:mechanism[p.slot],purchase:purchaseProof(p),capacity:capacityProof(p),baseline:direct,changedBaselineFields:changed,intended:{animal:intended.animal,build:intended,result:fit},...(p.slot==='winch'?{wind:{light:await windProof(p.id),heavy:await windProof(p.id,{heavy:true})}}:p.slot==='bearing'?{wind:{light:await windProof(STARTER.winch,{bearing:p.id}),heavy:await windProof(STARTER.winch,{bearing:p.id,heavy:true})}}:{})});
  }
  const bearings=[];for(const animal of ['mouse','bear','whale'])for(const p of PARTS.filter(p=>p.slot==='bearing')){const b={...scaledPreset(animal),bearing:p.id};bearings.push({animal,id:p.id,axleRadius:b.axleRadius,...summary(runBuild(b,30))});}
- return{method:{kind:'bounded deterministic Node comparisons',baselineSeconds:12,intendedSeconds:30,map:false,loading:'full-draw shots exclude loose loading; preparation uses the real loading controller',weapons:false,personalStorage:false,limits:'Distances are observations at cutoff, not guaranteed final ranges. Controlled direct placement excludes the loose UI loading variation. Capacity envelope construction is not a certified tuned launch.'},counts:{parts:PARTS.length,slots:SLOTS.length},baseline,rows,bearings,relevantMechanics:relevantMechanicComparisons()};
+ const relevantMechanics=relevantMechanicComparisons(),visuals=catalogueVisualProof(),sourceAfter=await sourceFingerprint();
+ const findings=rows.filter(row=>row.starterCompatibility.autoFits&&row.starterCompatibility.needsLargerRig).map(row=>({kind:'unsafe-starter-auto-fit',id:row.id,failure:row.baseline.failure,movingHardwareGrams:row.baseline.pouchGrams,explanation:'Supported larger recipe works; inventory purchase should not automatically replace the working starter.'}));
+ return{method:{kind:'bounded deterministic current-source Node comparisons',generatedAt:new Date().toISOString(),baselineBuild:{...STARTER},sourceBefore,sourceAfter,sourceStable:JSON.stringify(sourceBefore)===JSON.stringify(sourceAfter),archives:await archiveProvenance(),baselineSeconds:12,intendedSeconds:30,map:false,loading:'full-draw shots exclude loose loading; preparation uses the real loading controller',weapons:false,personalStorage:false,limits:'Current geometry is authoritative. Archived trajectories remain historical evidence. Distances are cutoff observations, not guaranteed final ranges. Direct placement excludes loose UI loading variation and door/walkout progression. Capacity envelope construction is not a certified launch. Canvas traces do not establish native visual legibility.'},counts:{parts:PARTS.length,slots:SLOTS.length},baseline,rows,bearings,relevantMechanics,visuals,findings};
 }
 export const mechanism={chassis:'Physical ground contacts, recoil and axle/carriage constraints.',arm:'Density changes distributed beam mass/inertia; strength controls overload; maxLength validates geometry.',frame:'Capacity permits taller/heavier player-authored frames; actual height/mass/brace values create geometry/inertia. Selecting ID alone does not auto-resize.',ballast:'Capacity permits a larger counterweight fill; actual counterGrams drives mass/energy. Selecting ID alone does not auto-fill.',material:'Density changes counterweight radius/contact geometry and inertia at identical mass.',mount:'Fixed mass on arm versus separate hinged pendulum (floating chassis has its own guided weight).',sling:'Moving cloth mass and capacity/width/length limits; larger sizes require a compatible complete rig.',rope:'Distributed cord mass is lumped into pouch mass; strength controls tension failure.',bearing:'Coulomb axle torque uses selected friction × reaction load × axle radius; explicit arcade winding comfort gives light-load minimum preparation 3.6/3/2.4/2 seconds, preserving bronze baseline and full-draw launch physics.',release:'Resolved ring pull minus selected friction × normal drives release travel.',winch:'Preparation power cap controls raising speed, limited by the fitted bearing winding-comfort minimum; launch at identical draw receives no energy multiplier.',trough:'Selected fixture friction affects the pouch slide before lift-off.'};
 
-if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const audit=await runCatalogueAudit();if(process.argv[2]){await mkdir(process.argv[2],{recursive:true});await writeFile(`${process.argv[2]}/catalogue-measurements.json`,JSON.stringify(audit,null,2)+'\n');}console.log(JSON.stringify({counts:audit.counts,allPurchasesPass:audit.rows.every(r=>Object.values(r.purchase).every(Boolean)),noIntendedRelease:audit.rows.filter(r=>!r.intended.result.release).map(r=>r.id),sameStarter:audit.rows.filter(r=>r.changedBaselineFields.length===0).map(r=>r.id)},null,2));}
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){const audit=await runCatalogueAudit();if(!audit.method.sourceStable)throw Error('Audited source changed during measurement; rerun after the owning edit is complete.');if(process.argv[2]){await mkdir(process.argv[2],{recursive:true});await writeFile(`${process.argv[2]}/catalogue-measurements.json`,JSON.stringify(audit,null,2)+'\n');}console.log(JSON.stringify({counts:audit.counts,allPurchasesPass:audit.rows.every(r=>Object.values(r.purchase).every(Boolean)),noIntendedRelease:audit.rows.filter(r=>!r.intended.result.release).map(r=>r.id),sameStarter:audit.rows.filter(r=>r.changedBaselineFields.length===0).map(r=>r.id),findings:audit.findings},null,2));}

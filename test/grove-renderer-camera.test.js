@@ -63,14 +63,14 @@ test('reduced-motion sling tracking stays centered without zoom or acquisition a
 });
 
 test('assisted-loaded starter and large recipes keep actual partial and full slings in frame',async()=>{
- const {createScaleBuild}=await import('../src/scale-builds.js'),{createPayloadLoading}=await import('../src/payload-loading.js'),{createLaunchFeel}=await import('../src/launch-feel.js');
- for(const id of['small','large'])for(const draw of[.4,1])await withCameraHarness({},({canvas,renderer,frame})=>{
+ const {createScaleBuild,recipeDrawMinimum}=await import('../src/scale-builds.js'),{createPayloadLoading}=await import('../src/payload-loading.js'),{createLaunchFeel}=await import('../src/launch-feel.js');
+ for(const id of['small','large'])for(const draw of[recipeDrawMinimum(createScaleBuild(id)),1])await withCameraHarness({},({canvas,renderer,frame})=>{
   const sim=new BuildSimulation(createScaleBuild(id),{map:createGroveMap()}),dt=1/120;sim.setDraw(0);const loading=sim.loading=createPayloadLoading(sim);assert.equal(loading.loadKeyboard(),true);
   let stable=0;for(let i=0;i<480&&stable<.25;i++){loading.step(dt);stable=loading.loaded?stable+dt:0;}assert.ok(stable>=.25);
   for(let i=0;i<3600&&sim.drawFraction+1e-9<draw;i++){sim.wind(dt);loading.step(dt);}
   stable=0;for(let i=0;i<480&&stable<.25;i++){loading.step(dt);stable=loading.loaded?stable+dt:0;}assert.ok(stable>=.25);assert.ok(sim.drawFraction+1e-9>=draw);
   renderer.draw(sim,{labels:false});const scale=renderer.camera.scale;assert.equal(sim.fire(),true);const feel=createLaunchFeel();
   for(let i=0;i<480&&!sim.release;i++){frame();renderer.draw(sim,{labels:false,feel:feel.advance(sim,1/60)});const point=JSON.parse(canvas.dataset.animalPoint);assert.ok(point[0]>0&&point[0]<390&&point[1]>844*.12&&point[1]<844*.88,`${id}/${draw}: actual loaded payload stays in frame`);if(!sim.release)assert.equal(renderer.camera.scale,scale);}
-  assert.ok(sim.release,`${id}/${draw}: current assisted loading reaches a real release`);assert.equal(sim.failure,'');assert.equal(renderer.camera.followAcquisition.age,0);
+  assert.ok(sim.release,`${id}/${draw}: current assisted loading reaches a real release`);assert.equal(sim.failure,'',`${id}/${draw}: assisted launch has no mechanical failure`);assert.equal(renderer.camera.followAcquisition.age,0);
  });
 });

@@ -1,4 +1,4 @@
-import {TUNING,part,validateBuild} from './build-catalog.js?v=30';
+import {TUNING,part,validateBuild} from './build-catalog.js?v=49';
 const SLOT_KEYS=Object.freeze({frame:['pivotHeight','frameGrams'],ballast:['counterGrams']});
 const LABELS={pivotHeight:'Frame axle height',frameGrams:'Frame mass',counterGrams:'Basket fill'};
 const format=n=>Number(n.toFixed(3)).toLocaleString('en-US');

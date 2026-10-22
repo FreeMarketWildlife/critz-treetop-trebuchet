@@ -1,6 +1,6 @@
-import {windingMinimum,windingMotion} from './winding-comfort.js?v=35';
-import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=30';
-import {GRAVITY} from './build-physics.js?v=38';
+import {windingMinimum,windingMotion} from './winding-comfort.js?v=49';
+import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=49';
+import {GRAVITY} from './build-physics.js?v=49';
 const n=value=>Number(value.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6});
 const mass=g=>g>=1000000?n(g/1000000)+' t':g>=1000?n(g/1000)+' kg':n(g)+' g';
 /** What a purchased part changes, independent of a promised distance increase. */
@@ -12,7 +12,7 @@ export function equipmentSpec(p){
  case 'ballast':return mass(p.maxMass)+' fill limit · choose actual fill';
  case 'material':return n(p.density)+' kg/m³ · changes bulk and inertia';
  case 'mount':return p.id==='fixed'?'Weight turns with beam':'Independent hanging weight';
- case 'sling':return mass(p.capacity)+' volunteer · '+n(p.width)+' m opening · '+n(p.maxLength)+' m cords · '+mass(p.mass)+' cloth';
+ case 'sling':return mass(p.capacity)+' critter · '+n(p.width)+' m opening · '+n(p.maxLength)+' m cords · '+mass(p.mass)+' cloth';
  case 'rope':return n(p.strength)+' N breaking load · '+mass(p.linearGrams)+'/m per cord';
  case 'bearing':return n(windingMinimum({bearing:p.id}))+' s light-load winding · friction '+n(p.friction);
  case 'release':return 'Ring friction '+n(p.friction)+' · changes release timing';

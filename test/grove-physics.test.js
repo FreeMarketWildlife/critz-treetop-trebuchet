@@ -43,10 +43,13 @@ test('space only lowers released payload gravity; the launch mechanism keeps the
  assert.equal(gravityScaleAt(300),1);assert.ok(Math.abs(gravityScaleAt(1200)-.14)<1e-10);
  const s=flight(mapWith([]),50,600);advance(s,.1);assert.ok(Math.abs(s.real(s.shot).vy+GRAVITY*.14*.1)<.01);assert.ok(Math.abs(s.gravityFactor-.14)<1e-10);assert.equal(s.arm.getGravityScale(),1);
 });
-test('the lighter-gravity starter keeps an upward release and a bounded pinball journey',()=>{
- const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.setDraw(0);for(let i=0;i<110;i++)s.wind(1/60);s.fire();advance(s,40);
- assert.equal(s.failure,'');assert.equal(s.phase,'finished');assert.ok(s.release.angle>38&&s.release.angle<40);assert.ok(s.release.speed>21&&s.release.speed<23);
- assert.ok(s.contactEvents.some(e=>e.id==='opening-skip-1'),'the authored opening catches the starter flight');assert.ok(s.contactEvents.some(e=>e.id==='opening-skip-4'),'separated spring mats carry the starter forward');assert.ok(s.real(s.shot).y<-15);
+test('the current compact starter releases upward and settles promptly after real motion in the archived 600 m world',()=>{
+ const s=new BuildSimulation(STARTER,{map:createGroveMap()});s.setDraw(0);for(let i=0;i<110;i++)s.wind(1/60);s.fire();let lastMoving=0;
+ // Archived V3 is 600 m above the floor. Its old four-skip pacing belongs to
+ // the previous launcher/body; a long active descent is not idle settling.
+ for(let i=0;i<60*60&&['swing','flight'].includes(s.phase);i++){s.step(1/60);const p=s.real(s.shot);if(Math.hypot(p.vx,p.vy)>1)lastMoving=s.time;}
+ assert.equal(s.failure,'');assert.equal(s.phase,'finished');assert.ok(s.release.angle>0&&s.release.angle<90);assert.ok(s.release.speed>1&&s.release.vy>0);
+ assert.ok(s.contactEvents.some(e=>e.id==='opening-skip-1'),'the surviving opening mat still has real contact');assert.ok(s.real(s.shot).y<-15);assert.ok(s.time-lastMoving<1.5,'only physical motion can account for a lengthy archived descent');
  assert.ok(s.contactEvents.length<=64);assert.equal(new Set(s.contactEvents.map(e=>e.seq)).size,s.contactEvents.length);
 });
 test('invalid imports reject crossings, duplicates, unknown enemies and excess geometry before replacing a save',()=>{

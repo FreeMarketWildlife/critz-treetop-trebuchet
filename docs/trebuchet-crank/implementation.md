@@ -2,7 +2,7 @@
 
 Earlier implementation record. The later [loose loading and smooth tumbling revision](../loose-tumbling/implementation.md) supersedes descriptions of centered seating, a locked payload, and permanent basket highlights below.
 
-The person beside the launch rail is removed. The front pedestal supports an open-spoke winding wheel with a rope drum, axle quadrant, brass crank marker and ratchet pawl. Holding winds clockwise. Releasing opens the pawl; wheel angle follows actual arm travel, so the gravity-driven fall pays the rope out counterclockwise. Once the winding cable is paid out it droops. The empty sling continues moving after the critter leaves its release finger.
+The person beside the launch rail is removed. The front pedestal supports an open-spoke winding wheel with a rope drum, axle quadrant, brass crank marker and ratchet pawl. Holding winds counterclockwise. Releasing opens the pawl; wheel angle follows actual arm travel, so the gravity-driven fall pays the rope out clockwise. Once the winding cable is paid out it droops. The empty sling continues moving after the critter leaves its release finger.
 
 The existing `winch` slot and IDs survive saves: `hand` = Acorn crank wheel (free, 100 W); `geared` = Brass geared wheel (100 Bells, 2,500 W); `capstan` = Iron capstan wheel (700 Bells, 500,000 W); `engine` = Gantry winding wheel (3,000 Bells, 500,000,000 W). All tiers scale with frame height and footprint; wider tiers have more spokes and different gearing. The three upgrades remain in the shop stock/parcel pool. A new game uses the free wheel. Existing purchased gear, tuned builds and saved blueprints remain intact.
 

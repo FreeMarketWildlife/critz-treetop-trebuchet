@@ -47,3 +47,9 @@ test('hosted clean editor URLs leave the editor route once and preserve isolated
   assert.equal(url.pathname,prefix+'index.html');assert.notEqual(url.pathname,new URL(href).pathname);assert.equal(url.searchParams.get('author'),'1');assert.equal(url.searchParams.get('mode'),'edit');assert.equal(url.searchParams.get('qa'),'1');assert.equal(url.searchParams.get('creative'),'1');assert.equal(url.searchParams.has('editor'),false);assert.equal(url.hash,'#map=abc');
  }
 });
+
+test('editor receives the exact active world, equipped build and door references',async()=>{
+ const h=ui(),world=createWorldSession({storage:storage()}),build={...STARTER,pivotHeight:.8},door={height:.15};let received;
+ const controller=installWorldWorkshop({...h,author:true,world,getBuild:()=>build,getDoor:()=>door,loadEditor:async args=>{received=args;return{enter(){},leave(){}};}});
+ await controller.setMode('edit');assert.equal(received.world,world);assert.equal(received.world.map,world.map);assert.equal(received.getBuild(),build);assert.equal(received.getDoor(),door);
+});

@@ -1,6 +1,6 @@
 /** The camera changes presentation only: one metre always uses the same scale
  * for the rig, projectile and terrain. Release framing eases into payload follow. */
-export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0}={}){
+export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0,door=null}={}){
  const W=Math.max(160,width),H=Math.max(120,height);
  const rigHeight=Math.max(1,c.pivotHeight+c.shortArm+counterRadius);
  if(preview){
@@ -9,8 +9,9 @@ export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0}=
   return{x:-c.troughLength*.2,y:H*.22/scale,scale};
  }
  // Fit the mechanism, left stand and sling inside the area between HUD and dock.
- const minX=-Math.max(c.longArm*.92,c.baseWidth*.9)-Math.max(.18,c.pouchWidth*.8),maxX=Math.max(c.baseWidth*.85,c.shortArm+counterRadius);
- const high=Math.max(c.pivotHeight+c.longArm*Math.sin(1),c.pivotHeight+c.shortArm+counterRadius);
+ const rigMinX=-Math.max(c.longArm*.92,c.baseWidth*.9)-Math.max(.18,c.pouchWidth*.8),maxX=Math.max(c.baseWidth*.85,c.shortArm+counterRadius);
+ const minX=door?Math.min(rigMinX,door.x-door.width):rigMinX;
+ const high=Math.max(c.pivotHeight+c.longArm*Math.sin(1),c.pivotHeight+c.shortArm+counterRadius,door?.height??0);
  const scale=Math.min(H*.50/high,W*.90/(maxX-minX));
  // Ground sits just above the bottom dock; the arm has room below the HUD.
  return{x:(minX+maxX)/2,y:(H*.5-H*.77)/-scale,scale};
@@ -37,25 +38,29 @@ function approachLead(value,target,dt){
  const linearTime=(distance-threshold)/.7;
  return dt<=linearTime?value+Math.sign(delta)*.7*dt:target-Math.sign(delta)*threshold*Math.exp(-(dt-linearTime)*4.5);
 }
-export function groveFlightCamera(previous,payload,{width,height,animalLength,dt=1/60,reducedMotion=false,landing=null}={}){
+export function groveFlightCamera(previous,payload,{width,height,animalLength,hitboxLongestSide,dt=1/60,reducedMotion=false,landing=null}={}){
+ const hitboxFraming=hitboxLongestSide!==undefined;
+ if(hitboxFraming)animalLength=hitboxLongestSide;
  if(![payload.x,payload.y,animalLength,width,height].every(Number.isFinite)||animalLength<=0||width<=0||height<=0)throw Error('Finite camera dimensions and positive animal length required.');
  // Finish this frame's sling tracking before starting the flight handoff.
  // Holding the previous camera at pin release would create a one-frame stall.
  if(previous.swingAcquisition)previous=groveSwingCamera(previous,payload,{width,height,dt,reducedMotion});
  // Use travel measured in viewports per second, so a mouse and a whale get the
  // same framing response without changing their physical sizes or velocities.
- const baseScale=Math.min(width,height)*.085/animalLength;
+ const viewportSpan=Math.min(height,width);
+ const bodyFraction=hitboxFraming ? .12 : .085;
+ const baseScale=viewportSpan*bodyFraction/animalLength;
  const vx=Number.isFinite(payload.vx)?payload.vx:0,vy=Number.isFinite(payload.vy)?payload.vy:0;
  const screenVx=vx*baseScale/width,screenVy=vy*baseScale/height,speed=Math.hypot(screenVx,screenVy);
- // Slow/weak throws are easy to read at ten percent. Strong throws open the
- // lens to eight and a half percent during ordinary travel.
- const size=.10-.015*ease(clamp((speed-.3)/1.7,0,1));
+ // Hitbox framing holds a fixed screen footprint regardless of speed or pose.
+ // Legacy length-only callers retain their speed-responsive lens.
+ const size=hitboxFraming ? .12 : .10-.015*ease(clamp((speed-.3)/1.7,0,1));
  // Briefly open the lens for an imminent landing. Keep a readable body and
  // both regions in one physical transform; no inset, arrow or future route.
  const validLanding=landing&&[landing.x,landing.y,landing.eta].every(Number.isFinite)&&landing.eta>=0&&landing.eta<=.65;
  const step=Number.isFinite(dt)?Math.max(0,Math.min(.1,dt)):0,minDimension=Math.min(width,height);
  const dx=validLanding?landing.x-payload.x:0,dy=validLanding?landing.y-payload.y:0;
- const contextSize=validLanding?Math.min(size,Math.max(.067,Math.min(width*.60/(Math.abs(dx)+animalLength*2),height*.50/(Math.abs(dy)+animalLength*2))*animalLength/minDimension)):size;
+ const contextSize=validLanding&&!hitboxFraming?Math.min(size,Math.max(.067,Math.min(width*.60/(Math.abs(dx)+animalLength*2),height*.50/(Math.abs(dy)+animalLength*2))*animalLength/minDimension)):size;
  const oldLens=previous.followLens??{size,hold:0},lens={size:oldLens.size,hold:Math.max(0,oldLens.hold-step)};
  // An approaching face can open the lens, but never close it on every frame as
  // distance shrinks. Keep that local framing through the rebound and nearby next
@@ -83,7 +88,7 @@ export function groveFlightCamera(previous,payload,{width,height,animalLength,dt
   x:((Number.isFinite(previous.x)?previous.x:payload.x)-payload.x)*priorScale/width,
   y:((Number.isFinite(previous.y)?previous.y:payload.y)-payload.y)*priorScale/height
  };
- if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0},followLens:{size:.085,hold:0},followLanding:null};
+ if(reducedMotion)return{x:payload.x,y:payload.y,scale:baseScale,followAcquisition:{...acquisition,age:FOLLOW_ACQUIRE_SECONDS},followMotion:{x:0,y:0},followLens:{size:bodyFraction,hold:0},followLanding:null};
  // A bounded, eased lead reveals the next branch in the travel direction. Smooth
  // the offset rather than body velocity so a rebound cannot jerk the camera or
  // let the animal slide out of frame while tracking catches up.

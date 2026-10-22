@@ -1,3 +1,5 @@
+> Historical October 21 snapshot: its trajectory equality and 1.2 m starter measurements apply to that checkpoint. See the [October 22 current-source audit](../upgrade-audit/current-2026-10-22/assessment.md) for the 0.6 m starter. Original measurement JSON remains unchanged.
+
 # Meaningful equipment benefits — follow-up to 764ebdf
 
 The full 48-part audit was rerun after the targeted preparation change. All 48 direct full-draw results **and all 48 supported full-draw results match the archived audit exactly**. The good bronze starter's three-second preparation, mass, geometry and full-draw launch remain unchanged. All in-memory purchase/equip/save tests pass; the user's browser saves and currency were never used.

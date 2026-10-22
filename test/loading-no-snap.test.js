@@ -31,9 +31,9 @@ test('manual release cannot reactivate penetrated basket edges and pop the mouse
 });
 test('loaded critters stay dynamic during winding and an off-centre pickup releases every constraint again',()=>{
  for(const id of ['small','medium','large','elephant']){const {s,l,audit,writes}=setup(createScaleBuild(id));l.loadKeyboard();settle(l);
-  s.beginWinding();for(let t=0;t<30&&s.drawFraction<.7;t+=1/120){s.wind(1/120);l.step(1/120);assertFree(audit);}settle(l,6);const before=l.parts,tail=before.at(-1);
+  s.beginWinding();for(let t=0;t<30&&s.drawFraction<.7;t+=1/120){s.wind(1/120);l.step(1/120);assertFree(audit);}settle(l,6);const beforePosition=l.position,before=l.parts,tail=before.at(-1);
   assert.equal(l.begin(tail),true);assert.deepEqual(l.parts,before);l.move({x:tail.x,y:l.basketShape.rim+s.animal.length});for(let i=0;i<120;i++)l.step(1/120);
-  assert.equal(l.loaded,false);assert.ok(Math.hypot(l.position.x-before[0].x,l.position.y-before[0].y)>.01);const held=l.parts;l.drop();assert.deepEqual(l.parts,held);assertFree(audit);assert.deepEqual(writes,[],id);
+  assert.equal(l.loaded,false);assert.ok(Math.hypot(l.position.x-beforePosition.x,l.position.y-beforePosition.y)>.01);const held=l.parts;l.drop();assert.deepEqual(l.parts,held);assertFree(audit);assert.deepEqual(writes,[],id);
  }
 });
 test('repeated keyboard assistance and cancellation never reset a moving critter',()=>{

@@ -62,7 +62,7 @@ test('narrow desktop and phone drawing reuses species portraits with finite boun
   const c=recordingCanvas(),markers=[];const result=drawAltitudeStrip(c.ctx,{width,height,map:current,altitude,animal,drawMarker:(ctx,a,x,y,size)=>{assert.equal(ctx,c.ctx);markers.push({a,x,y,size});}});
   assert.equal(c.balance,0);assert.ok(c.count<180,'one tiny fixed-cost strip, no object scanning');assert.deepEqual(result,altitudeStripState({map:current,altitude,animal}));
   assert.equal(markers.length,Number(!Number.isNaN(altitude)));if(markers.length){assert.equal(markers[0].a,animal);assert.equal(markers[0].x,width/2);assert.ok(markers[0].y>=0&&markers[0].y<=height);assert.ok(markers[0].size<=23);}
-  assert.ok(c.calls.some(a=>a[0]==='fillText'&&a[1]==='COMP.'),'compression is visibly labelled');
+  assert.ok(!c.calls.some(a=>a[0]==='fillText'),'minimap contains absolutely no text');
  }
 });
 test('invalid canvas dimensions cannot produce invalid geometry',()=>{
@@ -78,10 +78,35 @@ test('top landmark is the exact simulation escape boundary for every supported w
  }
 });
 
-test('V4 strip expands the real 110m oak and keeps its55m centre in the middle below compressed sky',()=>{
- const map=createCurrentGroveMap(),centre=state(55,map),crown=state(110,map);
- assert.equal(centre.landmarks.tree.altitude,55);assert.equal(centre.fraction,.5);assert.equal(crown.landmarks.crown.altitude,110);assert.equal(crown.fraction,.26);
- assert.equal(centre.landmarks.top.altitude,3000);assert.equal(centre.landmarks.space.altitude,960);
- assert.equal(state(32,map).spaceState,'bound');assert.equal(state(3000,map,{spaceState:'escaped',gravityFactor:0}).status,'Free drift');
- let previous=Infinity;for(let y=-10;y<=3500;y+=.5){const value=state(y,map).fraction;assert.ok(value<=previous&&value>=.065&&value<=.94);previous=value;}
+test('four-zone V4 strip keeps the actual 32 m launch near the bottom of the 75 m oak crown',()=>{
+ const map=createCurrentGroveMap(),s=state(32,map);
+ assert.equal(map.tree.height,75);assert.equal(map.tree.crownDepth,45);assert.equal(map.launch.y,32);
+ assert.equal(map.tree.height-map.launch.y,43);
+ assert.equal((32-(map.tree.height-map.tree.crownDepth))/map.tree.crownDepth,2/45);
+ assert.deepEqual(s.anchors.map(a=>a.altitude),[0,8,30,75,3000]);
+ assert.ok(Math.abs(s.fraction-(.5-.25*2/45))<1e-12);assert.equal(state(75,map).fraction,.25);
+ let previous=Infinity;for(let y=0;y<3500;y++){const f=state(y,map).fraction;assert.ok(f<=previous);previous=f;}
+});
+
+test('V4 minimap visibly fills the jungle quarter with a forest, without text',()=>{
+ const map=createCurrentGroveMap();
+ for(const [width,height]of[[38,298],[44,540]]){
+  const c=recordingCanvas();drawAltitudeStrip(c.ctx,{width,height,map,altitude:map.launch.y,animal:mouse});
+  const jungleCrowns=c.calls.filter(a=>a[0]==='ellipse'&&a[2]>=height*.5&&a[2]<=height*.75);
+  assert.ok(jungleCrowns.length>=20,'overlapping tree crowns and understory fill level 2');
+  assert.ok(jungleCrowns.some(a=>a[1]<width*.35)&&jungleCrowns.some(a=>a[1]>width*.65),'jungle spans the strip width');
+  assert.ok(!c.calls.some(a=>a[0]==='fillText'),'no minimap labels or numbers');
+  assert.equal(c.balance,0);
+ }
+});
+
+test('oak crown keeps its physical aspect ratio and extends beyond the minimap edges',()=>{
+ const map=createCurrentGroveMap();
+ for(const [width,height]of[[38,298],[44,540]]){
+  const c=recordingCanvas();drawAltitudeStrip(c.ctx,{width,height,map,altitude:32});
+  const crown=c.calls.find(a=>a[0]==='ellipse'&&Math.abs(a[2]-height*.375)<1e-8);
+  assert.ok(crown,'oak crown drawn across level 3');
+  assert.ok(crown[1]-crown[3]<0&&crown[1]+crown[3]>width,'sides crop beyond both edges');
+  assert.ok(Math.abs(crown[3]/crown[4]-2*map.tree.crownRadius/map.tree.crownDepth)<1e-12,'same physical scale on both axes');
+ }
 });

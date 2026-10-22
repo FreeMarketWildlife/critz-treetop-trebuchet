@@ -35,8 +35,8 @@ test('every named recipe uses real catalogue IDs and its intended volunteer fits
 
 test('the four scales are increasingly large solver geometry in metres, not drawing multipliers',()=>{
  const all=SCALE_BUILDS.map(({id})=>scaleBuildFacts(id));
- for(const[i,height]of[1.2,45/13,8.1,16.2].entries())near(all[i].axleHeight,height,'axle height');
- assert.deepEqual(all.map(x=>x.feetWidth),[.8,30/13,6,12]);
+ for(const[i,height]of[STARTER.pivotHeight,45/13,8.1,16.2].entries())near(all[i].axleHeight,height,'axle height');
+ assert.deepEqual(all.map(x=>x.feetWidth),[STARTER.baseWidth,30/13,6,12]);
  for(const field of['beamLength','longSideReach','guideLength','stationaryWidth','volunteerGrams','counterGrams'])for(let i=1;i<all.length;i++)assert.ok(all[i][field]>all[i-1][field],`${field} increases`);
  for(const{id}of SCALE_BUILDS){
   const c=createScaleBuild(id),f=scaleBuildFacts(id),s=new BuildSimulation(c);s.setDraw(1);s.loading=createPayloadLoading(s);

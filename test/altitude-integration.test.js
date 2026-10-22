@@ -27,8 +27,8 @@ test('shared normal/editor Play adapter paints at desktop and phone sizes with b
   const h=harness({width,height,dpr});h.draw();
   assert.equal(h.canvas.width,Math.round(width*Math.min(2,dpr)));assert.equal(h.canvas.height,Math.round(height*Math.min(2,dpr)));
   assert.ok(h.calls.some(c=>c[0]==='clearRect'&&c[3]===width&&c[4]===height),'real strip paints in CSS pixels');
-  assert.match(h.attributes['aria-label'],/Grandfather Tree centre 55 m, crown 110 m/);assert.match(h.attributes['aria-label'],/free-drift boundary 3,000 m/);
-  assert.match(h.attributes['aria-label'],/Height only; horizontal distance is not shown/);assert.ok(h.calls.some(c=>c[0]==='fillText'&&c[1]==='COMP.'));
+  assert.match(h.attributes['aria-label'],/Grandfather Tree centre 38 m, crown 75 m/);assert.match(h.attributes['aria-label'],/free-drift boundary 3,000 m/);
+  assert.match(h.attributes['aria-label'],/Height only; horizontal distance is not shown/);assert.ok(!h.calls.some(c=>c[0]==='fillText'));
   assert.equal(h.canvas.dataset.spaceState,'bound');assert.equal(Number(h.canvas.dataset.altitude),h.map.launch.y+.2);
  }
 });

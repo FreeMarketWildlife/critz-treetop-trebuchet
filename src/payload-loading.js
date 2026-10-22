@@ -1,11 +1,11 @@
-import {critterBodyProfile} from './critter-body.js?v=25';
+import {critterBodyProfile} from './critter-body.js?v=49';
 import {World,Vec2,Box,Edge,RevoluteJoint,MouseJoint} from '../vendor/planck/planck.mjs';
-import {LOADING_LINEAR_DAMPING} from './winding-comfort.js?v=35';
-import {GRAVITY} from './build-physics.js?v=38';
+import {LOADING_LINEAR_DAMPING} from './winding-comfort.js?v=49';
+import {GRAVITY} from './build-physics.js?v=49';
 /** Jointed preparation bodies remain free on real basket contacts, including
  * after a successful drop and while winding. `loaded` only observes support;
  * it never welds, centers, replaces or freezes the ragdoll. */
-export function createPayloadLoading(sim){
+export function createPayloadLoading(sim,{door=null}={}){
  const L=sim.animal.length,T=Math.sqrt(L),w=sim.animal.width,c=sim.c;
  const stand={x:-Math.max(c.longArm*.92,c.baseWidth*.9),y:Math.max(.1,c.pivotHeight*.16),width:Math.max(L*1.35,c.pouchWidth*1.25),height:Math.max(.08,c.pivotHeight*.1)};
  const home=()=>({x:stand.x,y:stand.y+w*.52});
@@ -16,20 +16,24 @@ export function createPayloadLoading(sim){
  const bw=c.pouchWidth*.64,depth=Math.max(w*1.3,c.pouchWidth*.45),base=-w*.45;
  basket.createFixture(Edge(Vec2(-bw/L,base/L),Vec2(bw/L,base/L)),{friction:.75,restitution:.05});
  for(const side of [-1,1])basket.createFixture(Edge(Vec2(side*bw/L,base/L),Vec2(side*bw/L,(base+depth)/L)),{friction:.5,restitution:.03});
- const profile=critterBodyProfile(sim.animal),frontMass=profile.find(p=>p.id==='head')?.mass??.12,rearMass=profile.find(p=>['tail','haunch','flukes'].includes(p.id))?.mass??.08;
- const specs=[{id:'body',offset:-.045,a:-.30,b:.19,mass:1-frontMass-rearMass},{id:'head',offset:.34,a:.19,b:.5,mass:frontMass},{id:['frog','rabbit','elephant'].includes(sim.animal.id)?'haunch':'tail',offset:-.395,a:-.5,b:-.30,mass:rearMass}];
- const bodies=specs.map((s,i)=>{const b=world.createDynamicBody({position:Vec2(0,0),linearDamping:LOADING_LINEAR_DAMPING*T,angularDamping:3*T,bullet:true,allowSleep:true,userData:s.id});const half=(s.b-s.a)/2,ry=w/L*(i===2?.24:.42);b.createFixture(Box(half,Math.max(.025,ry)),{density:1,friction:.55,restitution:.06,filterGroupIndex:-4});const md={mass:s.mass,center:Vec2(0,0),I:s.mass*((half*2)**2+(ry*2)**2)/12};b.setMassData(md);return b;});
+ const profile=critterBodyProfile(sim.animal),frontMass=(profile.find(p=>p.id==='head')?.mass??.12)+(sim.animal.id==='mouse'?(profile.find(p=>p.id==='ear')?.mass??0):0),rearMass=profile.find(p=>['tail','haunch','flukes'].includes(p.id))?.mass??.08;
+ const mouseShape=sim.animal.id==='mouse';
+ const specs=mouseShape?[{id:'body',offset:-.03,a:-.18,b:.12,mass:1-frontMass-rearMass,ry:.40},{id:'head',offset:.22,a:.12,b:.32,mass:frontMass,ry:.46},{id:'tail',offset:-.43,a:-.68,b:-.18,mass:rearMass,ry:.025}]:[{id:'body',offset:-.045,a:-.30,b:.19,mass:1-frontMass-rearMass},{id:'head',offset:.34,a:.19,b:.5,mass:frontMass},{id:['frog','rabbit','elephant'].includes(sim.animal.id)?'haunch':'tail',offset:-.395,a:-.5,b:-.30,mass:rearMass}];
+ const bodies=specs.map((s,i)=>{const b=world.createDynamicBody({position:Vec2(0,0),linearDamping:LOADING_LINEAR_DAMPING*T,angularDamping:3*T,bullet:true,allowSleep:true,userData:s.id});const half=(s.b-s.a)/2,ry=w/L*(s.ry??(i===2?.24:.42));b.createFixture(Box(half,Math.max(mouseShape?.004:.025,ry)),{density:1,friction:.55,restitution:.06,filterGroupIndex:-4});const md={mass:s.mass,center:Vec2(0,0),I:s.mass*((half*2)**2+(ry*2)**2)/12};b.setMassData(md);return b;});
  let assist=null,dragging=false,loaded=false,mouse=null,grab=null,cursor=null,clock=0,lastActivity=0,forcedUntil=0,dropTime=0,falling=false,accumulator=0,returning=false,hopAt=-Infinity;
  const origin=()=>{const p=bodies[0].getWorldPoint(Vec2(-specs[0].offset,0));return{x:p.x*L,y:p.y*L};};
  const joints=[];
  const poseAt=p=>{for(let i=0;i<bodies.length;i++){bodies[i].setTransform(Vec2(p.x/L+specs[i].offset,p.y/L),0);bodies[i].setLinearVelocity(Vec2(0,0));bodies[i].setAngularVelocity(0);bodies[i].setAwake(true);}};
- poseAt(home());
- for(const [i,x]of[[1,.19],[2,-.30]])joints.push(world.createJoint(RevoluteJoint({enableLimit:true,lowerAngle:i===1?-.5:-1.2,upperAngle:i===1?.5:1.2,collideConnected:false},bodies[0],bodies[i],Vec2(home().x/L+x,home().y/L))));
+ poseAt(door?{x:door.x,y:w*.52}:home());
+ if(door)returning=true;
+ for(const [i,x]of(mouseShape?[[1,.12],[2,-.18]]:[[1,.19],[2,-.30]]))joints.push(world.createJoint(RevoluteJoint({enableLimit:true,lowerAngle:i===1?-.5:-1.2,upperAngle:i===1?.5:1.2,collideConnected:false},bodies[0],bodies[i],Vec2((door?door.x:home().x)/L+x,(door?w*.52:home().y)/L))));
  const sync=()=>{const p=origin();sim.shot.setTransform(Vec2(p.x/sim.L,p.y/sim.L),bodies[0].getAngle());sim.shot.setLinearVelocity(Vec2(0,0));sim.shot.setAngularVelocity(0);};
  const clearMouse=()=>{if(mouse)world.destroyJoint(mouse);mouse=null;grab=null;cursor=null;assist=null;};
  // A finite-force grab acts at the picked point. Basket contacts stay solid
  // throughout dragging; releasing never enables overlapping collision shapes.
- const startGrab=(point,index)=>{const b=bodies[index],p=Vec2(point.x/L,point.y/L);grab={index,local:b.getLocalPoint(p)};cursor={...point};mouse=world.createJoint(MouseJoint({target:p,maxForce:bodies.reduce((sum,body)=>sum+body.getMass(),0)*GRAVITY*30,frequencyHz:6*T,dampingRatio:.85,collideConnected:false},ground,b));b.setAwake(true);};
+ // A tail grip carries the whole critter: scale spring stiffness by the
+ // carried mass, rather than making the tail artificially heavy to lift it.
+ const startGrab=(point,index)=>{const b=bodies[index],p=Vec2(point.x/L,point.y/L);grab={index,local:b.getLocalPoint(p)};cursor={...point};mouse=world.createJoint(MouseJoint({target:p,maxForce:bodies.reduce((sum,body)=>sum+body.getMass(),0)*GRAVITY*30,frequencyHz:6*T*(mouseShape?Math.sqrt(bodies.reduce((sum,body)=>sum+body.getMass(),0)/b.getMass()):1),dampingRatio:.85,collideConnected:false},ground,b));b.setAwake(true);};
  const activity=()=>{lastActivity=clock;forcedUntil=0;};
  const basketPoint=()=>{const p=target();basket.setTransform(Vec2(p.x/L,p.y/L),0);return p;};
  function observeSupport(){
@@ -41,7 +45,7 @@ export function createPayloadLoading(sim){
 
  function pick(point,padding=0){
   const p=Vec2(point.x/L,point.y/L);let best=null;
-  for(let i=0;i<bodies.length;i++){const b=bodies[i],local=b.getLocalPoint(p),half=(specs[i].b-specs[i].a)/2,ry=w/L*(i===2?.24:.42);const dx=Math.max(0,Math.abs(local.x)-half),dy=Math.max(0,Math.abs(local.y)-ry),distance=Math.hypot(dx,dy)*L;if(distance<=padding&&(!best||distance<best.distance))best={index:i,distance};}
+  for(let i=0;i<bodies.length;i++){const b=bodies[i],local=b.getLocalPoint(p),half=(specs[i].b-specs[i].a)/2,ry=w/L*(specs[i].ry??(i===2?.24:.42));const dx=Math.max(0,Math.abs(local.x)-half),dy=Math.max(0,Math.abs(local.y)-ry),distance=Math.hypot(dx,dy)*L;if(distance<=padding+1e-9&&(!best||distance<best.distance))best={index:i,distance};}
   return best;
  }
  const api={
@@ -78,7 +82,7 @@ export function createPayloadLoading(sim){
    const awake=dragging||falling||basketMoving||bodies.some(b=>b.isAwake());accumulator+=awake?Math.min(.06,Math.max(0,dt)):0;let changed=false;
    const steps=Math.floor(accumulator/(1/120));
    if(steps){const duration=steps/120/T;basket.setLinearVelocity(Vec2((desired.x/L-bp.x)/duration,(desired.y/L-bp.y)/duration));}
-   while(accumulator>=1/120){world.step(1/120/T,14,10);accumulator-=1/120;changed=true;}
+   while(accumulator>=1/120){world.step(1/120/T,mouseShape?40:14,mouseShape?20:10);accumulator-=1/120;changed=true;}
    basket.setLinearVelocity(Vec2(0,0));
    const wasLoaded=loaded;observeSupport();
    if(loaded)returning=false;

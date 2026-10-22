@@ -1,6 +1,6 @@
-import {drawProportionedOak} from './grove-tree-art.js?v=35';
-import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=25';
-import {mapLevels} from './grove-map.js?v=38';
+import {drawProportionedOak} from './grove-tree-art.js?v=49';
+import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=49';
+import {mapLevels} from './grove-map.js?v=49';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Derive decorative crowns from canonical editable props, not another forest
@@ -9,7 +9,7 @@ export function proportionedForestCrowns(map){
  return(map.objects??[]).filter(o=>/^amazon-tree-\d+-crown$/.test(o.id)&&o.collision===false&&o.points?.length).map(o=>{const xs=o.points.map(p=>p.x),ys=o.points.map(p=>p.y);return{id:o.id,minX:Math.min(...xs),maxX:Math.max(...xs),minY:Math.min(...ys),maxY:Math.max(...ys)};});
 }
 /** V4 physical-height scenery. V2/V3 keep their original renderer verbatim. */
-export function drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,map}){
+export function drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,map,showDoor=true}){
  const s=cam.scale,origin=map.launch.y,t=map.tree,alt=cam.y+origin,spaceLevel=mapLevels(map).find(l=>l.id==='space'),space=clamp((alt-(spaceLevel?.low??960))/Math.max(1,(spaceLevel?.high??3000)-(spaceLevel?.low??960)),0,1),understory=clamp((35-alt)/35,0,1);
  const project=(x,y)=>[W/2+(x-cam.x)*s,H/2-(y-cam.y)*s],visible=(x,y,rx,ry)=>{const p=project(x,y);return p[0]+rx*s>0&&p[0]-rx*s<W&&p[1]+ry*s>0&&p[1]-ry*s<H;};
  const sky=c.createLinearGradient(0,0,0,H);sky.addColorStop(0,blend(blend('#a6c6be','#476f68',understory),'#182440',space));sky.addColorStop(1,blend(blend('#f0e5b5','#a5b68a',understory),'#536181',space));c.fillStyle=sky;c.fillRect(0,0,W,H);
@@ -34,8 +34,9 @@ export function drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,ma
     const seed=Math.sin(x*9.3+y*7.7),p=project(x+seed*step*.16,y+Math.cos(x+y)*step*.16);c.save();c.translate(...p);c.scale(s,s);c.rotate(seed*1.8);c.globalAlpha*=.13+(seed+1)*.04;drawCanopySpray(c,ordinaryLeafHalfLength(seed),Math.abs(Math.floor(x*7+y*13))%4,seed);c.restore();budget--;
    }
   }
-  // Academy door retains its 1.4 by 2.15 m opening at the 32 m launch branch.
+  if(showDoor){
   const [dx,dy]=project(t.doorX,0),dw=1.4*s,dh=2.15*s;if(dx+dw>0&&dx-dw<W&&dy>0&&dy-dh<H){c.save();c.translate(dx,dy);c.beginPath();c.moveTo(-dw*.5,0);c.lineTo(-dw*.5,-dh+dw*.5);c.arc(0,-dh+dw*.5,dw*.5,Math.PI,TAU);c.lineTo(dw*.5,0);c.closePath();c.fillStyle='#2c4439';c.fill();c.strokeStyle='#d7b375';c.lineWidth=Math.max(.6,s*.04);c.stroke();c.fillStyle='#9c7347';c.fillRect(-dw*.37,-dh*.73,dw*.74,dh*.73);for(let i=-1;i<=1;i++){c.beginPath();c.moveTo(i*dw*.22,-dh*.7);c.lineTo(i*dw*.22,0);c.strokeStyle='#d2ab72';c.lineWidth=Math.max(.4,s*.018);c.stroke();}c.beginPath();c.arc(dw*.2,-dh*.37,Math.max(.5,s*.04),0,TAU);c.fillStyle='#ead39a';c.fill();c.restore();}
+  }
  }
  // One honest physical floor. This decoration never adds a raised contact lip.
  const gy=project(0,-origin)[1];if(gy<H+2){const top=Math.max(0,gy),earth=c.createLinearGradient(0,top,0,Math.max(top+1,H));earth.addColorStop(0,'#957043');earth.addColorStop(.18,'#6c5439');earth.addColorStop(1,'#344a3b');c.fillStyle=earth;c.fillRect(0,top,W,H-top);if(gy>=-2){c.fillStyle='#3f5e3e';c.fillRect(0,gy,W,Math.max(1,Math.min(7,s*.04)));c.fillStyle='#c5c182';c.fillRect(0,gy,W,Math.max(.6,Math.min(2,s*.012)));}}

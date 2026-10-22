@@ -1,3 +1,4 @@
+import {doorGeometry,doorHeight,critterHeight} from '../src/critter-door.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -37,17 +38,17 @@ function escaped({build=STARTER,x=500}={}){
  sim.shot.setLinearVelocity({x:10*sim.T/sim.L,y:30*sim.T/sim.L});sim.shot.setAngularVelocity(2*sim.T);sim.step(1/60);
  assert.equal(sim.phase,'escaped');sim.loading={loaded:true,dragging:false,hint:false,animating:false,step:()=>false};return sim;
 }
-function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),creative=false,qa=false,editorSession=false}={}){
- const nodes=new Map(),classes=new Set(creative?['creative']:[]),messages=[],cues=[],chimes=[],storage=memory();
+function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),creative=false,qa=false,editorSession=false,storage:providedStorage}={}){
+ const nodes=new Map(),classes=new Set(creative?['creative']:[]),messages=[],cues=[],chimes=[],storage=providedStorage??memory();
  const classList=()=>{const set=new Set();return{set,add(...xs){xs.forEach(x=>set.add(x));},remove(...xs){xs.forEach(x=>set.delete(x));},toggle(x,on){if(on===undefined)on=!set.has(x);on?set.add(x):set.delete(x);return on;}};};
  const bodyClasses={add(...xs){xs.forEach(x=>classes.add(x));},remove(...xs){xs.forEach(x=>classes.delete(x));},toggle(x,on){if(on===undefined)on=!classes.has(x);on?classes.add(x):classes.delete(x);return on;}};
- function $(id){if(!nodes.has(id))nodes.set(id,{textContent:'',value:'',hidden:true,disabled:false,style:{},dataset:{},attributes:{},classList:classList(),setAttribute(k,v){this.attributes[k]=v;},focus(){},showModal(){this.open=true;},close(){this.open=false;}});return nodes.get(id);}
+ function $(id){if(!nodes.has(id))nodes.set(id,{textContent:'',value:'',hidden:true,disabled:false,style:{},dataset:{},attributes:{},classList:classList(),setAttribute(k,v){this.attributes[k]=v;},focus(){},click(){},showModal(){this.open=true;},close(){this.open=false;}});return nodes.get(id);}
  $('stage').clientWidth=1726;$('stage').clientHeight=819;$('stage').offsetWidth=1;$('speed').value='1';$('quality').value='auto';$('workshopDialog').open=false;
- const initial=copy(state);saveProgress(storage,initial);
+ const initial=copy(state);if(!providedStorage)saveProgress(storage,initial);
  const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,
-  paused:false,editingWorld:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
+  microtasks:[],queueMicrotask(fn){context.microtasks.push(fn);},syncPreview(){},paused:false,editingWorld:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
   lastTime:0,lastDraw:0,drawCount:0,refreshAt:0,lastZone:'grandfatherTree',labels:false,follow:true,landingMarks:true,previewSim:null,sessionLog:[],soundQueue:[],currentCel:{hits:0,pose:'flying'},
-  BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
+  doorGeometry,doorHeight,critterHeight,BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
   visitShop:(s,seed)=>visitShop(s,seed??73),creativeShop:createSandboxShop(73),
   markCalls:0,markSpaceEscape(...args){context.markCalls++;return markSpaceEscape(...args);},
   $ ,stage:$('stage'),crypto:{randomUUID:()=> 'retry-'+(++context.ids)},ids:0,hold:{cancel(){}},
@@ -60,6 +61,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
  vm.createContext(context);
  for(const name of['persist','pendingCollection','protectSpaceResult','applyBuild','updateModeUi','switchMode','updateReadouts','recordSpaceEscape','resultData','showResult','resumePendingSpace','collect','openWorkshop','frame'])vm.runInContext(functionSource(name),context);
  const resetStart=source.indexOf("$('reset').onclick="),resetEnd=source.indexOf(";$('collect').onclick",resetStart);vm.runInContext(source.slice(resetStart,resetEnd)+';',context);
+ const collectStart=source.indexOf("$('collect').onclick="),collectEnd=source.indexOf(";$('pause').onclick",collectStart);vm.runInContext(source.slice(collectStart,collectEnd)+';',context);
  const importStart=source.indexOf("$('importSave').onchange="),importEnd=source.indexOf('\n',importStart);vm.runInContext(source.slice(importStart,importEnd),context);
  return{c:context,$,nodes,classes,messages,cues,chimes,storage};
 }
@@ -191,4 +193,41 @@ test('a stale actual UI collector cannot roll back another tab payment and later
  current=bank(current,'later-legitimate',{distance:20,height:2,release:true,grams:25,animal:'mouse'});saveProgress(h.storage,current);const bytes=h.storage.getItem(SAVE_KEY);
  assert.doesNotThrow(()=>h.c.collect());assert.deepEqual(copy(h.c.state),before);assert.deepEqual(copy(h.c.sessionLog),log);assert.equal(h.c.sim,sim);assert.equal(h.c.banked,false);assert.equal(h.c.resultShown,true);
  assert.equal(h.storage.getItem(SAVE_KEY),bytes);assert.deepEqual(loadProgress(h.storage),current);assert.match(h.messages.at(-1),/Reload/);
+});
+
+ test('completed round automatically banks once and opens its new randomized shop',()=>{
+  const sim=new BuildSimulation(STARTER,{map:createGroveMap()});sim.phase='finished';sim.loading=createPayloadLoading(sim);const h=setup({sim});display(h);assert.equal(h.c.microtasks.length,1);
+  h.c.microtasks.shift()();assert.equal(h.c.state.launches,1);assert.equal(h.c.state.shop.round,1);assert.equal(h.$('workshopDialog').open,true);assert.equal(h.c.sim.phase,'ready');
+ });
+
+
+test('escaped space stays floating and pending across UI turns and reload until actual manual Collect pays sevenfold once',async()=>{
+ const h=setup();display(h);const before=copy(h.c.state),data=copy(h.c.resultData()),normal=rewards({...data,spaceEscape:null}),reward=rewards(data),id=h.c.shotId,sim=h.c.sim,start=sim.real(sim.shot);
+ assert.equal(reward.bells,normal.bells*7);assert.equal(reward.points,normal.points*7);
+ for(let i=0;i<4;i++){h.c.sim.step(.1);h.c.updateReadouts();await Promise.resolve();assert.equal(h.c.microtasks.length,0,'escaped free drift must not queue automatic collection');}
+ assert.equal(h.c.sim,sim);assert.equal(sim.phase,'escaped');assert.ok(sim.real(sim.shot).x>start.x&&sim.real(sim.shot).y>start.y);assert.deepEqual(copy(h.c.state),before);assert.equal(h.$('workshopDialog').open,false);assert.equal(h.c.pendingCollection(),true);assert.deepEqual(h.c.resultData(),data);
+ const ready=new BuildSimulation(STARTER,{map:createGroveMap()});ready.loading=createPayloadLoading(ready);const reloaded=setup({state:loadProgress(h.storage),storage:h.storage,sim:ready});
+ assert.equal(reloaded.c.resumePendingSpace(),true);assert.equal(reloaded.c.microtasks.length,0);const restoredSim=reloaded.c.sim,restoredStart=restoredSim.real(restoredSim.shot);
+ restoredSim.step(.1);reloaded.c.updateReadouts();await Promise.resolve();assert.equal(reloaded.c.microtasks.length,0);assert.equal(reloaded.c.sim,restoredSim);assert.equal(restoredSim.phase,'escaped');assert.ok(restoredSim.real(restoredSim.shot).y>restoredStart.y);assert.equal(reloaded.c.state.bells,before.bells);assert.equal(reloaded.c.state.points,before.points);assert.equal(reloaded.c.state.launches,before.launches);assert.equal(reloaded.c.state.pendingSpace.id,id);assert.equal(reloaded.$('workshopDialog').open,false);
+ reloaded.$('collect').onclick();assert.equal(reloaded.c.state.bells,before.bells+normal.bells*7);assert.equal(reloaded.c.state.points,before.points+normal.points*7);assert.equal(reloaded.c.state.launches,before.launches+1);assert.equal(reloaded.c.state.history[0].multiplier,7);assert.equal(reloaded.c.state.history[0].id,id);
+ assert.equal(reloaded.c.sim.phase,'ready');assert.equal(reloaded.$('workshopDialog').open,true);assert.deepEqual(copy(reloaded.c.state.claimed),[id]);assert.equal(reloaded.c.state.pendingSpace,null);const paid=copy(reloaded.c.state);reloaded.$('collect').onclick();assert.deepEqual(copy(reloaded.c.state),paid);assert.deepEqual(loadProgress(reloaded.storage),paid);
+ const afterReady=new BuildSimulation(STARTER,{map:createGroveMap()});afterReady.loading=createPayloadLoading(afterReady);const after=setup({state:loadProgress(reloaded.storage),storage:reloaded.storage,sim:afterReady});assert.equal(after.c.resumePendingSpace(),false);after.c.updateReadouts();assert.equal(after.c.microtasks.length,0);assert.deepEqual(copy(after.c.state),paid);assert.equal(bank(after.c.state,id,data),after.c.state);
+});
+test('failed actual manual space Collect keeps free drift and a durable pending packet for one explicit retry after reload',async()=>{
+ const h=setup();display(h);const before=copy(h.c.state),packet=copy(h.c.state.pendingSpace),reward=rewards(h.c.resultData()),bytes=h.storage.getItem(SAVE_KEY),sim=h.c.sim;
+ h.storage.failing=true;h.$('collect').onclick();assert.deepEqual(copy(h.c.state),before);assert.equal(h.storage.getItem(SAVE_KEY),bytes);assert.equal(h.$('workshopDialog').open,false);assert.equal(h.c.sim,sim);assert.equal(h.c.sim.phase,'escaped');assert.equal(h.c.banked,false);assert.equal(h.c.resultShown,true);assert.match(h.messages.at(-1),/unavailable/i);
+ const start=sim.real(sim.shot);for(let i=0;i<3;i++){sim.step(.1);h.c.updateReadouts();await Promise.resolve();assert.equal(h.c.microtasks.length,0,'failed manual space collection does not become an automatic retry');}
+ assert.ok(sim.real(sim.shot).y>start.y);assert.deepEqual(copy(h.c.state),before);assert.equal(h.storage.getItem(SAVE_KEY),bytes);
+ h.storage.failing=false;const reloaded=setup({state:loadProgress(h.storage),storage:h.storage,sim:new BuildSimulation(STARTER,{map:createGroveMap()})});assert.equal(reloaded.c.resumePendingSpace(),true);assert.deepEqual(copy(reloaded.c.state.pendingSpace),packet);assert.equal(reloaded.c.microtasks.length,0);await Promise.resolve();assert.equal(reloaded.c.state.bells,before.bells);assert.equal(reloaded.c.state.points,before.points);assert.equal(reloaded.$('workshopDialog').open,false);
+ reloaded.$('collect').onclick();assert.equal(reloaded.c.state.bells,before.bells+reward.bells);assert.equal(reloaded.c.state.points,before.points+reward.points);assert.equal(reloaded.c.state.launches,before.launches+1);assert.equal(reloaded.c.state.pendingSpace,null);assert.deepEqual(copy(reloaded.c.state.claimed),[packet.id]);assert.equal(reloaded.$('workshopDialog').open,true);
+ const paid=copy(reloaded.c.state);reloaded.$('collect').onclick();assert.deepEqual(copy(reloaded.c.state),paid);assert.deepEqual(loadProgress(reloaded.storage),paid);
+});
+test('ordinary completed rounds automatically bank and open a fresh shop while invalid runs do not auto-claim',()=>{
+ for(const phase of['finished','invalid']){
+  const sim=new BuildSimulation(STARTER,{map:createGroveMap()});sim.phase=phase;sim.maxX=40;sim.maxY=8;sim.loading=createPayloadLoading(sim);const h=setup({sim}),before=copy(h.c.state);
+  display(h);h.c.updateReadouts();assert.equal(h.c.microtasks.length,phase==='finished'?1:0);
+  if(phase==='finished'){
+   const reward=rewards(h.c.resultData());h.c.microtasks.shift()();assert.equal(h.c.state.bells,before.bells+reward.bells);assert.equal(h.c.state.points,before.points+reward.points);assert.equal(h.c.state.launches,before.launches+1);assert.equal(h.c.state.shop.round,h.c.state.launches);assert.equal(h.$('workshopDialog').open,true);assert.deepEqual(loadProgress(h.storage),copy(h.c.state));
+  }else{assert.deepEqual(copy(h.c.state),before);assert.equal(h.$('workshopDialog').open,false);assert.equal(h.c.resultShown,true);}
+ }
 });

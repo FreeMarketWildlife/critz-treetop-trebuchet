@@ -21,7 +21,7 @@ test('first-support and settled starter drops preserve pose, refuse unarmed weak
   const parts=loading.parts,position=loading.position,angle=loading.angle,motion=loading.motion;
   assert.equal(sim.phase,'ready',label);assert.equal(loading.loaded,true,label);
   assert.ok(Math.abs(sim.drawFraction-Math.min(1,Math.round(wind/dt)*dt/3))<1e-10,label);
-  if(sim.drawFraction<.4){assert.equal(sim.fire(),false,label);assert.equal(sim.preparationStatus().code,'draw');assert.equal(sim.phase,'ready');assert.equal(sim.release,null);assert.deepEqual(loading.parts,parts);continue;}
+  if(sim.drawFraction+1e-9<sim.preparationStatus().minimumDraw){assert.equal(sim.fire(),false,label);assert.equal(sim.preparationStatus().code,'draw');assert.equal(sim.phase,'ready');assert.equal(sim.release,null);assert.deepEqual(loading.parts,parts);continue;}
   assert.equal(sim.fire(),true,label);assert.equal(sim.phase,'swing',label);
   assert.deepEqual(loading.parts,parts,`${label}: retain loose joint poses`);
   const shot=sim.real(sim.shot);
@@ -50,6 +50,6 @@ test('repeated assisted drops and interrupted point drags stay in preparation un
   assert.equal(loading.loadKeyboard(),true);for(let i=0;i<360;i++)loading.step(dt);
   assert.equal(loading.loaded,true);
  }
- for(let i=0;i<90;i++){sim.wind(dt);loading.step(dt);}
+ for(let i=0;i<360;i++){sim.wind(dt);loading.step(dt);}
  assert.equal(sim.fire(),true);assert.equal(sim.phase,'swing');
 });

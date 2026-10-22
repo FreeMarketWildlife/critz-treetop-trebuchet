@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {BuildSimulation} from '../src/build-physics.js';
+import {BuildSimulation,GRAVITY} from '../src/build-physics.js';
 import {scaledPreset} from '../src/build-catalog.js';
 import {createGroveMap} from '../src/grove-map.js';
 
@@ -36,14 +36,21 @@ test('a large spinning body can recover from low translation before settling',()
  assert.ok(slowSpinning,'fixture actually exercises slow translation with recoverable rotation');
  assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.ok(s.time<4);assert.ok(Math.abs(s.shot.getAngularVelocity()/s.T)<.01);
 });
-test('the long 600 m fall preserves substantial decaying rebounds and ends shortly after rest',()=>{
- const s=restingScene('mouse',{height:599,up:-5});let firstContact=null,firstReboundPeak=0,lastAboveOne=0;
+test('a 599 m fall retains passive measured rebound energy, decays naturally and ends shortly after rest',()=>{
+ const height=599,s=restingScene('mouse',{height,up:-5});let firstContact=null,firstReboundPeak=0,lastAboveOne=0,firstIncomingEnergy=null,firstOutgoingEnergy=null,firstOutgoing=null,previous=s.real(s.shot);const apices=[];
+ const kinetic=()=>{const m=s.shot.getMass()*s.M,v=s.shot.getLinearVelocity(),w=s.shot.getAngularVelocity()/s.T,I=(s.shot.getInertia()-s.shot.getMass()*s.shot.getLocalCenter().lengthSquared())*s.M*s.L*s.L;return .5*m*(v.x*v.x+v.y*v.y)*s.L+.5*I*w*w;};
  for(let i=0;i<50*240&&s.phase==='flight';i++){
-  s.step(1/240);if(s.contactEvents.length)firstContact??=s.contactEvents[0].time;
-  if(s.contactEvents.length===1)firstReboundPeak=Math.max(firstReboundPeak,s.real(s.shot).y-s.groundY);
-  if(speed(s)>1)lastAboveOne=s.time;
+  const incoming=kinetic();s.step(1/240);const p=s.real(s.shot);
+  if(s.contactEvents.length&&firstContact===null){firstContact=s.contactEvents[0].time;firstIncomingEnergy=incoming;firstOutgoingEnergy=kinetic();firstOutgoing=p;}
+  if(s.contactEvents.length===1)firstReboundPeak=Math.max(firstReboundPeak,p.y-s.groundY);
+  if(previous.vy>0&&p.vy<=0&&p.y-s.groundY>.2)apices.push(p.y-s.groundY);
+  if(speed(s)>1)lastAboveOne=s.time;previous=p;
  }
- assert.ok(firstContact>10&&firstContact<12);assert.ok(firstReboundPeak>180,'the first genuine rebound must not be culled');
- assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.ok(s.time>40&&s.time<46);
- assert.ok(s.time-lastAboveOne<1.5,'the long duration comes from real rebounds, not idle chatter');
+ const freeFall=(-5+Math.sqrt(25+2*GRAVITY*height))/GRAVITY;assert.ok(Math.abs(firstContact-freeFall)<.05,'time to first contact follows the real fall');
+ // A compound mouse converts part of its drop into sideways motion and spin.
+ // Its body rise need not equal restitution squared times drop height.
+ assert.ok(firstOutgoingEnergy>firstIncomingEnergy*.15&&firstOutgoingEnergy<firstIncomingEnergy*.7,'contact retains substantial energy without injecting any');
+ assert.ok(firstReboundPeak>height*.1);const ballisticPeak=firstOutgoing.y-s.groundY+firstOutgoing.vy**2/(2*GRAVITY);assert.ok(Math.abs(firstReboundPeak-ballisticPeak)<.1,'the rebound apex follows measured outgoing velocity');
+ assert.ok(apices.length>=3);assert.ok(apices[1]<apices[0]);assert.ok(apices.at(-1)<apices[0]*.02,'later recoveries decay instead of becoming infinite micro-bounces');
+ assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.ok(s.time>firstContact);assert.ok(s.time-lastAboveOne<1.5,'duration comes from real rebound and sliding motion, not idle chatter');
 });

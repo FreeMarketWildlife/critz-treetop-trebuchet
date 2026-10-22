@@ -1,12 +1,12 @@
-import {critterScaleMarkup} from './critter-scale-art.js?v=38';
-import {CRITTERS,part} from './build-catalog.js?v=32';
-import {critterBodyProfile} from './critter-body.js?v=32';
-import {BuildSimulation} from './build-physics.js?v=38';
-import {createGroveMap,ENEMIES,objectBounds} from './grove-map.js?v=38';
-import {SCALE_BUILDS,scaleBuildFacts} from './scale-builds.js?v=35';
-import {critterScale} from './critter-scale.js?v=35';
-import {oakCrownCommands,oakTrunkCommands,oakRootCommands} from './grove-tree-art.js?v=35';
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=25';
+import {critterScaleMarkup} from './critter-scale-art.js?v=49';
+import {CRITTERS,part} from './build-catalog.js?v=49';
+import {critterBodyProfile} from './critter-body.js?v=49';
+import {BuildSimulation} from './build-physics.js?v=49';
+import {createGroveMap,ENEMIES,objectBounds} from './grove-map.js?v=49';
+import {SCALE_BUILDS,scaleBuildFacts} from './scale-builds.js?v=49';
+import {critterScale} from './critter-scale.js?v=49';
+import {oakCrownCommands,oakTrunkCommands,oakRootCommands} from './grove-tree-art.js?v=49';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=49';
 const color={wood:'#966b43',leaf:'#69875b',foliage:'#6c8d5b',stone:'#8b958b',sap:'#d9aa45',bumper:'#d7a56d',frame:'#738a76',arm:'#9e7048',counter:'#758b91',pouch:'#b7a277',shot:'#97aba6'};
 const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const n=value=>Number(value.toFixed(5));
@@ -41,7 +41,7 @@ function entry(value){const bounds=value.envelope??shapeBounds(value.shapes);ret
 function oakEntry(map){
  const t=map.tree,bounds=[{x:t.trunkX-t.crownRadius,y:0},{x:t.trunkX+t.crownRadius,y:t.height}],path=(commands,fill)=>({kind:'path',commands,fill,bounds});
  const shapes=[path(oakCrownCommands(t),'#668459'),...oakRootCommands(t).map(commands=>path(commands,'#8b6847')),path(oakTrunkCommands(t),'#97734c')];
- for(const o of map.objects.filter(o=>/^oak-(scaffold|twig)-/.test(o.id)))shapes.push(...objectShapes(o,map.launch.y));
+ for(const o of map.objects.filter(o=>/^oak-(scaffold|twig|limb)-/.test(o.id)))shapes.push(...objectShapes(o,map.launch.y));
  return entry({id:'grandfather-oak',name:'Grandfather oak',category:'Trees',measure:`${formatMetres(t.height)} total height · ${formatMetres(t.trunkWidth)} basal trunk · ${formatMetres(t.crownRadius*2)} crown`,notes:'Fantasy oak shape at a massive redwood’s height. Crown and major limbs are authored fantasy proportions.',shapes});
 }
 /** Every authored object is inventoried, not just a sample. Group views below
@@ -51,9 +51,9 @@ export function scaleInventory(map=createGroveMap()){
  for(const e of ENEMIES)rows.push(entry({id:'encounter-'+e.id,name:e.name,category:'Encounters',measure:`${formatMetres(e.radius*2)} contact diameter`,notes:'Fantasy encounter. Its drawn contact circle has the same physical diameter in the game.',shapes:[circle(0,e.radius,e.radius,e.color)]}));
  for(const recipe of SCALE_BUILDS){const facts=scaleBuildFacts(recipe.build);rows.push(entry({id:'rig-'+recipe.id,name:recipe.name,category:'Trebuchets',measure:`${formatMetres(facts.axleHeight)} axle · ${formatMetres(facts.feetWidth)} feet · ${formatMetres(facts.beamLength)} beam`,notes:'Latched physical fixture silhouette. Full sweep needs additional clearance. Fantasy engineering; no real construction or animal-safety certification.',recipeId:recipe.id,facts,shapes:rigScaleShapes(recipe.build)}));}
  for(const o of map.objects){const field=o.collision&&['foliage','sap'].includes(o.material);rows.push(entry({id:'object-'+o.id,name:o.name,category:!o.collision?'World scenery':field?'World fields':'World solids',measure:`${!o.collision?'Scenery':field?'Pass-through field':'Physical'} ${o.type} · ${o.material}`,notes:!o.collision?'Background/foreground illustration; no collision.':field?'Uses this exact editable resistance field; it slows passage without a rigid landing face.':'Uses this exact editor-authored collision geometry.',objectId:o.id,shapes:objectShapes(o)}));}
- if(map.version===4){rows.push(oakEntry(map));for(const trunk of map.objects.filter(o=>/^amazon-tree-\d+-trunk$/.test(o.id))){const prefix=trunk.id.replace(/-trunk$/,''),crown=map.objects.find(o=>o.id===prefix+'-crown'),height=objectBounds(trunk).maxY+map.launch.y;if(!crown)continue;rows.push(entry({id:'tree-'+prefix,name:height>60?'Rare Amazon emergent':height>=50?'Forest emergent':'Jungle canopy tree',category:'Trees',measure:`${formatMetres(height)} total height`,...(height>60?{sourceURL:'https://www.botanic.cam.ac.uk/expedition-finds-the-tallest-tree-in-the-amazon/'}:{}),notes:'Whole authored tree: trunk and crown from the canonical map. '+(height>60?'Exceptional height is anchored to the reported 88.5 m Dinizia excelsa. Crown, diameter and branches are authored geometry, not measurements of that specimen.':'Surrounding forest dimensions are design representatives, not a claim about every Amazon tree.'),shapes:[...objectShapes(trunk,map.launch.y),...objectShapes(crown,map.launch.y)]}));}}
+ if(map.version===4){rows.push(oakEntry(map));for(const trunk of map.objects.filter(o=>/^amazon-tree-\d+-trunk$/.test(o.id))){const prefix=trunk.id.replace(/-trunk$/,''),crown=map.objects.find(o=>o.id===prefix+'-crown'),height=Math.max(objectBounds(trunk).maxY,crown?objectBounds(crown).maxY:-Infinity)+map.launch.y;if(!crown)continue;rows.push(entry({id:'tree-'+prefix,name:height>60?'Rare Amazon emergent':height>=50?'Forest emergent':'Jungle canopy tree',category:'Trees',measure:`${formatMetres(height)} total height`,...(height>60?{sourceURL:'https://www.botanic.cam.ac.uk/expedition-finds-the-tallest-tree-in-the-amazon/'}:{}),notes:'Whole authored tree: trunk and crown from the canonical map. '+(height>60?'Exceptional height is anchored to the reported 88.5 m Dinizia excelsa. Crown, diameter and branches are authored geometry, not measurements of that specimen.':'Surrounding forest dimensions are design representatives, not a claim about every Amazon tree.'),shapes:[...objectShapes(trunk,map.launch.y),...objectShapes(crown,map.launch.y)]}));}}
  const leafLength=ordinaryLeafHalfLength(0)*2;rows.push(entry({id:'ordinary-leaf',name:'Ordinary leaf',category:'Props',measure:`${formatMetres(leafLength)} leaf length`,notes:'Same local leaf-length policy as the renderer; a canopy clump contains many small leaves.',shapes:[polygon([{x:0,y:0},{x:leafLength*.48,y:leafLength*.18},{x:leafLength,y:0},{x:leafLength*.5,y:-leafLength*.18}],color.leaf)]}));
- rows.push(entry({id:'academy-door',name:'Academy doorway',category:'Props',measure:'1.4 m width × 2.15 m height',notes:'The existing doorway’s actual world dimensions.',shapes:[polygon([{x:0,y:0},{x:1.4,y:0},{x:1.4,y:1.45},{x:1.1,y:2},{x:.7,y:2.15},{x:.3,y:2},{x:0,y:1.45}],'#7b694a')]}));
+ rows.push(entry({id:'academy-door',name:'Academy doorway',category:'Props',measure:'7.2 cm width × 10 cm height',notes:'The current starter critter door, in the same metres as the ruler.',shapes:[polygon([{x:0,y:0},{x:.072,y:0},{x:.072,y:.064},{x:.061,y:.09},{x:.036,y:.1},{x:.011,y:.09},{x:0,y:.064}],'#7b694a')]}));
  return rows.sort((a,b)=>a.extent-b.extent||a.name.localeCompare(b.name));
 }
 function pathData(commands){return commands.map(([c,...values])=>c+values.map(n).join(' ')).join(' ');}
@@ -86,11 +86,11 @@ export function comparisonPanels(inventory){
  const get=id=>inventory.find(e=>e.id===id),animals=inventory.filter(e=>e.category==='Animals'),rigs=inventory.filter(e=>e.category==='Trebuchets');
  const worldTrees=inventory.filter(e=>e.id==='grandfather-oak'||/^tree-amazon-tree-[0-3]$/.test(e.id)),tallest=inventory.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak').sort((a,b)=>b.height-a.height)[0];
  if(tallest&&!worldTrees.includes(tallest))worldTrees.push(tallest);
- const forestCaption=tallest?.height>60?`30–60 m forest; rare emergents up to ${formatMetres(tallest.height)}.`:'35–60 m neighbouring forest.';
+ const forestCaption=tallest?.height>60?`30–60 m forest; rare emergents up to ${formatMetres(tallest.height)}.`:'25–30 m jungle canopy.';
  return[
   {id:'small',title:'Small volunteers · the centimetres matter',subtitle:'Existing ready-pose artwork, with dashed game envelopes. All small animals share the same metre ruler.',entries:animals.filter(e=>e.extent<1),height:400},
   {id:'large',title:'A real increase in machine size',subtitle:'Existing animal art and latched rig fixtures in solver metres. Axle, beam and capacities are listed below.',entries:[...rigs,...animals.filter(e=>e.extent>=1&&e.animalId!=='whale')].sort((a,b)=>a.extent-b.extent),height:490},
-  {id:'world',title:'One grove · one scale',subtitle:`110 m fantasy oak; ${forestCaption} Tiny creatures remain tiny—use the detail panel above.`,entries:[get('animal-elephant'),get('rig-elephant'),get('animal-whale'),...worldTrees].filter(Boolean).sort((a,b)=>a.extent-b.extent),height:610},
+  {id:'world',title:'One grove · one scale',subtitle:`${formatMetres(get('grandfather-oak')?.height??0)} fantasy oak; ${forestCaption} Tiny creatures remain tiny—use the detail panel above.`,entries:[get('animal-elephant'),get('rig-elephant'),get('animal-whale'),...worldTrees].filter(Boolean).sort((a,b)=>a.extent-b.extent),height:610},
   {id:'props',title:'Leaves, encounters and the workbench',subtitle:'Fantasy encounters use their real contact diameter; leaf clumps are not individual giant leaves.',entries:[get('ordinary-leaf'),get('animal-frog'),get('animal-mouse'),get('encounter-beetle'),get('encounter-fungus'),get('academy-door'),get('rig-small')].filter(Boolean).sort((a,b)=>a.extent-b.extent),height:400}
  ];
 }

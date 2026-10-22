@@ -1,9 +1,9 @@
-import {PARTS, CRITTERS, STARTER_PARTS, part, critter} from './build-catalog.js?v=30';
+import {PARTS, CRITTERS, STARTER_PARTS, part, critter} from './build-catalog.js?v=49';
 
 export const VOUCHERS = [
   {id:'luckyPenny',name:'Lucky penny',price:80,description:'Rerolls start at 3 Bells instead of 5. A little luck goes a long way.',slot:'voucher'},
   {id:'extraShelf',name:'One more shelf',price:120,description:'One extra equipment card in every fresh deal.',slot:'voucher'},
-  {id:'friendDiscount',name:'Friends of the grove',price:180,description:'10% off equipment, volunteers and packs. Forever.',slot:'voucher'},
+  {id:'friendDiscount',name:'Friends of the grove',price:180,description:'10% off equipment and packs. Forever.',slot:'voucher'},
 ];
 const owned = (s,p) => (p.kind==='animal'?s.animals:p.kind==='voucher'?s.vouchers:s.owned).includes(p.id);
 export const product = offer => offer.kind==='animal'?critter(offer.id):offer.kind==='voucher'?VOUCHERS.find(v=>v.id===offer.id):part(offer.id);
@@ -21,7 +21,7 @@ function rng(seed) {
 function draw(s,random,kind,count,exclude=[]) {
   const catalog=kind==='animal'?CRITTERS:PARTS;
   const pool=catalog.filter(p=>p.price>0&&!owned(s,{...p,kind})&&!exclude.includes(p.id));
-  const earned=s.bells+PARTS.filter(p=>s.owned.includes(p.id)&&!STARTER_PARTS.includes(p.id)).reduce((a,p)=>a+p.price,0)+CRITTERS.filter(p=>s.animals.includes(p.id)).reduce((a,p)=>a+p.price,0);
+  const earned=s.bells+PARTS.filter(p=>s.owned.includes(p.id)&&!STARTER_PARTS.includes(p.id)).reduce((a,p)=>a+p.price,0);
   const budget=Math.max(65,earned*.65);
   const out=[];
   while(pool.length&&out.length<count){
@@ -37,9 +37,7 @@ function deal(s,random,previous=[]) {
   const count=s.vouchers.includes('extraShelf')?4:3;
   let gear=draw(s,random,'part',count,previous.map(p=>p.id));
   if(gear.length<count)gear.push(...draw(s,random,'part',count-gear.length,gear.map(p=>p.id)));
-  let animals=draw(s,random,'animal',1,previous.map(p=>p.id));
-  if(!animals.length)animals=draw(s,random,'animal',1);
-  return [...gear,...animals];
+  return gear;
 }
 export function visitShop(raw, seed=Math.floor(Math.random()*4294967296)) {
   const s={...raw,vouchers:raw.vouchers??[]};
@@ -60,6 +58,7 @@ export function rerollShop(state) {
   return {...state,bells:state.bells-cost,shop:{...state.shop,seed:random.seed(),rerolls:state.shop.rerolls+1,offers}};
 }
 export function purchaseOffer(state, offer) {
+  if(offer.kind==='animal')throw Error('Critters are not for sale. Upgrade the tree door.');
   const shop=state.shop;
   const listed=[...shop.offers,...(shop.voucher?[shop.voucher]:[])].some(p=>p.id===offer.id&&p.kind===offer.kind);
   if(!listed)throw Error('That card is no longer in the shop.');
@@ -92,16 +91,17 @@ export function validateShop(shop, launches) {
   }
   if(shop.offers.some(o=>o.kind==='voucher')||shop.pack.some(o=>o.kind!=='part')||shop.voucher&&shop.voucher.kind!=='voucher')throw Error('Invalid card category.');
   if(shop.pack.length&&shop.packCost!==Math.max(15,Math.floor(Math.min(...shop.pack.map(p=>product(p).price))*.8)))throw Error('Invalid pack price.');
-  return structuredClone(shop);
+  return {...structuredClone(shop),offers:shop.offers.filter(o=>o.kind!=='animal')};
 }
 
 /** View navigation preserves the original stock and purchased extraShelf perk.
- * Every fresh card (including volunteers, vouchers and parcels) shares the same
+ * Every fresh card (including vouchers and parcels) shares the same
  * three-card presentation. Paid parcel choices replace the deal view. */
-export function shopView(state,{page=0}={}){
+export function shopView(state,{page=0,limit=3}={}){
+ const count=Number.isFinite(limit)?Math.max(1,Math.min(3,Math.floor(limit))):3;
  const shop=state.shop;if(!shop)return{choosing:false,cards:[],page:0,pages:1,total:0};
  if(shop.packOpened&&!shop.packTaken){const cards=shop.pack.filter(o=>!owned(state,o)).slice(0,3);return{choosing:true,cards,page:0,pages:1,total:cards.length};}
  const stock=[...shop.offers.filter(o=>!owned(state,o)),...(shop.voucher&&!owned(state,shop.voucher)?[shop.voucher]:[]),...(!shop.packTaken&&shop.pack.some(o=>!owned(state,o))?[{kind:'parcel',id:'parcel'}]:[])];
- const pages=Math.max(1,Math.ceil(stock.length/3)),current=Math.max(0,Math.min(pages-1,Number.isFinite(page)?Math.floor(page):0));
- return{choosing:false,cards:stock.slice(current*3,current*3+3),page:current,pages,total:stock.length};
+ const pages=Math.max(1,Math.ceil(stock.length/count)),current=Math.max(0,Math.min(pages-1,Number.isFinite(page)?Math.floor(page):0));
+ return{choosing:false,cards:stock.slice(current*count,current*count+count),page:current,pages,total:stock.length};
 }

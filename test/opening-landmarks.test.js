@@ -6,6 +6,17 @@ import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveM
 import {BuildSimulation} from '../src/build-physics.js';
 import {STARTER} from '../src/build-catalog.js';
 function flight(map,draw){const s=new BuildSimulation(STARTER,{map});s.setDraw(draw);s.fire();for(let i=0;i<60*50&&s.phase!=='finished';i++)s.step(1/60);return s;}
+
+// These are controlled fixture probes, not claims that the new 0.6 m rig
+// repeats the archived rig's natural four-skip route.
+function dropOn(map,o,collision=true){
+ const [a,b]=o.points,x=(a.x+b.x)/2,y=(a.y+b.y)/2;
+ const sim=new BuildSimulation({...STARTER,drag:0},{map:{...map,objects:[{...o,collision}]}});
+ sim.fire();sim.shot.setTransform({x:x/sim.L,y:(y+1)/sim.L},0);sim.shot.setLinearVelocity({x:0,y:-4*sim.T/sim.L});sim.shot.setAngularVelocity(0);sim.detach('Controlled authored-surface probe');
+ let rebound=-Infinity;for(let i=0;i<240;i++){sim.step(1/240);if(sim.contactEvents.length)rebound=Math.max(rebound,sim.real(sim.shot).vy);}
+ return{sim,rebound,top:y};
+}
+
 const near=(a,b,label)=>assert.ok(Math.abs(a-b)<1e-8,`${label}: ${a} / ${b}`);
 
 test('landing landmarks are small editable backdrop shapes with no hidden contact',()=>{
@@ -25,17 +36,20 @@ test('only an untouched revision-five opening receives landmarks and the low rou
  }
 });
 
-test('the low route replaces a medium throw’s empty fall with distinct physical rebounds',()=>{
- const before=flight(createOpeningGroveMap(),.75),after=flight(createGroveMap(),.75),events=after.contactEvents;
- assert.equal(after.phase,'finished');assert.equal(after.failure,'');assert.ok(events.some(e=>e.id==='opening-rescue-mat'));assert.ok(events.some(e=>e.id==='opening-rest-terrace'));
- const first=events.find(e=>e.id==='opening-rescue-mat'),terrace=events.find(e=>e.id==='opening-rest-terrace');assert.ok(first.time>5&&first.time<6);assert.ok(terrace.time-first.time<2);assert.ok(after.maxX>before.maxX);assert.ok(after.time<before.time);
- assert.ok(after.time<12,'the alternative route settles instead of adding a long vertical tail');assert.ok(events.every(e=>!e.id.startsWith('opening-landmark-')));
+test('the archived low-route mat and landing terrace retain honest passive contact for the current mouse',()=>{
+ const map=createGroveMap();for(const id of['opening-rescue-mat','opening-rest-terrace']){
+  const o=map.objects.find(o=>o.id===id),hit=dropOn(map,o),decorative=dropOn(map,o,false);
+  assert.equal(o.collision,true);assert.ok(hit.sim.contactEvents.some(e=>e.id===id&&e.normal.y>0&&e.velocityChange>0));assert.ok(hit.rebound>1,`${id} has a real upward rebound`);
+  assert.ok(hit.sim.contactEvents.every(e=>!e.id.startsWith('opening-landmark-')));assert.equal(decorative.sim.contactEvents.length,0);assert.ok(decorative.sim.real(decorative.sim.shot).y<decorative.top-1);
+  assert.deepEqual(hit.sim.release,decorative.sim.release,'changing the landing fixture cannot alter the controlled incoming release');
+ }
 });
 
-test('the landing route leaves weak journeys, four opening rebounds and every release intact',()=>{
+test('the archived landing route preserves current-rig releases and unchanged paths that do not reach its new surfaces',()=>{
  for(const draw of[.5,.75,1]){
   const a=flight(createOpeningGroveMap(),draw),b=flight(createGroveMap(),draw);assert.equal(b.failure,'');assert.equal(b.phase,'finished');
   for(const key of['x','y','vx','vy','angle','speed','time','energy'])near(a.release[key],b.release[key],`${draw} release ${key}`);
-  if(draw===.5){near(a.maxX,b.maxX,`${draw} range`);near(a.time,b.time,`${draw} duration`);assert.deepEqual(a.contactEvents.map(e=>e.id),b.contactEvents.map(e=>e.id));}if(draw===1){assert.deepEqual(a.contactEvents.slice(0,4).map(e=>e.id),b.contactEvents.slice(0,4).map(e=>e.id));assert.ok(b.time<25);}
+  assert.equal(b.contactEvents.some(e=>['opening-rescue-mat','opening-rest-terrace'].includes(e.id)),false);
+  near(a.maxX,b.maxX,`${draw} range`);near(a.time,b.time,`${draw} duration`);assert.deepEqual(a.contactEvents,b.contactEvents);
  }
 });

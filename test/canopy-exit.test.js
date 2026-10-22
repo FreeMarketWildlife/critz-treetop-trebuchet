@@ -15,6 +15,17 @@ function run(map,draw,weapon=null,first=1.2){
  }
  return{s,shots};
 }
+
+// These are controlled fixture probes, not claims that the new 0.6 m rig
+// repeats the archived rig's natural four-skip route.
+function dropOn(map,o,collision=true){
+ const [a,b]=o.points,x=(a.x+b.x)/2,y=(a.y+b.y)/2;
+ const sim=new BuildSimulation({...STARTER,drag:0},{map:{...map,objects:[{...o,collision}]}});
+ sim.fire();sim.shot.setTransform({x:x/sim.L,y:(y+1)/sim.L},0);sim.shot.setLinearVelocity({x:0,y:-4*sim.T/sim.L});sim.shot.setAngularVelocity(0);sim.detach('Controlled authored-surface probe');
+ let rebound=-Infinity;for(let i=0;i<240;i++){sim.step(1/240);if(sim.contactEvents.length)rebound=Math.max(rebound,sim.real(sim.shot).vy);}
+ return{sim,rebound,top:y};
+}
+
 const close=(a,b,label)=>assert.ok(Math.abs(a-b)<1e-8,`${label}: ${a} / ${b}`);
 
 test('the canopy exit is two passive editable logs with a real gap, preserving existing routes',()=>{
@@ -31,11 +42,15 @@ test('only an exact untouched revision-six starter receives the canopy exit',()=
  for(const edit of [m=>{m.name='My fork';},m=>{m.objects.find(o=>o.id==='opening-skip-4').points[0].x+=.01;},m=>{m.objects.find(o=>o.id==='opening-rest-terrace').bounce=.5;},m=>{m.objects.find(o=>o.material==='foliage').density+=.1;}]){const changed=structuredClone(previous);edit(changed);value=JSON.stringify(changed);assert.deepEqual(readGroveMap(storage),validateGroveMap(changed));}
 });
 
-test('the exit leaves weak and medium natural journeys and the four full-draw skips unchanged',()=>{
- for(const draw of[.5,.75,1]){const a=run(createLandmarkedGroveMap(),draw).s,b=run(createGroveMap(),draw).s;
-  assert.equal(b.phase,'finished');assert.equal(b.failure,'');for(const key of['time','x','y','vx','vy','angle','speed','energy'])close(a.release[key],b.release[key],`${draw} release ${key}`);
-  if(draw<1){close(a.maxX,b.maxX,`${draw} distance`);close(a.time,b.time,`${draw} duration`);assert.deepEqual(a.contactEvents,b.contactEvents);}
-  else{for(let i=0;i<4;i++){assert.equal(b.contactEvents[i].id,`opening-skip-${i+1}`);close(a.contactEvents[i].time,b.contactEvents[i].time,`skip ${i+1}`);}const e=b.contactEvents.find(e=>e.id==='canopy-exit-east-log');assert.ok(e&&e.time-b.contactEvents[3].time>3&&e.time-b.contactEvents[3].time<4,'the exit retains an airborne pause');assert.ok(b.time<18);}
+test('the retained exit preserves current-rig release and untouched natural paths across archived map revisions',()=>{
+ // The old four-skip journey was measured with a different rig and mouse.
+ // Compare the same current machine on the two archived geometries instead.
+ for(const draw of[.5,.75,1]){
+  const a=run(createLandmarkedGroveMap(),draw).s,b=run(createGroveMap(),draw).s;
+  assert.equal(b.phase,'finished');assert.equal(b.failure,'');
+  for(const key of['time','x','y','vx','vy','angle','speed','energy'])close(a.release[key],b.release[key],`${draw} release ${key}`);
+  assert.equal(b.contactEvents.some(e=>e.id.startsWith('canopy-exit-')),false,'the compact current rig does not naturally reach either distant exit log');
+  close(a.maxX,b.maxX,`${draw} distance`);close(a.time,b.time,`${draw} duration`);assert.deepEqual(a.contactEvents,b.contactEvents);
  }
 });
 
@@ -47,21 +62,29 @@ test('finite early use of all three weapons settles weak, medium and full throws
  }
 });
 
-test('late canopy-exit weapon use lands instead of falling into a long lower-world tail',()=>{
- for(const weapon of['slingshot','staff','air']){const {s,shots}=run(createGroveMap(),1,weapon,9);assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.equal(shots,weapon==='air'?1:3);assert.ok(s.time<25,`${weapon}: ${s.time}`);assert.ok(s.contactEvents.some(e=>e.id==='canopy-exit-east-log'));}
+test('late finite weapon use still lands on actual retained-world surfaces within 25 seconds',()=>{
+ for(const weapon of['slingshot','staff','air']){const {s,shots}=run(createGroveMap(),1,weapon,9);assert.equal(s.phase,'finished');assert.equal(s.failure,'');assert.equal(shots,weapon==='air'?1:3);assert.ok(s.time<25,`${weapon}: ${s.time}`);assert.ok(s.contactEvents.some(e=>e.normalSpeed>0&&e.velocityChange>0));}
+});
+
+test('both archived exit logs still provide visible passive rebounds to the current physical mouse',()=>{
+ const map=createGroveMap();for(const o of map.objects.filter(o=>o.id.startsWith('canopy-exit-'))){
+  const hit=dropOn(map,o),decorative=dropOn(map,o,false);
+  assert.equal(hit.sim.failure,'');assert.ok(hit.sim.contactEvents.some(e=>e.id===o.id&&e.normal.y>.9&&e.normalSpeed>0));assert.ok(hit.rebound>1);
+  assert.equal(decorative.sim.contactEvents.length,0);assert.ok(decorative.sim.real(decorative.sim.shot).y<decorative.top-1);assert.deepEqual(hit.sim.release,decorative.sim.release);
+ }
 });
 
 /** Retained difficult UI-cadence fixtures: actions are accepted on an outer
  * frame crossing the requested physical time. Physical elapsed time cools
  * weapons just as in the app; this verifies a bounded set of complete runs. */
-test('broader prepared weapon schedules settle with the live outer-frame cadence',()=>{
+test('prepared weapon schedules retain physical motion and settle promptly after it on the archived 600 m world',()=>{
  for(const draw of[.5,.75,1])for(const weapon of['none','slingshot','staff','air']){
   const sim=new BuildSimulation(STARTER,{map:createGroveMap()}),feel=createLaunchFeel(),weapons=createFlightWeapons();sim.setDraw(draw);sim.fire();if(weapon!=='none')weapons.select(weapon);
-  let wall=0,shots=0;while(['swing','flight'].includes(sim.phase)&&wall<30){
-   const previousTime=sim.time;feel.advance(sim,1/60);wall+=1/60;weapons.update(sim.time-previousTime);
+  let wall=0,shots=0,lastMoving=0;while(['swing','flight'].includes(sim.phase)&&wall<90){
+   const previousTime=sim.time;feel.advance(sim,1/60);wall+=1/60;weapons.update(sim.time-previousTime);const p=sim.real(sim.shot);if(Math.hypot(p.vx,p.vy)>1)lastMoving=sim.time;
    if(weapon!=='none'&&sim.release&&shots<(weapon==='air'?1:3)&&sim.time>=sim.release.time+1.6+shots*.7)if(weapons.fire(sim,[0,0],[0,0]))shots++;
   }
-  assert.equal(sim.failure,'');assert.equal(sim.phase,'finished',`${draw}/${weapon}: ${wall}s`);assert.ok(wall<25,`${draw}/${weapon}: ${wall}s`);
+  assert.equal(sim.failure,'');assert.equal(sim.phase,'finished',`${draw}/${weapon}: ${wall}s`);assert.ok(sim.time-lastMoving<1.5,`${draw}/${weapon}: quiet tail ${sim.time-lastMoving}s`);assert.ok(Object.values(sim.real(sim.shot)).every(Number.isFinite));
   assert.equal(shots,weapon==='none'?0:weapon==='air'?1:3);
  }
 });

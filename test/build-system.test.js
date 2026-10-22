@@ -53,7 +53,7 @@ test('Adventure earns once per shot; purchases are atomic and Creative never pay
  const initial=newProgress(),shot={distance:6,height:2,release:true,grams:25,animal:'mouse'};
  assert.throws(()=>buy(initial,'wheels'));assert.equal(initial.bells,0);
  const earned=bank(initial,'shot-1',{...shot,distance:200});assert.ok(earned.bells>=20);assert.equal(bank(earned,'shot-1',shot),earned);assert.equal(bank(earned,'creative',shot,true),earned);
- const bought=buy(earned,'squirrel',true);assert.ok(bought.animals.includes('squirrel'));assert.equal(bought.bells,earned.bells-90);assert.throws(()=>buy(bought,'squirrel',true));
+ assert.throws(()=>buy(earned,'squirrel',true),/not for sale/);assert.equal(earned.animals.includes('squirrel'),false);
  assert.throws(()=>canBuild(initial,scaledPreset('whale')));assert.equal(canBuild(initial,scaledPreset('whale'),true),true);
 });
 test('save round trip preserves ownership/build; malformed imports cannot unlock unowned gear',()=>{

@@ -1,4 +1,4 @@
-import {branchPolygon} from './grove-branches.js?v=25';
+import {branchPolygon} from './grove-branches.js?v=49';
 
 // A deliberately fantastic old oak, surrounded by trees on a tropical-forest
 // scale. All measurements are metres; no saved map is rescaled to these values.
@@ -160,8 +160,44 @@ export function proportionedV3StarterObjects(makeEnemy){
 
 /** A short return fork on the existing 45m tree. Visible passive contact, not
  * a larger tree, invisible barrier, enlarged animal or powered launch. */
-export function proportionedStarterObjects(makeEnemy){
+export function proportionedV4StarterObjects(makeEnemy){
  const objects=proportionedV3StarterObjects(makeEnemy);
  objects.push({id:'corridor-return-fork',name:'Forest return fork',type:'polygon',points:branchPolygon(point(352,-7),point(345,-6),.25,.10),collision:true,layer:'world',material:'wood',bounce:.5});
  return objects;
+}
+
+/** An open-sided return through existing trunks. Descending faces continue
+ * forward instead of opposing west/east roofs that can trap a larger body.
+ * These are ordinary visible passive map polygons, not conditional fixtures. */
+export function proportionedStarterObjects(makeEnemy){
+ const objects=proportionedV4StarterObjects(makeEnemy);
+ for(const[id,name,x,h,endX,endH,material,bounce]of[
+  ['crown-west','Crown return · west',93,46,86,46.5,'leaf',.61],
+  ['crown-east','Crown return · east',93,46,100,44.5,'wood',.55],
+  ['middle','Mid-canopy return',116,43,123,41.5,'wood',.55],
+  ['lower','Lower canopy return',120,28,127,27,'wood',.55],
+  ['exit','Forest return · exit',130,20,137,18.5,'wood',.55]
+ ])objects.push({id:'forest-return-'+id,name,type:'polygon',points:branchPolygon(point(x,h-PROPORTIONED_LAUNCH_Y),point(endX,endH-PROPORTIONED_LAUNCH_Y),.22,.10),collision:true,layer:'world',material,bounce});
+ return objects;
+}
+
+/** A visibly open launch bay in the74m oak. The west scaffolds sit below the
+ * home deck; the east crown grows above the arm sweep. Every retained bough
+ * remains an ordinary solid polygon in the shared authoring/runtime map. */
+export function oakLaunchBayObjects(map){
+ const replacements=new Map(),pointAt=(x,height)=>({x,y:height-map.launch.y});
+ const limb=(id,a,b,width,tip)=>replacements.set(id,branchPolygon(a,b,width,tip));
+ for(const[row,reach,width,tip]of[[0,14,1.8,.35],[1,22,1.5,.28],[2,18,1.1,.2],[3,9,.65,.12]])for(const side of[-1,1]){
+  const west=side<0,rootHeight=(west?[19.5,22,24.5,27]:[66,67.5,69,70.5])[row],tipHeight=(west?[20.5,23,25.5,28]:[70,71,72,72.5])[row];
+  const a=pointAt(map.tree.trunkX,rootHeight),b=pointAt(map.tree.trunkX+side*(reach+8),tipHeight),label=west?'west':'east';
+  limb(`oak-scaffold-${row}-${label}`,a,b,width,tip);
+  const fork={x:a.x+(b.x-a.x)*.79,y:a.y+(b.y-a.y)*.79};
+  limb(`oak-twig-${row}-${label}`,fork,{x:fork.x+side*(3+row),y:Math.min(map.tree.height-map.launch.y-.4,fork.y+1.1+row*.15)},.24-row*.035,.08);
+  for(let j=0;j<2;j++){
+   const id=`oak-leaves-${row}-${label}-${j}`,old=map.objects.find(o=>o.id===id),cx=old.points.reduce((n,p)=>n+p.x,0)/old.points.length,cy=old.points.reduce((n,p)=>n+p.y,0)/old.points.length;
+   const nextY=Math.min(map.tree.height-map.launch.y-1.7,tipHeight-map.launch.y+1+j*.7);
+   replacements.set(id,old.points.map(p=>({x:p.x-cx+b.x-side*(1+j*3),y:p.y-cy+nextY})));
+  }
+ }
+ return map.objects.map(o=>replacements.has(o.id)?{...o,points:replacements.get(o.id)}:o);
 }

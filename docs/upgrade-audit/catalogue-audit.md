@@ -1,3 +1,5 @@
+> Historical October 21 snapshot: its trajectory equality and 1.2 m starter measurements apply to that checkpoint. See the [October 22 current-source audit](current-2026-10-22/assessment.md) for the 0.6 m starter. Original measurement JSON remains unchanged.
+
 # Complete equipment audit — baseline checkpoint 2c7d127
 
 This is the mechanical audit of all **48 persisted parts in 12 slots**, not a sample. It records the pre-fix behavior separately from the UI/visual changes being integrated alongside it. Measurements are [available in full](catalogue-measurements.json). No source physics, catalogue values, actual browser storage, owned parts, currency, or user saves were changed by this audit.

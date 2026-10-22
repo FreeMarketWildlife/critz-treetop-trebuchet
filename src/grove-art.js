@@ -1,10 +1,10 @@
-import {drawBotanicalBumper} from './grove-botanical-art.js?v=25';
-import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=25';
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=25';
-import {drawForestForeground} from './grove-jungle-art.js?v=25';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=38';
-import {pointInPolygon} from './grove-geometry.js?v=25';
-import {enemyRecipe} from './grove-map.js?v=38';
+import {drawBotanicalBumper} from './grove-botanical-art.js?v=49';
+import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=49';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=49';
+import {drawForestForeground} from './grove-jungle-art.js?v=49';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=49';
+import {pointInPolygon} from './grove-geometry.js?v=49';
+import {enemyRecipe} from './grove-map.js?v=49';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#302d2b';
@@ -66,10 +66,10 @@ export function drawGroveEnemy(c,kind,x,y,size,time=0){
  c.restore();
 }
 function objectBounds(o){if(o.points?.length){const xs=o.points.map(p=>p.x),ys=o.points.map(p=>p.y);return{minX:Math.min(...xs),maxX:Math.max(...xs),minY:Math.min(...ys),maxY:Math.max(...ys)};}const r=o.radius??1;return{minX:o.x-r,maxX:o.x+r,minY:o.y-r,maxY:o.y+r};}
-export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=false,editor=false}={}){
+export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=false,editor=false,showDoor=true}={}){
  if(!map)return;const cam=camera,s=cam.scale,alt=cam.y+(map.launch?.y??300),project=(x,y)=>[W/2+(x-cam.x)*s,H/2-(y-cam.y)*s];
  c.save();c.lineJoin='round';c.lineCap='round';
- if(!foreground)drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time});
+ if(!foreground)drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time,showDoor});
  const visible={minX:cam.x-W/(2*s)-4,maxX:cam.x+W/(2*s)+4,minY:cam.y-H/(2*s)-4,maxY:cam.y+H/(2*s)+4};
  const palette={...GROVE_MATERIALS,foliage:['#789c59','#b8ce83'],sap:['#c9913a','#f7d98b']};
  let objects=map.objects??[];
@@ -85,6 +85,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
    else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;
   }
   const colors=palette[o.material]??palette.wood;
+  if(o.id?.startsWith('oak-limb-')&&o.material==='foliage'){c.restore();continue;}
   if(o.material==='foliage'&&!editor&&s<6){c.restore();continue;}
   if(['foliage','sap'].includes(o.material)){
    const sap=o.material==='sap',p=project((b.minX+b.maxX)/2,(b.minY+b.maxY)/2);

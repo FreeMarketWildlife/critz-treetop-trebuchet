@@ -1,4 +1,4 @@
-import {drawCritter} from './build-art.js?v=38';
+import {drawCritter} from './build-art.js?v=49';
 /** Tiny original paper-card illustrations, using the same ink and timber palette. */
 export function drawShopArt(canvas,p,kind='part') {
   const ctx=canvas.getContext('2d');

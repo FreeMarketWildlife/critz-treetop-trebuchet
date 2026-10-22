@@ -78,7 +78,7 @@ test('restore uses the captured world, preserves absolute altitude after a map c
  restored.step(.1);const before=restored.snapshot(),eventCount=restored.events.length;
  assert.equal(restored.restoreSpaceEscape(record),false);assert.deepEqual(restored.snapshot(),before);assert.equal(restored.events.length,eventCount);
  assert.throws(()=>restored.restoreSpaceEscape({...record,distance:record.distance+1}),/different space run/);assert.deepEqual(restored.snapshot(),before);
- const foreign=new BuildSimulation({...STARTER,animal:'frog'},{map});const foreignBefore=foreign.snapshot();assert.throws(()=>foreign.restoreSpaceEscape(record),/volunteer/);assert.deepEqual(foreign.snapshot(),foreignBefore);
+ const foreign=new BuildSimulation({...STARTER,animal:'frog'},{map});const foreignBefore=foreign.snapshot();assert.throws(()=>foreign.restoreSpaceEscape(record),/critter|volunteer/);assert.deepEqual(foreign.snapshot(),foreignBefore);
  const active=nearBoundary();assert.throws(()=>active.restoreSpaceEscape(record),/before starting/);assert.equal(active.phase,'flight');
 });
 test('malformed crossing packets are rejected before simulation or caller data changes',()=>{
@@ -87,16 +87,18 @@ test('malformed crossing packets are rejected before simulation or caller data c
  const extra={...record,unrelated:'private'};assert.equal('unrelated' in validateSpaceEscape(extra),false);
  const copy=validateSpaceEscape(record);copy.payload.x++;assert.notEqual(copy.payload.x,record.payload.x);
 });
-test('ordinary weak through full launches retain the pre-space release and journey measurements',()=>{
- // Recorded against catalogue checkpoint before the space change, no loading
- // overrides, boost impulses or flight-state mutations in these ordinary runs.
- const fixtures=[
-  [.2,1.032825367978916,2.4700103870809422,-173.23341933447875,1.339450687509251,2.2137457315044897,3.091116303214673,'Sling cord snapped'],
-  [.5,.4783870469260915,9.62447767257058,43.172540708093344,12.100185448783122,5.1119103065364175,4.439186468783265,''],
-  [.75,.47961368037974816,17.780290111413475,29.943092711793653,40.18153220414628,6.123813944003376,10.896184968831552,''],
-  [1,.5262257516187019,22.00489271100042,38.9447744404875,75.10968158531033,9.039132998945039,16.47491391606241,'']
- ];
- for(const[draw,time,speed,angle,distance,height,end,failure]of fixtures){const sim=new BuildSimulation(STARTER,{map});sim.setDraw(draw);sim.fire();for(let i=0;i<90*120&&['swing','flight'].includes(sim.phase);i++)sim.step(1/120);assert.equal(sim.phase,'finished');assert.equal(sim.spaceEscape,null);assert.equal(sim.spaceState,'bound');for(const[a,b]of[[sim.release.time,time],[sim.release.speed,speed],[sim.release.angle,angle],[sim.maxX,distance],[sim.maxY,height],[sim.time,end]])close(a,b,1e-9);assert.equal(sim.failure,failure);}
+test('the space boundary has no effect on paired current-rig low-altitude releases, contacts or complete journeys',()=>{
+ // Previous absolute trajectories used the former starter and mouse. Disable
+ // only the crossing threshold in a control, keeping gravity/drag/map identical.
+ for(const draw of[.2,.5,.75,1]){
+  const actual=new BuildSimulation(STARTER,{map}),control=new BuildSimulation(STARTER,{map});control.escapeThreshold=Infinity;
+  for(const sim of[actual,control]){sim.setDraw(draw);assert.equal(sim.fire(),true);}
+  for(let i=0;i<90*120&&['swing','flight'].includes(actual.phase);i++){
+   actual.step(1/120);control.step(1/120);assert.deepEqual(actual.real(actual.shot),control.real(control.shot));assert.equal(actual.phase,control.phase);
+  }
+  assert.equal(actual.phase,'finished');assert.equal(actual.spaceEscape,null);assert.equal(actual.spaceState,'bound');assert.deepEqual(actual.release,control.release);assert.deepEqual(actual.contactEvents,control.contactEvents);
+  assert.equal(actual.maxX,control.maxX);assert.equal(actual.maxY,control.maxY);assert.equal(actual.time,control.time);assert.equal(actual.failure,control.failure);assert.ok(actual.maxY+map.launch.y<actual.escapeThreshold);
+ }
 });
 
 for(const world of[map,createProportionedGroveMap()])test(`a catalogue-valid endgame machine reaches space with one physical drop on V${world.version}`,()=>{

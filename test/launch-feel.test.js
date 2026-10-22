@@ -4,7 +4,7 @@ function start(c=STARTER,options={}){const s=new BuildSimulation(c,options);s.se
 test('the starter swing takes more than twice as long to watch with exactly the same measured physical release',()=>{
  const baseline=start(STARTER,{map:createGroveMap()});while(!baseline.release&&baseline.phase==='swing')baseline.step(1/120);
  const s=start(STARTER,{map:createGroveMap()}),director=createLaunchFeel();let wall=0;while(!s.release&&wall<5){director.advance(s,1/120);wall+=1/120;}
- assert.ok(wall>baseline.release.time*2.2&&wall<baseline.release.time*3.2,`${wall} vs ${baseline.release.time}`);assert.ok(wall>1.3&&wall<1.7);
+ assert.ok(wall>baseline.release.time*2.2&&wall<baseline.release.time*3.2,`${wall} vs ${baseline.release.time}`); // Compare with this rig's actual release, not the previous 1.2 m starter's fixed watch time.
  for(const key of['time','angle','speed','energy','vx','vy'])assert.ok(Math.abs(s.release[key]-baseline.release[key])<1e-10,key);
  assert.equal(s.failure,'');assert.equal(s.initialEnergy,baseline.initialEnergy);
 });

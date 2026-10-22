@@ -1,6 +1,6 @@
 /** A massless winding transmission: the wheel follows beam travel, never adds
  * launch energy. Positive screen angles are clockwise. All points are metres. */
-import {part,REST_ARM_ANGLE} from './build-catalog.js?v=30';
+import {part,REST_ARM_ANGLE} from './build-catalog.js?v=49';
 export function crankGeometry(sim){
  const c=sim.c,p=part(c.winch),radius=Math.min(c.pivotHeight,c.baseWidth*1.65)*p.radiusRatio,drumRadius=radius*p.drumRatio;
  const local={x:c.baseWidth*.44,y:radius+c.pivotHeight*.055};
@@ -13,7 +13,8 @@ export function crankGeometry(sim){
 export function crankState(sim){
  const g=crankGeometry(sim),rest=REST_ARM_ANGLE,p=sim.pivot(),restTip={x:p.x+sim.c.longArm*Math.cos(rest),y:p.y+sim.c.longArm*Math.sin(rest)},restBasket=sim.loadingPosition(restTip),basket=sim.phase==='ready'?(sim.loading?.target()??sim.loadingPosition(sim.tip())):sim.real(sim.shot);
  const span=q=>Math.hypot(q.x-g.fairlead.x,q.y-g.fairlead.y),cable=sim.release?0:Math.max(0,span(restBasket)-span(basket));
- return{...g,angle:cable/g.drumRadius/g.gearing,paidOut:sim.phase!=='ready',cable,loaded:sim.loading?.loaded??true,basket};
+ // Negative screen travel winds counterclockwise; gravity reverses it on payout.
+ return{...g,angle:cable===0?0:-cable/g.drumRadius/g.gearing,paidOut:sim.phase!=='ready',cable,loaded:sim.loading?.loaded??true,basket};
 }
 export function drawCrankWheel(ctx,sim,project,scale){
  const s=crankState(sim),p=project(s.center),r=s.radius*scale,dr=s.drumRadius*scale,pivot=project(sim.pivot()),sr=s.sectorRadius*scale;

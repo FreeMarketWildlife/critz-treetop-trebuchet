@@ -1,4 +1,4 @@
-import {branchPolygon} from './grove-branches.js?v=25';
+import {branchPolygon} from './grove-branches.js?v=49';
 /** Editable routes, not scenery masquerading as physics. Leaf mats are many
  * small leaves supported on springy stems; lianas and logs have exact paths. */
 export const JUNGLE_LAYERS=Object.freeze([
@@ -13,7 +13,13 @@ export const PROPORTIONED_JUNGLE_LAYERS=Object.freeze([
  {id:'understory',name:'Vines & understory',alt:11,low:2,high:20,color:'#466e50'},
  {id:'floor',name:'Roots & forest floor',alt:1,low:0,high:2,color:'#827647'}
 ].map(Object.freeze));
-export const jungleLayersFor=map=>map?.version===4?PROPORTIONED_JUNGLE_LAYERS:JUNGLE_LAYERS;
+export const NATURAL_JUNGLE_LAYERS=Object.freeze([
+ {id:'emergent',name:'Jungle canopy crowns',alt:28,low:25,high:30,color:'#93a65e'},
+ {id:'canopy',name:'Jungle canopy',alt:21,low:15,high:25,color:'#5e8755'},
+ {id:'understory',name:'Vines & understory',alt:8,low:2,high:15,color:'#466e50'},
+ {id:'floor',name:'Roots & forest floor',alt:1,low:0,high:2,color:'#827647'}
+].map(Object.freeze));
+export const jungleLayersFor=map=>map?.version===4?(map.starterRevision>=8?NATURAL_JUNGLE_LAYERS:PROPORTIONED_JUNGLE_LAYERS):JUNGLE_LAYERS;
 export const jungleLayerAt=(altitude,map)=>[3,4].includes(map?.version)?jungleLayersFor(map).find(l=>altitude>=l.low&&altitude<l.high):undefined;
 export function jungleStarterObjects(makeEnemy){
  const objects=[],origin=600;

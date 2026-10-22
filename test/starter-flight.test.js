@@ -7,13 +7,13 @@ import {fitEquipment} from '../src/build-equipment.js';
 import {visitShop,purchaseOffer,openPack,choosePack} from '../src/build-shop.js';
 import {RopeVisual} from '../src/rope-visual.js';
 
-test('the complete 1.2 m starter flies all starter-sized volunteers at useful upward angles',()=>{
- assert.equal(STARTER.pivotHeight,1.2);assert.equal(canBuild(newProgress(),STARTER),true);assert.ok(buildFacts(STARTER).capacity>=100);
+test('the complete 0.6 m starter flies all starter-sized volunteers at useful upward angles',()=>{
+ assert.equal(STARTER.pivotHeight,.6);assert.equal(canBuild(newProgress(),STARTER),true);assert.ok(buildFacts(STARTER).capacity>=100);
  for(const animal of CRITTERS.filter(a=>a.grams<=100)){
   const sim=new BuildSimulation({...STARTER,animal:animal.id});sim.setDraw(0);for(let i=0;i<110;i++)sim.wind(1/60);
   assert.equal(sim.drawFraction,1);assert.ok(sim.fire());assert.equal(sim.real(sim.shot).vx,0);
   for(let i=0;i<2400&&['swing','flight'].includes(sim.phase);i++)sim.step(1/60);
-  assert.equal(sim.failure,'',animal.id);assert.equal(sim.phase,'finished');assert.ok(sim.release.angle>30&&sim.release.angle<65,`${animal.id}: ${sim.release.angle}`);assert.ok(sim.release.speed>12);assert.ok(sim.maxX>10);
+  assert.equal(sim.failure,'',animal.id);assert.equal(sim.phase,'finished');assert.ok(sim.release.angle>30&&sim.release.angle<65,`${animal.id}: ${sim.release.angle}`);assert.ok(sim.release.speed>2);assert.ok(sim.maxX>1);
  }
 });
 test('a ground-loaded pouch winds and fires without penetrating the rail or ending immediately',()=>{

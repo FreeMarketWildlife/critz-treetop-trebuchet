@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {CRITTERS,STARTER} from '../src/build-catalog.js';
-import {createGroveMap,createV3GroveMap,ENEMIES,objectBounds} from '../src/grove-map.js';
+import {createGroveMap,createV3GroveMap,createV4Revision7GroveMap,ENEMIES,objectBounds} from '../src/grove-map.js';
 import {scaleInventory,shapeBounds,rigScaleShapes,scalePanelSVG,comparisonPanels,authoredMapSVG} from '../src/world-scale.js';
 import {critterScaleMarkup} from '../src/critter-scale-art.js';
 import {SCALE_BUILDS,createScaleBuild,scaleBuildFacts} from '../src/scale-builds.js';
@@ -22,8 +22,14 @@ test('the sorted guide inventories every canonical object, catalogue volunteer, 
  assert.equal(JSON.stringify(map),before);
 });
 test('leaf resistance fields are not mislabelled as rigid landing faces or inert scenery',()=>{
- const rows=scaleInventory(),leaves=rows.find(e=>e.id==='object-oak-leaves-0-west-0'),branch=rows.find(e=>e.id==='object-oak-scaffold-0-west'),scenery=rows.find(e=>e.id==='object-amazon-tree-0-trunk');
- assert.equal(leaves.category,'World fields');assert.match(leaves.notes,/without a rigid landing face/);assert.equal(branch.category,'World solids');assert.equal(scenery.category,'World scenery');assert.match(scenery.notes,/no collision/);
+ // Resistance-field semantics remain relevant to saved revision-seven worlds;
+ // the current oak's decorative leaves deliberately have no resistance field.
+ const historic=scaleInventory(createV4Revision7GroveMap()),leaves=historic.find(e=>e.id==='object-oak-leaves-0-west-0');
+ assert.equal(leaves.category,'World fields');assert.match(leaves.notes,/without a rigid landing face/);
+ const map=createGroveMap(),rows=scaleInventory(map),byId=new Map(rows.map(e=>[e.objectId,e]));
+ assert.equal(byId.get('oak-limb-west-low').category,'World solids');
+ for(const o of map.objects.filter(o=>o.material==='foliage'&&!o.collision)){const e=byId.get(o.id);assert.equal(e.category,'World scenery');assert.match(e.notes,/no collision/);}
+ assert.equal(byId.get('amazon-tree-0-trunk').category,'World scenery');
 });
 test('machine comparisons use real fixture metres and preserve the starter catalogue',()=>{
  const before=JSON.stringify(STARTER),rows=scaleInventory(),rigs=SCALE_BUILDS.map(({id})=>rows.find(e=>e.id==='rig-'+id));
@@ -31,9 +37,14 @@ test('machine comparisons use real fixture metres and preserve the starter catal
  for(let i=1;i<rigs.length;i++){assert.ok(rigs[i].width>rigs[i-1].width);assert.ok(rigs[i].height>rigs[i-1].height);}
  near(rigs.at(-1).facts.axleHeight,16.2);near(rigs.at(-1).facts.beamLength,20.4);assert.equal(JSON.stringify(STARTER),before);
 });
-test('tree figures have the same 110m oak and 35–60m forest bounds as the editable map',()=>{
- const map=createGroveMap(),rows=scaleInventory(map),oak=rows.find(e=>e.id==='grandfather-oak');near(oak.height,110);near(oak.width,76);
- const trees=rows.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak');assert.deepEqual(trees.filter(e=>/^tree-amazon-tree-[0-3]$/.test(e.id)).map(e=>e.height).sort((a,b)=>a-b),[35,40,45,60]);
+test('tree figures have the same 75 m oak and 25–30 m forest bounds as the editable map',()=>{
+ const map=createGroveMap(),rows=scaleInventory(map),oak=rows.find(e=>e.id==='grandfather-oak');near(oak.height,75);near(oak.width,72);
+ const trees=rows.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak');assert.deepEqual(trees.filter(e=>/^tree-amazon-tree-[0-3]$/.test(e.id)).map(e=>e.height).sort((a,b)=>a-b),[25,26.5,28.5,30]);assert.ok(trees.every(e=>e.height>=25&&e.height<=30));
+ // Current connected limbs must appear in the combined oak silhouette, not
+ // just the old scaffold IDs or its unchanged outer envelope.
+ for(const limb of map.objects.filter(o=>o.id.startsWith('oak-limb-')&&o.collision)){
+  assert.ok(oak.shapes.some(shape=>shape.kind==='polygon'&&shape.points.length===limb.points.length&&shape.points.every((p,i)=>p.x===limb.points[i].x&&p.y===limb.points[i].y+map.launch.y)),limb.id);
+ }
  const svg=authoredMapSVG(map),visible=map.objects.filter(o=>objectBounds(o).minY+map.launch.y<=120);
  for(const o of visible)assert.ok(svg.includes(`data-object-id="${o.id}"`),o.id);
  assert.equal(visible.length,map.objects.length-2);assert.ok(svg.includes(`${visible.length} of ${map.objects.length}`));const maxX=Number(svg.match(/data-max-x="([^"]+)/)[1]);assert.ok(maxX>Math.max(...visible.map(o=>objectBounds(o).maxX)),'whole extended forest stays inside the figure');assert.match(svg,/Wandering yokai at 1032 m; Ring fragment at 1432 m/);assert.doesNotMatch(svg,/NaN|Infinity/);
@@ -66,8 +77,8 @@ test('Creative recipe links respect pending Adventure collection and cannot appl
 
 function crossing(map){const sim=new BuildSimulation(STARTER,{map});assert.equal(sim.fire(),true);sim.detach('Scale migration boundary test');sim.shot.setTransform({x:500/sim.L,y:(escapeAltitude(map)-map.launch.y-.01)/sim.L},0);sim.shot.setLinearVelocity({x:10*sim.T/sim.L,y:30*sim.T/sim.L});sim.step(1/60);assert.equal(sim.phase,'escaped');return validateSpaceEscape(sim.spaceEscape);}
 test('new physical world descriptors and saved V3 space completions restore into V4 without losing money or multiplying twice',()=>{
- const map=createGroveMap();assert.deepEqual(spaceWorldDescriptor(map),{version:4,height:3000,treeHeight:110,launchY:32});assert.equal(escapeAltitude(map),3000);for(const height of[600,1500,2999])assert.throws(()=>spaceWorldDescriptor({...map,height}),/Invalid space world/);
- for(const old of[createV3GroveMap(),map]){
+ const map=createGroveMap();assert.deepEqual(spaceWorldDescriptor(map),{version:4,height:3000,treeHeight:75,launchY:32});assert.equal(escapeAltitude(map),3000);for(const height of[600,1500,2999])assert.throws(()=>spaceWorldDescriptor({...map,height}),/Invalid space world/);
+ for(const old of[createV3GroveMap(),createV4Revision7GroveMap(),map]){
   const event=crossing(old),state={...newProgress(),bells:89,points:18117},pending=markSpaceEscape(state,{id:'scale-escape-'+old.version,spaceEscape:event,build:STARTER});
   const memory=new Map(),store={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,v)};saveProgress(store,pending);const loaded=loadProgress(store),sim=new BuildSimulation(STARTER,{map});sim.restoreSpaceEscape(loaded.pendingSpace.spaceEscape);
   near(sim.real(sim.shot).y+map.launch.y,event.altitude);assert.equal(sim.gravityFactor,0);assert.equal(loaded.bells,89);assert.equal(loaded.points,18117);assert.deepEqual(loaded.pendingSpace.spaceEscape.world,event.world);
@@ -84,6 +95,10 @@ test('valid custom scenery edits and zero-height chains remain inspectable witho
  assert.ok(rows.some(e=>e.objectId==='amazon-tree-0-trunk'),'unpaired trunk remains individually inventoried');
 });
 
-test('world comparison includes the tallest rare rooted emergent without overflowing the shared metre panel',()=>{
- const rows=scaleInventory(),rare=rows.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak'&&e.height>60),panel=comparisonPanels(rows).find(p=>p.id==='world');assert.equal(rare.length,4);assert.ok(rare.every(e=>e.height<=88.5));assert.ok(panel.entries.some(e=>e.category==='Trees'&&e.height===88.5));assert.match(panel.subtitle,/rare emergents/);assert.doesNotMatch(scalePanelSVG(panel.entries,{height:panel.height}),/NaN|Infinity/);
+test('current world comparison shows the authored jungle while saved historic worlds retain rare emergents',()=>{
+ const rows=scaleInventory(),trees=rows.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak'),panel=comparisonPanels(rows).find(p=>p.id==='world');
+ assert.ok(trees.length>=20);assert.ok(trees.every(e=>e.height>=25&&e.height<=30));assert.ok(panel.entries.some(e=>e.category==='Trees'&&e.height===30));
+ assert.match(panel.subtitle,/75 m fantasy oak; 25–30 m jungle canopy/);assert.doesNotMatch(panel.subtitle,/rare emergents/);assert.doesNotMatch(scalePanelSVG(panel.entries,{height:panel.height}),/NaN|Infinity/);
+ const historic=scaleInventory(createV4Revision7GroveMap()),rare=historic.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak'&&e.height>60),oldPanel=comparisonPanels(historic).find(p=>p.id==='world');
+ assert.equal(rare.length,4);assert.ok(rare.every(e=>e.height<=88.5));assert.ok(oldPanel.entries.some(e=>e.category==='Trees'&&e.height===88.5));assert.match(oldPanel.subtitle,/rare emergents/);assert.doesNotMatch(scalePanelSVG(oldPanel.entries,{height:oldPanel.height}),/NaN|Infinity/);
 });

@@ -16,7 +16,7 @@ function prepare(s,dt){assert.equal(s.loading.loadKeyboard(),true);settle(s,dt);
 function windTo(s,target,dt){s.beginWinding();let time=0,last=s.drawFraction;while(s.drawFraction+1e-9<target&&time<30){s.wind(dt);s.loading.step(dt);assert.ok(s.drawFraction>=last);last=s.drawFraction;time+=dt;assert.equal(s.phase,'ready');}assert.ok(s.drawFraction+1e-9>=target);return time;}
 const state=s=>({parts:s.loading.parts,position:s.loading.position,angle:s.loading.angle,motion:s.loading.motion,draw:s.drawFraction});
 for(const{id,minimumDraw}of SCALE_BUILDS)for(const dt of[1/120,1/60,1/30,.05])test(`${id} at${Math.round(1/dt)}Hz: one drop, partial stops and full release stay physical and forward`,()=>{
- for(const draw of id==='elephant'?[.6,.75,.9,1]:[.4,.6,.8,1]){
+ for(const draw of id==='elephant'?[.6,.75,.9,1]:id==='small'?[minimumDraw,.8,.9,1]:[.4,.6,.8,1]){
   const s=make(id);assert.equal(s.fire(),false);assert.equal(s.preparationStatus().code,'loading');prepare(s,dt);windTo(s,draw,dt);settle(s,dt);
   const held=s.snapshot();for(let i=0;i<Math.ceil(.2/dt);i++){s.loading.step(dt);assert.equal(s.phase,'ready');}assert.equal(s.loading.loaded,true,'a supported hold survives after the stop');
   const before=state(s),pivot=s.pivot(),counter=s.counterPoint(),arm=s.arm.getAngle();assert.equal(s.preparationStatus().ready,true);assert.equal(s.preparationStatus().minimumDraw,minimumDraw);assert.equal(s.fire(),true);

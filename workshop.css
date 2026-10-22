@@ -44,3 +44,5 @@
 /* Three-card shop presentation; inventory remains in the Build tab. */
 #shopItems{grid-template-columns:repeat(3,minmax(0,1fr))}.shop-pages{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px}.shop-pages span{font-size:12px}.shop-pages button{min-height:40px}.workshop-panel .shop-card p{font-size:12px;line-height:1.5}.workshop-panel .shop-card .slot-tag{font-size:9px}
 @media(max-width:750px){#shopItems{grid-template-columns:1fr}.workshop-panel .shop-card p{font-size:12px}.workshop-panel .shop-card h3{font-size:16px}.workshop-panel .shop-card .buy{min-height:42px;font-size:13px}}
+
+.door-upgrade{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px;margin:10px 0;border:1px solid #a1ad83;border-radius:12px;background:#edf0d7}.door-upgrade h3{margin:0}.door-upgrade p{margin:0;flex:1;font-size:12px}.door-upgrade[hidden]{display:none}

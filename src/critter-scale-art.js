@@ -1,4 +1,4 @@
-import {drawCritter} from './build-art.js?v=38';
+import {drawCritter} from './build-art.js?v=49';
 const xml=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const num=value=>Number(value.toFixed(7));
 /** Small path recorder for the existing ready-pose artwork. It does not run a
@@ -49,7 +49,7 @@ for(const property of['fillStyle','strokeStyle','lineWidth','lineCap','lineJoin'
 export function critterScaleMarkup(animal,bounds,prefix='scale-'+animal.id){
  if(!/^[a-zA-Z][\w-]*$/.test(prefix))throw Error('Invalid scale-art identifier');
  const c=new CritterPathRecorder();c.scale(1,-1);
- drawCritter(c,animal,(bounds.minX+bounds.maxX)/2,-(bounds.minY+bounds.maxY)/2,animal.length,0,false,animal.width,{pose:'ready'});
+ drawCritter(c,animal,animal.id==='mouse'?0:(bounds.minX+bounds.maxX)/2,animal.id==='mouse'?0:-(bounds.minY+bounds.maxY)/2,animal.length,0,false,animal.width,{pose:'ready'});
  if(c.stack.length)throw Error('Unbalanced critter-art save');
  return c.markup(prefix);
 }

@@ -1,14 +1,14 @@
-import {drawProportionedForestBackdrop} from './proportioned-forest-art.js?v=38';
-import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=25';
-import {drawAncientTree} from './grove-tree-art.js?v=35';
-import {drawJungleBackdrop} from './grove-jungle-art.js?v=25';
-import {spaceScale} from './grove-map.js?v=38';
+import {drawProportionedForestBackdrop} from './proportioned-forest-art.js?v=49';
+import {ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=49';
+import {drawAncientTree} from './grove-tree-art.js?v=49';
+import {drawJungleBackdrop} from './grove-jungle-art.js?v=49';
+import {spaceScale} from './grove-map.js?v=49';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Every crown, trunk and forest tree is placed in metres. Parallax fades out
  * for wide views, where the whole silhouette must retain its true geometry. */
-export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0}){
- if(map.version===4)return drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,map,time});
+export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0,showDoor=true}){
+ if(map.version===4)return drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,map,time,showDoor});
  const s=cam.scale,origin=map.launch.y,t=map.tree,k=spaceScale(map),alt=cam.y+origin,space=clamp((alt-890*k/2)/(210*k/2),0,1),dark=clamp((470*k/2-alt)/(350*k/2),0,1);
  const skyTop=blend('#8fbbb7','#183b43',dark),skyBottom=blend('#f3e7bb','#6e9e93',dark),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,blend(skyTop,'#222b52',space));g.addColorStop(1,blend(skyBottom,'#69749d',space));c.fillStyle=g;c.fillRect(0,0,W,H);
  const project=(x,y)=>[W/2+(x-cam.x)*s,H/2-(y-cam.y)*s],depth=clamp((s-1)/8,0,1);
@@ -67,8 +67,9 @@ export function drawGroveBackdrop(c,{camera:cam,width:W,height:H,map,time=0}){
    }
    if(alt<480*k/2){c.globalAlpha=.24;const x0=Math.floor((cam.x-W/(2*s))/13)*13;for(let x=x0;x<cam.x+W/(2*s);x+=13)stroke([[x,-origin+10],[x+Math.sin(x)*1.5,-origin+160*k/2],[x-1,-origin+335*k/2]],'#345f61',.07);c.globalAlpha=1;}
   }
-  // The workshop doorway stays two metres tall beside the compact starter rig.
+  if(showDoor){
   const [dx,dy]=project(t.doorX,0),dw=1.4*s,dh=2.15*s;if(dx+dw>0&&dx-dw<W&&dy>0&&dy-dh<H){c.save();c.translate(dx,dy);c.beginPath();c.moveTo(-dw*.5,0);c.lineTo(-dw*.5,-dh+dw*.5);c.arc(0,-dh+dw*.5,dw*.5,Math.PI,TAU);c.lineTo(dw*.5,0);c.closePath();c.fillStyle='#253f40';c.fill();c.strokeStyle='#d2b777';c.lineWidth=Math.max(1,s*.06);c.stroke();c.fillStyle='#9b643e';c.fillRect(-dw*.37,-dh*.73,dw*.74,dh*.73);for(let i=-1;i<=1;i++){c.beginPath();c.moveTo(i*dw*.22,-dh*.7);c.lineTo(i*dw*.22,0);c.strokeStyle='#d8a966';c.lineWidth=Math.max(.5,s*.025);c.stroke();}c.beginPath();c.arc(dw*.2,-dh*.37,Math.max(.6,s*.05),0,TAU);c.fillStyle='#f0d88d';c.fill();c.restore();}
+  }
   if(alt<480*k/2){c.globalAlpha=.55;for(let i=0;i<32;i++)oval(-600+i*43,50+(i*31)%300-origin,.08,.08,'#e1d58f');c.globalAlpha=1;}
   // The ordinary physical floor has its own continuous contact edge. Unlike
   // background silhouettes it stays opaque and exactly at y=-launch altitude.
