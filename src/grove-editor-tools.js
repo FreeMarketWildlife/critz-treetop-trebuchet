@@ -1,3 +1,4 @@
+import {isSimplePolygon,polygonArea} from './grove-geometry.js?v=61';
 import {validateGroveMap,objectBounds,enemyRecipe} from './grove-map.js?v=61';
 const clone=v=>structuredClone(v);
 export function createEditorHistory(initial,limit=80){
@@ -21,3 +22,16 @@ export function simplifyStroke(points,tolerance){
 export function insertVertex(o,index){if(!o.points)return o;const end=o.type==='polygon'?(index+1)%o.points.length:Math.min(index+1,o.points.length-1),a=o.points[index],b=o.points[end];if(index===end)throw Error('Select a segment before inserting a point.');const points=o.points.map(p=>({...p}));points.splice(index+1,0,{x:(a.x+b.x)/2,y:(a.y+b.y)/2});return {...o,points};}
 export function removeVertex(o,index){const minimum=o.type==='polygon'?3:2;if(!o.points||o.points.length<=minimum)throw Error(`This shape needs at least ${minimum} points.`);return {...o,points:o.points.filter((_,i)=>i!==index).map(p=>({...p}))};}
 export {encodeMapLink,decodeMapLink} from './map-link-codec.js?v=61';
+
+/** Close a sampled stroke. Crossings are rejected atomically, never silently
+ * replaced by a hull that fills areas the author did not draw. */
+export function closeFreehandStroke(input,tolerance=.02){
+ const distinct=input.filter((p,i)=>!i||Math.hypot(p.x-input[i-1].x,p.y-input[i-1].y)>=.002);
+ if(distinct.length>2&&Math.hypot(distinct[0].x-distinct.at(-1).x,distinct[0].y-distinct.at(-1).y)<Math.max(.002,tolerance))distinct.pop();
+ let points=simplifyStroke(distinct,tolerance);
+ for(let t=tolerance;points.length>128;t*=1.5)points=simplifyStroke(distinct,t);
+ if(points.length<3)throw Error('Draw a wider shape with at least three corners.');
+ if(Math.abs(polygonArea(points))<Math.max(.0001,tolerance*tolerance*4))throw Error('Stroke has no clear interior. Draw a wider outline without crossings.');
+ if(!isSimplePolygon(points))throw Error('Stroke crosses itself. Draw one outline without crossings; your map is unchanged.');
+ return points;
+}

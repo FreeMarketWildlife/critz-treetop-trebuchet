@@ -12,3 +12,6 @@
 .brush-settings{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:10px 0}.brush-settings label{font-size:10px;color:#617552}.brush-settings input{width:100%;padding:7px;border:1px solid #a9b58b;border-radius:7px;background:#f7f2da;color:#3d573f}.pick-filters{display:flex;gap:4px;flex-wrap:wrap;margin:7px 0}.pick-filters button{padding:5px;font-size:10px}.pick-filters button.active{background:#d4dfae;border-color:#748e57}#densityField small{font-size:10px;color:#6f7e5c}.tools [data-tool="erase"]{border-color:#b89b75;background:#f1e3c4}#copyJson{margin-top:8px}
 
 .leaf-presets{display:flex;gap:5px;margin:5px 0}.leaf-presets button{padding:6px;font-size:10px;flex:1}
+/* Encounter movement uses the same generous touch targets as geometry fields. */
+#enemyProps select{display:block;width:100%;min-height:38px;margin-top:6px;padding:8px 10px;border:1px solid #b4bea0;border-radius:7px;background:#fffcef;color:#294a3a;font:inherit}
+#enemyProps input:disabled{opacity:.5}
