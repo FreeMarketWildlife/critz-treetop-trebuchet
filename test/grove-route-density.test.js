@@ -32,7 +32,7 @@ function run(revision,id,draw,weapon='none'){
 test('revision-one default stays exact and only untouched copies migrate without writes',()=>{
  const previous=createV4Revision1GroveMap(),raw=JSON.stringify(previous),storage=store(raw);
  assert.equal(createHash('sha256').update(raw).digest('hex'),'2ed10782a59f071793c0e734bfa0b373b8b25a1d34528e41486f94e26b7a2b94');
- assert.equal(previous.objects.length,93);assert.equal(createGroveMap().starterRevision,10);assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.raw,raw);assert.equal(storage.writes,0);
+ assert.equal(previous.objects.length,93);assert.equal(createGroveMap().starterRevision,11);assert.deepEqual(readGroveMap(storage),validateGroveMap(createGroveMap()));assert.equal(storage.raw,raw);assert.equal(storage.writes,0);
  for(const edit of[m=>{m.name='My authored grove';},m=>{m.objects[0].points[0].x-=.01;},m=>{m.objects[0].bounce=.42;},m=>{m.objects[0].collision=false;},m=>{m.objects.pop();},m=>{m.tree.height=105;}]){const changed=structuredClone(previous);edit(changed);const s=store(JSON.stringify(changed)),before=s.raw;assert.deepEqual(readGroveMap(s),validateGroveMap(changed));assert.equal(s.raw,before);assert.equal(s.writes,0);}
  const invalid=store('{broken');assert.equal(readGroveMap(invalid),null);assert.equal(invalid.raw,'{broken');assert.equal(invalid.writes,0);
  const saved=store();saveGroveMap(saved,createGroveMap());assert.deepEqual(readGroveMap(saved),validateGroveMap(createGroveMap()));

@@ -19,7 +19,7 @@ for(const p of PARTS)test(`catalogue ${p.id}: purchase, equip, persistence and i
  if(p.slot==='sling')assert.ok(Math.abs(r.capacity.physical.ropeMaxLength-p.maxLength*.8)<1e-8);
  if(p.slot==='winch'){assert.ok(r.wind.light.drawAfterOneSecond>0);assert.ok(r.wind.heavy.drawAfterOneSecond>0);assert.equal(r.wind.heavy.power,p.power);}
 });
-test('capacity upgrades preserve intentional geometry and fill; IDs alone do not promise extra energy',async()=>{const a=await auditPromise;for(const r of a.rows.filter(r=>['frame','ballast'].includes(r.slot)&&r.id!=='pebble'))assert.deepEqual(r.baseline,a.baseline,r.id);for(const r of a.rows.filter(r=>r.slot==='winch'))assert.deepEqual(r.baseline,a.baseline,r.id);});
+test('capacity upgrades preserve intentional geometry and fill; IDs alone do not promise extra energy',async()=>{const a=await auditPromise;for(const r of a.rows.filter(r=>['frame','ballast'].includes(r.slot)&&!['pebble','guillotine'].includes(r.id)))assert.deepEqual(r.baseline,a.baseline,r.id);for(const r of a.rows.filter(r=>r.slot==='winch'))assert.deepEqual(r.baseline,a.baseline,r.id);});
 test('all crank tiers have distinct increasing power-limited performance under the same heavy load',async()=>{const r=(await auditPromise).rows.filter(r=>r.slot==='winch');for(let i=1;i<r.length;i++)assert.ok(r[i].wind.heavy.drawAfterOneSecond>r[i-1].wind.heavy.drawAfterOneSecond);for(const row of r)assert.ok(Math.abs(row.wind.light.drawAfterOneSecond-1/3)<1e-9,'light-load governor remains three seconds');});
 test('every bearing tier lowers friction torque and has a measured effect at three fixed scales',async()=>{const a=await auditPromise;for(const animal of ['mouse','bear','whale']){const rows=a.bearings.filter(r=>r.animal===animal);assert.equal(rows.length,PARTS.filter(p=>p.slot==='bearing').length);for(let i=1;i<rows.length;i++){assert.ok(part(rows[i].id).friction<part(rows[i-1].id).friction);assert.ok(rows[i].release.speed>rows[i-1].release.speed);}}});
 test('larger cloth/cord is a moving mass tradeoff, not an unconditional distance bonus',async()=>{const a=await auditPromise;for(const slot of ['sling','rope']){const rows=a.rows.filter(r=>r.slot===slot);for(let i=1;i<rows.length;i++)assert.ok(rows[i].baseline.pouchGrams>rows[i-1].baseline.pouchGrams);assert.ok(rows.some(r=>r.baseline.failure));assert.ok(rows.every(r=>r.intended.result.release));}});
@@ -41,7 +41,7 @@ test('current geometry and source fingerprints define this audit; archived traje
  const expected={'upgrade-audit':'9a86d653e9fb391354f5919e16f688d8e28e1a6696e55de1cc51e526ea932868','upgrade-usefulness':'6c1b71b712b58e494ab5a2f37120ccf0ae02512377828b02790a61cda3074468'};
  for(const[folder,sha256]of Object.entries(expected)){
   const bytes=await readFile(new URL('../docs/'+folder+'/catalogue-measurements.json',import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),sha256,'preserve historical '+folder+' evidence');
-  const old=JSON.parse(bytes);assert.deepEqual(old.rows.map(r=>r.id),PARTS.map(p=>p.id));assert.equal(a.method.archives.find(r=>r.path==='docs/'+folder+'/catalogue-measurements.json').sha256,sha256);
+  const old=JSON.parse(bytes);assert.deepEqual(old.rows.map(r=>r.id),PARTS.filter(p=>p.ideaSource!=='user').map(p=>p.id));assert.equal(a.method.archives.find(r=>r.path==='docs/'+folder+'/catalogue-measurements.json').sha256,sha256);
  }
 });
 test('every current part reaches a distinct non-colour mechanism variant at desktop and phone dimensions',async()=>{

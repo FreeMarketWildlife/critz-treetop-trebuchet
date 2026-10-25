@@ -1,4 +1,4 @@
-import {part,validateBuild,buildFacts,TUNING,critter} from './build-catalog.js?v=49';
+import {part,validateBuild,buildFacts,TUNING,critter,counterweightKit} from './build-catalog.js?v=56';
 /** Fit owned equipment, reducing dimensions only when the selected part cannot
  * accommodate them. Buying capacity never secretly fills the counterweight. */
 export function fitEquipment(build,offer){
@@ -6,7 +6,7 @@ export function fitEquipment(build,offer){
  if(offer.kind==='voucher')return c;
  if(offer.kind==='animal')c.animal=offer.id;
  else{
-  const p=part(offer.id);c[p.slot]=p.id;
+  const p=part(offer.id);c[p.slot]=p.id;const kit=counterweightKit(p);if(kit){Object.assign(c,kit);c.counterGrams=Math.min(c.counterGrams,part(c.ballast).maxMass);}
   if(p.slot==='arm'&&c.longArm+c.shortArm>p.maxLength){const ratio=p.maxLength/(c.longArm+c.shortArm);c.longArm*=ratio;c.shortArm*=ratio;}
   if(p.slot==='frame'){c.pivotHeight=Math.min(c.pivotHeight,p.maxHeight);c.frameGrams=Math.min(c.frameGrams,p.maxMass);}
   if(p.slot==='ballast')c.counterGrams=Math.min(c.counterGrams,p.maxMass);

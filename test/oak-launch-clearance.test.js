@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {createGroveMap,createV4Revision5GroveMap,createV4Revision6GroveMap,createV4Revision7GroveMap,createV4Revision9GroveMap,readGroveMap,validateGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
+import {createGroveMap,createV4Revision5GroveMap,createV4Revision6GroveMap,createV4Revision7GroveMap,createV4Revision9GroveMap,createV4Revision10GroveMap,readGroveMap,validateGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
 import {oakTrunkCommands} from '../src/grove-tree-art.js';
 import {RETURN_CASES} from '../scripts/measure-forest-return.mjs';
 import {run,quietMetrics} from '../scripts/measure-forest-corridors.mjs';
@@ -35,6 +35,6 @@ test('the retained natural crown migrates only when every saved object is untouc
  assert.equal(createHash('sha256').update(bytes).digest('hex'),'bc857428579c0fa836206c39855c18b2a1ae0a101fb7e73b2d5a1ddc069d188e');
  assert.deepEqual(readGroveMap(store),validateGroveMap(currentMap));assert.equal(JSON.stringify(old),bytes);
  for(const edit of[m=>m.name='My natural crown',m=>m.objects[0].points[0].x+=.01,m=>m.objects[1].collision=!m.objects[1].collision]){const custom=structuredClone(old);edit(custom);assert.deepEqual(readGroveMap({getItem:()=>JSON.stringify(custom)}),validateGroveMap(custom));}
- assert.deepEqual(currentMap.tree,old.tree);assert.equal(currentMap.objects.length,old.objects.length);
- for(const o of currentMap.objects){const prior=old.objects.find(p=>p.id===o.id);for(const k of['collision','layer','material','bounce','radius','kind'])assert.equal(o[k],prior[k],o.id+'/'+k);if(!o.id.startsWith('oak-'))assert.deepEqual(o,prior);}
+ const bay=createV4Revision10GroveMap();assert.deepEqual(bay.tree,old.tree);assert.equal(bay.objects.length,old.objects.length);
+ for(const o of bay.objects){const prior=old.objects.find(p=>p.id===o.id);for(const k of['collision','layer','material','bounce','radius','kind'])assert.equal(o[k],prior[k],o.id+'/'+k);if(!o.id.startsWith('oak-'))assert.deepEqual(o,prior);}
 });

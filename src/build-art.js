@@ -1,18 +1,19 @@
-import {drawMouse} from './mouse-art.js?v=49';
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=49';
-import {critterHitboxBounds} from './critter-body.js?v=49';
-import {landingOpportunity} from './landing-opportunity.js?v=49';
-import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=49';
-import {imminentLanding} from './landing-view.js?v=49';
-import {GRAVITY} from './build-physics.js?v=49';
-import {drawFlightAccents} from './flight-art.js?v=49';
-import {drawCounterweight} from './counterweight-art.js?v=49';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=49';
-import {RopeVisual} from './rope-visual.js?v=49';
-import {part,grams} from './build-catalog.js?v=49';
-import {drawGroveWorld} from './grove-art.js?v=49';
-import {createCritterPerformance} from './critter-performance.js?v=49';
-import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=49';
+import {isGuillotine,drawGuillotine} from './guillotine.js?v=56';
+import {drawMouse} from './mouse-art.js?v=56';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=56';
+import {critterHitboxBounds} from './critter-body.js?v=56';
+import {landingOpportunity} from './landing-opportunity.js?v=56';
+import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=56';
+import {imminentLanding} from './landing-view.js?v=56';
+import {GRAVITY} from './build-physics.js?v=56';
+import {drawFlightAccents} from './flight-art.js?v=56';
+import {drawCounterweight} from './counterweight-art.js?v=56';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=56';
+import {RopeVisual} from './rope-visual.js?v=56';
+import {part,grams} from './build-catalog.js?v=56';
+import {drawGroveWorld} from './grove-art.js?v=56';
+import {createCritterPerformance} from './critter-performance.js?v=56';
+import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=56';
 const TAU=Math.PI*2;
 // These are finishes and attached fittings, not replacement collision geometry.
 // Capacity tiers keep the user's chosen dimensions; their cages/cloth identify
@@ -288,9 +289,9 @@ export function createBuildRenderer(canvas){
   for(const wheel of sim.wheels){const q=sim.real(wheel),p=project(q),r=c.wheelRadius*cam.scale;ellipse(ctx,...p,r,r,'#b2874b','#445039',3);ellipse(ctx,...p,r*.74,r*.74,'#d2ac6b','#697148',2);for(let i=0;i<6;i++){const a=q.angle+i*TAU/6;path(ctx,[p,[p[0]+Math.cos(a)*r*.72,p[1]-Math.sin(a)*r*.72]],'#796842',Math.max(1,r*.08));}ellipse(ctx,...p,r*.14,r*.14,'#667f65',null);}
   const transform=p=>{const q=sim.arm.getWorldPoint({x:p.x/sim.L,y:p.y/sim.L});return{x:q.x*sim.L,y:q.y*sim.L};};
   const tip=sim.tip(),short=transform({x:-c.shortArm,y:0}),pivot=sim.pivot(),cw=sim.counterPoint();timber(short,tip,c.beamWidth,wood);beamFinish(sim,short,tip);
-  if(c.mount==='hinged'&&c.chassis!=='floating')timber(short,cw,c.beamWidth*.3,'#7a8972');
+  if(!isGuillotine(c)&&c.mount==='hinged'&&c.chassis!=='floating')timber(short,cw,c.beamWidth*.3,'#7a8972');
   const cp=project(cw),r=sim.facts.counterRadius*cam.scale;
-  drawCounterweight(ctx,{point:cp,radius:r,angle:sim.real(sim.counter).angle,material:c.material});capacityCage(sim,cp,r);
+  if(isGuillotine(c))drawGuillotine(ctx,sim,project,cam.scale);else{drawCounterweight(ctx,{point:cp,radius:r,angle:sim.real(sim.counter).angle,material:c.material});capacityCage(sim,cp,r);}
   const pinEnd={x:tip.x+Math.cos(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength,y:tip.y+Math.sin(sim.arm.getAngle()+c.pinAngle*Math.PI/180)*c.pinLength};releaseHardware(sim,tip,pinEnd);
   const animalPoint=sim.real(sim.shot),payload=sim.loading&&sim.phase==='ready'?sim.loading.target():animalPoint,p=project(payload),physicalSize=sim.animal.length*cam.scale;
   if(sim.sling){rope(tip,payload,c.slingLength);const o=c.pouchWidth*.32;rope({...tip,x:tip.x+.02*c.longArm},{x:payload.x+o,y:payload.y},c.slingLength,1);

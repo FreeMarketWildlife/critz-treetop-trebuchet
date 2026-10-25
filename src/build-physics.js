@@ -1,13 +1,14 @@
-import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=49';
-import {windingMotion} from './winding-comfort.js?v=49';
-import {recipeDrawMinimum} from './scale-builds.js?v=49';
-import {addCritterFixtures} from './critter-body.js?v=49';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=49';
+import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=56';
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=56';
+import {windingMotion} from './winding-comfort.js?v=56';
+import {recipeDrawMinimum} from './scale-builds.js?v=56';
+import {addCritterFixtures} from './critter-body.js?v=56';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=56';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=49';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=49';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=49';
-const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint}=P;
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=56';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=56';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=56';
+const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint,GearJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
 // Arcade material balance for the released critter on the ordinary forest floor.
@@ -37,7 +38,11 @@ export class BuildSimulation{
   // beam and counterweight move beside it in this side-on model.
   this.troughFixture=this.frame.createFixture(Box(c.troughLength/(2*this.L),c.troughHeight/(2*this.L),Vec2(-c.troughLength*.25/this.L,c.troughHeight/(2*this.L))),{density:0,friction:part(c.trough).friction,restitution:0,filterCategoryBits:2,filterMaskBits:4});
   this.troughFixture.setUserData('trough');
-  this.setMass(this.frame,c.frameGrams/1000*(1+c.braceCount*.04));
+  if(isGuillotine(c)){
+   const g=GUILLOTINE;for(const side of [-1,1])this.bar(this.frame,{x:g.x+side*g.width/2,y:g.base},{x:g.x+side*g.width/2,y:g.base+g.height},.009);
+   this.bar(this.frame,{x:g.x-g.width/2,y:g.base+g.height},{x:g.x+g.width/2,y:g.base+g.height},.012);
+  }
+  this.setMass(this.frame,(c.frameGrams+(isGuillotine(c)?GUILLOTINE.supportGrams:0))/1000*(1+c.braceCount*.04));
   if(c.chassis==='walking'){
    // A separate support triangle rocks on real toe contacts. Its initial lean is a tuning-string setting.
    this.frame.setAngle(-rad(c.walkingLean));const verts=this.vertices(this.frame);const low=Math.min(...verts.map(v=>v.y));this.frame.setPosition(Vec2(0,this.frame.getPosition().y-low+.008));
@@ -50,7 +55,14 @@ export class BuildSimulation{
   this.bar(this.arm,{x:-c.shortArm,y:0},{x:c.longArm,y:0},c.beamWidth/2);
   this.setMass(this.arm,this.facts.beamGrams/1000);
   const cwLocal=Vec2(-c.shortArm/this.L,0),cwAttach=this.arm.getWorldPoint(cwLocal),r=this.facts.counterRadius/this.L;
-  if(c.mount==='fixed'&&c.chassis!=='floating'){
+  if(isGuillotine(c)){
+   const g=GUILLOTINE,local=Vec2(g.x/this.L,bladeHeight(this.initialAngle,REST_ARM_ANGLE)/this.L),point=this.frame.getWorldPoint(local);
+   this.counter=this.body(point.x*this.L,point.y*this.L,this.frame.getAngle(),c.counterGrams/1000,'counter');
+   const vertices=[[-.085,.05],[.085,.05],[.085,-.015],[-.085,-.05]].map(([x,y])=>Vec2(x/this.L,y/this.L));
+   this.counter.createFixture(Polygon(vertices),{density:1,friction:.3,restitution:0,filterGroupIndex:-1});this.setMass(this.counter,c.counterGrams/1000);
+   this.bladeStartY=bladeHeight(this.initialAngle,REST_ARM_ANGLE);
+   this.bladeGuide=this.world.createJoint(PrismaticJoint({enableLimit:true,lowerTranslation:(g.lowerY-this.bladeStartY)/this.L,upperTranslation:(g.upperY-this.bladeStartY)/this.L},this.frame,this.counter,point,this.frame.getWorldVector(Vec2(0,1))));
+  }else if(c.mount==='fixed'&&c.chassis!=='floating'){
    const fixture=this.arm.createFixture(Circle(cwLocal,r),{density:(c.counterGrams/1000/this.M)/(Math.PI*r*r),friction:.6,restitution:.05,filterGroupIndex:-1});fixture.setUserData('counter');this.counter=this.arm;
   }else{
    const hanger=c.chassis==='floating'?0:c.hanger/this.L;
@@ -63,9 +75,10 @@ export class BuildSimulation{
   if(c.chassis==='floating'){
    this.carriage=this.body(pivot.x*this.L,pivot.y*this.L,0,c.frameGrams/20000,'carriage');this.carriage.createFixture(Circle(Math.max(.025,c.beamWidth)/this.L),{density:1,filterGroupIndex:-1});this.setMass(this.carriage,c.frameGrams/20000);
    this.track=this.world.createJoint(PrismaticJoint({enableLimit:true,lowerTranslation:-c.baseWidth/2/this.L,upperTranslation:c.baseWidth/2/this.L},this.ground,this.carriage,pivot,Vec2(1,0)));
-   this.guide=this.world.createJoint(PrismaticJoint({},this.ground,this.counter,this.counter.getPosition(),Vec2(0,1)));
+   if(!isGuillotine(c))this.guide=this.world.createJoint(PrismaticJoint({},this.ground,this.counter,this.counter.getPosition(),Vec2(0,1)));
    this.axle=this.world.createJoint(RevoluteJoint({},this.carriage,this.arm,pivot));
   }else this.axle=this.world.createJoint(RevoluteJoint({},this.frame,this.arm,pivot));
+  if(isGuillotine(c))this.bladeCable=this.world.createJoint(GearJoint({joint1:this.axle,joint2:this.bladeGuide,ratio:-this.L/GUILLOTINE.drumRadius},this.arm,this.counter));
   if(c.chassis==='wheels'){
    for(const x of [-b,b]){const w=this.body(x,c.wheelRadius,0,c.wheelGrams/1000,'wheel');w.createFixture(Circle(c.wheelRadius/this.L),{density:1,friction:c.footFriction,restitution:.02,filterGroupIndex:-1});this.setMass(w,c.wheelGrams/1000);this.wheels.push(w);this.wheelAxles.push(this.world.createJoint(RevoluteJoint({enableMotor:true,motorSpeed:0,maxMotorTorque:0},this.frame,w,w.getPosition())));}
   }
@@ -252,7 +265,9 @@ export class BuildSimulation{
   }
   this.arm.setTransform(Vec2(pivot.x/this.L,pivot.y/this.L),angle);
   if(this.counter!==this.arm){
-   this.counter.setTransform(Vec2((pivot.x-c.shortArm*Math.cos(angle))/this.L,(pivot.y-c.shortArm*Math.sin(angle)-(c.chassis==='floating'?0:c.hanger))/this.L),0);
+   if(isGuillotine(c)){
+    const point=this.frame.getWorldPoint(Vec2(GUILLOTINE.x/this.L,bladeHeight(angle,REST_ARM_ANGLE)/this.L));this.counter.setTransform(point,this.frame.getAngle());
+   }else this.counter.setTransform(Vec2((pivot.x-c.shortArm*Math.cos(angle))/this.L,(pivot.y-c.shortArm*Math.sin(angle)-(c.chassis==='floating'?0:c.hanger))/this.L),0);
   }
   const loaded=this.loadingPosition(this.tip());
   if(!this.loading)this.shot.setTransform(Vec2(loaded.x/this.L,loaded.y/this.L),0);
@@ -265,7 +280,7 @@ export class BuildSimulation{
   // Bearing comfort sets the readable crank-rate governor; heavier loads additionally
   // respect motor power through d(mgh)/d(fraction). Ratchet holds at each stop.
   const angle=REST_ARM_ANGLE+span*f;
-  const joulesPerFraction=c.counterGrams/1000*GRAVITY*c.shortArm*Math.max(.01,-Math.cos(angle))*span;
+  const joulesPerFraction=c.counterGrams/1000*GRAVITY*(isGuillotine(c)?GUILLOTINE.drumRadius:c.shortArm*Math.max(.01,-Math.cos(angle)))*span;
   const motion=windingMotion(c,{loaded:!!this.loading}),step=Math.max(0,Math.min(.1,dt));
   this.windAge=(this.windAge??0)+step;
   const ramp=motion.rampSeconds?Math.min(1,this.windAge/motion.rampSeconds):1;
@@ -339,6 +354,10 @@ export class BuildSimulation{
   if(this.release&&(this.map?this.shotContacts.size>0:p.y<this.payloadRadius+.06*this.L)&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
   if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520*spaceScale(this.map)-p.y-this.map.launch.y)/(60*spaceScale(this.map)))):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
   this.world.step(dt,32,12);this.time+=h;
+  if(this.bladeGuide&&!this.guillotineCut){
+   const y=this.frame.getLocalPoint(this.counter.getPosition()).y*this.L;
+   if(y<=GUILLOTINE.lowerY+.001){this.guillotineCut={time:this.time,y};this.events.push({time:this.time,text:'Guillotine blade reached its stop.'});}
+  }
   if(this.map&&this.release&&this.phase==='flight'){
    const q=this.real(this.shot),stable=[q.x,q.y,q.vx,q.vy,this.counterPoint().y].every(Number.isFinite)&&Math.abs(q.x)<=100000;
    const crossing=stable?spaceCrossingFraction(p,q,this.escapeThreshold,this.map.launch.y):null;
@@ -379,6 +398,6 @@ export class BuildSimulation{
   if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&(this.map?this.shotContacts.size>0:q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L)?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>(this.map?Math.max(100,this.map.tree.height*.5):100))this.phase='finished';}
   else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
  }
- snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure,spaceState:this.spaceState,spaceEscape:this.spaceEscape?structuredClone(this.spaceEscape):null};}
+ snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure,guillotine:this.bladeGuide?{blade:this.counterPoint(),cut:this.guillotineCut??null}:null,spaceState:this.spaceState,spaceEscape:this.spaceEscape?structuredClone(this.spaceEscape):null};}
 }
 export function runBuild(c,seconds=80){const sim=new BuildSimulation(c);sim.fire();for(let t=0;t<seconds&&['swing','flight'].includes(sim.phase);t+=1/60)sim.step(1/60);return sim;}

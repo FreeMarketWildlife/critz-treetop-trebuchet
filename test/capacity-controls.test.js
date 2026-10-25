@@ -46,7 +46,7 @@ test('frame controls update actual axle geometry and mass only after explicit ap
 });
 test('invalid or out-of-capacity input cannot preview or apply even through direct handler invocation',()=>{
  for(const value of['',NaN,-1,100001]){
-  const c=setup('ballast');c.change('counterGrams',value);assert.equal(c.button.disabled,true);assert.equal(c.previews,0);assert.match(c.status.textContent,/Basket fill must be/);
+  const c=setup('ballast');c.change('counterGrams',value);assert.equal(c.button.disabled,true);assert.equal(c.previews,0);assert.match(c.status.textContent,/Counterweight mass must be/);
   c.button.emit('click');assert.equal(c.applies,0);assert.deepEqual(c.equipped,STARTER);assert.deepEqual(c.draft,STARTER);
  }
  assert.throws(()=>capacityAdjustedBuild(STARTER,'frame',{pivotHeight:2,frameGrams:2000,counterGrams:10000}),/Only this part/);
@@ -90,7 +90,7 @@ test('actual shop purchase path reveals new fill controls while preserving the c
  const before=structuredClone(h.context.state),start=source.indexOf(' button.onclick=()=>{try{',source.indexOf('function shopCard(')),end=source.indexOf('\n card.append',start);
  assert.ok(start>0&&end>start);vm.runInContext(source.slice(start,end),h.context);h.context.button.onclick();
  assert.equal(h.context.state.bells,before.bells-part('quarry').price);assert.equal(h.context.state.points,before.points);assert.equal(h.context.state.build.ballast,'quarry');assert.equal(h.context.state.build.counterGrams,before.build.counterGrams);assert.equal(h.context.state.build.pivotHeight,before.build.pivotHeight);
- assert.equal(h.nodes.activeTab,'build');assert.equal(h.nodes['part-ballast'].open,true);assert.equal(h.nodes['part-ballast'].scrolled,true);assert.match(h.nodes.fittedNotice.textContent,/Set your basket fill/);
+ assert.equal(h.nodes.activeTab,'build');assert.equal(h.nodes['part-ballast'].open,true);assert.equal(h.nodes['part-ballast'].scrolled,true);assert.match(h.nodes.fittedNotice.textContent,/Adjust counterweight mass/);
 });
 test('capacity reveal never opens workshop controls on the playfield',()=>{
  const h=application();h.nodes.workshopDialog.open=false;h.context.fitted('Timber tower','frame');assert.equal(h.nodes.activeTab,undefined);assert.equal(h.nodes['part-frame'].open,false);

@@ -1,16 +1,16 @@
-import {atmosphereAt} from './journey.js?v=50-trebuchet';
-import {counterOutline} from './workshop.js?v=50-trebuchet';
-import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js?v=49';
-import {fixedObstacleVertices} from './fixed-obstacles.js?v=49';
-import {createEncounterBody} from './encounter-body.js?v=49';
-import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js?v=49';
+import {atmosphereAt} from './journey.js?v=56-trebuchet';
+import {counterOutline} from './workshop.js?v=56-trebuchet';
+import {loadingCollisionRegion,loadingJointRegion} from './loading-refinement.js?v=56';
+import {fixedObstacleVertices} from './fixed-obstacles.js?v=56';
+import {createEncounterBody} from './encounter-body.js?v=56';
+import {surfaceY,surfaceVertices,surfaceCrossing,surfaceNear} from './terrain.js?v=56';
 import * as P from '../vendor/planck/planck.mjs';
-import {aerodynamicForces} from './glide.js?v=49';
-import {config} from './physics.js?v=49';
-import {createRig} from './species.js?v=49';
-import {createEncounterDirector} from './encounters.js?v=49';
-import {world as layout} from './world.js?v=49';
-import {stageInitialVolunteer} from './staging.js?v=49';
+import {aerodynamicForces} from './glide.js?v=56';
+import {config} from './physics.js?v=56';
+import {createRig} from './species.js?v=56';
+import {createEncounterDirector} from './encounters.js?v=56';
+import {world as layout} from './world.js?v=56';
+import {stageInitialVolunteer} from './staging.js?v=56';
 const serializer=new P.Serializer({rootClass:P.World,
  postSerialize:(data,obj)=>{if(obj.getAngle&&obj.getMassData)data.angle=obj.getAngle();if(obj.getUserData)data.labTag=obj.getUserData();if(obj.getMassData && obj.isDynamic?.()){const m={center:P.Vec2()};obj.getMassData(m);data.labMass=m;if(obj.getGravityScale()!==1)data.labGravityScale=obj.getGravityScale();}return data;},
  // Planck 1.5.1 constructs bodies through a wrapped rotation. Restore the

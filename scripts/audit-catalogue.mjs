@@ -15,14 +15,14 @@ const summary=s=>({phase:s.phase,failure:s.failure,release:s.release?{speed:s.re
 const reject=b=>{try{validateBuild(b);return false;}catch{return true;}};
 const previous=p=>{const group=PARTS.filter(q=>q.slot===p.slot);return group[group.findIndex(q=>q.id===p.id)-1];};
 export function capacityProof(p){
- const prev=previous(p),current=fitEquipment(STARTER,{kind:'part',id:p.id});
+ const prev=p.id==='guillotine'?null:previous(p),current=fitEquipment(STARTER,{kind:'part',id:p.id});
  let b,measured,limit,settings;
  if(p.slot==='frame'){
   b={...STARTER,frame:p.id,pivotHeight:p.maxHeight*.8,frameGrams:p.maxMass*.8};
   const s=new BuildSimulation(b);s.frame.setType(s.storeTypes.get(s.frame));measured={pivotHeight:s.pivot().y,frameGrams:s.frame.getMass()*s.M*1000/(1+b.braceCount*.04)};
   limit={height:p.maxHeight,mass:p.maxMass};settings={height:current.pivotHeight,mass:current.frameGrams};
  }else if(p.slot==='ballast'){
-  b={...STARTER,frame:'leviathan',pivotHeight:200,ballast:p.id,material:'steel',counterGrams:p.maxMass*.8};
+  b=p.id==='guillotine'?{...current,counterGrams:p.maxMass*.8}:{...STARTER,frame:'leviathan',pivotHeight:200,ballast:p.id,material:'steel',counterGrams:p.maxMass*.8};
   const s=new BuildSimulation(b);s.counter.setType(s.storeTypes.get(s.counter));measured={counterGrams:s.counter.getMass()*s.M*1000};limit={mass:p.maxMass};settings={mass:current.counterGrams};
  }else if(p.slot==='arm'){
   const total=p.maxLength*.8;b={...STARTER,frame:'leviathan',arm:p.id,longArm:total*.8,shortArm:total*.2,pivotHeight:Math.max(1.2,total*.85)};

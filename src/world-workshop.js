@@ -15,7 +15,7 @@ export function installWorldWorkshop({author=false,world,onEnterEdit,onReturnToP
    const [html,css]=await Promise.all([htmlResponse.text(),cssResponse.text()]),template=new DOMParser().parseFromString(html,'text/html'),shadow=host.shadowRoot??host.attachShadow({mode:'open'}),style=documentRef.createElement('style');
    style.textContent=css.replaceAll(':root',':host').replace(/\bbody\.shared\b/g,':host(.shared)').replace(/\bbody\b/g,':host')+'\n:host{position:fixed;inset:0;z-index:50;display:block}:host([hidden]){display:none!important}.inspector-bottom{padding-bottom:45px}';
    template.querySelectorAll('script,#playOverlay').forEach(n=>n.remove());shadow.replaceChildren(style,...[...template.body.childNodes].map(n=>documentRef.importNode(n,true)));
-   const {mountMapEditor}=await import('./map-editor.js?v=49');
+   const {mountMapEditor}=await import('./map-editor.js?v=56');
    editor=mountMapEditor({root:shadow,world,onPlay:()=>setMode('play'),isActive:()=>mode==='edit',qa,getDoor,getBuild});await editor.ready;return editor;
   })().catch(error=>{loading=null;editor=null;throw error;});
   return loading;

@@ -1,6 +1,8 @@
-import {drawProportionedOak} from './grove-tree-art.js?v=49';
-import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=49';
-import {mapLevels} from './grove-map.js?v=49';
+import {drawDenseJungle} from './forest-depth-art.js?v=56';
+import {drawOakCanopy} from './oak-canopy-art.js?v=56';
+import {drawProportionedOak} from './grove-tree-art.js?v=56';
+import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=56';
+import {mapLevels} from './grove-map.js?v=56';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Derive decorative crowns from canonical editable props, not another forest
@@ -18,15 +20,17 @@ export function drawProportionedForestBackdrop(c,{camera:cam,width:W,height:H,ma
   // Physical cloud banks above the 110 m oak. Their positions do not follow
   // the viewport; the clear lower sky keeps the oak's broad crown readable.
   for(let i=-2;i<6;i++){const x=90*i+Math.sin(i*2.7)*16,y=t.height+29+Math.sin(i*1.8)*12-origin;if(!visible(x,y,28,7))continue;c.save();c.globalAlpha*=(1-space)*.46;foliageClump(c,project,x,y,26,5,'#f8f2d8','#f8f2d8',i,true);foliageClump(c,project,x-7,y+3,12,5,'#f8f2d8','#f8f2d8',i+2,true);c.restore();}
+  drawDenseJungle(c,{project,camera:cam,scale:s,width:W,height:H,origin});
   // Quiet leaf masses fit inside the authored 35–60 m Amazon tree crowns.
   // The canonical back polygons supply their trunks and editor selection.
   const crowns=proportionedForestCrowns(map).filter(b=>visible((b.minX+b.maxX)/2,(b.minY+b.maxY)/2,(b.maxX-b.minX)/2,(b.maxY-b.minY)/2));
-  for(const b of crowns){const x=(b.minX+b.maxX)/2,y=(b.minY+b.maxY)/2,rx=(b.maxX-b.minX)/2,ry=(b.maxY-b.minY)/2;if(!visible(x,y,rx,ry))continue;
+  for(const b of map.starterRevision>=11?[]:crowns){const x=(b.minX+b.maxX)/2,y=(b.minY+b.maxY)/2,rx=(b.maxX-b.minX)/2,ry=(b.maxY-b.minY)/2;if(!visible(x,y,rx,ry))continue;
    c.save();c.globalAlpha*=.68;const p=project(x,y);c.beginPath();c.ellipse(...p,rx*s,ry*s,0,0,TAU);c.clip();
    const count=crowns.length>12?2:Math.min(rx,ry)*s<18?3:5,coarse=count<5||s<2;
    for(let j=0;j<count;j++)foliageClump(c,project,x+rx*(j-(count-1)/2)*(count===2?.65:.38),y+ry*Math.sin(j*1.9)*.26,rx*.46,ry*.71,j%2?'#517c63':'#729779','#a7bb89',j,coarse);c.restore();
   }
-  drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,height:H,camera:cam});
+  if(map.starterRevision>=11)drawOakCanopy(c,{map,project,scale:s,width:W,height:H});
+  drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,height:H,camera:cam,canopy:map.starterRevision<11});
   // Centimetre leaves, not scaled-up crown-sized leaves. Only the viewport's
   // visible crown/forest cells are visited, with a strict small spray budget.
   if(s>14&&alt<110){const step=Math.max(.65,Math.sqrt(W*H/(s*s*16))),left=cam.x-W/(2*s),bottom=cam.y-H/(2*s),half=t.crownDepth/2,cy=t.height-half-origin;let budget=16;

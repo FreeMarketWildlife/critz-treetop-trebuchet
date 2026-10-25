@@ -1,4 +1,4 @@
-import {PARTS, CRITTERS, STARTER_PARTS, part, critter} from './build-catalog.js?v=49';
+import {PARTS, CRITTERS, STARTER_PARTS, part, critter, shopPart} from './build-catalog.js?v=56';
 
 export const VOUCHERS = [
   {id:'luckyPenny',name:'Lucky penny',price:80,description:'Rerolls start at 3 Bells instead of 5. A little luck goes a long way.',slot:'voucher'},
@@ -20,7 +20,7 @@ function rng(seed) {
 }
 function draw(s,random,kind,count,exclude=[]) {
   const catalog=kind==='animal'?CRITTERS:PARTS;
-  const pool=catalog.filter(p=>p.price>0&&!owned(s,{...p,kind})&&!exclude.includes(p.id));
+  const pool=catalog.filter(p=>p.price>0&&(kind==='animal'||shopPart(p))&&!owned(s,{...p,kind})&&!exclude.includes(p.id));
   const earned=s.bells+PARTS.filter(p=>s.owned.includes(p.id)&&!STARTER_PARTS.includes(p.id)).reduce((a,p)=>a+p.price,0);
   const budget=Math.max(65,earned*.65);
   const out=[];

@@ -6,16 +6,16 @@ export const GROVE_MATERIALS={wood:['#a5663e','#d6a15a'],leaf:['#738d52','#c2d58
 const stroke=(c,pts,color,width)=>{c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.stroke();};
 export function drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s}){
  const colors=GROVE_MATERIALS[o.material]??GROVE_MATERIALS.wood,pts=o.points.map(p=>project(p.x,p.y));
- if(/^(oak-limb-|jungle-limb-)/.test(o.id)&&pts.length===26){
+ if(/^(oak-limb-|jungle-limb-)/.test(o.id)&&pts.length>=26&&pts.length%2===0){
   // Follow curved wood grain along the actual ribbon. Leave the root cap
   // unoutlined so forks blend into their parent instead of looking bolted on.
-  const upper=[],lower=[],grain=[];
-  for(let i=0;i<13;i++){const a=pts[i],b=pts[25-i],lo=a[1]>b[1]?a:b,hi=lo===a?b:a;upper.push(hi);lower.push(lo);grain.push([hi[0]*.65+lo[0]*.35,hi[1]*.65+lo[1]*.35]);}
-  const tolerance=s<8?.25:0,outline=tolerance?[...compactPath(pts.slice(0,13),tolerance),...compactPath(pts.slice(13),tolerance)]:pts,g=tolerance?compactPath(grain,tolerance):grain,l=tolerance?compactPath(lower,tolerance):lower;
-  c.beginPath();outline.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle='#96734b';c.fill();
-  c.beginPath();g.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));for(const p of [...l].reverse())c.lineTo(...p);c.closePath();c.fillStyle='#654b33';c.fill();
-  stroke(c,outline,'#3d382b',clamp(s*.025,.45,1.4));
-  if(s>2.5)stroke(c,g,'#c0a06b',clamp(s*.018,.35,1.2));
+  const upper=[],lower=[],grain=[],count=pts.length/2;
+  for(let i=0;i<count;i++){const a=pts[i],b=pts[pts.length-1-i],lo=a[1]>b[1]?a:b,hi=lo===a?b:a;upper.push(hi);lower.push(lo);grain.push([hi[0]*.65+lo[0]*.35,hi[1]*.65+lo[1]*.35]);}
+  const tolerance=s<8?.25:0,outline=tolerance?[...compactPath(pts.slice(0,count),tolerance),...compactPath(pts.slice(count),tolerance)]:pts,g=tolerance?compactPath(grain,tolerance):grain,l=tolerance?compactPath(lower,tolerance):lower;
+  c.beginPath();outline.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();const bark=c.createLinearGradient(0,Math.min(...pts.map(p=>p[1])),0,Math.max(...pts.map(p=>p[1]))+1);bark.addColorStop(0,'#a78a5c');bark.addColorStop(.6,'#886641');bark.addColorStop(1,'#624c34');c.fillStyle=bark;c.fill();
+  c.beginPath();g.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));for(const p of [...l].reverse())c.lineTo(...p);c.closePath();c.fillStyle='#473c2a35';c.fill();
+  stroke(c,outline,'#48452f',clamp(s*.025,.45,1.4));
+  if(s>8){stroke(c,g,'#c0a06b',clamp(s*.018,.35,1.2));for(const f of [.26,.63]){const seam=upper.map((a,i)=>[a[0]*(1-f)+lower[i][0]*f,a[1]*(1-f)+lower[i][1]*f]);stroke(c,seam,f<.5?'#b19a6555':'#4e432d66',clamp(s*.01,.3,.9));}}
   return;
  }
 

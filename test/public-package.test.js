@@ -12,7 +12,7 @@ test('public package retains Site identity and the complete player dependency gr
   await mkdir(join(target,'dist/src'),{recursive:true});await writeFile(join(target,'dist/editor.html'),'old author entry');await writeFile(join(target,'dist/src/world-workshop.js'),'old author module');
   const result=await packagePublic(target),index=await readFile(join(result.dist,'index.html'),'utf8');
   assert.match(index,/data-author-tools="explicit"/);assert.doesNotMatch(index,/id="worldEdit"|href="editor.html"/);
-  for(const file of AUTHOR_ASSETS)await access(join(result.dist,file));const editor=await readFile(join(result.dist,'editor.html'),'utf8');assert.match(editor,/src\/editor-entry\.js/);assert.match(editor,/not access-controlled/);
+  for(const file of [...AUTHOR_ASSETS,'docs/user-generated-item-ideas/guillotine.html','docs/trebuchet-parts/default-trebuchet.svg'])await access(join(result.dist,file));const editor=await readFile(join(result.dist,'editor.html'),'utf8');assert.match(editor,/src\/editor-entry\.js/);assert.match(editor,/not access-controlled/);
   const visited=new Set();async function visit(file){if(visited.has(file))return;visited.add(file);const content=await readFile(file,'utf8');
    if(file.endsWith('.js'))for(const m of content.matchAll(/(?:^|\n)\s*(?:import|export)\s+(?:[^;\n]*?\s+from\s*)?['"]([^'"]+)['"]/g)){if(!m[1].startsWith('.'))continue;await visit(resolve(dirname(file),m[1].split('?')[0]));}
    if(file.endsWith('.html'))for(const m of content.matchAll(/(?:src|href)="([^"#]+\.(?:js|css)(?:\?[^" ]*)?)"/g))await visit(resolve(dirname(file),m[1].split('?')[0]));

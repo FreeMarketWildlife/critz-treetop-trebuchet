@@ -1,4 +1,4 @@
-import {CRITTERS} from './build-catalog.js?v=49';
+import {CRITTERS} from './build-catalog.js?v=56';
 
 /** Comparison references, not new physics inputs or world canon.
  * length/height are the game's local envelope axes in metres; height is the

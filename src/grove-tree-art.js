@@ -1,5 +1,5 @@
-import {ancientBough} from './grove-tree-layout.js?v=49';
-import {foliageClump} from './grove-nature.js?v=49';
+import {ancientBough} from './grove-tree-layout.js?v=56';
+import {foliageClump} from './grove-nature.js?v=56';
 // A whole, branching tree, rather than a cylinder behind an oval. Coordinates
 // remain fixed at every camera scale, including the academy doorway at y=0.
 export function drawAncientTree(c,{project,tree:t,origin,scale:s,width:W,height:H,camera}){
@@ -78,11 +78,11 @@ export function oakRootCommands(t,origin=0){
 }
 /** V4 only. The shared editor/runtime object painter supplies every solid
  * oak-scaffold-* branch, so decoration cannot invent a landable-looking bough. */
-export function drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,height:H,camera}){
+export function drawProportionedOak(c,{project,tree:t,origin,scale:s,width:W,height:H,camera,canopy=true}){
  const cx=t.trunkX,w=t.trunkWidth,h=t.height,r=t.crownRadius,depth=t.crownDepth,root=-origin,commands=oakCrownCommands(t,origin);
  const crownBottom=h-depth-origin,close=Math.max(0,Math.min(1,(s-8)/52));
- if(t.height===75)drawOakCrownVolumes(c,{project,tree:t,origin,scale:s,close,width:W,height:H});
- else{
+ if(canopy&&t.height===75)drawOakCrownVolumes(c,{project,tree:t,origin,scale:s,close,width:W,height:H});
+ else if(canopy){
  c.save();c.globalAlpha*=1-close*.76;oakPath(c,commands,project);
  const g=c.createLinearGradient(...project(cx,crownBottom),...project(cx,h-origin));g.addColorStop(0,'#315e50');g.addColorStop(.46,'#527b55');g.addColorStop(1,'#8ca76a');c.fillStyle=g;c.fill();c.save();c.clip();
  for(let i=0;i<17;i++){const a=i*2.39996,q=Math.sqrt((i+.5)/17),x=cx+Math.cos(a)*r*q*.88,y=crownBottom+depth*(.52+Math.sin(a)*q*.46),rx=r*(.19+.035*Math.sin(i)),ry=depth*(.14+.025*Math.cos(i*1.7));foliageClump(c,project,x,y,rx,ry,['#668b5b','#486f50','#78965e','#527e57'][i%4],'#b6c78a',i,s<1.4);}

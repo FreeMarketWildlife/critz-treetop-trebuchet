@@ -42,3 +42,13 @@ test('inspector accepts quarter-metre snapped positions without native step mism
 test('enemy size is locked while position and separately named larger variants remain editable',()=>{
  const original=createGroveMap().objects.find(o=>o.kind==='beetle'),resized=resizeObject(original,1000,1000);assert.equal(resized.radius,original.radius);assert.deepEqual(translateObject(resized,2,-3),{...original,x:original.x+2,y:original.y-3});
 });
+
+test('rich starter links store only exact edits and retain object order, deletions and legacy links',async()=>{
+ const original=validateGroveMap(createGroveMap()),edited=structuredClone(original);
+ edited.objects.reverse();edited.objects.splice(3,1);edited.objects.find(o=>o.material==='wood').bounce=.437;
+ const token=await encodeMapLink(edited);assert.ok(token.length<12000,token.length+' chars');assert.deepEqual(await decodeMapLink(token),edited);
+ const legacy='j1.'+Buffer.from(JSON.stringify({...original,objects:original.objects.slice(0,2)})).toString('base64url');
+ assert.deepEqual(await decodeMapLink(legacy),{...original,objects:original.objects.slice(0,2)});
+ const missing='j1.'+Buffer.from(JSON.stringify({$base:11,map:{},order:['not-a-real-object'],changed:[]})).toString('base64url');
+ await assert.rejects(decodeMapLink(missing),/Missing shared map object/);
+});

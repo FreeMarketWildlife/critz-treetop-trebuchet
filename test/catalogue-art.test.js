@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createBuildRenderer} from '../src/build-art.js';
 import {BuildSimulation} from '../src/build-physics.js';
+import {fitEquipment} from '../src/build-equipment.js';
 import {PARTS,SLOTS,STARTER} from '../src/build-catalog.js';
 import {createPayloadLoading} from '../src/payload-loading.js';
 
@@ -34,17 +35,17 @@ function signature(build,{size={width:390,height:844},loading=false,preview=fals
 function stableClock(run){const old=Object.getOwnPropertyDescriptor(globalThis,'performance'),dpr=Object.getOwnPropertyDescriptor(globalThis,'devicePixelRatio');Object.defineProperty(globalThis,'performance',{value:{now:()=>0},configurable:true});Object.defineProperty(globalThis,'devicePixelRatio',{value:1,configurable:true});try{return run();}finally{Object.defineProperty(globalThis,'performance',old);if(dpr)Object.defineProperty(globalThis,'devicePixelRatio',dpr);else delete globalThis.devicePixelRatio;}}
 const baseline={...STARTER,counterGrams:4000};
 
-test('all 48 catalogue entries reach distinct finite mechanism artwork at unchanged chosen dimensions',()=>stableClock(()=>{
- assert.equal(PARTS.length,48,'update the complete visual audit when the catalogue changes');
+test('all 49 catalogue entries reach distinct finite mechanism artwork at unchanged chosen dimensions',()=>stableClock(()=>{
+ assert.equal(PARTS.length,49,'update the complete visual audit when the catalogue changes');
  for(const [slot]of SLOTS){const items=PARTS.filter(p=>p.slot===slot),seen=new Map();
-  for(const p of items){const drawn=signature({...baseline,[slot]:p.id});assert.ok(!seen.has(drawn.geometry),`${slot}/${p.id} is geometrically distinct from ${seen.get(drawn.geometry)}`);seen.set(drawn.geometry,p.id);}
+  for(const p of items){const drawn=signature(p.id==='guillotine'?fitEquipment(baseline,{kind:'part',id:p.id}):{...baseline,[slot]:p.id});assert.ok(!seen.has(drawn.geometry),`${slot}/${p.id} is geometrically distinct from ${seen.get(drawn.geometry)}`);seen.set(drawn.geometry,p.id);}
   assert.equal(seen.size,items.length,slot);
  }
 }));
 
 test('all pouch fabrics remain distinct with the real loading basket and workshop preview',()=>stableClock(()=>{
  for(const loading of [false,true]){const seen=new Set();for(const p of PARTS.filter(p=>p.slot==='sling')){const r=signature({...baseline,sling:p.id},{loading});seen.add(r.geometry);}assert.equal(seen.size,6);}
- for(const size of [{width:390,height:844},{width:300,height:220},{width:1726,height:875}])for(const p of PARTS){signature({...baseline,[p.slot]:p.id},{size,preview:size.width===300});}
+ for(const size of [{width:390,height:844},{width:300,height:220},{width:1726,height:875}])for(const p of PARTS){signature(p.id==='guillotine'?fitEquipment(baseline,{kind:'part',id:p.id}):{...baseline,[p.slot]:p.id},{size,preview:size.width===300});}
 }));
 
 test('frame finishes and bearing fittings follow moved and leaning bodies without changing fixtures',()=>stableClock(()=>{
@@ -58,7 +59,7 @@ test('frame finishes and bearing fittings follow moved and leaning bodies withou
 
 test('capacity artwork identifies the tier while selected weight and dimensions remain unchanged',()=>stableClock(()=>{
  for(const slot of ['frame','ballast']){const fixtureCounts=[],masses=[];
-  for(const p of PARTS.filter(p=>p.slot===slot)){const r=signature({...baseline,[slot]:p.id});masses.push(r.sim.c.counterGrams);let count=0;for(let f=r.sim.frame.getFixtureList();f;f=f.getNext())count++;fixtureCounts.push(count);assert.equal(r.sim.c.pivotHeight,baseline.pivotHeight);assert.equal(r.sim.c.baseWidth,baseline.baseWidth);}
+  for(const p of PARTS.filter(p=>p.slot===slot&&p.id!=='guillotine')){const r=signature(p.id==='guillotine'?fitEquipment(baseline,{kind:'part',id:p.id}):{...baseline,[slot]:p.id});masses.push(r.sim.c.counterGrams);let count=0;for(let f=r.sim.frame.getFixtureList();f;f=f.getNext())count++;fixtureCounts.push(count);assert.equal(r.sim.c.pivotHeight,baseline.pivotHeight);assert.equal(r.sim.c.baseWidth,baseline.baseWidth);}
   assert.equal(new Set(masses).size,1);assert.equal(new Set(fixtureCounts).size,1,'surface variants do not fabricate support fixtures');
  }
 }));

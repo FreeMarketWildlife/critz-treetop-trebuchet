@@ -10,3 +10,5 @@
 
 - The map editor always opens the active game's current world authority, never a separate starter or stale editor-only map. Fresh game and editor defaults share `createGroveMap()`. Preserve saved custom maps; migrate only exact untouched older defaults. Current authored dimensions: oak 75 m tall, broad 72 m crown spread and 45 m crown depth; surrounding jungle canopy tops 25–30 m. Branches must taper, curve, and fork from trunks or parent limbs. These authored proportions are game art direction, not additional world canon.
 - Keep shared map, catalog, physics, and renderer module URLs/version tags consistent across Play and Edit. The editor's rig and door references come from the active game rather than separate fixed-size sketches.
+
+- The jungle is a continuous dense forest backdrop: canopy tops remain roughly 25–30 m and the distant interior is fully opaque below 25 m at every horizontal position. No sky gaps below the jungle canopy. Use layered rooted trunks, vines and undergrowth for depth. Oak foliage must overlap limbs as well as sit behind them; keep the tested large-launcher clearance when reshaping solid limbs.

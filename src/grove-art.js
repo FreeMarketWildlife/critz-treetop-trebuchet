@@ -1,10 +1,12 @@
-import {drawBotanicalBumper} from './grove-botanical-art.js?v=49';
-import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=49';
-import {ordinaryLeafHalfLength} from './grove-nature.js?v=49';
-import {drawForestForeground} from './grove-jungle-art.js?v=49';
-import {drawGroveBackdrop} from './grove-backdrop.js?v=49';
-import {pointInPolygon} from './grove-geometry.js?v=49';
-import {enemyRecipe} from './grove-map.js?v=49';
+import {drawJungleFoliage} from './forest-depth-art.js?v=56';
+import {drawOakCanopy} from './oak-canopy-art.js?v=56';
+import {drawBotanicalBumper} from './grove-botanical-art.js?v=56';
+import {drawMaterialPolygon,GROVE_MATERIALS} from './grove-material-art.js?v=56';
+import {ordinaryLeafHalfLength} from './grove-nature.js?v=56';
+import {drawForestForeground} from './grove-jungle-art.js?v=56';
+import {drawGroveBackdrop} from './grove-backdrop.js?v=56';
+import {pointInPolygon} from './grove-geometry.js?v=56';
+import {enemyRecipe} from './grove-map.js?v=56';
 // Shared world art for the editor and live game. All scenery uses the same
 // metre-to-pixel transform; distant layers alone use deliberate parallax.
 const TAU=Math.PI*2,INK='#302d2b';
@@ -78,7 +80,7 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
  for(const {o,b} of objects){
   const layer=o.layer??'world';if((layer==='front')!==foreground)continue;
   if(b.maxX<visible.minX||b.minX>visible.maxX||b.maxY<visible.minY||b.minY>visible.maxY)continue;
-  c.save();if(o.collision===false)c.globalAlpha=editor?.55:layer==='back'?(o.material==='wood'?.52-.32*clamp((s-3)/24,0,1):.52):.7;
+  c.save();if(o.collision===false)c.globalAlpha=/^oak-limb-/.test(o.id)&&o.material==='wood'?.83:editor?.55:layer==='back'?(o.material==='wood'?.52-.32*clamp((s-3)/24,0,1):.52):.7;
   if(o.type==='enemy'){const p=project(o.x,o.y),r=(o.radius??.5)*s,size=r*2;
    if(o.collision)drawGroveEnemyContactBody(c,o.kind,...p,r);
    if(size<12){if(o.collision){if(size>=4)ellipse(c,...p,r*.58,r*.48,enemyRecipe(o.kind)?.color??'#ba844c',null);}else ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}
@@ -100,11 +102,16 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
   }
   if(o.type==='circle'){const p=project(o.x,o.y),r=(o.radius??1)*s;if(o.material==='bumper'){drawBotanicalBumper(c,o,{x:p[0],y:p[1],r,scale:s});c.restore();continue;}ellipse(c,...p,r,r,colors[0],INK,2.5);ellipse(c,p[0]-r*.15,p[1]-r*.16,r*.64,r*.58,colors[1],INK,1.4);ellipse(c,...p,r*.2,r*.2,'#f0dc9c',INK,1.5);}
   else if(o.points?.length){
-   const pts=o.points.map(p=>project(p.x,p.y));c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);
-   if(o.type==='polygon'&&((s<1.5&&o.id.startsWith('great-bough-'))||s<.65||(b.maxY-b.minY)*s<2||(b.maxX-b.minX)*s<9)){c.closePath();c.fillStyle=colors[0];c.fill();c.restore();continue;}
-   if(o.type==='polygon'){c.closePath();drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s});
-   }else{c.strokeStyle=INK;c.lineWidth=Math.max(.6,Math.min(16,(o.width??.16)*s+.45));c.stroke();line(c,pts,colors[0],Math.max(.25,Math.min(13,(o.width??.16)*s)));}
+   const simple=(s<1.5&&o.id.startsWith('great-bough-'))||s<.65||(b.maxY-b.minY)*s<2||(b.maxX-b.minX)*s<9;
+   if(o.type==='polygon'&&!simple)drawMaterialPolygon(c,o,b,project,{width:W,height:H,scale:s});
+   else{
+    const stride=s<1.5&&/^(oak-limb-|jungle-limb-)/.test(o.id)?Math.max(1,Math.ceil(o.points.length/(s<.65?8:16))):1;
+    const pts=o.points.filter((_,i)=>i%stride===0).map(p=>project(p.x,p.y));c.beginPath();c.moveTo(...pts[0]);for(const p of pts.slice(1))c.lineTo(...p);
+    if(o.type==='polygon'){c.closePath();c.fillStyle=colors[0];c.fill();}
+    else{c.strokeStyle=INK;c.lineWidth=Math.max(.6,Math.min(16,(o.width??.16)*s+.45));c.stroke();line(c,pts,colors[0],Math.max(.25,Math.min(13,(o.width??.16)*s)));}
+   }
   }
+
   // The authored opening's flexible stem mats have a warm, readable lip and
   // bound moss ribs. These marks follow the actual editable collision face.
   if(o.id.startsWith('opening-skip-')&&o.points?.length>=2){
@@ -115,6 +122,8 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
   }
   c.restore();
  }
+ if(!foreground)drawJungleFoliage(c,{map,project,scale:s,width:W,height:H});
+ if(!foreground)drawOakCanopy(c,{map,project,scale:s,width:W,height:H,front:true});
  if(foreground)drawForestForeground(c,{project,camera:cam,scale:s,width:W,height:H,origin:map.launch.y});
  // Foreground decoration uses the same metre scale as the flight layer.
  // Never paste fixed-size leaves around the screen: they destroy scale cues.

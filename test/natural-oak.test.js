@@ -1,17 +1,17 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
 import {CURRENT_OAK,oakBranchPlan,curvePoint,curvedBranch} from '../src/oak-world.js';
-import {createGroveMap,createV4Revision7GroveMap,createV4Revision8GroveMap,validateGroveMap,readGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
+import {createGroveMap,createV4Revision7GroveMap,createV4Revision8GroveMap,createV4Revision10GroveMap,validateGroveMap,readGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
 import {createWorldSession} from '../src/world-session.js';import {jungleLayerAt} from '../src/grove-jungle.js';
 import {BuildSimulation} from '../src/build-physics.js';import {STARTER} from '../src/build-catalog.js';import {createPayloadLoading} from '../src/payload-loading.js';
 test('fresh game and editor authority share the 75 m oak and 25–30 m jungle canopy',()=>{
- const map=createGroveMap(),world=createWorldSession({storage:{getItem:()=>null}});assert.deepEqual(world.map,validateGroveMap(map));assert.deepEqual(map.tree,CURRENT_OAK);assert.equal(map.starterRevision,10);assert.equal(map.tree.crownRadius*2,72);assert.equal(map.tree.crownDepth,45);
+ const map=createGroveMap(),world=createWorldSession({storage:{getItem:()=>null}});assert.deepEqual(world.map,validateGroveMap(map));assert.deepEqual(map.tree,CURRENT_OAK);assert.equal(map.starterRevision,11);assert.equal(map.tree.crownRadius*2,72);assert.equal(map.tree.crownDepth,45);
  const crowns=map.objects.filter(o=>/^amazon-tree-\d+-crown$/.test(o.id));assert.ok(crowns.length>=20);
  for(const crown of crowns){const top=objectBounds(crown).maxY+map.launch.y;assert.ok(top>=25&&top<=30,`${crown.id}: ${top}`);}
  assert.equal(jungleLayerAt(28,map).name,'Jungle canopy crowns');assert.equal(jungleLayerAt(31,map),undefined);
 });
 test('oak limbs are curved tapered polygons attached to trunks or parent branches',()=>{
  const plan=oakBranchPlan(),byId=new Map(plan.map(b=>[b.id,b]));
- for(const b of plan){assert.ok(b.width>b.tipWidth);const shape=curvedBranch(b.points,b.width,b.tipWidth);assert.equal(shape.length,26);
+ for(const b of plan){assert.ok(b.width>b.tipWidth);const shape=curvedBranch(b.points,b.width,b.tipWidth);assert.equal(shape.length,b.points.length>4?66:26);
   if(!b.parent)assert.equal(b.points[0].x,CURRENT_OAK.trunkX);
   else{const parent=byId.get(b.parent);assert.ok(parent);let distance=Infinity;for(let i=0;i<=1000;i++){const q=curvePoint(parent.points,i/1000);distance=Math.min(distance,Math.hypot(q.x-b.points[0].x,q.y-b.points[0].y));}assert.ok(distance<.05,b.id);}
  }
@@ -36,4 +36,11 @@ test('previous crown upgrades only when untouched, preserving authored revision 
  assert.deepEqual(readGroveMap({getItem:()=>JSON.stringify(old)}),validateGroveMap(createGroveMap()));
  old.objects.find(o=>o.id==='oak-limb-west-low').points[0].x-=.1;
  assert.deepEqual(readGroveMap({getItem:()=>JSON.stringify(old)}),validateGroveMap(old));
+});
+
+test('the new crown upgrades only an exact untouched revision ten map',()=>{
+ const previous=createV4Revision10GroveMap(),raw=JSON.stringify(previous);
+ assert.deepEqual(readGroveMap({getItem:()=>raw}),validateGroveMap(createGroveMap()));
+ previous.objects[1].points[2].x+=.02;
+ assert.deepEqual(readGroveMap({getItem:()=>JSON.stringify(previous)}),validateGroveMap(previous));
 });

@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import {PARTS,STARTER,part} from '../src/build-catalog.js';
 import {BuildSimulation} from '../src/build-physics.js';
 import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from '../src/equipment-summary.js';
-test('all 48 parts expose distinct functional specifications, including exact small friction',()=>{
- assert.equal(PARTS.length,48);
+test('all 49 parts expose distinct functional specifications, including exact small friction',()=>{
+ assert.equal(PARTS.length,49);
  const specs=PARTS.map(equipmentSpec);
  assert.ok(specs.every(s=>typeof s==='string'&&s.length>10));
- assert.equal(new Set(specs).size,48);
+ assert.equal(new Set(specs).size,49);
  for(const p of PARTS.filter(p=>['bearing','release','trough'].includes(p.slot)))assert.ok(equipmentSpec(p).includes(String(p.friction)),p.id);
- assert.match(equipmentUse(part('continental'),STARTER),/Capacity does not add weight/);
+ assert.match(equipmentUse(part('continental'),STARTER),/Counterweight mass: 2 kg.*Holder and connection are included/);
  assert.match(equipmentUse(part('leviathan'),STARTER),/dimensions unchanged/);
 });
 test('tuning controls reflect equipped capacity rather than unavailable global limits',()=>{

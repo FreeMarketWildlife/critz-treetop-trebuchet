@@ -1,10 +1,10 @@
-import {DOORS,availableCritters,critterHeight} from './critter-door.js?v=49';
-import {PARTS,CRITTERS,STARTER,COMPACT_STARTER,PREVIOUS_STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild} from './build-catalog.js?v=49';
-import {VOUCHERS,validateShop} from './build-shop.js?v=49';
-import {validateSpaceEscape} from './space-policy.js?v=49';
+import {DOORS,availableCritters,critterHeight} from './critter-door.js?v=56';
+import {PARTS,CRITTERS,STARTER,COMPACT_STARTER,PREVIOUS_STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild,equipmentOwned} from './build-catalog.js?v=56';
+import {VOUCHERS,validateShop} from './build-shop.js?v=56';
+import {validateSpaceEscape} from './space-policy.js?v=56';
 export const SAVE_KEY='treetop-custom-workshop-v1';
 export function newProgress(){return{version:1,doorTier:0,doorUpgradeRound:-1,saveRevision:0,starterRevision:6,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[],achievements:[],pendingSpace:null};}
-export function canBuild(state,build,creative=false){validateBuild(build);if(creative)return true;if(build.wind!==0||build.drag!==1)throw Error('Adventure uses calm air with air resistance. Reset Creative atmosphere settings first.');for(const[slot]of SLOTS)if(!state.owned.includes(build[slot]))throw Error(`Buy ${part(build[slot]).name} first.`);if(!availableCritters(state).includes(build.animal))throw Error('Upgrade the tree door to let this critter through.');return true;}
+export function canBuild(state,build,creative=false){validateBuild(build);if(creative)return true;if(build.wind!==0||build.drag!==1)throw Error('Adventure uses calm air with air resistance. Reset Creative atmosphere settings first.');for(const[slot]of SLOTS)if(!equipmentOwned(state.owned,build[slot]))throw Error(`Buy ${part(build[slot]).name} first.`);if(!availableCritters(state).includes(build.animal))throw Error('Upgrade the tree door to let this critter through.');return true;}
 export function buy(state,id,animal=false){if(animal)throw Error('Critters are not for sale. Upgrade the tree door.');const product=animal?critter(id):part(id),key=animal?'animals':'owned';if(state[key].includes(id))throw Error('Already owned.');if(state.bells<product.price)throw Error('More Bells needed.');return {...state,bells:state.bells-product.price,[key]:[...state[key],id]};}
 const SPACE_ACHIEVEMENT='spaceEscape';
 const validShotId=id=>{if(typeof id!=='string'||!id.length||id.length>120)throw Error('Invalid shot id.');return id;};

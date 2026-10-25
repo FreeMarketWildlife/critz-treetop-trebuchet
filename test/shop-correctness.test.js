@@ -33,7 +33,7 @@ test('an explicit validated import can replace normal progress while normal stal
 test('incompatible volunteer and smaller-capacity purchases retain the full working machine and inventory',()=>{
  const b=purchaseFit(STARTER,{kind:'animal',id:'elephant'});assert.equal(b.fitted,false);assert.deepEqual(b.build,STARTER);assert.match(b.reason,/capacity/);
  const large=createScaleBuild('elephant'),fit=purchaseFit(large,{kind:'part',id:'timber'});assert.equal(fit.fitted,false);assert.deepEqual(fit.build,large);assert.match(fit.reason,/dimensions/);
- const owned={...newProgress(),owned:PARTS.map(p=>p.id),animals:CRITTERS.map(a=>a.id),doorTier:7,build:large},older=fitEquipment(large,{kind:'part',id:'timber'});assert.equal(canBuild(owned,older),true);assert.equal(older.frame,'timber');assert.equal(older.pivotHeight,10);assert.ok(owned.owned.includes('giant'));assert.equal(owned.owned.length,48);
+ const owned={...newProgress(),owned:PARTS.map(p=>p.id),animals:CRITTERS.map(a=>a.id),doorTier:7,build:large},older=fitEquipment(large,{kind:'part',id:'timber'});assert.equal(canBuild(owned,older),true);assert.equal(older.frame,'timber');assert.equal(older.pivotHeight,10);assert.ok(owned.owned.includes('giant'));assert.equal(owned.owned.length,PARTS.length);
  assert.equal(purchaseFit(STARTER,{kind:'part',id:'timber'}).fitted,true);
 });
 

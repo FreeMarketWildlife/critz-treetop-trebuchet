@@ -10,9 +10,10 @@ export const PARTS=[
  ['twig','Willow beam',0,2.2,500,32e6,'#ba804a'],['oak','Oak beam',65,7,700,55e6,'#9d6138'],['laminated','Laminated beam',260,20,580,90e6,'#c28e53'],['ironwood','Ironwood beam',1100,65,850,160e6,'#714c3d'],['colossus','Colossus truss',4800,160,450,260e6,'#678e87']
  ].map(([id,name,price,maxLength,density,strength,color])=>item(id,'arm',name,price,'Set both lever lengths and the beam thickness. Mass and bending strength follow its geometry.',{maxLength,density,strength,color})),
  ...[['sapling','Sapling A-frame',0,3,10000],['timber','Timber tower',80,10,100000],['braced','Braced tower',300,30,3000000],['giant','Giant gantry',1400,100,100000000],['leviathan','Leviathan gantry',5000,220,2000000000]].map(([id,name,price,maxHeight,maxMass])=>item(id,'frame',name,price,'Set axle height, base width, ballast and bracing. Wide feet resist tipping.',{maxHeight,maxMass})),
- ...[['pebble','Pebble basket',0,5000],['boulder','Boulder basket',55,100000],['quarry','Quarry basket',220,2000000],['mountain','Mountain ballast',950,100000000],['continental','Continental ballast',4200,15000000000]].map(([id,name,price,maxMass])=>item(id,'ballast',name,price,'Buy more counterweight capacity, then choose the actual fill mass.',{maxMass})),
+ ...[['pebble','Pebble counterweight',0,5000],['boulder','Boulder counterweight',55,100000],['quarry','Quarry counterweight',220,2000000],['mountain','Mountain counterweight',950,100000000],['continental','Continental counterweight',4200,15000000000]].map(([id,name,price,maxMass])=>item(id,'ballast',name,price,'A complete counterweight with stone, holder and connection. Choose its actual mass below.',{maxMass})),
+ item('guillotine','ballast','Guillotine',180,'User-generated item idea. A compact 58 cm guided blade counterweight. Raise it with the crank; its falling mass pulls a passive cable drum on the arm axle.',{maxMass:5000,counterweight:{material:'steel',mount:'hinged'},ideaSource:'user'}),
  item('stone','material','River stone',0,'2,700,000 g/m³. A lumpy, bulky weight.',{density:2700}),
- item('sand','material','Sand basket',35,'1,600,000 g/m³. The same mass needs a larger basket.',{density:1600}),
+ item('sand','material','Sand counterweight',35,'1,600,000 g/m³. The same mass needs a larger basket.',{density:1600}),
  item('steel','material','Steel plates',150,'7,850,000 g/m³. Compact ballast with a different moment of inertia.',{density:7850}),
  item('runway','trough','Timber launch rail',0,'A low wooden trough supports the loaded pouch and guides its first slide.',{friction:.24}),
  item('waxedRunway','trough','Waxed launch rail',85,'A smooth lined trough reduces the friction before lift-off.',{friction:.06}),
@@ -26,7 +27,20 @@ export const PARTS=[
  item('rollerPin','release','Roller release finger',360,'A low-friction roller lets the ring clear sooner. Adjust the pin bend to shape the release arc.',{friction:.008}),
  ...[['hand','Acorn crank wheel',0,100,.12,.24,3,6,'#bb793e'],['geared','Brass geared wheel',100,2500,.145,.22,5,8,'#d2a24e'],['capstan','Iron capstan wheel',700,500000,.18,.26,7,8,'#819b91'],['engine','Gantry winding wheel',3000,500000000,.21,.28,9,10,'#677e87']].map(([id,name,price,power,radiusRatio,drumRatio,gearing,spokes,color])=>item(id,'winch',name,price,'Front-mounted winding wheel. Hold to crank counterclockwise; release to freewheel clockwise as the ballast falls. Larger geared drums raise heavier loads faster.',{power,radiusRatio,drumRatio,gearing,spokes,color})),
 ];
-export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight capacity'],['material','Ballast material'],['mount','Counterweight joint'],['sling','Pouch'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Crank wheel'],['trough','Launch trough']];
+export const SLOTS=[['chassis','Foundation'],['arm','Throwing arm'],['frame','Frame'],['ballast','Counterweight'],['material','Counterweight'],['mount','Counterweight'],['sling','Sling'],['rope','Sling cords'],['bearing','Axle'],['release','Release finger'],['winch','Crank wheel'],['trough','Launch trough']];
+export const EQUIPMENT_SLOTS=SLOTS.filter(([slot])=>!['material','mount'].includes(slot));
+export const isCounterweightPart=p=>['ballast','material'].includes(p.slot);
+export const shopPart=p=>!p.hidden&&p.slot!=='mount'&&p.id!=='stone';
+// Legacy IDs remain valid. Each visible counterweight includes its holder and
+// connection; custom saved combinations remain untouched until an item is fitted.
+export function counterweightKit(p){
+ if(p.counterweight)return {...p.counterweight,ballast:p.id};
+ if(p.slot==='ballast')return{ballast:p.id,material:'stone',mount:p.id==='pebble'?'fixed':'hinged'};
+ if(p.slot==='material')return{ballast:'boulder',material:p.id,mount:'hinged'};
+ return null;
+}
+export function equipmentOwned(owned,id){return owned.includes(id)||owned.some(key=>{const kit=counterweightKit(part(key));return kit&&Object.values(kit).includes(id);});}
+export function counterweightName(c){return c.ballast==='guillotine'?'Guillotine':part(c.material).name+' counterweight';}
 export const CRITTERS=[
  {id:'mouse',name:'Field mouse',grams:25,length:0.18,width:0.035,color:'#b0a19a',price:0},
  {id:'frog',name:'Tree frog',grams:30,length:0.08,width:0.05,color:'#8ab667',price:20},
@@ -61,7 +75,7 @@ export const TUNING=[
  ['troughLength','Guide length','m',.3,350,.1,'trough'],['troughHeight','Guide deck height','m',.02,15,.01,'trough'],
  ['longArm','Long arm','m',.15,150,.05,'arm'],['shortArm','Short arm','m',.08,60,.02,'arm'],['beamWidth','Beam thickness','m',.01,12,.005,'arm'],
  ['pivotHeight','Axle height','m',.2,220,.05,'frame'],['baseWidth','Footprint','m',.15,180,.05,'frame'],['frameGrams','Frame + ballast','g',100,2000000000,100,'frame'],['braceCount','Cross braces','',0,6,1,'frame'],
- ['counterGrams','Counterweight fill','g',100,15000000000,100,'ballast'],['hanger','Hanger length','m',.05,100,.05,'mount'],['hingeFriction','Hinge friction','',0,.3,.001,'mount'],
+ ['counterGrams','Counterweight mass','g',100,15000000000,100,'ballast'],['hanger','Hanger length','m',.05,100,.05,'mount'],['hingeFriction','Hinge friction','',0,.3,.001,'mount'],
  ['slingLength','Cord length','m',.1,230,.05,'sling'],['pouchWidth','Pouch opening','m',.06,32,.01,'sling'],
  ['pinAngle','Pin bend','°',-120,100,1,'release'],['pinLength','Pin length','m',.005,3,.005,'release'],
  ['axleRadius','Axle radius','m',.003,3,.001,'bearing'],['cockAngle','Draw-down angle','°',5,80,1,'winch'],
@@ -71,6 +85,7 @@ export const grams=g=>`${Math.round(g).toLocaleString('en-US')} g`;
 export function validateBuild(raw){
  const c={...STARTER,...raw};
  if(typeof c.name!=='string'||c.name.length>60)throw Error('Name must be 60 characters or fewer.');
+ if(c.ballast==='guillotine'&&(c.material!=='steel'||c.mount!=='hinged'))throw Error('The guillotine includes its steel blade and blade guide.');
  for(const [slot]of SLOTS)if(part(c[slot]).slot!==slot)throw Error(`Wrong part for ${slot}.`);
  critter(c.animal);
  for(const [key,label,,min,max]of TUNING)if(!Number.isFinite(c[key])||c[key]<min||c[key]>max)throw Error(`${label} must be between ${min} and ${max}.`);

@@ -1,14 +1,14 @@
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=49';
-import {editorMapStorage} from './editor-storage.js?v=49';
-import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=49';
-import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=49';
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=49';
-import {groveTreeCamera,groveOverviewBounds} from './grove-camera.js?v=49';
-import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=49';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=49';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=49';
-import {createAudio} from './audio.js?v=49';
-import {loadAudioPreferences} from './audio-preferences.js?v=49';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=56';
+import {editorMapStorage} from './editor-storage.js?v=56';
+import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=56';
+import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=56';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=56';
+import {groveTreeCamera,groveOverviewBounds} from './grove-camera.js?v=56';
+import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=56';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=56';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=56';
+import {createAudio} from './audio.js?v=56';
+import {loadAudioPreferences} from './audio-preferences.js?v=56';
 /** Mount tools inside the game's scoped panel. The supplied world is the
  * single map authority; this module never creates or embeds another game. */
 export function mountMapEditor({root,world,onPlay,isActive=()=>true,qa=false,getDoor=()=>null,getBuild=()=>STARTER}){
@@ -72,7 +72,7 @@ function drawRig(){const c=getBuild(),p=(x,y)=>project({x,y});if(camera.scale<5)
 function draw(){if(!width||!height)return;ctx.setTransform(dpr,0,0,dpr,0,0);drawGroveWorld(ctx,{camera,width,height,map:doc,time:0,editor:true,showDoor:false});drawCritterDoor(ctx,doorGeometry(doc,getDoor()?.height??.10),p=>{const q=project(p);return[q.x,q.y];},camera.scale);drawRig();drawGroveWorld(ctx,{camera,width,height,map:doc,time:0,foreground:true,editor:true});
  const base=Number($('grid').value),step=base*2**Math.max(0,Math.ceil(Math.log2(32/(base*camera.scale)))),left=camera.x-width/(2*camera.scale),right=camera.x+width/(2*camera.scale),bottom=camera.y-height/(2*camera.scale),top=camera.y+height/(2*camera.scale);
  ctx.save();ctx.globalAlpha=.24;for(let x=Math.ceil(left/step)*step;x<=right;x+=step){const p=project({x,y:0});line({x:p.x,y:0},{x:p.x,y:height},'#60754e',.6);}for(let y=Math.ceil(bottom/step)*step;y<=top;y+=step){const p=project({x:0,y});line({x:0,y:p.y},{x:width,y:p.y},'#60754e',.6);}ctx.restore();
- for(const o of doc.objects){if(o.material==='foliage'&&o.id!==selected&&selectionFilter!=='foliage')continue;const b=bounds(o);if(b.maxX<left||b.minX>right||b.maxY<bottom||b.minY>top)continue;ctx.setLineDash(o.collision?[]:[5,4]);strokeObject(o,o.id===selected?'#f6d264':o.collision?'#314e3a55':'#b6dfe6bb',o.id===selected?2.5:1);ctx.setLineDash([]);}
+ for(const o of doc.objects){if(o.material==='foliage'&&o.id!==selected&&selectionFilter!=='foliage')continue;if(!o.collision&&o.id!==selected)continue;if(o.id.startsWith('oak-limb-')&&o.id!==selected&&selectionFilter!=='solid')continue;const b=bounds(o);if(b.maxX<left||b.minX>right||b.maxY<bottom||b.minY>top)continue;ctx.setLineDash(o.collision?[]:[5,4]);strokeObject(o,o.id===selected?'#f6d264':o.collision?'#314e3a55':'#b6dfe6bb',o.id===selected?2.5:1);ctx.setLineDash([]);}
  const o=object();if(o){if(o.points)for(let i=0;i<o.points.length;i++){const p=project(o.points[i]);ctx.fillStyle=i===vertex?'#fff3b5':'#f4ca61';ctx.strokeStyle='#7d6b36';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(p.x,p.y,i===vertex?6:4.2,0,Math.PI*2);ctx.fill();ctx.stroke();if(camera.scale>15){ctx.font='9px Trebuchet MS';ctx.fillStyle='#4e653c';ctx.fillText(i+1,p.x+8,p.y-6);}}else if(o.type!=='enemy'){const p=project({x:o.x+o.radius,y:o.y});ctx.fillStyle='#f4ca61';ctx.fillRect(p.x-4,p.y-4,8,8);}}
  if(ghost){ctx.save();ctx.globalAlpha=.6;strokeObject(ghost,'#f5cc65',3,true);ctx.restore();}
  if(points.length){ctx.setLineDash([5,4]);strokeObject({type:'chain',points},'#fff3bc',2);ctx.setLineDash([]);for(const [i,p] of points.entries()){const q=project(p);ctx.fillStyle=i===0?'#f5d876':'#f5f1d6';ctx.strokeStyle='#708553';ctx.beginPath();ctx.arc(q.x,q.y,i===0?6:3,0,Math.PI*2);ctx.fill();ctx.stroke();}}

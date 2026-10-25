@@ -1,3 +1,13 @@
+# Current release · 25 October 2026
+
+The publication now combines the current local game: the 75 m oak with irregular tapered collision limbs and overlapping crown foliage, an opaque dense jungle below its 25–30 m canopy, the shared Play/Edit world, the 60 cm starter, realistic mouse proportions, ordered door progression, automatic round-to-shop flow, and the user-generated guillotine counterweight. All 49 equipment items remain in the catalogue. Saved custom maps are preserved; only exact untouched defaults migrate.
+
+The release also bounds foliage and branch drawing at overview scale, removes duplicate polygon painting, and stores rich map links as lossless changes against the retained revision-11 starter. Older full-map links remain supported. The public package includes the explicit developer entry, the item preview, model/parts reference pages and current world documentation. Its `/release-source.json` records the exact pushed GitHub source commit.
+
+The complete release suite passes **1,082/1,082 tests**, with zero failures; the catalogue audit reports no findings, the pinned Planck runtime matches byte-for-byte, and `git diff --check` passes. The live URL and commit are reported at publication. The local no-save browser check completed Enter loading, held-Space winding, physical release, and automatic Visit 2 shop entry without browser errors. Historical measurements and the one-second encounter-density goal below remain historical limits, not new claims of completion.
+
+---
+
 # Release checkpoint · 21 October 2026
 
 Authorized destinations are `FreeMarketWildlife/critz-treetop-trebuchet` and `https://critz-treetop-trebuchet.freemarketwildlife.chatgpt.site`. This checkpoint adds a proportionate forest-return fork and atomic reward collection, retaining the corrected hosted developer entry. It does not certify the full one-second encounter goal.
