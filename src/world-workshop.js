@@ -1,6 +1,6 @@
 /** Both modes share one world authority and one existing game runtime. The
  * ShadowRoot scopes the tools' IDs/CSS; it is not a second page or game. */
-export function installWorldWorkshop({author=false,world,onEnterEdit,onReturnToPlay,onError=console.error,qa=false,document:documentRef=globalThis.document,window:windowRef=globalThis.window,fetch:fetchFile=globalThis.fetch,loadEditor,getDoor=()=>null,getBuild}={}){
+export function installWorldWorkshop({author=false,world,onEnterEdit,onReturnToPlay,onError=console.error,qa=false,document:documentRef=globalThis.document,window:windowRef=globalThis.window,fetch:fetchFile=globalThis.fetch,loadEditor,getDoor=()=>null,getBuild,getRigOrigin}={}){
  if(!author)return Object.freeze({setMode:async()=>false,mode:'play',editing:false});
  const navigation=documentRef.getElementById('worldModeSwitch');navigation.innerHTML='<span id="worldMapStatus">Grandfather Tree</span><button id="worldPlay" type="button" aria-pressed="true">▶ Play</button><button id="worldEdit" type="button" aria-pressed="false">✎ Edit</button>';navigation.hidden=false;
  const host=documentRef.getElementById('worldEditor'),editButton=documentRef.getElementById('worldEdit'),playButton=documentRef.getElementById('worldPlay'),label=documentRef.getElementById('worldMapStatus');
@@ -9,14 +9,14 @@ export function installWorldWorkshop({author=false,world,onEnterEdit,onReturnToP
  async function ensureEditor(){
   if(editor)return editor;
   if(!loading)loading=(async()=>{
-   if(loadEditor){editor=await loadEditor({world,onPlay:()=>setMode('play'),isActive:()=>mode==='edit',qa,getDoor,getBuild});await editor.ready;return editor;}
+   if(loadEditor){editor=await loadEditor({world,onPlay:()=>setMode('play'),isActive:()=>mode==='edit',qa,getDoor,getBuild,getRigOrigin});await editor.ready;return editor;}
    const htmlUrl=new URL('editor.html',windowRef.location.href),cssUrl=new URL('editor.css?v=25',windowRef.location.href),[htmlResponse,cssResponse]=await Promise.all([fetchFile(htmlUrl),fetchFile(cssUrl)]);
    if(!htmlResponse.ok||!cssResponse.ok)throw Error('The map tools could not load. Your world and game are unchanged.');
    const [html,css]=await Promise.all([htmlResponse.text(),cssResponse.text()]),template=new DOMParser().parseFromString(html,'text/html'),shadow=host.shadowRoot??host.attachShadow({mode:'open'}),style=documentRef.createElement('style');
    style.textContent=css.replaceAll(':root',':host').replace(/\bbody\.shared\b/g,':host(.shared)').replace(/\bbody\b/g,':host')+'\n:host{position:fixed;inset:0;z-index:50;display:block}:host([hidden]){display:none!important}.inspector-bottom{padding-bottom:45px}';
    template.querySelectorAll('script,#playOverlay').forEach(n=>n.remove());shadow.replaceChildren(style,...[...template.body.childNodes].map(n=>documentRef.importNode(n,true)));
-   const {mountMapEditor}=await import('./map-editor.js?v=56');
-   editor=mountMapEditor({root:shadow,world,onPlay:()=>setMode('play'),isActive:()=>mode==='edit',qa,getDoor,getBuild});await editor.ready;return editor;
+   const {mountMapEditor}=await import('./map-editor.js?v=57');
+   editor=mountMapEditor({root:shadow,world,onPlay:()=>setMode('play'),isActive:()=>mode==='edit',qa,getDoor,getBuild,getRigOrigin});await editor.ready;return editor;
   })().catch(error=>{loading=null;editor=null;throw error;});
   return loading;
  }

@@ -1,17 +1,18 @@
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=56';
-import {editorMapStorage} from './editor-storage.js?v=56';
-import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=56';
-import {STARTER,REST_ARM_ANGLE} from './build-catalog.js?v=56';
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=56';
-import {groveTreeCamera,groveOverviewBounds} from './grove-camera.js?v=56';
-import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=56';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=56';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=56';
-import {createAudio} from './audio.js?v=56';
-import {loadAudioPreferences} from './audio-preferences.js?v=56';
+import {rigOriginForDoor} from './launch-staging.js?v=57';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=57';
+import {editorMapStorage} from './editor-storage.js?v=57';
+import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=57';
+import {STARTER,REST_ARM_ANGLE,critter,buildFacts} from './build-catalog.js?v=57';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=57';
+import {groveTreeCamera,groveOverviewBounds,groveSetupCamera} from './grove-camera.js?v=57';
+import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=57';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=57';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=57';
+import {createAudio} from './audio.js?v=57';
+import {loadAudioPreferences} from './audio-preferences.js?v=57';
 /** Mount tools inside the game's scoped panel. The supplied world is the
  * single map authority; this module never creates or embeds another game. */
-export function mountMapEditor({root,world,onPlay,isActive=()=>true,qa=false,getDoor=()=>null,getBuild=()=>STARTER}){
+export function mountMapEditor({root,world,onPlay,isActive=()=>true,qa=false,getDoor=()=>null,getBuild=()=>STARTER,getRigOrigin=()=>undefined}){
 if(!world?.map)throw Error('The editor must open the active game world.');
 const host=root.host??root,owner=root.ownerDocument??document;
 const $=id=>root.querySelector('[id="'+id+'"]'),canvas=$('map'),ctx=canvas.getContext('2d'),mini=$('minimap'),mc=mini.getContext('2d'),clone=v=>structuredClone(v);
@@ -68,7 +69,7 @@ const round=n=>Math.round(n*1000)/1000;
 function showVertex(){const o=object(),p=o?.points?.[vertex];if(!p)return;$('vertexX').value=round(p.x);$('vertexY').value=round(p.y+doc.launch.y);requestDraw();}
 function line(a,b,color,w=1){ctx.strokeStyle=color;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
 function strokeObject(o,color,w=1.5,fill=false){ctx.strokeStyle=color;ctx.fillStyle=fill?color:'transparent';ctx.lineWidth=w;ctx.beginPath();if(o.points){const a=project(o.points[0]);ctx.moveTo(a.x,a.y);for(const p of o.points.slice(1)){const q=project(p);ctx.lineTo(q.x,q.y);}if(o.type==='polygon')ctx.closePath();}else{const p=project(o);ctx.arc(p.x,p.y,o.radius*camera.scale,0,Math.PI*2);}if(fill)ctx.fill();ctx.stroke();}
-function drawRig(){const c=getBuild(),p=(x,y)=>project({x,y});if(camera.scale<5){const q=p(0,0);ctx.fillStyle='#f0d68a';ctx.beginPath();ctx.arc(q.x,q.y,3,0,Math.PI*2);ctx.fill();ctx.fillStyle='#f9f0c9';ctx.font='bold 9px Trebuchet MS';ctx.fillText(`HOME · ${c.pivotHeight} m rig`,q.x+7,q.y-7);return;}line(p(-c.baseWidth/2,0),p(0,c.pivotHeight),'#54633d',4);line(p(0,c.pivotHeight),p(c.baseWidth/2,0),'#54633d',4);line(p(-c.baseWidth/2,0),p(c.baseWidth/2,0),'#b3a06a',3);const tx=c.longArm*Math.cos(REST_ARM_ANGLE),ty=c.pivotHeight+c.longArm*Math.sin(REST_ARM_ANGLE),sx=-c.shortArm*Math.cos(REST_ARM_ANGLE),sy=c.pivotHeight-c.shortArm*Math.sin(REST_ARM_ANGLE);line(p(tx,ty),p(sx,sy),'#5b5a39',4);line(p(tx,ty),p(tx+c.slingLength*.56,ty-c.slingLength*.8),'#dacb93',1.7);const q=p(sx,sy-c.hanger);ctx.fillStyle='#778971';ctx.fillRect(q.x-4,q.y-5,8,10);const label=p(0,ty+.25);ctx.fillStyle='#385b3e';ctx.textAlign='center';ctx.font='bold 9px Trebuchet MS';ctx.fillText(`${c.pivotHeight} m RIG`,label.x,label.y);ctx.textAlign='left';}
+function drawRig(){const c=getBuild(),door=doorGeometry(doc,getDoor()?.height??.10),originX=getRigOrigin()??rigOriginForDoor(c,critter(c.animal),door),p=(x,y)=>project({x:x+originX,y});if(camera.scale<5){const q=p(0,0);ctx.fillStyle='#f0d68a';ctx.beginPath();ctx.arc(q.x,q.y,3,0,Math.PI*2);ctx.fill();ctx.fillStyle='#f9f0c9';ctx.font='bold 9px Trebuchet MS';ctx.fillText(`HOME · ${c.pivotHeight} m rig`,q.x+7,q.y-7);return;}line(p(-c.baseWidth/2,0),p(0,c.pivotHeight),'#54633d',4);line(p(0,c.pivotHeight),p(c.baseWidth/2,0),'#54633d',4);line(p(-c.baseWidth/2,0),p(c.baseWidth/2,0),'#b3a06a',3);const tx=c.longArm*Math.cos(REST_ARM_ANGLE),ty=c.pivotHeight+c.longArm*Math.sin(REST_ARM_ANGLE),sx=-c.shortArm*Math.cos(REST_ARM_ANGLE),sy=c.pivotHeight-c.shortArm*Math.sin(REST_ARM_ANGLE);line(p(tx,ty),p(sx,sy),'#5b5a39',4);line(p(tx,ty),p(tx+c.slingLength*.56,ty-c.slingLength*.8),'#dacb93',1.7);const q=p(sx,sy-c.hanger);ctx.fillStyle='#778971';ctx.fillRect(q.x-4,q.y-5,8,10);const label=p(0,ty+.25);ctx.fillStyle='#385b3e';ctx.textAlign='center';ctx.font='bold 9px Trebuchet MS';ctx.fillText(`${c.pivotHeight} m RIG`,label.x,label.y);ctx.textAlign='left';}
 function draw(){if(!width||!height)return;ctx.setTransform(dpr,0,0,dpr,0,0);drawGroveWorld(ctx,{camera,width,height,map:doc,time:0,editor:true,showDoor:false});drawCritterDoor(ctx,doorGeometry(doc,getDoor()?.height??.10),p=>{const q=project(p);return[q.x,q.y];},camera.scale);drawRig();drawGroveWorld(ctx,{camera,width,height,map:doc,time:0,foreground:true,editor:true});
  const base=Number($('grid').value),step=base*2**Math.max(0,Math.ceil(Math.log2(32/(base*camera.scale)))),left=camera.x-width/(2*camera.scale),right=camera.x+width/(2*camera.scale),bottom=camera.y-height/(2*camera.scale),top=camera.y+height/(2*camera.scale);
  ctx.save();ctx.globalAlpha=.24;for(let x=Math.ceil(left/step)*step;x<=right;x+=step){const p=project({x,y:0});line({x:p.x,y:0},{x:p.x,y:height},'#60754e',.6);}for(let y=Math.ceil(bottom/step)*step;y<=top;y+=step){const p=project({x:0,y});line({x:0,y:p.y},{x:width,y:p.y},'#60754e',.6);}ctx.restore();
@@ -101,7 +102,7 @@ function drawMini(){
  mc.strokeStyle='#fff2c2';mc.fillStyle='#fcebc838';mc.lineWidth=1.5;mc.fillRect(px,py,width/camera.scale/spanX*w,height/camera.scale/spanY*h);mc.strokeRect(px,py,Math.max(3,width/camera.scale/spanX*w),Math.max(3,height/camera.scale/spanY*h));
 }
 function resize(){width=canvas.clientWidth;height=canvas.clientHeight;if(!(width>0&&height>0))return;dpr=Math.min(2,devicePixelRatio||1);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);if(firstSize&&width>0){firstSize=false;defaultView();}cameraChanged();}
-function launchView(){camera.x=3;camera.y=2;camera.scale=Math.max(7,Math.min(width/30,height/21));cameraChanged();}
+function launchView(){if(doc.version!==4){camera.x=3;camera.y=2;camera.scale=Math.max(7,Math.min(width/30,height/21));cameraChanged();return;}const c=getBuild(),door=doorGeometry(doc,getDoor()?.height??.10);Object.assign(camera,groveSetupCamera(c,{width,height,door,originX:getRigOrigin()??rigOriginForDoor(c,critter(c.animal),door),counterRadius:buildFacts(c).counterRadius}));cameraChanged();}
 function treeView(){Object.assign(camera,groveTreeCamera(doc,{width,height}));cameraChanged();}
 function defaultView(){if(!(width>0&&height>0)){firstSize=true;return;}if(doc.version===4)treeView();else launchView();}
 function hit(p){const pool=[...doc.objects].reverse().filter(o=>selectionFilter==='all'||(selectionFilter==='solid'?!['foliage','sap'].includes(o.material):o.material===selectionFilter)).sort((a,b)=>(['foliage','sap'].includes(a.material)?1:0)-(['foliage','sap'].includes(b.material)?1:0));for(const o of pool){if(o.points){if(o.type==='polygon'&&pointInside(p,o.points))return o;for(let i=0;i<o.points.length-(o.type==='chain'?1:0);i++)if(segmentDistance(p,o.points[i],o.points[(i+1)%o.points.length])<8/camera.scale)return o;}else if(Math.hypot(p.x-o.x,p.y-o.y)<o.radius+6/camera.scale)return o;}return null;}

@@ -1,11 +1,11 @@
 <!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guillotine — User-generated item ideas</title><style>*{box-sizing:border-box}body{margin:0;background:#f5f0df;color:#2c4133;font:17px system-ui}main{max-width:1160px;margin:auto;padding:28px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}small{color:#637650}h1{margin:4px 0 10px;font-size:36px}p{max-width:800px;line-height:1.5}button,a{font:inherit}button{padding:12px 18px;border:1px solid #617246;border-radius:10px;background:#34563d;color:#fff;cursor:pointer}button+button{background:#e7dfc2;color:#2c4133}canvas{display:block;width:min(100%,800px);aspect-ratio:1100/620;background:#e9edda;border:1px solid #b1ba91;border-radius:18px;margin:20px auto}output{display:block;font-weight:600;min-height:28px}a{color:#34563d}@media(max-width:600px){main{padding:16px}header{display:block}h1{font-size:28px}canvas{aspect-ratio:1/1}}</style><main><header><div><small>USER-GENERATED ITEM IDEAS · WORKING PHYSICS PREVIEW</small><h1>Guillotine counterweight</h1></div><div><button id="replay">Replay launch</button> <button id="pause">Pause</button></div></header><p>A 58 cm guide and 17 cm blade beside the default 60 cm Acorn Flyer. The crank lifts the 2 kg blade; its fall pulls a cable drum on the axle. The blade stops at the bottom.</p><canvas id="view" width="1650" height="930" aria-label="Working guillotine counterweight on the default-sized trebuchet"></canvas><output id="status" aria-live="polite">Ready to replay.</output><p id="result"></p><p><a href="../../index.html?qa=1">Open the full game</a> · Pause → Options → Creative → Build → Counterweight → User-generated item ideas → Guillotine.</p><p><small>This review page uses the game's actual simulation and loading controller. It does not save progress. The small cartoon serpent gag adds no force to the launch.</small></p></main><script type="module">
-import {STARTER,part} from '../../src/build-catalog.js?v=56';
-import {fitEquipment} from '../../src/build-equipment.js?v=56';
-import {BuildSimulation} from '../../src/build-physics.js?v=56';
-import {createPayloadLoading} from '../../src/payload-loading.js?v=56';
-import {drawGuillotine,GUILLOTINE} from '../../src/guillotine.js?v=56';
-import {drawCrankWheel} from '../../src/crank-wheel.js?v=56';
-import {drawCritter} from '../../src/build-art.js?v=56';
+import {STARTER,part} from '../../src/build-catalog.js?v=57';
+import {fitEquipment} from '../../src/build-equipment.js?v=57';
+import {BuildSimulation} from '../../src/build-physics.js?v=57';
+import {createPayloadLoading} from '../../src/payload-loading.js?v=57';
+import {drawGuillotine,GUILLOTINE} from '../../src/guillotine.js?v=57';
+import {drawCrankWheel} from '../../src/crank-wheel.js?v=57';
+import {drawCritter} from '../../src/build-art.js?v=57';
 const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d'),status=document.querySelector('output'),result=document.querySelector('#result');
 let sim,loading,phase,wait=0,paused=false,last=0,done=false;
 function reset(){sim=new BuildSimulation(fitEquipment(STARTER,{kind:'part',id:'guillotine'}));sim.setDraw(0);loading=sim.loading=createPayloadLoading(sim);loading.loadKeyboard();phase='loading';wait=0;done=false;paused=false;document.querySelector('#pause').textContent='Pause';result.textContent='';}

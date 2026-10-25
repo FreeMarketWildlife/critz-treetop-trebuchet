@@ -1,30 +1,31 @@
-import {doorGeometry,doorHeight,nextDoor,upgradeDoor,availableCritters,critterHeight} from './critter-door.js?v=56';
-import {createWorldSession} from './world-session.js?v=56';
-import {editorMapStorage} from './editor-storage.js?v=56';
-import {createWorldLinkLoader} from './world-link.js?v=56';
-import {createScaleBuild} from './scale-builds.js?v=56';
-import {drawAltitudeStrip} from './altitude-strip.js?v=56';
-import {installPauseMenu} from './pause-menu.js?v=56';
-import {createWeaponHud} from './weapon-hud.js?v=56';
-import {jungleLayerAt} from './grove-jungle.js?v=56';
-import {createLaunchFeel} from './launch-feel.js?v=56';
-import {createPayloadLoading} from './payload-loading.js?v=56';
-import {crankState} from './crank-wheel.js?v=56';
-import{PARTS,SLOTS,EQUIPMENT_SLOTS,isCounterweightPart,shopPart,counterweightName,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=56';
-import {fitEquipment,purchaseFit} from './build-equipment.js?v=56';
-import {createCapacityControls} from './capacity-controls.js?v=56';
-import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=56';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=56';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=56';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=56';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack,shopView} from './build-shop.js?v=56';
-import {drawShopArt} from './shop-art.js?v=56';
-import {createHoldControl} from './hold-control.js?v=56';
-import {createAudio} from './audio.js?v=56';
-import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js?v=56';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=56';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=56';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=56';
+import {rigOriginForDoor} from './launch-staging.js?v=57';
+import {doorGeometry,doorHeight,nextDoor,upgradeDoor,availableCritters,critterHeight} from './critter-door.js?v=57';
+import {createWorldSession} from './world-session.js?v=57';
+import {editorMapStorage} from './editor-storage.js?v=57';
+import {createWorldLinkLoader} from './world-link.js?v=57';
+import {createScaleBuild} from './scale-builds.js?v=57';
+import {drawAltitudeStrip} from './altitude-strip.js?v=57';
+import {installPauseMenu} from './pause-menu.js?v=57';
+import {createWeaponHud} from './weapon-hud.js?v=57';
+import {jungleLayerAt} from './grove-jungle.js?v=57';
+import {createLaunchFeel} from './launch-feel.js?v=57';
+import {createPayloadLoading} from './payload-loading.js?v=57';
+import {crankState} from './crank-wheel.js?v=57';
+import{PARTS,SLOTS,EQUIPMENT_SLOTS,isCounterweightPart,shopPart,counterweightName,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=57';
+import {fitEquipment,purchaseFit} from './build-equipment.js?v=57';
+import {createCapacityControls} from './capacity-controls.js?v=57';
+import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=57';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=57';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=57';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=57';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack,shopView} from './build-shop.js?v=57';
+import {drawShopArt} from './shop-art.js?v=57';
+import {createHoldControl} from './hold-control.js?v=57';
+import {createAudio} from './audio.js?v=57';
+import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js?v=57';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=57';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=57';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=57';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1',authorMode=params.get('author')==='1'&&['local','explicit'].includes(document.documentElement.dataset.authorTools);
 let worldMapStorage;try{worldMapStorage=editorMapStorage(localStorage,sessionStorage,{qa});}catch{}
@@ -107,7 +108,7 @@ function refreshFacts(){
 }
 function pendingCollection(){return !creative&&!banked&&sim?.spaceState==='escaped'&&!!state.pendingSpace;}
 function protectSpaceResult(){if(!pendingCollection())return false;toast('Collect your space rewards before starting another experiment.');return true;}
-function applyBuild({quiet=false,restore=false,configuration}={}){if(!restore&&protectSpaceResult())return false;try{const pendingDraft=configuration?{build:draft,name:$('buildName').value}:null;$('arcAdvice').textContent='';const b=validateBuild(configuration??{...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();sim=new BuildSimulation(b,{map:groveMap});weaponHud.reset();sim.setDraw(0);sim.critterDoor=doorGeometry(groveMap,creative?Math.max(.10,critterHeight(sim.animal)):doorHeight(state));sim.loading=createPayloadLoading(sim,{door:sim.critterDoor});launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;spaceRecorded=false;spaceAchievementNew=false;document.body.classList.remove('space-escaped');$('spaceRewardBadge').hidden=true;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}if(pendingDraft)draft=pendingDraft.build;populate();if(pendingDraft)$('buildName').value=pendingDraft.name;drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');return true;}catch(e){toast(e.message);return false;}}
+function applyBuild({quiet=false,restore=false,configuration}={}){if(!restore&&protectSpaceResult())return false;try{const pendingDraft=configuration?{build:draft,name:$('buildName').value}:null;$('arcAdvice').textContent='';const b=validateBuild(configuration??{...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();const entryDoor=doorGeometry(groveMap,creative?Math.max(.10,critterHeight(critter(b.animal))):doorHeight(state));sim=new BuildSimulation(b,{map:groveMap,originX:rigOriginForDoor(b,critter(b.animal),entryDoor)});weaponHud.reset();sim.setDraw(0);sim.critterDoor=entryDoor;sim.loading=createPayloadLoading(sim,{door:sim.critterDoor});launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;spaceRecorded=false;spaceAchievementNew=false;document.body.classList.remove('space-escaped');$('spaceRewardBadge').hidden=true;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}if(pendingDraft)draft=pendingDraft.build;populate();if(pendingDraft)$('buildName').value=pendingDraft.name;drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');return true;}catch(e){toast(e.message);return false;}}
 function updateModeUi(){document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every critter. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';}
 function switchMode(next){if(protectSpaceResult())return;if(editorSession&&!next)return;if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};updateModeUi();populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
 function drawHeightMap(){
@@ -438,8 +439,8 @@ populate();applyBuild({quiet:true});
 if(!resumePendingSpace()&&params.get('creative')==='1')switchMode(true);
 if(creative&&params.has('scaleBuild')){try{draft=createScaleBuild(params.get('scaleBuild'));populate();applyBuild({quiet:true});}catch(e){toast(e.message);}}
 if(editorSession){saving=false;$('saveEnabled').checked=false;$('saveEnabled').disabled=true;$('adventureMode').disabled=true;$('saveStatus').textContent='Editor playtest: Adventure progress is untouched.';window.parent.postMessage({type:'grove-playtest-ready'},location.origin);}
-const {installWorldWorkshop}=authorMode?await import('./world-workshop.js?v=56'):{installWorldWorkshop:()=>Object.freeze({setMode:async()=>false})};
-const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMode,getDoor:()=>sim.critterDoor,getBuild:()=>sim.c,onError:error=>toast(error.message),
+const {installWorldWorkshop}=authorMode?await import('./world-workshop.js?v=57'):{installWorldWorkshop:()=>Object.freeze({setMode:async()=>false})};
+const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMode,getDoor:()=>sim.critterDoor,getBuild:()=>sim.c,getRigOrigin:()=>sim.rigOriginX,onError:error=>toast(error.message),
  onEnterEdit(){
   if(protectSpaceResult())return false;
   pausedBeforeEdit=paused;editingWorld=true;cancelLoading();hold.cancel();paused=true;

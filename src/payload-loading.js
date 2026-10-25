@@ -1,13 +1,14 @@
-import {critterBodyProfile} from './critter-body.js?v=56';
+import {loadingStand} from './launch-staging.js?v=57';
+import {critterBodyProfile} from './critter-body.js?v=57';
 import {World,Vec2,Box,Edge,RevoluteJoint,MouseJoint} from '../vendor/planck/planck.mjs';
-import {LOADING_LINEAR_DAMPING} from './winding-comfort.js?v=56';
-import {GRAVITY} from './build-physics.js?v=56';
+import {LOADING_LINEAR_DAMPING} from './winding-comfort.js?v=57';
+import {GRAVITY} from './build-physics.js?v=57';
 /** Jointed preparation bodies remain free on real basket contacts, including
  * after a successful drop and while winding. `loaded` only observes support;
  * it never welds, centers, replaces or freezes the ragdoll. */
 export function createPayloadLoading(sim,{door=null}={}){
  const L=sim.animal.length,T=Math.sqrt(L),w=sim.animal.width,c=sim.c;
- const stand={x:-Math.max(c.longArm*.92,c.baseWidth*.9),y:Math.max(.1,c.pivotHeight*.16),width:Math.max(L*1.35,c.pouchWidth*1.25),height:Math.max(.08,c.pivotHeight*.1)};
+ const stand=loadingStand(c,sim.animal,sim.rigOriginX??0);
  const home=()=>({x:stand.x,y:stand.y+w*.52});
  const target=()=>sim.loadingPosition(sim.tip());
  const world=new World(Vec2(0,-GRAVITY)),ground=world.createBody(),basket=world.createKinematicBody();

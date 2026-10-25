@@ -1,6 +1,6 @@
 /** The camera changes presentation only: one metre always uses the same scale
  * for the rig, projectile and terrain. Release framing eases into payload follow. */
-export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0,door=null}={}){
+export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0,door=null,originX=0}={}){
  const W=Math.max(160,width),H=Math.max(120,height);
  const rigHeight=Math.max(1,c.pivotHeight+c.shortArm+counterRadius);
  if(preview){
@@ -9,12 +9,12 @@ export function groveSetupCamera(c,{width,height,preview=false,counterRadius=0,d
   return{x:-c.troughLength*.2,y:H*.22/scale,scale};
  }
  // Fit the mechanism, left stand and sling inside the area between HUD and dock.
- const rigMinX=-Math.max(c.longArm*.92,c.baseWidth*.9)-Math.max(.18,c.pouchWidth*.8),maxX=Math.max(c.baseWidth*.85,c.shortArm+counterRadius);
+ const rigMinX=originX-Math.max(c.longArm*.92,c.baseWidth*.9)-Math.max(.18,c.pouchWidth*.8),maxX=originX+Math.max(c.baseWidth*.85,c.shortArm+counterRadius);
  const minX=door?Math.min(rigMinX,door.x-door.width):rigMinX;
  const high=Math.max(c.pivotHeight+c.longArm*Math.sin(1),c.pivotHeight+c.shortArm+counterRadius,door?.height??0);
- const scale=Math.min(H*.50/high,W*.90/(maxX-minX));
+ const scale=Math.min(H*(door ? .58 : .50)/high,W*(door ? .80 : .90)/(maxX-minX));
  // Ground sits just above the bottom dock; the arm has room below the HUD.
- return{x:(minX+maxX)/2,y:(H*.5-H*.77)/-scale,scale};
+ return{x:door?minX+W*.38/scale:(minX+maxX)/2,y:(H*.5-H*.77)/-scale,scale};
 }
 const FOLLOW_ACQUIRE_SECONDS=.55;
 const ease=t=>t*t*(3-2*t),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));

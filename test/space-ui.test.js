@@ -1,10 +1,11 @@
+import {rigOriginForDoor} from '../src/launch-staging.js';
 import {doorGeometry,doorHeight,critterHeight} from '../src/critter-door.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {BuildSimulation,GRAVITY} from '../src/build-physics.js';
-import {STARTER,validateBuild,grams} from '../src/build-catalog.js';
+import {STARTER,validateBuild,grams,critter} from '../src/build-catalog.js';
 import {createGroveMap,createV3GroveMap,levelAt,enemyRecipe} from '../src/grove-map.js';
 import {jungleLayerAt} from '../src/grove-jungle.js';
 import {escapeAltitude} from '../src/space-policy.js';
@@ -48,7 +49,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
  const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,
   microtasks:[],queueMicrotask(fn){context.microtasks.push(fn);},syncPreview(){},paused:false,editingWorld:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
   lastTime:0,lastDraw:0,drawCount:0,refreshAt:0,lastZone:'grandfatherTree',labels:false,follow:true,landingMarks:true,previewSim:null,sessionLog:[],soundQueue:[],currentCel:{hits:0,pose:'flying'},
-  doorGeometry,doorHeight,critterHeight,BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
+  rigOriginForDoor,critter,doorGeometry,doorHeight,critterHeight,BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
   visitShop:(s,seed)=>visitShop(s,seed??73),creativeShop:createSandboxShop(73),
   markCalls:0,markSpaceEscape(...args){context.markCalls++;return markSpaceEscape(...args);},
   $ ,stage:$('stage'),crypto:{randomUUID:()=> 'retry-'+(++context.ids)},ids:0,hold:{cancel(){}},

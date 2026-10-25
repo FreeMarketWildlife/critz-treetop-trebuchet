@@ -1,8 +1,8 @@
-import {drawDenseJungle} from './forest-depth-art.js?v=56';
-import {drawOakCanopy} from './oak-canopy-art.js?v=56';
-import {drawProportionedOak} from './grove-tree-art.js?v=56';
-import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=56';
-import {mapLevels} from './grove-map.js?v=56';
+import {drawDenseJungle} from './forest-depth-art.js?v=57';
+import {drawOakCanopy} from './oak-canopy-art.js?v=57';
+import {drawProportionedOak} from './grove-tree-art.js?v=57';
+import {foliageClump,ordinaryLeafHalfLength,drawCanopySpray} from './grove-nature.js?v=57';
+import {mapLevels} from './grove-map.js?v=57';
 const TAU=Math.PI*2,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const blend=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
 /** Derive decorative crowns from canonical editable props, not another forest

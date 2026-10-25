@@ -1,8 +1,11 @@
+import {rigOriginForDoor} from '../src/launch-staging.js';
+import {doorGeometry} from '../src/critter-door.js';
+import {STARTER,critter,buildFacts} from '../src/build-catalog.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-import {groveTreeCamera,groveOverviewBounds,groveProject} from '../src/grove-camera.js';
+import {groveTreeCamera,groveOverviewBounds,groveProject,groveSetupCamera} from '../src/grove-camera.js';
 import {createGroveMap,createLegacyGroveMap,createV3GroveMap,mapLevels,levelAt,validateGroveMap,readGroveMap,MAP_KEY} from '../src/grove-map.js';
 import {jungleLayerAt,jungleLayersFor} from '../src/grove-jungle.js';
 const source=readFileSync(new URL('../src/map-editor.js',import.meta.url),'utf8');
@@ -11,7 +14,7 @@ function editor(doc,size={width:390,height:844}){
  const node=(tag='div',text)=>({tag,textContent:text??'',children:[],dataset:{},classList:{toggle(){}},style:{setProperty(){}},append(...children){this.children.push(...children);},replaceChildren(...children){this.children=children;}});
  const $=id=>{if(!nodes.has(id))nodes.set(id,{...node(),value:0});return nodes.get(id);};
  const canvas={clientWidth:size.width,clientHeight:size.height},mini={getBoundingClientRect:()=>({left:10,top:20,width:180,height:120})};
- const context={doc,camera,$,width:0,height:0,canvas,mini,dpr:1,devicePixelRatio:1,firstSize:true,groveTreeCamera,groveOverviewBounds,levelAt,mapLevels,jungleLayerAt,jungleLayersFor,
+ const context={doc,camera,$,width:0,height:0,canvas,mini,dpr:1,devicePixelRatio:1,firstSize:true,getBuild:()=>STARTER,getDoor:()=>({height:.1}),getRigOrigin:()=>undefined,rigOriginForDoor,doorGeometry,critter,buildFacts,groveSetupCamera,groveTreeCamera,groveOverviewBounds,levelAt,mapLevels,jungleLayerAt,jungleLayersFor,
   document:{querySelectorAll:()=>[]},root:{querySelectorAll:()=>[]},el:node,iconByLevel:{},requestDraw(){},closePanels(){}};
  vm.createContext(context);
  for(const name of ['cameraChanged','setLevel','levelPalette','miniBounds','resize','launchView','treeView','defaultView']){
@@ -71,4 +74,10 @@ test('editor botanical layer cards use the loaded map helper instead of giant-tr
   for(const layer of jungleLayersFor(doc))assert.ok(labels.includes(String(layer.low)+'–'+layer.high+' m · bounce routes'));
   if(doc.version===4){assert.ok(labels.includes('0–2 m · bounce routes'));assert.ok(labels.includes('2–15 m · bounce routes'));assert.ok(!labels.includes('340–480 m · bounce routes'));}
  }
+});
+
+test('the editor launch view frames the same nearby door and physically placed starter as Play',()=>{
+ const doc=createGroveMap(),h=editor(doc,{width:1280,height:720});h.context.resize();h.context.launchView();
+ const door=doorGeometry(doc),originX=rigOriginForDoor(STARTER,critter(STARTER.animal),door),expected=groveSetupCamera(STARTER,{width:1280,height:720,door,originX,counterRadius:buildFacts(STARTER).counterRadius});
+ assert.deepEqual(h.camera,expected);assert.ok(groveProject(door,h.camera,1280,720).x<1280*.23);
 });

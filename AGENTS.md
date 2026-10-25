@@ -12,3 +12,5 @@
 - Keep shared map, catalog, physics, and renderer module URLs/version tags consistent across Play and Edit. The editor's rig and door references come from the active game rather than separate fixed-size sketches.
 
 - The jungle is a continuous dense forest backdrop: canopy tops remain roughly 25–30 m and the distant interior is fully opaque below 25 m at every horizontal position. No sky gaps below the jungle canopy. Use layered rooted trunks, vines and undergrowth for depth. Oak foliage must overlap limbs as well as sit behind them; keep the tested large-launcher clearance when reshaping solid limbs.
+
+- Compact launchers and loading stands are staged beside the tree door, and the starting camera frames that group on the left. Preserve real door/equipment dimensions; position every body, joint, wheel and grab in the same world origin. Editor Launch view shares the active runtime origin. Large blueprint clearance corridors retain their existing positions.

@@ -50,6 +50,6 @@ test('hosted clean editor URLs leave the editor route once and preserve isolated
 
 test('editor receives the exact active world, equipped build and door references',async()=>{
  const h=ui(),world=createWorldSession({storage:storage()}),build={...STARTER,pivotHeight:.8},door={height:.15};let received;
- const controller=installWorldWorkshop({...h,author:true,world,getBuild:()=>build,getDoor:()=>door,loadEditor:async args=>{received=args;return{enter(){},leave(){}};}});
- await controller.setMode('edit');assert.equal(received.world,world);assert.equal(received.world.map,world.map);assert.equal(received.getBuild(),build);assert.equal(received.getDoor(),door);
+ const controller=installWorldWorkshop({...h,author:true,world,getBuild:()=>build,getDoor:()=>door,getRigOrigin:()=>-5.3,loadEditor:async args=>{received=args;return{enter(){},leave(){}};}});
+ await controller.setMode('edit');assert.equal(received.world,world);assert.equal(received.world.map,world.map);assert.equal(received.getBuild(),build);assert.equal(received.getDoor(),door);assert.equal(received.getRigOrigin(),-5.3);
 });

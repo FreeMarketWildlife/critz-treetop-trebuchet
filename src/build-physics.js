@@ -1,13 +1,13 @@
-import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=56';
-import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=56';
-import {windingMotion} from './winding-comfort.js?v=56';
-import {recipeDrawMinimum} from './scale-builds.js?v=56';
-import {addCritterFixtures} from './critter-body.js?v=56';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=56';
+import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=57';
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=57';
+import {windingMotion} from './winding-comfort.js?v=57';
+import {recipeDrawMinimum} from './scale-builds.js?v=57';
+import {addCritterFixtures} from './critter-body.js?v=57';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=57';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=56';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=56';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=56';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=57';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=57';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=57';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint,GearJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
@@ -20,7 +20,8 @@ const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
  * m_real=M*m_solver. Therefore g_solver=g_real, F_real=M*F_solver,
  * torque_real=M*L*torque_solver. No launch impulses or range modifiers. */
 export class BuildSimulation{
- constructor(raw,{map=null}={}){
+ constructor(raw,{map=null,originX=0}={}){
+  if(!Number.isFinite(originX))throw Error('Finite launch origin required.');this.rigOriginX=originX;
   this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.spaceState='bound';this.spaceEscape=null;this.spaceDriftAngle=null;this.escapeThreshold=this.map?escapeAltitude(this.map):null;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();this.impactApproaches=new WeakMap();this.pendingImpacts=new Map();
   this.c=validateBuild(raw);this.facts=buildFacts(this.c);this.animal=critter(this.c.animal);
   const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
@@ -29,9 +30,9 @@ export class BuildSimulation{
   this.ground=this.world.createBody();const earth=this.ground.createFixture(Box(100000/this.L,1/this.L,Vec2(0,(this.groundY-1)/this.L)),{friction:.8,restitution:.12});earth.setUserData({worldObject:{id:'forest-floor',type:'ground',material:'stone'}});
   if(this.map)this.installMap();
   this.initialAngle=Math.PI+rad(c.cockAngle);
-  this.frame=this.body(0,0,0,c.frameGrams/1000,'frame');
+  this.frame=this.body(originX,0,0,c.frameGrams/1000,'frame');
   const h=c.pivotHeight,b=c.baseWidth/2,t=Math.max(c.beamWidth*.65,h*.025),wheelLift=c.chassis==='wheels'?c.wheelRadius*1.3:0;
-  this.frame.setPosition(Vec2(0,wheelLift/this.L));
+  this.frame.setPosition(Vec2(originX/this.L,wheelLift/this.L));
   this.bar(this.frame,{x:-b,y:t},{x:0,y:h-wheelLift},t*.55);this.bar(this.frame,{x:b,y:t},{x:0,y:h-wheelLift},t*.55);this.bar(this.frame,{x:-b,y:t},{x:b,y:t},t*.55);
   for(let i=0;i<c.braceCount;i++){const y=h*(i+1)/(c.braceCount+2);this.bar(this.frame,{x:-b*(1-y/h),y},{x:b*(1-y/h),y},t*.35);}
   // The trough has its own collision lane: it supports the pouch, while the
@@ -45,9 +46,9 @@ export class BuildSimulation{
   this.setMass(this.frame,(c.frameGrams+(isGuillotine(c)?GUILLOTINE.supportGrams:0))/1000*(1+c.braceCount*.04));
   if(c.chassis==='walking'){
    // A separate support triangle rocks on real toe contacts. Its initial lean is a tuning-string setting.
-   this.frame.setAngle(-rad(c.walkingLean));const verts=this.vertices(this.frame);const low=Math.min(...verts.map(v=>v.y));this.frame.setPosition(Vec2(0,this.frame.getPosition().y-low+.008));
+   this.frame.setAngle(-rad(c.walkingLean));const verts=this.vertices(this.frame);const low=Math.min(...verts.map(v=>v.y));this.frame.setPosition(Vec2(originX/this.L,this.frame.getPosition().y-low+.008));
   }
-  this.pivotLocal=this.frame.getLocalPoint(Vec2(0,c.pivotHeight/this.L));
+  this.pivotLocal=this.frame.getLocalPoint(Vec2(originX/this.L,c.pivotHeight/this.L));
   if(c.chassis==='walking')this.pivotLocal=Vec2(0,(h-wheelLift)/this.L);
   let pivot=this.frame.getWorldPoint(this.pivotLocal);
   this.initialAngle=Math.PI+rad(drawLimit(c,pivot.y*this.L,this.railPoint(0).y));
@@ -80,7 +81,7 @@ export class BuildSimulation{
   }else this.axle=this.world.createJoint(RevoluteJoint({},this.frame,this.arm,pivot));
   if(isGuillotine(c))this.bladeCable=this.world.createJoint(GearJoint({joint1:this.axle,joint2:this.bladeGuide,ratio:-this.L/GUILLOTINE.drumRadius},this.arm,this.counter));
   if(c.chassis==='wheels'){
-   for(const x of [-b,b]){const w=this.body(x,c.wheelRadius,0,c.wheelGrams/1000,'wheel');w.createFixture(Circle(c.wheelRadius/this.L),{density:1,friction:c.footFriction,restitution:.02,filterGroupIndex:-1});this.setMass(w,c.wheelGrams/1000);this.wheels.push(w);this.wheelAxles.push(this.world.createJoint(RevoluteJoint({enableMotor:true,motorSpeed:0,maxMotorTorque:0},this.frame,w,w.getPosition())));}
+   for(const x of [-b,b]){const w=this.body(originX+x,c.wheelRadius,0,c.wheelGrams/1000,'wheel');w.createFixture(Circle(c.wheelRadius/this.L),{density:1,friction:c.footFriction,restitution:.02,filterGroupIndex:-1});this.setMass(w,c.wheelGrams/1000);this.wheels.push(w);this.wheelAxles.push(this.world.createJoint(RevoluteJoint({enableMotor:true,motorSpeed:0,maxMotorTorque:0},this.frame,w,w.getPosition())));}
   }
   for(let f=this.frame.getFixtureList();f;f=f.getNext())if(f!==this.troughFixture)f.setFriction(c.footFriction);
   const tip=this.tip(),payloadRadius=this.animal.width/2,pouchMass=part(c.sling).mass/1000+2*part(c.rope).linearGrams*c.slingLength/1000;

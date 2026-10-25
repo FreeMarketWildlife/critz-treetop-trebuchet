@@ -1,4 +1,4 @@
-import {mushroomGeometry} from './mushroom-geometry.js?v=56';
+import {mushroomGeometry} from './mushroom-geometry.js?v=57';
 import * as P from '../vendor/planck/planck.mjs';
 /** Dynamic passive contacts only. Bounding radius encloses every rotated fixture. */
 export function createEncounterBody(world,e){
