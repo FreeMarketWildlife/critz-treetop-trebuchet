@@ -1,3 +1,4 @@
+import {encounterPose,drawWoodlandCreature} from './woodland-encounters.js?v=61';
 import {drawJungleFoliage} from './forest-depth-art.js?v=61';
 import {drawOakCanopy} from './oak-canopy-art.js?v=61';
 import {drawBotanicalBumper} from './grove-botanical-art.js?v=61';
@@ -28,8 +29,9 @@ export function drawGroveEnemyContactBody(c,kind,x,y,r){
  if(r>=2){c.strokeStyle=INK;c.lineWidth=edge;c.stroke();}c.restore();return true;
 }
 /** Original illustrated encounter models. size means diameter in screen px. */
-export function drawGroveEnemy(c,kind,x,y,size,time=0){
+export function drawGroveEnemy(c,kind,x,y,size,time=0,settings=null){
  const recipe=enemyRecipe(kind),name=String(recipe?.model??kind??'beetle').toLowerCase();c.save();c.translate(x,y);c.scale(Math.max(.001,size)/100,Math.max(.001,size)/100);c.lineJoin='round';c.lineCap='round';
+ if(drawWoodlandCreature(c,kind,time,settings)){c.restore();return;}
  const frog=name.includes('hopper')||name.includes('leaf'),bird=name.includes('bird'),yokai=name.includes('yokai'),cloudy=name.includes('cloud'),fungus=name.includes('fung')||name.includes('mushroom'),pod=name.includes('pod'),ring=name.includes('fragment')||name.includes('ring'),skid=name.includes('skid'),b=Math.sin(time*3)*2;
  if(yokai){
   c.beginPath();c.moveTo(-29,20);c.bezierCurveTo(-53,-39,32,-57,35,0);c.quadraticCurveTo(38,20,47,32);c.quadraticCurveTo(24,26,14,38);c.quadraticCurveTo(4,26,-9,37);c.quadraticCurveTo(-20,28,-29,20);c.fillStyle='#b3a1da';c.fill();c.strokeStyle='#534968';c.lineWidth=3;c.stroke();
@@ -79,12 +81,12 @@ export function drawGroveWorld(c,{camera,width:W,height:H,map,time=0,foreground=
  let leafBudget=160;
  for(const {o,b} of objects){
   const layer=o.layer??'world';if((layer==='front')!==foreground)continue;
-  if(b.maxX<visible.minX||b.minX>visible.maxX||b.maxY<visible.minY||b.minY>visible.maxY)continue;
+  if(o.type!=='enemy'&&(b.maxX<visible.minX||b.minX>visible.maxX||b.maxY<visible.minY||b.minY>visible.maxY))continue;
   c.save();if(o.collision===false)c.globalAlpha=/^oak-limb-/.test(o.id)&&o.material==='wood'?.83:editor?.55:layer==='back'?(o.material==='wood'?.52-.32*clamp((s-3)/24,0,1):.52):.7;
-  if(o.type==='enemy'){const p=project(o.x,o.y),r=(o.radius??.5)*s,size=r*2;
+  if(o.type==='enemy'){const pose=encounterPose(o,editor?0:time);if(pose.x+o.radius<visible.minX||pose.x-o.radius>visible.maxX||pose.y+o.radius<visible.minY||pose.y-o.radius>visible.maxY){c.restore();continue;}const p=project(pose.x,pose.y),r=(o.radius??.5)*s,size=r*2;
    if(o.collision)drawGroveEnemyContactBody(c,o.kind,...p,r);
    if(size<12){if(o.collision){if(size>=4)ellipse(c,...p,r*.58,r*.48,enemyRecipe(o.kind)?.color??'#ba844c',null);}else ellipse(c,...p,Math.max(.45,size*.43),Math.max(.45,size*.4),enemyRecipe(o.kind)?.color??'#ba844c',INK,Math.min(.8,size*.08));}
-   else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time);c.restore();continue;
+   else drawGroveEnemy(c,o.kind??o.enemy??o.recipe,...p,size,time,o.encounter);c.restore();continue;
   }
   const colors=palette[o.material]??palette.wood;
   if(o.id?.startsWith('oak-limb-')&&o.material==='foliage'){c.restore();continue;}

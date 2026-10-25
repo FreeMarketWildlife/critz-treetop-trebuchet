@@ -1,3 +1,4 @@
+import {encounterPose} from './woodland-encounters.js?v=61';
 import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=61';
 import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=61';
 import {windingMotion} from './winding-comfort.js?v=61';
@@ -100,7 +101,7 @@ export class BuildSimulation{
   this.world.on('end-contact',contact=>{this.shotContacts.delete(contact);});
  }
  installMap(){
-  this.terrain=[];this.mapBodies=[];this.environment=createEnvironmentIndex(this.worldObjects);
+  this.terrain=[];this.mapBodies=[];this.patrolBodies=[];this.environment=createEnvironmentIndex(this.worldObjects);
   for(const o of this.worldObjects){
    if(!o.collision||isEnvironment(o))continue;
    const b=this.world.createBody(),bounds=objectBounds(o);this.mapBodies.push(b);
@@ -117,6 +118,7 @@ export class BuildSimulation{
     else add(Polygon(vertices));
    }
    else if(o.type==='chain')for(let i=1;i<o.points.length;i++)add(Edge(point(o.points[i-1]),point(o.points[i])));
+   else if(o.type==='enemy'&&o.encounter&&o.encounter.motion!=='still'){b.setType('kinematic');b.setPosition(Vec2(o.x/this.L,o.y/this.L));add(Circle(o.radius/this.L));this.patrolBodies.push({o,b});}
    else add(Circle(Vec2(o.x/this.L,o.y/this.L),o.radius/this.L));
    if(o.type!=='enemy')this.terrain.push({o,bounds});
   }
@@ -188,17 +190,18 @@ export class BuildSimulation{
   // These small, authored impulses are pinball powers. They only happen after
   // release and are intentionally excluded from the mechanism's energy audit.
   for(const o of this.pendingEncounters.splice(0)){
-   const recipe=enemyRecipe(o.kind),p=this.real(this.shot),pop=Math.min(18,9+Math.sqrt(o.radius)*3);
+   const recipe=enemyRecipe(o.kind),p=this.real(this.shot),pop=Math.min(18,9+Math.sqrt(o.radius)*3),power=o.encounter?.strength??1;
+   if(power===0)continue;
    let vx=p.vx,vy=p.vy;
-   if(recipe.effect==='updraft')vy=Math.max(vy,pop);
-   if(recipe.effect==='gust'){vx=Math.min(35,Math.max(7,vx+6));vy=Math.max(vy,4);}
-   if(recipe.effect==='snare'){vx*=.7;vy*=.8;}
-   if(recipe.effect==='spin'){vy=Math.max(vy,pop*.65);this.shot.setAngularVelocity(Math.max(-12,Math.min(12,this.shot.getAngularVelocity()+2)));}
+   if(recipe.effect==='updraft')vy=Math.max(vy,pop*Math.abs(power));
+   if(recipe.effect==='gust'){vx=o.encounter?Math.max(-35,Math.min(35,vx+6*power)):Math.min(35,Math.max(7,vx+6));vy=Math.max(vy,4*Math.abs(power));}
+   if(recipe.effect==='snare'){vx*=Math.max(.35,1-.3*Math.abs(power));vy*=Math.max(.4,1-.2*Math.abs(power));}
+   if(recipe.effect==='spin'){vy=Math.max(vy,pop*.65*Math.abs(power));this.shot.setAngularVelocity(Math.max(-12,Math.min(12,this.shot.getAngularVelocity()+2*power)));}
    const mass=this.shot.getMass();this.shot.applyLinearImpulse(Vec2((vx-p.vx)*this.T/this.L*mass,(vy-p.vy)*this.T/this.L*mass),this.shot.getWorldCenter(),true);
    // An authored power can activate from a gentle touch. Keep its punctuation
    // even when the physical impact was too quiet to count as a normal bounce.
    const change=Math.hypot(vx-p.vx,vy-p.vy);
-   if(change>.35){const dx=p.x-o.x,dy=p.y-o.y,d=Math.hypot(dx,dy)||1,normal={x:dx/d,y:dy/d};this.recordImpact({o,speed:0,change,power:true,x:o.x+normal.x*o.radius,y:o.y+normal.y*o.radius,normal});}
+   if(change>.35){const pose=encounterPose(o,this.time),dx=p.x-pose.x,dy=p.y-pose.y,d=Math.hypot(dx,dy)||1,normal={x:dx/d,y:dy/d};this.recordImpact({o,speed:0,change,power:true,x:pose.x+normal.x*o.radius,y:pose.y+normal.y*o.radius,normal});}
 
   }
  }
@@ -354,6 +357,9 @@ export class BuildSimulation{
   if(this.map&&this.release){this.gravityFactor=gravityScaleAt(p.y+this.map.launch.y,this.map);this.shot.setGravityScale(this.gravityFactor);}
   if(this.release&&(this.map?this.shotContacts.size>0:p.y<this.payloadRadius+.06*this.L)&&Math.abs(p.vx)>.005)this.shot.applyForceToCenter(Vec2(-Math.tanh(p.vx*10)*this.payloadMass*GRAVITY*.18/this.M,0),true);
   if(c.drag){const air=this.map&&this.release?Math.max(0,Math.min(1,(520*spaceScale(this.map)-p.y-this.map.launch.y)/(60*spaceScale(this.map)))):1,k=.5*1.225*.8*area*air;this.shot.applyForceToCenter(Vec2(-k*v*rvx/this.M,-k*v*p.vy/this.M),true);}
+  // Kinematic paths use the exact same clock and pose as the painted world.
+  // Set velocity to the next fixed-step pose, so contacts see relative motion.
+  for(const {o,b} of this.patrolBodies??[]){const now=encounterPose(o,this.time),next=encounterPose(o,this.time+h);b.setPosition(Vec2(now.x/this.L,now.y/this.L));b.setLinearVelocity(Vec2((next.x-now.x)/this.L/dt,(next.y-now.y)/this.L/dt));}
   this.world.step(dt,32,12);this.time+=h;
   if(this.bladeGuide&&!this.guillotineCut){
    const y=this.frame.getLocalPoint(this.counter.getPosition()).y*this.L;

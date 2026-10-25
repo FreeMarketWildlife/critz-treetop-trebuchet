@@ -1,3 +1,4 @@
+import {WOODLAND_ENEMIES,validateEncounterSettings} from './woodland-encounters.js?v=61';
 import {CURRENT_OAK,naturalOakObjects} from './oak-world.js?v=61';
 import {PROPORTIONED_TREE,PROPORTIONED_LAUNCH_Y,PROPORTIONED_LEVELS,proportionedV1StarterObjects,proportionedV2StarterObjects,proportionedV3StarterObjects,proportionedV4StarterObjects,proportionedStarterObjects,oakLaunchBayObjects} from './grove-proportioned.js?v=61';
 import {ancientBough} from './grove-tree-layout.js?v=61';
@@ -23,6 +24,7 @@ export const spaceScale=map=>map?.version===2?1:2;
 // Original creatures reuse the established game's encounter vocabulary. These
 // are authored arcade encounters, not a simulation of animal biology.
 export const ENEMIES=Object.freeze([
+ ...WOODLAND_ENEMIES,
  {id:'beetle',kind:'beetle',name:'Archive beetle',biome:'grandfatherTree',shape:'oval',color:'#ba844c',radius:.08,effect:'spin',description:'A sturdy, springy shell.'},
  {id:'hopper',kind:'hopper',name:'Leaf hopper',biome:'grandfatherTree',shape:'leaf',color:'#8bc264',radius:.07,effect:'updraft',description:'A leafy upward bounce.'},
  {id:'cloud',kind:'cloud',name:'Raincloud',biome:'openSky',shape:'wings',color:'#d8d9f5',radius:.275,effect:'updraft',description:'A soft upward gust.'},
@@ -117,7 +119,7 @@ export function validateGroveMap(value){
  if(value.launch?.x!==0||value.launch?.y!==(value.version===2?300:value.version===4?PROPORTIONED_LAUNCH_Y:600))throw Error('The launch stays on its authored home branch.');
  if(!value.tree||!finite(value.tree.height,value.version===4?40:350,value.version===4?140:1800)||!finite(value.tree.trunkX,-1500,-5)||!finite(value.tree.trunkWidth,value.version===4?.5:5,value.version===4?20:1000)||!finite(value.tree.doorX,-100,-3))throw Error('Invalid Grandfather Tree dimensions.');
  if(value.starterRevision!==undefined&&(!Number.isInteger(value.starterRevision)||value.starterRevision<1||value.starterRevision>100))throw Error('Invalid starter revision.');
- const seen=new Set();let vertexCount=0;
+ const seen=new Set();let vertexCount=0,patrolCount=0;
  const objects=value.objects.map(o=>{
   if(!o||typeof o.id!=='string'||!o.id||o.id.length>100||seen.has(o.id)||!['polygon','chain','circle','enemy'].includes(o.type))throw Error('Every object needs a unique ID and a supported shape.');seen.add(o.id);
   if(typeof o.collision!=='boolean'||!['back','world','front'].includes(o.layer)||!['wood','leaf','stone','bumper','foliage','sap'].includes(o.material)||!finite(o.bounce,0,1))throw Error('Invalid collision, depth layer, material or bounce setting.');
@@ -131,7 +133,7 @@ export function validateGroveMap(value){
   }else{
    if(!finite(o.x,-1500,20000)||!finite(o.y,-value.launch.y,value.height-value.launch.y)||!finite(o.radius,.03,500))throw Error('Invalid circle position or radius (0.03–500 m).');
    Object.assign(n,{x:o.x,y:o.y,radius:o.radius});
-   if(o.type==='enemy'){const recipe=enemyRecipe(o.kind);if(!recipe)throw Error('Unknown enemy. Choose one from the illustrated palette.');n.kind=o.kind;n.radius=recipe.radius;}
+   if(o.type==='enemy'){const recipe=enemyRecipe(o.kind);if(!recipe)throw Error('Unknown enemy. Choose one from the illustrated palette.');n.kind=o.kind;n.radius=recipe.radius;if(o.encounter!==undefined){n.encounter=validateEncounterSettings(o.encounter,o.kind);if(n.encounter.motion!=='still'&&++patrolCount>128)throw Error('Use no more than 128 moving encounters per map.');const e=n.encounter;if(o.x+e.dx< -1500||o.x+e.dx>20000||o.y+Math.min(0,e.motion==='walk'?0:e.dy)< -value.launch.y||o.y+Math.max(0,e.motion==='walk'?0:e.dy)+(e.motion==='bounce'?e.height:0)>value.height-value.launch.y)throw Error('Keep encounter routes inside the world.');}}
   }
   if(['foliage','sap'].includes(o.material)&&!['polygon','circle'].includes(o.type))throw Error('Leaves and sap need a closed polygon or circle.');
   if(o.material==='foliage'){const d=o.density??16;if(!finite(d,.1,180))throw Error('Leaf density must be 0.1–180.');n.density=d;}
