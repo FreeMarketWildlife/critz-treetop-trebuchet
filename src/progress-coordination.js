@@ -1,5 +1,5 @@
-import {validateState} from './economy.js?v=61';
-import {inspectProgressChoice,commitProgressChoice,swapProgressBackup} from './progress-choice.js?v=61';
+import {validateState} from './economy.js?v=62';
+import {inspectProgressChoice,commitProgressChoice,swapProgressBackup} from './progress-choice.js?v=62';
 export const PROGRESS_KEY='critz-prototype-economy-v1';
 const REVISION='critz-prototype-progress-revision-v1';
 const LOCK='critz-prototype-progress-write-v1';

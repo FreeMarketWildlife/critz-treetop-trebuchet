@@ -41,7 +41,7 @@ Actual browser QA used Chrome at desktop and 390 × 844 portrait: mouse keyboard
 
 Reproducible numerical loading/winding checks are in the task evidence directory. Flat-world runs with actual loose loading: mouse 9.42 m/s at 33.87°, widened chipmunk 3.83 m/s at 60.15°, rabbit 20.36 m/s at 41.02°, elephant 32.52 m/s at 42.33°; all finish without failure. These are test-build results, not range guarantees in the authored Grove.
 
-The interrupted old disposable QA tab became inaccessible after a connection loss; no uncertain purchase was retried there. Subsequent transactions were tested in a new funded QA fixture with saving disabled. Browser storage on the original 8080 origin was never changed by these tests. Real storage round-trip and live hover/touch-hardware checks remain useful independent review targets.
+The interrupted old disposable QA tab became inaccessible after a connection loss; no uncertain purchase was retried there. Subsequent transactions were tested in a new funded QA fixture with saving disabled. Browser storage on the original 8080 origin was never changed by these tests. A real saved Adventure launch on the isolated 8796 origin banked 31 Bells; after reload, both Bells and exact shop stock were preserved. Touchscreen hardware and subjective hover feel remain useful independent review targets.
 
 ## Screenshot Library identities
 
@@ -49,3 +49,9 @@ The interrupted old disposable QA tab became inaccessible after a connection los
 - Desktop after: `libfile_3401cc76caf48191b7072bf79d09ab3d` (`file_00000000ddac8230995aeab976ffe429`).
 - Portrait after: `libfile_bb061ab0eaf08191bd8a29956a917ec7` (`file_00000000183082308d4c974b7d1c49b5`).
 - Smaller starter: `libfile_9ae468e4fdb88191b6fd8c105fff83a4` (`file_000000000ffc81fd94d208985f7bb6f1`).
+
+## Combined editor integration
+
+The shop commit is `8826693`. Editor/enemy commits were integrated separately as `f23c8db` and `a0312ae`, preserving both solver changes and resolving import URL differences. The combined runtime uses cache version 62, including the editor stylesheet. The combined full suite passes 1,093/1,093. `docs/woodland-workshop/qa.html` additionally passes 16 browser checks, including synthetic touch freehand closure, pinch cancellation, concave filled outlines, crossing rejection, undo/redo, route endpoint dragging and JSON/link round trips. A moth placement and 1.2 m/s / 3 m route edit were also verified through the actual integrated editor UI.
+
+New authored encounters are opt-in placements. Existing saved custom maps retain their geometry and stationary encounters. No map was added to the original editor or default map by these tests. No public deployment was made. The original editor stays on 8080, while combined acceptance ran solely on 8796 with QA session storage.

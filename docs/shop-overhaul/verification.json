@@ -1,0 +1,12 @@
+{
+  "baselineCommit": "e441cb0",
+  "shopCommit": "8826693",
+  "runtimeIntegration": "f23c8db",
+  "editorIntegration": "a0312ae",
+  "combinedTests": {"total": 1093, "passed": 1093, "failed": 0},
+  "browserEditorAcceptance": {"checks": 16, "passed": 16},
+  "browserPersistence": {"origin": "http://127.0.0.1:8796", "earnedBellsBeforeReload": 31, "earnedBellsAfterReload": 31, "stockUnchanged": true},
+  "portrait": {"width": 390, "height": 844, "pageWidth": 390, "detailWidth": 322, "physicalTouchscreenTested": false},
+  "originalEditorTouched": false,
+  "deployed": false
+}

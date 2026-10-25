@@ -1,16 +1,16 @@
-import {defaultEncounterSettings,encounterPose} from './woodland-encounters.js?v=61';
-import {rigOriginForDoor} from './launch-staging.js?v=61';
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=61';
-import {editorMapStorage} from './editor-storage.js?v=61';
-import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=61';
-import {STARTER,REST_ARM_ANGLE,critter,buildFacts} from './build-catalog.js?v=61';
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=61';
-import {groveTreeCamera,groveOverviewBounds,groveSetupCamera} from './grove-camera.js?v=61';
-import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=61';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=61';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,closeFreehandStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=61';
-import {createAudio} from './audio.js?v=61';
-import {loadAudioPreferences} from './audio-preferences.js?v=61';
+import {defaultEncounterSettings,encounterPose} from './woodland-encounters.js?v=62';
+import {rigOriginForDoor} from './launch-staging.js?v=62';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=62';
+import {editorMapStorage} from './editor-storage.js?v=62';
+import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=62';
+import {STARTER,REST_ARM_ANGLE,critter,buildFacts} from './build-catalog.js?v=62';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=62';
+import {groveTreeCamera,groveOverviewBounds,groveSetupCamera} from './grove-camera.js?v=62';
+import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=62';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=62';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,closeFreehandStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=62';
+import {createAudio} from './audio.js?v=62';
+import {loadAudioPreferences} from './audio-preferences.js?v=62';
 /** Mount tools inside the game's scoped panel. The supplied world is the
  * single map authority; this module never creates or embeds another game. */
 export function mountMapEditor({root,world,onPlay,isActive=()=>true,qa=false,getDoor=()=>null,getBuild=()=>STARTER,getRigOrigin=()=>undefined}){

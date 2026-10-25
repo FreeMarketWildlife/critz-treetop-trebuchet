@@ -1,0 +1,120 @@
+{
+  "oldStarter": {
+    "height": 0.6,
+    "capacity": 150,
+    "movingGrams": 38.519999999999996,
+    "beamGrams": 89.18,
+    "torque": 2.2947561,
+    "inertia": 0.006530948666666668,
+    "potential": 4.5895122,
+    "opening": 0.2
+  },
+  "starter": {
+    "height": 0.48,
+    "capacity": 150,
+    "movingGrams": 36.216,
+    "beamGrams": 71.34400000000001,
+    "torque": 1.468643904,
+    "inertia": 0.003343845717333333,
+    "potential": 2.937287808,
+    "opening": 0.14
+  },
+  "runs": [
+    {
+      "animal": "mouse",
+      "loaded": true,
+      "accepted": true,
+      "phase": "finished",
+      "failure": "",
+      "axleMetres": 0.48,
+      "openingMetres": 0.14,
+      "capacityGrams": 150,
+      "counterGrams": 1600,
+      "release": {
+        "x": -0.3625599479335346,
+        "y": 1.1912652476129533,
+        "vx": 7.8221526341506715,
+        "vy": 5.249714791876508,
+        "angle": 33.86691611574377,
+        "time": 0.38437499999999897,
+        "reason": "Release ring cleared the pin",
+        "speed": 9.420487101418765,
+        "energy": 1.1093197153499663
+      },
+      "distanceMetres": 17.59627746527261,
+      "windSeconds": 3.0083333333333333
+    },
+    {
+      "animal": "chipmunk",
+      "loaded": true,
+      "accepted": true,
+      "phase": "finished",
+      "failure": "",
+      "axleMetres": 0.48,
+      "openingMetres": 0.19,
+      "capacityGrams": 150,
+      "counterGrams": 1600,
+      "release": {
+        "x": -0.6655476512733299,
+        "y": 0.921138733191108,
+        "vx": 1.9088463051279865,
+        "vy": 3.3258750696427777,
+        "angle": 60.146845279366794,
+        "time": 0.509374999999999,
+        "reason": "Release ring cleared the pin",
+        "speed": 3.8347280471334755,
+        "energy": 0.735256959773606
+      },
+      "distanceMetres": 2.48181315665778,
+      "windSeconds": 3.0083333333333333
+    },
+    {
+      "animal": "rabbit",
+      "loaded": true,
+      "accepted": true,
+      "phase": "finished",
+      "failure": "",
+      "axleMetres": 2.7,
+      "openingMetres": 0.55,
+      "capacityGrams": 3000,
+      "counterGrams": 150000,
+      "release": {
+        "x": -2.4801644476652163,
+        "y": 7.5719287903896175,
+        "vx": 15.358274233836598,
+        "vy": 13.358879253915676,
+        "angle": 41.01728189766498,
+        "time": 1.05625,
+        "reason": "Release ring cleared the pin",
+        "speed": 20.355250977632963,
+        "energy": 414.3362423624278
+      },
+      "distanceMetres": 69.91581804530394,
+      "windSeconds": 3.0083333333333333
+    },
+    {
+      "animal": "elephant",
+      "loaded": true,
+      "accepted": true,
+      "phase": "finished",
+      "failure": "",
+      "axleMetres": 24.3,
+      "openingMetres": 7.92,
+      "capacityGrams": 8000000,
+      "counterGrams": 200000000,
+      "release": {
+        "x": -22.70102450139212,
+        "y": 60.76628051629996,
+        "vx": 24.03876433102968,
+        "vy": 21.894463011187888,
+        "angle": 42.32720102769323,
+        "time": 4.259093213349468,
+        "reason": "Release ring cleared the pin",
+        "speed": 32.51506883140584,
+        "energy": 2643074.2527776486
+      },
+      "distanceMetres": 309.02138546817486,
+      "windSeconds": 14.433333333333334
+    }
+  ]
+}
