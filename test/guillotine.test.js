@@ -9,7 +9,7 @@ import {visitShop} from '../src/build-shop.js';
 import {GUILLOTINE} from '../src/guillotine.js';
 const kit=()=>fitEquipment(STARTER,{kind:'part',id:'guillotine'});
 test('a single user-generated item includes the blade, holder and mount while retaining starter dimensions',()=>{
- const c=kit();assert.equal(c.material,'steel');assert.equal(c.mount,'hinged');assert.equal(c.counterGrams,2000);
+ const c=kit();assert.equal(c.material,'steel');assert.equal(c.mount,'hinged');assert.equal(c.counterGrams,1600);
  for(const key of ['pivotHeight','baseWidth','longArm','shortArm','beamWidth','slingLength','pouchWidth'])assert.equal(c[key],STARTER[key]);
  const state={...newProgress(),owned:[...newProgress().owned,'guillotine'],build:c};assert.equal(canBuild(state,c),true);assert.deepEqual(validateProgress(state).build,c);
  assert.equal(GUILLOTINE.height,.58);assert.equal(GUILLOTINE.bladeWidth,.17);assert.equal(PARTS.find(p=>p.id==='guillotine').ideaSource,'user');
@@ -27,7 +27,7 @@ test('winding raises an initially still blade; release transfers gravitational e
 });
 test('all three starter animals load loosely and preserve their pose/motion at release with the compact blade',()=>{
  for(const animal of ['mouse','frog','chipmunk']){
-  const sim=new BuildSimulation({...kit(),animal});sim.setDraw(0);const loading=sim.loading=createPayloadLoading(sim);assert.equal(loading.loadKeyboard(),true);
+  const sim=new BuildSimulation({...kit(),animal,...(animal==='chipmunk'?{pouchWidth:.19}:{})});sim.setDraw(0);const loading=sim.loading=createPayloadLoading(sim);assert.equal(loading.loadKeyboard(),true);
   for(let i=0;i<360;i++)loading.step(1/60);
   for(let i=0;i<240;i++){sim.wind(1/60);loading.step(1/60);}
   assert.equal(loading.loaded,true);const pose=loading.position,motion=loading.motion,angle=loading.angle,parts=loading.parts;

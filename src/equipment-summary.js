@@ -1,7 +1,7 @@
-import {GUILLOTINE,isGuillotine} from './guillotine.js?v=57';
-import {windingMinimum,windingMotion} from './winding-comfort.js?v=57';
-import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=57';
-import {GRAVITY} from './build-physics.js?v=57';
+import {GUILLOTINE,isGuillotine} from './guillotine.js?v=61';
+import {windingMinimum,windingMotion} from './winding-comfort.js?v=61';
+import {part,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=61';
+import {GRAVITY} from './build-physics.js?v=61';
 const n=value=>Number(value.toFixed(6)).toLocaleString('en-US',{maximumFractionDigits:6});
 const mass=g=>g>=1000000?n(g/1000000)+' t':g>=1000?n(g/1000)+' kg':n(g)+' g';
 /** What a purchased part changes, independent of a promised distance increase. */

@@ -67,7 +67,8 @@ export const PREVIOUS_STARTER={...LEGACY_STARTER,name:'Acorn Flyer',arm:'oak',ba
 // Compact kit for tiny critters; larger recipes retain the original tower.
 export const COMPACT_STARTER={...PREVIOUS_STARTER,name:'Acorn Flyer',longArm:1.04,shortArm:.26,beamWidth:.02,pivotHeight:1.2,baseWidth:.8,frameGrams:1500,counterGrams:6000,hanger:.16,slingLength:.96,troughLength:1.6,troughHeight:.035,pinLength:.018,axleRadius:.008,pinAngle:-40};
 // Mouse-sized stock rig. Custom dimensions are never scaled on load.
-export const STARTER={...COMPACT_STARTER,longArm:.52,shortArm:.13,beamWidth:.014,pivotHeight:.60,baseWidth:.40,frameGrams:400,counterGrams:2000,hanger:.08,slingLength:.48,troughLength:.80,troughHeight:.02,pouchWidth:.20,pinLength:.009,axleRadius:.004,pinAngle:-65,wheelRadius:.065,wheelGrams:40};
+export const SIXTY_CM_STARTER={...COMPACT_STARTER,longArm:.52,shortArm:.13,beamWidth:.014,pivotHeight:.60,baseWidth:.40,frameGrams:400,counterGrams:2000,hanger:.08,slingLength:.48,troughLength:.80,troughHeight:.02,pouchWidth:.20,pinLength:.009,axleRadius:.004,pinAngle:-65,wheelRadius:.065,wheelGrams:40};
+export const STARTER={...SIXTY_CM_STARTER,longArm:.416,shortArm:.104,pivotHeight:.48,baseWidth:.32,frameGrams:300,counterGrams:1600,hanger:.064,slingLength:.384,troughLength:.64,pouchWidth:.14,pinLength:.008,pinAngle:-70,wheelRadius:.052,wheelGrams:30};
 export const STARTER_PARTS=[...new Set([...PARTS.filter(p=>p.price===0).map(p=>p.id),...SLOTS.map(([slot])=>STARTER[slot])])];
 export const dimensions=a=>`${Number((a.length*100).toFixed(1))} × ${Number((a.width*100).toFixed(1))} cm`;
 export function drawLimit(c,pivotY=c.pivotHeight,deckY=c.troughHeight){return Math.min(c.cockAngle,Math.asin(Math.max(0,Math.min(1,(pivotY-deckY-c.beamWidth/2-.025)/c.longArm)))*180/Math.PI);}
@@ -111,7 +112,7 @@ export function buildFacts(c){
  return {beamGrams,counterRadius,warnings,ratio:c.longArm/c.shortArm,payload:a,capacity:s.capacity};
 }
 export function scaledPreset(animal='mouse',chassis='anchored'){
- const profiles={mouse:{},frog:{animal:'frog'},chipmunk:{animal:'chipmunk'},squirrel:{animal:'squirrel',sling:'pouch',pouchWidth:.4,rope:'hemp',counterGrams:30000,pinAngle:-60,beamWidth:.05},rabbit:{animal:'rabbit',cockAngle:28,sling:'pouch',pouchWidth:.55,rope:'hemp',ballast:'quarry',counterGrams:150000,arm:'oak',frame:'timber',longArm:3,shortArm:.8,pivotHeight:2.7,slingLength:2.7,beamWidth:.1,frameGrams:30000,baseWidth:2,pinAngle:-45},armadillo:{},fox:{}};
+ const profiles={mouse:{},frog:{animal:'frog'},chipmunk:{animal:'chipmunk',pouchWidth:.19},squirrel:{animal:'squirrel',sling:'pouch',pouchWidth:.4,rope:'hemp',counterGrams:30000,pinAngle:-60,beamWidth:.05},rabbit:{animal:'rabbit',cockAngle:28,sling:'pouch',pouchWidth:.55,rope:'hemp',ballast:'quarry',counterGrams:150000,arm:'oak',frame:'timber',longArm:3,shortArm:.8,pivotHeight:2.7,slingLength:2.7,beamWidth:.1,frameGrams:30000,baseWidth:2,pinAngle:-45},armadillo:{},fox:{}};
  const heavy={tiger:[3,220000,6500000],bear:[3,250000,7500000],elephant:[9,5000000,200000000],whale:[32,100000000,5000000000]};
  let c={...(STARTER_ANIMALS.includes(animal)?STARTER:PREVIOUS_STARTER),...profiles[animal],animal,chassis};
  if(['armadillo','fox'].includes(animal))c={...c,...profiles.rabbit,animal,sling:'cradle',rope:'cable',pouchWidth:1,beamWidth:.1,mount:'fixed',counterGrams:200000,pinAngle:-45};

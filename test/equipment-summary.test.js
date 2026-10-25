@@ -9,7 +9,7 @@ test('all 49 parts expose distinct functional specifications, including exact sm
  assert.ok(specs.every(s=>typeof s==='string'&&s.length>10));
  assert.equal(new Set(specs).size,49);
  for(const p of PARTS.filter(p=>['bearing','release','trough'].includes(p.slot)))assert.ok(equipmentSpec(p).includes(String(p.friction)),p.id);
- assert.match(equipmentUse(part('continental'),STARTER),/Counterweight mass: 2 kg.*Holder and connection are included/);
+ assert.match(equipmentUse(part('continental'),STARTER),/Counterweight mass: 1.6 kg.*Holder and connection are included/);
  assert.match(equipmentUse(part('leviathan'),STARTER),/dimensions unchanged/);
 });
 test('tuning controls reflect equipped capacity rather than unavailable global limits',()=>{
@@ -26,5 +26,5 @@ test('loaded preparation estimate matches actual governed and power-limited wind
   assert.ok(Math.abs(preparationSeconds(c)-duration)<.015,JSON.stringify({duration,estimate:preparationSeconds(c)}));
  }
  assert.equal(preparationSeconds(STARTER),3);
- assert.ok(preparationSeconds({...STARTER,ballast:'quarry',counterGrams:150000})>3);
+ assert.ok(preparationSeconds({...STARTER,ballast:'quarry',counterGrams:300000})>3);
 });

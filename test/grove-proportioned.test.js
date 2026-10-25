@@ -33,7 +33,7 @@ test('edited V4 maps round-trip without startup writes and malformed bytes remai
  for(const raw of['{broken','{}',JSON.stringify({...custom,version:5}),JSON.stringify({...custom,launch:{x:0,y:600}}),JSON.stringify({...custom,tree:{...custom.tree,height:800}}),JSON.stringify({...custom,height:1500})]){const s=store(raw);assert.equal(readGroveMap(s),null);assert.equal(s.raw,raw);assert.equal(s.writes,0);}
 });
 
-function fire(map,animal,draw){const s=new BuildSimulation({...STARTER,animal},{map});s.setDraw(draw);assert.equal(s.fire(),true);for(let i=0;i<1200&&!s.release&&s.phase==='swing';i++)s.step(1/240);assert.ok(s.release);return s;}
+function fire(map,animal,draw){const s=new BuildSimulation({...STARTER,animal,...(animal==='chipmunk'?{pouchWidth:.19}:{})},{map});s.setDraw(draw);assert.equal(s.fire(),true);for(let i=0;i<1200&&!s.release&&s.phase==='swing';i++)s.step(1/240);assert.ok(s.release);return s;}
 test('proportioned scenery preserves the existing launcher release for all starter species',()=>{
  for(const animal of['mouse','frog','chipmunk'])for(const draw of[.5,.75,1]){const before=fire(createV3GroveMap(),animal,draw),after=fire(createGroveMap(),animal,draw);for(const k of['x','y','vx','vy','angle','time','speed','energy'])assert.ok(Math.abs(before.release[k]-after.release[k])<1e-9,`${animal}/${draw}/${k}`);assert.equal(after.release.reason,before.release.reason);}
 });

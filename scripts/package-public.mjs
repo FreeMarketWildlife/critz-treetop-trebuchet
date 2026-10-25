@@ -11,7 +11,7 @@ export async function packagePublic(target){
  const existing=JSON.parse(await readFile(resolve(target,'.openai/hosting.json'),'utf8'));
  if(existing.project_id!==manifest.project_id)throw Error('Publication checkout belongs to another Site.');
  const dist=resolve(target,'dist');await rm(dist,{recursive:true,force:true});await mkdir(dist,{recursive:true});
- for(const name of ['index.html','editor.html','editor.css','world-workshop.css','scale.html','scale.css','workshop.css','mobile.css','weapons.css','clean-play.css','assets','mechanism-lab.html','atlas.html','src','vendor']){
+ for(const name of ['index.html','editor.html','editor.css','world-workshop.css','scale.html','scale.css','workshop.css','exchange.css','mobile.css','weapons.css','clean-play.css','assets','mechanism-lab.html','atlas.html','src','vendor']){
   await cp(resolve(root,name),resolve(dist,name),{recursive:true});
  }
  // The explicit developer route shares this same runtime. It remains unlinked

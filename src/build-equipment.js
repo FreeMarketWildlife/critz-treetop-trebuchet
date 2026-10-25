@@ -1,4 +1,4 @@
-import {part,validateBuild,buildFacts,TUNING,critter,counterweightKit} from './build-catalog.js?v=57';
+import {part,validateBuild,buildFacts,TUNING,critter,counterweightKit} from './build-catalog.js?v=61';
 /** Fit owned equipment, reducing dimensions only when the selected part cannot
  * accommodate them. Buying capacity never secretly fills the counterweight. */
 export function fitEquipment(build,offer){

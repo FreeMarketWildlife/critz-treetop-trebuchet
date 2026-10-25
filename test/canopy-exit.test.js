@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,createLandmarkedGroveMap,validateGroveMap,readGroveMap,MAP_KEY,objectBounds} from '../src/grove-map.js';
 import {BuildSimulation} from '../src/build-physics.js';
-import {STARTER} from '../src/build-catalog.js';
+import {SIXTY_CM_STARTER as STARTER} from '../src/build-catalog.js';
 import {createFlightWeapons} from '../src/flight-weapons.js';
 import {createLaunchFeel} from '../src/launch-feel.js';
 function run(map,draw,weapon=null,first=1.2){

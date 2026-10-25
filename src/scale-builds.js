@@ -1,4 +1,4 @@
-import {STARTER,SLOTS,part,validateBuild,buildFacts,scaledPreset} from './build-catalog.js?v=57';
+import {STARTER,SIXTY_CM_STARTER,SLOTS,part,validateBuild,buildFacts,scaledPreset} from './build-catalog.js?v=61';
 
 // Optional named recipes, never a starter migration or a purchase. Every value
 // is real solver geometry/mass; comparison views must use one shared scale.
@@ -43,5 +43,7 @@ export function scaleBuildFacts(idOrBuild){
  * their own tuning. No user's custom settings are silently replaced. */
 export function recipeDrawMinimum(build){
  const match=SCALE_BUILDS.find(({build:known})=>Object.keys(known).every(key=>key==='name'||known[key]===build[key]));
- return match?.minimumDraw??null;
+ if(match)return match.minimumDraw;
+ if(Object.keys(SIXTY_CM_STARTER).every(key=>key==='name'||SIXTY_CM_STARTER[key]===build[key]))return .7;
+ return null;
 }

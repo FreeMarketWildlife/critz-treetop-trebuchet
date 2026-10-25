@@ -1,9 +1,9 @@
-import {DOORS,availableCritters,critterHeight} from './critter-door.js?v=57';
-import {PARTS,CRITTERS,STARTER,COMPACT_STARTER,PREVIOUS_STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild,equipmentOwned} from './build-catalog.js?v=57';
-import {VOUCHERS,validateShop} from './build-shop.js?v=57';
-import {validateSpaceEscape} from './space-policy.js?v=57';
+import {DOORS,availableCritters,critterHeight} from './critter-door.js?v=61';
+import {PARTS,CRITTERS,STARTER,SIXTY_CM_STARTER,COMPACT_STARTER,PREVIOUS_STARTER,LEGACY_STARTER,STARTER_PARTS,STARTER_ANIMALS,SLOTS,part,critter,validateBuild,equipmentOwned} from './build-catalog.js?v=61';
+import {VOUCHERS,validateShop} from './build-shop.js?v=61';
+import {validateSpaceEscape} from './space-policy.js?v=61';
 export const SAVE_KEY='treetop-custom-workshop-v1';
-export function newProgress(){return{version:1,doorTier:0,doorUpgradeRound:-1,saveRevision:0,starterRevision:6,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[],achievements:[],pendingSpace:null};}
+export function newProgress(){return{version:1,doorTier:0,doorUpgradeRound:-1,saveRevision:0,starterRevision:7,vouchers:[],shop:null,bells:0,points:0,best:0,launches:0,owned:[...STARTER_PARTS],animals:[...STARTER_ANIMALS],build:{...STARTER},blueprints:[],history:[],claimed:[],achievements:[],pendingSpace:null};}
 export function canBuild(state,build,creative=false){validateBuild(build);if(creative)return true;if(build.wind!==0||build.drag!==1)throw Error('Adventure uses calm air with air resistance. Reset Creative atmosphere settings first.');for(const[slot]of SLOTS)if(!equipmentOwned(state.owned,build[slot]))throw Error(`Buy ${part(build[slot]).name} first.`);if(!availableCritters(state).includes(build.animal))throw Error('Upgrade the tree door to let this critter through.');return true;}
 export function buy(state,id,animal=false){if(animal)throw Error('Critters are not for sale. Upgrade the tree door.');const product=animal?critter(id):part(id),key=animal?'animals':'owned';if(state[key].includes(id))throw Error('Already owned.');if(state.bells<product.price)throw Error('More Bells needed.');return {...state,bells:state.bells-product.price,[key]:[...state[key],id]};}
 const SPACE_ACHIEVEMENT='spaceEscape';
@@ -85,13 +85,14 @@ export function validateProgress(raw){
  const legacy=upgraded&&Object.entries(LEGACY_STARTER).every(([key,value])=>['name','animal'].includes(key)||raw.build?.[key]===value);
  const owned=upgraded?[...new Set([...raw.owned,...STARTER_PARTS])]:raw.owned;
  const untouchedCompact=(raw.starterRevision??0)<6&&Object.entries(COMPACT_STARTER).every(([key,value])=>['name','animal','winch'].includes(key)||raw.build?.[key]===value);
- const build=legacy||untouchedTower||untouchedCompact?{...STARTER,...((untouchedTower||untouchedCompact)?{winch:raw.build.winch}:{}),name:raw.build.name,animal:raw.build.animal}:raw.build;
+ const untouchedSixty=(raw.starterRevision??0)<7&&Object.entries(SIXTY_CM_STARTER).every(([key,value])=>['name','animal','winch'].includes(key)||raw.build?.[key]===value);
+ const build=legacy||untouchedTower||untouchedCompact||untouchedSixty?{...STARTER,...((untouchedTower||untouchedCompact||untouchedSixty)?{winch:raw.build.winch}:{}),name:raw.build.name,animal:raw.build.animal,...(raw.build.animal==='chipmunk'?{pouchWidth:.19}:{})}:raw.build;
  const animals=wheelRevision?[...new Set([...raw.animals,...STARTER_ANIMALS])]:raw.animals;
  const tier=raw.doorTier??Math.max(0,DOORS.findIndex(d=>d.height+1e-10>=Math.max(...raw.animals.map(id=>critterHeight(critter(id))))));
  if(!Number.isInteger(tier)||tier<0||tier>=DOORS.length)throw Error('Invalid door tier.');
  const doorUpgradeRound=raw.doorUpgradeRound??-1;
  if(!Number.isInteger(doorUpgradeRound)||doorUpgradeRound < -1||doorUpgradeRound>raw.launches)throw Error('Invalid door upgrade round.');
- const s={...raw,doorTier:tier,doorUpgradeRound,saveRevision,starterRevision:6,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild),achievements:achievementIds(raw.achievements),pendingSpace:null};s.animals=availableCritters(s);canBuild(s,s.build);
+ const s={...raw,doorTier:tier,doorUpgradeRound,saveRevision,starterRevision:7,owned,animals,vouchers,shop:validateShop(raw.shop,raw.launches),build:validateBuild(build),blueprints:raw.blueprints.map(validateBuild),achievements:achievementIds(raw.achievements),pendingSpace:null};s.animals=availableCritters(s);canBuild(s,s.build);
  const pending=validatePendingSpace(raw.pendingSpace,s);if(pending){s.achievements=withSpaceAchievement(s.achievements);if(!s.claimed.includes(pending.id))s.pendingSpace=pending;}return s;
 }
 export class StaleProgressError extends Error{

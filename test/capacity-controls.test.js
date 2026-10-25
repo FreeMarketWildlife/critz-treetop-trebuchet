@@ -83,14 +83,14 @@ test('actual equip handler preserves custom dimensions/currency and reveals dire
  assert.equal(h.context.state.build.frame,'timber');assert.equal(h.context.state.build.pivotHeight,before.build.pivotHeight);assert.equal(h.context.state.build.frameGrams,before.build.frameGrams);assert.equal(h.context.state.bells,before.bells);assert.equal(h.context.state.points,before.points);
  assert.equal(h.nodes.activeTab,'build');assert.equal(h.nodes['part-frame'].open,true);assert.equal(h.nodes['part-frame'].scrolled,true);assert.match(h.nodes.fittedNotice.textContent,/Adjust axle height/);
 });
-test('actual shop purchase path reveals new fill controls while preserving the chosen fill and other earned progress',()=>{
+test('actual shop purchase path stays in the shop and advertises fill controls while preserving the chosen fill and other earned progress',()=>{
  const h=application(),offer={kind:'part',id:'quarry'};
  h.context.state=visitShop({...h.context.state,owned:h.context.state.owned.filter(id=>id!=='quarry')},73);h.context.state.shop.offers=[offer];
  h.context.draft={...h.context.state.build};h.context.offer=offer;h.context.p=part('quarry');h.context.packChoice=false;h.context.button={};
  const before=structuredClone(h.context.state),start=source.indexOf(' button.onclick=()=>{try{',source.indexOf('function shopCard(')),end=source.indexOf('\n card.append',start);
  assert.ok(start>0&&end>start);vm.runInContext(source.slice(start,end),h.context);h.context.button.onclick();
  assert.equal(h.context.state.bells,before.bells-part('quarry').price);assert.equal(h.context.state.points,before.points);assert.equal(h.context.state.build.ballast,'quarry');assert.equal(h.context.state.build.counterGrams,before.build.counterGrams);assert.equal(h.context.state.build.pivotHeight,before.build.pivotHeight);
- assert.equal(h.nodes.activeTab,'build');assert.equal(h.nodes['part-ballast'].open,true);assert.equal(h.nodes['part-ballast'].scrolled,true);assert.match(h.nodes.fittedNotice.textContent,/Adjust counterweight mass/);
+ assert.equal(h.nodes.activeTab,undefined);assert.equal(h.nodes['part-ballast'].open,false);assert.match(h.nodes.fittedNotice.textContent,/Adjust counterweight mass/);
 });
 test('capacity reveal never opens workshop controls on the playfield',()=>{
  const h=application();h.nodes.workshopDialog.open=false;h.context.fitted('Timber tower','frame');assert.equal(h.nodes.activeTab,undefined);assert.equal(h.nodes['part-frame'].open,false);

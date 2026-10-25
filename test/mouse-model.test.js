@@ -22,9 +22,9 @@ test('jointed mouse uses matching weighted sections and the nearly weightless ta
  near(parts.find(p=>p.id==='tail').mass,.002);near(parts.find(p=>p.id==='head').mass,.21);near(parts.reduce((sum,p)=>sum+p.mass,0),1);
  const tail=parts.find(p=>p.id==='tail');assert.ok(l.begin(tail));assert.equal(l.grip.part,'tail');l.move({x:tail.x,y:tail.y+.2});for(let i=0;i<120;i++)l.step(1/120);assert.ok(l.parts.every(p=>[p.x,p.y,p.angle].every(Number.isFinite)));l.cancel();assert.equal(s.phase,'ready');
 });
-test('only an untouched old compact starter migrates to sixty centimetres; custom geometry survives',()=>{
+test('only an untouched old compact starter migrates to forty-eight centimetres; custom geometry survives',()=>{
  const raw={...newProgress(),starterRevision:5,bells:123,build:{...COMPACT_STARTER},blueprints:[{...COMPACT_STARTER,name:'Keep this'}]};
- const migrated=validateProgress(raw);assert.equal(migrated.build.pivotHeight,.6);assert.equal(migrated.bells,123);assert.equal(migrated.blueprints[0].pivotHeight,1.2);assert.equal(migrated.starterRevision,6);
+ const migrated=validateProgress(raw);assert.equal(migrated.build.pivotHeight,.48);assert.equal(migrated.bells,123);assert.equal(migrated.blueprints[0].pivotHeight,1.2);assert.equal(migrated.starterRevision,7);
  const custom=validateProgress({...raw,build:{...COMPACT_STARTER,pivotHeight:1.1}});assert.equal(custom.build.pivotHeight,1.1);
- assert.equal(STARTER.longArm,COMPACT_STARTER.longArm/2);assert.equal(STARTER.slingLength,COMPACT_STARTER.slingLength/2);
+ near(STARTER.longArm,COMPACT_STARTER.longArm*.4);near(STARTER.slingLength,COMPACT_STARTER.slingLength*.4);
 });

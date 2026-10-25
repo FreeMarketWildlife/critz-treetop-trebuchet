@@ -1,11 +1,11 @@
-import {TUNING,part,validateBuild} from './build-catalog.js?v=57';
-const SLOT_KEYS=Object.freeze({frame:['pivotHeight','frameGrams'],ballast:['counterGrams']});
-const LABELS={pivotHeight:'Frame axle height',frameGrams:'Frame mass',counterGrams:'Counterweight mass'};
+import {TUNING,part,validateBuild} from './build-catalog.js?v=61';
+const SLOT_KEYS=Object.freeze({frame:['pivotHeight','frameGrams'],ballast:['counterGrams'],sling:['pouchWidth','slingLength']});
+const LABELS={pivotHeight:'Frame axle height',frameGrams:'Frame mass',counterGrams:'Counterweight mass',pouchWidth:'Pouch opening',slingLength:'Cord length'};
 const format=n=>Number(n.toFixed(3)).toLocaleString('en-US');
 export function capacityFields(build,slot){
  return (SLOT_KEYS[slot]??[]).map(key=>{
   const [,title,unit,min,max,step]=TUNING.find(row=>row[0]===key);
-  const limit=key==='pivotHeight'?part(build.frame).maxHeight:key==='frameGrams'?part(build.frame).maxMass:part(build.ballast).maxMass;
+  const limit=key==='pivotHeight'?part(build.frame).maxHeight:key==='frameGrams'?part(build.frame).maxMass:key==='counterGrams'?part(build.ballast).maxMass:key==='pouchWidth'?part(build.sling).width:part(build.sling).maxLength;
   return{key,label:LABELS[key]??title,unit,min,max:Math.min(max,limit),step,value:build[key]};
  });
 }
@@ -29,8 +29,8 @@ export function createCapacityControls({document,slot,getBuild,onPreview,onApply
  const fields=capacityFields(getBuild(),slot);if(!fields.length)return null;
  const make=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
  const element=make('section',undefined,'capacity-adjustment');element.dataset.capacitySlot=slot;
- element.setAttribute('aria-label',slot==='frame'?'Adjust fitted frame':'Adjust fitted counterweight');
- element.append(make('strong',slot==='frame'?'Use your frame capacity':'Set your counterweight mass'));
+ element.setAttribute('aria-label',slot==='frame'?'Adjust fitted frame':slot==='sling'?'Adjust fitted sling':'Adjust fitted counterweight');
+ element.append(make('strong',slot==='frame'?'Use your frame capacity':slot==='sling'?'Size the pouch and cords':'Set your counterweight mass'));
  element.append(make('p','Your chosen values stay as they are until you adjust them. Preview changes below, then apply.'));
  const inputs=new Map(),limits=new Map();
  for(const f of fields){

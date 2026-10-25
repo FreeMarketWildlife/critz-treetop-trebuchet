@@ -1,13 +1,13 @@
-import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=57';
-import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=57';
-import {windingMotion} from './winding-comfort.js?v=57';
-import {recipeDrawMinimum} from './scale-builds.js?v=57';
-import {addCritterFixtures} from './critter-body.js?v=57';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=57';
+import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=61';
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=61';
+import {windingMotion} from './winding-comfort.js?v=61';
+import {recipeDrawMinimum} from './scale-builds.js?v=61';
+import {addCritterFixtures} from './critter-body.js?v=61';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=61';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=57';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=57';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=57';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=61';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=61';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=61';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint,GearJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
@@ -399,6 +399,6 @@ export class BuildSimulation{
   if(this.release){this.elapsedSettled=Math.hypot(q.vx,q.vy)<.16&&(this.map?this.shotContacts.size>0:q.y<this.supportHeight(q.x)+this.payloadRadius+.06*this.L)?this.elapsedSettled+h:0;if((this.time-this.release.time>.35*this.T&&this.elapsedSettled>.8)||this.time>(this.map?Math.max(100,this.map.tree.height*.5):100))this.phase='finished';}
   else if(this.time>Math.max(8,12*this.T)){this.failure=this.failure||'No release — try the pin, arm ratio, or counterweight';this.phase='finished';}
  }
- snapshot(){return{phase:this.phase,time:this.time,payload:this.real(this.shot),tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure,guillotine:this.bladeGuide?{blade:this.counterPoint(),cut:this.guillotineCut??null}:null,spaceState:this.spaceState,spaceEscape:this.spaceEscape?structuredClone(this.spaceEscape):null};}
+ snapshot(){return{phase:this.phase,time:this.time,payload:{...this.real(this.shot),...(this.phase==='ready'&&this.loading?{vx:this.loading.motion.vx,vy:this.loading.motion.vy}:{})},tip:this.tip(),pivot:this.pivot(),counter:this.counterPoint(),frame:this.real(this.frame),armAngle:this.arm.getAngle(),release:this.release,distance:this.maxX,height:this.maxY,tension:this.lastTension,peakTension:this.peakTension,peakStress:this.peakStress,energy:this.energy(),initialEnergy:this.initialEnergy,failure:this.failure,guillotine:this.bladeGuide?{blade:this.counterPoint(),cut:this.guillotineCut??null}:null,spaceState:this.spaceState,spaceEscape:this.spaceEscape?structuredClone(this.spaceEscape):null};}
 }
 export function runBuild(c,seconds=80){const sim=new BuildSimulation(c);sim.fire();for(let t=0;t<seconds&&['swing','flight'].includes(sim.phase);t+=1/60)sim.step(1/60);return sim;}

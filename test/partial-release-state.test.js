@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {BuildSimulation} from '../src/build-physics.js';
-import {STARTER} from '../src/build-catalog.js';
+import {SIXTY_CM_STARTER as STARTER} from '../src/build-catalog.js';
 import {createPayloadLoading} from '../src/payload-loading.js';
 function transientSupportLoss(){
  const sim=new BuildSimulation(STARTER);sim.setDraw(0);const loading=sim.loading=createPayloadLoading(sim),schedule=[.05,.001,.001,.001,.05];loading.loadKeyboard();let index=0,age=0;

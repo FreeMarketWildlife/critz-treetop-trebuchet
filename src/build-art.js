@@ -1,19 +1,19 @@
-import {isGuillotine,drawGuillotine} from './guillotine.js?v=57';
-import {drawMouse} from './mouse-art.js?v=57';
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=57';
-import {critterHitboxBounds} from './critter-body.js?v=57';
-import {landingOpportunity} from './landing-opportunity.js?v=57';
-import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=57';
-import {imminentLanding} from './landing-view.js?v=57';
-import {GRAVITY} from './build-physics.js?v=57';
-import {drawFlightAccents} from './flight-art.js?v=57';
-import {drawCounterweight} from './counterweight-art.js?v=57';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=57';
-import {RopeVisual} from './rope-visual.js?v=57';
-import {part,grams} from './build-catalog.js?v=57';
-import {drawGroveWorld} from './grove-art.js?v=57';
-import {createCritterPerformance} from './critter-performance.js?v=57';
-import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=57';
+import {isGuillotine,drawGuillotine} from './guillotine.js?v=61';
+import {drawMouse} from './mouse-art.js?v=61';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=61';
+import {critterHitboxBounds} from './critter-body.js?v=61';
+import {landingOpportunity} from './landing-opportunity.js?v=61';
+import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=61';
+import {imminentLanding} from './landing-view.js?v=61';
+import {GRAVITY} from './build-physics.js?v=61';
+import {drawFlightAccents} from './flight-art.js?v=61';
+import {drawCounterweight} from './counterweight-art.js?v=61';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=61';
+import {RopeVisual} from './rope-visual.js?v=61';
+import {part,grams} from './build-catalog.js?v=61';
+import {drawGroveWorld} from './grove-art.js?v=61';
+import {createCritterPerformance} from './critter-performance.js?v=61';
+import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=61';
 const TAU=Math.PI*2;
 // These are finishes and attached fittings, not replacement collision geometry.
 // Capacity tiers keep the user's chosen dimensions; their cages/cloth identify

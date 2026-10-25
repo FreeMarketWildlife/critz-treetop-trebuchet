@@ -18,7 +18,7 @@ function dropOn(map,o,collision=true){
 
 const store=()=>({values:new Map(),getItem(k){return this.values.get(k);},setItem(k,v){this.values.set(k,v);}});
 function launch(map,animal='mouse'){
- const sim=new BuildSimulation({...STARTER,animal},{map});sim.setDraw(0);for(let i=0;i<110;i++)sim.wind(1/60);sim.fire();return sim;
+ const sim=new BuildSimulation({...STARTER,animal,...(animal==='chipmunk'?{pouchWidth:.19}:{})},{map});sim.setDraw(0);for(let i=0;i<110;i++)sim.wind(1/60);sim.fire();return sim;
 }
 
 test('archived V3 spring mats save unchanged and migrate to the current default only on read',()=>{

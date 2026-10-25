@@ -1,5 +1,5 @@
-import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG,formatMetres} from './world-scale.js?v=57';
-import {SCALE_BUILDS,scaleBuildFacts} from './scale-builds.js?v=57';
+import {scaleInventory,comparisonPanels,scalePanelSVG,authoredMapSVG,formatMetres} from './world-scale.js?v=61';
+import {SCALE_BUILDS,scaleBuildFacts} from './scale-builds.js?v=61';
 const $=id=>document.getElementById(id),el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node;};
 const inventory=scaleInventory();
 const forestTrees=inventory.filter(e=>e.category==='Trees'&&e.id!=='grandfather-oak'),ordinary=forestTrees.filter(e=>e.height<=60),rare=forestTrees.filter(e=>e.height>60);

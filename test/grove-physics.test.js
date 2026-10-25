@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {createV3GroveMap as createGroveMap,createGroveMap as createCurrentGroveMap,validateGroveMap,saveGroveMap,readGroveMap,MAP_KEY,gravityScaleAt,createLegacyGroveMap,isUntouchedLegacyStarter,ENEMIES,enemyRecipe} from '../src/grove-map.js';
 import {triangulatePolygon,polygonArea,isSimplePolygon} from '../src/grove-geometry.js';
 import {BuildSimulation,GRAVITY,EARTH_GRAVITY} from '../src/build-physics.js';
-import {STARTER,scaledPreset} from '../src/build-catalog.js';
+import {SIXTY_CM_STARTER as STARTER,scaledPreset} from '../src/build-catalog.js';
 const mapWith=objects=>({...createGroveMap(),objects});
 const shape=(type,values)=>({id:'test-shape',type,collision:true,layer:'world',material:'wood',bounce:0,...values});
 function flight(map,x,y,vx=0,vy=0){const s=new BuildSimulation({...STARTER,drag:0},{map});s.fire();s.shot.setPosition({x:x/s.L,y:y/s.L});s.shot.setLinearVelocity({x:vx*s.T/s.L,y:vy*s.T/s.L});s.detach('Test release');return s;}
