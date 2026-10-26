@@ -1,8 +1,8 @@
 <!doctype html><meta charset="utf-8"><title>Woodland workshop acceptance</title><style>body{margin:0;background:#e9e8d2;color:#294a3a;font:15px system-ui}header{padding:16px 24px;background:#294a3a;color:#f7e5b4}button{padding:10px;border:0;border-radius:8px;background:#e9c87e;color:#294a3a;margin:6px}#art{display:flex;justify-content:space-around;padding:12px}.card{text-align:center}canvas{display:block}iframe{width:100%;height:720px;border:0}pre{padding:15px;white-space:pre-wrap}</style><header><b>Grimroot · six little troublemakers</b> <button id="run">Run editor gesture acceptance</button> <button id="lineup">Download lineup PNG</button> <span id="result">Ready</span></header><section id="art"></section><pre id="log"></pre><iframe src="../../editor.html?qa=1"></iframe><script type="module">
-import {WOODLAND_ENEMIES} from '../../src/woodland-encounters.js?v=70';
-import {drawGroveEnemy} from '../../src/grove-art.js?v=70';
-import {validateGroveMap} from '../../src/grove-map.js?v=70';
-import {encodeMapLink,decodeMapLink} from '../../src/map-link-codec.js?v=70';
+import {WOODLAND_ENEMIES} from '../../src/woodland-encounters.js?v=71';
+import {drawGroveEnemy} from '../../src/grove-art.js?v=71';
+import {validateGroveMap} from '../../src/grove-map.js?v=71';
+import {encodeMapLink,decodeMapLink} from '../../src/map-link-codec.js?v=71';
 const cards=WOODLAND_ENEMIES.map(r=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<canvas width="170" height="140"></canvas><b>${r.name}</b><br><small>${r.motion} · ${r.effect}</small>`;art.append(d);return{r,c:d.querySelector('canvas').getContext('2d')};});
 function animate(t){for(const {r,c}of cards){c.clearRect(0,0,170,140);drawGroveEnemy(c,r.kind,85,70,110,t/1000);}requestAnimationFrame(animate);}requestAnimationFrame(animate);
 lineup.onclick=()=>{const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=260;const c=canvas.getContext('2d');c.fillStyle='#e9e8d2';c.fillRect(0,0,1200,260);c.fillStyle='#294a3a';c.font='bold 20px system-ui';c.fillText('Grimroot · six little troublemakers',24,32);WOODLAND_ENEMIES.forEach((r,i)=>{const x=i*200+100;drawGroveEnemy(c,r.kind,x,125,112,.35);c.fillStyle='#294a3a';c.font='bold 16px system-ui';c.textAlign='center';c.fillText(r.name,x,216);c.font='13px system-ui';c.fillText(r.motion+' · '+r.effect,x,239);});const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='woodland-lineup.png';a.click();};

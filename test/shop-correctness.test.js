@@ -121,3 +121,11 @@ test('native popover focus restoration cannot reopen dismissed details',()=>{
  info.focus();assert.equal(nativeOpen,true);h.c.dismissShopDetails();assert.equal(restores,1);assert.equal(panel.hidden,true);assert.equal(nativeOpen,false);assert.equal(info.attributes['aria-expanded'],'false');assert.deepEqual(copy(h.c.state),before);
  info.focus();assert.equal(nativeOpen,true,'a later deliberate focus can inspect again');
 });
+test('Escape/close suppression ignores stationary hover reentry but allows fresh movement and explicit info',()=>{
+ const h=app(),[first,second]=h.cards(),info=h.all(second).find(n=>n.className==='inspect-item'),panel=h.nodes.shopDetail;
+ info.focus();h.c.dismissShopDetails(true);
+ first.onpointerenter({type:'pointerenter',pointerType:'mouse',movementX:0,movementY:0});assert.equal(panel.hidden,true);
+ first.onpointermove({type:'pointermove',pointerType:'mouse',movementX:0,movementY:0});assert.equal(panel.hidden,true);
+ first.onpointermove({type:'pointermove',pointerType:'mouse',movementX:1,movementY:0});assert.equal(panel.hidden,false);
+ h.c.dismissShopDetails(true);info.click();assert.equal(panel.hidden,false,'explicit inspection still opens without mouse motion');
+});

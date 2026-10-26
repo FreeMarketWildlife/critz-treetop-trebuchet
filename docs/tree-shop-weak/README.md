@@ -33,3 +33,7 @@ Physical touch hardware is not claimed; touch event paths are tested synthetical
 Independent review found that native popover dismissal could restore focus to its info opener and reopen details on Escape. v70 suppresses inspection during synchronous native focus restoration; a regression models that browser behavior. Real keyboard Escape now closes details while keeping the shop open and the info control focused. Layout and transaction behavior are unchanged.
 
 Final v70 full regression: 1132/1132 PASS (68.3 seconds), `/tmp/treetop-v70-final-suite.log`; no skipped tests.
+
+v71 also suppresses hover reopening after Escape/Close until fresh mouse movement. Native top-layer removal can send pointerenter to a card under a stationary cursor; that event now leaves details closed. Deliberate info activation and actual mouse motion remain available. Focused 50/50 checks pass including stationary reentry, zero-motion pointermove and explicit inspection.
+
+Final v71 full regression: 1133/1133 PASS (71.6 seconds), `/tmp/treetop-v71-full.txt`; no skipped tests. Actual pointer inspection and repeated native Escape verified locally.
