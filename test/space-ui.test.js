@@ -47,7 +47,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
  function $(id){if(!nodes.has(id))nodes.set(id,{textContent:'',value:'',hidden:true,disabled:false,style:{},dataset:{},attributes:{},classList:classList(),setAttribute(k,v){this.attributes[k]=v;},focus(){},click(){},showModal(){this.open=true;},close(){this.open=false;}});return nodes.get(id);}
  $('stage').clientWidth=1726;$('stage').clientHeight=819;$('stage').offsetWidth=1;$('speed').value='1';$('quality').value='auto';$('workshopDialog').open=false;
  const initial=copy(state);if(!providedStorage)saveProgress(storage,initial);
- const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,worldSession:createWorldSession({storage:memory()}),groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,
+ const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,worldSession:createWorldSession({storage:memory()}),groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,failureShown:false,
   microtasks:[],queueMicrotask(fn){context.microtasks.push(fn);},syncPreview(){},paused:false,editingWorld:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
   lastTime:0,lastDraw:0,drawCount:0,refreshAt:0,lastZone:'grandfatherTree',labels:false,follow:true,landingMarks:true,previewSim:null,sessionLog:[],soundQueue:[],currentCel:{hits:0,pose:'flying'},
   reconcileQueue,rigOriginForDoor,critter,doorGeometry,doorHeight,critterHeight,BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
@@ -61,7 +61,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
   linkRetries:0,loadPlayerWorld:async()=>{context.linkRetries++;},populate(){context.populateCount++;$('buildName').value=context.draft.name;},populateCount:0};
  context.launchFeel.reset(sim);context.feelFrame=context.launchFeel.state();
  vm.createContext(context);
- for(const name of['rewardEligible','persist','pendingCollection','protectSpaceResult','applyBuild','updateModeUi','switchMode','updateReadouts','recordSpaceEscape','resultData','showResult','resumePendingSpace','collect','openWorkshop','frame'])vm.runInContext(functionSource(name),context);
+ for(const name of['showFailure','rewardEligible','persist','pendingCollection','protectSpaceResult','applyBuild','updateModeUi','switchMode','updateReadouts','recordSpaceEscape','resultData','showResult','resumePendingSpace','collect','openWorkshop','frame'])vm.runInContext(functionSource(name),context);
  const resetStart=source.indexOf("$('reset').onclick="),resetEnd=source.indexOf(";$('collect').onclick",resetStart);vm.runInContext(source.slice(resetStart,resetEnd)+';',context);
  const collectStart=source.indexOf("$('collect').onclick="),collectEnd=source.indexOf(";$('pause').onclick",collectStart);vm.runInContext(source.slice(collectStart,collectEnd)+';',context);
  const importStart=source.indexOf("$('importSave').onchange="),importEnd=source.indexOf('\n',importStart);vm.runInContext(source.slice(importStart,importEnd),context);

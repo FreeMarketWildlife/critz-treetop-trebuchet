@@ -8,7 +8,7 @@ import {createGroveMap} from '../src/grove-map.js';
 // Bounded reproduction of the observed immediate partial-draw refusal. This
 // covers explicit keyboard drops on the canonical starter, not arbitrary drag
 // poses or a guarantee that an unsupported critter can launch.
-test('first-support and settled starter drops preserve pose, refuse unarmed weak draws and accept supported ordinary draws',()=>{
+test('first-support and settled starter drops preserve pose and accept every supported weak or full draw',()=>{
  for(const dt of [1/120,1/60,1/30])for(const wait of [0,.1,.5,1])for(const wind of [.6,1.5,2.25,3]){
   const label=`dt=${dt}, settle wait=${wait}, wind=${wind}`;
   const sim=new BuildSimulation(STARTER,{map:createGroveMap()});sim.setDraw(0);
@@ -21,7 +21,7 @@ test('first-support and settled starter drops preserve pose, refuse unarmed weak
   const parts=loading.parts,position=loading.position,angle=loading.angle,motion=loading.motion;
   assert.equal(sim.phase,'ready',label);assert.equal(loading.loaded,true,label);
   assert.ok(Math.abs(sim.drawFraction-Math.min(1,Math.round(wind/dt)*dt/3))<1e-10,label);
-  if(sim.drawFraction+1e-9<sim.preparationStatus().minimumDraw){assert.equal(sim.fire(),false,label);assert.equal(sim.preparationStatus().code,'draw');assert.equal(sim.phase,'ready');assert.equal(sim.release,null);assert.deepEqual(loading.parts,parts);continue;}
+
   assert.equal(sim.fire(),true,label);assert.equal(sim.phase,'swing',label);
   assert.deepEqual(loading.parts,parts,`${label}: retain loose joint poses`);
   const shot=sim.real(sim.shot);

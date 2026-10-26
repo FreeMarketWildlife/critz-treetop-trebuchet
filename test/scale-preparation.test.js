@@ -19,7 +19,7 @@ for(const{id,minimumDraw}of SCALE_BUILDS)for(const dt of[1/120,1/60,1/30,.05])te
  for(const draw of id==='elephant'?[.6,.75,.9,1]:id==='small'?[minimumDraw,.8,.9,1]:[.4,.6,.8,1]){
   const s=make(id);assert.equal(s.fire(),false);assert.equal(s.preparationStatus().code,'loading');prepare(s,dt);windTo(s,draw,dt);settle(s,dt);
   const held=s.snapshot();for(let i=0;i<Math.ceil(.2/dt);i++){s.loading.step(dt);assert.equal(s.phase,'ready');}assert.equal(s.loading.loaded,true,'a supported hold survives after the stop');
-  const before=state(s),pivot=s.pivot(),counter=s.counterPoint(),arm=s.arm.getAngle();assert.equal(s.preparationStatus().ready,true);assert.equal(s.preparationStatus().minimumDraw,minimumDraw);assert.equal(s.fire(),true);
+  const before=state(s),pivot=s.pivot(),counter=s.counterPoint(),arm=s.arm.getAngle();assert.equal(s.preparationStatus().ready,true);assert.equal(s.preparationStatus().minimumDraw,0);assert.equal(s.fire(),true);
   assert.deepEqual(s.loading.parts,before.parts);assert.deepEqual(s.pivot(),pivot);assert.deepEqual(s.counterPoint(),counter);assert.equal(s.arm.getAngle(),arm);assert.equal(s.arm.getAngularVelocity(),0);
   const actual=s.real(s.shot);for(const[k,v]of Object.entries({x:before.position.x,y:before.position.y,angle:before.angle,vx:before.motion.vx,vy:before.motion.vy}))near(k==='angle'?Math.atan2(Math.sin(actual[k]-v),Math.cos(actual[k]-v)):actual[k],k==='angle'?0:v);near(s.shot.getAngularVelocity()/s.T,before.motion.omega);
   const blocked=[];s.world.on('begin-contact',contact=>{if(s.release)return;for(const[a,b]of[[contact.getFixtureA(),contact.getFixtureB()],[contact.getFixtureB(),contact.getFixtureA()]]){const o=a.getUserData()?.worldObject,role=b.getBody().getUserData()?.role;if(o&&['arm','counter','payload'].includes(role)&&o.id!=='launch-bough')blocked.push(`${role}/${o.id}`);}});
@@ -28,10 +28,9 @@ for(const{id,minimumDraw}of SCALE_BUILDS)for(const dt of[1/120,1/60,1/30,.05])te
   assert.ok(s.peakTension<part(s.c.rope).strength);assert.ok(s.peakStress<part(s.c.arm).strength*2);assert.ok([s.maxX,s.maxY,s.time,...Object.values(s.real(s.shot))].every(Number.isFinite));assert.ok(s.maxX>5);assert.ok(held.time===0,'winding is preparation, not flight time');
  }
 });
-test('known recipes keep the ratchet below their calibrated minimum and resume from retained draw without another load',()=>{
- for(const{id,minimumDraw}of SCALE_BUILDS){const s=make(id);prepare(s,1/120);windTo(s,minimumDraw-.1,1/120);settle(s,1/120);const before=state(s),snapshot=s.snapshot();
-  assert.equal(s.preparationStatus().code,'draw');assert.match(s.preparationStatus().message,new RegExp(Math.round(minimumDraw*100)+'%'));assert.equal(s.fire(),false);assert.deepEqual(state(s),before);assert.deepEqual(s.snapshot(),snapshot);for(const b of s.moving)assert.equal(b.getType(),'static');
-  windTo(s,minimumDraw+.05,1/120);settle(s,1/120);assert.equal(s.fire(),true);assert.equal(s.phase,'swing');
+test('reference recipe draws are guidance only; weaker supported releases unlatch without changing draw or pose',()=>{
+ for(const{id,minimumDraw}of SCALE_BUILDS){const s=make(id);prepare(s,1/120);windTo(s,minimumDraw-.1,1/120);settle(s,1/120);const before=state(s);
+  assert.equal(s.preparationStatus().code,'ready');assert.equal(s.fire(),true);assert.equal(s.phase,'swing');assert.deepEqual(state(s),before);
  }
 });
 test('invalid draw and non-finite wind input cannot release or corrupt a supported experiment',()=>{
