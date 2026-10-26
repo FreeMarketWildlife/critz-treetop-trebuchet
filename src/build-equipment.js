@@ -1,4 +1,4 @@
-import {part,validateBuild,buildFacts,TUNING,critter,counterweightKit} from './build-catalog.js?v=62';
+import {part,validateBuild,buildFacts,TUNING,critter,counterweightKit} from './build-catalog.js?v=66';
 /** Fit owned equipment, reducing dimensions only when the selected part cannot
  * accommodate them. Buying capacity never secretly fills the counterweight. */
 export function fitEquipment(build,offer){
@@ -23,12 +23,8 @@ export function purchaseFit(build,offer){
  try{
   const candidate=fitEquipment(build,offer);
   if(TUNING.some(([key])=>candidate[key]!==build[key]))return{build:unchanged,fitted:false,reason:'Kept your current dimensions. Fit this part from Build when you want to resize.'};
-  // A large cloth/cord tier can overload a small rig despite fitting its
-  // dimensions. Keep that purchase owned without silently replacing the
-  // player's working hardware. This is an auto-fit policy, not a claim that
-  // static balance predicts every dynamic failure; Build remains explicit.
-  const movingGrams=c=>part(c.sling).mass+2*part(c.rope).linearGrams*c.slingLength;
-  if(movingGrams(candidate)>movingGrams(build)+1e-9&&movingGrams(candidate)>critter(candidate.animal).grams)return{build:unchanged,fitted:false,reason:'This heavier pouch and cord need a balance check. Owned: fit it from Build when you are ready. Your current build is unchanged.'};
+  // Actual capacity/torque warnings decide attachment compatibility. Cloth
+  // heavier than the animal is normal and is included in physics inertia.
   const warning=buildFacts(candidate).warnings[0];
   if(warning)return{build:unchanged,fitted:false,reason:warning+' Your current build is unchanged.'};
   return{build:candidate,fitted:true,reason:''};

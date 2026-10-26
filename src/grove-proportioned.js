@@ -1,4 +1,4 @@
-import {branchPolygon} from './grove-branches.js?v=62';
+import {branchPolygon} from './grove-branches.js?v=66';
 
 // A deliberately fantastic old oak, surrounded by trees on a tropical-forest
 // scale. All measurements are metres; no saved map is rescaled to these values.

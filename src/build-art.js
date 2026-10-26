@@ -1,19 +1,19 @@
-import {isGuillotine,drawGuillotine} from './guillotine.js?v=62';
-import {drawMouse} from './mouse-art.js?v=62';
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=62';
-import {critterHitboxBounds} from './critter-body.js?v=62';
-import {landingOpportunity} from './landing-opportunity.js?v=62';
-import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=62';
-import {imminentLanding} from './landing-view.js?v=62';
-import {GRAVITY} from './build-physics.js?v=62';
-import {drawFlightAccents} from './flight-art.js?v=62';
-import {drawCounterweight} from './counterweight-art.js?v=62';
-import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=62';
-import {RopeVisual} from './rope-visual.js?v=62';
-import {part,grams} from './build-catalog.js?v=62';
-import {drawGroveWorld} from './grove-art.js?v=62';
-import {createCritterPerformance} from './critter-performance.js?v=62';
-import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=62';
+import {isGuillotine,drawGuillotine} from './guillotine.js?v=66';
+import {drawMouse} from './mouse-art.js?v=66';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=66';
+import {critterHitboxBounds} from './critter-body.js?v=66';
+import {landingOpportunity} from './landing-opportunity.js?v=66';
+import {createLandingCue,drawLandingCue} from './landing-cue-art.js?v=66';
+import {imminentLanding} from './landing-view.js?v=66';
+import {GRAVITY} from './build-physics.js?v=66';
+import {drawFlightAccents} from './flight-art.js?v=66';
+import {drawCounterweight} from './counterweight-art.js?v=66';
+import {drawCrankWheel,crankGeometry,crankState as crankStateForQA} from './crank-wheel.js?v=66';
+import {RopeVisual} from './rope-visual.js?v=66';
+import {part,grams} from './build-catalog.js?v=66';
+import {drawGroveWorld} from './grove-art.js?v=66';
+import {createCritterPerformance} from './critter-performance.js?v=66';
+import {groveSetupCamera,groveSwingCamera,groveFlightCamera,groveTreeCamera} from './grove-camera.js?v=66';
 const TAU=Math.PI*2;
 // These are finishes and attached fittings, not replacement collision geometry.
 // Capacity tiers keep the user's chosen dimensions; their cages/cloth identify
@@ -323,9 +323,10 @@ export function createBuildRenderer(canvas){
  function drawLoadingCritter(sim){
   const size=sim.animal.length*cam.scale,h=sim.animal.width*cam.scale;
   ctx.save();if(sim.critterDoor){const edge=project({x:sim.critterDoor.x-sim.critterDoor.width/2,y:0})[0];ctx.beginPath();ctx.rect(edge,0,Math.max(0,W-edge),H);ctx.clip();}
-  for(const p of sim.loading.parts){ctx.save();ctx.translate(...project(p));ctx.rotate(-p.angle);ctx.beginPath();ctx.rect((p.a-p.offset-.012)*size,-h*.7,(p.b-p.a+.024)*size,h*1.4);ctx.clip();drawCritter(ctx,sim.animal,-p.offset*size,0,size,0,false,h,{pose:sim.loading.returning?'walking':'ready',frame:sim.loading.walkPhase});ctx.restore();}
+  for(const p of sim.loading.parts){ctx.save();ctx.translate(...project(p));ctx.rotate(-p.angle);ctx.beginPath();ctx.rect((p.a-p.offset-.012)*size,-h*.7,(p.b-p.a+.024)*size,h*1.4);ctx.clip();drawCritter(ctx,sim.animal,-p.offset*size,0,size,0,false,h,{pose:sim.loading.returning?'walking':'ready',frame:sim.loading.walkPhase});if(p.id==='body'&&sim.loading.pedestal?.wave&&!reducedMotion){const wave=sim.loading.pedestal.wave,xx=-p.offset*size+size*.06,yy=-h*.05;path(ctx,[[xx,yy],[xx+size*.07,yy-h*.4],[xx+size*(.08+.035*Math.sin(wave*8)),yy-h*(.6+.1*wave)]],sim.animal.color??'#b8998d',Math.max(1.5,h*.13));}ctx.restore();}
   const grip=sim.loading.grip;if(grip){const p=project(grip),q=project(grip.cursor);if(Math.hypot(p[0]-q[0],p[1]-q[1])>3){ctx.save();ctx.setLineDash([3,3]);path(ctx,[p,q],'#f6d782',1.5);ctx.restore();}ellipse(ctx,...p,4.5,4.5,'#ffe4a5','#715637',1.5);ellipse(ctx,...p,1.5,1.5,'#6a603e',null);}
   ctx.restore();
+  if(sim.loading.pedestal?.bubble&&!preview){const p=project(sim.loading.position),x=Math.max(24,Math.min(W-24,p[0])),y=Math.max(24,p[1]-Math.max(22,h));ctx.save();ctx.beginPath();ctx.roundRect(x-18,y-15,36,27,9);ctx.fillStyle='#fff0c2';ctx.strokeStyle='#6e6746';ctx.lineWidth=1.5;ctx.fill();ctx.stroke();path(ctx,[[x-4,y+11],[x-7,y+17],[x+4,y+11]],'#6e6746',1.5);ctx.font='bold 17px Trebuchet MS,sans-serif';ctx.textAlign='center';ctx.fillStyle='#51422e';ctx.fillText('!!',x,y+5);ctx.restore();}
  }
  function loadingCues(sim){
   const target=project(sim.loading.target()),animal=project(sim.real(sim.shot)),held=sim.loading.dragging;
@@ -386,7 +387,7 @@ export function createBuildRenderer(canvas){
   if(sim.trail.length>2){ctx.setLineDash([2,6]);ctx.beginPath();for(let i=0;i<sim.trail.length;i++){const p=project(sim.trail[i]);i?ctx.lineTo(...p):ctx.moveTo(...p);}ctx.strokeStyle='#f3e5a2';ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([]);}
   drawSwingTrail(sim,feel);
   mechanism(sim,labels);
-  const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);canvas.dataset.loadingHint=String(guidanceActive&&!preview);canvas.dataset.grabPart=sim.loading?.grip?.part??'';canvas.dataset.loadingParts=JSON.stringify(sim.loading?.parts.map(p=>({...p,screen:project(p)}))??[]);canvas.dataset.loadingGrip=JSON.stringify(sim.loading?.grip?project(sim.loading.grip):null);
+  const crank=crankStateForQA(sim);canvas.dataset.crankAngle=String(crank.angle);canvas.dataset.crankRadius=String(crank.radius);canvas.dataset.loaded=String(sim.loading?.loaded??true);canvas.dataset.dragging=String(sim.loading?.dragging??false);canvas.dataset.loadingHint=String(guidanceActive&&!preview);canvas.dataset.pedestalBubble=String(!paused&&!!sim.loading?.pedestal?.bubble);canvas.dataset.pedestalWave=String(sim.loading?.pedestal?.wave??0);canvas.dataset.grabPart=sim.loading?.grip?.part??'';canvas.dataset.loadingParts=JSON.stringify(sim.loading?.parts.map(p=>({...p,screen:project(p)}))??[]);canvas.dataset.loadingGrip=JSON.stringify(sim.loading?.grip?project(sim.loading.grip):null);
   canvas.dataset.animalPoint=JSON.stringify(project(sim.real(sim.shot)));canvas.dataset.slingPoint=JSON.stringify(project(sim.loading?.target()??sim.real(sim.shot)));
 
   const cueEnabled=landingMarks&&follow&&!treeOverview&&!preview&&!labels;

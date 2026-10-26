@@ -27,3 +27,7 @@ test('QA and shared snapshots keep personal maps/progress untouched until explic
  const shared={...createGroveMap(),name:'Shared challenge'};world.replace(shared,{readOnly:true,dirty:false});assert.throws(()=>world.save(),/Edit a copy/);assert.equal(world.readOnly,true);
  world.replace(shared,{readOnly:false,dirty:true});world.save();assert.equal(world.readOnly,false);assert.deepEqual(personal.writes,[]);assert.equal(personal.getItem(MAP_KEY),raw);assert.equal(personal.getItem('treetop-custom-workshop-v1'),'private progress');assert.equal(session.writes.length,1);assert.ok(session.writes[0][0].startsWith('treetop-editor-qa:'));
 });
+
+test('only the unchanged official world earns Adventure rewards; edit/test and shared snapshots cannot',()=>{
+ const world=createWorldSession({storage:{getItem:()=>null,setItem(){}}});assert.equal(world.rewardEligible,true);const original=structuredClone(world.map),edit=structuredClone(world.map);edit.name+=' · test';world.replace(edit);assert.equal(world.rewardEligible,false);world.replace(original,{readOnly:true});assert.equal(world.rewardEligible,false);world.replace(original,{readOnly:false});assert.equal(world.rewardEligible,true);
+});

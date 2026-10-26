@@ -1,8 +1,9 @@
-import {PARTS, CRITTERS, STARTER_PARTS, part, critter, shopPart} from './build-catalog.js?v=62';
+import {purchaseFit} from './build-equipment.js?v=66';
+import {PARTS, CRITTERS, STARTER_PARTS, part, critter, shopPart} from './build-catalog.js?v=66';
 
 export const VOUCHERS = [
   {id:'luckyPenny',name:'Lucky penny',price:80,description:'Rerolls start at 3 Bells instead of 5. A little luck goes a long way.',slot:'voucher'},
-  {id:'extraShelf',name:'One more shelf',price:120,description:'One extra equipment card in every fresh deal.',slot:'voucher'},
+  {id:'extraShelf',name:'One more shelf',price:120,description:'A wider choice of affordable finds within each three-card deal.',slot:'voucher'},
   {id:'friendDiscount',name:'Friends of the grove',price:180,description:'10% off equipment and packs. Forever.',slot:'voucher'},
 ];
 const owned = (s,p) => (p.kind==='animal'?s.animals:p.kind==='voucher'?s.vouchers:s.owned).includes(p.id);
@@ -33,22 +34,45 @@ function draw(s,random,kind,count,exclude=[]) {
   }
   return out;
 }
-function deal(s,random,previous=[]) {
-  const count=s.vouchers.includes('extraShelf')?4:3;
-  let gear=draw(s,random,'part',count,previous.map(p=>p.id));
-  if(gear.length<count)gear.push(...draw(s,random,'part',count-gear.length,gear.map(p=>p.id)));
-  return gear;
+/** Three stable equipment slots. Compatibility is checked against the actual
+ * current geometry/cargo, not a tier label. One affordable find is reserved
+ * when available, then different equipment slots are preferred. Previous stock
+ * is avoided on reroll when enough alternatives exist. LCG state is persisted. */
+export function compatibleStock(s){return PARTS.filter(p=>p.price>0&&shopPart(p)&&!s.owned.includes(p.id)&&purchaseFit(s.build,{kind:'part',id:p.id}).fitted);}
+function deal(s,random,previous=[],exclude=[]){
+ const all=compatibleStock(s).filter(p=>!exclude.includes(p.id)),fresh=all.filter(p=>!previous.some(o=>o.id===p.id));
+ const pool=fresh.length>=3?fresh:all,selected=[];
+ const earned=s.bells+PARTS.filter(p=>s.owned.includes(p.id)&&!STARTER_PARTS.includes(p.id)).reduce((n,p)=>n+p.price,0);
+ const budget=Math.max(65,earned*.65)*(s.vouchers.includes('extraShelf')?1.35:1);
+ while(pool.length&&selected.length<3){
+  let choices=pool;
+  if(!selected.length){const affordable=pool.filter(p=>priceFor(s,{kind:'part',id:p.id})<=s.bells);if(affordable.length)choices=affordable;}
+  else{const diverse=pool.filter(p=>!selected.some(o=>part(o.id).slot===p.slot));if(diverse.length)choices=diverse;}
+  const weights=choices.map(p=>1/(1+(p.price/budget)**2)),total=weights.reduce((a,b)=>a+b,0);
+  let roll=random.next()*total,index=0;while(index<choices.length-1&&(roll-=weights[index])>0)index++;
+  const chosen=choices[index];selected.push({kind:'part',id:chosen.id});pool.splice(pool.indexOf(chosen),1);
+ }
+ return selected;
 }
 export function visitShop(raw, seed=Math.floor(Math.random()*4294967296)) {
   const s={...raw,vouchers:raw.vouchers??[]};
-  if(s.shop?.round===s.launches)return s;
+  if(s.shop?.round===s.launches&&s.shop.dealVersion===2){
+    const kept=s.shop.offers.filter(o=>s.owned.includes(o.id)||purchaseFit(s.build,o).fitted);
+    if(kept.length===s.shop.offers.length&&(kept.length===3||!compatibleStock(s).some(p=>!kept.some(o=>o.id===p.id))))return s;
+    // A crafted rig can invalidate old offers. Replace only those slots using
+    // saved RNG, without charging, resetting prices or changing paid choices.
+    const random=rng(s.shop.seed),extra=deal(s,random,[],kept.map(o=>o.id)).slice(0,3-kept.length);
+    return{...s,shop:{...s.shop,offers:[...kept,...extra],seed:random.seed()}};
+  }
+  // Preserve a paid legacy parcel while upgrading the equipment stock.
+  const legacy=s.shop?.round===s.launches?s.shop:null;
   const random=rng(seed);
   const offers=deal(s,random);
   const vouchers=VOUCHERS.filter(v=>!s.vouchers.includes(v.id));
   const voucher=vouchers.length?{kind:'voucher',id:vouchers[Math.floor(random.next()*vouchers.length)].id}:null;
   const pack=draw(s,random,'part',3,offers.map(o=>o.id));
   const packCost=pack.length?Math.max(15,Math.floor(Math.min(...pack.map(p=>product(p).price))*.8)):0;
-  return {...s,shop:{round:s.launches,seed:random.seed(),rerolls:0,offers,voucher,pack,packCost,packOpened:false,packTaken:false}};
+  return {...s,shop:{round:s.launches,dealVersion:2,seed:random.seed(),rerolls:legacy?.rerolls??0,offers,voucher:null,pack:legacy?.packOpened&&!legacy.packTaken?legacy.pack:[],packCost:legacy?.packOpened&&!legacy.packTaken?legacy.packCost:0,packOpened:!!legacy?.packOpened,packTaken:!!legacy?.packTaken}};
 }
 export function rerollShop(state) {
   if(!state.shop)throw Error('Visit the shop first.');
@@ -63,6 +87,7 @@ export function purchaseOffer(state, offer) {
   const listed=[...shop.offers,...(shop.voucher?[shop.voucher]:[])].some(p=>p.id===offer.id&&p.kind===offer.kind);
   if(!listed)throw Error('That card is no longer in the shop.');
   if(owned(state,offer))throw Error('Already owned.');
+  if(shop.dealVersion===2&&offer.kind==='part'&&!purchaseFit(state.build,offer).fitted)throw Error('Your rig changed. Reroll for parts that fit this build.');
   const cost=priceFor(state,offer);
   if(state.bells<cost)throw Error('More Bells needed.');
   const key=offer.kind==='animal'?'animals':offer.kind==='voucher'?'vouchers':'owned';
@@ -90,18 +115,16 @@ export function validateShop(shop, launches) {
     if(new Set(list.map(o=>`${o.kind}:${o.id}`)).size!==list.length)throw Error('Duplicate shop cards.');
   }
   if(shop.offers.some(o=>o.kind==='voucher')||shop.pack.some(o=>o.kind!=='part')||shop.voucher&&shop.voucher.kind!=='voucher')throw Error('Invalid card category.');
+  if(!shop.pack.length&&shop.packCost!==0)throw Error('Invalid empty pack price.');
+  if(shop.dealVersion===2&&shop.offers.length>3)throw Error('Only three equipment slots are supported.');
   if(shop.pack.length&&shop.packCost!==Math.max(15,Math.floor(Math.min(...shop.pack.map(p=>product(p).price))*.8)))throw Error('Invalid pack price.');
   return {...structuredClone(shop),offers:shop.offers.filter(o=>o.kind!=='animal')};
 }
 
-/** View navigation preserves the original stock and purchased extraShelf perk.
- * Every fresh card (including vouchers and parcels) shares the same
- * three-card presentation. Paid parcel choices replace the deal view. */
-export function shopView(state,{page=0,limit=3}={}){
- const count=Number.isFinite(limit)?Math.max(1,Math.min(3,Math.floor(limit))):3;
+/** Paid legacy parcel choices remain recoverable; all fresh stock is gear. */
+export function shopView(state){
  const shop=state.shop;if(!shop)return{choosing:false,cards:[],page:0,pages:1,total:0};
- if(shop.packOpened&&!shop.packTaken){const cards=shop.pack.filter(o=>!owned(state,o)).slice(0,3);return{choosing:true,cards,page:0,pages:1,total:cards.length};}
- const stock=[...shop.offers.filter(o=>!owned(state,o)),...(shop.voucher&&!owned(state,shop.voucher)?[shop.voucher]:[]),...(!shop.packTaken&&shop.pack.some(o=>!owned(state,o))?[{kind:'parcel',id:'parcel'}]:[])];
- const pages=Math.max(1,Math.ceil(stock.length/count)),current=Math.max(0,Math.min(pages-1,Number.isFinite(page)?Math.floor(page):0));
- return{choosing:false,cards:stock.slice(current*count,current*count+count),page:current,pages,total:stock.length};
+ const choosing=shop.packOpened&&!shop.packTaken;
+ const cards=choosing?shop.pack.filter(o=>!owned(state,o)):shop.offers.slice(0,3);
+ return{choosing,cards,page:0,pages:1,total:cards.length};
 }

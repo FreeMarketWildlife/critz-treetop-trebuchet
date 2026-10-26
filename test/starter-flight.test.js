@@ -43,7 +43,7 @@ test('old default rigs receive the tuned kit once without losing progress or rep
 });
 test('shop and parcel choices can be atomically equipped and saved with unchanged physics dimensions',()=>{
  let s=visitShop({...newProgress(),bells:10000},43);const offer=s.shop.offers.find(o=>o.kind==='part'),next=purchaseOffer(s,offer),build=fitEquipment(s.build,offer);const fitted=validateProgress({...next,build});assert.equal(fitted.build[PARTS.find(p=>p.id===offer.id).slot],offer.id);assert.equal(fitted.build.pivotHeight,STARTER.pivotHeight);assert.equal(fitted.build.counterGrams,STARTER.counterGrams);
- const open=openPack(fitted),chosen=open.shop.pack.find(o=>!open.owned.includes(o.id));const packed=choosePack(open,chosen.id);assert.equal(canBuild(packed,fitEquipment(packed.build,chosen)),true);
+ const legacy={...fitted,shop:{...fitted.shop,pack:[{kind:'part',id:'pouch'},{kind:'part',id:'bearings'},{kind:'part',id:'timber'}],packCost:48}};const open=openPack(legacy),chosen=open.shop.pack.find(o=>!open.owned.includes(o.id));const packed=choosePack(open,chosen.id);assert.equal(canBuild(packed,fitEquipment(packed.build,chosen)),true);
  const animal={kind:'animal',id:'chipmunk'},b=fitEquipment(STARTER,animal);assert.equal(b.animal,'chipmunk');assert.equal(b.pinAngle,STARTER.pinAngle);
 });
 test('switching to smaller owned parts fits their dimensions without granting new parts',()=>{

@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>One world acceptance</title><style>body{font:15px system-ui;background:#e9e8d2;color:#294a3a;margin:0}header,pre{padding:16px}button{padding:14px;background:#e6c778;border:0;border-radius:12px}iframe{width:100%;height:720px;border:0}pre{white-space:pre-wrap}</style><header><button id="run">Run same-world acceptance</button> <button id="verify">Verify fresh-load persistence</button> <b id="result">Ready</b></header><pre id="log"></pre><iframe src="../../index.html?qa=1&fixture=shop"></iframe><script type="module">
+let frame=document.querySelector('iframe');const output=document.querySelector('#log'),result=document.querySelector('#result');
+if(new URLSearchParams(location.search).has('legacy'))frame.src='../../editor.html?qa=1&fixture=shop';
+const wait=()=>new Promise(r=>setTimeout(r,100));
+async function until(fn){for(let i=0;i<100;i++){if(fn())return;await wait();}throw Error('Timed out waiting for app');}
+verify.onclick=async()=>{try{const expected=JSON.parse(sessionStorage.getItem('treetop-unified-acceptance'));if(!expected)throw Error('Run transition acceptance first');await until(()=>frame.contentWindow.treetop);const api=frame.contentWindow.treetop,r=api.worldIdentity();if(JSON.stringify(api.getWorld())!==expected.edited)throw Error('Saved map content changed');if(r.authority!==r.game||r.authority!==r.simulation)throw Error('Map identity differs');const legacy=new URLSearchParams(location.search).has('legacy');if(legacy&&!frame.contentWindow.location.pathname.endsWith('/index.html'))throw Error('Legacy route did not enter main app');result.textContent=legacy?'PASS · legacy entry uses same saved map and exact runtime authority':'PASS · fresh reload uses same saved map and exact runtime authority';}catch(error){result.textContent='FAIL · '+error.message;}};
+
+run.onclick=async()=>{run.disabled=true;const lines=[];const check=(condition,message)=>{if(!condition)throw Error(message);lines.push('PASS · '+message);output.textContent=lines.join('\n');};try{
+ await until(()=>frame.contentWindow.treetop);let w=frame.contentWindow,d=w.document,api=w.treetop;const $=id=>d.getElementById(id);
+ const identity=()=>{const r=api.worldIdentity();return r.authority===r.game&&r.authority===r.simulation;};
+ check(identity(),'game simulation references exact active immutable map');const before=JSON.stringify(api.getWorld());const bells=api.getProgress().bells;
+ $('stage').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true}));await wait();check($('pauseMenu').open,'Escape opens pause menu');
+ d.querySelector('#pauseMenu summary').click();$('openMapEditor').click();await until(()=>d.body.dataset.worldMode==='edit');
+ const root=$('worldEditor').shadowRoot,canvas=root.getElementById('map'),box=canvas.getBoundingClientRect();
+ check(JSON.stringify(api.getWorld())===before,'Options editor opens exact current map content');check(!root.querySelector('iframe'),'editor is a mode, with no separate game iframe');
+ canvas.setPointerCapture=()=>{};
+ const circle=root.querySelector('[data-tool="circle"]');circle.click();
+ const pointer=(type,x,y,buttons)=>canvas.dispatchEvent(new w.PointerEvent(type,{pointerId:51,pointerType:'mouse',clientX:box.left+x,clientY:box.top+y,button:0,buttons,bubbles:true}));
+ pointer('pointerdown',box.width*.47,box.height*.44,1);pointer('pointermove',box.width*.51,box.height*.48,1);pointer('pointerup',box.width*.51,box.height*.48,0);await wait();
+ const edited=JSON.stringify(api.getWorld());check(edited!==before,'canvas edit updates the single world authority');
+ root.getElementById('play').click();await until(()=>d.body.dataset.worldMode==='play');check(identity(),'return to Play rebuilds simulation with exact edited map reference');check(JSON.stringify(api.getWorld())===edited,'return to Play retains edit content');check(!api.snapshot().rewardEligible,'custom map cannot earn Adventure rewards');check(api.getProgress().bells===bells,'editing and mode transitions do not change wallet');
+ $('pause').click();d.querySelector('#pauseMenu summary').click();$('openMapEditor').click();await until(()=>d.body.dataset.worldMode==='edit');root.getElementById('undo').click();await wait();check(JSON.stringify(api.getWorld())===before,'undo history survives Play and back');root.getElementById('redo').click();await wait();check(JSON.stringify(api.getWorld())===edited,'redo restores same edited document');
+ root.getElementById('play').click();await until(()=>d.body.dataset.worldMode==='play');
+ sessionStorage.setItem('treetop-unified-acceptance',JSON.stringify({edited,bells}));
+ result.textContent=`${lines.length}/${lines.length} PASS · reload this harness, then verify persistence`;
+
+ }catch(error){result.textContent='FAIL';output.textContent+='\nFAIL · '+error.stack+'\nFrame: '+frame.contentWindow.location.href+' API: '+typeof frame.contentWindow.treetop;}finally{run.disabled=false;}};
+</script>

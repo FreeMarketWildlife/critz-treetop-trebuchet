@@ -11,11 +11,11 @@ test('creative shop purchases fit real equipment without changing Adventure or p
  const build=fitEquipment(adventure.build,offer);assert.ok(Object.values(build).includes(offer.id));
  assert.deepEqual(sandboxTransaction(next,'purchase',offer).owned,next.owned);
 });
-test('creative rerolls preserve pack/voucher and parcels allow exactly one choice',()=>{
+test('creative rerolls retain three compatible equipment offers and do not create new parcels or vouchers',()=>{
  const shop=createSandboxShop(42),rolled=sandboxTransaction(shop,'reroll');
- assert.notDeepEqual(shop.shop.offers,rolled.shop.offers);assert.deepEqual(shop.shop.pack,rolled.shop.pack);
- assert.deepEqual(shop.shop.voucher,rolled.shop.voucher);
- const opened=sandboxTransaction(rolled,'openPack'),offer=opened.shop.pack[0],chosen=sandboxTransaction(opened,'choosePack',offer);
- assert.ok(chosen.owned.includes(offer.id));assert.equal(chosen.shop.packTaken,true);
- assert.throws(()=>sandboxTransaction(chosen,'choosePack',opened.shop.pack[1]),/Choose/);
+ assert.notDeepEqual(shop.shop.offers,rolled.shop.offers);assert.equal(rolled.shop.offers.length,3);assert.ok(rolled.shop.offers.every(o=>o.kind==='part'));assert.deepEqual(rolled.shop.pack,[]);assert.equal(rolled.shop.voucher,null);assert.equal(rolled.shop.packOpened,false);assert.throws(()=>sandboxTransaction(rolled,'openPack'),/already been opened/);
+});
+test('a previously paid creative parcel remains recoverable exactly once',()=>{
+ const shop=createSandboxShop(42),legacy={...shop,shop:{...shop.shop,pack:[{kind:'part',id:'pouch'},{kind:'part',id:'timber'}],packCost:48,packOpened:true,packTaken:false}},offer=legacy.shop.pack[0],before=structuredClone(legacy),chosen=sandboxTransaction(legacy,'choosePack',offer);
+ assert.ok(chosen.owned.includes(offer.id));assert.equal(chosen.shop.packTaken,true);assert.deepEqual(legacy,before);assert.throws(()=>sandboxTransaction(chosen,'choosePack',legacy.shop.pack[1]),/Choose/);
 });

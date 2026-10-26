@@ -1,32 +1,33 @@
-import {rigOriginForDoor} from './launch-staging.js?v=62';
-import {doorGeometry,doorHeight,nextDoor,upgradeDoor,availableCritters,critterHeight} from './critter-door.js?v=62';
-import {createWorldSession} from './world-session.js?v=62';
-import {editorMapStorage} from './editor-storage.js?v=62';
-import {createWorldLinkLoader} from './world-link.js?v=62';
-import {createScaleBuild} from './scale-builds.js?v=62';
-import {drawAltitudeStrip} from './altitude-strip.js?v=62';
-import {installPauseMenu} from './pause-menu.js?v=62';
-import {createWeaponHud} from './weapon-hud.js?v=62';
-import {jungleLayerAt} from './grove-jungle.js?v=62';
-import {createLaunchFeel} from './launch-feel.js?v=62';
-import {createPayloadLoading} from './payload-loading.js?v=62';
-import {crankState} from './crank-wheel.js?v=62';
-import{PARTS,SLOTS,EQUIPMENT_SLOTS,isCounterweightPart,shopPart,counterweightName,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=62';
-import {fitEquipment,purchaseFit} from './build-equipment.js?v=62';
-import {createCapacityControls} from './capacity-controls.js?v=62';
-import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=62';
-import{BuildSimulation,GRAVITY}from'./build-physics.js?v=62';
-import{createBuildRenderer,drawCritter}from'./build-art.js?v=62';
-import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=62';
-import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack,shopView} from './build-shop.js?v=62';
-import {shopComparison,rigStats} from './shop-comparison.js?v=62';
-import {drawShopArt} from './shop-art.js?v=62';
-import {createHoldControl} from './hold-control.js?v=62';
-import {createAudio} from './audio.js?v=62';
-import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js?v=62';
-import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=62';
-import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=62';
-import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=62';
+import {reconcileQueue,eligibleVisitors} from './critter-queue.js?v=66';
+import {rigOriginForDoor} from './launch-staging.js?v=66';
+import {doorGeometry,doorHeight,nextDoor,upgradeDoor,availableCritters,critterHeight} from './critter-door.js?v=66';
+import {createWorldSession} from './world-session.js?v=66';
+import {editorMapStorage} from './editor-storage.js?v=66';
+import {createWorldLinkLoader} from './world-link.js?v=66';
+import {createScaleBuild} from './scale-builds.js?v=66';
+import {drawAltitudeStrip} from './altitude-strip.js?v=66';
+import {installPauseMenu} from './pause-menu.js?v=66';
+import {createWeaponHud} from './weapon-hud.js?v=66';
+import {jungleLayerAt} from './grove-jungle.js?v=66';
+import {createLaunchFeel} from './launch-feel.js?v=66';
+import {createPayloadLoading} from './payload-loading.js?v=66';
+import {crankState} from './crank-wheel.js?v=66';
+import{PARTS,SLOTS,EQUIPMENT_SLOTS,isCounterweightPart,shopPart,counterweightName,CRITTERS,STARTER,TUNING,part,critter,grams,dimensions,validateBuild,buildFacts,scaledPreset}from'./build-catalog.js?v=66';
+import {fitEquipment,purchaseFit} from './build-equipment.js?v=66';
+import {createCapacityControls} from './capacity-controls.js?v=66';
+import {equipmentSpec,equipmentUse,tuningLimit,preparationSeconds} from './equipment-summary.js?v=66';
+import{BuildSimulation,GRAVITY}from'./build-physics.js?v=66';
+import{createBuildRenderer,drawCritter}from'./build-art.js?v=66';
+import{newProgress,loadProgress,saveProgress,validateProgress,canBuild,buy,bank,rewards,markSpaceEscape,pendingSpaceResult}from'./build-progress.js?v=66';
+import {visitShop,rerollShop,rerollPrice,priceFor,purchaseOffer,product,packPrice,openPack,choosePack,shopView} from './build-shop.js?v=66';
+import {shopComparison,rigStats} from './shop-comparison.js?v=66';
+import {drawShopArt} from './shop-art.js?v=66';
+import {createHoldControl} from './hold-control.js?v=66';
+import {createAudio} from './audio.js?v=66';
+import {loadAudioPreferences,saveAudioPreferences} from './audio-preferences.js?v=66';
+import {createGroveMap,readGroveMap,validateGroveMap,levelAt,enemyRecipe} from './grove-map.js?v=66';
+import {createCritterPerformance,critterPoseName} from './critter-performance.js?v=66';
+import {createSandboxShop,sandboxTransaction} from './shop-sandbox.js?v=66';
 const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;};
 const params=new URLSearchParams(location.search),qa=params.has('qa'),editorSession=params.get('editor')==='1',authorMode=params.get('author')==='1'&&['local','explicit'].includes(document.documentElement.dataset.authorTools);
 let worldMapStorage;try{worldMapStorage=editorMapStorage(localStorage,sessionStorage,{qa});}catch{}
@@ -41,6 +42,7 @@ function chime(names){names.forEach((name,i)=>soundQueue.push({name,at:performan
 function saveSound({persist=true}={}){if(persist&&!qa)try{saveAudioPreferences(localStorage,audioPrefs);}catch{}$('soundToggle').textContent=audioPrefs.muted?'♫̸':'♪';$('soundToggle').setAttribute('aria-pressed',String(audioPrefs.muted));$('soundToggle').setAttribute('aria-label',audioPrefs.muted?'Unmute sound':'Mute sound');}
 try{if(!qa){saving=localStorage.getItem('treetop-custom-save-enabled')!=='false';if(saving)state=loadProgress(localStorage);}}catch(e){toast(`Save could not be loaded. A fresh session is open; your stored data was kept. ${e.message}`);saving=false;}
 if(qa&&params.get('fixture')==='shop')state={...state,bells:1200};
+state=reconcileQueue(state,{seed:qa?81:Math.floor(Math.random()*4294967296)});
 state=visitShop(state,qa?42+state.launches:undefined);
 adventureBuild={...state.build};draft={...state.build};
 const renderer=createBuildRenderer($('stage')),previewRenderer=createBuildRenderer($('previewStage')),launchFeel=createLaunchFeel();let feelFrame=launchFeel.state();
@@ -49,7 +51,7 @@ function toast(message){$('toast').textContent=message;$('toast').hidden=false;c
 function persist(){if(!saving||qa||editorSession)return true;try{saveProgress(localStorage,state);$('saveStatus').textContent='Adventure progress saved locally. Your original prototype save is kept separately.';return true;}catch(e){$('saveStatus').textContent=`Saving unavailable: ${e.message}. Export a backup to keep your work.`;toast(e.name==='StaleProgressError'?e.message:'Progress is in this session. Browser storage is unavailable; export a backup.');return false;}}
 function equippedValue(id){return creative||state.owned.includes(id);}
 function populate(){
- $('animal').replaceChildren(...CRITTERS.filter(a=>creative||availableCritters(state).includes(a.id)).map(a=>choiceCard(a,'animal',a.id===draft.animal,()=>selectEquipment({kind:'animal',id:a.id}))));
+ $('animal').replaceChildren(...CRITTERS.filter(a=>creative||a.id===state.creatureQueue?.current).map(a=>choiceCard(a,'animal',a.id===draft.animal,()=>selectEquipment({kind:'animal',id:a.id}))));
  $('animalName').textContent=critter(draft.animal).name;
  $('buildParts').replaceChildren();capacityAdjusters=[];
  for(const[slot,title]of EQUIPMENT_SLOTS){
@@ -110,7 +112,7 @@ function refreshFacts(){
 }
 function pendingCollection(){return !creative&&!banked&&sim?.spaceState==='escaped'&&!!state.pendingSpace;}
 function protectSpaceResult(){if(!pendingCollection())return false;toast('Collect your space rewards before starting another experiment.');return true;}
-function applyBuild({quiet=false,restore=false,configuration}={}){if(!restore&&protectSpaceResult())return false;try{const pendingDraft=configuration?{build:draft,name:$('buildName').value}:null;$('arcAdvice').textContent='';const b=validateBuild(configuration??{...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);draft=b;hold?.cancel();const entryDoor=doorGeometry(groveMap,creative?Math.max(.10,critterHeight(critter(b.animal))):doorHeight(state));sim=new BuildSimulation(b,{map:groveMap,originX:rigOriginForDoor(b,critter(b.animal),entryDoor)});weaponHud.reset();sim.setDraw(0);sim.critterDoor=entryDoor;sim.loading=createPayloadLoading(sim,{door:sim.critterDoor});launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;spaceRecorded=false;spaceAchievementNew=false;document.body.classList.remove('space-escaped');$('spaceRewardBadge').hidden=true;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state={...state,build:{...b}};persist();}if(pendingDraft)draft=pendingDraft.build;populate();if(pendingDraft)$('buildName').value=pendingDraft.name;drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');return true;}catch(e){toast(e.message);return false;}}
+function applyBuild({quiet=false,restore=false,configuration}={}){if(!restore&&protectSpaceResult())return false;try{const pendingDraft=configuration?{build:draft,name:$('buildName').value}:null;$('arcAdvice').textContent='';let b=validateBuild(configuration??{...draft,name:$('buildName').value||draft.name});canBuild(state,b,creative);if(!creative){state=reconcileQueue({...state,build:b});b={...state.build};}draft=b;hold?.cancel();const entryDoor=doorGeometry(groveMap,creative?Math.max(.10,critterHeight(critter(b.animal))):doorHeight(state));sim=new BuildSimulation(b,{world:worldSession,originX:rigOriginForDoor(b,critter(b.animal),entryDoor)});weaponHud.reset();sim.setDraw(0);sim.critterDoor=entryDoor;sim.loading=createPayloadLoading(sim,{door:sim.critterDoor});launchFeel.reset(sim);feelFrame=launchFeel.state();paused=false;winding=false;dirty=true;seenRelease=false;seenContacts=0;soundedHits=0;seenContactSequence=0;combo=0;lastBumperAt=-Infinity;scoreStep=0;ratchetStep=-1;readyCue=false;document.body.classList.remove('holding','in-flight');shotId=crypto.randomUUID();banked=false;resultShown=false;spaceRecorded=false;spaceAchievementNew=false;document.body.classList.remove('space-escaped');$('spaceRewardBadge').hidden=true;$('resultCard').hidden=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','false');if(creative)creativeBuild={...b};else{adventureBuild={...b};state=visitShop({...state,build:{...b}});persist();}if(pendingDraft)draft=pendingDraft.build;populate();if(pendingDraft)$('buildName').value=pendingDraft.name;drawHudCritter();updateReadouts();if(!document.querySelector('dialog[open]'))$('stage').focus({preventScroll:true});if(!quiet)toast('Parts fitted. Ready for a new experiment.');return true;}catch(e){toast(e.message);return false;}}
 function updateModeUi(){document.body.classList.toggle('creative',creative);$('adventureMode').classList.toggle('active',!creative);$('creativeMode').classList.toggle('active',creative);$('adventureMode').setAttribute('aria-pressed',String(!creative));$('creativeMode').setAttribute('aria-pressed',String(creative));$('modeDescription').textContent=creative?'Every part. Every critter. Your experiment.':'Build it. Try it. Make it fly.';$('experimentTip').textContent=creative?'Build anything within the available parts’ dimensions. The same gravity, mass, friction and release model applies. Creative launches never change your Adventure Bells.':'Try the same build twice, then change just one part. A heavier counterweight is only useful if your beam and sling can handle it.';}
 function switchMode(next){if(protectSpaceResult())return;if(editorSession&&!next)return;if(creative===next)return;if(!creative)adventureBuild={...state.build};creative=next;draft={...(creative?creativeBuild:adventureBuild)};updateModeUi();populate();applyBuild({quiet:true});toast(creative?'Creative mode: everything unlocked. Adventure progress is safe.':'Back to Adventure. Your earned equipment and Bells are here.');}
 function drawHeightMap(){
@@ -153,27 +155,29 @@ function updateReadouts(){
  const pct=Math.round((sim.drawFraction??0)*100);$('launchButton').disabled=paused||sim.phase!=='ready'||(!winding&&!sim.loading.loaded);$('launchButtonText').textContent=winding?(preparation.code==='draw'?`Keep cranking · ${pct}% / ${Math.round(preparation.minimumDraw*100)}%`:preparation.code==='settling'?'Basket settling…':`Release to launch · ${pct}%`):sim.loading.loaded?'Hold to crank & launch':'Load basket first';$('chargeFill').style.transform=`scaleX(${pct/100})`;$('chargeMeter').setAttribute('aria-valuenow',String(pct));
  $('sceneHint').textContent=`${sim.animal.name} · ${grams(sim.animal.grams)}${sim.release?' · '+critterPoseName(currentCel):''}`;
  $('launchPrompt').hidden=resultShown||paused||sim.phase!=='ready'||(!sim.loading.loaded&&!winding);$('collectShop').hidden=false;$('collectShop').textContent=creative?'Try the shop →':'Collect & visit shop →';
- $('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);$('stage').dataset.build=sim.c.name;$('stage').dataset.axleHeight=String(sim.c.pivotHeight);$('stage').dataset.animal=sim.animal.id;$('stage').dataset.altitude=altitude.toFixed(2);$('stage').dataset.zone=zone.id;$('stage').dataset.mapObjects=String(groveMap.objects.length);$('stage').dataset.mapStarterRevision=String(groveMap.starterRevision??0);$('stage').dataset.treeHeight=String(groveMap.tree.height);$('stage').dataset.creative=String(creative);$('stage').dataset.combo=String(combo);
+ $('openBuild').hidden=s.phase!=='ready';$('visitorPreview').hidden=creative||!state.creatureQueue||s.phase!=='ready';$('stage').dataset.phase=s.phase;$('stage').dataset.draw=String(pct);$('stage').dataset.winding=String(winding);$('stage').dataset.build=sim.c.name;$('stage').dataset.axleHeight=String(sim.c.pivotHeight);$('stage').dataset.animal=sim.animal.id;$('stage').dataset.altitude=altitude.toFixed(2);$('stage').dataset.zone=zone.id;$('stage').dataset.mapObjects=String(groveMap.objects.length);$('stage').dataset.mapStarterRevision=String(groveMap.starterRevision??0);$('stage').dataset.treeHeight=String(groveMap.tree.height);$('stage').dataset.creative=String(creative);$('stage').dataset.combo=String(combo);
  if(['finished','invalid','escaped'].includes(s.phase)&&!resultShown){showResult();if(s.phase==='finished')queueMicrotask(()=>{if(collect())openWorkshop('shop');});}
 }
+function rewardEligible(){return !creative&&!editorSession&&worldSession.rewardEligible;}
 function recordSpaceEscape(){
  if(sim?.spaceState!=='escaped'||spaceRecorded)return;
  spaceRecorded=true;renderer.clearLandingCue();document.body.classList.add('space-escaped');
- spaceAchievementNew=!creative&&!state.achievements.includes('spaceEscape');
- if(!creative){state=markSpaceEscape(state,{id:shotId,build:sim.c,spaceEscape:sim.spaceEscape});persist();}
+ spaceAchievementNew=rewardEligible()&&!state.achievements.includes('spaceEscape');
+ if(rewardEligible()){state=markSpaceEscape(state,{id:shotId,build:sim.c,spaceEscape:sim.spaceEscape});persist();}
  $('spaceAchievement').textContent=state.achievements.includes('spaceEscape')?'✦ Beyond the Moon — unlocked':'Beyond the Moon — reach free drift to unlock';
 }
 function resultData(){return sim.spaceEscape?pendingSpaceResult({spaceEscape:sim.spaceEscape}):{distance:sim.maxX,height:sim.maxY,release:sim.release,grams:sim.animal.grams,animal:sim.animal.id,failure:sim.failure};}
 function showResult(){
+ const mapTest=!creative&&!worldSession.rewardEligible;
  resultShown=true;dirty=true;$('launchPrompt').hidden=true;
  const escaped=sim.spaceState==='escaped',data=resultData(),r=rewards(data);
  chime(escaped?['coin','purchase','score']:sim.failure?['unlatch']:['coin','purchase','score']);
  $('resultCard').hidden=false;$('spaceRewardBadge').hidden=!escaped||creative;
- $('resultEyebrow').textContent=escaped?(creative?'CREATIVE · SPACE REACHED':spaceAchievementNew?'ACHIEVEMENT UNLOCKED':'SPACE REACHED'):creative?'CREATIVE FIELD NOTES':'EXPERIMENT COMPLETE';
+ $('resultEyebrow').textContent=mapTest?'MAP PLAYTEST · NO ADVENTURE REWARDS':escaped?(creative?'CREATIVE · SPACE REACHED':spaceAchievementNew?'ACHIEVEMENT UNLOCKED':'SPACE REACHED'):creative?'CREATIVE FIELD NOTES':'EXPERIMENT COMPLETE';
  $('resultTitle').textContent=escaped?'Beyond the Moon!':sim.failure?'A useful lesson.':sim.maxX>state.best?'A new horizon.':'Every throw teaches.';
- $('resultNumbers').textContent=escaped?(creative?`${data.distance.toFixed(1)} m`: `+${r.bells.toLocaleString()} Bells · +${r.points.toLocaleString()} points`):`${sim.maxX.toFixed(1)} m${creative?'':` · +${sim.phase==='invalid'?0:r.bells} Bells`}`;
- $('resultNote').textContent=escaped?`Free drift begins at ${sim.spaceEscape.altitude.toLocaleString()} m. ${creative?'Adventure progress stays untouched.':'Seven times this run’s normal Bells and points. Collect once, then try again.'}`:sim.failure||(sim.release?`Released at ${sim.release.angle.toFixed(1)}°. Change one variable and see what happens.`:'No release this time. Try changing the pin or lever ratio.');
- $('collect').textContent=escaped?(creative?'Retry experiment':'Collect & retry'):creative?'Keep experimenting':sim.phase==='invalid'?'Adjust build':'Collect Bells & continue';
+ $('resultNumbers').textContent=mapTest?`${sim.maxX.toFixed(1)} m · playtest`:escaped?(creative?`${data.distance.toFixed(1)} m`: `+${r.bells.toLocaleString()} Bells · +${r.points.toLocaleString()} points`):`${sim.maxX.toFixed(1)} m${creative?'':` · +${sim.phase==='invalid'?0:r.bells} Bells`}`;
+ $('resultNote').textContent=mapTest?'Your custom map is a playtest. Adventure Bells, points and achievements stay unchanged.':escaped?`Free drift begins at ${sim.spaceEscape.altitude.toLocaleString()} m. ${creative?'Adventure progress stays untouched.':'Seven times this run’s normal Bells and points. Collect once, then try again.'}`:sim.failure||(sim.release?`Released at ${sim.release.angle.toFixed(1)}°. Change one variable and see what happens.`:'No release this time. Try changing the pin or lever ratio.');
+ $('collect').textContent=mapTest?'Retry this map':escaped?(creative?'Retry experiment':'Collect & retry'):creative?'Keep experimenting':sim.phase==='invalid'?'Adjust build':'Collect Bells & continue';
 }
 function resumePendingSpace(){
  const packet=state.pendingSpace;if(!packet||qa||editorSession)return false;
@@ -190,7 +194,7 @@ function collect(){
    const data=sim.phase==='invalid'?null:resultData();
    if(data){
     nextLog=[{...rewards(data),animal:sim.animal.id,build:sim.c.name,creative,releaseAngle:sim.release?.angle,releaseSpeed:sim.release?.speed},...sessionLog].slice(0,20);
-    const next=bank(state,shotId,data,creative);state=creative?next:visitShop(next,qa?42+next.launches:undefined);
+    let next=bank(state,shotId,data,!rewardEligible());if(next.launches>state.launches)next=reconcileQueue(next,{advance:true});state=creative?next:visitShop(next,qa?42+next.launches:undefined);
    }
    if(creative)nextShop=visitShop({...creativeShop,launches:creativeShop.launches+1});
    if(data&&!persist()&&!creative){state=before;return;}
@@ -198,7 +202,7 @@ function collect(){
   sessionLog=nextLog;creativeShop=nextShop;banked=true;
   if(!creative){if(sim.phase!=='invalid')$('shopNew').hidden=false;chime(['coin','coin','purchase']);}
  }
- if(!applyBuild({quiet:true,configuration:sim.c}))return false;void loadPlayerWorld();return true;
+ if(!applyBuild({quiet:true,configuration:creative?sim.c:state.build}))return false;void loadPlayerWorld();return true;
 }
 function shopLedger(){return creative?creativeShop:state;}
 let shopPage=0,shopPageKey='',shopDetailPinned=false;
@@ -266,7 +270,7 @@ function shopCard(offer,{packChoice=false}={}){
   cue('purchase');chime(['sparkle','score']);
   toast(offer.kind==='voucher'?`${p.name} perk active!`:selection.fitted?`${p.name} fitted to your trebuchet!`:`${p.name} added to your inventory. ${selection.reason}`);
  }catch(error){toast(error.message);}};
- card.append(tag,art,el('h3',p.name),el('strong',packChoice?'KEEP ONE':creative?'FREE':`${cost} Bells`,'card-price'));inspectShopCard(card,p,description,button,offer);return card;
+ card.append(tag,art,el('h3',p.name),el('strong',packChoice?'KEEP ONE':creative?'FREE':owned?'OWNED':`${cost} Bells`,'card-price'));inspectShopCard(card,p,description,button,offer);return card;
 }
 function parcelCard(ledger){
  const shop=ledger.shop,card=el('article',undefined,'shop-card pack-card'),art=el('canvas');art.setAttribute('aria-hidden','true');drawShopArt(art,{},'pack');
@@ -289,44 +293,46 @@ function renderCargoPlan(){
   fit.onclick=()=>{draft={...recipe};$('buildName').value=recipe.name;applyBuild({quiet:true});fitted(recipe.name);};panel.append(preview,fit);
  };select.onchange=show;show();
 }
+function renderVisitorPreview(){
+ const queue=state.creatureQueue;$('visitorPreview').hidden=creative||!queue;
+ if(!queue)return;
+ for(const [prefix,id]of [['current',queue.current],['next',queue.next]]){const a=critter(id),canvas=$(prefix+'VisitorArt'),context=canvas.getContext('2d');context.clearRect(0,0,90,60);drawCritter(context,a,45,31,60,0,false);$(prefix+'VisitorName').textContent=a.name;}
+}
 function renderShop(){
  const ledger=shopLedger(),shop=ledger.shop;if(!shop)return;
  const key=`${creative}:${shop.round}:${shop.seed}:${shop.packOpened}:${shop.packTaken}`;
  if(key!==shopPageKey){shopPage=0;shopPageKey=key;}
  const next=nextDoor(state),bought=state.doorUpgradeRound===state.launches;
  // Parcels temporarily focus the choice cards, then restore all three shelves.
- const view=shopView(ledger,{page:shopPage,limit:!creative&&next&&!bought?2:3});shopPage=view.page;
+ const view=shopView(ledger,{page:shopPage,limit:3});shopPage=view.page;
  const doorCard=$('doorUpgradeCard');
  doorCard.hidden=creative||view.choosing;doorCard.replaceChildren();
  if(!creative){
-  const title=el('h3',next?`Tree door · ${Math.round(doorHeight(state)*100)} → ${Math.round(next.height*100)} cm`:'Tree door · fully upgraded');
+  const title=el('h3','Upgrade Door');const art=el('span','','door-art');art.setAttribute('aria-hidden','true');
   const button=el('button',bought?'Upgraded this round':next?`Upgrade · ${next.price} Bells`:'Largest door fitted','buy');
   button.disabled=!next||bought||state.bells<(next?.price??0);
   button.onclick=()=>{try{const upgraded=upgradeDoor(state);if(!persistShop(upgraded))return;sim.critterDoor=doorGeometry(groveMap,doorHeight(state));populate();dirty=true;cue('purchase');}catch(error){toast(error.message);}};
-  doorCard.append(title,el('p','All critters that fit can enter. One upgrade per round, in order.'),button);
+  doorCard.append(art,title,el('p',next?`${Math.round(doorHeight(state)*100)} → ${Math.round(next.height*100)} cm opening`:'Largest door fitted'),el('small','Random visitors must fit both the door and your rig.'),button);
  }
  $('shopWallet').textContent=creative?'∞':state.bells.toLocaleString();$('shopRound').textContent=creative?'CREATIVE DEAL':`VISIT ${shop.round+1}`;
- $('shopMessage').textContent=view.choosing?'Choose one parcel card. Your other finds are waiting.':creative?'Try cards for free. Owned equipment stays in Build.':'Equipment above. Vouchers and parcels below. Inspect a find before buying.';
+ $('shopMessage').textContent=view.choosing?'Choose one parcel card. Your other finds are waiting.':creative?'Try cards for free. Owned equipment stays in Build.':'Three finds that attach to your current rig. Inspect, then buy.';
  const ctx=$('shopkeeper').getContext('2d');ctx.clearRect(0,0,160,110);drawCritter(ctx,critter('mouse'),78,60,104,0,false);
  shopDetailPinned=false;
  $('shopDetail').replaceChildren(el('h3','Inspect a find'),el('p','Hover to compare. Select or focus a card to keep its details open, then buy. On touch, tap a card first.'));
  renderCargoPlan();
+ const queue=state.creatureQueue;renderVisitorPreview();$('creatureQueue').textContent=creative?'Creative · choose any visitor':queue?`Here: ${critter(queue.current).name} · Next round: ${critter(queue.next).name}`:'No safe visitor · adjust your rig in Craft';
  const stats=rigStats(creative?draft:state.build);
- $('shopInventory').textContent=`${creative?'Creative · all parts available':ledger.owned.length+' permanent parts'} · ${EQUIPMENT_SLOTS.length} fitted slots · ${stats.capacity.toLocaleString()} g pouch capacity · ${stats.movingGrams.toFixed(1)} g moving load. Inventory has no storage limit. Swap owned parts in Build.`;
+ $('shopInventory').textContent=`${creative?'Creative · all parts available':ledger.owned.length+' permanent parts'} · ${EQUIPMENT_SLOTS.length} fitted slots · ${stats.capacity.toLocaleString()} g pouch capacity · ${stats.movingGrams.toFixed(1)} g moving load. Inventory has no storage limit. Craft beside the launcher to swap owned parts.`;
  $('voucherSlot').replaceChildren();$('packSlot').replaceChildren();$('voucherSlot').hidden=view.choosing;$('packSlot').hidden=view.choosing;
  $('voucherSlot').parentElement.hidden=view.choosing;
  $('shopItems').hidden=view.choosing;$('packChoices').hidden=!view.choosing;
  $('shopItems').replaceChildren();$('packCards').replaceChildren();
  if(view.choosing){$('packCards').replaceChildren(...view.cards.map(o=>shopCard(o,{packChoice:true})));}
  else{
-  const isOwned=offer=>(offer.kind==='voucher'?ledger.vouchers:ledger.owned).includes(offer.id);
-  const gear=shop.offers.filter(o=>!isOwned(o));
-  $('shopItems').replaceChildren(...gear.map(o=>shopCard(o)));
-  if(!gear.length)$('shopItems').append(el('p','Equipment shelf cleared. Reroll for new finds.','empty-shelf'));
-  $('voucherSlot').append(el('h4','GROVE VOUCHER'));
-  if(shop.voucher&&!isOwned(shop.voucher))$('voucherSlot').append(shopCard(shop.voucher));else $('voucherSlot').append(el('p','Voucher collected. Returns next visit.'));
-  $('packSlot').append(el('h4','TINKER’S PARCEL'));
-  if(!shop.packTaken&&shop.pack.some(o=>!isOwned(o)))$('packSlot').append(parcelCard(ledger));else $('packSlot').append(el('p','Parcel collected. Returns next visit.'));
+  $('shopItems').replaceChildren(...view.cards.map(o=>shopCard(o)));
+  while($('shopItems').children.length<3){const empty=el('article',undefined,'shop-card sold');empty.append(el('h3','Shelf complete'),el('p','All remaining compatible equipment is owned. Craft a larger rig to reveal new sizes.'));$('shopItems').append(empty);}
+  $('voucherSlot').parentElement.hidden=true;
+
  }
  $('rerollShop').textContent=creative?'↻ Reroll · Free':`↻ Reroll · ${rerollPrice(state)} Bells`;
  $('rerollShop').disabled=view.choosing||!creative&&(state.bells<rerollPrice(state)||state.owned.length===PARTS.length&&state.animals.length===CRITTERS.length);
@@ -353,9 +359,9 @@ $('tuneArc').onclick=async()=>{
  }catch(e){$('arcAdvice').textContent=e.message;}finally{$('tuneArc').disabled=false;}
 };
 $('adventureMode').onclick=()=>switchMode(false);$('creativeMode').onclick=()=>switchMode(true);$('apply').onclick=()=>{applyBuild();if(!$('apply').disabled){$('workshopDialog').close();cue('shop');}};$('reset').onclick=()=>applyBuild({quiet:true});$('collect').onclick=()=>{if(collect())openWorkshop('shop');};$('pause').onclick=()=>{cancelLoading();hold.cancel();paused=!paused;dirty=true;if(paused){soundQueue.length=0;sound.pause();}else sound.unlock();$('pause').textContent=paused?'Resume':'Pause';$('pause').setAttribute('aria-pressed',String(paused));updateReadouts();};$('labelsToggle').onclick=()=>{labels=!labels;dirty=true;document.body.classList.toggle('show-details',labels);$('labelsToggle').classList.toggle('active',labels);$('labelsToggle').setAttribute('aria-pressed',String(labels));};$('landingCueToggle').onclick=()=>{landingMarks=!landingMarks;$('landingCueToggle').setAttribute('aria-pressed',String(landingMarks));dirty=true;};$('followToggle').onclick=()=>{follow=!follow;dirty=true;$('followToggle').classList.toggle('active',follow);$('followToggle').setAttribute('aria-pressed',String(follow));};$('fitCamera').onclick=()=>{renderer.fit();dirty=true;follow=true;$('treeCamera').setAttribute('aria-pressed','false');$('followToggle').classList.add('active');$('followToggle').setAttribute('aria-pressed','true');};
-for(const b of document.querySelectorAll('[data-tab]')){b.onkeydown=e=>{const tabs=[...document.querySelectorAll('[data-tab]')],i=tabs.indexOf(b);if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=tabs[e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];next.click();next.focus();}};b.onclick=()=>{$('workshopTitle').textContent=b.dataset.tab==='shop'?'The grove’s little shop':b.dataset.tab==='blueprints'?'Good ideas, kept safe':'Your workbench';for(const t of document.querySelectorAll('[data-tab]')){const active=t===b;t.classList.toggle('active',active);t.setAttribute('aria-selected',String(active));$(`${t.dataset.tab}Panel`).hidden=!active;}dirty=true;};}
+for(const b of document.querySelectorAll('[data-tab]')){b.onkeydown=e=>{const tabs=[...document.querySelectorAll('[data-tab]')],i=tabs.indexOf(b);if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=tabs[e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];next.click();next.focus();}};b.onclick=()=>{$('workshopDialog').classList.toggle('shopping',b.dataset.tab==='shop');$('workshopDialog').querySelector('[data-close]').textContent=b.dataset.tab==='shop'?'Next':'Done';$('workshopDialog').querySelector('[data-close]').setAttribute('aria-label',b.dataset.tab==='shop'?'Next':'Done');$('workshopTitle').textContent=b.dataset.tab==='shop'?'The grove’s little shop':b.dataset.tab==='blueprints'?'Good ideas, kept safe':'Your workbench';for(const t of document.querySelectorAll('[data-tab]')){const active=t===b;t.classList.toggle('active',active);t.setAttribute('aria-selected',String(active));$(`${t.dataset.tab}Panel`).hidden=!active;}dirty=true;};}
 function openDialog(id){if(id==='workshopDialog'&&protectSpaceResult())return;cancelLoading();hold.cancel();$(id).showModal();dirty=true;cue('click');}
-function openWorkshop(tab){if(protectSpaceResult())return;cancelLoading();hold.cancel();$(`${tab}Tab`).click();$('workshopDialog').showModal();syncPreview();previewRenderer.fit();dirty=true;cue('shop');if(tab==='shop')$('shopNew').hidden=true;}
+function openWorkshop(tab){if(protectSpaceResult())return;cancelLoading();hold.cancel();if($('pauseMenu')?.open)$('pauseMenu').close();$(`${tab}Tab`).click();$('workshopDialog').showModal();syncPreview();previewRenderer.fit();dirty=true;cue('shop');if(tab==='shop')$('shopNew').hidden=true;}
 $('openBuild').onclick=()=>openWorkshop('build');$('openShop').onclick=()=>openWorkshop('shop');$('openBlueprints').onclick=()=>openWorkshop('blueprints');
 $('rerollShop').onclick=rerollShopAction;
 $('collectShop').onclick=()=>{if(collect())openWorkshop('shop');};
@@ -465,7 +471,7 @@ window.addEventListener('message',event=>{
  try{worldSession.replace(validateGroveMap(event.data.map),{dirty:false});groveMap=worldSession.map;applyBuild({quiet:true,configuration:sim.c});runtimeWorldRevision=worldSession.revision;window.parent.postMessage({type:'grove-playtest-loaded',objects:groveMap.objects.length},location.origin);}catch(error){toast(`Map rejected: ${error.message}`);}
 });
 const pauseMenu=installPauseMenu({open(){cancelLoading();hold.cancel();paused=true;dirty=true;soundQueue.length=0;sound.pause();updateReadouts();},resume(){paused=editingWorld;lastTime=0;dirty=true;if(!editingWorld)sound.unlock();updateReadouts();}});
-const playerWorldLinks=authorMode?null:createWorldLinkLoader(worldSession,{canApply:()=>!protectSpaceResult()});
+const playerWorldLinks=createWorldLinkLoader(worldSession,{canApply:()=>!protectSpaceResult()});
 async function loadPlayerWorld(){
  if(!playerWorldLinks)return;
  try{
@@ -476,22 +482,25 @@ async function loadPlayerWorld(){
   }
  }catch(error){toast('Shared map could not open: '+error.message);}
 }
-if(playerWorldLinks)window.addEventListener('hashchange',()=>{void loadPlayerWorld();});
+
+$('buildPanel').append(document.querySelector('.cargo-plan'));
 populate();applyBuild({quiet:true});
 if(!resumePendingSpace()&&params.get('creative')==='1')switchMode(true);
 if(creative&&params.has('scaleBuild')){try{draft=createScaleBuild(params.get('scaleBuild'));populate();applyBuild({quiet:true});}catch(e){toast(e.message);}}
 if(editorSession){saving=false;$('saveEnabled').checked=false;$('saveEnabled').disabled=true;$('adventureMode').disabled=true;$('saveStatus').textContent='Editor playtest: Adventure progress is untouched.';window.parent.postMessage({type:'grove-playtest-ready'},location.origin);}
-const {installWorldWorkshop}=authorMode?await import('./world-workshop.js?v=62'):{installWorldWorkshop:()=>Object.freeze({setMode:async()=>false})};
-const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMode,getDoor:()=>sim.critterDoor,getBuild:()=>sim.c,getRigOrigin:()=>sim.rigOriginX,onError:error=>toast(error.message),
+await loadPlayerWorld();
+$('stage').parentElement.append($('openBuild'));
+const {installWorldWorkshop}=await import('./world-workshop.js?v=66');
+const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMode,onAdoptMap:()=>playerWorldLinks.adoptCurrent(),getDoor:()=>sim.critterDoor,getBuild:()=>sim.c,getRigOrigin:()=>sim.rigOriginX,onError:error=>toast(error.message),
  onEnterEdit(){
   if(protectSpaceResult())return false;
-  pausedBeforeEdit=paused;editingWorld=true;cancelLoading();hold.cancel();paused=true;
+  pausedBeforeEdit=false;editingWorld=true;cancelLoading();hold.cancel();paused=true;
   soundQueue.length=0;sound.pause();for(const dialog of document.querySelectorAll('dialog[open]'))dialog.close();
   lastTime=0;dirty=true;updateReadouts();return true;
  },
  onReturnToPlay({map,revision}){
   if(revision!==runtimeWorldRevision){
-   const previous=groveMap;groveMap=map;
+   const previous=groveMap;groveMap=worldSession.map;
    if(!applyBuild({quiet:true,configuration:sim.c})){groveMap=previous;return false;}
    runtimeWorldRevision=revision;toast('Your edited world is ready. Map changes start a new throw.');
   }
@@ -500,5 +509,6 @@ const worldWorkshop=installWorldWorkshop({world:worldSession,qa,author:authorMod
  }
 });
 for(const button of document.querySelectorAll('[data-open-world-editor]'))button.onclick=()=>worldWorkshop.setMode('edit');
-void loadPlayerWorld();persist();requestAnimationFrame(frame);
-window.treetop=Object.freeze({snapshot:()=>structuredClone({...sim.snapshot(),worldMode:editingWorld?'edit':'play',worldRevision:runtimeWorldRevision,mapRevision:worldSession.revision,mapName:worldSession.map.name,creative,weapons:weaponHud.snapshot(),bells:state.bells,build:sim.c,winding,draw:sim.drawFraction,drawCount,audio:sound.getStatus(),performance:{...currentCel},crank:crankState(sim),loading:{loaded:sim.loading.loaded,assisting:sim.loading.assisting,dragging:sim.loading.dragging,returning:sim.loading.returning,home:renderer.project(sim.loading.home()),animal:renderer.project(sim.real(sim.shot)),target:renderer.project(sim.loading.target())}}),getProgress:()=>structuredClone(state)});
+window.addEventListener('hashchange',async()=>{await loadPlayerWorld();if(editingWorld)worldWorkshop.syncWorld();});
+persist();requestAnimationFrame(frame);
+window.treetop=Object.freeze({snapshot:()=>structuredClone({...sim.snapshot(),worldMode:editingWorld?'edit':'play',worldRevision:runtimeWorldRevision,mapRevision:worldSession.revision,mapName:worldSession.map.name,creative,mapPlaytest:!worldSession.rewardEligible,rewardEligible:rewardEligible(),sameWorld:groveMap===worldSession.map&&sim.map===worldSession.map,weapons:weaponHud.snapshot(),bells:state.bells,build:sim.c,winding,draw:sim.drawFraction,drawCount,audio:sound.getStatus(),performance:{...currentCel},crank:crankState(sim),loading:{loaded:sim.loading.loaded,assisting:sim.loading.assisting,dragging:sim.loading.dragging,returning:sim.loading.returning,home:renderer.project(sim.loading.home()),animal:renderer.project(sim.real(sim.shot)),target:renderer.project(sim.loading.target())}}),getProgress:()=>structuredClone(state),getWorld:()=>worldSession.map,worldIdentity:()=>({authority:worldSession.map,game:groveMap,simulation:sim.map})});

@@ -1,19 +1,19 @@
-import {defaultEncounterSettings,encounterPose} from './woodland-encounters.js?v=62';
-import {rigOriginForDoor} from './launch-staging.js?v=62';
-import {doorGeometry,drawCritterDoor} from './critter-door.js?v=62';
-import {editorMapStorage} from './editor-storage.js?v=62';
-import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=62';
-import {STARTER,REST_ARM_ANGLE,critter,buildFacts} from './build-catalog.js?v=62';
-import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=62';
-import {groveTreeCamera,groveOverviewBounds,groveSetupCamera} from './grove-camera.js?v=62';
-import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=62';
-import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=62';
-import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,closeFreehandStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=62';
-import {createAudio} from './audio.js?v=62';
-import {loadAudioPreferences} from './audio-preferences.js?v=62';
+import {defaultEncounterSettings,encounterPose} from './woodland-encounters.js?v=66';
+import {rigOriginForDoor} from './launch-staging.js?v=66';
+import {doorGeometry,drawCritterDoor} from './critter-door.js?v=66';
+import {editorMapStorage} from './editor-storage.js?v=66';
+import {jungleLayersFor,jungleLayerAt} from './grove-jungle.js?v=66';
+import {STARTER,REST_ARM_ANGLE,critter,buildFacts} from './build-catalog.js?v=66';
+import {branchPolygon,slopedPlatform,branchTip} from './grove-branches.js?v=66';
+import {groveTreeCamera,groveOverviewBounds,groveSetupCamera} from './grove-camera.js?v=66';
+import {mapLevels,ENEMIES,enemyRecipe,enemySizeLabel,levelAt,createGroveMap,validateGroveMap,readGroveMap,objectBounds} from './grove-map.js?v=66';
+import {drawGroveWorld,drawGroveEnemy} from './grove-art.js?v=66';
+import {createEditorHistory,translateObject,resizeObject,segmentDistance,pointInside,simplifyStroke,closeFreehandStroke,insertVertex,removeVertex,encodeMapLink,decodeMapLink} from './grove-editor-tools.js?v=66';
+import {createAudio} from './audio.js?v=66';
+import {loadAudioPreferences} from './audio-preferences.js?v=66';
 /** Mount tools inside the game's scoped panel. The supplied world is the
  * single map authority; this module never creates or embeds another game. */
-export function mountMapEditor({root,world,onPlay,isActive=()=>true,qa=false,getDoor=()=>null,getBuild=()=>STARTER,getRigOrigin=()=>undefined}){
+export function mountMapEditor({root,world,onPlay,isActive=()=>true,qa=false,getDoor=()=>null,getBuild=()=>STARTER,getRigOrigin=()=>undefined,manageLocation=true,onAdoptMap=()=>{}}){
 if(!world?.map)throw Error('The editor must open the active game world.');
 const host=root.host??root,owner=root.ownerDocument??document;
 const $=id=>root.querySelector('[id="'+id+'"]'),canvas=$('map'),ctx=canvas.getContext('2d'),mini=$('minimap'),mc=mini.getContext('2d'),clone=v=>structuredClone(v);
@@ -154,7 +154,7 @@ $('copyLink').onclick=async()=>{try{await navigator.clipboard.writeText($('share
 function play(){try{finish(true);cancelDrawing();validateGroveMap(doc);if(!readOnly)save();closePanels();closeDialog();Promise.resolve(onPlay?.()).catch(e=>status(e.message));}catch(e){status(e.message);}}
 $('play').onclick=play;$('playSecondary').onclick=play;
 $('showLibrary').onclick=()=>{$('library').classList.add('open');$('inspector').classList.remove('open');};$('closeLibrary').onclick=()=>$('library').classList.remove('open');$('showInspector').onclick=()=>{$('inspector').classList.add('open');$('library').classList.remove('open');};$('closeInspector').onclick=()=>$('inspector').classList.remove('open');
-$('editCopy').onclick=()=>{mapLoadGeneration++;localBeforeShared=null;readOnly=false;world.replace(doc,{readOnly:false,dirty:true});knownRevision=world.revision;host.classList.remove('shared');$('sharedBanner').hidden=true;history=createEditorHistory(stable);history.push(doc);stable=clone(doc);if(save())status('Editing a copy · saved in this browser');window.history.replaceState(null,'',location.pathname+location.search);refresh();};
+$('editCopy').onclick=()=>{onAdoptMap();mapLoadGeneration++;localBeforeShared=null;readOnly=false;world.replace(doc,{readOnly:false,dirty:true});knownRevision=world.revision;host.classList.remove('shared');$('sharedBanner').hidden=true;history=createEditorHistory(stable);history.push(doc);stable=clone(doc);if(save())status('Editing a copy · saved in this browser');window.history.replaceState(null,'',location.pathname+location.search);refresh();};
 root.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{cue();extension=null;setTool(b.dataset.tool);palette();if(tool==='enemy'){$('library').classList.add('open');$('enemies').scrollIntoView({block:'start',behavior:'smooth'});}else closePanels();});$('snap').onchange=requestDraw;$('grid').onchange=requestDraw;
 window.addEventListener('keydown',e=>{if(!isActive())return;const target=e.composedPath?.()[0]??e.target;if(target.closest('input,select,textarea,button')||root.querySelector('dialog[open]'))return;const mod=e.ctrlKey||e.metaKey,k=e.key.toLowerCase();if(mod&&k==='s'){e.preventDefault();if(save())status('Saved on this browser');return;}if(mod&&k==='z'){e.preventDefault();if(points.length&&!e.shiftKey){points.pop();updateDrawing();requestDraw();}else e.shiftKey?redo():undo();return;}if(mod&&k==='d'){e.preventDefault();duplicate();return;}if(e.code==='Space'){e.preventDefault();space=true;canvas.style.cursor='grab';return;}if(e.key==='Escape'){finish(true);cancelDrawing();setTool('select');closePanels();return;}if(e.key==='Enter'&&points.length){e.preventDefault();finishPolygon();return;}if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();remove();return;}if(mod)return;const keys={v:'select',h:'pan',p:'polygon',f:'freehand',r:'rectangle',c:'circle',b:'branch',l:'slope',e:'enemy',x:'erase'};if(keys[k]){setTool(keys[k]);palette();}});
 window.addEventListener('keyup',e=>{if(!isActive())return;if(e.code==='Space'){space=false;canvas.style.cursor=tool==='pan'?'grab':tool==='select'?'default':'crosshair';}});window.addEventListener('blur',()=>{space=false;pointers.clear();finish(true);});window.addEventListener('beforeunload',e=>{if(unsaved){e.preventDefault();e.returnValue='';}});
@@ -174,13 +174,14 @@ async function loadLocationMap(){
   doc=shared;history=createEditorHistory(doc);selected=null;readOnly=true;host.classList.add('shared');$('sharedBanner').hidden=false;$('saveState').textContent='Shared snapshot · not saved';world.replace(doc,{readOnly:true,dirty:false});knownRevision=world.revision;status('Snapshot opened · Play or edit a copy');refresh();defaultView();
  }catch(e){if(generation===mapLoadGeneration)status(`Shared map could not open: ${e.message}`);}
 }
-function init(){palette();setTool('select');new ResizeObserver(resize).observe(canvas.parentElement);refresh();return loadLocationMap();}
+function syncAccess(){host.classList.toggle('shared',readOnly);$('sharedBanner').hidden=!readOnly;$('saveState').textContent=readOnly?'Shared snapshot · not saved':unsaved?'Not saved · export a backup':'Your browser · autosaved';}
+function init(){syncAccess();palette();setTool('select');new ResizeObserver(resize).observe(canvas.parentElement);refresh();return manageLocation?loadLocationMap():Promise.resolve();}
 let previewLast=0;
 function previewFrame(now){if(isActive()&&object()?.type==='enemy'&&now-previewLast>80){previewLast=now;const o=object(),c=$('portrait').getContext('2d');c.clearRect(0,0,260,150);const pose=encounterPose(o,now/1000),s=o.encounter;const range=Math.max(1,Math.abs(s?.dx??0),Math.abs(s?.dy??0)+(s?.height??0));const scale=36/range;c.strokeStyle='#a0b58b';c.setLineDash([4,4]);c.beginPath();c.moveTo(90,90);c.lineTo(90+(s?.dx??0)*scale,90-(s?.dy??0)*scale);c.stroke();c.setLineDash([]);drawGroveEnemy(c,o.kind,90+(pose.x-o.x)*scale,90-(pose.y-o.y)*scale,64,now/1000,o.encounter);}requestAnimationFrame(previewFrame);}
 requestAnimationFrame(previewFrame);
 const ready=init();
 return Object.freeze({ready,loadLocationMap,
- enter(){if(world.revision!==knownRevision){doc=clone(world.map);stable=clone(doc);history=createEditorHistory(doc);readOnly=world.readOnly;unsaved=world.dirty;knownRevision=world.revision;selected=null;refresh();}resize();canvas.focus({preventScroll:true});requestDraw();},
+ enter(){if(world.revision!==knownRevision){doc=clone(world.map);stable=clone(doc);history=createEditorHistory(doc);readOnly=world.readOnly;unsaved=world.dirty;knownRevision=world.revision;selected=null;refresh();}syncAccess();resize();canvas.focus({preventScroll:true});requestDraw();},
  leave(){space=false;pointers.clear();finish(true);cancelDrawing();closePanels();closeDialog();sound.pause();},
  getSnapshot:()=>({map:clone(doc),readOnly,unsaved})
 });

@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join,dirname,resolve} from 'node:path';
 import {packagePublic,AUTHOR_ASSETS} from '../scripts/package-public.mjs';
 const manifest=JSON.parse(await readFile(new URL('../.openai/hosting.json',import.meta.url),'utf8'));
-test('public package retains Site identity and the complete player dependency graph with a working explicit developer entry',async()=>{
+test('public package retains Site identity and the complete player dependency graph with a working same-app editor entry',async()=>{
  const target=await mkdtemp(join(tmpdir(),'treetop-public-test-'));
  try{
   await mkdir(join(target,'.openai'));await writeFile(join(target,'.openai/hosting.json'),JSON.stringify({...manifest,description:'retained'}));
@@ -20,7 +20,7 @@ test('public package retains Site identity and the complete player dependency gr
   await visit(join(result.dist,'index.html'));await visit(join(result.dist,'scale.html'));await visit(join(result.dist,'editor.html'));assert.ok(visited.size>40);assert.ok(![...visited].some(x=>x.endsWith('/map-editor.js')));
   for(const file of AUTHOR_ASSETS.filter(x=>x.endsWith('.js')))await visit(join(result.dist,file));assert.ok([...visited].some(x=>x.endsWith('/map-editor.js')));assert.ok([...visited].some(x=>x.endsWith('/grove-editor-tools.js')));
   const current=JSON.parse(await readFile(join(target,'.openai/hosting.json'),'utf8'));assert.equal(current.project_id,manifest.project_id);assert.equal(current.description,'retained');
-  const release=JSON.parse(await readFile(join(result.dist,'release-source.json'),'utf8'));assert.equal(release.githubCommit,result.githubCommit);assert.equal(release.authorTools,'explicit-entry');assert.equal(release.authorEntry,'/editor.html');
+  const release=JSON.parse(await readFile(join(result.dist,'release-source.json'),'utf8'));assert.equal(release.githubCommit,result.githubCommit);assert.match(release.mapEditor,/Options in the main game/);assert.match(release.mapStorage,/no saved maps are packaged/);
  }finally{await rm(target,{recursive:true,force:true});}
 });
 test('public packaging refuses a different Site before copying files',async()=>{

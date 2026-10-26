@@ -1,3 +1,4 @@
+import {compatibleStock} from '../src/build-shop.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {BuildSimulation} from '../src/build-physics.js';
@@ -64,23 +65,23 @@ test('shop transactions reject unlisted and duplicate cards and cannot overspend
  assert.throws(()=>purchaseOffer({...s,bells:0},offer),/Bells/);assert.throws(()=>rerollShop(stocked(0)),/Bells/);
 });
 test('packs charge once, survive rerolls and reload, award exactly one permanent choice',()=>{
- const s=stocked(20000),open=openPack(s);assert.equal(open.bells,s.bells-packPrice(s));assert.throws(()=>openPack(open),/already/);
+ const initial=stocked(20000),s={...initial,shop:{...initial.shop,pack:[{kind:'part',id:'pouch'},{kind:'part',id:'timber'},{kind:'part',id:'bearings'}],packCost:48}},open=openPack(s);assert.equal(open.bells,s.bells-packPrice(s));assert.throws(()=>openPack(open),/already/);
  const rerolled=validateProgress(JSON.parse(JSON.stringify(rerollShop(open)))),id=rerolled.shop.pack[1].id,chosen=choosePack(rerolled,id);
  assert.equal(chosen.owned.length,s.owned.length+1);assert.ok(chosen.owned.includes(id));assert.equal(chosen.shop.packTaken,true);assert.throws(()=>choosePack(chosen,rerolled.shop.pack[0].id),/Choose/);
  assert.throws(()=>choosePack(s,s.shop.pack[0].id),/Choose/);
 });
-test('vouchers materially change stock size, discount prices and reduce reroll cost',()=>{
+test('legacy vouchers preserve discounts and reroll benefits while equipment remains three slots',()=>{
  const s=stocked(20000),upgraded=visitShop({...s,launches:1,vouchers:VOUCHERS.map(v=>v.id)},10);
- assert.equal(upgraded.shop.offers.filter(o=>o.kind==='part').length,4);assert.equal(rerollPrice(upgraded),3);assert.equal(upgraded.shop.voucher,null);
+ assert.equal(upgraded.shop.offers.filter(o=>o.kind==='part').length,3);assert.equal(rerollPrice(upgraded),3);assert.equal(upgraded.shop.voucher,null);
  const offer=upgraded.shop.offers[0];assert.ok(priceFor(upgraded,offer)<priceFor(s,offer));
 });
 test('old saves migrate without losing inventory; malformed offers and prices are rejected',()=>{
  const raw=newProgress();delete raw.vouchers;delete raw.shop;const migrated=validateProgress(raw);assert.deepEqual(migrated.vouchers,[]);assert.equal(migrated.shop,null);assert.deepEqual(migrated.owned,raw.owned);
  const s=stocked();assert.throws(()=>validateProgress({...s,shop:{...s.shop,seed:-1}}));assert.throws(()=>validateProgress({...s,shop:{...s.shop,packCost:1}}));assert.throws(()=>validateProgress({...s,vouchers:['invented']}));
 });
-test('every unowned item remains reachable and all generated deals contain unique valid cards',()=>{
+test('every compatible unowned item remains reachable and all generated deals contain unique valid cards',()=>{
  const seen=new Set();for(let i=0;i<300;i++){const s=stocked(50000,i*7001);const keys=s.shop.offers.map(o=>`${o.kind}:${o.id}`);assert.equal(keys.length,new Set(keys).size);keys.forEach(k=>seen.add(k));validateProgress(s);}
- for(const p of PARTS.filter(p=>!newProgress().owned.includes(p.id)))assert.ok(seen.has(`part:${p.id}`),p.id);assert.ok([...seen].every(key=>!key.startsWith('animal:')),'critters enter through the door rather than shop cards');
+ for(const p of compatibleStock(newProgress()))assert.ok(seen.has(`part:${p.id}`),p.id);assert.ok([...seen].every(key=>!key.startsWith('animal:')),'critters enter through the door rather than shop cards');
 });
 test('pinball palette has distinct mechanical, release, bounce, deal, and scoring envelopes',()=>{
  const cues=['ratchet','ready','launch','impact','reroll','pack','purchase','score'].map(e=>soundSpec(e));

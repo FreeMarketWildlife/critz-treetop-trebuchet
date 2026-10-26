@@ -28,10 +28,13 @@ test('old editor links and new app shell preserve QA/shared map state without a 
  assert.doesNotMatch(html,/id="worldEdit"|data-open-world-editor|href="editor.html"/);assert.match(html,/id="worldModeSwitch"[^>]*hidden/);assert.match(html,/id="altitudeStrip"/);assert.doesNotMatch(editor,/<iframe|playFrame|creative=1&editor=1/);assert.match(editor,/editor-entry\.js/);assert.doesNotMatch(source,/postMessage|playFrame|playtestUrl/);assert.match(source,/export function mountMapEditor/);
 });
 
-test('ordinary player entry exposes no author controls and never loads the editor or attaches its handlers',async()=>{
- let touched=0;const controller=installWorldWorkshop({world:createWorldSession({storage:storage()}),document:{getElementById(){touched++;throw Error('public entry must not construct editor UI');}},window:{addEventListener(){touched++;}},loadEditor(){touched++;}});
- assert.equal(controller.mode,'play');assert.equal(await controller.setMode('edit'),false);assert.equal(controller.editing,false);assert.equal(touched,0);
- const source=readFileSync(new URL('../src/world-workshop.js',import.meta.url),'utf8');assert.doesNotMatch(source,/^import .*map-editor/m,'editor module is imported only inside authorized author mount');
+test('ordinary players can lazily enter the active-map tools through Options',async()=>{
+ const h=ui(),world=createWorldSession({storage:storage()});let loads=0;
+ const controller=installWorldWorkshop({...h,world,loadEditor(){loads++;return{enter(){},leave(){}};}});
+ assert.equal(controller.mode,'play');assert.equal(loads,0);assert.equal(h.node('worldModeSwitch').hidden,true);
+ assert.equal(await controller.setMode('edit'),true);assert.equal(loads,1);assert.equal(controller.editing,true);
+ assert.equal(await controller.setMode('play'),true);assert.equal(h.node('worldModeSwitch').hidden,true);
+ const pause=readFileSync(new URL('../src/pause-menu.js',import.meta.url),'utf8');assert.match(pause,/data-open-world-editor/);
 });
 
 test('the maintained author template supplies every static tool control needed by the scoped mount',()=>{

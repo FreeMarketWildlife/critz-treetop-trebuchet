@@ -1,14 +1,14 @@
-import {encounterPose} from './woodland-encounters.js?v=62';
-import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=62';
-import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=62';
-import {windingMotion} from './winding-comfort.js?v=62';
-import {recipeDrawMinimum} from './scale-builds.js?v=62';
-import {addCritterFixtures} from './critter-body.js?v=62';
-import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=62';
+import {encounterPose} from './woodland-encounters.js?v=66';
+import {GUILLOTINE,isGuillotine,bladeHeight} from './guillotine.js?v=66';
+import {escapeAltitude,spaceWorldDescriptor,spaceCrossingFraction,validateSpaceEscape} from './space-policy.js?v=66';
+import {windingMotion} from './winding-comfort.js?v=66';
+import {recipeDrawMinimum} from './scale-builds.js?v=66';
+import {addCritterFixtures} from './critter-body.js?v=66';
+import {createEnvironmentIndex,isEnvironment} from './grove-environment.js?v=66';
 import * as P from '../vendor/planck/planck.mjs';
-import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=62';
-import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=62';
-import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=62';
+import {validateBuild,buildFacts,part,critter,drawLimit,REST_ARM_ANGLE} from './build-catalog.js?v=66';
+import {validateGroveMap,enemyRecipe,gravityScaleAt,spaceScale} from './grove-map.js?v=66';
+import {triangulatePolygon,objectBounds} from './grove-geometry.js?v=66';
 const {Vec2,World,Box,Circle,Polygon,Edge,RevoluteJoint,RopeJoint,PrismaticJoint,GearJoint}=P;
 export const EARTH_GRAVITY=9.80665;
 export const GRAVITY=EARTH_GRAVITY*.9;
@@ -21,9 +21,10 @@ const rad=d=>d*Math.PI/180,wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
  * m_real=M*m_solver. Therefore g_solver=g_real, F_real=M*F_solver,
  * torque_real=M*L*torque_solver. No launch impulses or range modifiers. */
 export class BuildSimulation{
- constructor(raw,{map=null,originX=0}={}){
+ constructor(raw,{map=null,world=null,originX=0}={}){
   if(!Number.isFinite(originX))throw Error('Finite launch origin required.');this.rigOriginX=originX;
-  this.map=map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.spaceState='bound';this.spaceEscape=null;this.spaceDriftAngle=null;this.escapeThreshold=this.map?escapeAltitude(this.map):null;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();this.impactApproaches=new WeakMap();this.pendingImpacts=new Map();
+  if(world){map=world.map;if(!Object.isFrozen(map)||!Object.isFrozen(map.objects))throw Error('Use the immutable active world authority.');validateGroveMap(map);}
+  this.map=world?map:map?validateGroveMap(map):null;this.worldObjects=this.map?.objects??[];this.contactEvents=[];this.contactSequence=0;this.gravityFactor=1;this.spaceState='bound';this.spaceEscape=null;this.spaceDriftAngle=null;this.escapeThreshold=this.map?escapeAltitude(this.map):null;this.shotContacts=new Set();this.pendingEncounters=[];this.encounterTimes=new Map();this.contactTimes=new Map();this.impactApproaches=new WeakMap();this.pendingImpacts=new Map();
   this.c=validateBuild(raw);this.facts=buildFacts(this.c);this.animal=critter(this.c.animal);
   const c=this.c;this.L=Math.max(.25,c.longArm/3,c.pivotHeight/4,c.slingLength/4);this.M=Math.max(.01,c.counterGrams/1000/80);this.T=Math.sqrt(this.L);
   this.world=new World(Vec2(0,-GRAVITY));this.time=0;this.phase='ready';this.release=null;this.failure='';this.events=[];this.trail=[];this.maxX=0;this.maxY=0;this.peakTension=0;this.peakStress=0;this.lastTension=0;this.wheels=[];this.wheelAxles=[];this.moving=[];this.elapsedSettled=0;this.accumulator=0;

@@ -1,3 +1,4 @@
+import {reconcileQueue} from '../src/critter-queue.js';
 import {rigOriginForDoor} from '../src/launch-staging.js';
 import {doorGeometry,doorHeight,critterHeight} from '../src/critter-door.js';
 import test from 'node:test';
@@ -46,10 +47,10 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
  function $(id){if(!nodes.has(id))nodes.set(id,{textContent:'',value:'',hidden:true,disabled:false,style:{},dataset:{},attributes:{},classList:classList(),setAttribute(k,v){this.attributes[k]=v;},focus(){},click(){},showModal(){this.open=true;},close(){this.open=false;}});return nodes.get(id);}
  $('stage').clientWidth=1726;$('stage').clientHeight=819;$('stage').offsetWidth=1;$('speed').value='1';$('quality').value='auto';$('workshopDialog').open=false;
  const initial=copy(state);if(!providedStorage)saveProgress(storage,initial);
- const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,
+ const context={state:initial,draft:{...initial.build},adventureBuild:{...initial.build},creativeBuild:{...STARTER},sim,creative,qa,editorSession,saving:true,worldSession:createWorldSession({storage:memory()}),groveMap:createGroveMap(),shotId:'escape-ui',banked:false,resultShown:false,spaceRecorded:false,spaceAchievementNew:false,
   microtasks:[],queueMicrotask(fn){context.microtasks.push(fn);},syncPreview(){},paused:false,editingWorld:false,winding:false,dirty:false,seenRelease:false,seenContacts:0,soundedHits:0,seenContactSequence:0,combo:0,lastBumperAt:-Infinity,scoreStep:0,ratchetStep:-1,readyCue:false,
   lastTime:0,lastDraw:0,drawCount:0,refreshAt:0,lastZone:'grandfatherTree',labels:false,follow:true,landingMarks:true,previewSim:null,sessionLog:[],soundQueue:[],currentCel:{hits:0,pose:'flying'},
-  rigOriginForDoor,critter,doorGeometry,doorHeight,critterHeight,BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
+  reconcileQueue,rigOriginForDoor,critter,doorGeometry,doorHeight,critterHeight,BuildSimulation,GRAVITY,STARTER,validateBuild,canBuild,bank,rewards,pendingSpaceResult,validateProgress,saveProgress,localStorage:storage,createPayloadLoading,grams,levelAt,jungleLayerAt,enemyRecipe,
   visitShop:(s,seed)=>visitShop(s,seed??73),creativeShop:createSandboxShop(73),
   markCalls:0,markSpaceEscape(...args){context.markCalls++;return markSpaceEscape(...args);},
   $ ,stage:$('stage'),crypto:{randomUUID:()=> 'retry-'+(++context.ids)},ids:0,hold:{cancel(){}},
@@ -60,7 +61,7 @@ function setup({state={...newProgress(),bells:89,points:18117},sim=escaped(),cre
   linkRetries:0,loadPlayerWorld:async()=>{context.linkRetries++;},populate(){context.populateCount++;$('buildName').value=context.draft.name;},populateCount:0};
  context.launchFeel.reset(sim);context.feelFrame=context.launchFeel.state();
  vm.createContext(context);
- for(const name of['persist','pendingCollection','protectSpaceResult','applyBuild','updateModeUi','switchMode','updateReadouts','recordSpaceEscape','resultData','showResult','resumePendingSpace','collect','openWorkshop','frame'])vm.runInContext(functionSource(name),context);
+ for(const name of['rewardEligible','persist','pendingCollection','protectSpaceResult','applyBuild','updateModeUi','switchMode','updateReadouts','recordSpaceEscape','resultData','showResult','resumePendingSpace','collect','openWorkshop','frame'])vm.runInContext(functionSource(name),context);
  const resetStart=source.indexOf("$('reset').onclick="),resetEnd=source.indexOf(";$('collect').onclick",resetStart);vm.runInContext(source.slice(resetStart,resetEnd)+';',context);
  const collectStart=source.indexOf("$('collect').onclick="),collectEnd=source.indexOf(";$('pause').onclick",collectStart);vm.runInContext(source.slice(collectStart,collectEnd)+';',context);
  const importStart=source.indexOf("$('importSave').onchange="),importEnd=source.indexOf('\n',importStart);vm.runInContext(source.slice(importStart,importEnd),context);
@@ -151,7 +152,7 @@ test('ordinary collection also preserves the run and ledger when its durable sav
 
 test('shared world changes use the applied valid rig and preserve an invalid pending fine-tune draft',async()=>{
  const local=createGroveMap(),world=createWorldSession({map:local}),s=new BuildSimulation(STARTER,{map:local}),h=setup({sim:s});
- h.c.draft={...STARTER,pivotHeight:NaN};h.$('buildName').value='Unfinished experiment';h.c.location={hash:'#map=older'};h.c.runtimeWorldRevision=0;
+ h.c.worldSession=world;h.c.draft={...STARTER,pivotHeight:NaN};h.$('buildName').value='Unfinished experiment';h.c.location={hash:'#map=older'};h.c.runtimeWorldRevision=0;
  h.c.playerWorldLinks=createWorldLinkLoader(world,{decode:async()=>createV3GroveMap(),canApply:()=>!h.c.protectSpaceResult()});
  const start=source.indexOf('async function loadPlayerWorld(){'),end=source.indexOf('\n}',start)+2;vm.runInContext(source.slice(start,end),h.c);
  await h.c.loadPlayerWorld();assert.equal(h.c.sim.map.version,3);assert.equal(h.c.groveMap.launch.y,h.c.sim.map.launch.y);assert.equal(h.c.runtimeWorldRevision,world.revision);assert.equal(h.c.sim.c.pivotHeight,STARTER.pivotHeight);assert.ok(Number.isNaN(h.c.draft.pivotHeight));assert.equal(h.$('buildName').value,'Unfinished experiment');

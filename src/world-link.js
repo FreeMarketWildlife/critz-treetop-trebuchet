@@ -1,4 +1,4 @@
-import {decodeMapLink} from './map-link-codec.js?v=62';
+import {decodeMapLink} from './map-link-codec.js?v=66';
 /** Player-readable snapshots use only world data. No author UI, stylesheet or
  * second game is imported. Applying/restoring a snapshot never saves it. */
 export function createWorldLinkLoader(world,{decode=decodeMapLink,canApply=()=>true}={}){
@@ -24,6 +24,7 @@ export function createWorldLinkLoader(world,{decode=decodeMapLink,canApply=()=>t
    const before=world.revision,previous={map:world.map,readOnly:world.readOnly,dirty:world.dirty};
    world.replace(map,{readOnly:true,dirty:false});if(!activeToken)local=previous;activeToken=token;return result({changed:before!==world.revision,selected:true});
   },
+  adoptCurrent(){generation++;local=null;activeToken=null;},
   cancel(){generation++;},get active(){return activeToken!==null;}
  });
 }

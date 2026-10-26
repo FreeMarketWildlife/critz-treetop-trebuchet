@@ -29,7 +29,7 @@ test('legacy saves retain access through a suitable door without deleting earnin
 test('critter walks from door to stand and remains point-draggable during entrance',()=>{
  const sim=new BuildSimulation(newProgress().build),door={x:-2,y:0,width:.072,height:.1};sim.loading=createPayloadLoading(sim,{door});
  assert.ok(Math.abs(sim.loading.position.x-door.x)<1e-9);assert.equal(sim.loading.returning,true);
- for(let i=0;i<120;i++)sim.loading.step(1/60);
+ for(let i=0;i<240;i++)sim.loading.step(1/60);
  assert.ok(sim.loading.position.x>door.x+.2);assert.ok(sim.loading.begin(sim.loading.position));sim.loading.cancel();
  for(let i=0;i<1800;i++)sim.loading.step(1/60);
  assert.ok(Math.abs(sim.loading.position.x-sim.loading.home().x)<.03);

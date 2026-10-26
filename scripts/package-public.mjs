@@ -25,7 +25,7 @@ export async function packagePublic(target){
  await cp(resolve(root,'docs/world-scale'),resolve(dist,'docs/world-scale'),{recursive:true});
  for(const folder of ['user-generated-item-ideas','trebuchet-parts','mouse-model','natural-oak'])await cp(resolve(root,'docs',folder),resolve(dist,'docs',folder),{recursive:true,filter:source=>!source.endsWith('.tar.gz')});
  const githubCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
- await writeFile(resolve(dist,'release-source.json'),JSON.stringify({repository:'FreeMarketWildlife/critz-treetop-trebuchet',githubCommit,authorTools:'explicit-entry',authorEntry:'/editor.html',authorAccess:'unlinked, not authenticated; browser-local maps only'},null,2)+'\n');
+ await writeFile(resolve(dist,'release-source.json'),JSON.stringify({repository:'FreeMarketWildlife/critz-treetop-trebuchet',githubCommit,mapEditor:'Options in the main game; legacy /editor.html enters same app',mapStorage:'browser-local only; no saved maps are packaged'},null,2)+'\n');
  await writeFile(resolve(target,'.openai/hosting.json'),JSON.stringify({...existing,static:{...existing.static,directory:'dist'}},null,2)+'\n');
  return {dist,githubCommit};
 }

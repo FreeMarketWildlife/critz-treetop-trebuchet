@@ -108,7 +108,7 @@ export function buildFacts(c){
  if(c.pouchWidth<a.length*.7)warnings.push('The pouch opening is too small for this critter.');
  if(drawLimit(c)<c.cockAngle)warnings.push('The rail limits draw-down to '+drawLimit(c).toFixed(1)+'°. Raise the axle for more travel.');
  if(c.pivotHeight<c.shortArm+(c.mount==='hinged'?c.hanger:0)+counterRadius)warnings.push('The counterweight may hit the deck before completing its fall.');
- if(c.counterGrams*c.shortArm<(a.grams*c.longArm+beamGrams*(c.longArm-c.shortArm)/2))warnings.push('The payload side may overpower the counterweight. Expect a stall or backward motion.');
+ if(c.counterGrams*c.shortArm<((a.grams+s.mass+2*part(c.rope).linearGrams*c.slingLength)*c.longArm+beamGrams*(c.longArm-c.shortArm)/2))warnings.push('The payload side may overpower the counterweight. Expect a stall or backward motion.');
  return {beamGrams,counterRadius,warnings,ratio:c.longArm/c.shortArm,payload:a,capacity:s.capacity};
 }
 export function scaledPreset(animal='mouse',chassis='anchored'){
