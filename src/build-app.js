@@ -211,8 +211,12 @@ function inspectShopCard(card,p,description,button,offer){
   const panel=$('shopDetail');panel.replaceChildren(el('small','SELECTED FIND','eyebrow'),el('h3',p.name),el('p',description));
   const compare=offer&&shopComparison(creative?draft:state.build,offer);
   if(compare){panel.append(el('p',`Replaces: ${compare.currentPart}`,'shop-replaces'),el('small','Preview is reversible; your fitted rig changes only when you buy or apply.','shop-spec'));
-   const table=el('table'),head=el('tr');for(const text of ['Physical stat','Now','Preview'])head.append(el('th',text));table.append(head);
-   for(const row of compare.rows){const tr=el('tr',undefined,row.changed?'stat-changed':'');tr.append(el('td',row.label),el('td',row.before),el('td',row.after));table.append(tr);}panel.append(table,el('p',compare.fit.fitted?'Fits at your current dimensions. Buying equips this part.':compare.fit.reason,'shop-fit'));
+   panel.append(el('strong',compare.fit.fitted?'Fits now · ready to equip':'Collection only · fit from Build',`fit-outcome ${compare.fit.fitted?'fit-ready':'fit-stored'}`));
+   panel.append(el('p',compare.fit.fitted?'Fits at your current dimensions. The action below equips this part.':compare.fit.reason.replace('Owned: fit it','After buying, fit it'),'shop-fit'));
+   const statTable=rows=>{const table=el('table'),head=el('tr');for(const text of ['Physical stat','Now','Preview'])head.append(el('th',text));table.append(head);for(const row of rows){const tr=el('tr',undefined,row.changed?'stat-changed':'');tr.append(el('td',row.label),el('td',row.before),el('td',row.after));table.append(tr);}return table;};
+   const changed=compare.rows.filter(row=>row.changed);
+   if(changed.length)panel.append(el('small','WHAT CHANGES','eyebrow'),statTable(changed));
+   const all=el('details',undefined,'shop-stats');all.append(el('summary','All physical stats'),statTable(compare.rows));panel.append(all);
    panel.append(el('small','Torque and energy are reference scales, not predicted launch performance. Larger capacity keeps your dimensions and counterweight fill until you adjust them in Build.'));
   }
   if(compare){syncPreview(compare.candidate);$('previewName').textContent='Preview · '+p.name;}
@@ -308,7 +312,7 @@ function renderShop(){
  $('shopDetail').replaceChildren(el('h3','Inspect a find'),el('p','Hover to compare. Select or focus a card to keep its details open, then buy. On touch, tap a card first.'));
  renderCargoPlan();
  const stats=rigStats(creative?draft:state.build);
- $('shopInventory').textContent=`${ledger.owned.length} permanent parts · ${EQUIPMENT_SLOTS.length} fitted slots · ${stats.capacity.toLocaleString()} g pouch capacity · ${stats.movingGrams.toFixed(1)} g moving load. Inventory has no storage limit. Swap owned parts in Build.`;
+ $('shopInventory').textContent=`${creative?'Creative · all parts available':ledger.owned.length+' permanent parts'} · ${EQUIPMENT_SLOTS.length} fitted slots · ${stats.capacity.toLocaleString()} g pouch capacity · ${stats.movingGrams.toFixed(1)} g moving load. Inventory has no storage limit. Swap owned parts in Build.`;
  $('voucherSlot').replaceChildren();$('packSlot').replaceChildren();$('voucherSlot').hidden=view.choosing;$('packSlot').hidden=view.choosing;
  $('voucherSlot').parentElement.hidden=view.choosing;
  $('shopItems').hidden=view.choosing;$('packChoices').hidden=!view.choosing;
