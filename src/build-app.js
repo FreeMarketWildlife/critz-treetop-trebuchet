@@ -426,7 +426,7 @@ document.addEventListener('keydown',e=>{
  if(e.code==='Enter'&&document.activeElement===stage&&!paused&&sim.phase==='ready'&&!sim.loading.loaded&&!sim.loading.dragging&&!document.querySelector('dialog[open]')){e.preventDefault();sim.loading.loadKeyboard();dirty=true;cue('click');updateReadouts();}
 
  if(e.code==='Space'&&!['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!e.repeat)beginHold('space');}
- if(e.code==='Escape'&&!document.querySelector('dialog[open]')){if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else $('pause').click();}
+ if(e.code==='Escape'&&!document.querySelector('dialog[open]')){e.preventDefault();if(loadPointer!==null){cancelLoading();updateReadouts();}else if(hold.active){hold.cancel();updateReadouts();}else $('pause').click();}
 });
 document.addEventListener('keyup',e=>{if(['Space','Enter'].includes(e.code)){const launcher=hold.end('launcher-key:'+e.code),stageKey=e.code==='Space'&&hold.end('space');if(launcher||stageKey)e.preventDefault();}});
 function interrupt(){cancelLoading();hold.cancel();soundQueue.length=0;sound.pause();if(['swing','flight','escaped'].includes(sim?.phase)){paused=true;$('pause').textContent='Ⅱ';$('pause').setAttribute('aria-pressed','true');}lastTime=0;dirty=true;}
