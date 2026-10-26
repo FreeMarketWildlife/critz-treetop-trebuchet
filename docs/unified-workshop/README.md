@@ -18,7 +18,7 @@ Legacy editor.html redirects into index.html?mode=edit, keeping query/hash and t
 
 ## Verification
 
-Full regression: 1110/1110 passed before the final compatibility-reconciliation regression and cache bump. Focused transaction/editor/queue suites: 95/95, plus packaging/current UI 26/26. Final frozen-run totals are recorded in the handoff.
+Final frozen v66 full regression: **1111/1111 passed**, log `/tmp/treetop-v66-final-full.log`. Focused transaction/editor/queue suites: 95/95, plus packaging/current UI 26/26. Final frozen-run totals are recorded in the handoff.
 
 Browser acceptance harness: docs/unified-workshop/qa.html. Run transition acceptance (11 checks), reload the harness using browser Reload, then Verify fresh-load persistence. Open the same harness with ?legacy=1 and verify again. These check exact object identity, content changes, Play handoff, reward protection, undo/redo, fresh load and legacy entry. All QA storage is session-isolated. docs/unified-workshop/portrait.html embeds an actual 390 × 844 CSS viewport for responsive inspection, without changing the user's browser window or map.
 
@@ -27,3 +27,12 @@ Actual desktop and 390px browser review confirmed three cards, selection/details
 ## Limits
 
 No physical touch hardware was used. The earlier interrupted real file download/import remains uncertain and was not retried; in-page JSON/link round trips pass. An exploratory blue-whale staging case shows the giant basket overlapping the door and catching the visitor before the distant stand; mouse/frog/rabbit entrance and launch paths pass. This extreme-scale staging limitation is retained for independent QA; it does not prevent dragging/loading or launch. No public publication of this candidate has occurred. Free Market Wildlife hosting integration is owned by the website worker and remains held until acceptance.
+
+## Screenshot Library evidence
+
+Before redesign: `libfile_690c97e23df88191b5ce3840cad51267` (previous accepted desktop shop).
+After desktop: `libfile_ecfeed72c0508191b11f3d2bdfc130d1`.
+After 390px portrait: `libfile_aa2c897ea9988191a0af7ea1d7c7dc50`.
+Loaded starter mouse: `libfile_68f5e1e14404819181f90de66d2717bb`.
+
+Local candidate: http://127.0.0.1:8796/. Prefix acceptance target: http://127.0.0.1:8796/games/treetop-trebuchet/. Original http://127.0.0.1:8080/editor.html remains on accepted 679ecbb until new independent acceptance and guarded integration.
