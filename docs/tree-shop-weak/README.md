@@ -29,3 +29,7 @@ Exactly three compatible seeded equipment offers, door rules, valid visitor prom
 Full Node regression: 1131/1131 PASS, `/tmp/treetop-v69-final-suite.log`. Focused low-power/input/physics checks: 60/60; current popover/space/keyboard checks: 45/45. New tests cover real low-draw geometry/pose/velocity, natural weak success/failure, input cancellation, once-only FAIL feedback, direct visible buy controls, separate info, stale double-click safety and popover edge placement. Browser evidence and independent QA results are retained separately by the integration lead.
 
 Physical touch hardware is not claimed; touch event paths are tested synthetically and the real 390px iframe is inspected. Prior uncertain file-download/import work is not retried. The previously disclosed extreme whale door/basket staging overlap remains outside this bounded fix.
+
+Independent review found that native popover dismissal could restore focus to its info opener and reopen details on Escape. v70 suppresses inspection during synchronous native focus restoration; a regression models that browser behavior. Real keyboard Escape now closes details while keeping the shop open and the info control focused. Layout and transaction behavior are unchanged.
+
+Final v70 full regression: 1132/1132 PASS (68.3 seconds), `/tmp/treetop-v70-final-suite.log`; no skipped tests.
