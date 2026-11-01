@@ -233,3 +233,19 @@ See [portrait loading and contact readability](reviews/iteration-23/findings.md)
 ## Iteration 25 — continuing the canopy into ground travel
 
 The seven short canopy routes are now fixed downhill passive contact segments rather than trapping flat shelves. Shared slope geometry drives collision, conservative refinement, art and preview clipping; existing edge cues also warn about fixed branches, bumpers and ground. No extra launch force or guaranteed throw. See [iteration25 findings](reviews/iteration-25/findings.md) for201tests, exact35-case release/prediction parity, paired natural40-second traversal, two132-attempt progression/collection/save soaks, actual portrait play and remaining human/device limits.
+
+
+## Proposed prompt vocabulary reference (November 1, 2026)
+
+Source: [Game Development Cheat Sheet](https://gamedev-cheatsheet.com/). This documentation-only reference applies its terminology to future authorized work; it does not resume paused physics research, promote experimental constraints, approve publication or replace the current checkpoint in ACTIVE-TASK.md. Earlier sections retain their historical scope; consult the latest README and checkpoint before implementation.
+
+- **Tunneling / swept collision:** useful vocabulary for fast critters crossing thin surfaces. Diagnose contact behavior in the existing pinned Planck model before considering a change. Do not replace articulated contact physics with point-ray hits, teleport repairs or velocity boosts.
+- **Frame budget / time slicing:** useful for separating prediction, physics and drawing costs. A sliced preview must not mutate the live world or silently use different physical rules. Report end-to-end frame timing and reaction latency, not just a favorable isolated microbenchmark.
+- **Object pooling:** a candidate for disposable visual effects only when measured allocation pressure justifies it. Do not pool physics worlds/bodies by analogy with particles without proving contact, joint, listener and lifecycle reset behavior.
+- **State transitions:** describe load, wind, release, flight, collect and retry boundaries. Each bank/collect action must remain exactly once; pause and reset must not leak held input, sound or prior-run effects.
+
+### Future diagnostic prompt
+
+> When physical investigation is explicitly authorized, reproduce a named thin-surface/fast-impact failure from identical initial state in the current pinned engine. Separate tunneling from constraint deformation and prediction freshness. Preserve masses, inertia, forces, energy/work accounting, solver limits, saves and the current experimental-feature defaults. Compare unchanged controls with any proposed method, record residual failures and end-to-end cost, and verify prediction/live parity without changing live state. Do not hide warnings, force a successful launch or claim device performance from Node timing.
+
+The cheat sheet is a vocabulary aid, not a substitute for this project's physical model or evidence gates. Generic hit-stop, coyote-time and sample numeric constants are not selected gameplay changes. Browser/device testing, numerical checks and human playtest conclusions must remain separately labeled.
